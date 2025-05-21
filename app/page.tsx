@@ -47,7 +47,8 @@ export default function Home() {
   const [countdownRunning, setCountdownRunning] = useState(false)
   const [countdownTimeLeft, setCountdownTimeLeft] = useState("")
   const [sunriseSunset, setSunriseSunset] = useState({ sunrise: "", sunset: "" })
-  const [location, setLocation] = useState("")
+  // const [location, setLocation] = useState("") // Removed location state
+  const [isFetchingSunTimes, setIsFetchingSunTimes] = useState(false)
   const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
   const [activeTab, setActiveTab] = useState("current-time")
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
@@ -128,18 +129,6 @@ export default function Home() {
     }
   }, [countdownRunning, countdownHours, countdownMinutes, countdownSeconds])
 
-  // Get sunrise/sunset times when location changes
-  useEffect(() => {
-    if (location.trim() !== "") {
-      // This would normally use a geocoding API to get coordinates
-      // For demo purposes, we'll use a mock response
-      setSunriseSunset({
-        sunrise: "06:32 AM",
-        sunset: "07:48 PM",
-      })
-    }
-  }, [location])
-
   // Format time as HH:MM:SS
   const formattedTime = currentTime.toLocaleTimeString("en-US", {
     hour12: false,
@@ -161,6 +150,59 @@ export default function Home() {
   const offset = -(currentTime.getTimezoneOffset() / 60)
   const offsetStr = offset >= 0 ? `+${offset}` : `${offset}`
   const timezoneInfo = `${timezone} (GMT${offsetStr})`
+  
+  // Handle fetching sun times
+  const handleGetSunTimes = () => {
+    setIsFetchingSunTimes(true);
+    setSunriseSunset({ sunrise: "Loading...", sunset: "Loading..." });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=sunrise,sunset&timezone=auto&current_weather=false&forecast_days=1`;
+          
+          fetch(apiUrl)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((data) => {
+              if (data.daily && data.daily.sunrise && data.daily.sunset) {
+                const sunriseISO = data.daily.sunrise[0];
+                const sunsetISO = data.daily.sunset[0];
+                setSunriseSunset({
+                  sunrise: new Date(sunriseISO).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                  sunset: new Date(sunsetISO).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+                });
+              } else {
+                setSunriseSunset({ sunrise: "API Error", sunset: "API Error" });
+              }
+            })
+            .catch(() => {
+              setSunriseSunset({ sunrise: "API Error", sunset: "API Error" });
+            })
+            .finally(() => {
+              setIsFetchingSunTimes(false);
+            });
+        },
+        (error) => {
+          console.error("Geolocation error:", error);
+          let errorMessage = "Location N/A";
+          if (error.code === error.PERMISSION_DENIED) {
+            errorMessage = "Location access denied";
+          }
+          setSunriseSunset({ sunrise: errorMessage, sunset: errorMessage });
+          setIsFetchingSunTimes(false);
+        }
+      );
+    } else {
+      setSunriseSunset({ sunrise: "Geolocation not supported", sunset: "Geolocation not supported" });
+      setIsFetchingSunTimes(false);
+    }
+  };
 
   // Unix timestamp
   const timestamp = Math.floor(currentTime.getTime() / 1000)
@@ -702,18 +744,9 @@ export default function Home() {
               <h2 className="text-2xl font-bold mb-6 text-center">Sunrise & Sunset</h2>
               <Card>
                 <CardContent className="pt-6">
-                  <div className="mb-4">
-                    <Label htmlFor="location">Enter Location</Label>
-                    <Input
-                      id="location"
-                      placeholder="City name or address"
-                      value={location}
-                      onChange={(e) => setLocation(e.target.value)}
-                    />
-                  </div>
-
-                  <Button className="w-full" onClick={() => {}}>
-                    Get Sun Times
+                  {/* Removed location input field */}
+                  <Button className="w-full" onClick={handleGetSunTimes} disabled={isFetchingSunTimes}>
+                    {isFetchingSunTimes ? "Loading..." : "Get Sun Times (Use My Location)"}
                   </Button>
 
                   {sunriseSunset.sunrise && (
