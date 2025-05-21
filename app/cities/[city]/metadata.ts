@@ -8,7 +8,6 @@ export const citiesData = {
     timezone: 'America/New_York',
     population: '8.5 million',
     coordinates: '40.7128° N, 74.0060° W',
-    offset: -5,
   },
   'london': {
     name: 'London',
@@ -16,7 +15,6 @@ export const citiesData = {
     timezone: 'Europe/London',
     population: '9 million',
     coordinates: '51.5074° N, 0.1278° W',
-    offset: +1,
   },
   'tokyo': {
     name: 'Tokyo',
@@ -24,7 +22,6 @@ export const citiesData = {
     timezone: 'Asia/Tokyo',
     population: '14 million',
     coordinates: '35.6762° N, 139.6503° E',
-    offset: +9,
   },
   'shanghai': {
     name: 'Shanghai',
@@ -32,7 +29,6 @@ export const citiesData = {
     timezone: 'Asia/Shanghai',
     population: '24 million',
     coordinates: '31.2304° N, 121.4737° E',
-    offset: +8,
   },
   'beijing': {
     name: 'Beijing',
@@ -40,7 +36,6 @@ export const citiesData = {
     timezone: 'Asia/Shanghai',
     population: '24 million',
     coordinates: '31.2304° N, 121.4737° E',
-    offset: +8,
   },
   'seoul': {
     name: 'Seoul',
@@ -48,7 +43,6 @@ export const citiesData = {
     timezone: 'Asia/Seoul',
     population: '9.5 million',
     coordinates: '37.5665° N, 126.9780° E',
-    offset: +9,
   },
   'kolkata': {
     name: 'Kolkata',
@@ -56,7 +50,6 @@ export const citiesData = {
     timezone: 'Asia/Kolkata',
     population: '9.5 million',
     coordinates: '37.5665° N, 126.9780° E',
-    offset: +5,
   },
   'dubai': {
     name: 'Dubai',
@@ -64,7 +57,6 @@ export const citiesData = {
     timezone: 'Asia/Dubai',
     population: '9.5 million',
     coordinates: '37.5665° N, 126.9780° E',
-    offset: +4,
   },
   'cairo': {
     name: 'Cairo',
@@ -72,7 +64,6 @@ export const citiesData = {
     timezone: 'Africa/Cairo',
     population: '9.5 million',
     coordinates: '37.5665° N, 126.9780° E',
-    offset: +2,
   },
   'moscow': {
     name: 'Moscow',
@@ -80,7 +71,6 @@ export const citiesData = {
     timezone: 'Europe/Moscow',
     population: '9.5 million',
     coordinates: '37.5665° N, 126.9780° E',
-    offset: +3,
   },
   'istanbul': {
     name: 'Istanbul',
@@ -88,15 +78,13 @@ export const citiesData = {
     timezone: 'Europe/Istanbul',
     population: '9.5 million',
     coordinates: '37.5665° N, 126.9780° E',
-    offset: +3,
   },
   paris: {
     name: 'Paris',
     country: 'France',
     timezone: 'Europe/Paris',
     population: '9.5 million',
-    coordinates: '37.5665° N, 126.9780° E',
-    offset: +2,
+    coordinates: '48.8566° N, 2.3522° E',
   },
   sydney: {
     name: 'Sydney',
@@ -104,7 +92,6 @@ export const citiesData = {
     timezone: 'Australia/Sydney',
     population: '9.5 million',
     coordinates: '37.5665° N, 126.9780° E',
-    offset: +11,
   },
   // Add more cities as needed
 };

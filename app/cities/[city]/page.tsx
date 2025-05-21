@@ -95,6 +95,23 @@ export default function CityPage({ params }: CityPageProps) {
   // ISO format
   const isoTime = currentTime.toISOString()
 
+  // Calculate GMT offset
+  const now = new Date();
+  const utcDate = new Date(now.toLocaleString('en-US', { timeZone: 'UTC' }));
+  const targetDate = new Date(now.toLocaleString('en-US', { timeZone: cityInfo.timezone }));
+  const offsetInHours = (targetDate.getTime() - utcDate.getTime()) / (1000 * 60 * 60);
+  
+  let offsetString;
+  const hours = Math.floor(Math.abs(offsetInHours));
+  const minutes = Math.floor((Math.abs(offsetInHours) * 60) % 60);
+  const sign = offsetInHours >= 0 ? '+' : '-';
+
+  if (minutes === 0) {
+    offsetString = `GMT${sign}${hours}`;
+  } else {
+    offsetString = `GMT${sign}${hours}:${minutes.toString().padStart(2, '0')}`;
+  }
+
   // City-specific FAQs
   const cityFaqs = [
     {
@@ -178,7 +195,7 @@ export default function CityPage({ params }: CityPageProps) {
                 <CardTitle className="text-lg">Timezone Information</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className={jetbrainsMono.className}>{cityInfo.timezone} (GMT{cityInfo.offset > 0 ? '+' : ''}{cityInfo.offset})</p>
+                <p className={jetbrainsMono.className}>{cityInfo.timezone} ({offsetString})</p>
               </CardContent>
             </Card>
 
