@@ -8,6 +8,10 @@ on:
   pull_request:
     branches: ["main"]
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
