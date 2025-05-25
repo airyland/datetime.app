@@ -1,0 +1,6 @@
+services:
+  datetime.app:
+    ports:
+      - 3000:3000
+    container_name: datetime-app
+    image: ghcr.io/airyland/datetime.app:latest
