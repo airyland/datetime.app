@@ -28,6 +28,27 @@ pnpm run dev
 pnpm run build
 ```
 
+### Running with Docker
+
+To run the application using Docker, first ensure you have Docker installed.
+The Docker image is published to GitHub Container Registry (ghcr.io).
+
+#### Docker run
+
+```bash
+# Pull the latest image from ghcr.io
+docker pull ghcr.io/airyland/datetime.app:latest
+
+# Run the Docker container
+docker run -d -p 3000:3000 --name datetime-app ghcr.io/airyland/datetime.app:latest
+```
+
+Then, open your browser and navigate to `http://localhost:3000`.
+
+#### Docker compose
+
+See the `docker-compose.yaml` file in the repository for a complete setup.
+
 ## Other Products
 
 Check out our other tools and services:
