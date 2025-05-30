@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
       description: termInfo.shortDescription,
       type: "website",
     },
+    alternates: {
+      canonical: `https://datetime.app/glossary/${params.term}`
+    }
   };
 }
 

@@ -40,6 +40,9 @@ export async function generateMetadata({ params, searchParams }: CountryHolidays
       type: "website",
       url: `https://datetime.app/holidays/${country}`,
     },
+    alternates: {
+      canonical: `https://datetime.app/holidays/${country}`
+    }
   }
 }
 

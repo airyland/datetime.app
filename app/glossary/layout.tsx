@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     description: "Comprehensive glossary of time-related concepts, standards, and formats. Learn about UTC, GMT, timezones, ISO 8601, Unix timestamps, and more.",
     type: "website",
   },
+  alternates: {
+    canonical: "https://datetime.app/glossary"
+  }
 }
 
 export default function GlossaryLayout({

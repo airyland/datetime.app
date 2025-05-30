@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     description: "Browse holidays from around the world. Find public holidays, observances, and special days for countries and regions worldwide.",
     type: "website",
   },
+  alternates: {
+    canonical: "https://datetime.app/holidays"
+  }
 }
 
 export default function HolidaysLayout({

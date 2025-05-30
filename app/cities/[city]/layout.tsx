@@ -11,6 +11,9 @@ export async function generateMetadata({ params }: LayoutProps) {
   return {
     title: `Current Time in ${cityInfo.name}, ${cityInfo.country} | Datetime.app`,
     description: `Current local time in ${cityInfo.name}, ${cityInfo.country} (${cityInfo.timezone} time zone)`,
+    alternates: {
+      canonical: `https://datetime.app/cities/${params.city}`
+    }
   }
 }
 

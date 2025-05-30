@@ -49,6 +49,9 @@ export async function generateMetadata({ params, searchParams }: RegionHolidaysP
       type: "website",
       url: `https://datetime.app/holidays/${country}/${region}`,
     },
+    alternates: {
+      canonical: `https://datetime.app/holidays/${country}/${region}`
+    }
   }
 }
 

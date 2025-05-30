@@ -9,6 +9,9 @@ export const metadata: Metadata = {
     description: "Calculate your exact age in years, months, days, hours, minutes, and seconds. Choose between calendar or manual input and calculate age as of any date.",
     type: "website",
   },
+  alternates: {
+    canonical: "https://datetime.app/age-calculator"
+  }
 }
 
 export default function AgeCalculatorLayout({
