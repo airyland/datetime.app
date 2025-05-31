@@ -414,19 +414,19 @@ export default function Home() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-3xl mx-auto">
                 <Card className="shadow-none rounded-none border">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Timezone Information</CardTitle>
+                  <CardHeader className="py-2 px-4">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">Timezone Information</CardTitle>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="px-4 py-2">
                     <p className={jetbrainsMono.className}>{timezoneInfo}</p>
                   </CardContent>
                 </Card>
 
                 <Card className="shadow-none rounded-none border">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Unix Timestamp</CardTitle>
+                  <CardHeader className="py-2 px-4">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">Unix Timestamp</CardTitle>
                   </CardHeader>
-                  <CardContent className="text-center">
+                  <CardContent className="px-4 py-2 text-center">
                     <div className="inline-flex items-center gap-2">
                       <p className={jetbrainsMono.className}>{timestamp}</p>
                       <button
@@ -445,18 +445,16 @@ export default function Home() {
                 </Card>
 
                 <Card className="shadow-none rounded-none border">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg text-center">
-                      <a href="/utc" className="inline-flex items-center gap-1 hover:underline justify-center">
+                  <CardHeader className="py-2 px-4">
+                    <CardTitle className="text-sm font-medium text-muted-foreground flex items-center justify-center gap-4">
+                      <a href="/utc" className="inline-flex items-center gap-1 hover:underline">
                         UTC Time
                         <Globe className="h-3 w-3" />
                       </a>
+                      <a href="/glossary/utc" className="text-xs text-muted-foreground hover:underline">Learn about UTC</a>
                     </CardTitle>
-                    <div className="text-xs text-center mt-1">
-                      <a href="/glossary/utc" className="text-muted-foreground hover:underline">Learn about UTC</a>
-                    </div>
                   </CardHeader>
-                  <CardContent className="text-center">
+                  <CardContent className="px-4 py-2 text-center">
                     <div className="inline-flex items-center gap-2">
                       <p className={jetbrainsMono.className}>{utcTime}</p>
                       <button
@@ -475,10 +473,10 @@ export default function Home() {
                 </Card>
 
                 <Card className="shadow-none rounded-none border">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">ISO Format</CardTitle>
+                  <CardHeader className="py-2 px-4">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">ISO Format</CardTitle>
                   </CardHeader>
-                  <CardContent className="text-center">
+                  <CardContent className="px-4 py-2 text-center">
                     <div className="inline-flex items-center gap-2">
                       <p className={jetbrainsMono.className}>{isoTime}</p>
                       <button
