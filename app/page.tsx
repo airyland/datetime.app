@@ -542,7 +542,9 @@ export default function Home() {
               <h2 className="text-2xl font-bold mb-6 text-center">Calendar</h2>
               <Card>
                 <CardContent className="pt-6">
-                  <CalendarComponent mode="single" selected={selectedDate} onSelect={setSelectedDate} className="mx-auto" />
+                  <div className="flex justify-center">
+                    <CalendarComponent mode="single" selected={selectedDate} onSelect={setSelectedDate} />
+                  </div>
 
                   {selectedDate && (
                     <div className="mt-4 p-4 border border-gray-200 dark:border-gray-800 rounded-md">
