@@ -88,14 +88,19 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("current-time")
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const [use24Hour, setUse24Hour] = useState(() => {
-    const saved = localStorage.getItem('timeFormat')
-    return saved === '12h' ? false : true
-  })
+  const [use24Hour, setUse24Hour] = useState(true)
+
+  // Initialize time format preference from localStorage
+  useEffect(() => {
+    const saved = window.localStorage.getItem('timeFormat')
+    if (saved === '12h') {
+      setUse24Hour(false)
+    }
+  }, [])
 
   // Save time format preference
   useEffect(() => {
-    localStorage.setItem('timeFormat', use24Hour ? '24h' : '12h')
+    window.localStorage.setItem('timeFormat', use24Hour ? '24h' : '12h')
   }, [use24Hour])
 
   const [isInitialized, setIsInitialized] = useState(false)
