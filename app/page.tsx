@@ -479,10 +479,10 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-3xl mx-auto">
                 <Card className="shadow-none rounded-none border">
                   <CardHeader className="py-2 px-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">Timezone Information</CardTitle>
+                    <CardTitle className="text-sm font-medium text-muted-foreground text-center">Timezone Information</CardTitle>
                   </CardHeader>
                   <CardContent className="px-4 py-2">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 justify-center">
                       <p className={jetbrainsMono.className}>{timezone} (GMT{offsetStr})</p>
                       {isDST && <DSTTag />}
                     </div>
