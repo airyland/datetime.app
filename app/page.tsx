@@ -88,6 +88,15 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("current-time")
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [use24Hour, setUse24Hour] = useState(() => {
+    const saved = localStorage.getItem('timeFormat')
+    return saved === '12h' ? false : true
+  })
+
+  // Save time format preference
+  useEffect(() => {
+    localStorage.setItem('timeFormat', use24Hour ? '24h' : '12h')
+  }, [use24Hour])
 
   const [isInitialized, setIsInitialized] = useState(false)
 
@@ -198,13 +207,13 @@ export default function Home() {
   const offsetStr = offset >= 0 ? `+${offset}` : `${offset}`
   const isDST = localTime.isDST()
 
-  // Format time as HH:MM:SS
+  // Format time based on 12/24 hour preference
   const formattedTime = currentTime.toLocaleTimeString("en-US", {
-    hour12: false,
+    hour12: !use24Hour,
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
-  })
+  }).replace(/\s+(?:AM|PM)/, '')
 
   // Format date
   const formattedDate = currentTime.toLocaleDateString("en-US", {
@@ -445,13 +454,38 @@ export default function Home() {
           >
             <div className="text-center">
               <div className="mb-8">
-                <h2 className="text-xl md:text-2xl font-medium mb-2">Current Time</h2>
-                <div className="relative group">
-                  <div
-                    className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none ${jetbrainsMono.className} cursor-pointer`}
-                    onClick={() => setIsFullscreen(true)}
-                  >
-                    {formattedTime}
+                <div className="flex flex-col items-center mb-2 gap-4">
+                  <div className="flex items-center gap-3">
+                    <h2 className="text-xl md:text-2xl font-medium">Current Time</h2>
+                    <div className="flex items-center rounded-md bg-secondary/30 p-0.5 text-sm shadow-sm">
+                      <button
+                        onClick={() => setUse24Hour(false)}
+                        className={`px-2.5 py-1 rounded-md transition-colors font-medium ${!use24Hour ? 'bg-white dark:bg-gray-800 shadow-sm' : 'hover:bg-secondary/50'}`}
+                      >
+                        12h
+                      </button>
+                      <button
+                        onClick={() => setUse24Hour(true)}
+                        className={`px-2.5 py-1 rounded-md transition-colors font-medium ${use24Hour ? 'bg-white dark:bg-gray-800 shadow-sm' : 'hover:bg-secondary/50'}`}
+                      >
+                        24h
+                      </button>
+                    </div>
+                  </div>
+                  <div className="relative inline-block">
+                    <div
+                      className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none ${jetbrainsMono.className} text-center cursor-pointer`}
+                      onClick={() => setIsFullscreen(true)}
+                    >
+                      {formattedTime}
+                    </div>
+                    <button
+                      onClick={() => setIsFullscreen(true)}
+                      className="absolute top-2 -right-8 p-1.5 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors"
+                      title="Enter fullscreen"
+                    >
+                      <Maximize2 size={18} />
+                    </button>
                   </div>
                   <button
                     onClick={() => setIsFullscreen(true)}
