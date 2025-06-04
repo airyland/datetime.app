@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label"
 import { format } from "date-fns"
 import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
+import spacetime from 'spacetime'
 
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
@@ -20,20 +21,54 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 })
 
-// Popular timezones for the world clock
-const popularTimezones = [
-  { value: "America/New_York", label: "New York", offset: -5 },
-  { value: "America/Los_Angeles", label: "Los Angeles", offset: -8 },
-  { value: "Europe/London", label: "London", offset: 0 },
-  { value: "Europe/Paris", label: "Paris", offset: 1 },
-  { value: "Asia/Tokyo", label: "Tokyo", offset: 9 },
-  { value: "Asia/Shanghai", label: "Shanghai", offset: 8 },
-  { value: "Australia/Sydney", label: "Sydney", offset: 11 },
-  { value: "Pacific/Auckland", label: "Auckland", offset: 13 },
+// DST tag component
+const DSTTag = () => (
+  <span className="px-1.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 rounded">
+    DST
+  </span>
+)
+
+// Available timezones for selection
+const availableTimezones = [
+  // North America
+  { value: "America/New_York", label: "New York" },
+  { value: "America/Los_Angeles", label: "Los Angeles" },
+  { value: "America/Chicago", label: "Chicago" },
+  { value: "America/Toronto", label: "Toronto" },
+  { value: "America/Vancouver", label: "Vancouver" },
+  { value: "America/Mexico_City", label: "Mexico City" },
+  { value: "America/Phoenix", label: "Phoenix" },
+  { value: "America/Denver", label: "Denver" },
+  { value: "America/Montreal", label: "Montreal" },
+  // Europe
+  { value: "Europe/London", label: "London" },
+  { value: "Europe/Paris", label: "Paris" },
+  { value: "Europe/Berlin", label: "Berlin" },
+  { value: "Europe/Rome", label: "Rome" },
+  { value: "Europe/Madrid", label: "Madrid" },
+  { value: "Europe/Amsterdam", label: "Amsterdam" },
+  { value: "Europe/Moscow", label: "Moscow" },
+  // Asia
+  { value: "Asia/Tokyo", label: "Tokyo" },
+  { value: "Asia/Shanghai", label: "Shanghai" },
+  { value: "Asia/Singapore", label: "Singapore" },
+  { value: "Asia/Dubai", label: "Dubai" },
+  { value: "Asia/Hong_Kong", label: "Hong Kong" },
+  { value: "Asia/Seoul", label: "Seoul" },
+  { value: "Asia/Taipei", label: "Taipei" },
+  { value: "Asia/Bangkok", label: "Bangkok" },
+  // Oceania
+  { value: "Australia/Sydney", label: "Sydney" },
+  { value: "Australia/Melbourne", label: "Melbourne" },
+  { value: "Pacific/Auckland", label: "Auckland" },
+  // India
+  { value: "Asia/Kolkata", label: "India (IST)" },
 ]
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date())
+  const [customTimezones, setCustomTimezones] = useState<typeof availableTimezones>([]) // Custom user timezones
+  const [showAddTimezone, setShowAddTimezone] = useState(false) // Control add timezone form
   const [fullscreenTime, setFullscreenTime] = useState(false)
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date())
   const [fromTimezone, setFromTimezone] = useState("UTC")
@@ -54,11 +89,38 @@ export default function Home() {
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
   const [isFullscreen, setIsFullscreen] = useState(false)
 
+  const [isInitialized, setIsInitialized] = useState(false)
+
+  // Load custom timezones from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('customTimezones')
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        setCustomTimezones(parsed)
+      } catch (e) {
+        console.error('Failed to parse saved timezones:', e)
+        // Show first 9 timezones by default
+        setCustomTimezones(availableTimezones.slice(0, 9))
+      }
+    } else {
+      // Show first 9 timezones by default
+      setCustomTimezones(availableTimezones.slice(0, 9))
+    }
+    setIsInitialized(true)
+  }, [])
+
+  // Save custom timezones to localStorage
+  useEffect(() => {
+    if (isInitialized) {
+      localStorage.setItem('customTimezones', JSON.stringify(customTimezones))
+    }
+  }, [customTimezones, isInitialized])
+
   // Update current time every second
   useEffect(() => {
     const timer = setInterval(() => {
-      const now = new Date()
-      setCurrentTime(now)
+      setCurrentTime(new Date())
     }, 1000)
 
     return () => clearInterval(timer)
@@ -129,6 +191,13 @@ export default function Home() {
     }
   }, [countdownRunning, countdownHours, countdownMinutes, countdownSeconds])
 
+  // Get timezone info using spacetime
+  const localTime = spacetime(currentTime)
+  const timezone = localTime.timezone().name
+  const offset = localTime.timezone().current.offset
+  const offsetStr = offset >= 0 ? `+${offset}` : `${offset}`
+  const isDST = localTime.isDST()
+
   // Format time as HH:MM:SS
   const formattedTime = currentTime.toLocaleTimeString("en-US", {
     hour12: false,
@@ -144,12 +213,6 @@ export default function Home() {
     month: "long",
     day: "numeric",
   })
-
-  // Timezone info
-  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
-  const offset = -(currentTime.getTimezoneOffset() / 60)
-  const offsetStr = offset >= 0 ? `+${offset}` : `${offset}`
-  const timezoneInfo = `${timezone} (GMT${offsetStr})`
   
   // Handle fetching sun times
   const handleGetSunTimes = () => {
@@ -213,27 +276,28 @@ export default function Home() {
   // ISO format
   const isoTime = currentTime.toISOString()
 
-  // Handle timezone conversion
+  // Handle timezone conversion using spacetime
   const handleConvertTime = () => {
     try {
       const dateTimeStr = `${convertDate}T${convertTime}:00`
-      const dateInFromTimezone = new Date(dateTimeStr)
-
-      // This is a simplified conversion. In a real app, you would use a library like date-fns-tz
-      // or moment-timezone for accurate timezone conversions
-      const convertedDateTime = new Date(dateInFromTimezone)
-
+      
+      // Create spacetime object in source timezone
+      const st = spacetime(dateTimeStr, fromTimezone)
+      
+      // Convert to target timezone
+      const converted = st.goto(toTimezone)
+      
+      const month = converted.monthName().charAt(0).toUpperCase() + converted.monthName().slice(1)
+      const day = converted.date()
+      const year = converted.year()
+      const hour = converted.hour()
+      const minute = converted.minute()
+      const second = converted.second()
+      const ampm = hour >= 12 ? 'PM' : 'AM'
+      const hour12 = hour % 12 || 12
+      
       setConvertedTime(
-        convertedDateTime.toLocaleString("en-US", {
-          timeZone: toTimezone,
-          hour12: true,
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-        }),
+        `${month} ${day}, ${year} ${hour12}:${String(minute).padStart(2, '0')}:${String(second).padStart(2, '0')} ${ampm} (UTC${converted.timezone().current.offset})`
       )
     } catch (error) {
       setConvertedTime("Invalid date or time format")
@@ -418,7 +482,10 @@ export default function Home() {
                     <CardTitle className="text-sm font-medium text-muted-foreground">Timezone Information</CardTitle>
                   </CardHeader>
                   <CardContent className="px-4 py-2">
-                    <p className={jetbrainsMono.className}>{timezoneInfo}</p>
+                    <div className="flex items-center gap-2">
+                      <p className={jetbrainsMono.className}>{timezone} (GMT{offsetStr})</p>
+                      {isDST && <DSTTag />}
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -506,26 +573,91 @@ export default function Home() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl font-bold mb-6 text-center">World Clock</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {popularTimezones.map((tz) => (
-                  <Card key={tz.value}>
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-lg">{tz.label}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className={`text-3xl font-bold ${jetbrainsMono.className}`}>
-                        {new Date(currentTime.getTime() + (tz.offset - offset) * 3600000).toLocaleTimeString("en-US", {
-                          hour12: false,
-                          hour: "2-digit",
-                          minute: "2-digit",
-                          second: "2-digit",
-                        })}
-                      </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                        GMT{tz.offset >= 0 ? `+${tz.offset}` : tz.offset}
-                      </p>
+                {showAddTimezone && (
+                  <Card className="col-span-full">
+                    <CardContent className="pt-4">
+                      <div className="flex flex-col gap-4">
+                        <Label>Select Timezone</Label>
+                        <Select
+                          onValueChange={(value) => {
+                            const tz = availableTimezones.find(t => t.value === value)
+                            if (tz && !customTimezones.some(ct => ct.value === tz.value)) {
+                              setCustomTimezones(prev => [...prev, tz])
+                              setShowAddTimezone(false)
+                            }
+                          }}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Choose a timezone" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {availableTimezones
+                              .filter(tz => !customTimezones.some(ct => ct.value === tz.value))
+                              .map((tz) => {
+                                const s = spacetime(currentTime, tz.value)
+                                const offset = s.timezone().current.offset
+                                return (
+                                  <SelectItem key={tz.value} value={tz.value}>
+                                    {tz.label} (GMT{offset >= 0 ? `+${offset}` : offset})
+                                  </SelectItem>
+                                )
+                              })}
+                          </SelectContent>
+                        </Select>
+                        <Button
+                          variant="outline"
+                          onClick={() => setShowAddTimezone(false)}
+                          className="w-full"
+                        >
+                          Cancel
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
-                ))}
+                )}
+                {customTimezones.map((tz) => {
+                  const s = spacetime(currentTime, tz.value)
+                  const offset = s.timezone().current.offset
+                  return (
+                    <Card key={tz.value} className="group relative">
+                      <button
+                        onClick={() => setCustomTimezones(prev => prev.filter(t => t.value !== tz.value))}
+                        className="absolute top-2 right-2 p-1 rounded-full bg-red-100 hover:bg-red-200 dark:bg-red-900 dark:hover:bg-red-800 opacity-0 group-hover:opacity-100 transition-opacity"
+                        title="Remove timezone"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </button>
+                      <CardHeader className="pb-2">
+                        <CardTitle className="text-lg">{tz.label}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className={`text-3xl font-bold ${jetbrainsMono.className}`}>
+                          {s.time()}
+                        </p>
+                        <div className="flex items-center gap-1.5 mt-1">
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          GMT{offset >= 0 ? `+${offset}` : offset}
+                        </p>
+                        {s.isDST() && <DSTTag />}
+                      </div>
+                      </CardContent>
+                    </Card>
+                  )
+                })}
+                {/* Add timezone button */}
+                <Card 
+                  className="group relative flex items-center justify-center p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" 
+                  onClick={() => setShowAddTimezone(true)}
+                >
+                  <div className="text-center">
+                    <div className="flex items-center justify-center mb-2">
+                      <Globe className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Add Timezone</p>
+                  </div>
+                </Card>
               </div>
             </div>
           </div>
@@ -592,7 +724,7 @@ export default function Home() {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="UTC">UTC</SelectItem>
-                          {popularTimezones.map((tz) => (
+                          {availableTimezones.map((tz) => (
                             <SelectItem key={tz.value} value={tz.value}>
                               {tz.label} (GMT{tz.offset >= 0 ? `+${tz.offset}` : tz.offset})
                             </SelectItem>
@@ -609,7 +741,7 @@ export default function Home() {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="UTC">UTC</SelectItem>
-                          {popularTimezones.map((tz) => (
+                          {availableTimezones.map((tz) => (
                             <SelectItem key={tz.value} value={tz.value}>
                               {tz.label} (GMT{tz.offset >= 0 ? `+${tz.offset}` : tz.offset})
                             </SelectItem>
