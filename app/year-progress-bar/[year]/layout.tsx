@@ -10,10 +10,10 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
   const year = parseInt(params.year)
 
   // Handle invalid year
-  if (isNaN(year) || year < 1970 || year > 2100) {
+  if (isNaN(year) || year < 1970) {
     return {
       title: "Invalid Year | Year Progress Bar | Datetime.app",
-      description: "The requested year is invalid. Please select a valid year between 1970 and 2100.",
+      description: "The requested year is invalid. Please select a valid year after 1970.",
     }
   }
 

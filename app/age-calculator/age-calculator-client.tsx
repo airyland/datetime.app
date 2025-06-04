@@ -109,10 +109,6 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
         throw new Error("Please enter valid numbers for year, month, and day")
       }
 
-      if (year < 1900 || year > 2100) {
-        throw new Error("Please enter a year between 1900 and 2100")
-      }
-
       if (month < 0 || month > 11) {
         throw new Error("Please enter a month between 1 and 12")
       }

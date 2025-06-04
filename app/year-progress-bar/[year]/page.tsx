@@ -22,7 +22,7 @@ export default function YearProgressBarWithYear({ params }: YearProgressBarProps
   const yearParam = parseInt(params.year)
 
   // Validate year parameter
-  if (isNaN(yearParam) || yearParam < 1970 || yearParam > 2100) {
+  if (isNaN(yearParam) || yearParam < 1970) {
     notFound()
   }
 
