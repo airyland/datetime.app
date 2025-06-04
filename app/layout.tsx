@@ -52,6 +52,12 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID && (
+          <meta 
+            name="google-adsense-account" 
+            content={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}
+          />
+        )}
         <Analytics />
       </head>
       <body className={spaceGrotesk.className}>
