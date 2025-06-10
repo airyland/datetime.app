@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { glossaryItems } from "./glossary-data"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LanguageSwitcher } from "@/components/language-switcher"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Book, Search } from "lucide-react"
@@ -41,9 +42,12 @@ export default function GlossaryPage() {
         <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity">
           Datetime.app
         </Link>
-        <div className="flex items-center gap-2">
-          <span className="text-sm hidden md:inline">Toggle theme:</span>
-          <ThemeToggle />
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+          <div className="flex items-center gap-2">
+            <span className="text-sm hidden md:inline">Toggle theme:</span>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 

@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useTranslations } from 'next-intl'
+import { usePathname } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Input } from "@/components/ui/input"
@@ -13,6 +15,7 @@ import { Label } from "@/components/ui/label"
 import { format } from "date-fns"
 import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
+import Header from '@/components/header'
 import spacetime from 'spacetime'
 
 // Load JetBrains Mono for numbers
@@ -22,9 +25,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 // DST tag component
-const DSTTag = () => (
+const DSTTag = ({ text }: { text: string }) => (
   <span className="px-1.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 rounded">
-    DST
+    {text}
   </span>
 )
 
@@ -66,6 +69,21 @@ const availableTimezones = [
 ]
 
 export default function Home() {
+  const t = useTranslations('home')
+  const pathname = usePathname()
+  
+  // Determine current locale from pathname as it's more reliable
+  const getCurrentLocale = () => {
+    const pathSegments = pathname.split('/').filter(Boolean)
+    const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
+    if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
+      return pathSegments[0]
+    }
+    return 'en'
+  }
+  
+  // Use the more reliable method to get current locale
+  const currentLocale = getCurrentLocale()
   const [currentTime, setCurrentTime] = useState(new Date())
   const [customTimezones, setCustomTimezones] = useState<typeof availableTimezones>([]) // Custom user timezones
   const [showAddTimezone, setShowAddTimezone] = useState(false) // Control add timezone form
@@ -89,6 +107,7 @@ export default function Home() {
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [use24Hour, setUse24Hour] = useState(true)
+  const [accordionValues, setAccordionValues] = useState<string[]>(["item-1","item-2","item-3","item-4","item-5","item-6","item-7"])
 
   // Initialize time format preference from localStorage
   useEffect(() => {
@@ -164,6 +183,10 @@ export default function Home() {
     return () => clearInterval(timer)
   }, [])
 
+  useEffect(() => {
+    setAccordionValues([])
+  }, [])
+
   // Countdown timer logic
   useEffect(() => {
     let countdownInterval: NodeJS.Timeout | null = null
@@ -221,7 +244,7 @@ export default function Home() {
   }).replace(/\s+(?:AM|PM)/, '')
 
   // Format date
-  const formattedDate = currentTime.toLocaleDateString("en-US", {
+  const formattedDate = currentTime.toLocaleDateString(currentLocale, {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -356,13 +379,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
-      <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Datetime.app</h1>
-        <div className="flex items-center gap-2">
-          <span className="text-sm hidden md:inline">Toggle theme:</span>
-          <ThemeToggle />
-        </div>
-      </header>
+      <Header />
 
       <div className="container mx-auto px-4 flex-grow">
         {/* SEO-friendly tabs that keep all content in the DOM */}
@@ -380,7 +397,7 @@ export default function Home() {
               role="tab"
             >
               <Clock className="h-4 w-4" />
-              <span className="hidden md:inline">Current Time</span>
+              <span className="hidden md:inline">{t('tabs.currentTime')}</span>
             </button>
             <button
               onClick={() => setActiveTab("world-clock")}
@@ -393,7 +410,7 @@ export default function Home() {
               role="tab"
             >
               <Globe className="h-4 w-4" />
-              <span className="hidden md:inline">World Clock</span>
+              <span className="hidden md:inline">{t('tabs.worldClock')}</span>
             </button>
             <button
               onClick={() => setActiveTab("calendar")}
@@ -406,7 +423,7 @@ export default function Home() {
               role="tab"
             >
               <CalendarIcon className="h-4 w-4" />
-              <span className="hidden md:inline">Calendar</span>
+              <span className="hidden md:inline">{t('tabs.calendar')}</span>
             </button>
             <button
               onClick={() => setActiveTab("converter")}
@@ -419,7 +436,7 @@ export default function Home() {
               role="tab"
             >
               <ArrowLeftRight className="h-4 w-4" />
-              <span className="hidden md:inline">Converter</span>
+              <span className="hidden md:inline">{t('tabs.converter')}</span>
             </button>
             <button
               onClick={() => setActiveTab("timer")}
@@ -432,7 +449,7 @@ export default function Home() {
               role="tab"
             >
               <Timer className="h-4 w-4" />
-              <span className="hidden md:inline">Timer</span>
+              <span className="hidden md:inline">{t('tabs.timer')}</span>
             </button>
             <button
               onClick={() => setActiveTab("sun")}
@@ -445,7 +462,7 @@ export default function Home() {
               role="tab"
             >
               <Sun className="h-4 w-4" />
-              <span className="hidden md:inline">Sun Times</span>
+              <span className="hidden md:inline">{t('tabs.sunTimes')}</span>
             </button>
           </div>
 
@@ -461,7 +478,7 @@ export default function Home() {
               <div className="mb-8">
                 <div className="flex flex-col items-center mb-2 gap-4">
                   <div className="flex items-center gap-3">
-                    <h2 className="text-xl md:text-2xl font-medium">Current Time</h2>
+                    <h2 className="text-xl md:text-2xl font-medium">{t('localTime')}</h2>
                     <div className="flex items-center rounded-md bg-secondary/30 p-0.5 text-sm shadow-sm">
                       <button
                         onClick={() => setUse24Hour(false)}
@@ -507,10 +524,10 @@ export default function Home() {
                   <AlertCircle className="h-4 w-4 mr-1" />
                   {accuracy.offset > 1000 ? (
                     <span>
-                      Clock is approximately {Math.round(accuracy.offset / 1000)} seconds off from server time
+                      {t('labels.clockOffset', { seconds: Math.round(accuracy.offset / 1000) })}
                     </span>
                   ) : (
-                    <span>Clock is synchronized (±{Math.round(accuracy.offset)}ms)</span>
+                    <span>{t('labels.clockSynchronized', { offset: Math.round(accuracy.offset) })}</span>
                   )}
                 </div>
               </div>
@@ -518,19 +535,19 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-3xl mx-auto">
                 <Card className="shadow-none rounded-none border">
                   <CardHeader className="py-2 px-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground text-center">Timezone Information</CardTitle>
+                    <CardTitle className="text-sm font-medium text-muted-foreground text-center">{t('labels.timezoneInfo')}</CardTitle>
                   </CardHeader>
                   <CardContent className="px-4 py-2">
                     <div className="flex items-center gap-2 justify-center">
                       <p className={jetbrainsMono.className}>{timezone} (GMT{offsetStr})</p>
-                      {isDST && <DSTTag />}
+                      {isDST && <DSTTag text={t('labels.dst')} />}
                     </div>
                   </CardContent>
                 </Card>
 
                 <Card className="shadow-none rounded-none border">
                   <CardHeader className="py-2 px-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">Unix Timestamp</CardTitle>
+                    <CardTitle className="text-sm font-medium text-muted-foreground">{t('labels.unixTimestamp')}</CardTitle>
                   </CardHeader>
                   <CardContent className="px-4 py-2 text-center">
                     <div className="inline-flex items-center gap-2">
@@ -554,10 +571,10 @@ export default function Home() {
                   <CardHeader className="py-2 px-4">
                     <CardTitle className="text-sm font-medium text-muted-foreground flex items-center justify-center gap-4">
                       <a href="/utc" className="inline-flex items-center gap-1 hover:underline">
-                        UTC Time
+                        {t('labels.utcTime')}
                         <Globe className="h-3 w-3" />
                       </a>
-                      <a href="/glossary/utc" className="text-xs text-muted-foreground hover:underline">Learn about UTC</a>
+                      <a href="/glossary/utc" className="text-xs text-muted-foreground hover:underline">{t('labels.learnAboutUtc')}</a>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="px-4 py-2 text-center">
@@ -580,7 +597,7 @@ export default function Home() {
 
                 <Card className="shadow-none rounded-none border">
                   <CardHeader className="py-2 px-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">ISO Format</CardTitle>
+                    <CardTitle className="text-sm font-medium text-muted-foreground">{t('labels.isoFormat')}</CardTitle>
                   </CardHeader>
                   <CardContent className="px-4 py-2 text-center">
                     <div className="inline-flex items-center gap-2">
@@ -610,13 +627,13 @@ export default function Home() {
             aria-hidden={activeTab !== "world-clock"}
           >
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">World Clock</h2>
+              <h2 className="text-2xl font-bold mb-6 text-center">{t('sections.worldClock')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {showAddTimezone && (
                   <Card className="col-span-full">
                     <CardContent className="pt-4">
                       <div className="flex flex-col gap-4">
-                        <Label>Select Timezone</Label>
+                        <Label>{t('labels.selectTimezone')}</Label>
                         <Select
                           onValueChange={(value) => {
                             const tz = availableTimezones.find(t => t.value === value)
@@ -648,7 +665,7 @@ export default function Home() {
                           onClick={() => setShowAddTimezone(false)}
                           className="w-full"
                         >
-                          Cancel
+                          {t('labels.cancel')}
                         </Button>
                       </div>
                     </CardContent>
@@ -679,7 +696,7 @@ export default function Home() {
                         <p className="text-sm text-gray-500 dark:text-gray-400">
                           GMT{offset >= 0 ? `+${offset}` : offset}
                         </p>
-                        {s.isDST() && <DSTTag />}
+                        {s.isDST() && <DSTTag text={t('labels.dst')} />}
                       </div>
                       </CardContent>
                     </Card>
@@ -694,7 +711,7 @@ export default function Home() {
                     <div className="flex items-center justify-center mb-2">
                       <Globe className="h-5 w-5 text-gray-400" />
                     </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Add Timezone</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{t('labels.addTimezone')}</p>
                   </div>
                 </Card>
               </div>
@@ -708,7 +725,7 @@ export default function Home() {
             aria-hidden={activeTab !== "calendar"}
           >
             <div className="max-w-md mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">Calendar</h2>
+              <h2 className="text-2xl font-bold mb-6 text-center">{t('sections.calendar')}</h2>
               <Card>
                 <CardContent className="pt-6">
                   <div className="flex justify-center">
@@ -751,12 +768,12 @@ export default function Home() {
             aria-hidden={activeTab !== "converter"}
           >
             <div className="max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">Time Zone Converter</h2>
+              <h2 className="text-2xl font-bold mb-6 text-center">{t('sections.timeZoneConverter')}</h2>
               <Card>
                 <CardContent className="pt-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="from-timezone">From Time Zone</Label>
+                      <Label htmlFor="from-timezone">{t('labels.fromTimezone')}</Label>
                       <Select value={fromTimezone} onValueChange={setFromTimezone}>
                         <SelectTrigger id="from-timezone" className="w-full">
                           <SelectValue placeholder="Select time zone" />
@@ -773,7 +790,7 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <Label htmlFor="to-timezone">To Time Zone</Label>
+                      <Label htmlFor="to-timezone">{t('labels.toTimezone')}</Label>
                       <Select value={toTimezone} onValueChange={setToTimezone}>
                         <SelectTrigger id="to-timezone" className="w-full">
                           <SelectValue placeholder="Select time zone" />
@@ -792,7 +809,7 @@ export default function Home() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                     <div>
-                      <Label htmlFor="convert-date">Date</Label>
+                      <Label htmlFor="convert-date">{t('labels.date')}</Label>
                       <Input
                         id="convert-date"
                         type="date"
@@ -802,7 +819,7 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <Label htmlFor="convert-time">Time</Label>
+                      <Label htmlFor="convert-time">{t('labels.time')}</Label>
                       <Input
                         id="convert-time"
                         type="time"
@@ -813,12 +830,12 @@ export default function Home() {
                   </div>
 
                   <Button className="w-full mt-6" onClick={handleConvertTime}>
-                    Convert
+                    {t('labels.convert')}
                   </Button>
 
                   {convertedTime && (
                     <div className="mt-6 p-4 border border-gray-200 dark:border-gray-800 rounded-md">
-                      <h3 className="font-medium mb-2">Converted Time</h3>
+                      <h3 className="font-medium mb-2">{t('labels.convertedTime')}</h3>
                       <p className={`text-xl ${jetbrainsMono.className}`}>{convertedTime}</p>
                     </div>
                   )}
@@ -834,12 +851,12 @@ export default function Home() {
             aria-hidden={activeTab !== "timer"}
           >
             <div className="max-w-md mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">Countdown Timer</h2>
+              <h2 className="text-2xl font-bold mb-6 text-center">{t('sections.countdownTimer')}</h2>
               <Card>
                 <CardContent className="pt-6">
                   <div className="grid grid-cols-3 gap-4">
                     <div>
-                      <Label htmlFor="hours">Hours</Label>
+                      <Label htmlFor="hours">{t('labels.hours')}</Label>
                       <Input
                         id="hours"
                         type="number"
@@ -852,7 +869,7 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <Label htmlFor="minutes">Minutes</Label>
+                      <Label htmlFor="minutes">{t('labels.minutes')}</Label>
                       <Input
                         id="minutes"
                         type="number"
@@ -865,7 +882,7 @@ export default function Home() {
                     </div>
 
                     <div>
-                      <Label htmlFor="seconds">Seconds</Label>
+                      <Label htmlFor="seconds">{t('labels.seconds')}</Label>
                       <Input
                         id="seconds"
                         type="number"
@@ -881,22 +898,22 @@ export default function Home() {
                   <div className="flex gap-4 mt-6">
                     {!countdownRunning ? (
                       <Button className="flex-1" onClick={startCountdown}>
-                        Start
+                        {t('labels.start')}
                       </Button>
                     ) : (
                       <Button className="flex-1" variant="destructive" onClick={() => setCountdownRunning(false)}>
-                        Pause
+                        {t('labels.pause')}
                       </Button>
                     )}
 
                     <Button className="flex-1" variant="outline" onClick={resetCountdown}>
-                      Reset
+                      {t('labels.reset')}
                     </Button>
                   </div>
 
                   {countdownTimeLeft && (
                     <div className="mt-6 text-center">
-                      <h3 className="font-medium mb-2">Time Remaining</h3>
+                      <h3 className="font-medium mb-2">{t('labels.timeRemaining')}</h3>
                       <p className={`text-4xl font-bold ${jetbrainsMono.className}`}>{countdownTimeLeft}</p>
                     </div>
                   )}
@@ -912,12 +929,12 @@ export default function Home() {
             aria-hidden={activeTab !== "sun"}
           >
             <div className="max-w-md mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">Sunrise & Sunset</h2>
+              <h2 className="text-2xl font-bold mb-6 text-center">{t('sections.sunriseSunset')}</h2>
               <Card>
                 <CardContent className="pt-6">
                   {/* Removed location input field */}
                   <Button className="w-full" onClick={handleGetSunTimes} disabled={isFetchingSunTimes}>
-                    {isFetchingSunTimes ? "Loading..." : "Get Sun Times (Use My Location)"}
+                    {isFetchingSunTimes ? t('labels.loading') : t('labels.getSunTimes')}
                   </Button>
 
                   {sunriseSunset.sunrise && (
@@ -926,7 +943,7 @@ export default function Home() {
                         <div className="flex justify-center mb-2">
                           <Sun className="h-6 w-6 text-yellow-500" />
                         </div>
-                        <h3 className="font-medium mb-1">Sunrise</h3>
+                        <h3 className="font-medium mb-1">{t('labels.sunrise')}</h3>
                         <p className={`text-xl ${jetbrainsMono.className}`}>{sunriseSunset.sunrise}</p>
                       </div>
 
@@ -934,7 +951,7 @@ export default function Home() {
                         <div className="flex justify-center mb-2">
                           <Moon className="h-6 w-6 text-blue-500" />
                         </div>
-                        <h3 className="font-medium mb-1">Sunset</h3>
+                        <h3 className="font-medium mb-1">{t('labels.sunset')}</h3>
                         <p className={`text-xl ${jetbrainsMono.className}`}>{sunriseSunset.sunset}</p>
                       </div>
                     </div>
@@ -947,30 +964,30 @@ export default function Home() {
 
         {/* Tools Section */}
         <div className="mt-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 text-center">Time Tools</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center">{t('tools.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
             <a href="/year-progress-bar" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2">
               <Calendar className="h-5 w-5" />
-              Year Progress Bar
+              {t('tools.yearProgress')}
             </a>
             <a href="/age-calculator" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2">
               <Calculator className="h-5 w-5" />
-              Age Calculator
+              {t('tools.ageCalculator')}
             </a>
             <a href="/utc" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2">
               <Globe className="h-5 w-5" />
-              UTC Time
+              {t('tools.utcTime')}
             </a>
             <a href="/holidays" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2">
               <Gift className="h-5 w-5" />
-              World Holidays
+              {t('tools.worldHolidays')}
             </a>
           </div>
         </div>
 
         {/* City Links Section */}
         <div className="mt-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 text-center">World City Times</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center">{t('cityTimes.title')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
             <a href="/cities/new-york" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center">
               New York
@@ -995,102 +1012,72 @@ export default function Home() {
 
         {/* FAQ Section */}
         <div className="mt-8 max-w-3xl mx-auto text-left">
-          <h2 className="text-2xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
-          <Accordion type="single" collapsible className="w-full">
+          <h2 className="text-2xl font-bold mb-6 text-center">{t('faq.title')}</h2>
+          <Accordion 
+            type="multiple" 
+            collapsible 
+            value={accordionValues}
+            onValueChange={setAccordionValues}
+            className="w-full"
+          >
             <AccordionItem value="item-1">
-              <AccordionTrigger>What is UTC/GMT time?</AccordionTrigger>
+              <AccordionTrigger>{t('faq.utcGmt.question')}</AccordionTrigger>
               <AccordionContent>
                 <p>
-                  UTC (Coordinated Universal Time) is the primary time standard by which the world regulates clocks and
-                  time. It is similar to GMT (Greenwich Mean Time) but is more precisely defined by atomic clocks. UTC
-                  is the time standard used across the internet and for international communications and aviation.
+                  {t('faq.utcGmt.answer')}
                 </p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-2">
-              <AccordionTrigger>How do timezones work?</AccordionTrigger>
+              <AccordionTrigger>{t('faq.timezones.question')}</AccordionTrigger>
               <AccordionContent>
                 <p>
-                  Timezones are regions of the globe that observe a uniform standard time. They are generally defined as
-                  offsets from UTC, typically in whole-hour increments. For example, Eastern Standard Time (EST) is
-                  UTC-5, meaning it is 5 hours behind UTC. Timezones were created to standardize time across large
-                  geographical areas and are often influenced by political boundaries as well as geographical ones.
+                  {t('faq.timezones.answer')}
                 </p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-3">
-              <AccordionTrigger>What is a Unix timestamp?</AccordionTrigger>
+              <AccordionTrigger>{t('faq.unixTimestamp.question')}</AccordionTrigger>
               <AccordionContent>
                 <p>
-                  A Unix timestamp (also known as Unix time or POSIX time) represents the number of seconds that have
-                  elapsed since January 1, 1970, at 00:00:00 UTC, not counting leap seconds. It's widely used in
-                  computer systems and programming as a standardized way to track time regardless of timezone. Unix
-                  timestamps make it easy to calculate time differences and are independent of calendar conventions.
+                  {t('faq.unixTimestamp.answer')}
                 </p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-4">
-              <AccordionTrigger>How accurate is this clock?</AccordionTrigger>
+              <AccordionTrigger>{t('faq.clockAccuracy.question')}</AccordionTrigger>
               <AccordionContent>
                 <p>
-                  The accuracy of this clock depends on your device's system clock and internet connection. While we
-                  strive to display the most accurate time possible, there may be slight variations due to network
-                  latency or your device's clock synchronization. For most everyday purposes, the time displayed should
-                  be accurate within a few seconds of the actual time. For applications requiring millisecond precision,
-                  specialized time servers should be used.
+                  {t('faq.clockAccuracy.answer')}
                 </p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-5">
-              <AccordionTrigger>What is ISO 8601 format?</AccordionTrigger>
+              <AccordionTrigger>{t('faq.iso8601.question')}</AccordionTrigger>
               <AccordionContent>
                 <p>
-                  ISO 8601 is an international standard for representing dates and times. It follows the format
-                  YYYY-MM-DDTHH:MM:SS.sssZ, where:
-                </p>
-                <ul className="list-disc pl-5 mt-2">
-                  <li>YYYY-MM-DD represents the date (year, month, day)</li>
-                  <li>T is a separator between date and time</li>
-                  <li>HH:MM:SS.sss represents the time (hours, minutes, seconds, and milliseconds)</li>
-                  <li>Z indicates that the time is in UTC (or an offset can be specified, like +01:00)</li>
-                </ul>
-                <p className="mt-2">
-                  This format eliminates ambiguity in international communications and is widely used in computing.
+                  {t('faq.iso8601.answer')}
                 </p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-6">
-              <AccordionTrigger>What is Daylight Saving Time?</AccordionTrigger>
+              <AccordionTrigger>{t('faq.daylightSaving.question')}</AccordionTrigger>
               <AccordionContent>
                 <p>
-                  Daylight Saving Time (DST) is the practice of advancing clocks during warmer months so that darkness
-                  falls later each day according to the clock. Typically, regions that observe DST adjust clocks forward
-                  one hour in the spring ("spring forward") and adjust them backward in the autumn ("fall back"). The
-                  main purpose is to make better use of daylight during the evening hours. Not all countries observe
-                  DST, and the start and end dates vary by region.
+                  {t('faq.daylightSaving.answer')}
                 </p>
               </AccordionContent>
             </AccordionItem>
 
             <AccordionItem value="item-7">
-              <AccordionTrigger>How do I convert between timezones?</AccordionTrigger>
+              <AccordionTrigger>{t('faq.timezoneConversion.question')}</AccordionTrigger>
               <AccordionContent>
-                <p>To convert time between timezones, you need to:</p>
-                <ol className="list-decimal pl-5 mt-2">
-                  <li>Determine the UTC offset for both the source and target timezones</li>
-                  <li>Convert the source time to UTC by adding or subtracting its offset</li>
-                  <li>Convert from UTC to the target timezone by adding or subtracting the target timezone's offset</li>
-                </ol>
-                <p className="mt-2">
-                  For example, to convert 3:00 PM in New York (UTC-5) to London time (UTC+0), you would add 5 hours to
-                  get 8:00 PM London time. Remember to account for Daylight Saving Time if applicable, as it can change
-                  the UTC offset temporarily.
-                </p>
+                <p>{t('faq.timezoneConversion.answer')}</p>
               </AccordionContent>
             </AccordionItem>
           </Accordion>

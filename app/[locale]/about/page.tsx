@@ -1,8 +1,12 @@
 import Link from "next/link"
+import Header from "@/components/header"
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-3xl">
+    <main className="min-h-screen bg-white dark:bg-black flex flex-col">
+      <Header />
+      
+      <div className="container mx-auto px-4 py-12 max-w-3xl flex-grow">
       <h1 className="text-3xl font-bold mb-8">About datetime.app</h1>
       
       <div className="prose dark:prose-invert">
@@ -29,6 +33,7 @@ export default function AboutPage() {
           dedicated to providing the best time management experience for our users.
         </p>
       </div>
-    </div>
+      </div>
+    </main>
   )
 }

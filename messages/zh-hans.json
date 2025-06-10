@@ -1,0 +1,330 @@
+{
+  "common": {
+    "title": "世界时钟与时间",
+    "description": "世界各地当前时间、UTC时间、节假日和年龄计算器",
+    "nav": {
+      "home": "首页",
+      "utc": "UTC时间",
+      "holidays": "节假日",
+      "ageCalculator": "年龄计算器",
+      "yearProgress": "年度进度",
+      "glossary": "术语表"
+    }
+  },
+  "home": {
+    "title": "世界各地当前时间",
+    "localTime": "您的本地时间",
+    "timeZone": "时区",
+    "tabs": {
+      "currentTime": "当前时间",
+      "worldClock": "世界时钟",
+      "calendar": "日历",
+      "converter": "时区转换",
+      "timer": "倒计时",
+      "sunTimes": "日出日落"
+    },
+    "sections": {
+      "worldClock": "世界时钟",
+      "calendar": "日历",
+      "timeZoneConverter": "时区转换器",
+      "countdownTimer": "倒计时器",
+      "sunriseSunset": "日出日落"
+    },
+    "labels": {
+      "timezoneInfo": "时区信息",
+      "unixTimestamp": "Unix时间戳",
+      "utcTime": "UTC时间",
+      "isoFormat": "ISO格式",
+      "addTimezone": "添加时区",
+      "selectTimezone": "选择时区",
+      "cancel": "取消",
+      "fromTimezone": "源时区",
+      "toTimezone": "目标时区",
+      "date": "日期",
+      "time": "时间",
+      "convert": "转换",
+      "convertedTime": "转换后时间",
+      "hours": "小时",
+      "minutes": "分钟",
+      "seconds": "秒",
+      "start": "开始",
+      "pause": "暂停",
+      "reset": "重置",
+      "timeRemaining": "剩余时间",
+      "getSunTimes": "获取日出日落时间（使用我的位置）",
+      "loading": "加载中...",
+      "sunrise": "日出",
+      "sunset": "日落",
+      "toggleTheme": "切换主题",
+      "dst": "夏令时",
+      "clockSynchronized": "时钟已同步 (±{offset}ms)",
+      "clockOffset": "时钟偏差约{seconds}秒",
+      "learnAboutUtc": "了解UTC"
+    },
+    "tools": {
+      "title": "时间工具",
+      "yearProgress": "年度进度条",
+      "ageCalculator": "年龄计算器",
+      "utcTime": "UTC时间",
+      "worldHolidays": "世界节日"
+    },
+    "cityTimes": {
+      "title": "世界城市时间"
+    },
+    "faq": {
+      "title": "常见问题",
+      "utcGmt": {
+        "question": "什么是UTC/GMT时间？",
+        "answer": "UTC（协调世界时）是世界调节时钟和时间的主要时间标准。它类似于GMT（格林威治标准时间），但通过原子钟更精确地定义。UTC是互联网、国际通信和航空使用的时间标准。"
+      },
+      "timezones": {
+        "question": "时区是如何工作的？",
+        "answer": "时区是地球上遵循统一标准时间的区域。它们通常定义为相对于UTC的偏移量，通常以整小时为增量。例如，东部标准时间（EST）是UTC-5，意味着它比UTC晚5小时。时区的创建是为了在大地理区域内标准化时间，通常受政治边界以及地理边界的影响。"
+      },
+      "unixTimestamp": {
+        "question": "什么是Unix时间戳？",
+        "answer": "Unix时间戳（也称为Unix时间或POSIX时间）表示自1970年1月1日00:00:00 UTC以来经过的秒数，不计算闰秒。它在计算机系统和编程中广泛使用，作为跟踪时间的标准化方式，与时区无关。Unix时间戳使计算时间差变得容易，并且独立于日历约定。"
+      },
+      "clockAccuracy": {
+        "question": "这个时钟有多准确？",
+        "answer": "这个时钟的准确性取决于您设备的系统时钟和互联网连接。虽然我们努力显示最准确的时间，但由于网络延迟或您设备的时钟同步，可能会有轻微的变化。对于大多数日常用途，显示的时间应该在实际时间的几秒内准确。对于需要毫秒精度的应用程序，应使用专门的时间服务器。"
+      },
+      "iso8601": {
+        "question": "什么是ISO 8601格式？",
+        "answer": "ISO 8601是表示日期和时间的国际标准。它遵循YYYY-MM-DDTHH:MM:SS.sssZ格式，其中：YYYY-MM-DD表示日期（年、月、日），T是日期和时间之间的分隔符，HH:MM:SS.sss表示时间（小时、分钟、秒和毫秒），Z表示时间是UTC（或可以指定偏移量，如+01:00）。这种格式消除了国际通信中的歧义，在计算中广泛使用。"
+      },
+      "daylightSaving": {
+        "question": "什么是夏令时？",
+        "answer": "夏令时（DST）是在温暖月份将时钟向前调整的做法，使黑暗根据时钟在每天晚些时候降临。通常，遵守夏令时的地区在春季将时钟向前调整一小时（'春天向前'），在秋季向后调整（'秋天向后'）。主要目的是在晚上时间更好地利用日光。并非所有国家都遵守夏令时，开始和结束日期因地区而异。"
+      },
+      "timezoneConversion": {
+        "question": "如何在时区之间转换时间？",
+        "answer": "要在时区之间转换时间，您需要：1）确定源时区和目标时区的UTC偏移量，2）通过加上或减去其偏移量将源时间转换为UTC，3）通过加上或减去目标时区的偏移量从UTC转换为目标时区。例如，要将纽约时间下午3:00（UTC-5）转换为伦敦时间（UTC+0），您需要加5小时得到伦敦时间晚上8:00。请记住在适用时考虑夏令时，因为它可能暂时改变UTC偏移量。"
+      }
+    }
+  },
+  "holidays": {
+    "title": "世界各地节假日",
+    "description": "发现不同国家的节假日和纪念日"
+  },
+  "ageCalculator": {
+    "title": "年龄计算器",
+    "description": "计算您的准确年龄（年、月、日）",
+    "pageTitle": "年龄计算器",
+    "subtitle": "计算您的精确年龄（年、月、日等）- 提供灵活的日期输入选项",
+    "calculateYourAge": "计算您的年龄",
+    "enterBirthDate": "输入出生日期",
+    "calculateAgeAsOf": "计算截止日期",
+    "ageResults": "年龄结果",
+    "aboutAgeCalculation": "关于年龄计算",
+    "calendarPrecision": "日历精度",
+    "realTimeUpdates": "实时更新",
+    "faqTitle": "年龄计算器 - 常见问题",
+    "inputMethods": {
+      "calendar": "日历",
+      "manual": "手动输入"
+    },
+    "labels": {
+      "year": "年",
+      "month": "月", 
+      "day": "日",
+      "useCustomDate": "使用自定义日期",
+      "calculateAge": "计算年龄",
+      "updateTargetDate": "更新目标日期",
+      "selectedDate": "选择的日期",
+      "targetDate": "目标日期",
+      "currentDateTime": "当前日期和时间",
+      "updatesInRealTime": "实时更新",
+      "asOf": "截至{date}",
+      "years": "年",
+      "months": "月", 
+      "days": "日",
+      "hours": "小时",
+      "nextBirthday": "下次生日",
+      "nextBirthdayText": "您将在{days}天后满{age}岁（{date}）",
+      "yearsInDecimalFormat": "年龄（小数格式）"
+    },
+    "tabs": {
+      "standard": "标准",
+      "detailed": "详细", 
+      "decimal": "小数"
+    },
+    "formatted": {
+      "age": "年龄：{age}",
+      "yearsSuffix": "岁",
+      "monthsSuffix": "个月", 
+      "daysSuffix": "天"
+    },
+    "info": {
+      "calendarPrecisionDesc": "我们的年龄计算器考虑闰年、不同月份长度和夏令时变化，提供尽可能准确的计算。",
+      "realTimeUpdatesDesc": "一旦您选择出生日期，计算器会实时更新，显示您的年龄精确到秒。"
+    },
+    "errors": {
+      "validNumbers": "请输入有效的年、月、日数字",
+      "yearRange": "请输入1900年到当前年份之间的年份",
+      "monthRange": "请输入1到12之间的月份",
+      "dayRange": "请输入1到31之间的日期",
+      "invalidDate": "您输入的日期无效",
+      "futureDate": "出生日期不能是将来的日期",
+      "unknownError": "发生未知错误"
+    },
+    "faqs": {
+      "howCalculated": {
+        "question": "年龄是如何计算的？",
+        "answer": "年龄通过计算您的出生日期与当前日期（或您指定的自定义日期）之间的时间差来确定。我们的计算器提供精确的年、月、日、小时、分钟和秒的年龄。我们考虑闰年、不同月份长度和其他日历复杂性以确保准确性。"
+      },
+      "differFromOthers": {
+        "question": "为什么我的年龄计算与其他计算器不同？",
+        "answer": "不同计算器之间的年龄计算可能因处理部分月份和天数的方式而略有差异。有些计算器可能四舍五入到最近的年份，而其他计算器（如我们的）提供更详细的分解，包括月份和天数。我们的计算器使用精确算法来考虑闰年和不同月份长度。"
+      },
+      "customDates": {
+        "question": "我可以计算两个特定日期之间的年龄吗？",
+        "answer": "是的！我们的计算器允许您计算任意两个日期之间的年龄。只需输入您的出生日期，然后切换\"使用自定义日期\"选项来指定年龄计算的目标日期。这对于确定您在特定日期的年龄（过去或将来）很有用。"
+      },
+      "enterBirthDate": {
+        "question": "如何输入我的出生日期？",
+        "answer": "您有两种输入出生日期的选项：使用日历选择器或手动输入。日历选择器允许您直观地选择日期，而手动输入让您直接输入年、月、日。选择对您更方便的方法。"
+      },
+      "howAccurate": {
+        "question": "年龄计算有多准确？",
+        "answer": "我们的年龄计算器精确到秒。它实时更新（使用当前日期时），并考虑闰年、不同月份长度和夏令时变化。对于大多数实际用途，这种精度水平绰绰有余。"
+      },
+      "decimalAge": {
+        "question": "什么是小数年龄？",
+        "answer": "小数年龄将您的年龄表示为一个带小数部分的单一数字，而不是分别显示年、月、日。例如，25.75年意味着您25岁零9个月（因为0.75年约等于9个月）。这种格式有时在科学或医学环境中使用。"
+      },
+      "whyNeedExact": {
+        "question": "为什么我需要知道我的确切年龄？",
+        "answer": "了解您的确切年龄可能对各种目的有用：医学评估、占星计算、法律文件，或仅仅是满足好奇心。某些文化也庆祝需要精确计算的特定年龄里程碑。"
+      },
+      "noNextBirthday": {
+        "question": "为什么使用自定义日期时不显示下次生日信息？",
+        "answer": "下次生日计算基于当前日期，显示从今天到您下次生日还有多少天。使用自定义目标日期时，不显示此信息，因为它与您指定的自定义日期无关。"
+      }
+    }
+  },
+  "yearProgress": {
+    "title": "年度进度",
+    "description": "跟踪当前年份的进度",
+    "pageTitle": "年度进度条 {year}",
+    "subtitle": "{year}年已完成{progress}%",
+    "progressTitle": "年度进度",
+    "toggleTheme": "切换主题",
+    "viewOtherYears": "查看其他年份的进度：",
+    "faqTitle": "年度进度 - 常见问题",
+    "faqs": {
+      "howCalculated": {
+        "question": "年度进度是如何计算的？",
+        "answer": "年度进度通过计算当年已过去的时间百分比来确定。我们取当前日期和时间，计算自当年1月1日以来经过的毫秒数，然后除以全年的总毫秒数。"
+      },
+      "isAccurate": {
+        "question": "年度进度计算准确吗？",
+        "answer": "是的，我们的计算考虑了闰年，精确到秒。当您观看页面时，进度会实时更新。"
+      },
+      "differentYear": {
+        "question": "我可以查看其他年份的进度吗？",
+        "answer": "是的，您可以通过将URL更改为/year-progress-bar/year来查看任何年份的进度。例如，要查看2025年的进度，您可以使用/year-progress-bar/2025。"
+      },
+      "whyTrack": {
+        "question": "为什么要跟踪年度进度？",
+        "answer": "跟踪年度进度有助于时间意识、目标设定和规划。它提供了年度已过去多少时间以及实现年度目标还剩多少时间的视觉提醒。"
+      }
+    }
+  },
+  "cities": {
+    "pageTitle": "{cityName}当前时间",
+    "timezoneLabel": "{timezone}时区",
+    "timezoneInfo": "时区信息",
+    "unixTimestamp": "Unix时间戳",
+    "utcTime": "UTC时间",
+    "isoFormat": "ISO格式",
+    "cityInfo": "城市信息",
+    "country": "国家",
+    "timezone": "时区",
+    "coordinates": "坐标",
+    "population": "人口",
+    "faq": "常见问题",
+    "clockSynchronized": "时钟已同步 (±{offset}ms)",
+    "clockOffset": "时钟偏差约{seconds}秒",
+    "copyToClipboard": "复制到剪贴板",
+    "enterFullscreen": "进入全屏",
+    "toggleTheme": "切换主题",
+    "faqQuestions": {
+      "currentTime": "{cityName}现在是几点？",
+      "utcDifference": "{cityName}与UTC的时差是多少？",
+      "daylightSaving": "{cityName}实行夏令时吗？"
+    },
+    "faqAnswers": {
+      "currentTime": "{cityName}, {country}的当前本地时间是{currentTime}。{cityName}位于{timezone}时区。",
+      "utcDifference": "{cityName}遵循{timezone}时间。当前与UTC的偏移量是{offset}小时。",
+      "daylightSaving": "这取决于{country}的当地法规。当前时间是{currentTime}，适用时会自动调整夏令时。"
+    },
+    "cityNames": {
+      "new-york": "纽约",
+      "london": "伦敦",
+      "tokyo": "东京",
+      "shanghai": "上海",
+      "beijing": "北京",
+      "seoul": "首尔",
+      "kolkata": "加尔各答",
+      "dubai": "迪拜",
+      "cairo": "开罗",
+      "moscow": "莫斯科",
+      "istanbul": "伊斯坦布尔",
+      "paris": "巴黎",
+      "sydney": "悉尼"
+    },
+    "countryNames": {
+      "United States": "美国",
+      "United Kingdom": "英国",
+      "Japan": "日本",
+      "China": "中国",
+      "South Korea": "韩国",
+      "India": "印度",
+      "United Arab Emirates": "阿联酋",
+      "Egypt": "埃及",
+      "Russia": "俄罗斯",
+      "Turkey": "土耳其",
+      "France": "法国",
+      "Australia": "澳大利亚"
+    }
+  },
+  "utc": {
+    "title": "协调世界时 (UTC)",
+    "subtitle": "世界时间标准",
+    "description": "查看当前UTC（协调世界时）。UTC是世界时间标准，不受时区或夏令时变化影响。",
+    "learnMore": "在我们的术语表中了解更多关于UTC的信息",
+    "unixTimestamp": "Unix时间戳",
+    "utcString": "UTC字符串",
+    "iso8601": "ISO 8601",
+    "copyToClipboard": "复制到剪贴板",
+    "enterFullscreen": "进入全屏",
+    "toggleTheme": "切换主题",
+    "utcOffset": "UTC/GMT+0",
+    "worldCityTimes": "世界城市时间",
+    "faqTitle": "UTC时间 - 常见问题",
+    "viewGlossary": "查看我们完整的日期时间概念术语表",
+    "faqs": {
+      "whatIsUtc": {
+        "question": "什么是UTC时间？",
+        "answer": "UTC（协调世界时）是世界调节时钟和时间的主要时间标准。它类似于GMT（格林威治标准时间），但通过原子钟更精确地定义。UTC是互联网、国际通信和航空使用的时间标准。"
+      },
+      "whyImportant": {
+        "question": "为什么UTC很重要？",
+        "answer": "UTC很重要，因为它提供了不受时区或夏令时变化影响的标准化参考时间。它是全球民用时间的基础，对全球通信、航空、科学研究和计算机系统至关重要。"
+      },
+      "utcVsGmt": {
+        "question": "UTC和GMT有什么区别？",
+        "answer": "虽然UTC和GMT经常互换使用，都代表本初子午线（0°经度）的时间，但在技术上它们是不同的。GMT基于地球自转和太阳位置，而UTC基于原子钟。在实践中，它们通常相差不超过0.9秒。"
+      },
+      "convertToLocal": {
+        "question": "如何将UTC转换为我的本地时间？",
+        "answer": "要将UTC转换为您的本地时间，您需要从UTC时间加上或减去您所在时区的偏移量。例如，如果您在东部标准时间（EST），即UTC-5，您需要从UTC时间减去5小时。在夏令时期间，这将变为UTC-4。"
+      },
+      "whyInComputing": {
+        "question": "为什么在计算中使用UTC？",
+        "answer": "在计算中使用UTC是因为它提供了与地理位置无关的一致时间参考。这对于事件时间戳、跨不同时区同步系统、日志记录以及确保分布式系统中一致的数据时间戳至关重要。"
+      }
+    }
+  }
+}

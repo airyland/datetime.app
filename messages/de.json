@@ -1,0 +1,296 @@
+{
+  "common": {
+    "title": "Weltzeituhr & Zeit",
+    "description": "Aktuelle Zeit weltweit, UTC-Zeit, Feiertage und Altersrechner",
+    "nav": {
+      "home": "Startseite",
+      "utc": "UTC-Zeit",
+      "holidays": "Feiertage",
+      "ageCalculator": "Altersrechner",
+      "yearProgress": "Jahresfortschritt",
+      "glossary": "Glossar"
+    }
+  },
+  "home": {
+    "title": "Aktuelle Zeit weltweit",
+    "localTime": "Ihre Ortszeit",
+    "timeZone": "Zeitzone",
+    "tabs": {
+      "currentTime": "Aktuelle Zeit",
+      "worldClock": "Weltzeituhr",
+      "calendar": "Kalender",
+      "converter": "Konverter",
+      "timer": "Timer",
+      "sunTimes": "Sonnenzeiten"
+    },
+    "sections": {
+      "worldClock": "Weltzeituhr",
+      "calendar": "Kalender",
+      "timeZoneConverter": "Zeitzonen-Konverter",
+      "countdownTimer": "Countdown-Timer",
+      "sunriseSunset": "Sonnenauf- & -untergang"
+    },
+    "labels": {
+      "timezoneInfo": "Zeitzoneninformation",
+      "unixTimestamp": "Unix-Zeitstempel",
+      "utcTime": "UTC-Zeit",
+      "isoFormat": "ISO-Format",
+      "addTimezone": "Zeitzone hinzufügen",
+      "selectTimezone": "Zeitzone auswählen",
+      "cancel": "Abbrechen",
+      "fromTimezone": "Von Zeitzone",
+      "toTimezone": "Zu Zeitzone",
+      "date": "Datum",
+      "time": "Zeit",
+      "convert": "Konvertieren",
+      "convertedTime": "Konvertierte Zeit",
+      "hours": "Stunden",
+      "minutes": "Minuten",
+      "seconds": "Sekunden",
+      "start": "Start",
+      "pause": "Pause",
+      "reset": "Zurücksetzen",
+      "timeRemaining": "Verbleibende Zeit",
+      "getSunTimes": "Sonnenzeiten abrufen (Meinen Standort verwenden)",
+      "loading": "Wird geladen...",
+      "sunrise": "Sonnenaufgang",
+      "sunset": "Sonnenuntergang",
+      "toggleTheme": "Design wechseln",
+      "dst": "Sommerzeit",
+      "clockSynchronized": "Uhr synchronisiert (±{offset}ms)",
+      "clockOffset": "Uhrabweichung etwa {seconds} Sekunden",
+      "learnAboutUtc": "Über UTC"
+    },
+    "tools": {
+      "title": "Zeit-Tools",
+      "yearProgress": "Jahresfortschrittsbalken",
+      "ageCalculator": "Altersrechner",
+      "utcTime": "UTC-Zeit",
+      "worldHolidays": "Weltweite Feiertage"
+    },
+    "cityTimes": {
+      "title": "Weltstädte-Zeiten"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "utcGmt": {
+        "question": "Was ist UTC/GMT-Zeit?",
+        "answer": "UTC (Koordinierte Weltzeit) ist der primäre Zeitstandard, nach dem die Welt Uhren und Zeit reguliert. Es ist ähnlich wie GMT (Greenwich Mean Time), aber präziser mit Atomuhren definiert. UTC ist der Zeitstandard, der vom Internet, internationalen Kommunikationen und der Luftfahrt verwendet wird."
+      },
+      "timezones": {
+        "question": "Wie funktionieren Zeitzonen?",
+        "answer": "Zeitzonen sind Regionen der Erde, die eine einheitliche Standardzeit befolgen. Sie werden normalerweise als Verschiebungen von UTC definiert, typischerweise in ganzen Stundeninkrementen. Zum Beispiel ist Eastern Standard Time (EST) UTC-5, was bedeutet, dass sie 5 Stunden hinter UTC liegt. Zeitzonen wurden geschaffen, um die Zeit innerhalb großer geografischer Gebiete zu standardisieren, oft beeinflusst von politischen sowie geografischen Grenzen."
+      },
+      "unixTimestamp": {
+        "question": "Was ist ein Unix-Zeitstempel?",
+        "answer": "Ein Unix-Zeitstempel (auch bekannt als Unix-Zeit oder POSIX-Zeit) repräsentiert die Anzahl der Sekunden, die seit dem 1. Januar 1970, 00:00:00 UTC vergangen sind, ohne Schaltsekunden zu zählen. Er wird weit verbreitet in Computersystemen und Programmierung als standardisierte Möglichkeit zur Zeitverfolgung verwendet, die unabhängig von der Zeitzone ist. Unix-Zeitstempel erleichtern die Berechnung von Zeitunterschieden und sind unabhängig von Kalenderkonventionen."
+      },
+      "clockAccuracy": {
+        "question": "Wie genau ist diese Uhr?",
+        "answer": "Die Genauigkeit dieser Uhr hängt von der Systemuhr Ihres Geräts und der Internetverbindung ab. Während wir uns bemühen, die genaueste Zeit anzuzeigen, kann es aufgrund von Netzwerklatenz oder der Uhrsynchronisation Ihres Geräts zu geringfügigen Abweichungen kommen. Für die meisten täglichen Zwecke sollte die angezeigte Zeit innerhalb weniger Sekunden der tatsächlichen Zeit genau sein. Für Anwendungen, die Millisekundengenauigkeit erfordern, sollten spezialisierte Zeitserver verwendet werden."
+      },
+      "iso8601": {
+        "question": "Was ist das ISO 8601-Format?",
+        "answer": "ISO 8601 ist ein internationaler Standard zur Darstellung von Daten und Zeiten. Es folgt dem Format YYYY-MM-DDTHH:MM:SS.sssZ wobei: YYYY-MM-DD das Datum (Jahr, Monat, Tag) darstellt, T ein Trenner zwischen Datum und Zeit ist, HH:MM:SS.sss die Zeit (Stunden, Minuten, Sekunden und Millisekunden) darstellt, Z anzeigt, dass die Zeit in UTC ist (oder ein Offset kann angegeben werden wie +01:00). Dieses Format beseitigt Mehrdeutigkeiten in der internationalen Kommunikation und wird weit verbreitet in der Informatik verwendet."
+      },
+      "daylightSaving": {
+        "question": "Was ist Sommerzeit?",
+        "answer": "Sommerzeit (DST) ist die Praxis, Uhren während der wärmeren Monate vorwärts zu stellen, damit die Dunkelheit später am Tag nach der Uhr einfällt. Typischerweise stellen Regionen, die Sommerzeit befolgen, ihre Uhren im Frühjahr eine Stunde vor ('Vorwärts im Frühjahr') und im Herbst zurück ('Zurück im Herbst'). Der Hauptzweck ist die bessere Nutzung des Tageslichts während der Abendstunden. Nicht alle Länder befolgen die Sommerzeit, und Start- und Enddaten variieren je nach Region."
+      },
+      "timezoneConversion": {
+        "question": "Wie konvertiere ich Zeit zwischen Zeitzonen?",
+        "answer": "Um Zeit zwischen Zeitzonen zu konvertieren, müssen Sie: 1) Die UTC-Offsets der Quell- und Zielzeitzonen bestimmen, 2) Die Quellzeit in UTC konvertieren, indem Sie ihren Offset addieren oder subtrahieren, 3) Von UTC zur Zielzeitzone konvertieren, indem Sie den Offset der Zielzeitzone addieren oder subtrahieren. Zum Beispiel, um 15:00 New York Zeit (UTC-5) in London Zeit (UTC+0) zu konvertieren, würden Sie 5 Stunden addieren, um 20:00 London Zeit zu erhalten. Denken Sie daran, die Sommerzeit zu berücksichtigen, wenn anwendbar, da sie UTC-Offsets vorübergehend ändern kann."
+      }
+    }
+  },
+  "utc": {
+    "title": "UTC-Zeit",
+    "description": "Koordinierte Weltzeit (UTC) - der primäre Zeitstandard"
+  },
+  "holidays": {
+    "title": "Feiertage weltweit",
+    "description": "Entdecken Sie Feiertage und Gedenktage aus verschiedenen Ländern"
+  },
+  "ageCalculator": {
+    "title": "Altersrechner",
+    "description": "Berechnen Sie Ihr genaues Alter in Jahren, Monaten und Tagen",
+    "pageTitle": "Altersrechner",
+    "subtitle": "Berechnen Sie Ihr genaues Alter in Jahren, Monaten, Tagen und mehr - mit flexiblen Datumseingabeoptionen",
+    "calculateYourAge": "Ihr Alter Berechnen",
+    "enterBirthDate": "Geburtsdatum Eingeben",
+    "calculateAgeAsOf": "Alter Berechnen Bis",
+    "ageResults": "Alterergebnisse",
+    "aboutAgeCalculation": "Über Altersberechnung",
+    "calendarPrecision": "Kalenderpräzision",
+    "realTimeUpdates": "Echtzeit-Updates",
+    "faqTitle": "Altersrechner - Häufig Gestellte Fragen",
+    "inputMethods": {
+      "calendar": "Kalender",
+      "manual": "Manuelle Eingabe"
+    },
+    "labels": {
+      "year": "Jahr",
+      "month": "Monat",
+      "day": "Tag",
+      "useCustomDate": "Benutzerdefiniertes Datum verwenden",
+      "calculateAge": "Alter Berechnen",
+      "updateTargetDate": "Zieldatum Aktualisieren",
+      "selectedDate": "Ausgewähltes Datum",
+      "targetDate": "Zieldatum",
+      "currentDateTime": "Aktuelles Datum und Uhrzeit",
+      "updatesInRealTime": "Aktualisiert sich in Echtzeit",
+      "asOf": "Stand {date}",
+      "years": "Jahre",
+      "months": "Monate",
+      "days": "Tage",
+      "hours": "Stunden",
+      "nextBirthday": "Nächster Geburtstag",
+      "nextBirthdayText": "Sie werden in {days} Tagen {age} Jahre alt ({date})",
+      "yearsInDecimalFormat": "Jahre im Dezimalformat"
+    },
+    "tabs": {
+      "standard": "Standard",
+      "detailed": "Detailliert",
+      "decimal": "Dezimal"
+    },
+    "formatted": {
+      "age": "Alter: {age}",
+      "yearsSuffix": "J",
+      "monthsSuffix": "M",
+      "daysSuffix": "T"
+    },
+    "info": {
+      "calendarPrecisionDesc": "Unser Altersrechner berücksichtigt Schaltjahre, unterschiedliche Monatslängen und Sommerzeitänderungen, um die genaueste Berechnung zu liefern.",
+      "realTimeUpdatesDesc": "Sobald Sie Ihr Geburtsdatum auswählen, aktualisiert sich der Rechner in Echtzeit und zeigt Ihr Alter sekundengenau an."
+    },
+    "errors": {
+      "validNumbers": "Bitte geben Sie gültige Zahlen für Jahr, Monat und Tag ein",
+      "yearRange": "Bitte geben Sie ein Jahr zwischen 1900 und dem aktuellen Jahr ein",
+      "monthRange": "Bitte geben Sie einen Monat zwischen 1 und 12 ein",
+      "dayRange": "Bitte geben Sie einen Tag zwischen 1 und 31 ein",
+      "invalidDate": "Das eingegebene Datum ist ungültig",
+      "futureDate": "Das Geburtsdatum kann nicht in der Zukunft liegen",
+      "unknownError": "Ein unbekannter Fehler ist aufgetreten"
+    },
+    "faqs": {
+      "howCalculated": {
+        "question": "Wie wird das Alter berechnet?",
+        "answer": "Das Alter wird berechnet, indem die verstrichene Zeit zwischen Ihrem Geburtsdatum und dem aktuellen Datum (oder einem von Ihnen angegebenen benutzerdefinierten Datum) bestimmt wird. Unser Rechner liefert das genaue Alter in Jahren, Monaten, Tagen, Stunden, Minuten und Sekunden. Wir berücksichtigen Schaltjahre, unterschiedliche Monatslängen und andere Kalenderkomplexitäten für Genauigkeit."
+      },
+      "differFromOthers": {
+        "question": "Warum kann sich meine Altersberechnung von anderen Rechnern unterscheiden?",
+        "answer": "Altersberechnungen können zwischen verschiedenen Rechnern leicht variieren, aufgrund der Art, wie sie mit Teilmonaten und -tagen umgehen. Einige Rechner runden auf das nächste Jahr, während andere (wie unserer) eine detailliertere Aufschlüsselung mit Monaten und Tagen liefern. Unser Rechner verwendet präzise Algorithmen für Schaltjahre und unterschiedliche Monatslängen."
+      },
+      "customDates": {
+        "question": "Kann ich das Alter zwischen zwei spezifischen Daten berechnen?",
+        "answer": "Ja! Unser Rechner ermöglicht es Ihnen, das Alter zwischen beliebigen zwei Daten zu berechnen. Geben Sie einfach Ihr Geburtsdatum ein und aktivieren Sie dann die Option 'Benutzerdefiniertes Datum verwenden', um das Zieldatum für die Altersberechnung anzugeben. Dies ist nützlich, um zu bestimmen, wie alt Sie an einem bestimmten Datum waren (oder sein werden)."
+      },
+      "enterBirthDate": {
+        "question": "Wie gebe ich mein Geburtsdatum ein?",
+        "answer": "Sie haben zwei Optionen für die Eingabe Ihres Geburtsdatums: die Verwendung des Kalender-Pickers oder die manuelle Eingabe. Der Kalender-Picker ermöglicht es Ihnen, ein Datum visuell auszuwählen, während die manuelle Eingabe es Ihnen ermöglicht, Jahr, Monat und Tag direkt einzugeben. Wählen Sie die für Sie bequemere Methode."
+      },
+      "howAccurate": {
+        "question": "Wie genau ist die Altersberechnung?",
+        "answer": "Unser Altersrechner ist sekundengenau. Er aktualisiert sich in Echtzeit (bei Verwendung des aktuellen Datums) und berücksichtigt Schaltjahre, unterschiedliche Monatslängen und Sommerzeitänderungen. Für die meisten praktischen Zwecke ist diese Genauigkeit mehr als ausreichend."
+      },
+      "decimalAge": {
+        "question": "Was ist das Dezimalalter?",
+        "answer": "Das Dezimalalter stellt Ihr Alter als eine einzige Zahl mit einem Dezimalteil dar, anstatt separate Jahre, Monate und Tage. Zum Beispiel bedeuten 25,75 Jahre, dass Sie 25 Jahre und 9 Monate alt sind (da 0,75 Jahre etwa 9 Monaten entsprechen). Dieses Format wird manchmal in wissenschaftlichen oder medizinischen Kontexten verwendet."
+      },
+      "whyNeedExact": {
+        "question": "Warum sollte ich mein genaues Alter wissen?",
+        "answer": "Das genaue Alter zu kennen kann für verschiedene Zwecke nützlich sein: medizinische Bewertungen, astrologische Berechnungen, rechtliche Dokumentation oder einfach um die Neugier zu befriedigen. Einige Kulturen feiern auch spezifische Altersmeilensteine, die eine präzise Berechnung erfordern."
+      },
+      "noNextBirthday": {
+        "question": "Warum erscheinen die Informationen zum Nächsten Geburtstag nicht bei Verwendung eines benutzerdefinierten Datums?",
+        "answer": "Die Berechnung des Nächsten Geburtstags basiert auf dem aktuellen Datum und zeigt, wie viele Tage bis zu Ihrem nächsten Geburtstag von heute an verbleiben. Bei Verwendung eines benutzerdefinierten Zieldatums werden diese Informationen nicht angezeigt, da sie für das von Ihnen angegebene benutzerdefinierte Datum nicht relevant wären."
+      }
+    }
+  },
+  "yearProgress": {
+    "title": "Jahresfortschritt",
+    "description": "Verfolgen Sie den Fortschritt des aktuellen Jahres",
+    "pageTitle": "Jahresfortschrittsbalken {year}",
+    "subtitle": "Das Jahr {year} ist zu {progress}% abgeschlossen",
+    "progressTitle": "Jahresfortschritt",
+    "toggleTheme": "Design wechseln",
+    "viewOtherYears": "Fortschritt für andere Jahre anzeigen:",
+    "faqTitle": "Jahresfortschritt - Häufig gestellte Fragen",
+    "faqs": {
+      "howCalculated": {
+        "question": "Wie wird der Jahresfortschritt berechnet?",
+        "answer": "Der Jahresfortschritt wird berechnet, indem bestimmt wird, welcher Prozentsatz des Jahres vergangen ist. Wir nehmen das aktuelle Datum und die Uhrzeit, berechnen, wie viele Millisekunden seit dem 1. Januar des aktuellen Jahres vergangen sind, und teilen dies durch die Gesamtzahl der Millisekunden im Jahr."
+      },
+      "isAccurate": {
+        "question": "Ist die Jahresfortschrittsberechnung genau?",
+        "answer": "Ja, unsere Berechnung berücksichtigt Schaltjahre und ist sekundengenau. Der Fortschritt wird in Echtzeit aktualisiert, während Sie die Seite betrachten."
+      },
+      "differentYear": {
+        "question": "Kann ich den Fortschritt eines anderen Jahres überprüfen?",
+        "answer": "Ja, Sie können den Fortschritt jedes Jahres anzeigen, indem Sie die URL zu /year-progress-bar/year ändern. Um beispielsweise den Fortschritt von 2025 zu sehen, würden Sie /year-progress-bar/2025 verwenden."
+      },
+      "whyTrack": {
+        "question": "Warum den Jahresfortschritt verfolgen?",
+        "answer": "Das Verfolgen des Jahresfortschritts kann bei Zeitbewusstsein, Zielsetzung und Planung helfen. Es bietet eine visuelle Erinnerung daran, wie viel vom Jahr vergangen ist und wie viel Zeit für das Erreichen der Jahresziele verbleibt."
+      }
+    }
+  },
+  "cities": {
+    "pageTitle": "Aktuelle Zeit in {cityName}",
+    "timezoneLabel": "Zeitzone {timezone}",
+    "timezoneInfo": "Zeitzoneninformation",
+    "unixTimestamp": "Unix-Zeitstempel",
+    "utcTime": "UTC-Zeit",
+    "isoFormat": "ISO-Format",
+    "cityInfo": "Stadtinformation",
+    "country": "Land",
+    "timezone": "Zeitzone",
+    "coordinates": "Koordinaten",
+    "population": "Bevölkerung",
+    "faq": "Häufig gestellte Fragen",
+    "clockSynchronized": "Uhr synchronisiert (±{offset}ms)",
+    "clockOffset": "Uhrabweichung etwa {seconds} Sekunden",
+    "copyToClipboard": "In Zwischenablage kopieren",
+    "enterFullscreen": "Vollbild öffnen",
+    "toggleTheme": "Design wechseln",
+    "faqQuestions": {
+      "currentTime": "Wie spät ist es jetzt in {cityName}?",
+      "utcDifference": "Wie groß ist der Zeitunterschied zwischen {cityName} und UTC?",
+      "daylightSaving": "Befolgt {cityName} die Sommerzeit?"
+    },
+    "faqAnswers": {
+      "currentTime": "Die aktuelle Ortszeit in {cityName}, {country} ist {currentTime}. {cityName} befindet sich in der Zeitzone {timezone}.",
+      "utcDifference": "{cityName} folgt der Zeit {timezone}. Der aktuelle Versatz zu UTC beträgt {offset} Stunden.",
+      "daylightSaving": "Dies hängt von den örtlichen Bestimmungen von {country} ab. Die aktuelle Zeit ist {currentTime}, die sich automatisch an die Sommerzeit anpasst, wenn zutreffend."
+    },
+    "cityNames": {
+      "new-york": "New York",
+      "london": "London",
+      "tokyo": "Tokio",
+      "shanghai": "Shanghai",
+      "beijing": "Peking",
+      "seoul": "Seoul",
+      "kolkata": "Kolkata",
+      "dubai": "Dubai",
+      "cairo": "Kairo",
+      "moscow": "Moskau",
+      "istanbul": "Istanbul",
+      "paris": "Paris",
+      "sydney": "Sydney"
+    },
+    "countryNames": {
+      "United States": "Vereinigte Staaten",
+      "United Kingdom": "Vereinigtes Königreich",
+      "Japan": "Japan",
+      "China": "China",
+      "South Korea": "Südkorea",
+      "India": "Indien",
+      "United Arab Emirates": "Vereinigte Arabische Emirate",
+      "Egypt": "Ägypten",
+      "Russia": "Russland",
+      "Turkey": "Türkei",
+      "France": "Frankreich",
+      "Australia": "Australien"
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
 // Predefined list of supported cities with their metadata
 export const citiesData = {
@@ -97,15 +98,72 @@ export const citiesData = {
 };
 
 interface CityPageProps {
-  params: { city: string };
+  params: { city: string; locale: string };
 }
 
 export async function generateMetadata({ params }: CityPageProps): Promise<Metadata> {
   const city = params.city;
+  const locale = params.locale;
   const cityInfo = citiesData[city as keyof typeof citiesData];
   
   if (!cityInfo) return {};
   
+  const t = await getTranslations({ locale, namespace: 'cities' });
+  
+  // Get localized city and country names
+  const getLocalizedCityName = (cityKey: string) => {
+    if (locale === 'zh-hans' || locale === 'zh-hant') {
+      try {
+        return t(`cityNames.${cityKey}`);
+      } catch {
+        return cityInfo.name;
+      }
+    }
+    return cityInfo.name;
+  };
+  
+  const getLocalizedCountryName = (countryName: string) => {
+    if (locale === 'zh-hans' || locale === 'zh-hant') {
+      try {
+        return t(`countryNames.${countryName}`);
+      } catch {
+        return countryName;
+      }
+    }
+    return countryName;
+  };
+  
+  const localizedCityName = getLocalizedCityName(city);
+  const localizedCountryName = getLocalizedCountryName(cityInfo.country);
+  
+  // Generate localized metadata
+  if (locale === 'zh-hans') {
+    return {
+      title: `${localizedCityName}时间 | ${localizedCityName}当前时间`,
+      description: `${localizedCityName}, ${localizedCountryName}的当前本地时间。查看${localizedCityName}的准确时间、时区和夏令时信息。`,
+      keywords: [`${localizedCityName}时间`, `${localizedCountryName}时间`, `${localizedCityName}当前时间`, `${localizedCityName}本地时间`, `${localizedCityName}时区`],
+      openGraph: {
+        title: `${localizedCityName}时间 | 当前时间`,
+        description: `查看${localizedCityName}, ${localizedCountryName}的当前本地时间`,
+        type: 'website',
+      },
+    };
+  }
+  
+  if (locale === 'zh-hant') {
+    return {
+      title: `${localizedCityName}時間 | ${localizedCityName}當前時間`,
+      description: `${localizedCityName}, ${localizedCountryName}的當前本地時間。查看${localizedCityName}的準確時間、時區和夏令時資訊。`,
+      keywords: [`${localizedCityName}時間`, `${localizedCountryName}時間`, `${localizedCityName}當前時間`, `${localizedCityName}本地時間`, `${localizedCityName}時區`],
+      openGraph: {
+        title: `${localizedCityName}時間 | 當前時間`,
+        description: `查看${localizedCityName}, ${localizedCountryName}的當前本地時間`,
+        type: 'website',
+      },
+    };
+  }
+  
+  // Default English metadata
   return {
     title: `${cityInfo.name} Time | Current Local Time in ${cityInfo.name}, ${cityInfo.country}`,
     description: `Current local time in ${cityInfo.name}, ${cityInfo.country}. Check the exact time, timezone, and daylight saving information for ${cityInfo.name}.`,

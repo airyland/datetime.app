@@ -2,10 +2,13 @@
 
 import { useEffect, useState } from "react"
 import Link from 'next/link'
+import { useTranslations, useLocale } from 'next-intl'
+import { usePathname } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Clock, Globe, Copy, Check, Maximize2 } from "lucide-react"
+import { Clock, Globe, Copy, Check, Maximize2, ArrowRight } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LanguageSwitcher } from "@/components/language-switcher"
 import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
 
@@ -16,6 +19,22 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export default function UTCPage() {
+  const t = useTranslations('utc')
+  const pathname = usePathname()
+  
+  // Determine current locale from pathname as it's more reliable
+  const getCurrentLocale = () => {
+    const pathSegments = pathname.split('/').filter(Boolean)
+    const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
+    if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
+      return pathSegments[0]
+    }
+    return 'en'
+  }
+  
+  // Use the more reliable method to get current locale
+  const currentLocale = getCurrentLocale()
+  
   const [currentTime, setCurrentTime] = useState(new Date())
   const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
@@ -56,7 +75,7 @@ export default function UTCPage() {
   }, [])
 
   // Format time as HH:MM:SS in UTC
-  const formattedTime = currentTime.toLocaleTimeString("en-US", {
+  const formattedTime = currentTime.toLocaleTimeString(currentLocale, {
     timeZone: "UTC",
     hour12: false,
     hour: "2-digit",
@@ -65,7 +84,7 @@ export default function UTCPage() {
   })
 
   // Format date in UTC
-  const formattedDate = currentTime.toLocaleDateString("en-US", {
+  const formattedDate = currentTime.toLocaleDateString(currentLocale, {
     timeZone: "UTC",
     weekday: "long",
     year: "numeric",
@@ -95,24 +114,24 @@ export default function UTCPage() {
   // UTC-related FAQs
   const utcFaqs = [
     {
-      question: "What is UTC time?",
-      answer: "UTC (Coordinated Universal Time) is the primary time standard by which the world regulates clocks and time. It is similar to GMT (Greenwich Mean Time) but is more precisely defined by atomic clocks. UTC is the time standard used across the internet and for international communications and aviation."
+      question: t('faqs.whatIsUtc.question'),
+      answer: t('faqs.whatIsUtc.answer')
     },
     {
-      question: "Why is UTC important?",
-      answer: "UTC is important because it provides a standardized reference time that is not affected by time zones or daylight saving time changes. It serves as the basis for civil time worldwide and is crucial for global communications, aviation, scientific research, and computer systems."
+      question: t('faqs.whyImportant.question'),
+      answer: t('faqs.whyImportant.answer')
     },
     {
-      question: "What is the difference between UTC and GMT?",
-      answer: "While UTC and GMT are often used interchangeably and both represent time at the Prime Meridian (0° longitude), they are technically different. GMT is based on the Earth's rotation and the position of the sun, while UTC is based on atomic clocks. In practice, they are usually within 0.9 seconds of each other."
+      question: t('faqs.utcVsGmt.question'),
+      answer: t('faqs.utcVsGmt.answer')
     },
     {
-      question: "How do I convert UTC to my local time?",
-      answer: "To convert UTC to your local time, you need to add or subtract your timezone's offset from UTC. For example, if you're in Eastern Standard Time (EST), which is UTC-5, you would subtract 5 hours from UTC time. During Daylight Saving Time, this would change to UTC-4."
+      question: t('faqs.convertToLocal.question'),
+      answer: t('faqs.convertToLocal.answer')
     },
     {
-      question: "Why is UTC used in computing?",
-      answer: "UTC is used in computing because it provides a consistent time reference regardless of geographical location. This is essential for timestamping events, synchronizing systems across different time zones, logging, and ensuring consistent data timestamps in distributed systems."
+      question: t('faqs.whyInComputing.question'),
+      answer: t('faqs.whyInComputing.answer')
     }
   ]
 
@@ -122,9 +141,12 @@ export default function UTCPage() {
         <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity">
           Datetime.app
         </Link>
-        <div className="flex items-center gap-2">
-          <span className="text-sm hidden md:inline">Toggle theme:</span>
-          <ThemeToggle />
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+          <div className="flex items-center gap-2">
+            <span className="text-sm hidden md:inline">{t('toggleTheme')}:</span>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -132,14 +154,14 @@ export default function UTCPage() {
         <div className="text-center">
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">
-              Coordinated Universal Time (UTC)
+              {t('title')}
             </h1>
             <h2 className="text-xl md:text-2xl font-medium mb-2 text-muted-foreground">
-              The World's Time Standard
+              {t('subtitle')}
             </h2>
             <div className="text-sm mb-4">
               <Link href="/glossary/utc" className="text-primary hover:underline">
-                Learn more about UTC in our glossary
+                {t('learnMore')}
               </Link>
             </div>
             <div className="relative group">
@@ -152,7 +174,7 @@ export default function UTCPage() {
               <button
                 onClick={() => setIsFullscreen(true)}
                 className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-all"
-                title="Enter fullscreen"
+                title={t('enterFullscreen')}
               >
                 <Maximize2 className="w-6 h-6" />
               </button>
@@ -160,22 +182,22 @@ export default function UTCPage() {
             <p className="text-xl mt-4">{formattedDate}</p>
             <div className="flex items-center justify-center gap-2 mt-2 text-muted-foreground">
               <Globe className="w-4 h-4" />
-              <span>UTC/GMT+0</span>
+              <span>{t('utcOffset')}</span>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8">
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">Unix Timestamp</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <div className="inline-flex items-center gap-2">
+            <div className="bg-card text-card-foreground shadow-none rounded-none border">
+              <div className="flex flex-col space-y-1.5 p-6 py-2 px-4">
+                <div className="tracking-tight text-sm font-medium text-muted-foreground text-center">{t('unixTimestamp')}</div>
+              </div>
+              <div className="p-6 px-4 py-2">
+                <div className="flex items-center gap-2 justify-center">
                   <p className={jetbrainsMono.className}>{timestamp}</p>
                   <button
                     onClick={() => copyToClipboard(timestamp.toString(), 'timestamp')}
                     className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title="Copy to clipboard"
+                    title={t('copyToClipboard')}
                   >
                     {copiedStates['timestamp'] ? (
                       <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
@@ -184,20 +206,20 @@ export default function UTCPage() {
                     )}
                   </button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">UTC String</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <div className="inline-flex items-center gap-2">
+            <div className="bg-card text-card-foreground shadow-none rounded-none border">
+              <div className="flex flex-col space-y-1.5 p-6 py-2 px-4">
+                <div className="tracking-tight text-sm font-medium text-muted-foreground text-center">{t('utcString')}</div>
+              </div>
+              <div className="p-6 px-4 py-2">
+                <div className="flex items-center gap-2 justify-center">
                   <p className={jetbrainsMono.className}>{utcTime}</p>
                   <button
                     onClick={() => copyToClipboard(utcTime, 'utc')}
                     className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title="Copy to clipboard"
+                    title={t('copyToClipboard')}
                   >
                     {copiedStates['utc'] ? (
                       <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
@@ -206,20 +228,20 @@ export default function UTCPage() {
                     )}
                   </button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">ISO 8601</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <div className="inline-flex items-center gap-2">
+            <div className="bg-card text-card-foreground shadow-none rounded-none border">
+              <div className="flex flex-col space-y-1.5 p-6 py-2 px-4">
+                <div className="tracking-tight text-sm font-medium text-muted-foreground text-center">{t('iso8601')}</div>
+              </div>
+              <div className="p-6 px-4 py-2">
+                <div className="flex items-center gap-2 justify-center">
                   <p className={jetbrainsMono.className}>{isoTime}</p>
                   <button
                     onClick={() => copyToClipboard(isoTime, 'iso')}
                     className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title="Copy to clipboard"
+                    title={t('copyToClipboard')}
                   >
                     {copiedStates['iso'] ? (
                       <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
@@ -228,13 +250,13 @@ export default function UTCPage() {
                     )}
                   </button>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
 
           {/* City Links Section */}
           <div className="mt-16 max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6 text-center">World City Times</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">{t('worldCityTimes')}</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
               <a href="/cities/new-york" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center">
                 New York
@@ -259,13 +281,12 @@ export default function UTCPage() {
 
           {/* FAQ Section */}
           <div className="mt-8 max-w-3xl mx-auto text-left">
-            <h2 className="text-2xl font-bold mb-6 text-center">UTC Time - Frequently Asked Questions</h2>
-            <p className="text-center mb-4">
-              <Link href="/glossary" className="text-primary hover:underline">
-                View our complete glossary of datetime concepts
-              </Link>
-            </p>
-            <Accordion type="single" collapsible className="w-full">
+            <h2 className="text-2xl font-bold mb-6 text-center">{t('faqTitle')}</h2>
+            <Accordion 
+              type="multiple" 
+              className="w-full"
+              defaultValue={utcFaqs.map((_, index) => `item-${index}`)}
+            >
               {utcFaqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
                   <AccordionTrigger>{faq.question}</AccordionTrigger>
@@ -275,6 +296,11 @@ export default function UTCPage() {
                 </AccordionItem>
               ))}
             </Accordion>
+            <p className="text-center my-4">
+              <Link href="/glossary" className="text-muted-foreground text-sm hover:underline">
+                {t('viewGlossary')} <ArrowRight className="inline w-4 h-4" />
+              </Link>
+            </p>
           </div>
         </div>
       </div>

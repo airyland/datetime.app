@@ -3,11 +3,13 @@
 import { useEffect, useState, use } from "react"
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { Globe, Clock, AlertCircle, Copy, Check, Maximize2 } from 'lucide-react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { JetBrains_Mono } from "next/font/google"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LanguageSwitcher } from "@/components/language-switcher"
 import { citiesData } from './metadata'
 import { FullscreenTime } from '@/components/fullscreen-time'
 
@@ -18,13 +20,33 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 interface CityPageProps {
-  params: { city: string };
+  params: { city: string; locale: string };
 }
 
 export default function CityPage({ params }: CityPageProps) {
   const resolvedParams = use(params)
   const city = resolvedParams.city;
+  const locale = resolvedParams.locale;
+  const t = useTranslations('cities')
   const cityInfo = citiesData[city as keyof typeof citiesData];
+  
+  // Get localized city and country names
+  const getLocalizedCityName = (cityKey: string) => {
+    if (locale === 'zh-hans' || locale === 'zh-hant') {
+      return t(`cityNames.${cityKey}`) || cityInfo.name;
+    }
+    return cityInfo.name;
+  };
+  
+  const getLocalizedCountryName = (countryName: string) => {
+    if (locale === 'zh-hans' || locale === 'zh-hant') {
+      return t(`countryNames.${countryName}`) || countryName;
+    }
+    return countryName;
+  };
+  
+  const localizedCityName = getLocalizedCityName(city);
+  const localizedCountryName = getLocalizedCountryName(cityInfo.country);
   const [currentTime, setCurrentTime] = useState(new Date())
   const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
@@ -113,18 +135,40 @@ export default function CityPage({ params }: CityPageProps) {
   }
 
   // City-specific FAQs
+  const currentTimeString = currentTime.toLocaleTimeString('en-US', { 
+    hour: 'numeric', 
+    minute: '2-digit', 
+    timeZoneName: 'short' 
+  });
+  const offsetHours = currentTime.getTimezoneOffset() / -60;
+  const currentTimeWithZone = currentTime.toLocaleTimeString('en-US', { 
+    timeZoneName: 'long' 
+  });
+
   const cityFaqs = [
     {
-      question: `What time is it in ${cityInfo.name} now?`,
-      answer: `The current local time in ${cityInfo.name}, ${cityInfo.country} is ${currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' })}. ${cityInfo.name} is in the ${cityInfo.timezone} timezone.`
+      question: t('faqQuestions.currentTime', { cityName: localizedCityName }),
+      answer: t('faqAnswers.currentTime', { 
+        cityName: localizedCityName, 
+        country: localizedCountryName, 
+        currentTime: currentTimeString,
+        timezone: cityInfo.timezone 
+      })
     },
     {
-      question: `What is the time difference between ${cityInfo.name} and UTC?`,
-      answer: `${cityInfo.name} follows ${cityInfo.timezone} time. The current offset from UTC is ${currentTime.getTimezoneOffset() / -60} hours.`
+      question: t('faqQuestions.utcDifference', { cityName: localizedCityName }),
+      answer: t('faqAnswers.utcDifference', { 
+        cityName: localizedCityName, 
+        timezone: cityInfo.timezone,
+        offset: offsetHours 
+      })
     },
     {
-      question: `Does ${cityInfo.name} observe Daylight Saving Time (DST)?`,
-      answer: `This depends on the local regulations in ${cityInfo.country}. The time is currently ${currentTime.toLocaleTimeString('en-US', { timeZoneName: 'long' })} and automatically adjusts for DST when applicable.`
+      question: t('faqQuestions.daylightSaving', { cityName: localizedCityName }),
+      answer: t('faqAnswers.daylightSaving', { 
+        country: localizedCountryName,
+        currentTime: currentTimeWithZone 
+      })
     },
   ]
 
@@ -144,9 +188,12 @@ export default function CityPage({ params }: CityPageProps) {
         <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity">
           Datetime.app
         </Link>
-        <div className="flex items-center gap-2">
-          <span className="text-sm hidden md:inline">Toggle theme:</span>
-          <ThemeToggle />
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+          <div className="flex items-center gap-2">
+            <span className="text-sm hidden md:inline">{t('toggleTheme')}:</span>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -154,10 +201,10 @@ export default function CityPage({ params }: CityPageProps) {
         <div className="text-center">
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">
-              Current Time in {cityInfo.name}, {cityInfo.country}
+              {t('pageTitle', { cityName: localizedCityName })}
             </h1>
             <h2 className="text-xl md:text-2xl font-medium mb-2 text-muted-foreground">
-              {cityInfo.timezone} Time Zone
+              {t('timezoneLabel', { timezone: cityInfo.timezone })}
             </h2>
             <div className="relative group">
               <div 
@@ -169,7 +216,7 @@ export default function CityPage({ params }: CityPageProps) {
               <button 
                 onClick={() => setIsFullscreen(true)}
                 className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-all"
-                title="Enter fullscreen"
+                title={t('enterFullscreen')}
               >
                 <Maximize2 className="w-6 h-6" />
               </button>
@@ -181,10 +228,10 @@ export default function CityPage({ params }: CityPageProps) {
               <AlertCircle className="h-4 w-4 mr-1" />
               {accuracy.offset > 1000 ? (
                 <span>
-                  Clock is approximately {Math.round(accuracy.offset / 1000)} seconds off from server time
+                  {t('clockOffset', { seconds: Math.round(accuracy.offset / 1000) })}
                 </span>
               ) : (
-                <span>Clock is synchronized (±{Math.round(accuracy.offset)}ms)</span>
+                <span>{t('clockSynchronized', { offset: Math.round(accuracy.offset) })}</span>
               )}
             </div>
           </div>
@@ -192,7 +239,7 @@ export default function CityPage({ params }: CityPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-3xl mx-auto">
             <Card className="shadow-none rounded-none border">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg">Timezone Information</CardTitle>
+                <CardTitle className="text-lg">{t('timezoneInfo')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className={jetbrainsMono.className}>{cityInfo.timezone} ({offsetString})</p>
@@ -201,7 +248,7 @@ export default function CityPage({ params }: CityPageProps) {
 
             <Card className="shadow-none rounded-none border">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg">Unix Timestamp</CardTitle>
+                <CardTitle className="text-lg">{t('unixTimestamp')}</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <div className="inline-flex items-center gap-2">
@@ -209,7 +256,7 @@ export default function CityPage({ params }: CityPageProps) {
                   <button
                     onClick={() => copyToClipboard(timestamp.toString(), 'timestamp')}
                     className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title="Copy to clipboard"
+                    title={t('copyToClipboard')}
                   >
                     {copiedStates['timestamp'] ? (
                       <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
@@ -223,7 +270,7 @@ export default function CityPage({ params }: CityPageProps) {
 
             <Card className="shadow-none rounded-none border">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg">UTC Time</CardTitle>
+                <CardTitle className="text-lg">{t('utcTime')}</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <div className="inline-flex items-center gap-2">
@@ -231,7 +278,7 @@ export default function CityPage({ params }: CityPageProps) {
                   <button
                     onClick={() => copyToClipboard(utcTime, 'utc')}
                     className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title="Copy to clipboard"
+                    title={t('copyToClipboard')}
                   >
                     {copiedStates['utc'] ? (
                       <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
@@ -245,7 +292,7 @@ export default function CityPage({ params }: CityPageProps) {
 
             <Card className="shadow-none rounded-none border">
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg">ISO Format</CardTitle>
+                <CardTitle className="text-lg">{t('isoFormat')}</CardTitle>
               </CardHeader>
               <CardContent className="text-center">
                 <div className="inline-flex items-center gap-2">
@@ -253,7 +300,7 @@ export default function CityPage({ params }: CityPageProps) {
                   <button
                     onClick={() => copyToClipboard(isoTime, 'iso')}
                     className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title="Copy to clipboard"
+                    title={t('copyToClipboard')}
                   >
                     {copiedStates['iso'] ? (
                       <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
@@ -273,24 +320,24 @@ export default function CityPage({ params }: CityPageProps) {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Globe className="w-5 h-5" />
-                City Information
+                {t('cityInfo')}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
               <div>
-                <p className="text-sm text-muted-foreground">Country</p>
-                <p>{cityInfo.country}</p>
+                <p className="text-sm text-muted-foreground">{t('country')}</p>
+                <p>{localizedCountryName}</p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Timezone</p>
+                <p className="text-sm text-muted-foreground">{t('timezone')}</p>
                 <p>{cityInfo.timezone}</p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Coordinates</p>
+                <p className="text-sm text-muted-foreground">{t('coordinates')}</p>
                 <p>{cityInfo.coordinates}</p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Population</p>
+                <p className="text-sm text-muted-foreground">{t('population')}</p>
                 <p>{cityInfo.population}</p>
               </div>
             </CardContent>
@@ -298,10 +345,10 @@ export default function CityPage({ params }: CityPageProps) {
 
           <Card className="shadow-none rounded-none border">
             <CardHeader>
-              <CardTitle>Frequently Asked Questions</CardTitle>
+              <CardTitle>{t('faq')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <Accordion type="single" collapsible>
+              <Accordion type="multiple" defaultValue={cityFaqs.map((_, index) => `item-${index}`)} collapsible>
                 {cityFaqs.map((faq, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
                     <AccordionTrigger>{faq.question}</AccordionTrigger>

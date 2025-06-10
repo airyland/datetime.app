@@ -13,6 +13,7 @@ import { JetBrains_Mono } from "next/font/google"
 import { calculateAge, getNextBirthday } from "@/lib/age-calculator"
 import { Clock, Calendar as CalendarIcon, Gift, Calculator } from "lucide-react"
 import { format } from "date-fns"
+import { useTranslations } from 'next-intl'
 
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
@@ -25,6 +26,8 @@ interface AgeCalculatorClientProps {
 }
 
 export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorClientProps) {
+  const t = useTranslations('ageCalculator')
+  
   // Input method state
   const [inputMethod, setInputMethod] = useState<'calendar' | 'manual'>('calendar')
 
@@ -58,31 +61,31 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
       const day = parseInt(birthDay)
 
       if (isNaN(year) || isNaN(month) || isNaN(day)) {
-        throw new Error("Please enter valid numbers for year, month, and day")
+        throw new Error(t('errors.validNumbers'))
       }
 
       if (year < 1900 || year > new Date().getFullYear()) {
-        throw new Error("Please enter a year between 1900 and the current year")
+        throw new Error(t('errors.yearRange'))
       }
 
       if (month < 0 || month > 11) {
-        throw new Error("Please enter a month between 1 and 12")
+        throw new Error(t('errors.monthRange'))
       }
 
       if (day < 1 || day > 31) {
-        throw new Error("Please enter a day between 1 and 31")
+        throw new Error(t('errors.dayRange'))
       }
 
       const date = new Date(year, month, day)
 
       // Check if the date is valid (e.g., not February 30)
       if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) {
-        throw new Error("The date you entered is invalid")
+        throw new Error(t('errors.invalidDate'))
       }
 
       // Check if the date is in the future
       if (date > new Date()) {
-        throw new Error("Birth date cannot be in the future")
+        throw new Error(t('errors.futureDate'))
       }
 
       setBirthDate(date)
@@ -90,7 +93,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
       if (error instanceof Error) {
         setError(error.message)
       } else {
-        setError("An unknown error occurred")
+        setError(t('errors.unknownError'))
       }
     }
   }
@@ -106,22 +109,22 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
       const day = parseInt(targetDay)
 
       if (isNaN(year) || isNaN(month) || isNaN(day)) {
-        throw new Error("Please enter valid numbers for year, month, and day")
+        throw new Error(t('errors.validNumbers'))
       }
 
       if (month < 0 || month > 11) {
-        throw new Error("Please enter a month between 1 and 12")
+        throw new Error(t('errors.monthRange'))
       }
 
       if (day < 1 || day > 31) {
-        throw new Error("Please enter a day between 1 and 31")
+        throw new Error(t('errors.dayRange'))
       }
 
       const date = new Date(year, month, day)
 
       // Check if the date is valid (e.g., not February 30)
       if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) {
-        throw new Error("The date you entered is invalid")
+        throw new Error(t('errors.invalidDate'))
       }
 
       setTargetDate(date)
@@ -129,7 +132,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
       if (error instanceof Error) {
         setError(error.message)
       } else {
-        setError("An unknown error occurred")
+        setError(t('errors.unknownError'))
       }
     }
   }
@@ -172,7 +175,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <CalendarIcon className="h-5 w-5" />
-              <span>Enter Birth Date</span>
+              <span>{t('enterBirthDate')}</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -184,11 +187,11 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="calendar" id="calendar" />
-                  <Label htmlFor="calendar">Calendar</Label>
+                  <Label htmlFor="calendar">{t('inputMethods.calendar')}</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="manual" id="manual" />
-                  <Label htmlFor="manual">Manual Input</Label>
+                  <Label htmlFor="manual">{t('inputMethods.manual')}</Label>
                 </div>
               </RadioGroup>
             </div>
@@ -205,7 +208,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
               <div className="space-y-4">
                 <div className="grid grid-cols-3 gap-2">
                   <div>
-                    <Label htmlFor="birth-year">Year</Label>
+                    <Label htmlFor="birth-year">{t('labels.year')}</Label>
                     <Input
                       id="birth-year"
                       type="number"
@@ -215,7 +218,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
                     />
                   </div>
                   <div>
-                    <Label htmlFor="birth-month">Month</Label>
+                    <Label htmlFor="birth-month">{t('labels.month')}</Label>
                     <Input
                       id="birth-month"
                       type="number"
@@ -227,7 +230,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
                     />
                   </div>
                   <div>
-                    <Label htmlFor="birth-day">Day</Label>
+                    <Label htmlFor="birth-day">{t('labels.day')}</Label>
                     <Input
                       id="birth-day"
                       type="number"
@@ -244,12 +247,12 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
                   onClick={handleManualBirthDateSubmit}
                   className="w-full"
                 >
-                  Calculate Age
+                  {t('labels.calculateAge')}
                 </Button>
 
                 {birthDate && (
                   <div className="text-sm text-muted-foreground mt-2">
-                    Selected date: {birthDate.toLocaleDateString()}
+                    {t('labels.selectedDate')}: {birthDate.toLocaleDateString()}
                   </div>
                 )}
 
@@ -267,7 +270,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Clock className="h-5 w-5" />
-              <span>Calculate Age As Of</span>
+              <span>{t('calculateAgeAsOf')}</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -277,14 +280,14 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
                 checked={useCustomTargetDate}
                 onCheckedChange={setUseCustomTargetDate}
               />
-              <Label htmlFor="custom-date">Use custom date</Label>
+              <Label htmlFor="custom-date">{t('labels.useCustomDate')}</Label>
             </div>
 
             {useCustomTargetDate ? (
               <div className="space-y-4">
                 <div className="grid grid-cols-3 gap-2">
                   <div>
-                    <Label htmlFor="target-year">Year</Label>
+                    <Label htmlFor="target-year">{t('labels.year')}</Label>
                     <Input
                       id="target-year"
                       type="number"
@@ -294,7 +297,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
                     />
                   </div>
                   <div>
-                    <Label htmlFor="target-month">Month</Label>
+                    <Label htmlFor="target-month">{t('labels.month')}</Label>
                     <Input
                       id="target-month"
                       type="number"
@@ -306,7 +309,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
                     />
                   </div>
                   <div>
-                    <Label htmlFor="target-day">Day</Label>
+                    <Label htmlFor="target-day">{t('labels.day')}</Label>
                     <Input
                       id="target-day"
                       type="number"
@@ -323,22 +326,22 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
                   onClick={handleManualTargetDateSubmit}
                   className="w-full"
                 >
-                  Update Target Date
+                  {t('labels.updateTargetDate')}
                 </Button>
 
                 <div className="text-sm text-muted-foreground mt-2">
-                  Target date: {targetDate.toLocaleDateString()}
+                  {t('labels.targetDate')}: {targetDate.toLocaleDateString()}
                 </div>
               </div>
             ) : (
               <div className="text-center p-4 border rounded-md">
-                <p className="text-lg font-medium mb-2">Current Date & Time</p>
+                <p className="text-lg font-medium mb-2">{t('labels.currentDateTime')}</p>
                 <p className={`text-xl ${jetbrainsMono.className}`}>
                   {format(currentTime, "yyyy-MM-dd HH:mm:ss")}
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
                   <Clock className="inline-block mr-1 h-3 w-3" />
-                  <span>Updates in real-time</span>
+                  <span>{t('labels.updatesInRealTime')}</span>
                 </p>
               </div>
             )}
@@ -351,15 +354,15 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Calculator className="h-5 w-5" />
-              <span>Age Results</span>
+              <span>{t('ageResults')}</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="standard">
               <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="standard">Standard</TabsTrigger>
-                <TabsTrigger value="detailed">Detailed</TabsTrigger>
-                <TabsTrigger value="decimal">Decimal</TabsTrigger>
+                <TabsTrigger value="standard">{t('tabs.standard')}</TabsTrigger>
+                <TabsTrigger value="detailed">{t('tabs.detailed')}</TabsTrigger>
+                <TabsTrigger value="decimal">{t('tabs.decimal')}</TabsTrigger>
               </TabsList>
 
               <TabsContent value="standard" className="mt-4">
@@ -381,19 +384,19 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
                 <div className="space-y-2">
                   <div className="grid grid-cols-2 gap-2">
                     <div className="bg-muted p-2 rounded">
-                      <div className="text-sm text-muted-foreground">Years</div>
+                      <div className="text-sm text-muted-foreground">{t('labels.years')}</div>
                       <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>{age.years}</div>
                     </div>
                     <div className="bg-muted p-2 rounded">
-                      <div className="text-sm text-muted-foreground">Months</div>
+                      <div className="text-sm text-muted-foreground">{t('labels.months')}</div>
                       <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>{age.totalMonths}</div>
                     </div>
                     <div className="bg-muted p-2 rounded">
-                      <div className="text-sm text-muted-foreground">Days</div>
+                      <div className="text-sm text-muted-foreground">{t('labels.days')}</div>
                       <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>{age.totalDays}</div>
                     </div>
                     <div className="bg-muted p-2 rounded">
-                      <div className="text-sm text-muted-foreground">Hours</div>
+                      <div className="text-sm text-muted-foreground">{t('labels.hours')}</div>
                       <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>{age.totalDays * 24 + age.hours}</div>
                     </div>
                   </div>
@@ -403,7 +406,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
                       : (
                         <>
                           <Clock className="inline-block mr-1 h-3 w-3" />
-                          <span>Updates in real-time</span>
+                          <span>{t('labels.updatesInRealTime')}</span>
                         </>
                       )
                     }
@@ -416,7 +419,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
                   <div className={`text-4xl font-bold ${jetbrainsMono.className}`}>
                     {age.decimalAge}
                   </div>
-                  <p className="mt-2 text-muted-foreground">Years in decimal format</p>
+                  <p className="mt-2 text-muted-foreground">{t('labels.yearsInDecimalFormat')}</p>
                 </div>
               </TabsContent>
             </Tabs>
@@ -425,7 +428,7 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
               <div className="mt-6 border-t pt-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Gift className="h-4 w-4 text-primary" />
-                  <span className="font-medium">Next Birthday</span>
+                  <span className="font-medium">{t('labels.nextBirthday')}</span>
                 </div>
                 <p className="text-sm">
                   You will be <span className="font-bold">{nextBirthday.nextAge}</span> in{" "}

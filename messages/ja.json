@@ -1,0 +1,296 @@
+{
+  "common": {
+    "title": "世界時計と時間",
+    "description": "世界各地の現在時刻、UTC時間、祝日、年齢計算機",
+    "nav": {
+      "home": "ホーム",
+      "utc": "UTC時間",
+      "holidays": "祝日",
+      "ageCalculator": "年齢計算機",
+      "yearProgress": "年間進捗",
+      "glossary": "用語集"
+    }
+  },
+  "home": {
+    "title": "世界各地の現在時刻",
+    "localTime": "あなたの現地時間",
+    "timeZone": "タイムゾーン",
+    "tabs": {
+      "currentTime": "現在時刻",
+      "worldClock": "世界時計",
+      "calendar": "カレンダー",
+      "converter": "コンバーター",
+      "timer": "タイマー",
+      "sunTimes": "日の出・日の入り"
+    },
+    "sections": {
+      "worldClock": "世界時計",
+      "calendar": "カレンダー",
+      "timeZoneConverter": "タイムゾーンコンバーター",
+      "countdownTimer": "カウントダウンタイマー",
+      "sunriseSunset": "日の出・日の入り"
+    },
+    "labels": {
+      "timezoneInfo": "タイムゾーン情報",
+      "unixTimestamp": "Unixタイムスタンプ",
+      "utcTime": "UTC時間",
+      "isoFormat": "ISO形式",
+      "addTimezone": "タイムゾーンを追加",
+      "selectTimezone": "タイムゾーンを選択",
+      "cancel": "キャンセル",
+      "fromTimezone": "変換元タイムゾーン",
+      "toTimezone": "変換先タイムゾーン",
+      "date": "日付",
+      "time": "時刻",
+      "convert": "変換",
+      "convertedTime": "変換後時刻",
+      "hours": "時間",
+      "minutes": "分",
+      "seconds": "秒",
+      "start": "開始",
+      "pause": "一時停止",
+      "reset": "リセット",
+      "timeRemaining": "残り時間",
+      "getSunTimes": "日の出・日の入り時刻を取得（現在地を使用）",
+      "loading": "読み込み中...",
+      "sunrise": "日の出",
+      "sunset": "日の入り",
+      "toggleTheme": "テーマ切り替え",
+      "dst": "夏時間",
+      "clockSynchronized": "時計同期済み (±{offset}ms)",
+      "clockOffset": "時計が約{seconds}秒ズレています",
+      "learnAboutUtc": "UTCについて"
+    },
+    "tools": {
+      "title": "時間ツール",
+      "yearProgress": "年間進捗バー",
+      "ageCalculator": "年齢計算機",
+      "utcTime": "UTC時間",
+      "worldHolidays": "世界の祝日"
+    },
+    "cityTimes": {
+      "title": "世界都市の時間"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "utcGmt": {
+        "question": "UTC/GMT時間とは何ですか？",
+        "answer": "UTC（協定世界時）は、世界が時計と時間を調整する主要な時間標準です。GMT（グリニッジ標準時）に似ていますが、原子時計を使用してより正確に定義されています。UTCは、インターネット、国際通信、航空で使用される時間標準です。"
+      },
+      "timezones": {
+        "question": "タイムゾーンはどのように機能しますか？",
+        "answer": "タイムゾーンは、統一された標準時間を観測する地球上の地域です。通常、UTCからのオフセットとして定義され、一般的に1時間単位の増分です。たとえば、東部標準時（EST）はUTC-5で、UTCより5時間遅れていることを意味します。タイムゾーンは、政治的境界および地理的境界の影響を受けながら、大きな地理的地域内で時間を標準化するために作成されました。"
+      },
+      "unixTimestamp": {
+        "question": "Unixタイムスタンプとは何ですか？",
+        "answer": "Unixタイムスタンプ（Unix時間またはPOSIX時間とも呼ばれる）は、1970年1月1日00:00:00 UTCから経過した秒数を、うるう秒を除いて表します。コンピュータシステムとプログラミングで、タイムゾーンに依存しない時間追跡の標準化された方法として広く使用されています。Unixタイムスタンプは時間差の計算を容易にし、カレンダー規約に依存しません。"
+      },
+      "clockAccuracy": {
+        "question": "この時計はどの程度正確ですか？",
+        "answer": "この時計の精度は、デバイスのシステムクロックとインターネット接続に依存します。最も正確な時間を表示するよう努めていますが、ネットワーク遅延やデバイスのクロック同期により、わずかな変動がある場合があります。ほとんどの日常的な用途では、表示される時間は実際の時間から数秒以内で正確である必要があります。ミリ秒の精度を必要とするアプリケーションでは、専門的な時間サーバーを使用する必要があります。"
+      },
+      "iso8601": {
+        "question": "ISO 8601形式とは何ですか？",
+        "answer": "ISO 8601は、日付と時刻を表現するための国際標準です。YYYY-MM-DDTHH:MM:SS.sssZ形式に従います。ここで：YYYY-MM-DDは日付（年、月、日）を表し、Tは日付と時刻の間の区切り文字、HH:MM:SS.sssは時刻（時、分、秒、ミリ秒）を表し、Zは時刻がUTCであることを示します（または+01:00のようにオフセットを指定できます）。この形式は国際通信における曖昧さを排除し、コンピューティングで広く使用されています。"
+      },
+      "daylightSaving": {
+        "question": "夏時間とは何ですか？",
+        "answer": "夏時間（DST）は、暖かい月に時計を進めて、時計によると暗闇が1日の遅い時間に落ちるようにする慣行です。通常、夏時間を観測する地域は、春に時計を1時間進め（「春に進む」）、秋に戻します（「秋に戻る」）。主な目的は、夕方の時間中に自然光をより良く利用することです。すべての国が夏時間を観測するわけではなく、開始日と終了日は地域によって異なります。"
+      },
+      "timezoneConversion": {
+        "question": "タイムゾーン間で時間を変換するにはどうすればよいですか？",
+        "answer": "タイムゾーン間で時間を変換するには：1）ソースと宛先タイムゾーンのUTCオフセットを決定し、2）そのオフセットを加算または減算してソース時間をUTCに変換し、3）宛先タイムゾーンのオフセットを加算または減算してUTCから宛先タイムゾーンに変換します。たとえば、ニューヨーク時間午後3:00（UTC-5）をロンドン時間（UTC+0）に変換するには、5時間を加算してロンドン時間午後8:00を取得します。該当する場合は夏時間を考慮することを忘れないでください。UTCオフセットを一時的に変更する場合があります。"
+      }
+    }
+  },
+  "utc": {
+    "title": "UTC時間",
+    "description": "協定世界時（UTC）- 主要な時間標準"
+  },
+  "holidays": {
+    "title": "世界の祝日",
+    "description": "さまざまな国の祝日や記念日を発見する"
+  },
+  "ageCalculator": {
+    "title": "年齢計算機",
+    "description": "年、月、日での正確な年齢を計算",
+    "pageTitle": "年齢計算機",
+    "subtitle": "年、月、日などで正確な年齢を計算 - 柔軟な日付入力オプション付き",
+    "calculateYourAge": "年齢を計算",
+    "enterBirthDate": "生年月日を入力",
+    "calculateAgeAsOf": "指定日時点での年齢計算",
+    "ageResults": "年齢結果",
+    "aboutAgeCalculation": "年齢計算について",
+    "calendarPrecision": "カレンダー精度",
+    "realTimeUpdates": "リアルタイム更新",
+    "faqTitle": "年齢計算機 - よくある質問",
+    "inputMethods": {
+      "calendar": "カレンダー",
+      "manual": "手動入力"
+    },
+    "labels": {
+      "year": "年",
+      "month": "月",
+      "day": "日",
+      "useCustomDate": "カスタム日付を使用",
+      "calculateAge": "年齢を計算",
+      "updateTargetDate": "対象日を更新",
+      "selectedDate": "選択された日付",
+      "targetDate": "対象日",
+      "currentDateTime": "現在の日時",
+      "updatesInRealTime": "リアルタイム更新",
+      "asOf": "{date}時点",
+      "years": "年",
+      "months": "か月",
+      "days": "日",
+      "hours": "時間",
+      "nextBirthday": "次の誕生日",
+      "nextBirthdayText": "{days}日後に{age}歳になります（{date}）",
+      "yearsInDecimalFormat": "年（小数形式）"
+    },
+    "tabs": {
+      "standard": "標準",
+      "detailed": "詳細",
+      "decimal": "小数"
+    },
+    "formatted": {
+      "age": "年齢：{age}",
+      "yearsSuffix": "歳",
+      "monthsSuffix": "か月",
+      "daysSuffix": "日"
+    },
+    "info": {
+      "calendarPrecisionDesc": "私たちの年齢計算機は、うるう年、異なる月の長さ、夏時間の変更を考慮して、可能な限り正確な計算を提供します。",
+      "realTimeUpdatesDesc": "生年月日を選択すると、計算機はリアルタイムで更新され、時間が経つにつれて秒単位まで年齢を表示します。"
+    },
+    "errors": {
+      "validNumbers": "年、月、日に有効な数値を入力してください",
+      "yearRange": "1900年から現在の年の間の年を入力してください",
+      "monthRange": "1から12の間の月を入力してください",
+      "dayRange": "1から31の間の日を入力してください",
+      "invalidDate": "入力された日付が無効です",
+      "futureDate": "生年月日は未来の日付にできません",
+      "unknownError": "不明なエラーが発生しました"
+    },
+    "faqs": {
+      "howCalculated": {
+        "question": "年齢はどのように計算されますか？",
+        "answer": "年齢は、あなたの生年月日と現在の日付（またはあなたが指定したカスタム日付）の間の経過時間を決定することで計算されます。私たちの計算機は、年、月、日、時、分、秒で正確な年齢を提供します。精度を確保するため、うるう年、異なる月の長さ、その他のカレンダーの複雑さを考慮しています。"
+      },
+      "differFromOthers": {
+        "question": "なぜ他の計算機と年齢計算が異なる場合があるのですか？",
+        "answer": "年齢計算は、部分的な月や日の処理方法により、異なる計算機間で若干異なる場合があります。一部の計算機は最も近い年に四捨五入する場合がありますが、私たちの計算機（のような他の計算機）は月と日を含むより詳細な内訳を提供します。私たちの計算機は、うるう年と異なる月の長さを考慮した正確なアルゴリズムを使用しています。"
+      },
+      "customDates": {
+        "question": "2つの特定の日付間の年齢を計算できますか？",
+        "answer": "はい！私たちの計算機では、任意の2つの日付間の年齢を計算できます。生年月日を入力し、'カスタム日付を使用'オプションを切り替えて年齢計算の対象日を指定するだけです。これは、特定の日付での年齢（過去または未来）を決定するのに便利です。"
+      },
+      "enterBirthDate": {
+        "question": "生年月日はどのように入力しますか？",
+        "answer": "生年月日の入力には2つのオプションがあります：カレンダーピッカーを使用するか手動入力です。カレンダーピッカーでは視覚的に日付を選択でき、手動入力では年、月、日を直接入力できます。あなたにとってより便利な方法を選択してください。"
+      },
+      "howAccurate": {
+        "question": "年齢計算はどの程度正確ですか？",
+        "answer": "私たちの年齢計算機は秒単位まで正確です。（現在の日付を使用する場合）リアルタイムで更新され、うるう年、異なる月の長さ、夏時間の変更を考慮します。ほとんどの実用的な目的には、この精度レベルで十分以上です。"
+      },
+      "decimalAge": {
+        "question": "小数年齢とは何ですか？",
+        "answer": "小数年齢は、年、月、日を別々に表示するのではなく、小数部分を持つ単一の数値としてあなたの年齢を表します。例えば、25.75年は25歳9か月を意味します（0.75年は約9か月に相当するため）。この形式は科学的または医学的な文脈で時々使用されます。"
+      },
+      "whyNeedExact": {
+        "question": "なぜ正確な年齢を知る必要があるのですか？",
+        "answer": "正確な年齢を知ることは、様々な目的に有用です：医学的評価、占星術的計算、法的文書、または単純に好奇心を満たすため。一部の文化では、正確な計算が必要な特定の年齢の節目も祝います。"
+      },
+      "noNextBirthday": {
+        "question": "カスタム日付を使用している時に次の誕生日情報が表示されないのはなぜですか？",
+        "answer": "次の誕生日の計算は現在の日付に基づいており、今日からあなたの次の誕生日まで何日あるかを表示します。カスタム対象日を使用している場合、あなたが指定したカスタム日付には関連がないため、この情報は表示されません。"
+      }
+    }
+  },
+  "yearProgress": {
+    "title": "年間進捗",
+    "description": "現在の年の進捗を追跡",
+    "pageTitle": "年間進捗バー {year}",
+    "subtitle": "{year}年は{progress}%完了しました",
+    "progressTitle": "年間進捗",
+    "toggleTheme": "テーマを切り替え",
+    "viewOtherYears": "他の年の進捗を表示：",
+    "faqTitle": "年間進捗 - よくある質問",
+    "faqs": {
+      "howCalculated": {
+        "question": "年間進捗はどのように計算されますか？",
+        "answer": "年間進捗は、年の何パーセントが経過したかを決定することで計算されます。現在の日付と時刻を取得し、現在の年1月1日から経過したミリ秒数を計算し、それをその年の総ミリ秒数で割ります。"
+      },
+      "isAccurate": {
+        "question": "年間進捗の計算は正確ですか？",
+        "answer": "はい、私たちの計算はうるう年を考慮し、秒単位で正確です。ページを見ている間、進捗はリアルタイムで更新されます。"
+      },
+      "differentYear": {
+        "question": "異なる年の進捗を確認できますか？",
+        "answer": "はい、URLを/year-progress-bar/yearに変更することで、任意の年の進捗を表示できます。たとえば2025年の進捗を見る場合は、/year-progress-bar/2025を使用します。"
+      },
+      "whyTrack": {
+        "question": "なぜ年間進捗を追跡するのですか？",
+        "answer": "年間進捗を追跡することは、時間の意識、目標設定、計画立案に役立ちます。年のどの程度が経過し、年間目標を達成するためにどの程度の時間が残っているかの視覚的リマインダーを提供します。"
+      }
+    }
+  },
+  "cities": {
+    "pageTitle": "{cityName}の現在時刻",
+    "timezoneLabel": "{timezone}タイムゾーン",
+    "timezoneInfo": "タイムゾーン情報",
+    "unixTimestamp": "Unixタイムスタンプ",
+    "utcTime": "UTC時間",
+    "isoFormat": "ISO形式",
+    "cityInfo": "都市情報",
+    "country": "国",
+    "timezone": "タイムゾーン",
+    "coordinates": "座標",
+    "population": "人口",
+    "faq": "よくある質問",
+    "clockSynchronized": "時計が同期されました (±{offset}ms)",
+    "clockOffset": "時計のずれ約{seconds}秒",
+    "copyToClipboard": "クリップボードにコピー",
+    "enterFullscreen": "フルスクリーンに入る",
+    "toggleTheme": "テーマを切り替え",
+    "faqQuestions": {
+      "currentTime": "{cityName}の現在時刻は何時ですか？",
+      "utcDifference": "{cityName}とUTCの時差はどのくらいですか？",
+      "daylightSaving": "{cityName}は夏時間を採用していますか？"
+    },
+    "faqAnswers": {
+      "currentTime": "{cityName}、{country}の現在の現地時間は{currentTime}です。{cityName}は{timezone}タイムゾーンにあります。",
+      "utcDifference": "{cityName}は{timezone}時間に従います。UTCからの現在のオフセットは{offset}時間です。",
+      "daylightSaving": "これは{country}の地域規制によります。現在時刻は{currentTime}で、該当する場合は夏時間に自動的に調整されます。"
+    },
+    "cityNames": {
+      "new-york": "ニューヨーク",
+      "london": "ロンドン",
+      "tokyo": "東京",
+      "shanghai": "上海",
+      "beijing": "北京",
+      "seoul": "ソウル",
+      "kolkata": "コルカタ",
+      "dubai": "ドバイ",
+      "cairo": "カイロ",
+      "moscow": "モスクワ",
+      "istanbul": "イスタンブール",
+      "paris": "パリ",
+      "sydney": "シドニー"
+    },
+    "countryNames": {
+      "United States": "アメリカ合衆国",
+      "United Kingdom": "イギリス",
+      "Japan": "日本",
+      "China": "中国",
+      "South Korea": "韓国",
+      "India": "インド",
+      "United Arab Emirates": "アラブ首長国連邦",
+      "Egypt": "エジプト",
+      "Russia": "ロシア",
+      "Turkey": "トルコ",
+      "France": "フランス",
+      "Australia": "オーストラリア"
+    }
+  }
+}

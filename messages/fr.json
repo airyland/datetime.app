@@ -1,0 +1,296 @@
+{
+  "common": {
+    "title": "Horloge Mondiale et Heure",
+    "description": "Heure actuelle dans le monde, heure UTC, jours fériés et calculateur d'âge",
+    "nav": {
+      "home": "Accueil",
+      "utc": "Heure UTC",
+      "holidays": "Jours Fériés",
+      "ageCalculator": "Calculateur d'Âge",
+      "yearProgress": "Progrès de l'Année",
+      "glossary": "Glossaire"
+    }
+  },
+  "home": {
+    "title": "Heure Actuelle dans le Monde",
+    "localTime": "Votre Heure Locale",
+    "timeZone": "Fuseau Horaire",
+    "tabs": {
+      "currentTime": "Heure Actuelle",
+      "worldClock": "Horloge Mondiale",
+      "calendar": "Calendrier",
+      "converter": "Convertisseur",
+      "timer": "Minuteur",
+      "sunTimes": "Heures du Soleil"
+    },
+    "sections": {
+      "worldClock": "Horloge Mondiale",
+      "calendar": "Calendrier",
+      "timeZoneConverter": "Convertisseur de Fuseau Horaire",
+      "countdownTimer": "Minuteur de Compte à Rebours",
+      "sunriseSunset": "Lever et Coucher du Soleil"
+    },
+    "labels": {
+      "timezoneInfo": "Information sur le Fuseau Horaire",
+      "unixTimestamp": "Horodatage Unix",
+      "utcTime": "Heure UTC",
+      "isoFormat": "Format ISO",
+      "addTimezone": "Ajouter un Fuseau Horaire",
+      "selectTimezone": "Sélectionner un Fuseau Horaire",
+      "cancel": "Annuler",
+      "fromTimezone": "Du Fuseau Horaire",
+      "toTimezone": "Vers le Fuseau Horaire",
+      "date": "Date",
+      "time": "Heure",
+      "convert": "Convertir",
+      "convertedTime": "Heure Convertie",
+      "hours": "Heures",
+      "minutes": "Minutes",
+      "seconds": "Secondes",
+      "start": "Démarrer",
+      "pause": "Pause",
+      "reset": "Réinitialiser",
+      "timeRemaining": "Temps Restant",
+      "getSunTimes": "Obtenir les Heures du Soleil (Utiliser Ma Position)",
+      "loading": "Chargement...",
+      "sunrise": "Lever du Soleil",
+      "sunset": "Coucher du Soleil",
+      "toggleTheme": "Basculer le thème",
+      "dst": "Heure d'été",
+      "clockSynchronized": "Horloge synchronisée (±{offset}ms)",
+      "clockOffset": "Décalage d'environ {seconds} secondes",
+      "learnAboutUtc": "En savoir plus sur UTC"
+    },
+    "tools": {
+      "title": "Outils de Temps",
+      "yearProgress": "Barre de Progrès de l'Année",
+      "ageCalculator": "Calculateur d'Âge",
+      "utcTime": "Heure UTC",
+      "worldHolidays": "Jours Fériés Mondiaux"
+    },
+    "cityTimes": {
+      "title": "Heures des Villes du Monde"
+    },
+    "faq": {
+      "title": "Questions Fréquemment Posées",
+      "utcGmt": {
+        "question": "Qu'est-ce que l'heure UTC/GMT ?",
+        "answer": "UTC (Temps Universel Coordonné) est la norme de temps primaire par laquelle le monde règle les horloges et le temps. Il est similaire à GMT (Temps Moyen de Greenwich) mais défini plus précisément en utilisant des horloges atomiques. UTC est la norme de temps utilisée par Internet, les communications internationales et l'aviation."
+      },
+      "timezones": {
+        "question": "Comment fonctionnent les fuseaux horaires ?",
+        "answer": "Les fuseaux horaires sont des régions de la Terre qui observent un temps standard uniforme. Ils sont généralement définis comme des décalages par rapport à UTC, typiquement par incréments d'heures entières. Par exemple, l'Heure Standard de l'Est (EST) est UTC-5, ce qui signifie qu'elle est 5 heures derrière UTC. Les fuseaux horaires ont été créés pour standardiser le temps dans de grandes zones géographiques, souvent influencés par les frontières politiques ainsi que géographiques."
+      },
+      "unixTimestamp": {
+        "question": "Qu'est-ce qu'un horodatage Unix ?",
+        "answer": "Un horodatage Unix (également connu sous le nom de temps Unix ou temps POSIX) représente le nombre de secondes écoulées depuis le 1er janvier 1970, 00:00:00 UTC, sans compter les secondes intercalaires. Il est largement utilisé dans les systèmes informatiques et la programmation comme un moyen standardisé de suivre le temps qui est indépendant du fuseau horaire. Les horodatages Unix facilitent le calcul des différences de temps et sont indépendants des conventions de calendrier."
+      },
+      "clockAccuracy": {
+        "question": "Quelle est la précision de cette horloge ?",
+        "answer": "La précision de cette horloge dépend de l'horloge système de votre appareil et de la connexion Internet. Bien que nous nous efforcions d'afficher l'heure la plus précise, il peut y avoir de légères variations dues à la latence du réseau ou à la synchronisation de l'horloge de votre appareil. Pour la plupart des usages quotidiens, l'heure affichée devrait être précise à quelques secondes près de l'heure réelle. Pour les applications nécessitant une précision en millisecondes, des serveurs de temps spécialisés doivent être utilisés."
+      },
+      "iso8601": {
+        "question": "Qu'est-ce que le format ISO 8601 ?",
+        "answer": "ISO 8601 est une norme internationale pour représenter les dates et heures. Il suit le format YYYY-MM-DDTHH:MM:SS.sssZ où : YYYY-MM-DD représente la date (année, mois, jour), T est un séparateur entre la date et l'heure, HH:MM:SS.sss représente l'heure (heures, minutes, secondes et millisecondes), Z indique que l'heure est en UTC (ou un décalage peut être spécifié comme +01:00). Ce format élimine les ambiguïtés dans la communication internationale et est largement utilisé en informatique."
+      },
+      "daylightSaving": {
+        "question": "Qu'est-ce que l'heure d'été ?",
+        "answer": "L'heure d'été (DST) est la pratique consistant à avancer les horloges pendant les mois les plus chauds pour que l'obscurité tombe plus tard dans la journée selon l'horloge. Typiquement, les régions qui observent l'heure d'été avancent leurs horloges d'une heure au printemps ('avancer au printemps') et les reculent en automne ('reculer en automne'). Le but principal est de mieux utiliser la lumière naturelle pendant les heures du soir. Tous les pays n'observent pas l'heure d'été, et les dates de début et de fin varient selon la région."
+      },
+      "timezoneConversion": {
+        "question": "Comment convertir l'heure entre les fuseaux horaires ?",
+        "answer": "Pour convertir l'heure entre les fuseaux horaires, vous devez : 1) Déterminer les décalages UTC des fuseaux horaires source et de destination, 2) Convertir l'heure source en UTC en ajoutant ou soustrayant son décalage, 3) Convertir d'UTC vers le fuseau horaire de destination en ajoutant ou soustrayant le décalage du fuseau horaire de destination. Par exemple, pour convertir 15h00 heure de New York (UTC-5) en heure de Londres (UTC+0), vous ajouteriez 5 heures pour obtenir 20h00 heure de Londres. N'oubliez pas de considérer l'heure d'été le cas échéant, car elle peut temporairement changer les décalages UTC."
+      }
+    }
+  },
+  "utc": {
+    "title": "Heure UTC",
+    "description": "Temps Universel Coordonné (UTC) - la norme de temps principale"
+  },
+  "holidays": {
+    "title": "Jours Fériés du Monde",
+    "description": "Découvrez les jours fériés et célébrations de différents pays"
+  },
+  "ageCalculator": {
+    "title": "Calculateur d'Âge",
+    "description": "Calculez votre âge exact en années, mois et jours",
+    "pageTitle": "Calculateur d'Âge",
+    "subtitle": "Calculez votre âge exact en années, mois, jours et plus - avec des options flexibles de saisie de date",
+    "calculateYourAge": "Calculer Votre Âge",
+    "enterBirthDate": "Entrez Votre Date de Naissance",
+    "calculateAgeAsOf": "Calculer l'Âge au",
+    "ageResults": "Résultats de l'Âge",
+    "aboutAgeCalculation": "À Propos du Calcul de l'Âge",
+    "calendarPrecision": "Précision du Calendrier",
+    "realTimeUpdates": "Mises à Jour en Temps Réel",
+    "faqTitle": "Calculateur d'Âge - Questions Fréquemment Posées",
+    "inputMethods": {
+      "calendar": "Calendrier",
+      "manual": "Saisie Manuelle"
+    },
+    "labels": {
+      "year": "Année",
+      "month": "Mois", 
+      "day": "Jour",
+      "useCustomDate": "Utiliser une date personnalisée",
+      "calculateAge": "Calculer l'Âge",
+      "updateTargetDate": "Mettre à Jour la Date Cible",
+      "selectedDate": "Date sélectionnée",
+      "targetDate": "Date cible",
+      "currentDateTime": "Date et Heure Actuelles",
+      "updatesInRealTime": "Se met à jour en temps réel",
+      "asOf": "Au {date}",
+      "years": "Années",
+      "months": "Mois", 
+      "days": "Jours",
+      "hours": "Heures",
+      "nextBirthday": "Prochain Anniversaire",
+      "nextBirthdayText": "Vous aurez {age} ans dans {days} jours ({date})",
+      "yearsInDecimalFormat": "Années en format décimal"
+    },
+    "tabs": {
+      "standard": "Standard",
+      "detailed": "Détaillé", 
+      "decimal": "Décimal"
+    },
+    "formatted": {
+      "age": "Âge : {age}",
+      "yearsSuffix": "a",
+      "monthsSuffix": "m", 
+      "daysSuffix": "j"
+    },
+    "info": {
+      "calendarPrecisionDesc": "Notre calculateur d'âge tient compte des années bissextiles, des différentes durées de mois et des changements d'heure d'été pour fournir le calcul le plus précis possible.",
+      "realTimeUpdatesDesc": "Une fois que vous sélectionnez votre date de naissance, le calculateur se met à jour en temps réel, affichant votre âge à la seconde près au fil du temps."
+    },
+    "errors": {
+      "validNumbers": "Veuillez entrer des nombres valides pour l'année, le mois et le jour",
+      "yearRange": "Veuillez entrer une année entre 1900 et l'année actuelle",
+      "monthRange": "Veuillez entrer un mois entre 1 et 12",
+      "dayRange": "Veuillez entrer un jour entre 1 et 31",
+      "invalidDate": "La date que vous avez entrée n'est pas valide",
+      "futureDate": "La date de naissance ne peut pas être dans le futur",
+      "unknownError": "Une erreur inconnue s'est produite"
+    },
+    "faqs": {
+      "howCalculated": {
+        "question": "Comment l'âge est-il calculé ?",
+        "answer": "L'âge est calculé en déterminant le temps écoulé entre votre date de naissance et la date actuelle (ou une date personnalisée que vous spécifiez). Notre calculateur fournit l'âge précis en années, mois, jours, heures, minutes et secondes. Nous tenons compte des années bissextiles, des différentes durées de mois et d'autres complexités du calendrier pour assurer la précision."
+      },
+      "differFromOthers": {
+        "question": "Pourquoi mon calcul d'âge peut-il différer d'autres calculateurs ?",
+        "answer": "Les calculs d'âge peuvent varier légèrement entre différents calculateurs en raison de la façon dont ils gèrent les mois et jours partiels. Certains calculateurs peuvent arrondir à l'année la plus proche, tandis que d'autres (comme le nôtre) fournissent une répartition plus détaillée incluant les mois et les jours. Notre calculateur utilise des algorithmes précis pour tenir compte des années bissextiles et des différentes durées de mois."
+      },
+      "customDates": {
+        "question": "Puis-je calculer l'âge entre deux dates spécifiques ?",
+        "answer": "Oui ! Notre calculateur vous permet de calculer l'âge entre deux dates quelconques. Entrez simplement votre date de naissance puis activez l'option 'Utiliser une date personnalisée' pour spécifier la date cible pour le calcul de l'âge. Ceci est utile pour déterminer quel âge vous aviez (ou aurez) à une date spécifique."
+      },
+      "enterBirthDate": {
+        "question": "Comment entrer ma date de naissance ?",
+        "answer": "Vous avez deux options pour entrer votre date de naissance : utiliser le sélecteur de calendrier ou la saisie manuelle. Le sélecteur de calendrier vous permet de sélectionner une date visuellement, tandis que la saisie manuelle vous permet de taper directement l'année, le mois et le jour. Choisissez la méthode qui vous convient le mieux."
+      },
+      "howAccurate": {
+        "question": "Quelle est la précision du calcul de l'âge ?",
+        "answer": "Notre calculateur d'âge est précis à la seconde près. Il se met à jour en temps réel (lors de l'utilisation de la date actuelle) et tient compte des années bissextiles, des différentes durées de mois et des changements d'heure d'été. Pour la plupart des usages pratiques, ce niveau de précision est largement suffisant."
+      },
+      "decimalAge": {
+        "question": "Qu'est-ce que l'âge décimal ?",
+        "answer": "L'âge décimal représente votre âge comme un seul nombre avec une portion décimale, plutôt que des années, mois et jours séparés. Par exemple, 25,75 ans signifie que vous avez 25 ans et 9 mois (puisque 0,75 an équivaut à environ 9 mois). Ce format est parfois utilisé dans des contextes scientifiques ou médicaux."
+      },
+      "whyNeedExact": {
+        "question": "Pourquoi aurais-je besoin de connaître mon âge exact ?",
+        "answer": "Connaître votre âge exact peut être utile pour diverses raisons : évaluations médicales, calculs astrologiques, documentation légale, ou simplement pour satisfaire la curiosité. Certaines cultures célèbrent également des étapes d'âge spécifiques qui nécessitent un calcul précis."
+      },
+      "noNextBirthday": {
+        "question": "Pourquoi l'information du Prochain Anniversaire n'apparaît-elle pas lors de l'utilisation d'une date personnalisée ?",
+        "answer": "Le calcul du Prochain Anniversaire est basé sur la date actuelle et montre combien de jours il reste jusqu'à votre prochain anniversaire à partir d'aujourd'hui. Lors de l'utilisation d'une date cible personnalisée, cette information n'est pas affichée car elle ne serait pas pertinente pour la date personnalisée que vous avez spécifiée."
+      }
+    }
+  },
+  "yearProgress": {
+    "title": "Progrès de l'Année",
+    "description": "Suivre le progrès de l'année actuelle",
+    "pageTitle": "Barre de Progrès de l'Année {year}",
+    "subtitle": "L'année {year} est à {progress}% terminée",
+    "progressTitle": "Progrès de l'Année",
+    "toggleTheme": "Basculer le thème",
+    "viewOtherYears": "Voir le progrès d'autres années :",
+    "faqTitle": "Progrès de l'Année - Questions Fréquemment Posées",
+    "faqs": {
+      "howCalculated": {
+        "question": "Comment le progrès de l'année est-il calculé ?",
+        "answer": "Le progrès de l'année est calculé en déterminant quel pourcentage de l'année s'est écoulé. Nous prenons la date et l'heure actuelles, calculons combien de millisecondes se sont écoulées depuis le 1er janvier de l'année en cours, et le divisons par le nombre total de millisecondes dans l'année."
+      },
+      "isAccurate": {
+        "question": "Le calcul du progrès de l'année est-il précis ?",
+        "answer": "Oui, notre calcul tient compte des années bissextiles et est précis à la seconde près. Le progrès se met à jour en temps réel pendant que vous regardez la page."
+      },
+      "differentYear": {
+        "question": "Puis-je vérifier le progrès d'une année différente ?",
+        "answer": "Oui, vous pouvez voir le progrès de n'importe quelle année en modifiant l'URL en /year-progress-bar/year. Par exemple, pour voir le progrès de 2025, vous utiliseriez /year-progress-bar/2025."
+      },
+      "whyTrack": {
+        "question": "Pourquoi suivre le progrès de l'année ?",
+        "answer": "Suivre le progrès de l'année peut aider à la conscience du temps, à la définition d'objectifs et à la planification. Il fournit un rappel visuel de combien de l'année s'est écoulée et combien de temps il reste pour atteindre les objectifs annuels."
+      }
+    }
+  },
+  "cities": {
+    "pageTitle": "Heure Actuelle à {cityName}",
+    "timezoneLabel": "Fuseau Horaire {timezone}",
+    "timezoneInfo": "Information sur le Fuseau Horaire",
+    "unixTimestamp": "Horodatage Unix",
+    "utcTime": "Heure UTC",
+    "isoFormat": "Format ISO",
+    "cityInfo": "Information sur la Ville",
+    "country": "Pays",
+    "timezone": "Fuseau Horaire",
+    "coordinates": "Coordonnées",
+    "population": "Population",
+    "faq": "Questions Fréquemment Posées",
+    "clockSynchronized": "Horloge synchronisée (±{offset}ms)",
+    "clockOffset": "Décalage de l'horloge d'environ {seconds} secondes",
+    "copyToClipboard": "Copier dans le presse-papiers",
+    "enterFullscreen": "Entrer en plein écran",
+    "toggleTheme": "Basculer le thème",
+    "faqQuestions": {
+      "currentTime": "Quelle heure est-il maintenant à {cityName} ?",
+      "utcDifference": "Quelle est la différence horaire entre {cityName} et UTC ?",
+      "daylightSaving": "{cityName} observe-t-elle l'heure d'été ?"
+    },
+    "faqAnswers": {
+      "currentTime": "L'heure locale actuelle à {cityName}, {country} est {currentTime}. {cityName} se trouve dans le fuseau horaire {timezone}.",
+      "utcDifference": "{cityName} suit l'heure {timezone}. Le décalage actuel par rapport à UTC est de {offset} heures.",
+      "daylightSaving": "Cela dépend des réglementations locales de {country}. L'heure actuelle est {currentTime}, qui s'ajuste automatiquement à l'heure d'été le cas échéant."
+    },
+    "cityNames": {
+      "new-york": "New York",
+      "london": "Londres",
+      "tokyo": "Tokyo",
+      "shanghai": "Shanghai",
+      "beijing": "Pékin",
+      "seoul": "Séoul",
+      "kolkata": "Calcutta",
+      "dubai": "Dubaï",
+      "cairo": "Le Caire",
+      "moscow": "Moscou",
+      "istanbul": "Istanbul",
+      "paris": "Paris",
+      "sydney": "Sydney"
+    },
+    "countryNames": {
+      "United States": "États-Unis",
+      "United Kingdom": "Royaume-Uni",
+      "Japan": "Japon",
+      "China": "Chine",
+      "South Korea": "Corée du Sud",
+      "India": "Inde",
+      "United Arab Emirates": "Émirats Arabes Unis",
+      "Egypt": "Égypte",
+      "Russia": "Russie",
+      "Turkey": "Turquie",
+      "France": "France",
+      "Australia": "Australie"
+    }
+  }
+}
