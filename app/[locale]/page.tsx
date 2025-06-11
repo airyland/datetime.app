@@ -18,6 +18,44 @@ import { FullscreenTime } from '@/components/fullscreen-time'
 import Header from '@/components/header'
 import spacetime from 'spacetime'
 
+// Declare global types for AdSense
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
+
+// AdSense Ad Component
+function AdSenseAd() {
+  const [adLoaded, setAdLoaded] = useState(false);
+
+  useEffect(() => {
+    if (adLoaded) return;
+    
+    try {
+      if (typeof window !== 'undefined' && window.adsbygoogle) {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        setAdLoaded(true);
+      }
+    } catch (error) {
+      console.error('AdSense error:', error);
+    }
+  }, [adLoaded]);
+
+  return (
+    <div className="min-h-[120px]">
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block" }}
+        data-ad-client="ca-pub-8443907573529681"
+        data-ad-slot="7220104721"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+    </div>
+  );
+}
+
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -1013,22 +1051,7 @@ export default function Home() {
          {/* Sponsor Section */}
          <div className="mt-16 max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6 text-center">Sponsor</h2>
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8443907573529681" crossOrigin="anonymous"></script>
-          <div className="min-h-[120px]">
-            <ins
-              className="adsbygoogle"
-              style={{ display: "block" }}
-              data-ad-client="ca-pub-8443907573529681"
-              data-ad-slot="7220104721"
-              data-ad-format="auto"
-              data-full-width-responsive="true"
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `(adsbygoogle = window.adsbygoogle || []).push({});`
-              }}
-            />  
-          </div>
+          <AdSenseAd />
         </div>
 
         {/* FAQ Section */}
