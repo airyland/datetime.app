@@ -90,6 +90,11 @@ export default async function LocaleLayout({
             content={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}
           />
         )}
+        <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8443907573529681"
+          crossOrigin="anonymous"
+        />
         <Analytics />
       </head>
       <body className={spaceGrotesk.className}>
