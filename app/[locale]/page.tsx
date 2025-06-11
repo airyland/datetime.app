@@ -1010,8 +1010,27 @@ export default function Home() {
           </div>
         </div>
 
+         {/* Sponsor Section */}
+         <div className="mt-8 max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6 text-center">Sponsor</h2>
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8443907573529681" crossOrigin="anonymous"></script>
+          <ins
+            className="adsbygoogle"
+            style={{ display: "block" }}
+            data-ad-client="ca-pub-8443907573529681"
+            data-ad-slot="7220104721"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(adsbygoogle = window.adsbygoogle || []).push({});`
+            }}
+          />
+        </div>
+
         {/* FAQ Section */}
-        <div className="mt-8 max-w-3xl mx-auto text-left">
+        <div className="mt-16 max-w-3xl mx-auto text-left">
           <h2 className="text-2xl font-bold mb-6 text-center">{t('faq.title')}</h2>
           <Accordion 
             type="multiple" 
