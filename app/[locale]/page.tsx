@@ -1023,12 +1023,12 @@ export default function Home() {
               data-ad-format="auto"
               data-full-width-responsive="true"
             />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `(adsbygoogle = window.adsbygoogle || []).push({});`
+              }}
+            />  
           </div>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(adsbygoogle = window.adsbygoogle || []).push({});`
-            }}
-          />
         </div>
 
         {/* FAQ Section */}
