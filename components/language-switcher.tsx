@@ -70,11 +70,8 @@ export function LanguageSwitcher() {
 
   return (
     <Select value={currentLocale} onValueChange={handleLocaleChange}>
-      <SelectTrigger className="w-[180px]">
-        <Globe className="w-4 h-4 mr-2" />
-        <SelectValue>
-          {currentLanguage?.name || 'Select Language'}
-        </SelectValue>
+      <SelectTrigger className="w-auto border-none shadow-none p-2 h-auto bg-transparent hover:bg-accent hover:text-accent-foreground">
+        <Globe className="w-4 h-4" />
       </SelectTrigger>
       <SelectContent>
         {languages.map((lang) => (
