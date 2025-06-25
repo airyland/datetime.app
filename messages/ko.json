@@ -292,5 +292,11 @@
       "France": "프랑스",
       "Australia": "호주"
     }
+  },
+  "languageSuggestion": {
+    "title": "언어 제안",
+    "description": "브라우저 언어가 {language}인 것을 감지했습니다. 더 나은 경험을 위해 이 언어로 전환하시겠습니까?",
+    "accept": "네, {language}로 전환",
+    "dismiss": "아니요, 괜찮습니다"
   }
 }

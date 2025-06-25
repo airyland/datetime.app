@@ -292,5 +292,11 @@
       "France": "France",
       "Australia": "Australie"
     }
+  },
+  "languageSuggestion": {
+    "title": "Suggestion de langue",
+    "description": "Nous avons détecté que la langue de votre navigateur est {language}. Souhaitez-vous passer à cette langue pour une meilleure expérience ?",
+    "accept": "Oui, passer au {language}",
+    "dismiss": "Non, merci"
   }
 }

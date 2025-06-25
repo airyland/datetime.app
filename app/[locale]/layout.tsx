@@ -5,6 +5,7 @@ import "../globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Footer } from "@/components/footer"
 import { Analytics } from "@/components/analytics"
+import { LanguageSuggestionModal } from "@/components/language-suggestion-modal"
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -104,6 +105,7 @@ export default async function LocaleLayout({
               {children}
             </main>
             <Footer />
+            <LanguageSuggestionModal />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
