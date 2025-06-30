@@ -72,6 +72,10 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  html {
+    overflow-x: hidden;
   }
 }
 
@@ -80,6 +84,9 @@
   font-family: "JetBrains Mono", monospace;
   letter-spacing: -0.02em;
   line-height: 1;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .font-mono {
@@ -94,5 +101,19 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  
+  /* Prevent overflow on large text elements */
+  .text-responsive {
+    word-break: break-all;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure containers don't cause horizontal overflow */
+  .container-safe {
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 }
