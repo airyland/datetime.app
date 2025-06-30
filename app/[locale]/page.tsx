@@ -108,6 +108,7 @@ const availableTimezones = [
 
 export default function Home() {
   const t = useTranslations('home')
+  const commonT = useTranslations('common')
   const pathname = usePathname()
   
   // Determine current locale from pathname as it's more reliable
@@ -418,12 +419,13 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <Header />
-
+      
       <div className="container mx-auto px-4 flex-grow">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">{commonT('title')}</h1>
         {/* SEO-friendly tabs that keep all content in the DOM */}
         <div className="w-full">
           {/* Tab navigation - improved for small screens */}
-          <div className="flex justify-between md:justify-start md:space-x-4 mb-8 border-b overflow-x-auto no-scrollbar">
+          <div className="flex justify-between md:justify-center md:space-x-4 mb-8 border-b overflow-x-auto no-scrollbar">
             <button
               onClick={() => setActiveTab("current-time")}
               className={`flex items-center justify-center gap-1 px-3 py-2 border-b-2 transition-colors whitespace-nowrap ${
