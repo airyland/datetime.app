@@ -1,5 +1,6 @@
 import { citiesData } from './metadata'
 import { getTranslations } from 'next-intl/server'
+import { locales } from '@/i18n/request'
 
 interface LayoutProps {
   params: { city: string; locale: string };
@@ -41,13 +42,24 @@ export async function generateMetadata({ params }: LayoutProps) {
   const localizedCityName = getLocalizedCityName(city);
   const localizedCountryName = getLocalizedCountryName(cityInfo.country);
   
+  // Generate alternate language links for all supported locales
+  const languages = locales.reduce((acc, loc) => {
+    if (loc === 'en') {
+      acc[loc] = `https://datetime.app/cities/${city}`;
+    } else {
+      acc[loc] = `https://datetime.app/${loc}/cities/${city}`;
+    }
+    return acc;
+  }, {} as Record<string, string>);
+  
   // Generate localized metadata
   if (locale === 'zh-hans') {
     return {
       title: `${localizedCityName}时间 | ${localizedCityName}当前时间`,
       description: `${localizedCityName}, ${localizedCountryName}的当前本地时间（${cityInfo.timezone}时区）`,
       alternates: {
-        canonical: `https://datetime.app/zh-hans/cities/${city}`
+        canonical: `https://datetime.app/zh-hans/cities/${city}`,
+        languages
       }
     };
   }
@@ -57,7 +69,8 @@ export async function generateMetadata({ params }: LayoutProps) {
       title: `${localizedCityName}時間 | ${localizedCityName}當前時間`,
       description: `${localizedCityName}, ${localizedCountryName}的當前本地時間（${cityInfo.timezone}時區）`,
       alternates: {
-        canonical: `https://datetime.app/zh-hant/cities/${city}`
+        canonical: `https://datetime.app/zh-hant/cities/${city}`,
+        languages
       }
     };
   }
@@ -67,7 +80,8 @@ export async function generateMetadata({ params }: LayoutProps) {
     title: `Current Time in ${cityInfo.name}, ${cityInfo.country} | Datetime.app`,
     description: `Current local time in ${cityInfo.name}, ${cityInfo.country} (${cityInfo.timezone} time zone)`,
     alternates: {
-      canonical: `https://datetime.app/cities/${city}`
+      canonical: `https://datetime.app/cities/${city}`,
+      languages
     }
   };
 }
