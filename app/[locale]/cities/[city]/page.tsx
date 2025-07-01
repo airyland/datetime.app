@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { Globe, Clock, AlertCircle, Copy, Check, Maximize2 } from 'lucide-react'
+import { locales } from '@/i18n/request'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { JetBrains_Mono } from "next/font/google"
@@ -360,6 +361,143 @@ export default function CityPage({ params }: CityPageProps) {
           </Card>
         </div>
       </div>
+
+      {/* Language Links Footer */}
+      <footer className="mt-16 border-t border-gray-200 dark:border-gray-800 py-8">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h3 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
+              {t('pageTitle', { cityName: localizedCityName })} in Other Languages
+            </h3>
+            <div className="flex flex-wrap justify-center gap-2">
+              {locales.map((loc) => {
+                const url = loc === 'en' 
+                  ? `/cities/${city}` 
+                  : `/${loc}/cities/${city}`;
+                
+                // Language name mapping
+                const languageNames: Record<string, string> = {
+                  'en': 'English',
+                  'zh-hans': '简体中文',
+                  'zh-hant': '繁體中文',
+                  'ar': 'العربية',
+                  'de': 'Deutsch',
+                  'es': 'Español',
+                  'fr': 'Français',
+                  'hi': 'हिन्दी',
+                  'it': 'Italiano',
+                  'ja': '日本語',
+                  'ko': '한국어',
+                  'pt': 'Português',
+                  'ru': 'Русский'
+                };
+
+                // Static city name translations
+                const cityNameTranslations: Record<string, Record<string, string>> = {
+                  'london': {
+                    'zh-hans': '伦敦',
+                    'zh-hant': '倫敦'
+                  },
+                  'tokyo': {
+                    'zh-hans': '东京',
+                    'zh-hant': '東京'
+                  },
+                  'new-york': {
+                    'zh-hans': '纽约',
+                    'zh-hant': '紐約'
+                  },
+                  'shanghai': {
+                    'zh-hans': '上海',
+                    'zh-hant': '上海'
+                  },
+                  'beijing': {
+                    'zh-hans': '北京',
+                    'zh-hant': '北京'
+                  },
+                  'seoul': {
+                    'zh-hans': '首尔',
+                    'zh-hant': '首爾'
+                  },
+                  'kolkata': {
+                    'zh-hans': '加尔各答',
+                    'zh-hant': '加爾各答'
+                  },
+                  'dubai': {
+                    'zh-hans': '迪拜',
+                    'zh-hant': '杜拜'
+                  },
+                  'cairo': {
+                    'zh-hans': '开罗',
+                    'zh-hant': '開羅'
+                  },
+                  'moscow': {
+                    'zh-hans': '莫斯科',
+                    'zh-hant': '莫斯科'
+                  },
+                  'istanbul': {
+                    'zh-hans': '伊斯坦布尔',
+                    'zh-hant': '伊斯坦堡'
+                  },
+                  'paris': {
+                    'zh-hans': '巴黎',
+                    'zh-hant': '巴黎'
+                  },
+                  'sydney': {
+                    'zh-hans': '悉尼',
+                    'zh-hant': '雪梨'
+                  }
+                };
+
+                // Get city name for each language
+                const getCityNameForLanguage = (targetLocale: string): string => {
+                  const cityTranslation = cityNameTranslations[city];
+                  if (cityTranslation && cityTranslation[targetLocale]) {
+                    return cityTranslation[targetLocale];
+                  }
+                  return cityInfo.name;
+                };
+
+                // Translation mapping for "Current Time in {city}" 
+                const translations: Record<string, string> = {
+                  'en': `Current Time in ${getCityNameForLanguage('en')}`,
+                  'zh-hans': `${getCityNameForLanguage('zh-hans')}当前时间`,
+                  'zh-hant': `${getCityNameForLanguage('zh-hant')}當前時間`,
+                  'ar': `الوقت الحالي في ${getCityNameForLanguage('ar')}`,
+                  'de': `Aktuelle Zeit in ${getCityNameForLanguage('de')}`,
+                  'es': `Hora Actual en ${getCityNameForLanguage('es')}`,
+                  'fr': `Heure Actuelle à ${getCityNameForLanguage('fr')}`,
+                  'hi': `${getCityNameForLanguage('hi')} में वर्तमान समय`,
+                  'it': `Ora attuale a ${getCityNameForLanguage('it')}`,
+                  'ja': `${getCityNameForLanguage('ja')}の現在時刻`,
+                  'ko': `${getCityNameForLanguage('ko')}의 현재 시간`,
+                  'pt': `Hora atual em ${getCityNameForLanguage('pt')}`,
+                  'ru': `Текущее время в ${getCityNameForLanguage('ru')}`
+                };
+
+                return (
+                  <Link
+                    key={loc}
+                    href={url}
+                    className={`inline-block px-3 py-1 text-sm rounded transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${
+                      locale === loc 
+                        ? 'bg-gray-200 dark:bg-gray-700 font-medium' 
+                        : 'text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200'
+                    }`}
+                    title={translations[loc]}
+                    hrefLang={loc}
+                  >
+                    {translations[loc]}
+                    <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">
+                      ({languageNames[loc]})
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </footer>
+
       {isFullscreen && (
         <FullscreenTime 
           time={formattedTime}
