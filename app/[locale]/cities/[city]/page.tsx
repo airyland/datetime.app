@@ -4,7 +4,7 @@ import { useEffect, useState, use } from "react"
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { Globe, Clock, AlertCircle, Copy, Check, Maximize2 } from 'lucide-react'
+import { Globe, Clock, AlertCircle, Copy, Check, Maximize2, Github } from 'lucide-react'
 import { locales } from '@/i18n/request'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
