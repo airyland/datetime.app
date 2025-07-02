@@ -4,7 +4,7 @@ export function SocialLinks() {
   return (
     <div className="flex justify-center items-center gap-4 mb-4">
       <a
-        href="https://github.com/anthropics/claude-code"
+        href="https://github.com/airyland/datetime.app"
         target="_blank"
         rel="noopener noreferrer"
         className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
