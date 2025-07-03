@@ -298,5 +298,67 @@
     "description": "Wir haben erkannt, dass Ihre Browsersprache {language} ist. Möchten Sie zu dieser Sprache wechseln, um eine bessere Erfahrung zu erhalten?",
     "accept": "Ja, zu {language} wechseln",
     "dismiss": "Nein, danke"
+  },
+  "timezones": {
+    "title": "Zeit in {timezone}",
+    "subtitle": "{description}",
+    "currentTime": "Aktuelle Zeit",
+    "worldTimezones": "Weltzeitzonen",
+    "enterFullscreen": "Vollbild öffnen",
+    "copyToClipboard": "In Zwischenablage kopieren",
+    "toggleTheme": "Design wechseln",
+    "unixTimestamp": "Unix-Zeitstempel",
+    "utcString": "UTC-String",
+    "iso8601": "ISO 8601",
+    "viewGlossary": "Unser vollständiges Glossar der Datums- und Zeitkonzepte anzeigen",
+    "faqTitle": "{timezone} Zeit - Häufig gestellte Fragen",
+    "names": {
+      "utc": "Koordinierte Weltzeit",
+      "gmt": "Greenwich-Normalzeit",
+      "cet": "Mitteleuropäische Zeit",
+      "pst": "Pazifische Standardzeit",
+      "mst": "Mountain-Standardzeit",
+      "cst": "Zentrale Standardzeit",
+      "est": "Östliche Standardzeit",
+      "eet": "Osteuropäische Zeit",
+      "ist": "Indische Standardzeit",
+      "china-cst": "Chinesische Standardzeit",
+      "jst": "Japanische Standardzeit",
+      "aest": "Australische Östliche Standardzeit",
+      "sast": "Südafrikanische Standardzeit",
+      "msk": "Moskauer Standardzeit",
+      "nzst": "Neuseeländische Standardzeit"
+    },
+    "descriptions": {
+      "utc": "Weltzeit-Standard",
+      "gmt": "Greenwich-Meridian-Zeit",
+      "cet": "Mitteleuropäische Standardzeit",
+      "pst": "US-Pazifikküsten-Zeit",
+      "mst": "US-Mountain-Zeit",
+      "cst": "US-Zentral-Zeit",
+      "est": "US-Ost-Zeit",
+      "eet": "Osteuropäische Zeit",
+      "ist": "Indische Standardzeit",
+      "china-cst": "Chinesische Standardzeit",
+      "jst": "Japanische Standardzeit",
+      "aest": "Australische Ostzeit",
+      "sast": "Südafrikanische Zeit",
+      "msk": "Moskauer Zeit",
+      "nzst": "Neuseeländische Zeit"
+    },
+    "faqs": {
+      "whatIs": {
+        "question": "Was ist {timezone} Zeit?",
+        "answer": "{timezone} ({abbreviation}) ist {description}. Die aktuelle Zeit ist {currentTime}."
+      },
+      "utcDifference": {
+        "question": "Wie groß ist der Zeitunterschied zwischen {timezone} und UTC?",
+        "answer": "{timezone} ist {offset} von der UTC-Zeit."
+      },
+      "daylightSaving": {
+        "question": "Befolgt {timezone} die Sommerzeit?",
+        "answer": "Dies hängt von der spezifischen Region und den örtlichen Bestimmungen ab. Die angezeigte aktuelle Zeit passt sich automatisch an die Sommerzeit an, wenn zutreffend."
+      }
+    }
   }
 }
