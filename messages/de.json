@@ -5,6 +5,7 @@
     "nav": {
       "home": "Startseite",
       "utc": "UTC-Zeit",
+      "calendar": "Kalender",
       "holidays": "Feiertage",
       "ageCalculator": "Altersrechner",
       "yearProgress": "Jahresfortschritt",
@@ -298,6 +299,92 @@
     "description": "Wir haben erkannt, dass Ihre Browsersprache {language} ist. Möchten Sie zu dieser Sprache wechseln, um eine bessere Erfahrung zu erhalten?",
     "accept": "Ja, zu {language} wechseln",
     "dismiss": "Nein, danke"
+  },
+  "calendar": {
+    "title": "Kalender {year}",
+    "subtitle": "Vollständige Jahreskalender-Ansicht mit Wochennummern",
+    "description": "Betrachten Sie den vollständigen Kalender für {year} mit allen Monaten, Daten und Wochennummern",
+    "currentYear": "Aktuelles Jahr",
+    "leapYear": "Schaltjahr",
+    "regularYear": "Normales Jahr",
+    "weekNumber": "Woche {number}",
+    "weekNumbers": "Wochennummern",
+    "today": "Heute",
+    "viewYear": "Jahr Anzeigen",
+    "previousYear": "Vorheriges Jahr",
+    "nextYear": "Nächstes Jahr",
+    "yearNavigation": "Jahr Navigation",
+    "monthNavigation": "Monat Navigation",
+    "jumpToYear": "Zu Jahr Springen",
+    "toggleTheme": "Design wechseln",
+    "months": {
+      "january": "Januar",
+      "february": "Februar",
+      "march": "März",
+      "april": "April",
+      "may": "Mai",
+      "june": "Juni",
+      "july": "Juli",
+      "august": "August",
+      "september": "September",
+      "october": "Oktober",
+      "november": "November",
+      "december": "Dezember"
+    },
+    "monthsShort": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mär",
+      "apr": "Apr",
+      "may": "Mai",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Aug",
+      "sep": "Sep",
+      "oct": "Okt",
+      "nov": "Nov",
+      "dec": "Dez"
+    },
+    "weekdays": {
+      "sunday": "Sonntag",
+      "monday": "Montag",
+      "tuesday": "Dienstag",
+      "wednesday": "Mittwoch",
+      "thursday": "Donnerstag",
+      "friday": "Freitag",
+      "saturday": "Samstag"
+    },
+    "weekdaysShort": {
+      "sun": "So",
+      "mon": "Mo",
+      "tue": "Di",
+      "wed": "Mi",
+      "thu": "Do",
+      "fri": "Fr",
+      "sat": "Sa"
+    },
+    "info": {
+      "totalDays": "Gesamttage in {year}",
+      "daysPassed": "Vergangene Tage",
+      "daysRemaining": "Verbleibende Tage",
+      "weeksPassed": "Vergangene Wochen",
+      "weeksRemaining": "Verbleibende Wochen"
+    },
+    "faq": {
+      "title": "{year} Kalender - Häufig gestellte Fragen",
+      "whatIsCalendar": {
+        "question": "Was ist ein Jahreskalender?",
+        "answer": "Ein Jahreskalender zeigt alle 12 Monate eines bestimmten Jahres in einem strukturierten Format an, mit Daten, Wochentagen und Wochennummern. Er hilft bei der Terminplanung, Zeitplanung und dem Verständnis der Jahresstruktur."
+      },
+      "weekNumbers": {
+        "question": "Was sind Wochennummern?",
+        "answer": "Wochennummern sind eine Möglichkeit, die Wochen des Jahres von 1 bis 52 (oder 53 in manchen Jahren) zu nummerieren. Die erste Woche des Jahres ist normalerweise die erste Woche, die mindestens vier Tage des neuen Jahres enthält."
+      },
+      "leapYear": {
+        "question": "Was ist ein Schaltjahr?",
+        "answer": "Ein Schaltjahr hat 366 Tage anstatt der üblichen 365. Es tritt alle 4 Jahre auf (mit einigen Ausnahmen) und fügt einen zusätzlichen Tag (29. Februar) hinzu, um unseren Kalender mit der Erdumlaufbahn um die Sonne abzustimmen."
+      }
+    }
   },
   "timezones": {
     "title": "Zeit in {timezone}",

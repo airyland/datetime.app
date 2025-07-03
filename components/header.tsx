@@ -30,6 +30,13 @@ export default function Header() {
           </Link>
           <span className="text-muted-foreground">•</span>
           <Link 
+            href="/calendar/2025" 
+            className="text-sm font-medium hover:opacity-80 transition-opacity"
+          >
+            {commonT('nav.calendar')} 2025
+          </Link>
+          <span className="text-muted-foreground">•</span>
+          <Link 
             href="/holidays" 
             className="text-sm font-medium hover:opacity-80 transition-opacity"
           >
@@ -62,6 +69,13 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               {commonT('nav.utc')}
+            </Link>
+            <Link 
+              href="/calendar/2025" 
+              className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {commonT('nav.calendar')} 2025
             </Link>
             <Link 
               href="/holidays" 

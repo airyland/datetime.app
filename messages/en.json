@@ -5,6 +5,7 @@
     "nav": {
       "home": "Home",
       "utc": "UTC Time",
+      "calendar": "Calendar",
       "holidays": "Holidays",
       "ageCalculator": "Age Calculator",
       "yearProgress": "Year Progress",
@@ -332,6 +333,91 @@
     "description": "We detected that your browser language is {language}. Would you like to switch to this language for a better experience?",
     "accept": "Yes, switch to {language}",
     "dismiss": "No, thanks"
+  },
+  "calendar": {
+    "title": "Calendar {year}",
+    "subtitle": "Full year calendar view with week numbers",
+    "description": "View the complete calendar for {year} with all months, dates, and week numbers",
+    "currentYear": "Current Year",
+    "leapYear": "Leap Year",
+    "regularYear": "Regular Year",
+    "weekNumber": "Week {number}",
+    "today": "Today",
+    "viewYear": "View Year",
+    "previousYear": "Previous Year",
+    "nextYear": "Next Year",
+    "yearNavigation": "Year Navigation",
+    "monthNavigation": "Month Navigation",
+    "jumpToYear": "Jump to Year",
+    "toggleTheme": "Toggle theme",
+    "months": {
+      "january": "January",
+      "february": "February", 
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    },
+    "monthsShort": {
+      "jan": "Jan",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Apr",
+      "may": "May",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Aug",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Dec"
+    },
+    "weekdays": {
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday"
+    },
+    "weekdaysShort": {
+      "sun": "Sun",
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat"
+    },
+    "info": {
+      "totalDays": "Total days in {year}",
+      "daysPassed": "Days passed",
+      "daysRemaining": "Days remaining",
+      "weeksPassed": "Weeks passed",
+      "weeksRemaining": "Weeks remaining"
+    },
+    "faq": {
+      "title": "{year} Calendar - Frequently Asked Questions",
+      "whatIsCalendar": {
+        "question": "What is a yearly calendar?",
+        "answer": "A yearly calendar displays all 12 months of a specific year in a structured format, showing dates, days of the week, and week numbers. It helps with date planning, scheduling, and understanding the year's structure."
+      },
+      "weekNumbers": {
+        "question": "What are week numbers?",
+        "answer": "Week numbers are a way of numbering the weeks of the year from 1 to 52 (or 53 in some years). The first week of the year is typically the first week that contains at least four days of the new year."
+      },
+      "leapYear": {
+        "question": "What is a leap year?",
+        "answer": "A leap year has 366 days instead of the usual 365. It occurs every 4 years (with some exceptions) and adds an extra day (February 29) to keep our calendar aligned with Earth's orbit around the sun."
+      }
+    }
   },
   "timezones": {
     "title": "Time in {timezone}",
