@@ -298,5 +298,67 @@
     "description": "Мы обнаружили, что язык вашего браузера - {language}. Хотели бы вы переключиться на этот язык для лучшего опыта?",
     "accept": "Да, переключить на {language}",
     "dismiss": "Нет, спасибо"
+  },
+  "timezones": {
+    "title": "Time in {timezone}",
+    "subtitle": "{description}",
+    "currentTime": "Current Time",
+    "worldTimezones": "World Timezones",
+    "enterFullscreen": "Enter fullscreen",
+    "copyToClipboard": "Copy to clipboard",
+    "toggleTheme": "Toggle theme",
+    "unixTimestamp": "Unix Timestamp",
+    "utcString": "UTC String",
+    "iso8601": "ISO 8601",
+    "viewGlossary": "View glossary",
+    "faqTitle": "{timezone} Time - FAQ",
+    "names": {
+      "utc": "Coordinated Universal Time",
+      "gmt": "Greenwich Mean Time",
+      "cet": "Central European Time",
+      "pst": "Pacific Standard Time",
+      "mst": "Mountain Standard Time",
+      "cst": "Central Standard Time",
+      "est": "Eastern Standard Time",
+      "eet": "Eastern European Time",
+      "ist": "India Standard Time",
+      "china-cst": "China Standard Time",
+      "jst": "Japan Standard Time",
+      "aest": "Australian Eastern Standard Time",
+      "sast": "South Africa Standard Time",
+      "msk": "Moscow Standard Time",
+      "nzst": "New Zealand Standard Time"
+    },
+    "descriptions": {
+      "utc": "World time standard",
+      "gmt": "Greenwich meridian time",
+      "cet": "Central European standard time",
+      "pst": "US Pacific coast time",
+      "mst": "US Mountain time",
+      "cst": "US Central time",
+      "est": "US Eastern time",
+      "eet": "Eastern European time",
+      "ist": "Indian standard time",
+      "china-cst": "China standard time",
+      "jst": "Japan standard time",
+      "aest": "Australian Eastern time",
+      "sast": "South African time",
+      "msk": "Moscow time",
+      "nzst": "New Zealand time"
+    },
+    "faqs": {
+      "whatIs": {
+        "question": "What is {timezone} time?",
+        "answer": "{timezone} ({abbreviation}) is {description}. Current time is {currentTime}."
+      },
+      "utcDifference": {
+        "question": "What is the time difference between {timezone} and UTC?",
+        "answer": "{timezone} is {offset} from UTC time."
+      },
+      "daylightSaving": {
+        "question": "Does {timezone} observe daylight saving time?",
+        "answer": "This depends on the specific region and local regulations."
+      }
+    }
   }
 }

@@ -298,5 +298,67 @@
     "description": "お使いのブラウザの言語が{language}であることを検出しました。より良い体験のためにこの言語に切り替えますか？",
     "accept": "はい、{language}に切り替える",
     "dismiss": "いいえ、結構です"
+  },
+  "timezones": {
+    "title": "{timezone}の時刻",
+    "subtitle": "{description}",
+    "currentTime": "現在時刻",
+    "worldTimezones": "世界のタイムゾーン",
+    "enterFullscreen": "フルスクリーンに入る",
+    "copyToClipboard": "クリップボードにコピー",
+    "toggleTheme": "テーマを切り替え",
+    "unixTimestamp": "Unixタイムスタンプ",
+    "utcString": "UTC文字列",
+    "iso8601": "ISO 8601",
+    "viewGlossary": "日付と時刻の概念の完全な用語集を表示",
+    "faqTitle": "{timezone}時間 - よくある質問",
+    "names": {
+      "utc": "協定世界時",
+      "gmt": "グリニッジ標準時",
+      "cet": "中央ヨーロッパ時間",
+      "pst": "太平洋標準時",
+      "mst": "山地標準時",
+      "cst": "中部標準時",
+      "est": "東部標準時",
+      "eet": "東ヨーロッパ時間",
+      "ist": "インド標準時",
+      "china-cst": "中国標準時",
+      "jst": "日本標準時",
+      "aest": "オーストラリア東部標準時",
+      "sast": "南アフリカ標準時",
+      "msk": "モスクワ標準時",
+      "nzst": "ニュージーランド標準時"
+    },
+    "descriptions": {
+      "utc": "世界時間標準",
+      "gmt": "グリニッジ子午線時間",
+      "cet": "中央ヨーロッパ標準時",
+      "pst": "米国太平洋岸時間",
+      "mst": "米国山地時間",
+      "cst": "米国中部時間",
+      "est": "米国東部時間",
+      "eet": "東ヨーロッパ時間",
+      "ist": "インド標準時",
+      "china-cst": "中国標準時",
+      "jst": "日本標準時",
+      "aest": "オーストラリア東部時間",
+      "sast": "南アフリカ時間",
+      "msk": "モスクワ時間",
+      "nzst": "ニュージーランド時間"
+    },
+    "faqs": {
+      "whatIs": {
+        "question": "{timezone}時間とは何ですか？",
+        "answer": "{timezone}（{abbreviation}）は{description}です。現在時刻は{currentTime}です。"
+      },
+      "utcDifference": {
+        "question": "{timezone}とUTCの時差はどのくらいですか？",
+        "answer": "{timezone}はUTC時間から{offset}です。"
+      },
+      "daylightSaving": {
+        "question": "{timezone}は夏時間を採用していますか？",
+        "answer": "これは特定の地域と現地の規制によって異なります。表示されている現在時刻は、該当する場合は夏時間に自動的に調整されます。"
+      }
+    }
   }
 }

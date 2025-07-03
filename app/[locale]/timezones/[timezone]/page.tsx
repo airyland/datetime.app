@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, use } from "react"
+import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
 import { usePathname } from 'next/navigation'
@@ -12,6 +13,7 @@ import { LanguageSwitcher } from "@/components/language-switcher"
 import { TimezoneNavigation } from "@/components/timezone-navigation"
 import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
+import { timezones, TimezoneConfig } from '../config'
 
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
@@ -19,9 +21,24 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 })
 
-export default function UTCPage() {
-  const t = useTranslations('utc')
+interface TimezonePageProps {
+  params: { timezone: string; locale: string };
+}
+
+export default function TimezonePage({ params }: TimezonePageProps) {
+  const resolvedParams = use(params)
+  const timezoneSlug = resolvedParams.timezone
+  const locale = resolvedParams.locale
+  
+  const t = useTranslations('timezones')
   const pathname = usePathname()
+  
+  // Find timezone config
+  const timezoneConfig = timezones.find(tz => tz.slug === timezoneSlug)
+  
+  if (!timezoneConfig) {
+    notFound()
+  }
   
   // Determine current locale from pathname as it's more reliable
   const getCurrentLocale = () => {
@@ -75,18 +92,18 @@ export default function UTCPage() {
     return () => clearInterval(timer)
   }, [])
 
-  // Format time as HH:MM:SS in UTC
+  // Format time in the target timezone
   const formattedTime = currentTime.toLocaleTimeString(currentLocale, {
-    timeZone: "UTC",
+    timeZone: timezoneConfig.ianaTz,
     hour12: false,
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
   })
 
-  // Format date in UTC
+  // Format date in the target timezone
   const formattedDate = currentTime.toLocaleDateString(currentLocale, {
-    timeZone: "UTC",
+    timeZone: timezoneConfig.ianaTz,
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -112,27 +129,45 @@ export default function UTCPage() {
     }).catch(console.error)
   }
 
-  // UTC-related FAQs
-  const utcFaqs = [
+  // Get localized timezone name and description
+  const timezoneName = t(`names.${timezoneConfig.slug}`)
+  const timezoneDescription = t(`descriptions.${timezoneConfig.slug}`)
+  
+  // Current time string for FAQ
+  const currentTimeString = currentTime.toLocaleTimeString(currentLocale, {
+    timeZone: timezoneConfig.ianaTz,
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZoneName: 'short'
+  })
+
+  // Timezone-related FAQs
+  const timezoneFaqs = [
     {
-      question: t('faqs.whatIsUtc.question'),
-      answer: t('faqs.whatIsUtc.answer')
+      question: t('faqs.whatIs.question', { 
+        timezone: timezoneName
+      }),
+      answer: t('faqs.whatIs.answer', { 
+        timezone: timezoneName,
+        abbreviation: timezoneConfig.abbreviation,
+        description: timezoneDescription,
+        currentTime: currentTimeString
+      })
     },
     {
-      question: t('faqs.whyImportant.question'),
-      answer: t('faqs.whyImportant.answer')
+      question: t('faqs.utcDifference.question', { 
+        timezone: timezoneName
+      }),
+      answer: t('faqs.utcDifference.answer', { 
+        timezone: timezoneName,
+        offset: timezoneConfig.utcOffset
+      })
     },
     {
-      question: t('faqs.utcVsGmt.question'),
-      answer: t('faqs.utcVsGmt.answer')
-    },
-    {
-      question: t('faqs.convertToLocal.question'),
-      answer: t('faqs.convertToLocal.answer')
-    },
-    {
-      question: t('faqs.whyInComputing.question'),
-      answer: t('faqs.whyInComputing.answer')
+      question: t('faqs.daylightSaving.question', { 
+        timezone: timezoneName
+      }),
+      answer: t('faqs.daylightSaving.answer')
     }
   ]
 
@@ -155,16 +190,11 @@ export default function UTCPage() {
         <div className="text-center">
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">
-              {t('title')}
+              {t('title', { timezone: timezoneName })}
             </h1>
             <h2 className="text-xl md:text-2xl font-medium mb-2 text-muted-foreground">
-              {t('subtitle')}
+              {t('subtitle', { description: timezoneDescription })}
             </h2>
-            <div className="text-sm mb-4">
-              <Link href="/glossary/utc" className="text-primary hover:underline">
-                {t('learnMore')}
-              </Link>
-            </div>
             <div className="relative group">
               <div
                 className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none ${jetbrainsMono.className} cursor-pointer`}
@@ -183,7 +213,7 @@ export default function UTCPage() {
             <p className="text-xl mt-4">{formattedDate}</p>
             <div className="flex items-center justify-center gap-2 mt-2 text-muted-foreground">
               <Globe className="w-4 h-4" />
-              <span>{t('utcOffset')}</span>
+              <span>{timezoneConfig.utcOffset}</span>
             </div>
           </div>
 
@@ -256,17 +286,17 @@ export default function UTCPage() {
           </div>
 
           {/* Timezone Navigation */}
-          <TimezoneNavigation currentTimezone="utc" />
+          <TimezoneNavigation currentTimezone={timezoneSlug} />
 
           {/* FAQ Section */}
-          <div className="mt-8 max-w-3xl mx-auto text-left">
-            <h2 className="text-2xl font-bold mb-6 text-center">{t('faqTitle')}</h2>
+          <div className="mt-16 max-w-3xl mx-auto text-left">
+            <h2 className="text-2xl font-bold mb-6 text-center">{t('faqTitle', { timezone: timezoneName })}</h2>
             <Accordion 
               type="multiple" 
               className="w-full"
-              defaultValue={utcFaqs.map((_, index) => `item-${index}`)}
+              defaultValue={timezoneFaqs.map((_, index) => `item-${index}`)}
             >
-              {utcFaqs.map((faq, index) => (
+              {timezoneFaqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
                   <AccordionTrigger>{faq.question}</AccordionTrigger>
                   <AccordionContent>

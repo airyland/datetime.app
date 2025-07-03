@@ -298,5 +298,67 @@
     "description": "Hemos detectado que el idioma de tu navegador es {language}. ¿Te gustaría cambiar a este idioma para una mejor experiencia?",
     "accept": "Sí, cambiar a {language}",
     "dismiss": "No, gracias"
+  },
+  "timezones": {
+    "title": "Hora en {timezone}",
+    "subtitle": "{description}",
+    "currentTime": "Hora actual",
+    "worldTimezones": "Zonas horarias mundiales",
+    "enterFullscreen": "Pantalla completa",
+    "copyToClipboard": "Copiar al portapapeles",
+    "toggleTheme": "Cambiar tema",
+    "unixTimestamp": "Marca de tiempo Unix",
+    "utcString": "Cadena UTC",
+    "iso8601": "ISO 8601",
+    "viewGlossary": "Ver nuestro glosario completo de conceptos de fecha y hora",
+    "faqTitle": "Hora {timezone} - Preguntas frecuentes",
+    "names": {
+      "utc": "Tiempo Universal Coordinado",
+      "gmt": "Hora de Greenwich",
+      "cet": "Hora de Europa Central",
+      "pst": "Hora Estándar del Pacífico",
+      "mst": "Hora Estándar de la Montaña",
+      "cst": "Hora Estándar Central",
+      "est": "Hora Estándar del Este",
+      "eet": "Hora de Europa Oriental",
+      "ist": "Hora Estándar de India",
+      "china-cst": "Hora Estándar de China",
+      "jst": "Hora Estándar de Japón",
+      "aest": "Hora Estándar del Este de Australia",
+      "sast": "Hora Estándar de Sudáfrica",
+      "msk": "Hora Estándar de Moscú",
+      "nzst": "Hora Estándar de Nueva Zelanda"
+    },
+    "descriptions": {
+      "utc": "Estándar de tiempo mundial",
+      "gmt": "Hora del meridiano de Greenwich",
+      "cet": "Hora estándar de Europa Central",
+      "pst": "Hora de la costa del Pacífico de EE.UU.",
+      "mst": "Hora de la Montaña de EE.UU.",
+      "cst": "Hora Central de EE.UU.",
+      "est": "Hora del Este de EE.UU.",
+      "eet": "Hora de Europa Oriental",
+      "ist": "Hora estándar india",
+      "china-cst": "Hora estándar china",
+      "jst": "Hora estándar japonesa",
+      "aest": "Hora del Este australiano",
+      "sast": "Hora sudafricana",
+      "msk": "Hora de Moscú",
+      "nzst": "Hora neozelandesa"
+    },
+    "faqs": {
+      "whatIs": {
+        "question": "¿Qué es la hora {timezone}?",
+        "answer": "{timezone} ({abbreviation}) es {description}. La hora actual es {currentTime}."
+      },
+      "utcDifference": {
+        "question": "¿Cuál es la diferencia horaria entre {timezone} y UTC?",
+        "answer": "{timezone} está {offset} respecto a la hora UTC."
+      },
+      "daylightSaving": {
+        "question": "¿{timezone} observa el horario de verano?",
+        "answer": "Esto depende de la región específica y las regulaciones locales. La hora actual mostrada se ajusta automáticamente al horario de verano cuando corresponde."
+      }
+    }
   }
 }
