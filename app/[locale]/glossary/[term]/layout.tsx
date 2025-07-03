@@ -1,8 +1,9 @@
 import { Metadata } from "next"
+import { redirect } from 'next/navigation'
 import { glossaryItems } from "../glossary-data"
 
 interface LayoutProps {
-  params: { term: string };
+  params: { term: string; locale: string };
   children: React.ReactNode;
 }
 
@@ -32,6 +33,11 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
   };
 }
 
-export default function TermLayout({ children }: LayoutProps) {
+export default function TermLayout({ params, children }: LayoutProps) {
+  // Redirect non-English locales to English version since glossary is English-only
+  if (params.locale !== 'en') {
+    redirect(`/glossary/${params.term}`);
+  }
+  
   return <>{children}</>
 }
