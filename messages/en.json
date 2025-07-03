@@ -332,5 +332,67 @@
     "description": "We detected that your browser language is {language}. Would you like to switch to this language for a better experience?",
     "accept": "Yes, switch to {language}",
     "dismiss": "No, thanks"
+  },
+  "timezones": {
+    "title": "Time in {timezone}",
+    "subtitle": "{description}",
+    "currentTime": "Current Time",
+    "worldTimezones": "World Timezones",
+    "enterFullscreen": "Enter fullscreen",
+    "copyToClipboard": "Copy to clipboard",
+    "toggleTheme": "Toggle theme",
+    "unixTimestamp": "Unix Timestamp",
+    "utcString": "UTC String",
+    "iso8601": "ISO 8601",
+    "viewGlossary": "View our complete glossary of date and time concepts",
+    "faqTitle": "{timezone} Time - Frequently Asked Questions",
+    "names": {
+      "utc": "Coordinated Universal Time",
+      "gmt": "Greenwich Mean Time", 
+      "cet": "Central European Time",
+      "pst": "Pacific Standard Time",
+      "mst": "Mountain Standard Time",
+      "cst": "Central Standard Time",
+      "est": "Eastern Standard Time",
+      "eet": "Eastern European Time",
+      "ist": "India Standard Time",
+      "china-cst": "China Standard Time",
+      "jst": "Japan Standard Time",
+      "aest": "Australian Eastern Standard Time",
+      "sast": "South Africa Standard Time",
+      "msk": "Moscow Standard Time",
+      "nzst": "New Zealand Standard Time"
+    },
+    "descriptions": {
+      "utc": "World time standard",
+      "gmt": "Greenwich meridian time",
+      "cet": "Central European standard time",
+      "pst": "US Pacific coast time",
+      "mst": "US Mountain time",
+      "cst": "US Central time", 
+      "est": "US Eastern time",
+      "eet": "Eastern European time",
+      "ist": "Indian standard time",
+      "china-cst": "China standard time",
+      "jst": "Japan standard time",
+      "aest": "Australian Eastern time",
+      "sast": "South African time",
+      "msk": "Moscow time",
+      "nzst": "New Zealand time"
+    },
+    "faqs": {
+      "whatIs": {
+        "question": "What is {timezone} time?",
+        "answer": "{timezone} ({abbreviation}) is {description}. The current time is {currentTime}."
+      },
+      "utcDifference": {
+        "question": "What is the time difference between {timezone} and UTC?",
+        "answer": "{timezone} is {offset} from UTC time."
+      },
+      "daylightSaving": {
+        "question": "Does {timezone} observe daylight saving time?",
+        "answer": "This depends on the specific region and local regulations. The current time shown automatically adjusts for daylight saving time when applicable."
+      }
+    }
   }
 }
