@@ -1,4 +1,10 @@
 import { Metadata } from "next"
+import { redirect } from 'next/navigation'
+
+interface LayoutProps {
+  params: { locale: string };
+  children: React.ReactNode;
+}
 
 export const metadata: Metadata = {
   title: "Glossary of Datetime Concepts | Datetime.app",
@@ -14,10 +20,11 @@ export const metadata: Metadata = {
   }
 }
 
-export default function GlossaryLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function GlossaryLayout({ params, children }: LayoutProps) {
+  // Redirect non-English locales to English version since glossary is English-only
+  if (params.locale !== 'en') {
+    redirect('/glossary');
+  }
+  
   return <>{children}</>
 }

@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { getTranslations } from 'next-intl/server'
+import { locales } from '@/i18n/request'
 
 interface LayoutProps {
   params: { locale: string };
@@ -10,11 +11,25 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
   const locale = params.locale;
   const t = await getTranslations({ locale, namespace: 'utc' });
   
+  // Generate alternate language links for all supported locales
+  const languages = locales.reduce((acc, loc) => {
+    if (loc === 'en') {
+      acc[loc] = `https://datetime.app/utc`;
+    } else {
+      acc[loc] = `https://datetime.app/${loc}/utc`;
+    }
+    return acc;
+  }, {} as Record<string, string>);
+  
   if (locale === 'zh-hans') {
     return {
       title: "UTC时间 | 协调世界时",
       description: t('description'),
       keywords: ["UTC", "协调世界时", "世界时间", "标准时间", "GMT", "格林威治标准时间", "时区转换"],
+      alternates: {
+        canonical: `https://datetime.app/zh-hans/utc`,
+        languages
+      },
       openGraph: {
         title: "UTC时间 | 协调世界时",
         description: t('description'),
@@ -28,6 +43,10 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
       title: "UTC時間 | 協調世界時",
       description: t('description'),
       keywords: ["UTC", "協調世界時", "世界時間", "標準時間", "GMT", "格林威治標準時間", "時區轉換"],
+      alternates: {
+        canonical: `https://datetime.app/zh-hant/utc`,
+        languages
+      },
       openGraph: {
         title: "UTC時間 | 協調世界時",
         description: t('description'),
@@ -41,6 +60,10 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
     title: "UTC Time | Datetime.app",
     description: "View current UTC (Coordinated Universal Time). UTC is the world's time standard, unaffected by time zones or daylight saving time changes.",
     keywords: ["UTC", "Coordinated Universal Time", "world time", "standard time", "GMT", "Greenwich Mean Time", "timezone conversion"],
+    alternates: {
+      canonical: `https://datetime.app/utc`,
+      languages
+    },
     openGraph: {
       title: "UTC Time | Datetime.app",
       description: "View current UTC (Coordinated Universal Time). UTC is the world's time standard, unaffected by time zones or daylight saving time changes.",
