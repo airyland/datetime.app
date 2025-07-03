@@ -332,5 +332,67 @@
     "description": "我們偵測到您的瀏覽器語言是{language}。您希望切換到該語言以獲得更好的體驗嗎？",
     "accept": "是的，切換到{language}",
     "dismiss": "不用了，謝謝"
+  },
+  "timezones": {
+    "title": "{timezone}時間",
+    "subtitle": "{description}",
+    "currentTime": "當前時間",
+    "worldTimezones": "世界時區",
+    "enterFullscreen": "進入全螢幕",
+    "copyToClipboard": "複製到剪貼簿",
+    "toggleTheme": "切換主題",
+    "unixTimestamp": "Unix時間戳",
+    "utcString": "UTC字串",
+    "iso8601": "ISO 8601",
+    "viewGlossary": "查看我們完整的日期時間概念術語表",
+    "faqTitle": "{timezone}時間 - 常見問題",
+    "names": {
+      "utc": "協調世界時",
+      "gmt": "格林威治標準時間",
+      "cet": "中歐時間",
+      "pst": "太平洋標準時間",
+      "mst": "山地標準時間",
+      "cst": "中部標準時間",
+      "est": "東部標準時間",
+      "eet": "東歐時間",
+      "ist": "印度標準時間",
+      "china-cst": "中國標準時間",
+      "jst": "日本標準時間",
+      "aest": "澳洲東部標準時間",
+      "sast": "南非標準時間",
+      "msk": "莫斯科標準時間",
+      "nzst": "紐西蘭標準時間"
+    },
+    "descriptions": {
+      "utc": "世界時間標準",
+      "gmt": "格林威治子午線時間",
+      "cet": "中歐標準時間",
+      "pst": "美國太平洋海岸時間",
+      "mst": "美國山地時間",
+      "cst": "美國中部時間",
+      "est": "美國東部時間",
+      "eet": "東歐時間",
+      "ist": "印度標準時間",
+      "china-cst": "中國標準時間",
+      "jst": "日本標準時間",
+      "aest": "澳洲東部時間",
+      "sast": "南非時間",
+      "msk": "莫斯科時間",
+      "nzst": "紐西蘭時間"
+    },
+    "faqs": {
+      "whatIs": {
+        "question": "什麼是{timezone}時間？",
+        "answer": "{timezone}（{abbreviation}）是{description}。當前時間是{currentTime}。"
+      },
+      "utcDifference": {
+        "question": "{timezone}與UTC的時差是多少？",
+        "answer": "{timezone}與UTC時間相差{offset}。"
+      },
+      "daylightSaving": {
+        "question": "{timezone}是否實行夏令時？",
+        "answer": "這取決於具體地區和當地法規。顯示的當前時間會在適用時自動調整夏令時。"
+      }
+    }
   }
 }
