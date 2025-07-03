@@ -15,14 +15,17 @@ const staticPages = [
   'about',
   'age-calculator',
   'utc',
-  'year-progress-bar',
+  'year-progress-bar'
+];
+
+// English-only pages
+const englishOnlyPages = [
   'holidays',
   'glossary'
 ];
 
 interface SitemapURL {
   loc: string;
-  lastmod: string;
   changefreq: string;
   priority: string;
 }
@@ -37,7 +40,7 @@ function getCities() {
   return matches.map(m => m.match(/['"]([^'"]+)['"]/)?.[1] || '').filter(Boolean);
 }
 
-// Load glossary terms
+// Load glossary terms (English only)
 function getGlossaryTerms() {
   const glossaryFile = path.join(process.cwd(), 'app/[locale]/glossary/glossary-data.ts');
   const content = fs.readFileSync(glossaryFile, 'utf-8');
@@ -45,6 +48,16 @@ function getGlossaryTerms() {
   const matches = content.match(/['"]([^'"]+)['"]:\s*{[^}]*id:\s*['"]([^'"]+)['"]/g);
   if (!matches) return [];
   return matches.map(m => m.match(/id:\s*['"]([^'"]+)['"]/)?.[1] || '').filter(Boolean);
+}
+
+// Load timezone data
+function getTimezones() {
+  const timezoneFile = path.join(process.cwd(), 'app/[locale]/timezones/config.ts');
+  const content = fs.readFileSync(timezoneFile, 'utf-8');
+  // Extract timezone slugs from config
+  const matches = content.match(/slug:\s*['"]([^'"]+)['"]/g);
+  if (!matches) return [];
+  return matches.map(m => m.match(/['"]([^'"]+)['"]/)?.[1] || '').filter(Boolean);
 }
 
 // Load countries data
@@ -59,7 +72,6 @@ function getCountries() {
 
 function generateURLs(): SitemapURL[] {
   const urls: SitemapURL[] = [];
-  const currentDate = new Date().toISOString();
 
   // Helper function to generate URL with locale prefix
   const getLocalizedURL = (locale: string, path: string = '') => {
@@ -79,11 +91,19 @@ function generateURLs(): SitemapURL[] {
     for (const page of staticPages) {
       urls.push({
         loc: getLocalizedURL(locale, page),
-        lastmod: currentDate,
         changefreq: 'weekly',
         priority: locale === defaultLocale ? '1.0' : '0.9'
       });
     }
+  }
+
+  // Add English-only pages
+  for (const page of englishOnlyPages) {
+    urls.push({
+      loc: getLocalizedURL('en', page),
+      changefreq: 'weekly',
+      priority: '1.0'
+    });
   }
 
   // Add city pages for all locales
@@ -92,37 +112,42 @@ function generateURLs(): SitemapURL[] {
     for (const citySlug of cities) {
       urls.push({
         loc: getLocalizedURL(locale, `cities/${citySlug}`),
-        lastmod: currentDate,
         changefreq: 'weekly',
         priority: locale === defaultLocale ? '0.8' : '0.7'
       });
     }
   }
 
-  // Add glossary term pages for all locales
+  // Add timezone pages for all locales (except UTC which is already in static pages)
+  const timezones = getTimezones();
+  for (const locale of locales) {
+    for (const timezone of timezones) {
+      urls.push({
+        loc: getLocalizedURL(locale, `timezones/${timezone}`),
+        changefreq: 'weekly',
+        priority: locale === defaultLocale ? '0.8' : '0.7'
+      });
+    }
+  }
+
+  // Add glossary term pages for English only
   const terms = getGlossaryTerms();
-  for (const locale of locales) {
-    for (const term of terms) {
-      urls.push({
-        loc: getLocalizedURL(locale, `glossary/${term}`),
-        lastmod: currentDate,
-        changefreq: 'weekly',
-        priority: locale === defaultLocale ? '0.8' : '0.7'
-      });
-    }
+  for (const term of terms) {
+    urls.push({
+      loc: getLocalizedURL('en', `glossary/${term}`),
+      changefreq: 'weekly',
+      priority: '0.8'
+    });
   }
 
-  // Add holiday pages for each country and locale
+  // Add holiday pages for English only
   const countries = getCountries();
-  for (const locale of locales) {
-    for (const countryCode of countries) {
-      urls.push({
-        loc: getLocalizedURL(locale, `holidays/${countryCode.toLowerCase()}`),
-        lastmod: currentDate,
-        changefreq: 'weekly',
-        priority: locale === defaultLocale ? '0.8' : '0.7'
-      });
-    }
+  for (const countryCode of countries) {
+    urls.push({
+      loc: getLocalizedURL('en', `holidays/${countryCode.toLowerCase()}`),
+      changefreq: 'weekly',
+      priority: '0.8'
+    });
   }
 
   // Add year progress pages for current and next year
@@ -131,7 +156,6 @@ function generateURLs(): SitemapURL[] {
     for (const year of [currentYear, currentYear + 1]) {
       urls.push({
         loc: getLocalizedURL(locale, `year-progress-bar/${year}`),
-        lastmod: currentDate,
         changefreq: 'weekly',
         priority: locale === defaultLocale ? '0.6' : '0.5'
       });
@@ -149,7 +173,6 @@ async function generateSitemap() {
       ${urls.map(url => `
         <url>
           <loc>${url.loc}</loc>
-          <lastmod>${url.lastmod}</lastmod>
           <changefreq>${url.changefreq}</changefreq>
           <priority>${url.priority}</priority>
         </url>
