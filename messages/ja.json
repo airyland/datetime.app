@@ -5,6 +5,7 @@
     "nav": {
       "home": "ホーム",
       "utc": "UTC時間",
+      "calendar": "カレンダー",
       "holidays": "祝日",
       "ageCalculator": "年齢計算機",
       "yearProgress": "年間進捗",
@@ -358,6 +359,91 @@
       "daylightSaving": {
         "question": "{timezone}は夏時間を採用していますか？",
         "answer": "これは特定の地域と現地の規制によって異なります。表示されている現在時刻は、該当する場合は夏時間に自動的に調整されます。"
+      }
+    }
+  },
+  "calendar": {
+    "title": "{year}年カレンダー",
+    "subtitle": "年間カレンダー表示",
+    "description": "{year}年の完全なカレンダーを表示、全ての月、日付を含む",
+    "currentYear": "今年",
+    "leapYear": "うるう年",
+    "regularYear": "平年",
+    "weekNumber": "第{number}週",
+    "today": "今日",
+    "viewYear": "年を表示",
+    "previousYear": "前年",
+    "nextYear": "翌年",
+    "yearNavigation": "年ナビゲーション",
+    "monthNavigation": "月ナビゲーション",
+    "jumpToYear": "年にジャンプ",
+    "toggleTheme": "テーマ切り替え",
+    "months": {
+      "january": "1月",
+      "february": "2月",
+      "march": "3月",
+      "april": "4月",
+      "may": "5月",
+      "june": "6月",
+      "july": "7月",
+      "august": "8月",
+      "september": "9月",
+      "october": "10月",
+      "november": "11月",
+      "december": "12月"
+    },
+    "monthsShort": {
+      "jan": "1月",
+      "feb": "2月",
+      "mar": "3月",
+      "apr": "4月",
+      "may": "5月",
+      "jun": "6月",
+      "jul": "7月",
+      "aug": "8月",
+      "sep": "9月",
+      "oct": "10月",
+      "nov": "11月",
+      "dec": "12月"
+    },
+    "weekdays": {
+      "sunday": "日曜日",
+      "monday": "月曜日",
+      "tuesday": "火曜日",
+      "wednesday": "水曜日",
+      "thursday": "木曜日",
+      "friday": "金曜日",
+      "saturday": "土曜日"
+    },
+    "weekdaysShort": {
+      "sun": "日",
+      "mon": "月",
+      "tue": "火",
+      "wed": "水",
+      "thu": "木",
+      "fri": "金",
+      "sat": "土"
+    },
+    "info": {
+      "totalDays": "{year}年の総日数",
+      "daysPassed": "経過日数",
+      "daysRemaining": "残り日数",
+      "weeksPassed": "経過週数",
+      "weeksRemaining": "残り週数"
+    },
+    "faq": {
+      "title": "{year}年カレンダー - よくある質問",
+      "whatIsCalendar": {
+        "question": "年間カレンダーとは何ですか？",
+        "answer": "年間カレンダーは、特定の年の12ヶ月すべてを構造化された形式で表示し、日付、曜日、週番号を示します。日付の計画、スケジューリング、年の構造理解に役立ちます。"
+      },
+      "weekNumbers": {
+        "question": "週番号とは何ですか？",
+        "answer": "週番号は、年の週を1から52（一部の年では53）まで番号付けする方法です。年の第1週は通常、新年の少なくとも4日を含む最初の週です。"
+      },
+      "leapYear": {
+        "question": "うるう年とは何ですか？",
+        "answer": "うるう年は通常の365日ではなく366日あります。4年ごと（いくつかの例外あり）に発生し、地球の太陽周りの軌道とカレンダーを合わせるために1日（2月29日）を追加します。"
       }
     }
   }

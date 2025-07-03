@@ -5,6 +5,7 @@
     "nav": {
       "home": "首页",
       "utc": "UTC时间",
+      "calendar": "日历",
       "holidays": "节假日",
       "ageCalculator": "年龄计算器",
       "yearProgress": "年度进度",
@@ -332,6 +333,91 @@
     "description": "我们检测到您的浏览器语言是{language}。您希望切换到该语言以获得更好的体验吗？",
     "accept": "是的，切换到{language}",
     "dismiss": "不用了，谢谢"
+  },
+  "calendar": {
+    "title": "{year}年日历",
+    "subtitle": "完整年历视图，包含周数",
+    "description": "查看{year}年完整日历，包含所有月份、日期和周数",
+    "currentYear": "当前年份",
+    "leapYear": "闰年",
+    "regularYear": "平年",
+    "weekNumber": "第{number}周",
+    "today": "今天",
+    "viewYear": "查看年份",
+    "previousYear": "上一年",
+    "nextYear": "下一年",
+    "yearNavigation": "年份导航",
+    "monthNavigation": "月份导航",
+    "jumpToYear": "跳转到年份",
+    "toggleTheme": "切换主题",
+    "months": {
+      "january": "一月",
+      "february": "二月",
+      "march": "三月",
+      "april": "四月",
+      "may": "五月",
+      "june": "六月",
+      "july": "七月",
+      "august": "八月",
+      "september": "九月",
+      "october": "十月",
+      "november": "十一月",
+      "december": "十二月"
+    },
+    "monthsShort": {
+      "jan": "1月",
+      "feb": "2月",
+      "mar": "3月",
+      "apr": "4月",
+      "may": "5月",
+      "jun": "6月",
+      "jul": "7月",
+      "aug": "8月",
+      "sep": "9月",
+      "oct": "10月",
+      "nov": "11月",
+      "dec": "12月"
+    },
+    "weekdays": {
+      "sunday": "星期日",
+      "monday": "星期一",
+      "tuesday": "星期二",
+      "wednesday": "星期三",
+      "thursday": "星期四",
+      "friday": "星期五",
+      "saturday": "星期六"
+    },
+    "weekdaysShort": {
+      "sun": "日",
+      "mon": "一",
+      "tue": "二",
+      "wed": "三",
+      "thu": "四",
+      "fri": "五",
+      "sat": "六"
+    },
+    "info": {
+      "totalDays": "{year}年总天数",
+      "daysPassed": "已过天数",
+      "daysRemaining": "剩余天数",
+      "weeksPassed": "已过周数",
+      "weeksRemaining": "剩余周数"
+    },
+    "faq": {
+      "title": "{year}年日历 - 常见问题",
+      "whatIsCalendar": {
+        "question": "什么是年历？",
+        "answer": "年历以结构化格式显示特定年份的所有12个月，显示日期、星期几和周数。它有助于日期规划、安排日程和理解年份结构。"
+      },
+      "weekNumbers": {
+        "question": "什么是周数？",
+        "answer": "周数是对一年中的周进行编号的方式，从1到52（某些年份为53）。一年的第一周通常是包含新年至少四天的第一周。"
+      },
+      "leapYear": {
+        "question": "什么是闰年？",
+        "answer": "闰年有366天而不是通常的365天。每4年出现一次（有一些例外），增加一天（2月29日）以保持我们的日历与地球绕太阳轨道对齐。"
+      }
+    }
   },
   "timezones": {
     "title": "{timezone}时间",
