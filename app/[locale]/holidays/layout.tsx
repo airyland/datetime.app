@@ -1,4 +1,10 @@
 import { Metadata } from "next"
+import { redirect } from 'next/navigation'
+
+interface LayoutProps {
+  params: { locale: string };
+  children: React.ReactNode;
+}
 
 export const metadata: Metadata = {
   title: "World Holidays Calendar | Datetime.app",
@@ -14,10 +20,11 @@ export const metadata: Metadata = {
   }
 }
 
-export default function HolidaysLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function HolidaysLayout({ params, children }: LayoutProps) {
+  // Redirect non-English locales to English version since holidays is English-only
+  if (params.locale !== 'en') {
+    redirect('/holidays');
+  }
+  
   return <>{children}</>
 }
