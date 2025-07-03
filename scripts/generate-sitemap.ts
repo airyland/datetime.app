@@ -162,6 +162,19 @@ function generateURLs(): SitemapURL[] {
     }
   }
 
+  // Add calendar pages for current year ± 5 years
+  for (const locale of locales) {
+    for (let year = currentYear - 5; year <= currentYear + 5; year++) {
+      urls.push({
+        loc: getLocalizedURL(locale, `calendar/${year}`),
+        changefreq: 'monthly',
+        priority: year === currentYear 
+          ? (locale === defaultLocale ? '0.8' : '0.7')
+          : (locale === defaultLocale ? '0.6' : '0.5')
+      });
+    }
+  }
+
   return urls;
 }
 

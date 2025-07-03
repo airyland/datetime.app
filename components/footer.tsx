@@ -42,6 +42,7 @@ export function Footer() {
       <p className="mb-2">{currentYear} datetime.app - Precise World Time</p>
       <p className="space-x-4 mb-3">
         <Link href="/about" className="hover:text-gray-900 dark:hover:text-gray-200">About</Link>
+        <Link href="/calendar/2025" className="hover:text-gray-900 dark:hover:text-gray-200">Calendar 2025</Link>
         <Link href="/glossary" className="hover:text-gray-900 dark:hover:text-gray-200">Glossary</Link>
         <Link href="/year-progress-bar" className="hover:text-gray-900 dark:hover:text-gray-200">Year Progress</Link>
         <Link href="/age-calculator" className="hover:text-gray-900 dark:hover:text-gray-200">Age Calculator</Link>

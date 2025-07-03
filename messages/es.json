@@ -5,6 +5,7 @@
     "nav": {
       "home": "Inicio",
       "utc": "Hora UTC",
+      "calendar": "Calendario",
       "holidays": "Días Festivos",
       "ageCalculator": "Calculadora de Edad",
       "yearProgress": "Progreso del Año",
@@ -298,6 +299,92 @@
     "description": "Hemos detectado que el idioma de tu navegador es {language}. ¿Te gustaría cambiar a este idioma para una mejor experiencia?",
     "accept": "Sí, cambiar a {language}",
     "dismiss": "No, gracias"
+  },
+  "calendar": {
+    "title": "Calendario {year}",
+    "subtitle": "Vista completa del calendario anual con números de semana",
+    "description": "Ve el calendario completo para {year} con todos los meses, fechas y números de semana",
+    "currentYear": "Año Actual",
+    "leapYear": "Año Bisiesto",
+    "regularYear": "Año Regular",
+    "weekNumber": "Semana {number}",
+    "weekNumbers": "Números de Semana",
+    "today": "Hoy",
+    "viewYear": "Ver Año",
+    "previousYear": "Año Anterior",
+    "nextYear": "Año Siguiente",
+    "yearNavigation": "Navegación de Año",
+    "monthNavigation": "Navegación de Mes",
+    "jumpToYear": "Saltar al Año",
+    "toggleTheme": "Cambiar tema",
+    "months": {
+      "january": "Enero",
+      "february": "Febrero",
+      "march": "Marzo",
+      "april": "Abril",
+      "may": "Mayo",
+      "june": "Junio",
+      "july": "Julio",
+      "august": "Agosto",
+      "september": "Septiembre",
+      "october": "Octubre",
+      "november": "Noviembre",
+      "december": "Diciembre"
+    },
+    "monthsShort": {
+      "jan": "Ene",
+      "feb": "Feb",
+      "mar": "Mar",
+      "apr": "Abr",
+      "may": "May",
+      "jun": "Jun",
+      "jul": "Jul",
+      "aug": "Ago",
+      "sep": "Sep",
+      "oct": "Oct",
+      "nov": "Nov",
+      "dec": "Dic"
+    },
+    "weekdays": {
+      "sunday": "Domingo",
+      "monday": "Lunes",
+      "tuesday": "Martes",
+      "wednesday": "Miércoles",
+      "thursday": "Jueves",
+      "friday": "Viernes",
+      "saturday": "Sábado"
+    },
+    "weekdaysShort": {
+      "sun": "Dom",
+      "mon": "Lun",
+      "tue": "Mar",
+      "wed": "Mié",
+      "thu": "Jue",
+      "fri": "Vie",
+      "sat": "Sáb"
+    },
+    "info": {
+      "totalDays": "Total de días en {year}",
+      "daysPassed": "Días transcurridos",
+      "daysRemaining": "Días restantes",
+      "weeksPassed": "Semanas transcurridas",
+      "weeksRemaining": "Semanas restantes"
+    },
+    "faq": {
+      "title": "Calendario {year} - Preguntas Frecuentes",
+      "whatIsCalendar": {
+        "question": "¿Qué es un calendario anual?",
+        "answer": "Un calendario anual muestra todos los 12 meses de un año específico en un formato estructurado, mostrando fechas, días de la semana y números de semana. Ayuda con la planificación de fechas, programación y comprensión de la estructura del año."
+      },
+      "weekNumbers": {
+        "question": "¿Qué son los números de semana?",
+        "answer": "Los números de semana son una forma de numerar las semanas del año de 1 a 52 (o 53 en algunos años). La primera semana del año es típicamente la primera semana que contiene al menos cuatro días del nuevo año."
+      },
+      "leapYear": {
+        "question": "¿Qué es un año bisiesto?",
+        "answer": "Un año bisiesto tiene 366 días en lugar de los 365 habituales. Ocurre cada 4 años (con algunas excepciones) y añade un día adicional (29 de febrero) para mantener nuestro calendario alineado con la órbita de la Tierra alrededor del sol."
+      }
+    }
   },
   "timezones": {
     "title": "Hora en {timezone}",

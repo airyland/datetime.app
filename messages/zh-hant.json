@@ -5,6 +5,7 @@
     "nav": {
       "home": "首頁",
       "utc": "UTC時間",
+      "calendar": "日曆",
       "holidays": "節假日",
       "ageCalculator": "年齡計算器",
       "yearProgress": "年度進度",
@@ -332,6 +333,91 @@
     "description": "我們偵測到您的瀏覽器語言是{language}。您希望切換到該語言以獲得更好的體驗嗎？",
     "accept": "是的，切換到{language}",
     "dismiss": "不用了，謝謝"
+  },
+  "calendar": {
+    "title": "{year}年日曆",
+    "subtitle": "完整年曆視圖，包含週數",
+    "description": "查看{year}年完整日曆，包含所有月份、日期和週數",
+    "currentYear": "當前年份",
+    "leapYear": "閏年",
+    "regularYear": "平年",
+    "weekNumber": "第{number}週",
+    "today": "今天",
+    "viewYear": "查看年份",
+    "previousYear": "上一年",
+    "nextYear": "下一年",
+    "yearNavigation": "年份導航",
+    "monthNavigation": "月份導航",
+    "jumpToYear": "跳轉到年份",
+    "toggleTheme": "切換主題",
+    "months": {
+      "january": "一月",
+      "february": "二月",
+      "march": "三月",
+      "april": "四月",
+      "may": "五月",
+      "june": "六月",
+      "july": "七月",
+      "august": "八月",
+      "september": "九月",
+      "october": "十月",
+      "november": "十一月",
+      "december": "十二月"
+    },
+    "monthsShort": {
+      "jan": "1月",
+      "feb": "2月",
+      "mar": "3月",
+      "apr": "4月",
+      "may": "5月",
+      "jun": "6月",
+      "jul": "7月",
+      "aug": "8月",
+      "sep": "9月",
+      "oct": "10月",
+      "nov": "11月",
+      "dec": "12月"
+    },
+    "weekdays": {
+      "sunday": "星期日",
+      "monday": "星期一",
+      "tuesday": "星期二",
+      "wednesday": "星期三",
+      "thursday": "星期四",
+      "friday": "星期五",
+      "saturday": "星期六"
+    },
+    "weekdaysShort": {
+      "sun": "日",
+      "mon": "一",
+      "tue": "二",
+      "wed": "三",
+      "thu": "四",
+      "fri": "五",
+      "sat": "六"
+    },
+    "info": {
+      "totalDays": "{year}年總天數",
+      "daysPassed": "已過天數",
+      "daysRemaining": "剩餘天數",
+      "weeksPassed": "已過週數",
+      "weeksRemaining": "剩餘週數"
+    },
+    "faq": {
+      "title": "{year}年日曆 - 常見問題",
+      "whatIsCalendar": {
+        "question": "什麼是年曆？",
+        "answer": "年曆以結構化格式顯示特定年份的所有12個月，顯示日期、星期幾和週數。它有助於日期規劃、安排日程和理解年份結構。"
+      },
+      "weekNumbers": {
+        "question": "什麼是週數？",
+        "answer": "週數是對一年中的週進行編號的方式，從1到52（某些年份為53）。一年的第一週通常是包含新年至少四天的第一週。"
+      },
+      "leapYear": {
+        "question": "什麼是閏年？",
+        "answer": "閏年有366天而不是通常的365天。每4年出現一次（有一些例外），增加一天（2月29日）以保持我們的日曆與地球繞太陽軌道對齊。"
+      }
+    }
   },
   "timezones": {
     "title": "{timezone}時間",
