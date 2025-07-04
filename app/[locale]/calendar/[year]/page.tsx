@@ -156,7 +156,12 @@ export default function CalendarPage({ params }: CalendarPageProps) {
             <Card key={monthIndex} className="shadow-none border">
               <CardHeader className="pb-2">
                 <CardTitle className="text-lg text-center">
-                  {month.name}
+                  <Link 
+                    href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year}/${String(monthIndex + 1).padStart(2, '0')}`}
+                    className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    {month.name}
+                  </Link>
                 </CardTitle>
               </CardHeader>
               <CardContent>

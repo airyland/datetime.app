@@ -350,6 +350,14 @@
     "monthNavigation": "Month Navigation",
     "jumpToYear": "Jump to Year",
     "toggleTheme": "Toggle theme",
+    "previousMonth": "Previous Month",
+    "nextMonth": "Next Month",
+    "currentMonth": "Current Month",
+    "backToYear": "Back to {year}",
+    "daysInMonth": "{days} days",
+    "selectedDate": "Selected Date",
+    "date": "Date",
+    "dayOfYear": "Day of Year",
     "months": {
       "january": "January",
       "february": "February", 
@@ -404,7 +412,7 @@
       "weeksRemaining": "Weeks remaining"
     },
     "faq": {
-      "title": "{year} Calendar - Frequently Asked Questions",
+      "title": "Frequently Asked Questions",
       "whatIsCalendar": {
         "question": "What is a yearly calendar?",
         "answer": "A yearly calendar displays all 12 months of a specific year in a structured format, showing dates, days of the week, and week numbers. It helps with date planning, scheduling, and understanding the year's structure."
@@ -416,6 +424,28 @@
       "leapYear": {
         "question": "What is a leap year?",
         "answer": "A leap year has 366 days instead of the usual 365. It occurs every 4 years (with some exceptions) and adds an extra day (February 29) to keep our calendar aligned with Earth's orbit around the sun."
+      },
+      "monthOverview": {
+        "question": "What information does this month show?",
+        "answer": "{month} {year} has {days} days, starting on {startDay} and ending on {endDay}. This calendar view shows all dates with their corresponding weekdays and week numbers."
+      },
+      "weekCount": {
+        "question": "How many weeks are in this month?",
+        "answer": "{month} spans {weeks} weeks on the calendar grid, though some weeks may contain days from the previous or next month."
+      },
+      "currentMonth": {
+        "question": "Why is this month highlighted?",
+        "answer": "This is the current month ({month} {year}). Today is the {today}th of the month, highlighted in blue on the calendar."
+      },
+      "monthCharacteristics": {
+        "question": "What are the characteristics of this month?",
+        "february": "{month} {year} has {days} days, making it a {leapYear}. February is the shortest month and the only month with a variable number of days.",
+        "thirtyDays": "{month} is one of the four months with exactly 30 days (April, June, September, November).",
+        "thirtyOneDays": "{month} has 31 days, making it one of the seven longer months of the year."
+      },
+      "navigation": {
+        "question": "How can I navigate to other months?",
+        "answer": "Use the arrow buttons to go to {prevMonth} or {nextMonth}. You can also click on any month in the navigation grid below, or use the 'View Year' button to see all months at once."
       }
     }
   },

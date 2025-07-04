@@ -311,6 +311,14 @@
     "monthNavigation": "월 탐색",
     "jumpToYear": "연도로 이동",
     "toggleTheme": "테마 전환",
+    "previousMonth": "이전 월",
+    "nextMonth": "다음 월",
+    "currentMonth": "현재 월",
+    "backToYear": "{year}로 돌아가기",
+    "daysInMonth": "{days}일",
+    "selectedDate": "선택된 날짜",
+    "date": "날짜",
+    "dayOfYear": "연중 일수",
     "months": {
       "january": "1월",
       "february": "2월",
@@ -365,7 +373,7 @@
       "weeksRemaining": "남은 주수"
     },
     "faq": {
-      "title": "{year}년 달력 - 자주 묻는 질문",
+      "title": "자주 묻는 질문",
       "whatIsCalendar": {
         "question": "연간 달력이란 무엇인가요?",
         "answer": "연간 달력은 특정 연도의 모든 12개월을 구조화된 형식으로 표시하여 날짜, 요일 및 주차 번호를 보여줍니다. 날짜 계획, 일정 관리 및 연도 구조 이해에 도움이 됩니다."
@@ -377,6 +385,50 @@
       "leapYear": {
         "question": "윤년이란 무엇인가요?",
         "answer": "윤년은 일반적인 365일 대신 366일을 가집니다. 4년마다 발생하며(일부 예외 있음) 우리 달력을 지구의 태양 공전궤도와 맞추기 위해 추가 날(2월 29일)을 더합니다."
+      },
+      "monthOverview": {
+        "question": "이 달은 어떤 정보를 보여주나요?",
+        "answer": "{month} {year}은 {days}일이 있으며, {startDay}에 시작해서 {endDay}에 끝납니다. 이 달력 보기는 모든 날짜와 해당 요일, 주차 번호를 보여줍니다."
+      },
+      "weekCount": {
+        "question": "이 달은 몇 주가 있나요?",
+        "answer": "{month}은 달력 격자에서 {weeks}주에 걸쳐 있지만, 일부 주는 이전 달이나 다음 달의 날짜를 포함할 수 있습니다."
+      },
+      "currentMonth": {
+        "question": "왜 이 달이 강조되어 있나요?",
+        "answer": "이것은 현재 달({month} {year})입니다. 오늘은 이 달의 {today}일이며, 달력에서 파란색으로 강조되어 있습니다."
+      },
+      "monthCharacteristics": {
+        "question": "이 달의 특징은 무엇인가요?",
+        "february": "{month} {year}은 {days}일이 있어 {leapYear}입니다. 2월은 가장 짧은 달이며 가변적인 일수를 가진 유일한 달입니다.",
+        "thirtyDays": "{month}은 정확히 30일을 가진 네 달 중 하나입니다(4월, 6월, 9월, 11월).",
+        "thirtyOneDays": "{month}은 31일이 있어 한 해의 일곱 개 긴 달 중 하나입니다."
+      },
+      "navigation": {
+        "question": "다른 달로 어떻게 이동하나요?",
+        "answer": "화살표 버튼을 사용해 {prevMonth}이나 {nextMonth}로 이동할 수 있습니다. 아래 탐색 격자에서 원하는 달을 클릭하거나, '연도 보기' 버튼을 사용해 모든 달을 한 번에 볼 수도 있습니다."
+      },
+      "monthOverview": {
+        "question": "이 달은 어떤 정보를 보여주나요?",
+        "answer": "{month} {year}은 {days}일이 있으며, {startDay}에 시작해서 {endDay}에 끝납니다. 이 달력 보기는 모든 날짜와 해당 요일, 주차 번호를 보여줍니다."
+      },
+      "weekCount": {
+        "question": "이 달은 몇 주가 있나요?",
+        "answer": "{month}은 달력 격자에서 {weeks}주에 걸쳐 있지만, 일부 주는 이전 달이나 다음 달의 날짜를 포함할 수 있습니다."
+      },
+      "currentMonth": {
+        "question": "왜 이 달이 강조되어 있나요?",
+        "answer": "이것은 현재 달({month} {year})입니다. 오늘은 이 달의 {today}일이며, 달력에서 파란색으로 강조되어 있습니다."
+      },
+      "monthCharacteristics": {
+        "question": "이 달의 특징은 무엇인가요?",
+        "february": "{month} {year}은 {days}일이 있어 {leapYear}입니다. 2월은 가장 짧은 달이며 가변적인 일수를 가진 유일한 달입니다.",
+        "thirtyDays": "{month}은 정확히 30일을 가진 네 달 중 하나입니다(4월, 6월, 9월, 11월).",
+        "thirtyOneDays": "{month}은 31일이 있어 한 해의 일곱 개 긴 달 중 하나입니다."
+      },
+      "navigation": {
+        "question": "다른 달로 어떻게 이동하나요?",
+        "answer": "화살표 버튼을 사용해 {prevMonth}이나 {nextMonth}로 이동할 수 있습니다. 아래 탐색 격자에서 원하는 달을 클릭하거나, '연도 보기' 버튼을 사용해 모든 달을 한 번에 볼 수도 있습니다."
       }
     }
   },

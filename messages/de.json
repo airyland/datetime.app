@@ -317,6 +317,14 @@
     "monthNavigation": "Monat Navigation",
     "jumpToYear": "Zu Jahr Springen",
     "toggleTheme": "Design wechseln",
+    "previousMonth": "Vorheriger Monat",
+    "nextMonth": "Nächster Monat",
+    "currentMonth": "Aktueller Monat",
+    "backToYear": "Zurück zu {year}",
+    "daysInMonth": "{days} Tage",
+    "selectedDate": "Ausgewähltes Datum",
+    "date": "Datum",
+    "dayOfYear": "Tag des Jahres",
     "months": {
       "january": "Januar",
       "february": "Februar",
@@ -371,7 +379,7 @@
       "weeksRemaining": "Verbleibende Wochen"
     },
     "faq": {
-      "title": "{year} Kalender - Häufig gestellte Fragen",
+      "title": "Häufig gestellte Fragen",
       "whatIsCalendar": {
         "question": "Was ist ein Jahreskalender?",
         "answer": "Ein Jahreskalender zeigt alle 12 Monate eines bestimmten Jahres in einem strukturierten Format an, mit Daten, Wochentagen und Wochennummern. Er hilft bei der Terminplanung, Zeitplanung und dem Verständnis der Jahresstruktur."
@@ -383,6 +391,50 @@
       "leapYear": {
         "question": "Was ist ein Schaltjahr?",
         "answer": "Ein Schaltjahr hat 366 Tage anstatt der üblichen 365. Es tritt alle 4 Jahre auf (mit einigen Ausnahmen) und fügt einen zusätzlichen Tag (29. Februar) hinzu, um unseren Kalender mit der Erdumlaufbahn um die Sonne abzustimmen."
+      },
+      "monthOverview": {
+        "question": "Welche Informationen zeigt dieser Monat?",
+        "answer": "{month} {year} hat {days} Tage, beginnend am {startDay} und endend am {endDay}. Diese Kalenderansicht zeigt alle Daten mit ihren entsprechenden Wochentagen und Wochennummern."
+      },
+      "weekCount": {
+        "question": "Wie viele Wochen hat dieser Monat?",
+        "answer": "{month} erstreckt sich über {weeks} Wochen im Kalenderraster, obwohl einige Wochen Tage vom vorherigen oder nächsten Monat enthalten können."
+      },
+      "currentMonth": {
+        "question": "Warum ist dieser Monat hervorgehoben?",
+        "answer": "Dies ist der aktuelle Monat ({month} {year}). Heute ist der {today}. des Monats, der im Kalender blau hervorgehoben ist."
+      },
+      "monthCharacteristics": {
+        "question": "Was sind die Eigenschaften dieses Monats?",
+        "february": "{month} {year} hat {days} Tage, was ihn zu einem {leapYear} macht. Februar ist der kürzeste Monat und der einzige Monat mit einer variablen Anzahl von Tagen.",
+        "thirtyDays": "{month} ist einer der vier Monate mit genau 30 Tagen (April, Juni, September, November).",
+        "thirtyOneDays": "{month} hat 31 Tage und ist einer der sieben längeren Monate des Jahres."
+      },
+      "navigation": {
+        "question": "Wie kann ich zu anderen Monaten navigieren?",
+        "answer": "Verwenden Sie die Pfeiltasten, um zu {prevMonth} oder {nextMonth} zu gehen. Sie können auch auf jeden Monat im Navigationsgitter unten klicken oder die Schaltfläche 'Jahr anzeigen' verwenden, um alle Monate auf einmal zu sehen."
+      },
+      "monthOverview": {
+        "question": "Welche Informationen zeigt dieser Monat?",
+        "answer": "{month} {year} hat {days} Tage, beginnend am {startDay} und endend am {endDay}. Diese Kalenderansicht zeigt alle Daten mit ihren entsprechenden Wochentagen und Wochennummern."
+      },
+      "weekCount": {
+        "question": "Wie viele Wochen hat dieser Monat?",
+        "answer": "{month} erstreckt sich über {weeks} Wochen im Kalenderraster, obwohl einige Wochen Tage vom vorherigen oder nächsten Monat enthalten können."
+      },
+      "currentMonth": {
+        "question": "Warum ist dieser Monat hervorgehoben?",
+        "answer": "Dies ist der aktuelle Monat ({month} {year}). Heute ist der {today}. des Monats, der im Kalender blau hervorgehoben ist."
+      },
+      "monthCharacteristics": {
+        "question": "Was sind die Eigenschaften dieses Monats?",
+        "february": "{month} {year} hat {days} Tage, was ihn zu einem {leapYear} macht. Februar ist der kürzeste Monat und der einzige Monat mit einer variablen Anzahl von Tagen.",
+        "thirtyDays": "{month} ist einer der vier Monate mit genau 30 Tagen (April, Juni, September, November).",
+        "thirtyOneDays": "{month} hat 31 Tage und ist einer der sieben längeren Monate des Jahres."
+      },
+      "navigation": {
+        "question": "Wie kann ich zu anderen Monaten navigieren?",
+        "answer": "Verwenden Sie die Pfeiltasten, um zu {prevMonth} oder {nextMonth} zu gehen. Sie können auch auf jeden Monat im Navigationsgitter unten klicken oder die Schaltfläche 'Jahr anzeigen' verwenden, um alle Monate auf einmal zu sehen."
       }
     }
   },

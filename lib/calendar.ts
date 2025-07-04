@@ -166,6 +166,14 @@ export function generateMonth(year: number, month: number, monthNames: string[],
 }
 
 /**
+ * Generate single month calendar with larger view
+ */
+export function generateMonthCalendar(year: number, month: number, locale: string = 'en'): CalendarMonth {
+  const monthNames = getMonthNames(locale);
+  return generateMonth(year, month, monthNames.full, monthNames.short);
+}
+
+/**
  * Generate full year calendar
  */
 export function generateYearCalendar(year: number, locale: string = 'en'): YearCalendar {
