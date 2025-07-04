@@ -317,6 +317,14 @@
     "monthNavigation": "Navegación de Mes",
     "jumpToYear": "Saltar al Año",
     "toggleTheme": "Cambiar tema",
+    "previousMonth": "Mes Anterior",
+    "nextMonth": "Mes Siguiente",
+    "currentMonth": "Mes Actual",
+    "backToYear": "Volver a {year}",
+    "daysInMonth": "{days} días",
+    "selectedDate": "Fecha Seleccionada",
+    "date": "Fecha",
+    "dayOfYear": "Día del Año",
     "months": {
       "january": "Enero",
       "february": "Febrero",
@@ -371,7 +379,7 @@
       "weeksRemaining": "Semanas restantes"
     },
     "faq": {
-      "title": "Calendario {year} - Preguntas Frecuentes",
+      "title": "Preguntas Frecuentes",
       "whatIsCalendar": {
         "question": "¿Qué es un calendario anual?",
         "answer": "Un calendario anual muestra todos los 12 meses de un año específico en un formato estructurado, mostrando fechas, días de la semana y números de semana. Ayuda con la planificación de fechas, programación y comprensión de la estructura del año."
@@ -383,6 +391,50 @@
       "leapYear": {
         "question": "¿Qué es un año bisiesto?",
         "answer": "Un año bisiesto tiene 366 días en lugar de los 365 habituales. Ocurre cada 4 años (con algunas excepciones) y añade un día adicional (29 de febrero) para mantener nuestro calendario alineado con la órbita de la Tierra alrededor del sol."
+      },
+      "monthOverview": {
+        "question": "¿Qué información muestra este mes?",
+        "answer": "{month} {year} tiene {days} días, comenzando el {startDay} y terminando el {endDay}. Esta vista de calendario muestra todas las fechas con sus días de la semana correspondientes y números de semana."
+      },
+      "weekCount": {
+        "question": "¿Cuántas semanas tiene este mes?",
+        "answer": "{month} abarca {weeks} semanas en la cuadrícula del calendario, aunque algunas semanas pueden contener días del mes anterior o siguiente."
+      },
+      "currentMonth": {
+        "question": "¿Por qué está resaltado este mes?",
+        "answer": "Este es el mes actual ({month} {year}). Hoy es el día {today} del mes, resaltado en azul en el calendario."
+      },
+      "monthCharacteristics": {
+        "question": "¿Cuáles son las características de este mes?",
+        "february": "{month} {year} tiene {days} días, lo que lo convierte en un {leapYear}. Febrero es el mes más corto y el único mes con un número variable de días.",
+        "thirtyDays": "{month} es uno de los cuatro meses con exactamente 30 días (abril, junio, septiembre, noviembre).",
+        "thirtyOneDays": "{month} tiene 31 días, siendo uno de los siete meses más largos del año."
+      },
+      "navigation": {
+        "question": "¿Cómo puedo navegar a otros meses?",
+        "answer": "Usa los botones de flecha para ir a {prevMonth} o {nextMonth}. También puedes hacer clic en cualquier mes en la cuadrícula de navegación de abajo, o usar el botón 'Ver Año' para ver todos los meses a la vez."
+      },
+      "monthOverview": {
+        "question": "¿Qué información muestra este mes?",
+        "answer": "{month} {year} tiene {days} días, comenzando el {startDay} y terminando el {endDay}. Esta vista de calendario muestra todas las fechas con sus días de la semana correspondientes y números de semana."
+      },
+      "weekCount": {
+        "question": "¿Cuántas semanas tiene este mes?",
+        "answer": "{month} abarca {weeks} semanas en la cuadrícula del calendario, aunque algunas semanas pueden contener días del mes anterior o siguiente."
+      },
+      "currentMonth": {
+        "question": "¿Por qué está resaltado este mes?",
+        "answer": "Este es el mes actual ({month} {year}). Hoy es el día {today} del mes, resaltado en azul en el calendario."
+      },
+      "monthCharacteristics": {
+        "question": "¿Cuáles son las características de este mes?",
+        "february": "{month} {year} tiene {days} días, lo que lo convierte en un {leapYear}. Febrero es el mes más corto y el único mes con un número variable de días.",
+        "thirtyDays": "{month} es uno de los cuatro meses con exactamente 30 días (abril, junio, septiembre, noviembre).",
+        "thirtyOneDays": "{month} tiene 31 días, siendo uno de los siete meses más largos del año."
+      },
+      "navigation": {
+        "question": "¿Cómo puedo navegar a otros meses?",
+        "answer": "Usa los botones de flecha para ir a {prevMonth} o {nextMonth}. También puedes hacer clic en cualquier mes en la cuadrícula de navegación de abajo, o usar el botón 'Ver Año' para ver todos los meses a la vez."
       }
     }
   },

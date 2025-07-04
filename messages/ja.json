@@ -378,6 +378,14 @@
     "monthNavigation": "月ナビゲーション",
     "jumpToYear": "年にジャンプ",
     "toggleTheme": "テーマ切り替え",
+    "previousMonth": "前月",
+    "nextMonth": "翌月",
+    "currentMonth": "今月",
+    "backToYear": "{year}年に戻る",
+    "daysInMonth": "{days}日",
+    "selectedDate": "選択された日付",
+    "date": "日付",
+    "dayOfYear": "年間通算日",
     "months": {
       "january": "1月",
       "february": "2月",
@@ -432,7 +440,7 @@
       "weeksRemaining": "残り週数"
     },
     "faq": {
-      "title": "{year}年カレンダー - よくある質問",
+      "title": "よくある質問",
       "whatIsCalendar": {
         "question": "年間カレンダーとは何ですか？",
         "answer": "年間カレンダーは、特定の年の12ヶ月すべてを構造化された形式で表示し、日付、曜日、週番号を示します。日付の計画、スケジューリング、年の構造理解に役立ちます。"
@@ -444,6 +452,50 @@
       "leapYear": {
         "question": "うるう年とは何ですか？",
         "answer": "うるう年は通常の365日ではなく366日あります。4年ごと（いくつかの例外あり）に発生し、地球の太陽周りの軌道とカレンダーを合わせるために1日（2月29日）を追加します。"
+      },
+      "monthOverview": {
+        "question": "この月にはどのような情報が表示されますか？",
+        "answer": "{month} {year}は{days}日あり、{startDay}から始まり{endDay}で終わります。このカレンダービューでは、すべての日付とその対応する曜日、週番号が表示されます。"
+      },
+      "weekCount": {
+        "question": "この月は何週間ありますか？",
+        "answer": "{month}はカレンダーグリッド上で{weeks}週にわたりますが、一部の週には前月または翌月の日が含まれる場合があります。"
+      },
+      "currentMonth": {
+        "question": "なぜこの月がハイライトされているのですか？",
+        "answer": "これは現在の月（{month} {year}）です。今日は月の{today}日目で、カレンダー上で青色でハイライトされています。"
+      },
+      "monthCharacteristics": {
+        "question": "この月の特徴は何ですか？",
+        "february": "{month} {year}は{days}日あり、{leapYear}です。2月は最短の月で、唯一日数が変動する月です。",
+        "thirtyDays": "{month}は30日ちょうどの4つの月の一つです（4月、6月、9月、11月）。",
+        "thirtyOneDays": "{month}は31日あり、年の7つの長い月の一つです。"
+      },
+      "navigation": {
+        "question": "他の月にナビゲートするにはどうすればよいですか？",
+        "answer": "矢印ボタンを使用して{prevMonth}または{nextMonth}に移動できます。下のナビゲーショングリッドで任意の月をクリックするか、「年表示」ボタンを使用してすべての月を一度に表示することもできます。"
+      },
+      "monthOverview": {
+        "question": "この月はどのような情報を表示しますか？",
+        "answer": "{month} {year}は{days}日あり、{startDay}から始まり{endDay}で終わります。このカレンダービューでは、すべての日付とその対応する曜日、週番号が表示されます。"
+      },
+      "weekCount": {
+        "question": "この月は何週間ありますか？",
+        "answer": "{month}はカレンダーグリッド上で{weeks}週間にわたりますが、一部の週には前月または翌月の日が含まれる場合があります。"
+      },
+      "currentMonth": {
+        "question": "なぜこの月がハイライトされているのでしょうか？",
+        "answer": "これは現在の月（{month} {year}）です。今日は月の{today}日目で、カレンダー上で青色でハイライトされています。"
+      },
+      "monthCharacteristics": {
+        "question": "この月の特徴は何ですか？",
+        "february": "{month} {year}は{days}日あり、{leapYear}です。2月は最短の月で、唯一日数が可変の月です。",
+        "thirtyDays": "{month}は30日ちょうどの4つの月の一つです（4月、6月、9月、11月）。",
+        "thirtyOneDays": "{month}は31日あり、年の7つの長い月の一つです。"
+      },
+      "navigation": {
+        "question": "他の月にナビゲートするにはどうすればよいですか？",
+        "answer": "矢印ボタンを使用して{prevMonth}または{nextMonth}に移動できます。下のナビゲーショングリッドで任意の月をクリックするか、「年表示」ボタンを使用してすべての月を一度に表示することもできます。"
       }
     }
   }

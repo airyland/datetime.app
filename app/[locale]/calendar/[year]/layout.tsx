@@ -73,7 +73,9 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
     description: `View the complete ${year} calendar with all months, week numbers, and dates. ${isLeapYear ? 'Leap year' : 'Regular year'}${isCurrentYear ? ' (current year)' : ''}.`,
     keywords: [`${year} calendar`, "yearly calendar", "monthly calendar", "date lookup", "week numbers", isLeapYear ? "leap year" : "regular year"],
     alternates: {
-      canonical: `https://datetime.app/calendar/${year}`,
+      canonical: locale === 'en' 
+        ? `https://datetime.app/calendar/${year}`
+        : `https://datetime.app/${locale}/calendar/${year}`,
       languages
     },
     openGraph: {
