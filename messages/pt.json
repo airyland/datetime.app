@@ -311,6 +311,14 @@
     "monthNavigation": "Navegação por Mês",
     "jumpToYear": "Pular para Ano",
     "toggleTheme": "Alternar tema",
+    "previousMonth": "Mês Anterior",
+    "nextMonth": "Próximo Mês",
+    "currentMonth": "Mês Atual",
+    "backToYear": "Voltar para {year}",
+    "daysInMonth": "{days} dias",
+    "selectedDate": "Data Selecionada",
+    "date": "Data",
+    "dayOfYear": "Dia do Ano",
     "months": {
       "january": "Janeiro",
       "february": "Fevereiro",
@@ -365,7 +373,7 @@
       "weeksRemaining": "Semanas restantes"
     },
     "faq": {
-      "title": "Calendário {year} - Perguntas Frequentes",
+      "title": "Perguntas Frequentes",
       "whatIsCalendar": {
         "question": "O que é um calendário anual?",
         "answer": "Um calendário anual exibe todos os 12 meses de um ano específico em um formato estruturado, mostrando datas, dias da semana e números de semana. Ajuda com planejamento de datas, agendamento e compreensão da estrutura do ano."
@@ -377,6 +385,50 @@
       "leapYear": {
         "question": "O que é um ano bissexto?",
         "answer": "Um ano bissexto tem 366 dias em vez dos 365 usuais. Ocorre a cada 4 anos (com algumas exceções) e adiciona um dia extra (29 de fevereiro) para manter nosso calendário alinhado com a órbita da Terra ao redor do sol."
+      },
+      "monthOverview": {
+        "question": "Que informações este mês mostra?",
+        "answer": "{month} {year} tem {days} dias, começando em {startDay} e terminando em {endDay}. Esta vista de calendário mostra todas as datas com seus dias da semana correspondentes e números de semana."
+      },
+      "weekCount": {
+        "question": "Quantas semanas há neste mês?",
+        "answer": "{month} abrange {weeks} semanas na grade do calendário, embora algumas semanas possam conter dias do mês anterior ou próximo."
+      },
+      "currentMonth": {
+        "question": "Por que este mês está destacado?",
+        "answer": "Este é o mês atual ({month} {year}). Hoje é o {today}º dia do mês, destacado em azul no calendário."
+      },
+      "monthCharacteristics": {
+        "question": "Quais são as características deste mês?",
+        "february": "{month} {year} tem {days} dias, tornando-o um {leapYear}. Fevereiro é o mês mais curto e o único mês com um número variável de dias.",
+        "thirtyDays": "{month} é um dos quatro meses com exatamente 30 dias (abril, junho, setembro, novembro).",
+        "thirtyOneDays": "{month} tem 31 dias, sendo um dos sete meses mais longos do ano."
+      },
+      "navigation": {
+        "question": "Como posso navegar para outros meses?",
+        "answer": "Use os botões de seta para ir para {prevMonth} ou {nextMonth}. Você também pode clicar em qualquer mês na grade de navegação abaixo, ou usar o botão 'Ver Ano' para ver todos os meses de uma vez."
+      },
+      "monthOverview": {
+        "question": "Que informações este mês mostra?",
+        "answer": "{month} {year} tem {days} dias, começando em {startDay} e terminando em {endDay}. Esta vista de calendário mostra todas as datas com seus dias da semana correspondentes e números de semana."
+      },
+      "weekCount": {
+        "question": "Quantas semanas há neste mês?",
+        "answer": "{month} abrange {weeks} semanas na grade do calendário, embora algumas semanas possam conter dias do mês anterior ou próximo."
+      },
+      "currentMonth": {
+        "question": "Por que este mês está destacado?",
+        "answer": "Este é o mês atual ({month} {year}). Hoje é o {today}º dia do mês, destacado em azul no calendário."
+      },
+      "monthCharacteristics": {
+        "question": "Quais são as características deste mês?",
+        "february": "{month} {year} tem {days} dias, tornando-o um {leapYear}. Fevereiro é o mês mais curto e o único mês com um número variável de dias.",
+        "thirtyDays": "{month} é um dos quatro meses com exatamente 30 dias (abril, junho, setembro, novembro).",
+        "thirtyOneDays": "{month} tem 31 dias, sendo um dos sete meses mais longos do ano."
+      },
+      "navigation": {
+        "question": "Como posso navegar para outros meses?",
+        "answer": "Use os botões de seta para ir para {prevMonth} ou {nextMonth}. Você também pode clicar em qualquer mês na grade de navegação abaixo, ou usar o botão 'Ver Ano' para ver todos os meses de uma vez."
       }
     }
   },

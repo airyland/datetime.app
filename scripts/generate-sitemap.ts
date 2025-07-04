@@ -175,6 +175,24 @@ function generateURLs(): SitemapURL[] {
     }
   }
 
+  // Add monthly calendar pages for current year and next 2 years
+  const currentMonth = new Date().getMonth() + 1;
+  for (const locale of locales) {
+    for (let year = currentYear; year <= currentYear + 2; year++) {
+      for (let month = 1; month <= 12; month++) {
+        const monthStr = String(month).padStart(2, '0');
+        const isCurrentMonth = year === currentYear && month === currentMonth;
+        urls.push({
+          loc: getLocalizedURL(locale, `calendar/${year}/${monthStr}`),
+          changefreq: 'monthly',
+          priority: isCurrentMonth
+            ? (locale === defaultLocale ? '0.7' : '0.6')
+            : (locale === defaultLocale ? '0.5' : '0.4')
+        });
+      }
+    }
+  }
+
   return urls;
 }
 

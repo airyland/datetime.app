@@ -317,6 +317,14 @@
     "monthNavigation": "Navigation par Mois",
     "jumpToYear": "Aller à l'Année",
     "toggleTheme": "Basculer le thème",
+    "previousMonth": "Mois Précédent",
+    "nextMonth": "Mois Suivant",
+    "currentMonth": "Mois Actuel",
+    "backToYear": "Retour à {year}",
+    "daysInMonth": "{days} jours",
+    "selectedDate": "Date Sélectionnée",
+    "date": "Date",
+    "dayOfYear": "Jour de l'Année",
     "months": {
       "january": "Janvier",
       "february": "Février",
@@ -371,7 +379,7 @@
       "weeksRemaining": "Semaines restantes"
     },
     "faq": {
-      "title": "Calendrier {year} - Questions Fréquemment Posées",
+      "title": "Questions Fréquemment Posées",
       "whatIsCalendar": {
         "question": "Qu'est-ce qu'un calendrier annuel ?",
         "answer": "Un calendrier annuel affiche tous les 12 mois d'une année spécifique dans un format structuré, montrant les dates, les jours de la semaine et les numéros de semaine. Il aide à la planification de dates, à la programmation et à la compréhension de la structure de l'année."
@@ -383,6 +391,50 @@
       "leapYear": {
         "question": "Qu'est-ce qu'une année bissextile ?",
         "answer": "Une année bissextile a 366 jours au lieu des 365 habituels. Elle survient tous les 4 ans (avec quelques exceptions) et ajoute un jour supplémentaire (29 février) pour maintenir notre calendrier aligné sur l'orbite terrestre autour du soleil."
+      },
+      "monthOverview": {
+        "question": "Quelles informations ce mois affiche-t-il ?",
+        "answer": "{month} {year} a {days} jours, commençant le {startDay} et se terminant le {endDay}. Cette vue du calendrier affiche toutes les dates avec leurs jours de la semaine correspondants et les numéros de semaine."
+      },
+      "weekCount": {
+        "question": "Combien de semaines y a-t-il dans ce mois ?",
+        "answer": "{month} s'étend sur {weeks} semaines dans la grille du calendrier, bien que certaines semaines puissent contenir des jours du mois précédent ou suivant."
+      },
+      "currentMonth": {
+        "question": "Pourquoi ce mois est-il mis en surbrillance ?",
+        "answer": "C'est le mois actuel ({month} {year}). Aujourd'hui est le {today}e jour du mois, mis en surbrillance en bleu sur le calendrier."
+      },
+      "monthCharacteristics": {
+        "question": "Quelles sont les caractéristiques de ce mois ?",
+        "february": "{month} {year} a {days} jours, ce qui en fait une {leapYear}. Février est le mois le plus court et le seul mois avec un nombre variable de jours.",
+        "thirtyDays": "{month} est l'un des quatre mois avec exactement 30 jours (avril, juin, septembre, novembre).",
+        "thirtyOneDays": "{month} a 31 jours, ce qui en fait l'un des sept mois les plus longs de l'année."
+      },
+      "navigation": {
+        "question": "Comment puis-je naviguer vers d'autres mois ?",
+        "answer": "Utilisez les boutons fléchés pour aller à {prevMonth} ou {nextMonth}. Vous pouvez également cliquer sur n'importe quel mois dans la grille de navigation ci-dessous, ou utiliser le bouton 'Voir l'Année' pour voir tous les mois en une fois."
+      },
+      "monthOverview": {
+        "question": "Quelles informations ce mois affiche-t-il ?",
+        "answer": "{month} {year} a {days} jours, commençant le {startDay} et se terminant le {endDay}. Cette vue du calendrier affiche toutes les dates avec leurs jours de la semaine correspondants et les numéros de semaine."
+      },
+      "weekCount": {
+        "question": "Combien de semaines y a-t-il dans ce mois ?",
+        "answer": "{month} s'étend sur {weeks} semaines dans la grille du calendrier, bien que certaines semaines puissent contenir des jours du mois précédent ou suivant."
+      },
+      "currentMonth": {
+        "question": "Pourquoi ce mois est-il mis en surbrillance ?",
+        "answer": "C'est le mois actuel ({month} {year}). Aujourd'hui est le {today}e jour du mois, mis en surbrillance en bleu sur le calendrier."
+      },
+      "monthCharacteristics": {
+        "question": "Quelles sont les caractéristiques de ce mois ?",
+        "february": "{month} {year} a {days} jours, ce qui en fait une {leapYear}. Février est le mois le plus court et le seul mois avec un nombre variable de jours.",
+        "thirtyDays": "{month} est l'un des quatre mois avec exactement 30 jours (avril, juin, septembre, novembre).",
+        "thirtyOneDays": "{month} a 31 jours, ce qui en fait l'un des sept mois les plus longs de l'année."
+      },
+      "navigation": {
+        "question": "Comment puis-je naviguer vers d'autres mois ?",
+        "answer": "Utilisez les boutons fléchés pour aller à {prevMonth} ou {nextMonth}. Vous pouvez également cliquer sur n'importe quel mois dans la grille de navigation ci-dessous, ou utiliser le bouton 'Voir l'Année' pour voir tous les mois en une fois."
       }
     }
   },
