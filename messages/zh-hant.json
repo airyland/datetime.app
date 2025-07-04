@@ -350,6 +350,14 @@
     "monthNavigation": "月份導航",
     "jumpToYear": "跳轉到年份",
     "toggleTheme": "切換主題",
+    "previousMonth": "上一個月",
+    "nextMonth": "下一個月",
+    "currentMonth": "當前月份",
+    "backToYear": "返回{year}年",
+    "daysInMonth": "{days}天",
+    "selectedDate": "選定日期",
+    "date": "日期",
+    "dayOfYear": "年中的第幾天",
     "months": {
       "january": "一月",
       "february": "二月",
@@ -404,7 +412,7 @@
       "weeksRemaining": "剩餘週數"
     },
     "faq": {
-      "title": "{year}年日曆 - 常見問題",
+      "title": "常見問題",
       "whatIsCalendar": {
         "question": "什麼是年曆？",
         "answer": "年曆以結構化格式顯示特定年份的所有12個月，顯示日期、星期幾和週數。它有助於日期規劃、安排日程和理解年份結構。"
@@ -416,6 +424,50 @@
       "leapYear": {
         "question": "什麼是閏年？",
         "answer": "閏年有366天而不是通常的365天。每4年出現一次（有一些例外），增加一天（2月29日）以保持我們的日曆與地球繞太陽軌道對齊。"
+      },
+      "monthOverview": {
+        "question": "這個月顯示了什麼資訊？",
+        "answer": "{month} {year}有{days}天，從{startDay}開始，到{endDay}結束。此日曆檢視顯示所有日期及其對應的工作日和週數。"
+      },
+      "weekCount": {
+        "question": "這個月有多少週？",
+        "answer": "{month}在日曆網格上跨越{weeks}週，儘管有些週可能包含上個月或下個月的天數。"
+      },
+      "currentMonth": {
+        "question": "為什麼這個月被突出顯示？",
+        "answer": "這是當前月份（{month} {year}）。今天是本月的第{today}天，在日曆上以藍色突出顯示。"
+      },
+      "monthCharacteristics": {
+        "question": "這個月的特點是什麼？",
+        "february": "{month} {year}有{days}天，使其成為{leapYear}。二月是最短的月份，也是唯一天數可變的月份。",
+        "thirtyDays": "{month}是四個恰好有30天的月份之一（四月、六月、九月、十一月）。",
+        "thirtyOneDays": "{month}有31天，是一年中七個較長月份之一。"
+      },
+      "navigation": {
+        "question": "如何導航到其他月份？",
+        "answer": "使用箭頭按鈕前往{prevMonth}或{nextMonth}。您也可以點擊下方導航網格中的任何月份，或使用「檢視年份」按鈕一次檢視所有月份。"
+      },
+      "monthOverview": {
+        "question": "這個月顯示了什麼資訊？",
+        "answer": "{month} {year}有{days}天，從{startDay}開始，到{endDay}結束。此日曆檢視顯示所有日期及其對應的工作日和週數。"
+      },
+      "weekCount": {
+        "question": "這個月有多少週？",
+        "answer": "{month}在日曆網格上跨越{weeks}週，儘管有些週可能包含上個月或下個月的天數。"
+      },
+      "currentMonth": {
+        "question": "為什麼這個月被突出顯示？",
+        "answer": "這是當前月份（{month} {year}）。今天是本月的第{today}天，在日曆上以藍色突出顯示。"
+      },
+      "monthCharacteristics": {
+        "question": "這個月的特點是什麼？",
+        "february": "{month} {year}有{days}天，使其成為{leapYear}。二月是最短的月份，也是唯一天數可變的月份。",
+        "thirtyDays": "{month}是四個恰好有30天的月份之一（四月、六月、九月、十一月）。",
+        "thirtyOneDays": "{month}有31天，是一年中七個較長月份之一。"
+      },
+      "navigation": {
+        "question": "如何導航到其他月份？",
+        "answer": "使用箭頭按鈕前往{prevMonth}或{nextMonth}。您也可以點擊下方導航網格中的任何月份，或使用「檢視年份」按鈕一次檢視所有月份。"
       }
     }
   },
