@@ -23,15 +23,15 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
   
   if (locale === 'zh-hans') {
     return {
-      title: "年度进度条 | 追踪年度时间进度 | Datetime.app",
+      title: "年度进度条 | 查看当前年度完成百分比 | Datetime.app",
       description: t('description'),
-      keywords: ["年度进度", "年度进度条", "年度剩余时间", "年度追踪", "时间追踪"],
+      keywords: ["年度进度", "年度进度条", "年度百分比", "年度完成度", "年度时间线", "年度时间进度"],
       alternates: {
         canonical: `https://datetime.app/zh-hans/year-progress-bar`,
         languages
       },
       openGraph: {
-        title: "年度进度条 | 追踪年度时间进度 | Datetime.app",
+        title: "年度进度条 | 查看当前年度完成百分比 | Datetime.app",
         description: t('description'),
         type: "website",
       },
@@ -40,16 +40,34 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
   
   if (locale === 'zh-hant') {
     return {
-      title: "年度進度條 | 追蹤年度時間進度 | Datetime.app",
+      title: "年度進度條 | 查看當前年度完成百分比 | Datetime.app",
       description: t('description'),
-      keywords: ["年度進度", "年度進度條", "年度剩餘時間", "年度追蹤", "時間追蹤"],
+      keywords: ["年度進度", "年度進度條", "年度百分比", "年度完成度", "年度時間線", "年度時間進度"],
       alternates: {
         canonical: `https://datetime.app/zh-hant/year-progress-bar`,
         languages
       },
       openGraph: {
-        title: "年度進度條 | 追蹤年度時間進度 | Datetime.app",
+        title: "年度進度條 | 查看當前年度完成百分比 | Datetime.app",
         description: t('description'),
+        type: "website",
+      },
+    };
+  }
+  
+  // For all other non-English locales
+  if (locale !== 'en') {
+    return {
+      title: "Year Progress Bar | See How Much of the Year Has Passed | Datetime.app",
+      description: "View the current year's progress with our interactive progress bar. See the exact percentage of the year completed and days remaining.",
+      keywords: ["year progress", "year progress bar", "year percentage", "year completion", "year timeline", "year time progress", "days left in year", "days passed in year"],
+      alternates: {
+        canonical: `https://datetime.app/${locale}/year-progress-bar`,
+        languages
+      },
+      openGraph: {
+        title: "Year Progress Bar | See How Much of the Year Has Passed | Datetime.app",
+        description: "View the current year's progress with our interactive progress bar. See the exact percentage of the year completed and days remaining.",
         type: "website",
       },
     };
@@ -57,16 +75,16 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
   
   // Default English metadata
   return {
-    title: "Year Progress Bar | Track How Much of the Year Has Passed | Datetime.app",
-    description: "Track the current year's progress with a real-time progress bar. See exactly how much of the year has passed and how much time is left.",
-    keywords: ["year progress", "year progress bar", "time left in year", "days left in year", "year completion", "year tracker", "time tracking"],
+    title: "Year Progress Bar | See How Much of the Year Has Passed | Datetime.app",
+    description: "View the current year's progress with our interactive progress bar. See the exact percentage of the year completed and days remaining.",
+    keywords: ["year progress", "year progress bar", "year percentage", "year completion", "year timeline", "year time progress", "days left in year", "days passed in year"],
     alternates: {
       canonical: `https://datetime.app/year-progress-bar`,
       languages
     },
     openGraph: {
-      title: "Year Progress Bar | Track How Much of the Year Has Passed | Datetime.app",
-      description: "Track the current year's progress with a real-time progress bar. See exactly how much of the year has passed and how much time is left.",
+      title: "Year Progress Bar | See How Much of the Year Has Passed | Datetime.app",
+      description: "View the current year's progress with our interactive progress bar. See the exact percentage of the year completed and days remaining.",
       type: "website",
     },
   };
