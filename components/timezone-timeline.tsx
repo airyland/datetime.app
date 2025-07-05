@@ -4,19 +4,45 @@ import { useNow } from 'next-intl'
 import { useLayoutEffect, useRef, useState } from 'react'
 import spacetime from 'spacetime'
 import { generateTimezoneHours, type HourInfo } from '@/lib/timezone-hours'
+import { X, Settings } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
-interface TimezoneInfo {
-  city: string
-  name: string
+// Type for timezone info
+export interface TimezoneInfo {
+  city?: string
+  name?: string
+  value?: string
+  label?: string
+  isLocal?: boolean
 }
 
-const TimezoneTimeline = ({ timezones }: { timezones: TimezoneInfo[] }) => {
-  // Add UTC as the second timezone and Beijing at the end
-  const timezonesWithUTC = [
-    timezones[0], // First timezone
-    { city: 'UTC', name: 'UTC' }, // UTC as second
-    ...timezones.slice(1) // Rest of the timezones
-  ]
+// Helper function to get the timezone name regardless of data format
+function getTimezoneName(tz: TimezoneInfo): string {
+  return tz.name || tz.value || 'UTC'
+}
+
+// Helper function to get the timezone display name regardless of data format
+function getTimezoneDisplayName(tz: TimezoneInfo): string {
+  return tz.city || tz.label || ''
+}
+
+interface TimezoneTimelineProps {
+  timezones: TimezoneInfo[]
+  onSwitchToWorldClock?: () => void
+}
+
+const TimezoneTimeline = ({ 
+  timezones, 
+  onSwitchToWorldClock
+}: TimezoneTimelineProps) => {
+  // Add UTC as the second timezone if timezones array is not empty
+  const timezonesWithUTC = timezones.length > 0 
+    ? [
+        timezones[0], // First timezone
+        { city: 'UTC', name: 'UTC', value: 'UTC', label: 'UTC', isLocal: false }, // UTC as second
+        ...timezones.slice(1) // Rest of the timezones
+      ]
+    : [{ city: 'Local', name: Intl.DateTimeFormat().resolvedOptions().timeZone, label: 'Local', value: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true }] // Default if empty
   const now = useNow({ updateInterval: 1000 })
   const timelineRef = useRef<HTMLDivElement>(null)
   const currentHourRef = useRef<HTMLDivElement>(null) // Ref for the current hour element
@@ -51,28 +77,64 @@ const TimezoneTimeline = ({ timezones }: { timezones: TimezoneInfo[] }) => {
   return (
     <div className="grid grid-cols-[auto_1fr] w-full max-w-4xl mx-auto">
       {/* Column 1: Timezone Labels */}
-      <div className="col-start-1 pr-4 grid gap-y-2">
+      <div className="col-start-1 pr-4 grid gap-y-2 relative">
+        {/* Switch to World Clock Button */}
+        {onSwitchToWorldClock && (
+          <button 
+            onClick={onSwitchToWorldClock} 
+            className="absolute -top-8 right-0 p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            title="Manage timezones in World Clock"
+          >
+            <Settings className="w-4 h-4" />
+          </button>
+        )}
         {timezonesWithUTC.map(tz => {
-          const s = spacetime(now, tz.name)
-          const offsetInHours = s.offset() / -60
-          const offsetString =
-            offsetInHours === 0 ? 'GMT' : `GMT${offsetInHours > 0 ? '+' : ''}${offsetInHours}`
-
-          return (
-            <div key={tz.name} className="flex h-8 items-center justify-end">
-              <div className="text-right">
-                <div className="flex items-center justify-end">
-                  <div className="font-bold text-sm">{tz.city}</div>
-                  <span className="ml-2 text-[8px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 px-0.5 py-0 rounded font-mono">
-                    {offsetString}
-                  </span>
-                </div>
-                <div className="text-xs text-gray-500 whitespace-nowrap">
-                  {s.format('{month-pad}-{date-pad} {hour-24-pad}:{minute-pad}')}
+          // 确保 tz 存在且有可用的时区名称
+          if (!tz || (!tz.name && !tz.value)) return null
+          
+          // 获取时区名称和显示名称
+          const tzName = getTimezoneName(tz)
+          const tzDisplayName = getTimezoneDisplayName(tz)
+          
+          try {
+            const s = spacetime(now, tzName)
+            const offsetInHours = s.offset() / -60
+            const offsetString =
+              offsetInHours === 0 ? 'GMT' : `GMT${offsetInHours > 0 ? '+' : ''}${offsetInHours}`
+            
+            return (
+              <div key={tzName || 'timezone-' + Math.random()} className="flex h-8 items-center justify-end relative group">
+                <div className="text-right">
+                  <div className="flex items-center justify-end">
+                    <div className="font-bold text-sm">{tzDisplayName}</div>
+                    <span className="ml-2 text-[8px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 px-0.5 py-0 rounded font-mono">
+                      {offsetString}
+                    </span>
+                  </div>
+                  <div className="text-xs text-gray-500 whitespace-nowrap">
+                    {s.format('{month-pad}-{date-pad} {hour-24-pad}:{minute-pad}')}
+                  </div>
                 </div>
               </div>
-            </div>
-          )
+            )
+          } catch (error) {
+            console.error(`Error displaying timezone ${tz.name}:`, error)
+            return (
+              <div key={tzName || 'unknown-' + Math.random()} className="flex h-8 items-center justify-end relative group">
+                <div className="text-right">
+                  <div className="flex items-center justify-end">
+                    <div className="font-bold text-sm">{tzDisplayName || 'Unknown'}</div>
+                    <span className="ml-2 text-[8px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 px-0.5 py-0 rounded font-mono">
+                      ERROR
+                    </span>
+                  </div>
+                  <div className="text-xs text-gray-500 whitespace-nowrap">
+                    Invalid timezone
+                  </div>
+                </div>
+              </div>
+            )
+          }
         })}
       </div>
 
@@ -84,7 +146,7 @@ const TimezoneTimeline = ({ timezones }: { timezones: TimezoneInfo[] }) => {
       >
         {timezonesWithUTC.map((tz, tzIndex) => {
           // Generate hours for this specific timezone
-          const timezoneHours = generateTimezoneHours(tz.name, now)
+          const timezoneHours = generateTimezoneHours(getTimezoneName(tz), now)
           // Only show the calculated visible hours to avoid partial display
           const visibleTimezoneHours = timezoneHours.slice(0, visibleHours)
           return (
@@ -123,7 +185,7 @@ const TimezoneTimeline = ({ timezones }: { timezones: TimezoneInfo[] }) => {
 
         {/* Current Hour Highlight Box */}
         {(() => {
-          const timezoneHours = generateTimezoneHours(timezonesWithUTC[0].name, now)
+          const timezoneHours = generateTimezoneHours(getTimezoneName(timezonesWithUTC[0]), now)
           const visibleTimezoneHours = timezoneHours.slice(0, visibleHours)
           const currentHour = visibleTimezoneHours.find(h => h.isCurrentHour)
           if (!currentHour) return null
