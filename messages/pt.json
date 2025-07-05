@@ -105,8 +105,42 @@
     }
   },
   "utc": {
-    "title": "Hora UTC",
-    "description": "Tempo Universal Coordenado (UTC) - o padrão de tempo principal"
+    "title": "Tempo Universal Coordenado (UTC)",
+    "subtitle": "Padrão de Tempo Mundial",
+    "description": "Visualizar a hora UTC (Tempo Universal Coordenado) atual. UTC é o padrão de tempo mundial, não afetado por fusos horários ou mudanças de horário de verão.",
+    "learnMore": "Saiba mais sobre UTC em nosso glossário",
+    "unixTimestamp": "Timestamp Unix",
+    "utcString": "String UTC",
+    "iso8601": "ISO 8601",
+    "copyToClipboard": "Copiar para área de transferência",
+    "enterFullscreen": "Entrar em tela cheia",
+    "toggleTheme": "Alternar tema",
+    "utcOffset": "UTC/GMT+0",
+    "worldCityTimes": "Horários das Cidades do Mundo",
+    "faqTitle": "Hora UTC - Perguntas Frequentes",
+    "viewGlossary": "Ver nosso glossário completo de conceitos de data e hora",
+    "faqs": {
+      "whatIsUtc": {
+        "question": "O que é a hora UTC?",
+        "answer": "UTC (Tempo Universal Coordenado) é o padrão de tempo primário pelo qual o mundo regula relógios e tempo. É similar ao GMT (Tempo Médio de Greenwich) mas definido mais precisamente usando relógios atômicos. UTC é o padrão de tempo usado pela Internet, comunicações internacionais e aviação."
+      },
+      "whyImportant": {
+        "question": "Por que UTC é importante?",
+        "answer": "UTC é importante porque fornece um tempo de referência padronizado que não é afetado por mudanças de fuso horário ou horário de verão. Serve como base para o tempo civil mundialmente e é crucial para comunicações globais, aviação, pesquisa científica e sistemas de computador."
+      },
+      "utcVsGmt": {
+        "question": "Qual é a diferença entre UTC e GMT?",
+        "answer": "Embora UTC e GMT sejam frequentemente usados ​​de forma intercambiável e ambos representem o tempo no Meridiano Principal (0° longitude), eles são tecnicamente diferentes. GMT é baseado na rotação da Terra e posição do sol, enquanto UTC é baseado em relógios atômicos. Na prática, eles geralmente estão dentro de 0,9 segundos um do outro."
+      },
+      "convertToLocal": {
+        "question": "Como converter UTC para minha hora local?",
+        "answer": "Para converter UTC para sua hora local, você precisa adicionar ou subtrair o deslocamento do seu fuso horário do tempo UTC. Por exemplo, se você está no Horário Padrão do Leste (EST), que é UTC-5, você subtrairia 5 horas do tempo UTC. Durante o horário de verão, isso se tornaria UTC-4."
+      },
+      "whyInComputing": {
+        "question": "Por que UTC é usado na computação?",
+        "answer": "UTC é usado na computação porque fornece uma referência de tempo consistente independentemente da localização geográfica. Isso é essencial para timestamps de eventos, sincronização de sistemas através de diferentes fusos horários, registro de logs e garantia de timestamps de dados consistentes em sistemas distribuídos."
+      }
+    }
   },
   "holidays": {
     "title": "Feriados do Mundo",
