@@ -29,7 +29,8 @@
       "calendar": "Calendario",
       "timeZoneConverter": "Convertidor de Zona Horaria",
       "countdownTimer": "Temporizador de Cuenta Regresiva",
-      "sunriseSunset": "Amanecer y Atardecer"
+      "sunriseSunset": "Amanecer y Atardecer",
+      "developerTools": "DateTime para Desarrolladores"
     },
     "labels": {
       "timezoneInfo": "Información de Zona Horaria",
