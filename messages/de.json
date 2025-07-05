@@ -106,8 +106,42 @@
     }
   },
   "utc": {
-    "title": "UTC-Zeit",
-    "description": "Koordinierte Weltzeit (UTC) - der primäre Zeitstandard"
+    "title": "Koordinierte Weltzeit (UTC)",
+    "subtitle": "Welt-Zeitstandard",
+    "description": "Aktuelle UTC (Koordinierte Weltzeit) anzeigen. UTC ist der Weltzeit-Standard, der nicht von Zeitzonen oder Sommerzeitänderungen betroffen ist.",
+    "learnMore": "Erfahren Sie mehr über UTC in unserem Glossar",
+    "unixTimestamp": "Unix-Zeitstempel",
+    "utcString": "UTC-String",
+    "iso8601": "ISO 8601",
+    "copyToClipboard": "In Zwischenablage kopieren",
+    "enterFullscreen": "Vollbild öffnen",
+    "toggleTheme": "Design wechseln",
+    "utcOffset": "UTC/GMT+0",
+    "worldCityTimes": "Weltstädte-Zeiten",
+    "faqTitle": "UTC-Zeit - Häufig gestellte Fragen",
+    "viewGlossary": "Unser vollständiges Glossar der Datums- und Zeitkonzepte anzeigen",
+    "faqs": {
+      "whatIsUtc": {
+        "question": "Was ist UTC-Zeit?",
+        "answer": "UTC (Koordinierte Weltzeit) ist der primäre Zeitstandard, nach dem die Welt Uhren und Zeit reguliert. Es ist ähnlich wie GMT (Greenwich Mean Time), aber präziser mit Atomuhren definiert. UTC ist der Zeitstandard, der vom Internet, internationalen Kommunikationen und der Luftfahrt verwendet wird."
+      },
+      "whyImportant": {
+        "question": "Warum ist UTC wichtig?",
+        "answer": "UTC ist wichtig, weil es eine standardisierte Referenzzeit bietet, die nicht von Zeitzonen- oder Sommerzeitänderungen betroffen ist. Es dient als Grundlage für die bürgerliche Zeit weltweit und ist entscheidend für globale Kommunikation, Luftfahrt, wissenschaftliche Forschung und Computersysteme."
+      },
+      "utcVsGmt": {
+        "question": "Was ist der Unterschied zwischen UTC und GMT?",
+        "answer": "Obwohl UTC und GMT oft austauschbar verwendet werden und beide die Zeit am Nullmeridian (0° Längengrad) darstellen, sind sie technisch unterschiedlich. GMT basiert auf der Erdrotation und der Sonnenposition, während UTC auf Atomuhren basiert. In der Praxis sind sie normalerweise innerhalb von 0,9 Sekunden voneinander."
+      },
+      "convertToLocal": {
+        "question": "Wie konvertiere ich UTC in meine Ortszeit?",
+        "answer": "Um UTC in Ihre Ortszeit zu konvertieren, müssen Sie den Offset Ihrer Zeitzone von der UTC-Zeit addieren oder subtrahieren. Zum Beispiel, wenn Sie sich in der Eastern Standard Time (EST) befinden, die UTC-5 ist, würden Sie 5 Stunden von der UTC-Zeit subtrahieren. Während der Sommerzeit würde dies UTC-4 werden."
+      },
+      "whyInComputing": {
+        "question": "Warum wird UTC in der Informatik verwendet?",
+        "answer": "UTC wird in der Informatik verwendet, weil es eine konsistente Zeitreferenz unabhängig vom geografischen Standort bietet. Dies ist wesentlich für Zeitstempel von Ereignissen, Synchronisation von Systemen über verschiedene Zeitzonen hinweg, Protokollierung und Gewährleistung konsistenter Datenzeitstempel in verteilten Systemen."
+      }
+    }
   },
   "holidays": {
     "title": "Feiertage weltweit",
