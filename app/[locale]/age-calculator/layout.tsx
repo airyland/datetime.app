@@ -55,6 +55,24 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
     };
   }
   
+  // For all other non-English locales
+  if (locale !== 'en') {
+    return {
+      title: "Age Calculator | Calculate Your Exact Age | Datetime.app",
+      description: "Calculate your exact age in years, months, days, hours, minutes, and seconds. Choose between calendar or manual input and calculate age as of any date.",
+      keywords: ["age calculator", "calculate age", "how old am I", "exact age", "age in years", "age in days", "birthday calculator", "time since birth", "age between dates", "age on specific date"],
+      alternates: {
+        canonical: `https://datetime.app/${locale}/age-calculator`,
+        languages
+      },
+      openGraph: {
+        title: "Age Calculator | Calculate Your Exact Age | Datetime.app",
+        description: "Calculate your exact age in years, months, days, hours, minutes, and seconds. Choose between calendar or manual input and calculate age as of any date.",
+        type: "website",
+      },
+    };
+  }
+  
   // Default English metadata
   return {
     title: "Age Calculator | Calculate Your Exact Age | Datetime.app",
