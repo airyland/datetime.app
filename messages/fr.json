@@ -106,8 +106,42 @@
     }
   },
   "utc": {
-    "title": "Heure UTC",
-    "description": "Temps Universel Coordonné (UTC) - la norme de temps principale"
+    "title": "Temps Universel Coordonné (UTC)",
+    "subtitle": "Standard de Temps Mondial",
+    "description": "Voir l'heure UTC (Temps Universel Coordonné) actuelle. UTC est le standard de temps mondial, non affecté par les fuseaux horaires ou les changements d'heure d'été.",
+    "learnMore": "En savoir plus sur UTC dans notre glossaire",
+    "unixTimestamp": "Horodatage Unix",
+    "utcString": "Chaîne UTC",
+    "iso8601": "ISO 8601",
+    "copyToClipboard": "Copier dans le presse-papiers",
+    "enterFullscreen": "Entrer en plein écran",
+    "toggleTheme": "Basculer le thème",
+    "utcOffset": "UTC/GMT+0",
+    "worldCityTimes": "Heures des Villes du Monde",
+    "faqTitle": "Heure UTC - Questions Fréquemment Posées",
+    "viewGlossary": "Voir notre glossaire complet des concepts de date et d'heure",
+    "faqs": {
+      "whatIsUtc": {
+        "question": "Qu'est-ce que l'heure UTC ?",
+        "answer": "UTC (Temps Universel Coordonné) est le standard de temps primaire par lequel le monde règle les horloges et le temps. Il est similaire à GMT (Temps Moyen de Greenwich) mais défini plus précisément en utilisant des horloges atomiques. UTC est le standard de temps utilisé par Internet, les communications internationales et l'aviation."
+      },
+      "whyImportant": {
+        "question": "Pourquoi UTC est-il important ?",
+        "answer": "UTC est important car il fournit un temps de référence standardisé qui n'est pas affecté par les changements de fuseau horaire ou d'heure d'été. Il sert de base pour le temps civil dans le monde entier et est crucial pour les communications mondiales, l'aviation, la recherche scientifique et les systèmes informatiques."
+      },
+      "utcVsGmt": {
+        "question": "Quelle est la différence entre UTC et GMT ?",
+        "answer": "Bien qu'UTC et GMT soient souvent utilisés de manière interchangeable et représentent tous deux l'heure au Méridien Principal (0° longitude), ils sont techniquement différents. GMT est basé sur la rotation de la Terre et la position du soleil, tandis qu'UTC est basé sur des horloges atomiques. En pratique, ils sont généralement à moins de 0,9 seconde l'un de l'autre."
+      },
+      "convertToLocal": {
+        "question": "Comment convertir UTC en heure locale ?",
+        "answer": "Pour convertir UTC en votre heure locale, vous devez ajouter ou soustraire le décalage de votre fuseau horaire à l'heure UTC. Par exemple, si vous êtes dans l'Heure Standard de l'Est (EST), qui est UTC-5, vous soustrairiez 5 heures de l'heure UTC. Pendant l'heure d'été, cela deviendrait UTC-4."
+      },
+      "whyInComputing": {
+        "question": "Pourquoi UTC est-il utilisé en informatique ?",
+        "answer": "UTC est utilisé en informatique car il fournit une référence de temps cohérente indépendamment de l'emplacement géographique. Ceci est essentiel pour les horodatages d'événements, la synchronisation de systèmes à travers différents fuseaux horaires, la journalisation et la garantie d'horodatages de données cohérents dans les systèmes distribués."
+      }
+    }
   },
   "holidays": {
     "title": "Jours Fériés du Monde",
