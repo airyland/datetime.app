@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
+import TimezoneTimeline from '@/components/timezone-timeline'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Input } from "@/components/ui/input"
@@ -534,6 +535,14 @@ export default function Home() {
                 </div>
               </div>
 
+              <div className="w-full max-w-6xl mx-auto my-8">
+                <TimezoneTimeline timezones={[
+                  { city: 'Local', name: Intl.DateTimeFormat().resolvedOptions().timeZone },
+                  { city: 'New York', name: 'America/New_York' },
+                  { city: 'London', name: 'Europe/London' }
+                ]} />
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-3xl mx-auto">
                 <Card className="shadow-none rounded-none border">
                   <CardHeader className="py-2 px-4">
@@ -907,7 +916,6 @@ export default function Home() {
                         {t('labels.pause')}
                       </Button>
                     )}
-
                     <Button className="flex-1" variant="outline" onClick={resetCountdown}>
                       {t('labels.reset')}
                     </Button>
