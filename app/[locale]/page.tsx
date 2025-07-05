@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
-import TimezoneTimeline from '@/components/timezone-timeline'
+import TimezoneTimeline, { TimezoneInfo } from '@/components/timezone-timeline'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Input } from "@/components/ui/input"
@@ -32,8 +32,15 @@ const DSTTag = ({ text }: { text: string }) => (
   </span>
 )
 
+// Define timezone type
+type TimezoneOption = {
+  value: string
+  label: string
+  isLocal?: boolean
+}
+
 // Available timezones for selection
-const availableTimezones = [
+const availableTimezones: TimezoneOption[] = [
   // North America
   { value: "America/New_York", label: "New York" },
   { value: "America/Los_Angeles", label: "Los Angeles" },
@@ -74,6 +81,8 @@ export default function Home() {
   const commonT = useTranslations('common')
   const pathname = usePathname()
   
+  // 使用已有的 activeTab 状态
+  
   // Determine current locale from pathname as it's more reliable
   const getCurrentLocale = () => {
     const pathSegments = pathname.split('/').filter(Boolean)
@@ -87,7 +96,7 @@ export default function Home() {
   // Use the more reliable method to get current locale
   const currentLocale = getCurrentLocale()
   const [currentTime, setCurrentTime] = useState(new Date())
-  const [customTimezones, setCustomTimezones] = useState<typeof availableTimezones>([]) // Custom user timezones
+  const [customTimezones, setCustomTimezones] = useState<TimezoneOption[]>([]) // Custom timezones for both world clock and timeline
   const [showAddTimezone, setShowAddTimezone] = useState(false) // Control add timezone form
   const [fullscreenTime, setFullscreenTime] = useState(false)
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date())
@@ -128,6 +137,7 @@ export default function Home() {
 
   // Load custom timezones from localStorage
   useEffect(() => {
+    // Load custom timezones from localStorage
     const saved = localStorage.getItem('customTimezones')
     if (saved) {
       try {
@@ -135,13 +145,24 @@ export default function Home() {
         setCustomTimezones(parsed)
       } catch (e) {
         console.error('Failed to parse saved timezones:', e)
-        // Show first 9 timezones by default
-        setCustomTimezones(availableTimezones.slice(0, 9))
+        // Default timezones
+        const defaultTimezones = [
+          { value: Intl.DateTimeFormat().resolvedOptions().timeZone, label: 'Local', isLocal: true },
+          { value: 'America/New_York', label: 'New York' },
+          { value: 'Europe/London', label: 'London' }
+        ]
+        setCustomTimezones(defaultTimezones)
       }
     } else {
-      // Show first 9 timezones by default
-      setCustomTimezones(availableTimezones.slice(0, 9))
+      // Default timezones
+      const defaultTimezones = [
+        { value: Intl.DateTimeFormat().resolvedOptions().timeZone, label: 'Local', isLocal: true },
+        { value: 'America/New_York', label: 'New York' },
+        { value: 'Europe/London', label: 'London' }
+      ]
+      setCustomTimezones(defaultTimezones)
     }
+    
     setIsInitialized(true)
   }, [])
 
@@ -535,12 +556,17 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="w-full max-w-6xl mx-auto my-8">
-                <TimezoneTimeline timezones={[
-                  { city: 'Local', name: Intl.DateTimeFormat().resolvedOptions().timeZone },
-                  { city: 'New York', name: 'America/New_York' },
-                  { city: 'London', name: 'Europe/London' }
-                ]} />
+              <div className="w-full max-w-6xl mx-auto my-8 relative">
+                <TimezoneTimeline 
+                  timezones={customTimezones.map(tz => ({ 
+                    city: tz.label, 
+                    name: tz.value,
+                    isLocal: tz.isLocal
+                  }))} 
+                  onSwitchToWorldClock={() => {
+                    setActiveTab('world-clock')
+                  }}
+                />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-3xl mx-auto">
@@ -793,7 +819,11 @@ export default function Home() {
                           <SelectItem value="UTC">UTC</SelectItem>
                           {availableTimezones.map((tz) => (
                             <SelectItem key={tz.value} value={tz.value}>
-                              {tz.label} (GMT{tz.offset >= 0 ? `+${tz.offset}` : tz.offset})
+                              {(() => {
+                                const s = spacetime(currentTime, tz.value)
+                                const offset = s.timezone().current.offset
+                                return `${tz.label} (GMT${offset >= 0 ? `+${offset}` : offset})`
+                              })()}
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -810,7 +840,11 @@ export default function Home() {
                           <SelectItem value="UTC">UTC</SelectItem>
                           {availableTimezones.map((tz) => (
                             <SelectItem key={tz.value} value={tz.value}>
-                              {tz.label} (GMT{tz.offset >= 0 ? `+${tz.offset}` : tz.offset})
+                              {(() => {
+                                const s = spacetime(currentTime, tz.value)
+                                const offset = s.timezone().current.offset
+                                return `${tz.label} (GMT${offset >= 0 ? `+${offset}` : offset})`
+                              })()}
                             </SelectItem>
                           ))}
                         </SelectContent>
