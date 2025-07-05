@@ -75,6 +75,18 @@ export async function generateMetadata({ params }: LayoutProps) {
     };
   }
   
+  // For all other non-English locales
+  if (locale !== 'en') {
+    return {
+      title: `Current Time in ${cityInfo.name}, ${cityInfo.country} | Datetime.app`,
+      description: `Current local time in ${cityInfo.name}, ${cityInfo.country} (${cityInfo.timezone} time zone)`,
+      alternates: {
+        canonical: `https://datetime.app/${locale}/cities/${city}`,
+        languages
+      }
+    };
+  }
+  
   // Default English metadata
   return {
     title: `Current Time in ${cityInfo.name}, ${cityInfo.country} | Datetime.app`,
