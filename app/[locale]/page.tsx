@@ -569,90 +569,92 @@ export default function Home() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-3xl mx-auto">
-                <Card className="shadow-none rounded-none border">
-                  <CardHeader className="py-2 px-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground text-center">{t('labels.timezoneInfo')}</CardTitle>
+              <h2 className="text-2xl font-bold mb-6 mt-12 text-center">{t('sections.developerTools')}</h2>
+              <div className="grid grid-cols-2 gap-2 mb-6 max-w-4xl mx-auto">
+                <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
+                  <CardHeader className="py-1 px-2 text-center">
+                    <CardTitle className="text-xs font-medium text-muted-foreground">{t('labels.timezoneInfo')}</CardTitle>
                   </CardHeader>
-                  <CardContent className="px-4 py-2">
-                    <div className="flex items-center gap-2 justify-center">
-                      <p className={jetbrainsMono.className}>{timezone} (GMT{offsetStr})</p>
+                  <CardContent className="px-2 py-1.5">
+                    <div className="flex items-center justify-center gap-1 text-sm whitespace-nowrap overflow-hidden">
+                      <p className={`${jetbrainsMono.className} text-sm text-center`}>{timezone} <span className="opacity-70">(GMT{offsetStr})</span></p>
                       {isDST && <DSTTag text={t('labels.dst')} />}
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="shadow-none rounded-none border">
-                  <CardHeader className="py-2 px-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">{t('labels.unixTimestamp')}</CardTitle>
+                <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
+                  <CardHeader className="py-1 px-2 text-center">
+                    <CardTitle className="text-xs font-medium text-muted-foreground">{t('labels.unixTimestamp')}</CardTitle>
                   </CardHeader>
-                  <CardContent className="px-4 py-2 text-center">
-                    <div className="inline-flex items-center gap-2">
-                      <p className={jetbrainsMono.className}>{timestamp}</p>
+                  <CardContent className="px-2 py-1.5">
+                    <div className="flex items-center justify-center gap-1 whitespace-nowrap">
+                      <p className={`${jetbrainsMono.className} text-sm text-center`}>{timestamp}</p>
                       <button
                         onClick={() => copyToClipboard(timestamp.toString(), 'timestamp')}
-                        className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
+                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
                         title="Copy to clipboard"
                       >
                         {copiedStates['timestamp'] ? (
-                          <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
+                          <Check className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
                         ) : (
-                          <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
+                          <Copy className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
                         )}
                       </button>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="shadow-none rounded-none border">
-                  <CardHeader className="py-2 px-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground flex items-center justify-center gap-4">
-                      <a href="/utc" className="inline-flex items-center gap-1 hover:underline">
+                <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
+                  <CardHeader className="py-1 px-2 text-center">
+                    <CardTitle className="text-xs font-medium text-muted-foreground">
+                      <a href="/utc" className="inline-flex items-center justify-center gap-1 hover:underline">
                         {t('labels.utcTime')}
-                        <Globe className="h-3 w-3" />
+                        <Globe className="h-2.5 w-2.5" />
                       </a>
-                      <a href="/glossary/utc" className="text-xs text-muted-foreground hover:underline">{t('labels.learnAboutUtc')}</a>
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="px-4 py-2 text-center">
-                    <div className="inline-flex items-center gap-2">
-                      <p className={jetbrainsMono.className}>{utcTime}</p>
+                  <CardContent className="px-2 py-1.5">
+                    <div className="flex items-center justify-center gap-1 whitespace-nowrap">
+                      <p className={`${jetbrainsMono.className} text-sm text-center`}>{utcTime}</p>
                       <button
                         onClick={() => copyToClipboard(utcTime, 'utc')}
-                        className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
+                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
                         title="Copy to clipboard"
                       >
                         {copiedStates['utc'] ? (
-                          <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
+                          <Check className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
                         ) : (
-                          <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
+                          <Copy className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
                         )}
                       </button>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="shadow-none rounded-none border">
-                  <CardHeader className="py-2 px-4">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">{t('labels.isoFormat')}</CardTitle>
+                <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
+                  <CardHeader className="py-1 px-2 text-center">
+                    <CardTitle className="text-xs font-medium text-muted-foreground">{t('labels.isoFormat')}</CardTitle>
                   </CardHeader>
-                  <CardContent className="px-4 py-2 text-center">
-                    <div className="inline-flex items-center gap-2">
-                      <p className={jetbrainsMono.className}>{isoTime}</p>
+                  <CardContent className="px-2 py-1.5">
+                    <div className="flex items-center justify-center gap-1 whitespace-nowrap">
+                      <p className={`${jetbrainsMono.className} text-sm text-center`}>{isoTime}</p>
                       <button
                         onClick={() => copyToClipboard(isoTime, 'iso')}
-                        className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
+                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
                         title="Copy to clipboard"
                       >
                         {copiedStates['iso'] ? (
-                          <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
+                          <Check className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
                         ) : (
-                          <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
+                          <Copy className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
                         )}
                       </button>
                     </div>
                   </CardContent>
                 </Card>
+                
+
               </div>
             </div>
           </div>
