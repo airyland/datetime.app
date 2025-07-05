@@ -2,6 +2,8 @@
   "common": {
     "title": "世界时钟与时间",
     "description": "世界各地当前时间、UTC时间、节假日和年龄计算器",
+    "day": "星期",
+    "date": "日期",
     "nav": {
       "home": "首页",
       "utc": "UTC时间",
@@ -29,7 +31,8 @@
       "calendar": "日历",
       "timeZoneConverter": "时区转换器",
       "countdownTimer": "倒计时器",
-      "sunriseSunset": "日出日落"
+      "sunriseSunset": "日出日落",
+      "developerTools": "开发者日期时间工具"
     },
     "labels": {
       "timezoneInfo": "时区信息",

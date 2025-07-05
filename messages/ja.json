@@ -29,7 +29,8 @@
       "calendar": "カレンダー",
       "timeZoneConverter": "タイムゾーンコンバーター",
       "countdownTimer": "カウントダウンタイマー",
-      "sunriseSunset": "日の出・日の入り"
+      "sunriseSunset": "日の出・日の入り",
+      "developerTools": "開発者向け日付・時刻ツール"
     },
     "labels": {
       "timezoneInfo": "タイムゾーン情報",

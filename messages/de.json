@@ -25,11 +25,12 @@
       "sunTimes": "Sonnenzeiten"
     },
     "sections": {
-      "worldClock": "Weltzeituhr",
+      "worldClock": "Weltuhr",
       "calendar": "Kalender",
-      "timeZoneConverter": "Zeitzonen-Konverter",
+      "timeZoneConverter": "Zeitzonen-Umrechner",
       "countdownTimer": "Countdown-Timer",
-      "sunriseSunset": "Sonnenauf- & -untergang"
+      "sunriseSunset": "Sonnenauf- und -untergang",
+      "developerTools": "DateTime für Entwickler"
     },
     "labels": {
       "timezoneInfo": "Zeitzoneninformation",

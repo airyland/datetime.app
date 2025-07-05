@@ -158,7 +158,7 @@ const TimezoneTimeline = ({
                 <div
                   key={hour.index}
                   ref={hour.isCurrentHour && tzIndex === 0 ? currentHourRef : null}
-                  className={`flex-shrink-0 h-full w-8 cursor-pointer flex flex-col items-center justify-center ${hour.backgroundClass} ${hour.isMidnight ? 'border-l-2 border-l-blue-500' : ''}`}
+                  className={`flex-shrink-0 h-full w-8 cursor-pointer flex flex-col items-center justify-center ${hour.backgroundClass} ${hour.isMidnight && hour.index === 12 ? 'border-l-2 border-l-blue-500' : ''}`}
                   onMouseEnter={() => setHoveredHourIndex(hour.index)}
                 >
                   <div className="flex flex-col items-center leading-none">

@@ -2,6 +2,8 @@
   "common": {
     "title": "World Clock & Time",
     "description": "Current time around the world, UTC time, holidays, and age calculator",
+    "day": "Day of Week",
+    "date": "Date",
     "nav": {
       "home": "Home",
       "utc": "UTC Time",
@@ -29,7 +31,8 @@
       "calendar": "Calendar",
       "timeZoneConverter": "Time Zone Converter",
       "countdownTimer": "Countdown Timer",
-      "sunriseSunset": "Sunrise & Sunset"
+      "sunriseSunset": "Sunrise & Sunset",
+      "developerTools": "DateTime for Developers"
     },
     "labels": {
       "timezoneInfo": "Timezone Information",
