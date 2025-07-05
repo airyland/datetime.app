@@ -55,6 +55,24 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
     };
   }
   
+  // For all other non-English locales
+  if (locale !== 'en') {
+    return {
+      title: "UTC Time | Datetime.app",
+      description: "View current UTC (Coordinated Universal Time). UTC is the world's time standard, unaffected by time zones or daylight saving time changes.",
+      keywords: ["UTC", "Coordinated Universal Time", "world time", "standard time", "GMT", "Greenwich Mean Time", "timezone conversion"],
+      alternates: {
+        canonical: `https://datetime.app/${locale}/utc`,
+        languages
+      },
+      openGraph: {
+        title: "UTC Time | Datetime.app",
+        description: "View current UTC (Coordinated Universal Time). UTC is the world's time standard, unaffected by time zones or daylight saving time changes.",
+        type: "website",
+      },
+    };
+  }
+  
   // Default English metadata
   return {
     title: "UTC Time | Datetime.app",
