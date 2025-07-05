@@ -29,7 +29,8 @@
       "calendar": "Calendrier",
       "timeZoneConverter": "Convertisseur de Fuseau Horaire",
       "countdownTimer": "Minuteur de Compte à Rebours",
-      "sunriseSunset": "Lever et Coucher du Soleil"
+      "sunriseSunset": "Lever et Coucher du Soleil",
+      "developerTools": "Outils DateTime pour développeurs"
     },
     "labels": {
       "timezoneInfo": "Information sur le Fuseau Horaire",
