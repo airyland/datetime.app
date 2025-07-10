@@ -2,6 +2,8 @@
   "common": {
     "title": "世界時計と時間",
     "description": "世界各地の現在時刻、UTC時間、祝日、年齢計算機",
+    "day": "曜日",
+    "date": "日付",
     "nav": {
       "home": "ホーム",
       "utc": "UTC時間",

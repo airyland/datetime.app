@@ -2,6 +2,8 @@
   "common": {
     "title": "Horloge Mondiale et Heure",
     "description": "Heure actuelle dans le monde, heure UTC, jours fériés et calculateur d'âge",
+    "day": "Jour de la Semaine",
+    "date": "Date",
     "nav": {
       "home": "Accueil",
       "utc": "Heure UTC",
