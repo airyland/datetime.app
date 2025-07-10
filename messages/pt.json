@@ -1,475 +1,518 @@
 {
-  "common": {
-    "title": "Relógio Mundial e Hora",
-    "description": "Hora atual ao redor do mundo, hora UTC, feriados e calculadora de idade",
-    "nav": {
-      "home": "Início",
-      "utc": "Hora UTC",
-      "calendar": "Calendário",
-      "holidays": "Feriados",
-      "ageCalculator": "Calculadora de Idade",
-      "yearProgress": "Progresso do Ano",
-      "glossary": "Glossário"
-    }
-  },
-  "home": {
-    "title": "Hora Atual ao Redor do Mundo",
-    "localTime": "Sua Hora Local",
-    "timeZone": "Fuso Horário",
-    "tabs": {
-      "currentTime": "Hora Atual",
-      "worldClock": "Relógio Mundial",
-      "calendar": "Calendário",
-      "converter": "Conversor",
-      "timer": "Temporizador",
-      "sunTimes": "Horários do Sol"
-    },
-    "sections": {
-      "worldClock": "Relógio Mundial",
-      "calendar": "Calendário",
-      "timeZoneConverter": "Conversor de Fuso Horário",
-      "countdownTimer": "Temporizador de Contagem Regressiva",
-      "sunriseSunset": "Nascer e Pôr do Sol"
-    },
-    "labels": {
-      "timezoneInfo": "Informações do Fuso Horário",
-      "unixTimestamp": "Timestamp Unix",
-      "utcTime": "Hora UTC",
-      "isoFormat": "Formato ISO",
-      "addTimezone": "Adicionar Fuso Horário",
-      "selectTimezone": "Selecionar Fuso Horário",
-      "cancel": "Cancelar",
-      "fromTimezone": "Do Fuso Horário",
-      "toTimezone": "Para Fuso Horário",
-      "date": "Data",
-      "time": "Hora",
-      "convert": "Converter",
-      "convertedTime": "Hora Convertida",
-      "hours": "Horas",
-      "minutes": "Minutos",
-      "seconds": "Segundos",
-      "start": "Iniciar",
-      "pause": "Pausar",
-      "reset": "Redefinir",
-      "timeRemaining": "Tempo Restante",
-      "getSunTimes": "Obter Horários do Sol (Usar Minha Localização)",
-      "loading": "Carregando...",
-      "sunrise": "Nascer do Sol",
-      "sunset": "Pôr do Sol",
-      "toggleTheme": "Alternar tema",
-      "dst": "Horário de verão",
-      "clockSynchronized": "Relógio sincronizado (±{offset}ms)",
-      "clockOffset": "Relógio com {seconds} segundos de diferença",
-      "learnAboutUtc": "Sobre UTC"
-    },
-    "tools": {
-      "title": "Ferramentas de Tempo",
-      "yearProgress": "Barra de Progresso do Ano",
-      "ageCalculator": "Calculadora de Idade",
-      "utcTime": "Hora UTC",
-      "worldHolidays": "Feriados Mundiais"
-    },
-    "cityTimes": {
-      "title": "Horários das Cidades do Mundo"
-    },
-    "faq": {
-      "title": "Perguntas Frequentes",
-      "utcGmt": {
-        "question": "O que é a hora UTC/GMT?",
-        "answer": "UTC (Tempo Universal Coordenado) é o padrão de tempo primário pelo qual o mundo regula relógios e tempo. É similar ao GMT (Tempo Médio de Greenwich) mas definido mais precisamente usando relógios atômicos. UTC é o padrão de tempo usado pela Internet, comunicações internacionais e aviação."
-      },
-      "timezones": {
-        "question": "Como funcionam os fusos horários?",
-        "answer": "Fusos horários são regiões da Terra que observam um tempo padrão uniforme. São geralmente definidos como deslocamentos do UTC, tipicamente em incrementos de horas inteiras. Por exemplo, Eastern Standard Time (EST) é UTC-5, o que significa que está 5 horas atrás do UTC. Fusos horários foram criados para padronizar o tempo dentro de grandes áreas geográficas, frequentemente influenciados por fronteiras políticas assim como geográficas."
-      },
-      "unixTimestamp": {
-        "question": "O que é um timestamp Unix?",
-        "answer": "Um timestamp Unix (também conhecido como tempo Unix ou tempo POSIX) representa o número de segundos decorridos desde 1 de janeiro de 1970, 00:00:00 UTC, não contando segundos intercalares. É amplamente usado em sistemas de computador e programação como uma forma padronizada de rastrear tempo que é independente de fuso horário. Timestamps Unix facilitam o cálculo de diferenças de tempo e são independentes de convenções de calendário."
-      },
-      "clockAccuracy": {
-        "question": "Quão preciso é este relógio?",
-        "answer": "A precisão deste relógio depende do relógio do sistema do seu dispositivo e da conexão com a Internet. Embora nos esforcemos para exibir a hora mais precisa, pode haver pequenas variações devido à latência da rede ou sincronização do relógio do seu dispositivo. Para a maioria dos usos diários, a hora exibida deve ser precisa dentro de alguns segundos do tempo real. Para aplicações que requerem precisão de milissegundos, servidores de tempo especializados devem ser usados."
-      },
-      "iso8601": {
-        "question": "O que é o formato ISO 8601?",
-        "answer": "ISO 8601 é um padrão internacional para representar datas e horas. Segue o formato YYYY-MM-DDTHH:MM:SS.sssZ onde: YYYY-MM-DD representa a data (ano, mês, dia), T é um separador entre data e hora, HH:MM:SS.sss representa a hora (horas, minutos, segundos e milissegundos), Z indica que a hora está em UTC (ou um deslocamento pode ser especificado como +01:00). Este formato elimina ambiguidades na comunicação internacional e é amplamente usado na computação."
-      },
-      "daylightSaving": {
-        "question": "O que é horário de verão?",
-        "answer": "Horário de verão (DST) é a prática de avançar relógios durante os meses mais quentes para que a escuridão caia mais tarde no dia pelo relógio. Tipicamente, regiões que observam horário de verão avançam seus relógios uma hora na primavera ('avançar na primavera') e recuam no outono ('recuar no outono'). O propósito principal é fazer melhor uso da luz natural durante as horas da tarde. Nem todos os países observam horário de verão, e as datas de início e fim variam por região."
-      },
-      "timezoneConversion": {
-        "question": "Como converto hora entre fusos horários?",
-        "answer": "Para converter hora entre fusos horários, você precisa: 1) Determinar os deslocamentos UTC dos fusos horários de origem e destino, 2) Converter a hora de origem para UTC adicionando ou subtraindo seu deslocamento, 3) Converter do UTC para o fuso horário de destino adicionando ou subtraindo o deslocamento do fuso horário de destino. Por exemplo, para converter 15:00 hora de Nova York (UTC-5) para hora de Londres (UTC+0), você adicionaria 5 horas para obter 20:00 hora de Londres. Lembre-se de considerar o horário de verão quando aplicável, pois pode temporariamente alterar os deslocamentos UTC."
-      }
-    }
-  },
-  "utc": {
-    "title": "Tempo Universal Coordenado (UTC)",
-    "subtitle": "Padrão de Tempo Mundial",
-    "description": "Visualizar a hora UTC (Tempo Universal Coordenado) atual. UTC é o padrão de tempo mundial, não afetado por fusos horários ou mudanças de horário de verão.",
-    "learnMore": "Saiba mais sobre UTC em nosso glossário",
-    "unixTimestamp": "Timestamp Unix",
-    "utcString": "String UTC",
-    "iso8601": "ISO 8601",
-    "copyToClipboard": "Copiar para área de transferência",
-    "enterFullscreen": "Entrar em tela cheia",
-    "toggleTheme": "Alternar tema",
-    "utcOffset": "UTC/GMT+0",
-    "worldCityTimes": "Horários das Cidades do Mundo",
-    "faqTitle": "Hora UTC - Perguntas Frequentes",
-    "viewGlossary": "Ver nosso glossário completo de conceitos de data e hora",
-    "faqs": {
-      "whatIsUtc": {
-        "question": "O que é a hora UTC?",
-        "answer": "UTC (Tempo Universal Coordenado) é o padrão de tempo primário pelo qual o mundo regula relógios e tempo. É similar ao GMT (Tempo Médio de Greenwich) mas definido mais precisamente usando relógios atômicos. UTC é o padrão de tempo usado pela Internet, comunicações internacionais e aviação."
-      },
-      "whyImportant": {
-        "question": "Por que UTC é importante?",
-        "answer": "UTC é importante porque fornece um tempo de referência padronizado que não é afetado por mudanças de fuso horário ou horário de verão. Serve como base para o tempo civil mundialmente e é crucial para comunicações globais, aviação, pesquisa científica e sistemas de computador."
-      },
-      "utcVsGmt": {
-        "question": "Qual é a diferença entre UTC e GMT?",
-        "answer": "Embora UTC e GMT sejam frequentemente usados ​​de forma intercambiável e ambos representem o tempo no Meridiano Principal (0° longitude), eles são tecnicamente diferentes. GMT é baseado na rotação da Terra e posição do sol, enquanto UTC é baseado em relógios atômicos. Na prática, eles geralmente estão dentro de 0,9 segundos um do outro."
-      },
-      "convertToLocal": {
-        "question": "Como converter UTC para minha hora local?",
-        "answer": "Para converter UTC para sua hora local, você precisa adicionar ou subtrair o deslocamento do seu fuso horário do tempo UTC. Por exemplo, se você está no Horário Padrão do Leste (EST), que é UTC-5, você subtrairia 5 horas do tempo UTC. Durante o horário de verão, isso se tornaria UTC-4."
-      },
-      "whyInComputing": {
-        "question": "Por que UTC é usado na computação?",
-        "answer": "UTC é usado na computação porque fornece uma referência de tempo consistente independentemente da localização geográfica. Isso é essencial para timestamps de eventos, sincronização de sistemas através de diferentes fusos horários, registro de logs e garantia de timestamps de dados consistentes em sistemas distribuídos."
-      }
-    }
-  },
-  "holidays": {
-    "title": "Feriados do Mundo",
-    "description": "Descubra feriados e celebrações de diferentes países"
-  },
   "ageCalculator": {
-    "title": "Calculadora de Idade",
-    "description": "Calcule sua idade exata em anos, meses e dias",
-    "pageTitle": "Calculadora de Idade",
-    "subtitle": "Calcule sua idade exata em anos, meses, dias e mais - com opções flexíveis de entrada de data",
-    "calculateYourAge": "Calcular Sua Idade",
-    "enterBirthDate": "Digite sua Data de Nascimento",
-    "calculateAgeAsOf": "Calcular Idade Até",
-    "ageResults": "Resultados da Idade",
     "aboutAgeCalculation": "Sobre o Cálculo da Idade",
+    "ageResults": "Resultados da Idade",
+    "calculateAgeAsOf": "Calcular Idade Até",
+    "calculateYourAge": "Calcular Sua Idade",
     "calendarPrecision": "Precisão do Calendário",
-    "realTimeUpdates": "Atualizações em Tempo Real",
+    "description": "Calcule sua idade exata em anos, meses e dias",
+    "enterBirthDate": "Digite sua Data de Nascimento",
+    "errors": {
+      "dayRange": "Por favor, digite um dia entre 1 e 31",
+      "futureDate": "A data de nascimento não pode estar no futuro",
+      "invalidDate": "A data que você digitou é inválida",
+      "monthRange": "Por favor, digite um mês entre 1 e 12",
+      "unknownError": "Ocorreu um erro desconhecido",
+      "validNumbers": "Por favor, digite números válidos para ano, mês e dia",
+      "yearRange": "Por favor, digite um ano entre 1900 e o ano atual"
+    },
     "faqTitle": "Calculadora de Idade - Perguntas Frequentes",
-    "inputMethods": {
-      "calendar": "Calendário",
-      "manual": "Entrada Manual"
-    },
-    "labels": {
-      "year": "Ano",
-      "month": "Mês",
-      "day": "Dia",
-      "useCustomDate": "Usar data personalizada",
-      "calculateAge": "Calcular Idade",
-      "updateTargetDate": "Atualizar Data Alvo",
-      "selectedDate": "Data selecionada",
-      "targetDate": "Data alvo",
-      "currentDateTime": "Data e Hora Atuais",
-      "updatesInRealTime": "Atualiza em tempo real",
-      "asOf": "Em {date}",
-      "years": "Anos",
-      "months": "Meses",
-      "days": "Dias",
-      "hours": "Horas",
-      "nextBirthday": "Próximo Aniversário",
-      "nextBirthdayText": "Você fará {age} anos em {days} dias ({date})",
-      "yearsInDecimalFormat": "Anos em formato decimal"
-    },
-    "tabs": {
-      "standard": "Padrão",
-      "detailed": "Detalhado",
-      "decimal": "Decimal"
+    "faqs": {
+      "customDates": {
+        "answer": "Sim! Nossa calculadora permite que você calcule a idade entre quaisquer duas datas. Simplesmente digite sua data de nascimento e então ative a opção 'Usar data personalizada' para especificar a data alvo para o cálculo da idade. Isso é útil para determinar quantos anos você tinha (ou terá) em uma data específica.",
+        "question": "Posso calcular a idade entre duas datas específicas?"
+      },
+      "decimalAge": {
+        "answer": "Idade decimal representa sua idade como um único número com uma porção decimal, em vez de anos, meses e dias separados. Por exemplo, 25.75 anos significa que você tem 25 anos e 9 meses (já que 0.75 anos equivale a cerca de 9 meses). Este formato é às vezes usado em contextos científicos ou médicos.",
+        "question": "O que é idade decimal?"
+      },
+      "differFromOthers": {
+        "answer": "Cálculos de idade podem variar ligeiramente entre diferentes calculadoras devido a como elas lidam com meses e dias parciais. Algumas calculadoras podem arredondar para o ano mais próximo, enquanto outras (como a nossa) fornecem uma divisão mais detalhada incluindo meses e dias. Nossa calculadora usa algoritmos precisos para considerar anos bissextos e diferentes durações de meses.",
+        "question": "Por que meu cálculo de idade pode diferir de outras calculadoras?"
+      },
+      "enterBirthDate": {
+        "answer": "Você tem duas opções para inserir sua data de nascimento: usar o seletor de calendário ou entrada manual. O seletor de calendário permite que você selecione uma data visualmente, enquanto a entrada manual permite que você digite diretamente o ano, mês e dia. Escolha o método que for mais conveniente para você.",
+        "question": "Como inserir minha data de nascimento?"
+      },
+      "howAccurate": {
+        "answer": "Nossa calculadora de idade é precisa até o segundo. Ela se atualiza em tempo real (ao usar a data atual) e considera anos bissextos, diferentes durações de meses e mudanças de horário de verão. Para a maioria dos propósitos práticos, este nível de precisão é mais que suficiente.",
+        "question": "Quão preciso é o cálculo da idade?"
+      },
+      "howCalculated": {
+        "answer": "A idade é calculada determinando o tempo decorrido entre sua data de nascimento e a data atual (ou uma data personalizada que você especifica). Nossa calculadora fornece a idade precisa em anos, meses, dias, horas, minutos e segundos. Consideramos anos bissextos, diferentes durações de meses e outras complexidades do calendário para garantir precisão.",
+        "question": "Como a idade é calculada?"
+      },
+      "noNextBirthday": {
+        "answer": "O cálculo do Próximo Aniversário é baseado na data atual e mostra quantos dias faltam para seu próximo aniversário a partir de hoje. Ao usar uma data alvo personalizada, essa informação não é mostrada porque não seria relevante para a data personalizada que você especificou.",
+        "question": "Por que a informação do Próximo Aniversário não aparece ao usar uma data personalizada?"
+      },
+      "whyNeedExact": {
+        "answer": "Conhecer sua idade exata pode ser útil para vários propósitos: avaliações médicas, cálculos astrológicos, documentação legal, ou simplesmente para satisfazer a curiosidade. Algumas culturas também celebram marcos de idade específicos que requerem cálculo preciso.",
+        "question": "Por que eu precisaria saber minha idade exata?"
+      }
     },
     "formatted": {
       "age": "Idade: {age}",
-      "yearsSuffix": "a",
+      "daysSuffix": "d",
       "monthsSuffix": "m",
-      "daysSuffix": "d"
+      "yearsSuffix": "a"
     },
     "info": {
       "calendarPrecisionDesc": "Nossa calculadora de idade considera anos bissextos, diferentes durações de meses e mudanças de horário de verão para fornecer o cálculo mais preciso possível.",
       "realTimeUpdatesDesc": "Assim que você seleciona sua data de nascimento, a calculadora se atualiza em tempo real, mostrando sua idade até o segundo conforme o tempo passa."
     },
-    "errors": {
-      "validNumbers": "Por favor, digite números válidos para ano, mês e dia",
-      "yearRange": "Por favor, digite um ano entre 1900 e o ano atual",
-      "monthRange": "Por favor, digite um mês entre 1 e 12",
-      "dayRange": "Por favor, digite um dia entre 1 e 31",
-      "invalidDate": "A data que você digitou é inválida",
-      "futureDate": "A data de nascimento não pode estar no futuro",
-      "unknownError": "Ocorreu um erro desconhecido"
+    "inputMethods": {
+      "calendar": "Calendário",
+      "manual": "Entrada Manual"
     },
-    "faqs": {
-      "howCalculated": {
-        "question": "Como a idade é calculada?",
-        "answer": "A idade é calculada determinando o tempo decorrido entre sua data de nascimento e a data atual (ou uma data personalizada que você especifica). Nossa calculadora fornece a idade precisa em anos, meses, dias, horas, minutos e segundos. Consideramos anos bissextos, diferentes durações de meses e outras complexidades do calendário para garantir precisão."
-      },
-      "differFromOthers": {
-        "question": "Por que meu cálculo de idade pode diferir de outras calculadoras?",
-        "answer": "Cálculos de idade podem variar ligeiramente entre diferentes calculadoras devido a como elas lidam com meses e dias parciais. Algumas calculadoras podem arredondar para o ano mais próximo, enquanto outras (como a nossa) fornecem uma divisão mais detalhada incluindo meses e dias. Nossa calculadora usa algoritmos precisos para considerar anos bissextos e diferentes durações de meses."
-      },
-      "customDates": {
-        "question": "Posso calcular a idade entre duas datas específicas?",
-        "answer": "Sim! Nossa calculadora permite que você calcule a idade entre quaisquer duas datas. Simplesmente digite sua data de nascimento e então ative a opção 'Usar data personalizada' para especificar a data alvo para o cálculo da idade. Isso é útil para determinar quantos anos você tinha (ou terá) em uma data específica."
-      },
-      "enterBirthDate": {
-        "question": "Como inserir minha data de nascimento?",
-        "answer": "Você tem duas opções para inserir sua data de nascimento: usar o seletor de calendário ou entrada manual. O seletor de calendário permite que você selecione uma data visualmente, enquanto a entrada manual permite que você digite diretamente o ano, mês e dia. Escolha o método que for mais conveniente para você."
-      },
-      "howAccurate": {
-        "question": "Quão preciso é o cálculo da idade?",
-        "answer": "Nossa calculadora de idade é precisa até o segundo. Ela se atualiza em tempo real (ao usar a data atual) e considera anos bissextos, diferentes durações de meses e mudanças de horário de verão. Para a maioria dos propósitos práticos, este nível de precisão é mais que suficiente."
-      },
-      "decimalAge": {
-        "question": "O que é idade decimal?",
-        "answer": "Idade decimal representa sua idade como um único número com uma porção decimal, em vez de anos, meses e dias separados. Por exemplo, 25.75 anos significa que você tem 25 anos e 9 meses (já que 0.75 anos equivale a cerca de 9 meses). Este formato é às vezes usado em contextos científicos ou médicos."
-      },
-      "whyNeedExact": {
-        "question": "Por que eu precisaria saber minha idade exata?",
-        "answer": "Conhecer sua idade exata pode ser útil para vários propósitos: avaliações médicas, cálculos astrológicos, documentação legal, ou simplesmente para satisfazer a curiosidade. Algumas culturas também celebram marcos de idade específicos que requerem cálculo preciso."
-      },
-      "noNextBirthday": {
-        "question": "Por que a informação do Próximo Aniversário não aparece ao usar uma data personalizada?",
-        "answer": "O cálculo do Próximo Aniversário é baseado na data atual e mostra quantos dias faltam para seu próximo aniversário a partir de hoje. Ao usar uma data alvo personalizada, essa informação não é mostrada porque não seria relevante para a data personalizada que você especificou."
-      }
-    }
-  },
-  "yearProgress": {
-    "title": "Progresso do Ano",
-    "description": "Acompanhe o progresso do ano atual",
-    "pageTitle": "Barra de Progresso do Ano {year}",
-    "subtitle": "O ano {year} está {progress}% completo",
-    "progressTitle": "Progresso do Ano",
-    "toggleTheme": "Alternar tema",
-    "viewOtherYears": "Ver progresso de outros anos:",
-    "faqTitle": "Progresso do Ano - Perguntas Frequentes",
-    "faqs": {
-      "howCalculated": {
-        "question": "Como o progresso do ano é calculado?",
-        "answer": "O progresso do ano é calculado determinando qual porcentagem do ano passou. Pegamos a data e hora atuais, calculamos quantos milissegundos se passaram desde 1º de janeiro do ano atual e dividimos pelo número total de milissegundos no ano."
-      },
-      "isAccurate": {
-        "question": "O cálculo do progresso do ano é preciso?",
-        "answer": "Sim, nosso cálculo leva em conta anos bissextos e é preciso ao segundo. O progresso atualiza em tempo real enquanto você assiste à página."
-      },
-      "differentYear": {
-        "question": "Posso verificar o progresso de um ano diferente?",
-        "answer": "Sim, você pode visualizar o progresso de qualquer ano alterando a URL para /year-progress-bar/year. Por exemplo, para ver o progresso de 2025, você usaria /year-progress-bar/2025."
-      },
-      "whyTrack": {
-        "question": "Por que acompanhar o progresso do ano?",
-        "answer": "Acompanhar o progresso do ano pode ajudar com a consciência do tempo, definição de metas e planejamento. Fornece um lembrete visual de quanto do ano passou e quanto tempo resta para alcançar os objetivos anuais."
-      }
-    }
-  },
-  "cities": {
-    "pageTitle": "Hora atual em {cityName}",
-    "timezoneLabel": "Fuso horário {timezone}",
-    "timezoneInfo": "Informações do fuso horário",
-    "unixTimestamp": "Timestamp Unix",
-    "utcTime": "Hora UTC",
-    "isoFormat": "Formato ISO",
-    "cityInfo": "Informações da cidade",
-    "country": "País",
-    "timezone": "Fuso horário",
-    "coordinates": "Coordenadas",
-    "population": "População",
-    "faq": "Perguntas frequentes",
-    "clockSynchronized": "Relógio sincronizado (±{offset}ms)",
-    "clockOffset": "Desvio do relógio aproximadamente {seconds} segundos",
-    "copyToClipboard": "Copiar para área de transferência",
-    "enterFullscreen": "Entrar em tela cheia",
-    "toggleTheme": "Alternar tema",
-    "faqQuestions": {
-      "currentTime": "Que horas são agora em {cityName}?",
-      "utcDifference": "Qual é a diferença horária entre {cityName} e UTC?",
-      "daylightSaving": "{cityName} observa o horário de verão?"
+    "labels": {
+      "asOf": "Em {date}",
+      "calculateAge": "Calcular Idade",
+      "currentDateTime": "Data e Hora Atuais",
+      "day": "Dia",
+      "days": "Dias",
+      "hours": "Horas",
+      "month": "Mês",
+      "months": "Meses",
+      "nextBirthday": "Próximo Aniversário",
+      "nextBirthdayText": "Você fará {age} anos em {days} dias ({date})",
+      "selectedDate": "Data selecionada",
+      "targetDate": "Data alvo",
+      "updateTargetDate": "Atualizar Data Alvo",
+      "updatesInRealTime": "Atualiza em tempo real",
+      "useCustomDate": "Usar data personalizada",
+      "year": "Ano",
+      "years": "Anos",
+      "yearsInDecimalFormat": "Anos em formato decimal"
     },
-    "faqAnswers": {
-      "currentTime": "A hora local atual em {cityName}, {country} é {currentTime}. {cityName} está localizada no fuso horário {timezone}.",
-      "utcDifference": "{cityName} segue o horário {timezone}. A diferença atual do UTC é de {offset} horas.",
-      "daylightSaving": "Isso depende das regulamentações locais de {country}. A hora atual é {currentTime}, que se ajusta automaticamente para o horário de verão quando aplicável."
+    "pageTitle": "Calculadora de Idade",
+    "realTimeUpdates": "Atualizações em Tempo Real",
+    "subtitle": "Calcule sua idade exata em anos, meses, dias e mais - com opções flexíveis de entrada de data",
+    "tabs": {
+      "decimal": "Decimal",
+      "detailed": "Detalhado",
+      "standard": "Padrão"
     },
-    "cityNames": {
-      "new-york": "Nova York",
-      "london": "Londres",
-      "tokyo": "Tóquio",
-      "shanghai": "Xangai",
-      "beijing": "Pequim",
-      "seoul": "Seul",
-      "kolkata": "Calcutá",
-      "dubai": "Dubai",
-      "cairo": "Cairo",
-      "moscow": "Moscou",
-      "istanbul": "Istambul",
-      "paris": "Paris",
-      "sydney": "Sydney"
-    },
-    "countryNames": {
-      "United States": "Estados Unidos",
-      "United Kingdom": "Reino Unido",
-      "Japan": "Japão",
-      "China": "China",
-      "South Korea": "Coreia do Sul",
-      "India": "Índia",
-      "United Arab Emirates": "Emirados Árabes Unidos",
-      "Egypt": "Egito",
-      "Russia": "Rússia",
-      "Turkey": "Turquia",
-      "France": "França",
-      "Australia": "Austrália"
-    }
+    "title": "Calculadora de Idade"
   },
   "calendar": {
-    "title": "Calendário {year}",
-    "subtitle": "Visualização completa do calendário anual com números de semana",
-    "description": "Veja o calendário completo para {year} com todos os meses, datas e números de semana",
-    "currentYear": "Ano Atual",
-    "leapYear": "Ano Bissexto",
-    "regularYear": "Ano Regular",
-    "weekNumber": "Semana {number}",
-    "weekNumbers": "Números de Semana",
-    "today": "Hoje",
-    "viewYear": "Ver Ano",
-    "previousYear": "Ano Anterior",
-    "nextYear": "Próximo Ano",
-    "yearNavigation": "Navegação por Ano",
-    "monthNavigation": "Navegação por Mês",
-    "jumpToYear": "Pular para Ano",
-    "toggleTheme": "Alternar tema",
-    "previousMonth": "Mês Anterior",
-    "nextMonth": "Próximo Mês",
-    "currentMonth": "Mês Atual",
     "backToYear": "Voltar para {year}",
-    "daysInMonth": "{days} dias",
-    "selectedDate": "Data Selecionada",
+    "currentMonth": "Mês Atual",
+    "currentYear": "Ano Atual",
     "date": "Data",
     "dayOfYear": "Dia do Ano",
-    "months": {
-      "january": "Janeiro",
-      "february": "Fevereiro",
-      "march": "Março",
-      "april": "Abril",
-      "may": "Maio",
-      "june": "Junho",
-      "july": "Julho",
-      "august": "Agosto",
-      "september": "Setembro",
-      "october": "Outubro",
-      "november": "Novembro",
-      "december": "Dezembro"
-    },
-    "monthsShort": {
-      "jan": "Jan",
-      "feb": "Fev",
-      "mar": "Mar",
-      "apr": "Abr",
-      "may": "Mai",
-      "jun": "Jun",
-      "jul": "Jul",
-      "aug": "Ago",
-      "sep": "Set",
-      "oct": "Out",
-      "nov": "Nov",
-      "dec": "Dez"
-    },
-    "weekdays": {
-      "sunday": "Domingo",
-      "monday": "Segunda-feira",
-      "tuesday": "Terça-feira",
-      "wednesday": "Quarta-feira",
-      "thursday": "Quinta-feira",
-      "friday": "Sexta-feira",
-      "saturday": "Sábado"
-    },
-    "weekdaysShort": {
-      "sun": "Dom",
-      "mon": "Seg",
-      "tue": "Ter",
-      "wed": "Qua",
-      "thu": "Qui",
-      "fri": "Sex",
-      "sat": "Sáb"
+    "daysInMonth": "{days} dias",
+    "description": "Veja o calendário completo para {year} com todos os meses, datas e números de semana",
+    "faq": {
+      "currentMonth": {
+        "answer": "Este é o mês atual ({month} {year}). Hoje é o {today}º dia do mês, destacado em azul no calendário.",
+        "question": "Por que este mês está destacado?"
+      },
+      "leapYear": {
+        "answer": "Um ano bissexto tem 366 dias em vez dos 365 usuais. Ocorre a cada 4 anos (com algumas exceções) e adiciona um dia extra (29 de fevereiro) para manter nosso calendário alinhado com a órbita da Terra ao redor do sol.",
+        "question": "O que é um ano bissexto?"
+      },
+      "monthCharacteristics": {
+        "february": "{month} {year} tem {days} dias, tornando-o um {leapYear}. Fevereiro é o mês mais curto e o único mês com um número variável de dias.",
+        "question": "Quais são as características deste mês?",
+        "thirtyDays": "{month} é um dos quatro meses com exatamente 30 dias (abril, junho, setembro, novembro).",
+        "thirtyOneDays": "{month} tem 31 dias, sendo um dos sete meses mais longos do ano."
+      },
+      "monthOverview": {
+        "answer": "{month} {year} tem {days} dias, começando em {startDay} e terminando em {endDay}. Esta vista de calendário mostra todas as datas com seus dias da semana correspondentes e números de semana.",
+        "question": "Que informações este mês mostra?"
+      },
+      "navigation": {
+        "answer": "Use os botões de seta para ir para {prevMonth} ou {nextMonth}. Você também pode clicar em qualquer mês na grade de navegação abaixo, ou usar o botão 'Ver Ano' para ver todos os meses de uma vez.",
+        "question": "Como posso navegar para outros meses?"
+      },
+      "title": "Perguntas Frequentes",
+      "weekCount": {
+        "answer": "{month} abrange {weeks} semanas na grade do calendário, embora algumas semanas possam conter dias do mês anterior ou próximo.",
+        "question": "Quantas semanas há neste mês?"
+      },
+      "weekNumbers": {
+        "answer": "Números de semana são uma forma de numerar as semanas do ano de 1 a 52 (ou 53 em alguns anos). A primeira semana do ano é tipicamente a primeira semana que contém pelo menos quatro dias do novo ano.",
+        "question": "O que são números de semana?"
+      },
+      "whatIsCalendar": {
+        "answer": "Um calendário anual exibe todos os 12 meses de um ano específico em um formato estruturado, mostrando datas, dias da semana e números de semana. Ajuda com planejamento de datas, agendamento e compreensão da estrutura do ano.",
+        "question": "O que é um calendário anual?"
+      }
     },
     "info": {
-      "totalDays": "Total de dias em {year}",
       "daysPassed": "Dias passados",
       "daysRemaining": "Dias restantes",
+      "totalDays": "Total de dias em {year}",
       "weeksPassed": "Semanas passadas",
       "weeksRemaining": "Semanas restantes"
     },
+    "jumpToYear": "Pular para Ano",
+    "leapYear": "Ano Bissexto",
+    "monthNavigation": "Navegação por Mês",
+    "months": {
+      "april": "Abril",
+      "august": "Agosto",
+      "december": "Dezembro",
+      "february": "Fevereiro",
+      "january": "Janeiro",
+      "july": "Julho",
+      "june": "Junho",
+      "march": "Março",
+      "may": "Maio",
+      "november": "Novembro",
+      "october": "Outubro",
+      "september": "Setembro"
+    },
+    "monthsShort": {
+      "apr": "Abr",
+      "aug": "Ago",
+      "dec": "Dez",
+      "feb": "Fev",
+      "jan": "Jan",
+      "jul": "Jul",
+      "jun": "Jun",
+      "mar": "Mar",
+      "may": "Mai",
+      "nov": "Nov",
+      "oct": "Out",
+      "sep": "Set"
+    },
+    "nextMonth": "Próximo Mês",
+    "nextYear": "Próximo Ano",
+    "previousMonth": "Mês Anterior",
+    "previousYear": "Ano Anterior",
+    "regularYear": "Ano Regular",
+    "selectedDate": "Data Selecionada",
+    "subtitle": "Visualização completa do calendário anual com números de semana",
+    "title": "Calendário {year}",
+    "today": "Hoje",
+    "toggleTheme": "Alternar tema",
+    "viewYear": "Ver Ano",
+    "weekNumber": "Semana {number}",
+    "weekNumbers": "Números de Semana",
+    "weekdays": {
+      "friday": "Sexta-feira",
+      "monday": "Segunda-feira",
+      "saturday": "Sábado",
+      "sunday": "Domingo",
+      "thursday": "Quinta-feira",
+      "tuesday": "Terça-feira",
+      "wednesday": "Quarta-feira"
+    },
+    "weekdaysShort": {
+      "fri": "Sex",
+      "mon": "Seg",
+      "sat": "Sáb",
+      "sun": "Dom",
+      "thu": "Qui",
+      "tue": "Ter",
+      "wed": "Qua"
+    },
+    "yearNavigation": "Navegação por Ano"
+  },
+  "cities": {
+    "cityInfo": "Informações da cidade",
+    "cityNames": {
+      "beijing": "Pequim",
+      "cairo": "Cairo",
+      "dubai": "Dubai",
+      "istanbul": "Istambul",
+      "kolkata": "Calcutá",
+      "london": "Londres",
+      "moscow": "Moscou",
+      "new-york": "Nova York",
+      "paris": "Paris",
+      "seoul": "Seul",
+      "shanghai": "Xangai",
+      "sydney": "Sydney",
+      "tokyo": "Tóquio"
+    },
+    "clockOffset": "Desvio do relógio aproximadamente {seconds} segundos",
+    "clockSynchronized": "Relógio sincronizado (±{offset}ms)",
+    "coordinates": "Coordenadas",
+    "copyToClipboard": "Copiar para área de transferência",
+    "country": "País",
+    "countryNames": {
+      "Australia": "Austrália",
+      "China": "China",
+      "Egypt": "Egito",
+      "France": "França",
+      "India": "Índia",
+      "Japan": "Japão",
+      "Russia": "Rússia",
+      "South Korea": "Coreia do Sul",
+      "Turkey": "Turquia",
+      "United Arab Emirates": "Emirados Árabes Unidos",
+      "United Kingdom": "Reino Unido",
+      "United States": "Estados Unidos"
+    },
+    "enterFullscreen": "Entrar em tela cheia",
+    "faq": "Perguntas frequentes",
+    "faqAnswers": {
+      "currentTime": "A hora local atual em {cityName}, {country} é {currentTime}. {cityName} está localizada no fuso horário {timezone}.",
+      "daylightSaving": "Isso depende das regulamentações locais de {country}. A hora atual é {currentTime}, que se ajusta automaticamente para o horário de verão quando aplicável.",
+      "utcDifference": "{cityName} segue o horário {timezone}. A diferença atual do UTC é de {offset} horas."
+    },
+    "faqQuestions": {
+      "currentTime": "Que horas são agora em {cityName}?",
+      "daylightSaving": "{cityName} observa o horário de verão?",
+      "utcDifference": "Qual é a diferença horária entre {cityName} e UTC?"
+    },
+    "isoFormat": "Formato ISO",
+    "pageTitle": "Hora atual em {cityName}",
+    "population": "População",
+    "timezone": "Fuso horário",
+    "timezoneInfo": "Informações do fuso horário",
+    "timezoneLabel": "Fuso horário {timezone}",
+    "toggleTheme": "Alternar tema",
+    "unixTimestamp": "Timestamp Unix",
+    "utcTime": "Hora UTC"
+  },
+  "common": {
+    "date": "Data",
+    "day": "Dia da Semana",
+    "description": "Hora atual ao redor do mundo, hora UTC, feriados e calculadora de idade",
+    "nav": {
+      "ageCalculator": "Calculadora de Idade",
+      "calendar": "Calendário",
+      "glossary": "Glossário",
+      "holidays": "Feriados",
+      "home": "Início",
+      "utc": "Hora UTC",
+      "yearProgress": "Progresso do Ano"
+    },
+    "title": "Relógio Mundial e Hora"
+  },
+  "holidays": {
+    "description": "Descubra feriados e celebrações de diferentes países",
+    "title": "Feriados do Mundo"
+  },
+  "home": {
+    "cityTimes": {
+      "title": "Horários das Cidades do Mundo"
+    },
     "faq": {
+      "clockAccuracy": {
+        "answer": "A precisão deste relógio depende do relógio do sistema do seu dispositivo e da conexão com a Internet. Embora nos esforcemos para exibir a hora mais precisa, pode haver pequenas variações devido à latência da rede ou sincronização do relógio do seu dispositivo. Para a maioria dos usos diários, a hora exibida deve ser precisa dentro de alguns segundos do tempo real. Para aplicações que requerem precisão de milissegundos, servidores de tempo especializados devem ser usados.",
+        "question": "Quão preciso é este relógio?"
+      },
+      "daylightSaving": {
+        "answer": "Horário de verão (DST) é a prática de avançar relógios durante os meses mais quentes para que a escuridão caia mais tarde no dia pelo relógio. Tipicamente, regiões que observam horário de verão avançam seus relógios uma hora na primavera ('avançar na primavera') e recuam no outono ('recuar no outono'). O propósito principal é fazer melhor uso da luz natural durante as horas da tarde. Nem todos os países observam horário de verão, e as datas de início e fim variam por região.",
+        "question": "O que é horário de verão?"
+      },
+      "iso8601": {
+        "answer": "ISO 8601 é um padrão internacional para representar datas e horas. Segue o formato YYYY-MM-DDTHH:MM:SS.sssZ onde: YYYY-MM-DD representa a data (ano, mês, dia), T é um separador entre data e hora, HH:MM:SS.sss representa a hora (horas, minutos, segundos e milissegundos), Z indica que a hora está em UTC (ou um deslocamento pode ser especificado como +01:00). Este formato elimina ambiguidades na comunicação internacional e é amplamente usado na computação.",
+        "question": "O que é o formato ISO 8601?"
+      },
+      "timezoneConversion": {
+        "answer": "Para converter hora entre fusos horários, você precisa: 1) Determinar os deslocamentos UTC dos fusos horários de origem e destino, 2) Converter a hora de origem para UTC adicionando ou subtraindo seu deslocamento, 3) Converter do UTC para o fuso horário de destino adicionando ou subtraindo o deslocamento do fuso horário de destino. Por exemplo, para converter 15:00 hora de Nova York (UTC-5) para hora de Londres (UTC+0), você adicionaria 5 horas para obter 20:00 hora de Londres. Lembre-se de considerar o horário de verão quando aplicável, pois pode temporariamente alterar os deslocamentos UTC.",
+        "question": "Como converto hora entre fusos horários?"
+      },
+      "timezones": {
+        "answer": "Fusos horários são regiões da Terra que observam um tempo padrão uniforme. São geralmente definidos como deslocamentos do UTC, tipicamente em incrementos de horas inteiras. Por exemplo, Eastern Standard Time (EST) é UTC-5, o que significa que está 5 horas atrás do UTC. Fusos horários foram criados para padronizar o tempo dentro de grandes áreas geográficas, frequentemente influenciados por fronteiras políticas assim como geográficas.",
+        "question": "Como funcionam os fusos horários?"
+      },
       "title": "Perguntas Frequentes",
-      "whatIsCalendar": {
-        "question": "O que é um calendário anual?",
-        "answer": "Um calendário anual exibe todos os 12 meses de um ano específico em um formato estruturado, mostrando datas, dias da semana e números de semana. Ajuda com planejamento de datas, agendamento e compreensão da estrutura do ano."
+      "unixTimestamp": {
+        "answer": "Um timestamp Unix (também conhecido como tempo Unix ou tempo POSIX) representa o número de segundos decorridos desde 1 de janeiro de 1970, 00:00:00 UTC, não contando segundos intercalares. É amplamente usado em sistemas de computador e programação como uma forma padronizada de rastrear tempo que é independente de fuso horário. Timestamps Unix facilitam o cálculo de diferenças de tempo e são independentes de convenções de calendário.",
+        "question": "O que é um timestamp Unix?"
       },
-      "weekNumbers": {
-        "question": "O que são números de semana?",
-        "answer": "Números de semana são uma forma de numerar as semanas do ano de 1 a 52 (ou 53 em alguns anos). A primeira semana do ano é tipicamente a primeira semana que contém pelo menos quatro dias do novo ano."
-      },
-      "leapYear": {
-        "question": "O que é um ano bissexto?",
-        "answer": "Um ano bissexto tem 366 dias em vez dos 365 usuais. Ocorre a cada 4 anos (com algumas exceções) e adiciona um dia extra (29 de fevereiro) para manter nosso calendário alinhado com a órbita da Terra ao redor do sol."
-      },
-      "monthOverview": {
-        "question": "Que informações este mês mostra?",
-        "answer": "{month} {year} tem {days} dias, começando em {startDay} e terminando em {endDay}. Esta vista de calendário mostra todas as datas com seus dias da semana correspondentes e números de semana."
-      },
-      "weekCount": {
-        "question": "Quantas semanas há neste mês?",
-        "answer": "{month} abrange {weeks} semanas na grade do calendário, embora algumas semanas possam conter dias do mês anterior ou próximo."
-      },
-      "currentMonth": {
-        "question": "Por que este mês está destacado?",
-        "answer": "Este é o mês atual ({month} {year}). Hoje é o {today}º dia do mês, destacado em azul no calendário."
-      },
-      "monthCharacteristics": {
-        "question": "Quais são as características deste mês?",
-        "february": "{month} {year} tem {days} dias, tornando-o um {leapYear}. Fevereiro é o mês mais curto e o único mês com um número variável de dias.",
-        "thirtyDays": "{month} é um dos quatro meses com exatamente 30 dias (abril, junho, setembro, novembro).",
-        "thirtyOneDays": "{month} tem 31 dias, sendo um dos sete meses mais longos do ano."
-      },
-      "navigation": {
-        "question": "Como posso navegar para outros meses?",
-        "answer": "Use os botões de seta para ir para {prevMonth} ou {nextMonth}. Você também pode clicar em qualquer mês na grade de navegação abaixo, ou usar o botão 'Ver Ano' para ver todos os meses de uma vez."
-      },
-      "monthOverview": {
-        "question": "Que informações este mês mostra?",
-        "answer": "{month} {year} tem {days} dias, começando em {startDay} e terminando em {endDay}. Esta vista de calendário mostra todas as datas com seus dias da semana correspondentes e números de semana."
-      },
-      "weekCount": {
-        "question": "Quantas semanas há neste mês?",
-        "answer": "{month} abrange {weeks} semanas na grade do calendário, embora algumas semanas possam conter dias do mês anterior ou próximo."
-      },
-      "currentMonth": {
-        "question": "Por que este mês está destacado?",
-        "answer": "Este é o mês atual ({month} {year}). Hoje é o {today}º dia do mês, destacado em azul no calendário."
-      },
-      "monthCharacteristics": {
-        "question": "Quais são as características deste mês?",
-        "february": "{month} {year} tem {days} dias, tornando-o um {leapYear}. Fevereiro é o mês mais curto e o único mês com um número variável de dias.",
-        "thirtyDays": "{month} é um dos quatro meses com exatamente 30 dias (abril, junho, setembro, novembro).",
-        "thirtyOneDays": "{month} tem 31 dias, sendo um dos sete meses mais longos do ano."
-      },
-      "navigation": {
-        "question": "Como posso navegar para outros meses?",
-        "answer": "Use os botões de seta para ir para {prevMonth} ou {nextMonth}. Você também pode clicar em qualquer mês na grade de navegação abaixo, ou usar o botão 'Ver Ano' para ver todos os meses de uma vez."
+      "utcGmt": {
+        "answer": "UTC (Tempo Universal Coordenado) é o padrão de tempo primário pelo qual o mundo regula relógios e tempo. É similar ao GMT (Tempo Médio de Greenwich) mas definido mais precisamente usando relógios atômicos. UTC é o padrão de tempo usado pela Internet, comunicações internacionais e aviação.",
+        "question": "O que é a hora UTC/GMT?"
       }
+    },
+    "labels": {
+      "addTimezone": "Adicionar Fuso Horário",
+      "cancel": "Cancelar",
+      "clockOffset": "Relógio com {seconds} segundos de diferença",
+      "clockSynchronized": "Relógio sincronizado (±{offset}ms)",
+      "convert": "Converter",
+      "convertedTime": "Hora Convertida",
+      "date": "Data",
+      "dst": "Horário de verão",
+      "fromTimezone": "Do Fuso Horário",
+      "getSunTimes": "Obter Horários do Sol (Usar Minha Localização)",
+      "hours": "Horas",
+      "isoFormat": "Formato ISO",
+      "learnAboutUtc": "Sobre UTC",
+      "loading": "Carregando...",
+      "minutes": "Minutos",
+      "pause": "Pausar",
+      "reset": "Redefinir",
+      "seconds": "Segundos",
+      "selectTimezone": "Selecionar Fuso Horário",
+      "start": "Iniciar",
+      "sunrise": "Nascer do Sol",
+      "sunset": "Pôr do Sol",
+      "time": "Hora",
+      "timeRemaining": "Tempo Restante",
+      "timezoneInfo": "Informações do Fuso Horário",
+      "toTimezone": "Para Fuso Horário",
+      "toggleTheme": "Alternar tema",
+      "unixTimestamp": "Timestamp Unix",
+      "utcTime": "Hora UTC"
+    },
+    "localTime": "Sua Hora Local",
+    "sections": {
+      "calendar": "Calendário",
+      "countdownTimer": "Temporizador de Contagem Regressiva",
+      "developerTools": "Ferramentas de Data e Hora para Desenvolvedores",
+      "sunriseSunset": "Nascer e Pôr do Sol",
+      "timeZoneConverter": "Conversor de Fuso Horário",
+      "worldClock": "Relógio Mundial"
+    },
+    "tabs": {
+      "calendar": "Calendário",
+      "converter": "Conversor",
+      "currentTime": "Hora Atual",
+      "sunTimes": "Horários do Sol",
+      "timer": "Temporizador",
+      "worldClock": "Relógio Mundial"
+    },
+    "timeZone": "Fuso Horário",
+    "title": "Hora Atual ao Redor do Mundo",
+    "tools": {
+      "ageCalculator": "Calculadora de Idade",
+      "title": "Ferramentas de Tempo",
+      "utcTime": "Hora UTC",
+      "worldHolidays": "Feriados Mundiais",
+      "yearProgress": "Barra de Progresso do Ano"
     }
   },
   "languageSuggestion": {
-    "title": "Sugestão de idioma",
-    "description": "Detectamos que o idioma do seu navegador é {language}. Gostaria de mudar para este idioma para uma melhor experiência?",
     "accept": "Sim, mudar para {language}",
-    "dismiss": "Não, obrigado"
+    "description": "Detectamos que o idioma do seu navegador é {language}. Gostaria de mudar para este idioma para uma melhor experiência?",
+    "dismiss": "Não, obrigado",
+    "title": "Sugestão de idioma"
+  },
+  "timezones": {
+    "copyToClipboard": "Copy to clipboard",
+    "currentTime": "Current Time",
+    "descriptions": {
+      "aest": "Australian Eastern time",
+      "cet": "Central European standard time",
+      "china-cst": "China standard time",
+      "cst": "US Central time",
+      "eet": "Eastern European time",
+      "est": "US Eastern time",
+      "gmt": "Greenwich meridian time",
+      "ist": "Indian standard time",
+      "jst": "Japan standard time",
+      "msk": "Moscow time",
+      "mst": "US Mountain time",
+      "nzst": "New Zealand time",
+      "pst": "US Pacific coast time",
+      "sast": "South African time",
+      "utc": "World time standard"
+    },
+    "enterFullscreen": "Enter fullscreen",
+    "faqTitle": "{timezone} Time - Frequently Asked Questions",
+    "faqs": {
+      "daylightSaving": {
+        "answer": "This depends on the specific region and local regulations. The current time shown automatically adjusts for daylight saving time when applicable.",
+        "question": "Does {timezone} observe daylight saving time?"
+      },
+      "utcDifference": {
+        "answer": "{timezone} is {offset} from UTC time.",
+        "question": "What is the time difference between {timezone} and UTC?"
+      },
+      "whatIs": {
+        "answer": "{timezone} ({abbreviation}) is {description}. The current time is {currentTime}.",
+        "question": "What is {timezone} time?"
+      }
+    },
+    "iso8601": "ISO 8601",
+    "names": {
+      "aest": "Australian Eastern Standard Time",
+      "cet": "Central European Time",
+      "china-cst": "China Standard Time",
+      "cst": "Central Standard Time",
+      "eet": "Eastern European Time",
+      "est": "Eastern Standard Time",
+      "gmt": "Greenwich Mean Time",
+      "ist": "India Standard Time",
+      "jst": "Japan Standard Time",
+      "msk": "Moscow Standard Time",
+      "mst": "Mountain Standard Time",
+      "nzst": "New Zealand Standard Time",
+      "pst": "Pacific Standard Time",
+      "sast": "South Africa Standard Time",
+      "utc": "Coordinated Universal Time"
+    },
+    "subtitle": "{description}",
+    "title": "Time in {timezone}",
+    "toggleTheme": "Toggle theme",
+    "unixTimestamp": "Unix Timestamp",
+    "utcString": "UTC String",
+    "viewGlossary": "View our complete glossary of date and time concepts",
+    "worldTimezones": "World Timezones"
+  },
+  "utc": {
+    "copyToClipboard": "Copiar para área de transferência",
+    "description": "Visualizar a hora UTC (Tempo Universal Coordenado) atual. UTC é o padrão de tempo mundial, não afetado por fusos horários ou mudanças de horário de verão.",
+    "enterFullscreen": "Entrar em tela cheia",
+    "faqTitle": "Hora UTC - Perguntas Frequentes",
+    "faqs": {
+      "convertToLocal": {
+        "answer": "Para converter UTC para sua hora local, você precisa adicionar ou subtrair o deslocamento do seu fuso horário do tempo UTC. Por exemplo, se você está no Horário Padrão do Leste (EST), que é UTC-5, você subtrairia 5 horas do tempo UTC. Durante o horário de verão, isso se tornaria UTC-4.",
+        "question": "Como converter UTC para minha hora local?"
+      },
+      "utcVsGmt": {
+        "answer": "Embora UTC e GMT sejam frequentemente usados ​​de forma intercambiável e ambos representem o tempo no Meridiano Principal (0° longitude), eles são tecnicamente diferentes. GMT é baseado na rotação da Terra e posição do sol, enquanto UTC é baseado em relógios atômicos. Na prática, eles geralmente estão dentro de 0,9 segundos um do outro.",
+        "question": "Qual é a diferença entre UTC e GMT?"
+      },
+      "whatIsUtc": {
+        "answer": "UTC (Tempo Universal Coordenado) é o padrão de tempo primário pelo qual o mundo regula relógios e tempo. É similar ao GMT (Tempo Médio de Greenwich) mas definido mais precisamente usando relógios atômicos. UTC é o padrão de tempo usado pela Internet, comunicações internacionais e aviação.",
+        "question": "O que é a hora UTC?"
+      },
+      "whyImportant": {
+        "answer": "UTC é importante porque fornece um tempo de referência padronizado que não é afetado por mudanças de fuso horário ou horário de verão. Serve como base para o tempo civil mundialmente e é crucial para comunicações globais, aviação, pesquisa científica e sistemas de computador.",
+        "question": "Por que UTC é importante?"
+      },
+      "whyInComputing": {
+        "answer": "UTC é usado na computação porque fornece uma referência de tempo consistente independentemente da localização geográfica. Isso é essencial para timestamps de eventos, sincronização de sistemas através de diferentes fusos horários, registro de logs e garantia de timestamps de dados consistentes em sistemas distribuídos.",
+        "question": "Por que UTC é usado na computação?"
+      }
+    },
+    "iso8601": "ISO 8601",
+    "learnMore": "Saiba mais sobre UTC em nosso glossário",
+    "subtitle": "Padrão de Tempo Mundial",
+    "title": "Tempo Universal Coordenado (UTC)",
+    "toggleTheme": "Alternar tema",
+    "unixTimestamp": "Timestamp Unix",
+    "utcOffset": "UTC/GMT+0",
+    "utcString": "String UTC",
+    "viewGlossary": "Ver nosso glossário completo de conceitos de data e hora",
+    "worldCityTimes": "Horários das Cidades do Mundo"
+  },
+  "yearProgress": {
+    "description": "Acompanhe o progresso do ano atual",
+    "faqTitle": "Progresso do Ano - Perguntas Frequentes",
+    "faqs": {
+      "differentYear": {
+        "answer": "Sim, você pode visualizar o progresso de qualquer ano alterando a URL para /year-progress-bar/year. Por exemplo, para ver o progresso de 2025, você usaria /year-progress-bar/2025.",
+        "question": "Posso verificar o progresso de um ano diferente?"
+      },
+      "howCalculated": {
+        "answer": "O progresso do ano é calculado determinando qual porcentagem do ano passou. Pegamos a data e hora atuais, calculamos quantos milissegundos se passaram desde 1º de janeiro do ano atual e dividimos pelo número total de milissegundos no ano.",
+        "question": "Como o progresso do ano é calculado?"
+      },
+      "isAccurate": {
+        "answer": "Sim, nosso cálculo leva em conta anos bissextos e é preciso ao segundo. O progresso atualiza em tempo real enquanto você assiste à página.",
+        "question": "O cálculo do progresso do ano é preciso?"
+      },
+      "whyTrack": {
+        "answer": "Acompanhar o progresso do ano pode ajudar com a consciência do tempo, definição de metas e planejamento. Fornece um lembrete visual de quanto do ano passou e quanto tempo resta para alcançar os objetivos anuais.",
+        "question": "Por que acompanhar o progresso do ano?"
+      }
+    },
+    "pageTitle": "Barra de Progresso do Ano {year}",
+    "progressTitle": "Progresso do Ano",
+    "subtitle": "O ano {year} está {progress}% completo",
+    "title": "Progresso do Ano",
+    "toggleTheme": "Alternar tema",
+    "viewOtherYears": "Ver progresso de outros anos:"
   }
 }

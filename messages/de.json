@@ -2,6 +2,8 @@
   "common": {
     "title": "Weltzeituhr & Zeit",
     "description": "Aktuelle Zeit weltweit, UTC-Zeit, Feiertage und Altersrechner",
+    "day": "Wochentag",
+    "date": "Datum",
     "nav": {
       "home": "Startseite",
       "utc": "UTC-Zeit",
