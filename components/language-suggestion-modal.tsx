@@ -145,6 +145,9 @@ export function LanguageSuggestionModal() {
   }
 
   useEffect(() => {
+    // Temporarily disable language suggestion dialog
+    return
+    
     if (typeof window === 'undefined') return
 
     const currentLocale = getCurrentLocale()
