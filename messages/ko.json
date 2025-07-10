@@ -1,475 +1,518 @@
 {
-  "common": {
-    "title": "세계 시계와 시간",
-    "description": "전 세계 현재 시간, UTC 시간, 휴일 및 나이 계산기",
-    "nav": {
-      "home": "홈",
-      "utc": "UTC 시간",
-      "calendar": "달력",
-      "holidays": "휴일",
-      "ageCalculator": "나이 계산기",
-      "yearProgress": "연도 진행률",
-      "glossary": "용어집"
-    }
-  },
-  "home": {
-    "title": "전 세계 현재 시간",
-    "localTime": "현지 시간",
-    "timeZone": "시간대",
-    "tabs": {
-      "currentTime": "현재 시간",
-      "worldClock": "세계 시계",
-      "calendar": "달력",
-      "converter": "변환기",
-      "timer": "타이머",
-      "sunTimes": "일출·일몰"
-    },
-    "sections": {
-      "worldClock": "세계 시계",
-      "calendar": "달력",
-      "timeZoneConverter": "시간대 변환기",
-      "countdownTimer": "카운트다운 타이머",
-      "sunriseSunset": "일출과 일몰"
-    },
-    "labels": {
-      "timezoneInfo": "시간대 정보",
-      "unixTimestamp": "Unix 타임스탬프",
-      "utcTime": "UTC 시간",
-      "isoFormat": "ISO 형식",
-      "addTimezone": "시간대 추가",
-      "selectTimezone": "시간대 선택",
-      "cancel": "취소",
-      "fromTimezone": "변환 원본 시간대",
-      "toTimezone": "변환 대상 시간대",
-      "date": "날짜",
-      "time": "시간",
-      "convert": "변환",
-      "convertedTime": "변환된 시간",
-      "hours": "시간",
-      "minutes": "분",
-      "seconds": "초",
-      "start": "시작",
-      "pause": "일시정지",
-      "reset": "리셋",
-      "timeRemaining": "남은 시간",
-      "getSunTimes": "일출·일몰 시간 가져오기 (내 위치 사용)",
-      "loading": "로딩 중...",
-      "sunrise": "일출",
-      "sunset": "일몰",
-      "toggleTheme": "테마 전환",
-      "dst": "서머타임",
-      "clockSynchronized": "시계 동기화됨 (±{offset}ms)",
-      "clockOffset": "시계가 약 {seconds}초 어긋남",
-      "learnAboutUtc": "UTC 알아보기"
-    },
-    "tools": {
-      "title": "시간 도구",
-      "yearProgress": "연도 진행률 막대",
-      "ageCalculator": "나이 계산기",
-      "utcTime": "UTC 시간",
-      "worldHolidays": "세계 휴일"
-    },
-    "cityTimes": {
-      "title": "세계 도시 시간"
-    },
-    "faq": {
-      "title": "자주 묻는 질문",
-      "utcGmt": {
-        "question": "UTC/GMT 시간이란 무엇인가요?",
-        "answer": "UTC(협정 세계시)는 세계가 시계와 시간을 조절하는 주요 시간 표준입니다. GMT(그리니치 표준시)와 유사하지만 원자시계를 사용하여 더 정확하게 정의됩니다. UTC는 인터넷, 국제 통신, 항공에서 사용되는 시간 표준입니다."
-      },
-      "timezones": {
-        "question": "시간대는 어떻게 작동하나요?",
-        "answer": "시간대는 지구상에서 통일된 표준시를 관찰하는 지역입니다. 일반적으로 UTC로부터의 오프셋으로 정의되며, 보통 정시간 단위로 증가합니다. 예를 들어, 동부 표준시(EST)는 UTC-5로, UTC보다 5시간 늦습니다. 시간대는 정치적 경계뿐만 아니라 지리적 경계의 영향을 받으면서 큰 지리적 영역 내에서 시간을 표준화하기 위해 만들어졌습니다."
-      },
-      "unixTimestamp": {
-        "question": "Unix 타임스탬프란 무엇인가요?",
-        "answer": "Unix 타임스탬프(Unix 시간 또는 POSIX 시간이라고도 함)는 1970년 1월 1일 00:00:00 UTC부터 경과한 초 수를 윤초를 제외하고 나타냅니다. 컴퓨터 시스템과 프로그래밍에서 시간대에 독립적인 시간 추적의 표준화된 방법으로 널리 사용됩니다. Unix 타임스탬프는 시간 차이 계산을 쉽게 하고 달력 규약에 독립적입니다."
-      },
-      "clockAccuracy": {
-        "question": "이 시계는 얼마나 정확한가요?",
-        "answer": "이 시계의 정확도는 기기의 시스템 시계와 인터넷 연결에 따라 다릅니다. 가장 정확한 시간을 표시하려고 노력하지만, 네트워크 지연이나 기기의 시계 동기화로 인해 약간의 변동이 있을 수 있습니다. 대부분의 일상적인 용도에서는 표시되는 시간이 실제 시간으로부터 몇 초 이내로 정확해야 합니다. 밀리초 정밀도가 필요한 애플리케이션의 경우 전문 시간 서버를 사용해야 합니다."
-      },
-      "iso8601": {
-        "question": "ISO 8601 형식이란 무엇인가요?",
-        "answer": "ISO 8601은 날짜와 시간을 나타내는 국제 표준입니다. YYYY-MM-DDTHH:MM:SS.sssZ 형식을 따릅니다. 여기서: YYYY-MM-DD는 날짜(년, 월, 일)를 나타내고, T는 날짜와 시간 사이의 구분자이며, HH:MM:SS.sss는 시간(시, 분, 초, 밀리초)을 나타내고, Z는 시간이 UTC임을 나타냅니다(또는 +01:00과 같이 오프셋을 지정할 수 있습니다). 이 형식은 국제 통신에서 모호함을 제거하고 컴퓨팅에서 널리 사용됩니다."
-      },
-      "daylightSaving": {
-        "question": "일광 절약 시간제란 무엇인가요?",
-        "answer": "일광 절약 시간제(DST)는 따뜻한 달에 시계를 앞으로 조정하여 시계에 따라 어둠이 하루 중 더 늦은 시간에 내리도록 하는 관행입니다. 일반적으로 DST를 관찰하는 지역은 봄에 시계를 한 시간 앞으로('봄에 앞으로') 조정하고 가을에 뒤로('가을에 뒤로') 조정합니다. 주요 목적은 저녁 시간 동안 자연광을 더 잘 활용하는 것입니다. 모든 나라가 DST를 관찰하는 것은 아니며, 시작 및 종료 날짜는 지역에 따라 다릅니다."
-      },
-      "timezoneConversion": {
-        "question": "시간대 간에 시간을 변환하는 방법은?",
-        "answer": "시간대 간에 시간을 변환하려면: 1) 소스와 대상 시간대의 UTC 오프셋을 결정하고, 2) 오프셋을 더하거나 빼서 소스 시간을 UTC로 변환하고, 3) 대상 시간대의 오프셋을 더하거나 빼서 UTC에서 대상 시간대로 변환합니다. 예를 들어, 뉴욕 시간 오후 3:00(UTC-5)를 런던 시간(UTC+0)으로 변환하려면 5시간을 더해서 런던 시간 오후 8:00을 얻습니다. 해당하는 경우 일광 절약 시간제를 고려하는 것을 잊지 마세요. UTC 오프셋을 일시적으로 변경할 수 있습니다."
-      }
-    }
-  },
-  "utc": {
-    "title": "협정 세계시 (UTC)",
-    "subtitle": "세계 시간 표준",
-    "description": "현재 UTC(협정 세계시)를 보세요. UTC는 세계 시간 표준으로, 시간대나 일광 절약 시간 변경의 영향을 받지 않습니다.",
-    "learnMore": "용어집에서 UTC에 대해 더 알아보세요",
-    "unixTimestamp": "Unix 타임스탬프",
-    "utcString": "UTC 문자열",
-    "iso8601": "ISO 8601",
-    "copyToClipboard": "클립보드에 복사",
-    "enterFullscreen": "전체 화면 입력",
-    "toggleTheme": "테마 전환",
-    "utcOffset": "UTC/GMT+0",
-    "worldCityTimes": "세계 도시 시간",
-    "faqTitle": "UTC 시간 - 자주 묻는 질문",
-    "viewGlossary": "날짜와 시간 개념의 완전한 용어집 보기",
-    "faqs": {
-      "whatIsUtc": {
-        "question": "UTC 시간이란 무엇인가요?",
-        "answer": "UTC(협정 세계시)는 세계가 시계와 시간을 조절하는 주요 시간 표준입니다. GMT(그리니치 표준시)와 유사하지만 원자시계를 사용하여 더 정확하게 정의됩니다. UTC는 인터넷, 국제 통신, 항공에서 사용되는 시간 표준입니다."
-      },
-      "whyImportant": {
-        "question": "UTC가 왜 중요한가요?",
-        "answer": "UTC가 중요한 이유는 시간대나 일광 절약 시간 변경에 영향을 받지 않는 표준화된 참조 시간을 제공하기 때문입니다. 전 세계 민간 시간의 기초 역할을 하며 대방 통신, 항공, 과학 연구, 컴퓨터 시스템에 결정적입니다."
-      },
-      "utcVsGmt": {
-        "question": "UTC와 GMT의 차이점은 무엇인가요?",
-        "answer": "UTC와 GMT는 종종 상호 교환적으로 사용되며 둘 다 본초 자오선(0° 경도)에서의 시간을 나타내지만, 기술적으로는 다릅니다. GMT는 지구의 자전과 태양의 위치에 기반하는 반면, UTC는 원자시계에 기반합니다. 실제로는 일반적으로 서로 0.9초 이내에 있습니다."
-      },
-      "convertToLocal": {
-        "question": "UTC를 내 현지 시간으로 변환하려면 어떻게 해야 하나요?",
-        "answer": "UTC를 현지 시간으로 변환하려면 UTC 시간에서 자신의 시간대 오프셋을 더하거나 빼야 합니다. 예를 들어, UTC-5인 동부 표준시(EST)에 있다면 UTC 시간에서 5시간을 뺄니다. 일광 절약 시간 동안에는 이것이 UTC-4가 됩니다."
-      },
-      "whyInComputing": {
-        "question": "컴퓨팅에서 UTC가 사용되는 이유는 무엇인가요?",
-        "answer": "컴퓨팅에서 UTC가 사용되는 이유는 지리적 위치에 관계없이 일관된 시간 참조를 제공하기 때문입니다. 이는 이벤트의 타임스탬프, 다른 시간대에 걸친 시스템 동기화, 로깅, 분산 시스템에서 일관된 데이터 타임스탬프 보장에 필수적입니다."
-      }
-    }
-  },
-  "holidays": {
-    "title": "전 세계 휴일",
-    "description": "다양한 국가의 휴일과 기념일을 발견하세요"
-  },
   "ageCalculator": {
-    "title": "나이 계산기",
-    "description": "년, 월, 일로 정확한 나이를 계산하세요",
-    "pageTitle": "나이 계산기",
-    "subtitle": "정확한 나이를 년, 월, 일 등으로 계산 - 유연한 날짜 입력 옵션 제공",
-    "calculateYourAge": "나이 계산하기",
-    "enterBirthDate": "생년월일 입력",
-    "calculateAgeAsOf": "날짜 기준 나이 계산",
-    "ageResults": "나이 결과",
     "aboutAgeCalculation": "나이 계산에 대하여",
+    "ageResults": "나이 결과",
+    "calculateAgeAsOf": "날짜 기준 나이 계산",
+    "calculateYourAge": "나이 계산하기",
     "calendarPrecision": "달력 정밀도",
-    "realTimeUpdates": "실시간 업데이트",
+    "description": "년, 월, 일로 정확한 나이를 계산하세요",
+    "enterBirthDate": "생년월일 입력",
+    "errors": {
+      "dayRange": "1부터 31 사이의 일을 입력해 주세요",
+      "futureDate": "생년월일은 미래의 날짜가 될 수 없습니다",
+      "invalidDate": "입력한 날짜가 유효하지 않습니다",
+      "monthRange": "1부터 12 사이의 월을 입력해 주세요",
+      "unknownError": "알 수 없는 오류가 발생했습니다",
+      "validNumbers": "년, 월, 일에 유효한 숫자를 입력해 주세요",
+      "yearRange": "1900년부터 현재 년도 사이의 년도를 입력해 주세요"
+    },
     "faqTitle": "나이 계산기 - 자주 묻는 질문",
-    "inputMethods": {
-      "calendar": "달력",
-      "manual": "수동 입력"
-    },
-    "labels": {
-      "year": "년",
-      "month": "월",
-      "day": "일",
-      "useCustomDate": "사용자 지정 날짜 사용",
-      "calculateAge": "나이 계산",
-      "updateTargetDate": "대상 날짜 업데이트",
-      "selectedDate": "선택된 날짜",
-      "targetDate": "대상 날짜",
-      "currentDateTime": "현재 날짜 및 시간",
-      "updatesInRealTime": "실시간 업데이트",
-      "asOf": "{date} 기준",
-      "years": "년",
-      "months": "월",
-      "days": "일",
-      "hours": "시간",
-      "nextBirthday": "다음 생일",
-      "nextBirthdayText": "{days}일 후에 {age}세가 됩니다 ({date})",
-      "yearsInDecimalFormat": "나이 (소수 형식)"
-    },
-    "tabs": {
-      "standard": "표준",
-      "detailed": "상세",
-      "decimal": "소수"
+    "faqs": {
+      "customDates": {
+        "answer": "네! 저희 계산기는 임의의 두 날짜 간의 나이를 계산할 수 있습니다. 생년월일을 입력한 다음 '사용자 지정 날짜 사용' 옵션을 토글하여 나이 계산의 대상 날짜를 지정하기만 하면 됩니다. 이는 특정 날짜에 몇 살이었는지(또는 될 것인지) 확인하는 데 유용합니다.",
+        "question": "두 특정 날짜 간의 나이를 계산할 수 있나요?"
+      },
+      "decimalAge": {
+        "answer": "소수 나이는 년, 월, 일을 따로 보여주는 대신 소수 부분이 있는 단일 숫자로 나이를 나타냅니다. 예를 들어, 25.75년은 25세 9개월을 의미합니다(0.75년이 약 9개월에 해당하기 때문). 이 형식은 과학적 또는 의학적 맥락에서 때때로 사용됩니다.",
+        "question": "소수 나이란 무엇인가요?"
+      },
+      "differFromOthers": {
+        "answer": "나이 계산은 부분적인 월과 일을 처리하는 방식에 따라 다른 계산기 간에 약간의 차이가 있을 수 있습니다. 일부 계산기는 가장 가까운 년도로 반올림할 수 있지만, 저희 계산기(와 같은 다른 계산기)는 월과 일을 포함한 더 상세한 분석을 제공합니다. 저희 계산기는 윤년과 다양한 월 길이를 고려한 정밀한 알고리즘을 사용합니다.",
+        "question": "다른 계산기와 나이 계산이 다른 이유는 무엇인가요?"
+      },
+      "enterBirthDate": {
+        "answer": "생년월일을 입력하는 두 가지 옵션이 있습니다: 달력 선택기 사용 또는 수동 입력. 달력 선택기를 사용하면 시각적으로 날짜를 선택할 수 있고, 수동 입력을 사용하면 년, 월, 일을 직접 입력할 수 있습니다. 가장 편리한 방법을 선택하세요.",
+        "question": "생년월일은 어떻게 입력하나요?"
+      },
+      "howAccurate": {
+        "answer": "저희 나이 계산기는 초 단위까지 정확합니다. (현재 날짜 사용 시) 실시간으로 업데이트되며, 윤년, 다양한 월 길이, 일광 절약 시간 변경을 고려합니다. 대부분의 실용적인 목적에는 이 정밀도 수준이면 충분합니다.",
+        "question": "나이 계산은 얼마나 정확한가요?"
+      },
+      "howCalculated": {
+        "answer": "나이는 생년월일과 현재 날짜(또는 지정한 사용자 지정 날짜) 사이의 경과 시간을 계산하여 결정됩니다. 저희 계산기는 년, 월, 일, 시, 분, 초로 정확한 나이를 제공합니다. 정확성을 보장하기 위해 윤년, 다양한 월 길이 및 기타 달력 복잡성을 고려합니다.",
+        "question": "나이는 어떻게 계산되나요?"
+      },
+      "noNextBirthday": {
+        "answer": "다음 생일 계산은 현재 날짜를 기반으로 하며, 오늘부터 다음 생일까지 며칠이 남았는지 보여줍니다. 사용자 지정 대상 날짜를 사용할 때는 지정한 사용자 지정 날짜와 관련이 없기 때문에 이 정보가 표시되지 않습니다.",
+        "question": "사용자 지정 날짜를 사용할 때 다음 생일 정보가 나타나지 않는 이유는 무엇인가요?"
+      },
+      "whyNeedExact": {
+        "answer": "정확한 나이를 아는 것은 다양한 목적에 유용할 수 있습니다: 의학적 평가, 점성술 계산, 법적 문서, 또는 단순히 호기심을 충족시키기 위해서입니다. 일부 문화에서는 정밀한 계산이 필요한 특정 나이 이정표를 축하하기도 합니다.",
+        "question": "정확한 나이를 알아야 하는 이유는 무엇인가요?"
+      }
     },
     "formatted": {
       "age": "나이: {age}",
-      "yearsSuffix": "세",
+      "daysSuffix": "일",
       "monthsSuffix": "개월",
-      "daysSuffix": "일"
+      "yearsSuffix": "세"
     },
     "info": {
       "calendarPrecisionDesc": "저희의 나이 계산기는 윤년, 다양한 월 길이, 일광 절약 시간 변경을 고려하여 가능한 한 정확한 계산을 제공합니다.",
       "realTimeUpdatesDesc": "생년월일을 선택하면 계산기가 실시간으로 업데이트되어 시간이 지남에 따라 나이를 초 단위까지 보여줍니다."
     },
-    "errors": {
-      "validNumbers": "년, 월, 일에 유효한 숫자를 입력해 주세요",
-      "yearRange": "1900년부터 현재 년도 사이의 년도를 입력해 주세요",
-      "monthRange": "1부터 12 사이의 월을 입력해 주세요",
-      "dayRange": "1부터 31 사이의 일을 입력해 주세요",
-      "invalidDate": "입력한 날짜가 유효하지 않습니다",
-      "futureDate": "생년월일은 미래의 날짜가 될 수 없습니다",
-      "unknownError": "알 수 없는 오류가 발생했습니다"
+    "inputMethods": {
+      "calendar": "달력",
+      "manual": "수동 입력"
     },
-    "faqs": {
-      "howCalculated": {
-        "question": "나이는 어떻게 계산되나요?",
-        "answer": "나이는 생년월일과 현재 날짜(또는 지정한 사용자 지정 날짜) 사이의 경과 시간을 계산하여 결정됩니다. 저희 계산기는 년, 월, 일, 시, 분, 초로 정확한 나이를 제공합니다. 정확성을 보장하기 위해 윤년, 다양한 월 길이 및 기타 달력 복잡성을 고려합니다."
-      },
-      "differFromOthers": {
-        "question": "다른 계산기와 나이 계산이 다른 이유는 무엇인가요?",
-        "answer": "나이 계산은 부분적인 월과 일을 처리하는 방식에 따라 다른 계산기 간에 약간의 차이가 있을 수 있습니다. 일부 계산기는 가장 가까운 년도로 반올림할 수 있지만, 저희 계산기(와 같은 다른 계산기)는 월과 일을 포함한 더 상세한 분석을 제공합니다. 저희 계산기는 윤년과 다양한 월 길이를 고려한 정밀한 알고리즘을 사용합니다."
-      },
-      "customDates": {
-        "question": "두 특정 날짜 간의 나이를 계산할 수 있나요?",
-        "answer": "네! 저희 계산기는 임의의 두 날짜 간의 나이를 계산할 수 있습니다. 생년월일을 입력한 다음 '사용자 지정 날짜 사용' 옵션을 토글하여 나이 계산의 대상 날짜를 지정하기만 하면 됩니다. 이는 특정 날짜에 몇 살이었는지(또는 될 것인지) 확인하는 데 유용합니다."
-      },
-      "enterBirthDate": {
-        "question": "생년월일은 어떻게 입력하나요?",
-        "answer": "생년월일을 입력하는 두 가지 옵션이 있습니다: 달력 선택기 사용 또는 수동 입력. 달력 선택기를 사용하면 시각적으로 날짜를 선택할 수 있고, 수동 입력을 사용하면 년, 월, 일을 직접 입력할 수 있습니다. 가장 편리한 방법을 선택하세요."
-      },
-      "howAccurate": {
-        "question": "나이 계산은 얼마나 정확한가요?",
-        "answer": "저희 나이 계산기는 초 단위까지 정확합니다. (현재 날짜 사용 시) 실시간으로 업데이트되며, 윤년, 다양한 월 길이, 일광 절약 시간 변경을 고려합니다. 대부분의 실용적인 목적에는 이 정밀도 수준이면 충분합니다."
-      },
-      "decimalAge": {
-        "question": "소수 나이란 무엇인가요?",
-        "answer": "소수 나이는 년, 월, 일을 따로 보여주는 대신 소수 부분이 있는 단일 숫자로 나이를 나타냅니다. 예를 들어, 25.75년은 25세 9개월을 의미합니다(0.75년이 약 9개월에 해당하기 때문). 이 형식은 과학적 또는 의학적 맥락에서 때때로 사용됩니다."
-      },
-      "whyNeedExact": {
-        "question": "정확한 나이를 알아야 하는 이유는 무엇인가요?",
-        "answer": "정확한 나이를 아는 것은 다양한 목적에 유용할 수 있습니다: 의학적 평가, 점성술 계산, 법적 문서, 또는 단순히 호기심을 충족시키기 위해서입니다. 일부 문화에서는 정밀한 계산이 필요한 특정 나이 이정표를 축하하기도 합니다."
-      },
-      "noNextBirthday": {
-        "question": "사용자 지정 날짜를 사용할 때 다음 생일 정보가 나타나지 않는 이유는 무엇인가요?",
-        "answer": "다음 생일 계산은 현재 날짜를 기반으로 하며, 오늘부터 다음 생일까지 며칠이 남았는지 보여줍니다. 사용자 지정 대상 날짜를 사용할 때는 지정한 사용자 지정 날짜와 관련이 없기 때문에 이 정보가 표시되지 않습니다."
-      }
-    }
-  },
-  "yearProgress": {
-    "title": "연도 진행률",
-    "description": "현재 연도의 진행률을 추적하세요",
-    "pageTitle": "연도 진행률 막대 {year}",
-    "subtitle": "{year}년이 {progress}% 완료되었습니다",
-    "progressTitle": "연도 진행률",
-    "toggleTheme": "테마 토글",
-    "viewOtherYears": "다른 연도의 진행률 보기:",
-    "faqTitle": "연도 진행률 - 자주 묻는 질문",
-    "faqs": {
-      "howCalculated": {
-        "question": "연도 진행률은 어떻게 계산되나요?",
-        "answer": "연도 진행률은 연도의 몇 퍼센트가 경과했는지를 결정하여 계산됩니다. 현재 날짜와 시간을 가져와서 현재 연도 1월 1일부터 경과한 밀리초를 계산하고, 이를 연도의 총 밀리초 수로 나눕니다."
-      },
-      "isAccurate": {
-        "question": "연도 진행률 계산이 정확한가요?",
-        "answer": "네, 저희의 계산은 윤년을 고려하며 초 단위까지 정확합니다. 페이지를 보는 동안 진행률이 실시간으로 업데이트됩니다."
-      },
-      "differentYear": {
-        "question": "다른 연도의 진행률을 확인할 수 있나요?",
-        "answer": "네, URL을 /year-progress-bar/year로 변경하여 어떤 연도의 진행률도 볼 수 있습니다. 예를 들어, 2025년의 진행률을 보려면 /year-progress-bar/2025를 사용하면 됩니다."
-      },
-      "whyTrack": {
-        "question": "왜 연도 진행률을 추적하나요?",
-        "answer": "연도 진행률을 추적하는 것은 시간 인식, 목표 설정, 계획 수립에 도움이 될 수 있습니다. 연도의 얼마나 많은 부분이 지나견고 연간 목표를 달성하기 위해 얼마나 많은 시간이 남았는지에 대한 시각적 알림을 제공합니다."
-      }
-    }
-  },
-  "cities": {
-    "pageTitle": "{cityName}의 현재 시간",
-    "timezoneLabel": "{timezone} 시간대",
-    "timezoneInfo": "시간대 정보",
-    "unixTimestamp": "Unix 타임스탬프",
-    "utcTime": "UTC 시간",
-    "isoFormat": "ISO 형식",
-    "cityInfo": "도시 정보",
-    "country": "국가",
-    "timezone": "시간대",
-    "coordinates": "좌표",
-    "population": "인구",
-    "faq": "자주 묻는 질문",
-    "clockSynchronized": "시계 동기화됨 (±{offset}ms)",
-    "clockOffset": "시계 오프셋 약 {seconds}초",
-    "copyToClipboard": "클립보드에 복사",
-    "enterFullscreen": "전체 화면 진입",
-    "toggleTheme": "테마 토글",
-    "faqQuestions": {
-      "currentTime": "{cityName}의 현재 시간은 몇 시입니까?",
-      "utcDifference": "{cityName}과 UTC 간의 시간 차이는 얼마입니까?",
-      "daylightSaving": "{cityName}은 일광 절약 시간제를 적용합니까?"
+    "labels": {
+      "asOf": "{date} 기준",
+      "calculateAge": "나이 계산",
+      "currentDateTime": "현재 날짜 및 시간",
+      "day": "일",
+      "days": "일",
+      "hours": "시간",
+      "month": "월",
+      "months": "월",
+      "nextBirthday": "다음 생일",
+      "nextBirthdayText": "{days}일 후에 {age}세가 됩니다 ({date})",
+      "selectedDate": "선택된 날짜",
+      "targetDate": "대상 날짜",
+      "updateTargetDate": "대상 날짜 업데이트",
+      "updatesInRealTime": "실시간 업데이트",
+      "useCustomDate": "사용자 지정 날짜 사용",
+      "year": "년",
+      "years": "년",
+      "yearsInDecimalFormat": "나이 (소수 형식)"
     },
-    "faqAnswers": {
-      "currentTime": "{country} {cityName}의 현재 현지 시간은 {currentTime}입니다. {cityName}은 {timezone} 시간대에 위치해 있습니다.",
-      "utcDifference": "{cityName}은 {timezone} 시간을 따릅니다. 현재 UTC와의 시차는 {offset}시간입니다.",
-      "daylightSaving": "이는 {country}의 현지 규정에 따라 다릅니다. 현재 시간은 {currentTime}이며, 해당하는 경우 일광 절약 시간제가 자동으로 적용됩니다."
+    "pageTitle": "나이 계산기",
+    "realTimeUpdates": "실시간 업데이트",
+    "subtitle": "정확한 나이를 년, 월, 일 등으로 계산 - 유연한 날짜 입력 옵션 제공",
+    "tabs": {
+      "decimal": "소수",
+      "detailed": "상세",
+      "standard": "표준"
     },
-    "cityNames": {
-      "new-york": "뉴욕",
-      "london": "런던",
-      "tokyo": "도쿄",
-      "shanghai": "상하이",
-      "beijing": "베이징",
-      "seoul": "서울",
-      "kolkata": "콜카타",
-      "dubai": "두바이",
-      "cairo": "카이로",
-      "moscow": "모스크바",
-      "istanbul": "이스탄불",
-      "paris": "파리",
-      "sydney": "시드니"
-    },
-    "countryNames": {
-      "United States": "미국",
-      "United Kingdom": "영국",
-      "Japan": "일본",
-      "China": "중국",
-      "South Korea": "대한민국",
-      "India": "인도",
-      "United Arab Emirates": "아랍에미리트",
-      "Egypt": "이집트",
-      "Russia": "러시아",
-      "Turkey": "터키",
-      "France": "프랑스",
-      "Australia": "호주"
-    }
+    "title": "나이 계산기"
   },
   "calendar": {
-    "title": "{year}년 달력",
-    "subtitle": "주차 번호가 포함된 전체 연간 달력 보기",
-    "description": "모든 월, 날짜 및 주차 번호가 포함된 {year}년의 전체 달력을 확인하세요",
-    "currentYear": "올해",
-    "leapYear": "윤년",
-    "regularYear": "평년",
-    "weekNumber": "{number}주차",
-    "weekNumbers": "주차 번호",
-    "today": "오늘",
-    "viewYear": "연도 보기",
-    "previousYear": "이전 연도",
-    "nextYear": "다음 연도",
-    "yearNavigation": "연도 탐색",
-    "monthNavigation": "월 탐색",
-    "jumpToYear": "연도로 이동",
-    "toggleTheme": "테마 전환",
-    "previousMonth": "이전 월",
-    "nextMonth": "다음 월",
-    "currentMonth": "현재 월",
     "backToYear": "{year}로 돌아가기",
-    "daysInMonth": "{days}일",
-    "selectedDate": "선택된 날짜",
+    "currentMonth": "현재 월",
+    "currentYear": "올해",
     "date": "날짜",
     "dayOfYear": "연중 일수",
-    "months": {
-      "january": "1월",
-      "february": "2월",
-      "march": "3월",
-      "april": "4월",
-      "may": "5월",
-      "june": "6월",
-      "july": "7월",
-      "august": "8월",
-      "september": "9월",
-      "october": "10월",
-      "november": "11월",
-      "december": "12월"
-    },
-    "monthsShort": {
-      "jan": "1월",
-      "feb": "2월",
-      "mar": "3월",
-      "apr": "4월",
-      "may": "5월",
-      "jun": "6월",
-      "jul": "7월",
-      "aug": "8월",
-      "sep": "9월",
-      "oct": "10월",
-      "nov": "11월",
-      "dec": "12월"
-    },
-    "weekdays": {
-      "sunday": "일요일",
-      "monday": "월요일",
-      "tuesday": "화요일",
-      "wednesday": "수요일",
-      "thursday": "목요일",
-      "friday": "금요일",
-      "saturday": "토요일"
-    },
-    "weekdaysShort": {
-      "sun": "일",
-      "mon": "월",
-      "tue": "화",
-      "wed": "수",
-      "thu": "목",
-      "fri": "금",
-      "sat": "토"
+    "daysInMonth": "{days}일",
+    "description": "모든 월, 날짜 및 주차 번호가 포함된 {year}년의 전체 달력을 확인하세요",
+    "faq": {
+      "currentMonth": {
+        "answer": "이것은 현재 달({month} {year})입니다. 오늘은 이 달의 {today}일이며, 달력에서 파란색으로 강조되어 있습니다.",
+        "question": "왜 이 달이 강조되어 있나요?"
+      },
+      "leapYear": {
+        "answer": "윤년은 일반적인 365일 대신 366일을 가집니다. 4년마다 발생하며(일부 예외 있음) 우리 달력을 지구의 태양 공전궤도와 맞추기 위해 추가 날(2월 29일)을 더합니다.",
+        "question": "윤년이란 무엇인가요?"
+      },
+      "monthCharacteristics": {
+        "february": "{month} {year}은 {days}일이 있어 {leapYear}입니다. 2월은 가장 짧은 달이며 가변적인 일수를 가진 유일한 달입니다.",
+        "question": "이 달의 특징은 무엇인가요?",
+        "thirtyDays": "{month}은 정확히 30일을 가진 네 달 중 하나입니다(4월, 6월, 9월, 11월).",
+        "thirtyOneDays": "{month}은 31일이 있어 한 해의 일곱 개 긴 달 중 하나입니다."
+      },
+      "monthOverview": {
+        "answer": "{month} {year}은 {days}일이 있으며, {startDay}에 시작해서 {endDay}에 끝납니다. 이 달력 보기는 모든 날짜와 해당 요일, 주차 번호를 보여줍니다.",
+        "question": "이 달은 어떤 정보를 보여주나요?"
+      },
+      "navigation": {
+        "answer": "화살표 버튼을 사용해 {prevMonth}이나 {nextMonth}로 이동할 수 있습니다. 아래 탐색 격자에서 원하는 달을 클릭하거나, '연도 보기' 버튼을 사용해 모든 달을 한 번에 볼 수도 있습니다.",
+        "question": "다른 달로 어떻게 이동하나요?"
+      },
+      "title": "자주 묻는 질문",
+      "weekCount": {
+        "answer": "{month}은 달력 격자에서 {weeks}주에 걸쳐 있지만, 일부 주는 이전 달이나 다음 달의 날짜를 포함할 수 있습니다.",
+        "question": "이 달은 몇 주가 있나요?"
+      },
+      "weekNumbers": {
+        "answer": "주차 번호는 연도의 주를 1부터 52(또는 일부 연도에서는 53)까지 번호를 매기는 방법입니다. 연도의 첫 번째 주는 일반적으로 새해의 최소 4일을 포함하는 첫 번째 주입니다.",
+        "question": "주차 번호란 무엇인가요?"
+      },
+      "whatIsCalendar": {
+        "answer": "연간 달력은 특정 연도의 모든 12개월을 구조화된 형식으로 표시하여 날짜, 요일 및 주차 번호를 보여줍니다. 날짜 계획, 일정 관리 및 연도 구조 이해에 도움이 됩니다.",
+        "question": "연간 달력이란 무엇인가요?"
+      }
     },
     "info": {
-      "totalDays": "{year}년 총 일수",
       "daysPassed": "지난 일수",
       "daysRemaining": "남은 일수",
+      "totalDays": "{year}년 총 일수",
       "weeksPassed": "지난 주수",
       "weeksRemaining": "남은 주수"
     },
+    "jumpToYear": "연도로 이동",
+    "leapYear": "윤년",
+    "monthNavigation": "월 탐색",
+    "months": {
+      "april": "4월",
+      "august": "8월",
+      "december": "12월",
+      "february": "2월",
+      "january": "1월",
+      "july": "7월",
+      "june": "6월",
+      "march": "3월",
+      "may": "5월",
+      "november": "11월",
+      "october": "10월",
+      "september": "9월"
+    },
+    "monthsShort": {
+      "apr": "4월",
+      "aug": "8월",
+      "dec": "12월",
+      "feb": "2월",
+      "jan": "1월",
+      "jul": "7월",
+      "jun": "6월",
+      "mar": "3월",
+      "may": "5월",
+      "nov": "11월",
+      "oct": "10월",
+      "sep": "9월"
+    },
+    "nextMonth": "다음 월",
+    "nextYear": "다음 연도",
+    "previousMonth": "이전 월",
+    "previousYear": "이전 연도",
+    "regularYear": "평년",
+    "selectedDate": "선택된 날짜",
+    "subtitle": "주차 번호가 포함된 전체 연간 달력 보기",
+    "title": "{year}년 달력",
+    "today": "오늘",
+    "toggleTheme": "테마 전환",
+    "viewYear": "연도 보기",
+    "weekNumber": "{number}주차",
+    "weekNumbers": "주차 번호",
+    "weekdays": {
+      "friday": "금요일",
+      "monday": "월요일",
+      "saturday": "토요일",
+      "sunday": "일요일",
+      "thursday": "목요일",
+      "tuesday": "화요일",
+      "wednesday": "수요일"
+    },
+    "weekdaysShort": {
+      "fri": "금",
+      "mon": "월",
+      "sat": "토",
+      "sun": "일",
+      "thu": "목",
+      "tue": "화",
+      "wed": "수"
+    },
+    "yearNavigation": "연도 탐색"
+  },
+  "cities": {
+    "cityInfo": "도시 정보",
+    "cityNames": {
+      "beijing": "베이징",
+      "cairo": "카이로",
+      "dubai": "두바이",
+      "istanbul": "이스탄불",
+      "kolkata": "콜카타",
+      "london": "런던",
+      "moscow": "모스크바",
+      "new-york": "뉴욕",
+      "paris": "파리",
+      "seoul": "서울",
+      "shanghai": "상하이",
+      "sydney": "시드니",
+      "tokyo": "도쿄"
+    },
+    "clockOffset": "시계 오프셋 약 {seconds}초",
+    "clockSynchronized": "시계 동기화됨 (±{offset}ms)",
+    "coordinates": "좌표",
+    "copyToClipboard": "클립보드에 복사",
+    "country": "국가",
+    "countryNames": {
+      "Australia": "호주",
+      "China": "중국",
+      "Egypt": "이집트",
+      "France": "프랑스",
+      "India": "인도",
+      "Japan": "일본",
+      "Russia": "러시아",
+      "South Korea": "대한민국",
+      "Turkey": "터키",
+      "United Arab Emirates": "아랍에미리트",
+      "United Kingdom": "영국",
+      "United States": "미국"
+    },
+    "enterFullscreen": "전체 화면 진입",
+    "faq": "자주 묻는 질문",
+    "faqAnswers": {
+      "currentTime": "{country} {cityName}의 현재 현지 시간은 {currentTime}입니다. {cityName}은 {timezone} 시간대에 위치해 있습니다.",
+      "daylightSaving": "이는 {country}의 현지 규정에 따라 다릅니다. 현재 시간은 {currentTime}이며, 해당하는 경우 일광 절약 시간제가 자동으로 적용됩니다.",
+      "utcDifference": "{cityName}은 {timezone} 시간을 따릅니다. 현재 UTC와의 시차는 {offset}시간입니다."
+    },
+    "faqQuestions": {
+      "currentTime": "{cityName}의 현재 시간은 몇 시입니까?",
+      "daylightSaving": "{cityName}은 일광 절약 시간제를 적용합니까?",
+      "utcDifference": "{cityName}과 UTC 간의 시간 차이는 얼마입니까?"
+    },
+    "isoFormat": "ISO 형식",
+    "pageTitle": "{cityName}의 현재 시간",
+    "population": "인구",
+    "timezone": "시간대",
+    "timezoneInfo": "시간대 정보",
+    "timezoneLabel": "{timezone} 시간대",
+    "toggleTheme": "테마 토글",
+    "unixTimestamp": "Unix 타임스탬프",
+    "utcTime": "UTC 시간"
+  },
+  "common": {
+    "date": "날짜",
+    "day": "요일",
+    "description": "전 세계 현재 시간, UTC 시간, 휴일 및 나이 계산기",
+    "nav": {
+      "ageCalculator": "나이 계산기",
+      "calendar": "달력",
+      "glossary": "용어집",
+      "holidays": "휴일",
+      "home": "홈",
+      "utc": "UTC 시간",
+      "yearProgress": "연도 진행률"
+    },
+    "title": "세계 시계와 시간"
+  },
+  "holidays": {
+    "description": "다양한 국가의 휴일과 기념일을 발견하세요",
+    "title": "전 세계 휴일"
+  },
+  "home": {
+    "cityTimes": {
+      "title": "세계 도시 시간"
+    },
     "faq": {
+      "clockAccuracy": {
+        "answer": "이 시계의 정확도는 기기의 시스템 시계와 인터넷 연결에 따라 다릅니다. 가장 정확한 시간을 표시하려고 노력하지만, 네트워크 지연이나 기기의 시계 동기화로 인해 약간의 변동이 있을 수 있습니다. 대부분의 일상적인 용도에서는 표시되는 시간이 실제 시간으로부터 몇 초 이내로 정확해야 합니다. 밀리초 정밀도가 필요한 애플리케이션의 경우 전문 시간 서버를 사용해야 합니다.",
+        "question": "이 시계는 얼마나 정확한가요?"
+      },
+      "daylightSaving": {
+        "answer": "일광 절약 시간제(DST)는 따뜻한 달에 시계를 앞으로 조정하여 시계에 따라 어둠이 하루 중 더 늦은 시간에 내리도록 하는 관행입니다. 일반적으로 DST를 관찰하는 지역은 봄에 시계를 한 시간 앞으로('봄에 앞으로') 조정하고 가을에 뒤로('가을에 뒤로') 조정합니다. 주요 목적은 저녁 시간 동안 자연광을 더 잘 활용하는 것입니다. 모든 나라가 DST를 관찰하는 것은 아니며, 시작 및 종료 날짜는 지역에 따라 다릅니다.",
+        "question": "일광 절약 시간제란 무엇인가요?"
+      },
+      "iso8601": {
+        "answer": "ISO 8601은 날짜와 시간을 나타내는 국제 표준입니다. YYYY-MM-DDTHH:MM:SS.sssZ 형식을 따릅니다. 여기서: YYYY-MM-DD는 날짜(년, 월, 일)를 나타내고, T는 날짜와 시간 사이의 구분자이며, HH:MM:SS.sss는 시간(시, 분, 초, 밀리초)을 나타내고, Z는 시간이 UTC임을 나타냅니다(또는 +01:00과 같이 오프셋을 지정할 수 있습니다). 이 형식은 국제 통신에서 모호함을 제거하고 컴퓨팅에서 널리 사용됩니다.",
+        "question": "ISO 8601 형식이란 무엇인가요?"
+      },
+      "timezoneConversion": {
+        "answer": "시간대 간에 시간을 변환하려면: 1) 소스와 대상 시간대의 UTC 오프셋을 결정하고, 2) 오프셋을 더하거나 빼서 소스 시간을 UTC로 변환하고, 3) 대상 시간대의 오프셋을 더하거나 빼서 UTC에서 대상 시간대로 변환합니다. 예를 들어, 뉴욕 시간 오후 3:00(UTC-5)를 런던 시간(UTC+0)으로 변환하려면 5시간을 더해서 런던 시간 오후 8:00을 얻습니다. 해당하는 경우 일광 절약 시간제를 고려하는 것을 잊지 마세요. UTC 오프셋을 일시적으로 변경할 수 있습니다.",
+        "question": "시간대 간에 시간을 변환하는 방법은?"
+      },
+      "timezones": {
+        "answer": "시간대는 지구상에서 통일된 표준시를 관찰하는 지역입니다. 일반적으로 UTC로부터의 오프셋으로 정의되며, 보통 정시간 단위로 증가합니다. 예를 들어, 동부 표준시(EST)는 UTC-5로, UTC보다 5시간 늦습니다. 시간대는 정치적 경계뿐만 아니라 지리적 경계의 영향을 받으면서 큰 지리적 영역 내에서 시간을 표준화하기 위해 만들어졌습니다.",
+        "question": "시간대는 어떻게 작동하나요?"
+      },
       "title": "자주 묻는 질문",
-      "whatIsCalendar": {
-        "question": "연간 달력이란 무엇인가요?",
-        "answer": "연간 달력은 특정 연도의 모든 12개월을 구조화된 형식으로 표시하여 날짜, 요일 및 주차 번호를 보여줍니다. 날짜 계획, 일정 관리 및 연도 구조 이해에 도움이 됩니다."
+      "unixTimestamp": {
+        "answer": "Unix 타임스탬프(Unix 시간 또는 POSIX 시간이라고도 함)는 1970년 1월 1일 00:00:00 UTC부터 경과한 초 수를 윤초를 제외하고 나타냅니다. 컴퓨터 시스템과 프로그래밍에서 시간대에 독립적인 시간 추적의 표준화된 방법으로 널리 사용됩니다. Unix 타임스탬프는 시간 차이 계산을 쉽게 하고 달력 규약에 독립적입니다.",
+        "question": "Unix 타임스탬프란 무엇인가요?"
       },
-      "weekNumbers": {
-        "question": "주차 번호란 무엇인가요?",
-        "answer": "주차 번호는 연도의 주를 1부터 52(또는 일부 연도에서는 53)까지 번호를 매기는 방법입니다. 연도의 첫 번째 주는 일반적으로 새해의 최소 4일을 포함하는 첫 번째 주입니다."
-      },
-      "leapYear": {
-        "question": "윤년이란 무엇인가요?",
-        "answer": "윤년은 일반적인 365일 대신 366일을 가집니다. 4년마다 발생하며(일부 예외 있음) 우리 달력을 지구의 태양 공전궤도와 맞추기 위해 추가 날(2월 29일)을 더합니다."
-      },
-      "monthOverview": {
-        "question": "이 달은 어떤 정보를 보여주나요?",
-        "answer": "{month} {year}은 {days}일이 있으며, {startDay}에 시작해서 {endDay}에 끝납니다. 이 달력 보기는 모든 날짜와 해당 요일, 주차 번호를 보여줍니다."
-      },
-      "weekCount": {
-        "question": "이 달은 몇 주가 있나요?",
-        "answer": "{month}은 달력 격자에서 {weeks}주에 걸쳐 있지만, 일부 주는 이전 달이나 다음 달의 날짜를 포함할 수 있습니다."
-      },
-      "currentMonth": {
-        "question": "왜 이 달이 강조되어 있나요?",
-        "answer": "이것은 현재 달({month} {year})입니다. 오늘은 이 달의 {today}일이며, 달력에서 파란색으로 강조되어 있습니다."
-      },
-      "monthCharacteristics": {
-        "question": "이 달의 특징은 무엇인가요?",
-        "february": "{month} {year}은 {days}일이 있어 {leapYear}입니다. 2월은 가장 짧은 달이며 가변적인 일수를 가진 유일한 달입니다.",
-        "thirtyDays": "{month}은 정확히 30일을 가진 네 달 중 하나입니다(4월, 6월, 9월, 11월).",
-        "thirtyOneDays": "{month}은 31일이 있어 한 해의 일곱 개 긴 달 중 하나입니다."
-      },
-      "navigation": {
-        "question": "다른 달로 어떻게 이동하나요?",
-        "answer": "화살표 버튼을 사용해 {prevMonth}이나 {nextMonth}로 이동할 수 있습니다. 아래 탐색 격자에서 원하는 달을 클릭하거나, '연도 보기' 버튼을 사용해 모든 달을 한 번에 볼 수도 있습니다."
-      },
-      "monthOverview": {
-        "question": "이 달은 어떤 정보를 보여주나요?",
-        "answer": "{month} {year}은 {days}일이 있으며, {startDay}에 시작해서 {endDay}에 끝납니다. 이 달력 보기는 모든 날짜와 해당 요일, 주차 번호를 보여줍니다."
-      },
-      "weekCount": {
-        "question": "이 달은 몇 주가 있나요?",
-        "answer": "{month}은 달력 격자에서 {weeks}주에 걸쳐 있지만, 일부 주는 이전 달이나 다음 달의 날짜를 포함할 수 있습니다."
-      },
-      "currentMonth": {
-        "question": "왜 이 달이 강조되어 있나요?",
-        "answer": "이것은 현재 달({month} {year})입니다. 오늘은 이 달의 {today}일이며, 달력에서 파란색으로 강조되어 있습니다."
-      },
-      "monthCharacteristics": {
-        "question": "이 달의 특징은 무엇인가요?",
-        "february": "{month} {year}은 {days}일이 있어 {leapYear}입니다. 2월은 가장 짧은 달이며 가변적인 일수를 가진 유일한 달입니다.",
-        "thirtyDays": "{month}은 정확히 30일을 가진 네 달 중 하나입니다(4월, 6월, 9월, 11월).",
-        "thirtyOneDays": "{month}은 31일이 있어 한 해의 일곱 개 긴 달 중 하나입니다."
-      },
-      "navigation": {
-        "question": "다른 달로 어떻게 이동하나요?",
-        "answer": "화살표 버튼을 사용해 {prevMonth}이나 {nextMonth}로 이동할 수 있습니다. 아래 탐색 격자에서 원하는 달을 클릭하거나, '연도 보기' 버튼을 사용해 모든 달을 한 번에 볼 수도 있습니다."
+      "utcGmt": {
+        "answer": "UTC(협정 세계시)는 세계가 시계와 시간을 조절하는 주요 시간 표준입니다. GMT(그리니치 표준시)와 유사하지만 원자시계를 사용하여 더 정확하게 정의됩니다. UTC는 인터넷, 국제 통신, 항공에서 사용되는 시간 표준입니다.",
+        "question": "UTC/GMT 시간이란 무엇인가요?"
       }
+    },
+    "labels": {
+      "addTimezone": "시간대 추가",
+      "cancel": "취소",
+      "clockOffset": "시계가 약 {seconds}초 어긋남",
+      "clockSynchronized": "시계 동기화됨 (±{offset}ms)",
+      "convert": "변환",
+      "convertedTime": "변환된 시간",
+      "date": "날짜",
+      "dst": "서머타임",
+      "fromTimezone": "변환 원본 시간대",
+      "getSunTimes": "일출·일몰 시간 가져오기 (내 위치 사용)",
+      "hours": "시간",
+      "isoFormat": "ISO 형식",
+      "learnAboutUtc": "UTC 알아보기",
+      "loading": "로딩 중...",
+      "minutes": "분",
+      "pause": "일시정지",
+      "reset": "리셋",
+      "seconds": "초",
+      "selectTimezone": "시간대 선택",
+      "start": "시작",
+      "sunrise": "일출",
+      "sunset": "일몰",
+      "time": "시간",
+      "timeRemaining": "남은 시간",
+      "timezoneInfo": "시간대 정보",
+      "toTimezone": "변환 대상 시간대",
+      "toggleTheme": "테마 전환",
+      "unixTimestamp": "Unix 타임스탬프",
+      "utcTime": "UTC 시간"
+    },
+    "localTime": "현지 시간",
+    "sections": {
+      "calendar": "달력",
+      "countdownTimer": "카운트다운 타이머",
+      "developerTools": "개발자를 위한 날짜 및 시간 도구",
+      "sunriseSunset": "일출과 일몰",
+      "timeZoneConverter": "시간대 변환기",
+      "worldClock": "세계 시계"
+    },
+    "tabs": {
+      "calendar": "달력",
+      "converter": "변환기",
+      "currentTime": "현재 시간",
+      "sunTimes": "일출·일몰",
+      "timer": "타이머",
+      "worldClock": "세계 시계"
+    },
+    "timeZone": "시간대",
+    "title": "전 세계 현재 시간",
+    "tools": {
+      "ageCalculator": "나이 계산기",
+      "title": "시간 도구",
+      "utcTime": "UTC 시간",
+      "worldHolidays": "세계 휴일",
+      "yearProgress": "연도 진행률 막대"
     }
   },
   "languageSuggestion": {
-    "title": "언어 제안",
-    "description": "브라우저 언어가 {language}인 것을 감지했습니다. 더 나은 경험을 위해 이 언어로 전환하시겠습니까?",
     "accept": "네, {language}로 전환",
-    "dismiss": "아니요, 괜찮습니다"
+    "description": "브라우저 언어가 {language}인 것을 감지했습니다. 더 나은 경험을 위해 이 언어로 전환하시겠습니까?",
+    "dismiss": "아니요, 괜찮습니다",
+    "title": "언어 제안"
+  },
+  "timezones": {
+    "copyToClipboard": "Copy to clipboard",
+    "currentTime": "Current Time",
+    "descriptions": {
+      "aest": "Australian Eastern time",
+      "cet": "Central European standard time",
+      "china-cst": "China standard time",
+      "cst": "US Central time",
+      "eet": "Eastern European time",
+      "est": "US Eastern time",
+      "gmt": "Greenwich meridian time",
+      "ist": "Indian standard time",
+      "jst": "Japan standard time",
+      "msk": "Moscow time",
+      "mst": "US Mountain time",
+      "nzst": "New Zealand time",
+      "pst": "US Pacific coast time",
+      "sast": "South African time",
+      "utc": "World time standard"
+    },
+    "enterFullscreen": "Enter fullscreen",
+    "faqTitle": "{timezone} Time - Frequently Asked Questions",
+    "faqs": {
+      "daylightSaving": {
+        "answer": "This depends on the specific region and local regulations. The current time shown automatically adjusts for daylight saving time when applicable.",
+        "question": "Does {timezone} observe daylight saving time?"
+      },
+      "utcDifference": {
+        "answer": "{timezone} is {offset} from UTC time.",
+        "question": "What is the time difference between {timezone} and UTC?"
+      },
+      "whatIs": {
+        "answer": "{timezone} ({abbreviation}) is {description}. The current time is {currentTime}.",
+        "question": "What is {timezone} time?"
+      }
+    },
+    "iso8601": "ISO 8601",
+    "names": {
+      "aest": "Australian Eastern Standard Time",
+      "cet": "Central European Time",
+      "china-cst": "China Standard Time",
+      "cst": "Central Standard Time",
+      "eet": "Eastern European Time",
+      "est": "Eastern Standard Time",
+      "gmt": "Greenwich Mean Time",
+      "ist": "India Standard Time",
+      "jst": "Japan Standard Time",
+      "msk": "Moscow Standard Time",
+      "mst": "Mountain Standard Time",
+      "nzst": "New Zealand Standard Time",
+      "pst": "Pacific Standard Time",
+      "sast": "South Africa Standard Time",
+      "utc": "Coordinated Universal Time"
+    },
+    "subtitle": "{description}",
+    "title": "Time in {timezone}",
+    "toggleTheme": "Toggle theme",
+    "unixTimestamp": "Unix Timestamp",
+    "utcString": "UTC String",
+    "viewGlossary": "View our complete glossary of date and time concepts",
+    "worldTimezones": "World Timezones"
+  },
+  "utc": {
+    "copyToClipboard": "클립보드에 복사",
+    "description": "현재 UTC(협정 세계시)를 보세요. UTC는 세계 시간 표준으로, 시간대나 일광 절약 시간 변경의 영향을 받지 않습니다.",
+    "enterFullscreen": "전체 화면 입력",
+    "faqTitle": "UTC 시간 - 자주 묻는 질문",
+    "faqs": {
+      "convertToLocal": {
+        "answer": "UTC를 현지 시간으로 변환하려면 UTC 시간에서 자신의 시간대 오프셋을 더하거나 빼야 합니다. 예를 들어, UTC-5인 동부 표준시(EST)에 있다면 UTC 시간에서 5시간을 뺄니다. 일광 절약 시간 동안에는 이것이 UTC-4가 됩니다.",
+        "question": "UTC를 내 현지 시간으로 변환하려면 어떻게 해야 하나요?"
+      },
+      "utcVsGmt": {
+        "answer": "UTC와 GMT는 종종 상호 교환적으로 사용되며 둘 다 본초 자오선(0° 경도)에서의 시간을 나타내지만, 기술적으로는 다릅니다. GMT는 지구의 자전과 태양의 위치에 기반하는 반면, UTC는 원자시계에 기반합니다. 실제로는 일반적으로 서로 0.9초 이내에 있습니다.",
+        "question": "UTC와 GMT의 차이점은 무엇인가요?"
+      },
+      "whatIsUtc": {
+        "answer": "UTC(협정 세계시)는 세계가 시계와 시간을 조절하는 주요 시간 표준입니다. GMT(그리니치 표준시)와 유사하지만 원자시계를 사용하여 더 정확하게 정의됩니다. UTC는 인터넷, 국제 통신, 항공에서 사용되는 시간 표준입니다.",
+        "question": "UTC 시간이란 무엇인가요?"
+      },
+      "whyImportant": {
+        "answer": "UTC가 중요한 이유는 시간대나 일광 절약 시간 변경에 영향을 받지 않는 표준화된 참조 시간을 제공하기 때문입니다. 전 세계 민간 시간의 기초 역할을 하며 대방 통신, 항공, 과학 연구, 컴퓨터 시스템에 결정적입니다.",
+        "question": "UTC가 왜 중요한가요?"
+      },
+      "whyInComputing": {
+        "answer": "컴퓨팅에서 UTC가 사용되는 이유는 지리적 위치에 관계없이 일관된 시간 참조를 제공하기 때문입니다. 이는 이벤트의 타임스탬프, 다른 시간대에 걸친 시스템 동기화, 로깅, 분산 시스템에서 일관된 데이터 타임스탬프 보장에 필수적입니다.",
+        "question": "컴퓨팅에서 UTC가 사용되는 이유는 무엇인가요?"
+      }
+    },
+    "iso8601": "ISO 8601",
+    "learnMore": "용어집에서 UTC에 대해 더 알아보세요",
+    "subtitle": "세계 시간 표준",
+    "title": "협정 세계시 (UTC)",
+    "toggleTheme": "테마 전환",
+    "unixTimestamp": "Unix 타임스탬프",
+    "utcOffset": "UTC/GMT+0",
+    "utcString": "UTC 문자열",
+    "viewGlossary": "날짜와 시간 개념의 완전한 용어집 보기",
+    "worldCityTimes": "세계 도시 시간"
+  },
+  "yearProgress": {
+    "description": "현재 연도의 진행률을 추적하세요",
+    "faqTitle": "연도 진행률 - 자주 묻는 질문",
+    "faqs": {
+      "differentYear": {
+        "answer": "네, URL을 /year-progress-bar/year로 변경하여 어떤 연도의 진행률도 볼 수 있습니다. 예를 들어, 2025년의 진행률을 보려면 /year-progress-bar/2025를 사용하면 됩니다.",
+        "question": "다른 연도의 진행률을 확인할 수 있나요?"
+      },
+      "howCalculated": {
+        "answer": "연도 진행률은 연도의 몇 퍼센트가 경과했는지를 결정하여 계산됩니다. 현재 날짜와 시간을 가져와서 현재 연도 1월 1일부터 경과한 밀리초를 계산하고, 이를 연도의 총 밀리초 수로 나눕니다.",
+        "question": "연도 진행률은 어떻게 계산되나요?"
+      },
+      "isAccurate": {
+        "answer": "네, 저희의 계산은 윤년을 고려하며 초 단위까지 정확합니다. 페이지를 보는 동안 진행률이 실시간으로 업데이트됩니다.",
+        "question": "연도 진행률 계산이 정확한가요?"
+      },
+      "whyTrack": {
+        "answer": "연도 진행률을 추적하는 것은 시간 인식, 목표 설정, 계획 수립에 도움이 될 수 있습니다. 연도의 얼마나 많은 부분이 지나견고 연간 목표를 달성하기 위해 얼마나 많은 시간이 남았는지에 대한 시각적 알림을 제공합니다.",
+        "question": "왜 연도 진행률을 추적하나요?"
+      }
+    },
+    "pageTitle": "연도 진행률 막대 {year}",
+    "progressTitle": "연도 진행률",
+    "subtitle": "{year}년이 {progress}% 완료되었습니다",
+    "title": "연도 진행률",
+    "toggleTheme": "테마 토글",
+    "viewOtherYears": "다른 연도의 진행률 보기:"
   }
 }
