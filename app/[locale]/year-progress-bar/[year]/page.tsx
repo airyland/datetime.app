@@ -21,8 +21,12 @@ interface YearProgressBarProps {
 export default function YearProgressBarWithYear({ params }: YearProgressBarProps) {
   const yearParam = parseInt(params.year)
 
-  // Validate year parameter
-  if (isNaN(yearParam) || yearParam < 1970) {
+  // Validate year parameter (limit to ±15 years from current year)
+  const currentYear = new Date().getFullYear()
+  const minYear = currentYear - 15
+  const maxYear = currentYear + 15
+  
+  if (isNaN(yearParam) || yearParam < minYear || yearParam > maxYear) {
     notFound()
   }
 
@@ -95,7 +99,7 @@ export default function YearProgressBarWithYear({ params }: YearProgressBarProps
             <div className="text-center mb-8">
               <p className="mb-4">View progress for other years:</p>
               <div className="flex flex-wrap justify-center gap-2">
-                {[yearParam - 2, yearParam - 1, yearParam, yearParam + 1, yearParam + 2].map((year) => (
+                {[yearParam - 2, yearParam - 1, yearParam, yearParam + 1, yearParam + 2].filter(year => year >= minYear && year <= maxYear).map((year) => (
                   <Link
                     key={year}
                     href={`/year-progress-bar/${year}`}
