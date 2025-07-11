@@ -27,8 +27,12 @@ export default function CalendarPage({ params }: CalendarPageProps) {
   const locale = resolvedParams.locale;
   const t = useTranslations('calendar');
   
-  // Validate year
-  if (isNaN(year) || year < 1970 || year > 2100) {
+  // Validate year (limit to ±15 years from current year)
+  const currentYear = new Date().getFullYear();
+  const minYear = currentYear - 15;
+  const maxYear = currentYear + 15;
+  
+  if (isNaN(year) || year < minYear || year > maxYear) {
     notFound();
   }
   
@@ -36,7 +40,6 @@ export default function CalendarPage({ params }: CalendarPageProps) {
   
   const calendar = generateYearCalendar(year, locale);
   const weekdayNames = getWeekdayNames(locale);
-  const currentYear = new Date().getFullYear();
   const isCurrentYear = year === currentYear;
   
   const handleDateClick = (date: Date) => {
@@ -261,6 +264,10 @@ export default function CalendarPage({ params }: CalendarPageProps) {
             <div className="flex flex-wrap justify-center gap-2">
               {Array.from({ length: 11 }, (_, i) => {
                 const navYear = year - 5 + i;
+                // Filter out years outside the allowed range
+                if (navYear < minYear || navYear > maxYear) {
+                  return null;
+                }
                 return (
                   <Link
                     key={navYear}
