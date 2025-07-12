@@ -26,6 +26,7 @@ export default function MonthPage({ params }: MonthPageProps) {
   const month = parseInt(resolvedParams.month);
   const locale = resolvedParams.locale;
   const t = useTranslations('calendar');
+  const tCommon = useTranslations('common');
   
   // Validate year and month
   if (isNaN(year) || year < 1970 || year > 2100 || isNaN(month) || month < 1 || month > 12) {
@@ -58,7 +59,7 @@ export default function MonthPage({ params }: MonthPageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity">
+        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">
@@ -90,6 +91,7 @@ export default function MonthPage({ params }: MonthPageProps) {
                 <Link 
                   href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year}`}
                   className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  title={`Back to ${year} calendar`}
                 >
                   {t('backToYear', { year })}
                 </Link>
@@ -119,6 +121,7 @@ export default function MonthPage({ params }: MonthPageProps) {
           <Link 
             href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year}`}
             className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors font-medium shadow-md"
+            title={`View full ${year} calendar`}
           >
             <CalendarIcon className="w-5 h-5" />
             {t('viewYear', { year })}
@@ -252,6 +255,7 @@ export default function MonthPage({ params }: MonthPageProps) {
                         : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400'
                       }
                     `}
+                    title={`View ${navMonthName} ${year} calendar`}
                   >
                     <div className="font-medium">{navMonthName}</div>
                     <div className="text-xs opacity-75">{year}</div>

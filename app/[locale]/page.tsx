@@ -617,7 +617,7 @@ export default function Home() {
                 <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
                   <CardHeader className="py-1 px-2 text-center">
                     <CardTitle className="text-xs font-medium text-muted-foreground">
-                      <a href="/utc" className="inline-flex items-center justify-center gap-1 hover:underline">
+                      <a href="/utc" className="inline-flex items-center justify-center gap-1 hover:underline" title={t('labels.titleUtcTime')}>
                         {t('labels.utcTime')}
                         <Globe className="h-2.5 w-2.5" />
                       </a>
@@ -1021,19 +1021,19 @@ export default function Home() {
         <div className="mt-16 max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6 text-center">{t('tools.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-            <a href="/year-progress-bar" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2">
+            <a href="/year-progress-bar" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleYearProgress')}>
               <Calendar className="h-5 w-5" />
               {t('tools.yearProgress')}
             </a>
-            <a href="/age-calculator" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2">
+            <a href="/age-calculator" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleAgeCalculator')}>
               <Calculator className="h-5 w-5" />
               {t('tools.ageCalculator')}
             </a>
-            <a href="/utc" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2">
+            <a href="/utc" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleUtcTime')}>
               <Globe className="h-5 w-5" />
               {t('tools.utcTime')}
             </a>
-            <a href="/holidays" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2">
+            <a href="/holidays" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleWorldHolidays')}>
               <Gift className="h-5 w-5" />
               {t('tools.worldHolidays')}
             </a>
@@ -1044,22 +1044,22 @@ export default function Home() {
         <div className="mt-16 max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6 text-center">{t('cityTimes.title')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            <a href="/cities/new-york" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center">
+            <a href="/cities/new-york" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleNewYork')}>
               New York
             </a>
-            <a href="/cities/london" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center">
+            <a href="/cities/london" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleLondon')}>
               London
             </a>
-            <a href="/cities/tokyo" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center">
+            <a href="/cities/tokyo" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleTokyo')}>
               Tokyo
             </a>
-            <a href="/cities/paris" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center">
+            <a href="/cities/paris" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleParis')}>
               Paris
             </a>
-            <a href="/cities/sydney" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center">
+            <a href="/cities/sydney" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleSydney')}>
               Sydney
             </a>
-            <a href="/cities/beijing" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center">
+            <a href="/cities/beijing" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleBeijing')}>
               Beijing
             </a>
           </div>

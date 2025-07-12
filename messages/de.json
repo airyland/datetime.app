@@ -12,6 +12,21 @@
       "ageCalculator": "Altersrechner",
       "yearProgress": "Jahresfortschritt",
       "glossary": "Glossar"
+    },
+    "links": {
+      "titleHome": "Zur Startseite gehen",
+      "titleAbout": "Über datetime.app",
+      "titleCalendar": "Kalender für {year} anzeigen",
+      "titleGlossary": "Glossar der Zeitbegriffe durchsuchen",
+      "titleYearProgress": "Jahresfortschritt verfolgen",
+      "titleAgeCalculator": "Ihr Alter berechnen",
+      "titleHolidays": "Weltweite Feiertage durchsuchen",
+      "titleUtc": "Aktuelle UTC-Zeit",
+      "titleBackToYearProgress": "Zurück zum aktuellen Jahresfortschritt",
+      "titleViewCalendar": "Kalender für dieses Jahr anzeigen",
+      "titleViewGlossary": "Unser vollständiges Glossar anzeigen",
+      "titleLearnUtc": "Mehr über UTC lernen",
+      "titleBackToHolidays": "Zurück zur Feiertagsübersicht"
     }
   },
   "home": {
@@ -38,6 +53,7 @@
       "timezoneInfo": "Zeitzoneninformation",
       "unixTimestamp": "Unix-Zeitstempel",
       "utcTime": "UTC-Zeit",
+      "titleUtcTime": "Aktuelle UTC (Koordinierte Weltzeit) anzeigen",
       "isoFormat": "ISO-Format",
       "addTimezone": "Zeitzone hinzufügen",
       "selectTimezone": "Zeitzone auswählen",
@@ -68,12 +84,22 @@
     "tools": {
       "title": "Zeit-Tools",
       "yearProgress": "Jahresfortschrittsbalken",
+      "titleYearProgress": "Verfolgen Sie den Fortschritt des aktuellen Jahres",
       "ageCalculator": "Altersrechner",
+      "titleAgeCalculator": "Berechnen Sie Ihr genaues Alter in Jahren, Monaten und Tagen",
       "utcTime": "UTC-Zeit",
-      "worldHolidays": "Weltweite Feiertage"
+      "titleUtcTime": "Aktuelle UTC (Koordinierte Weltzeit) anzeigen",
+      "worldHolidays": "Weltweite Feiertage",
+      "titleWorldHolidays": "Entdecken Sie Feiertage und Gedenktage aus verschiedenen Ländern"
     },
     "cityTimes": {
-      "title": "Weltstädte-Zeiten"
+      "title": "Weltstädte-Zeiten",
+      "titleNewYork": "Aktuelle Zeit in New York",
+      "titleLondon": "Aktuelle Zeit in London",
+      "titleTokyo": "Aktuelle Zeit in Tokio",
+      "titleParis": "Aktuelle Zeit in Paris",
+      "titleSydney": "Aktuelle Zeit in Sydney",
+      "titleBeijing": "Aktuelle Zeit in Peking"
     },
     "faq": {
       "title": "Häufig gestellte Fragen",
@@ -112,6 +138,9 @@
     "subtitle": "Welt-Zeitstandard",
     "description": "Aktuelle UTC (Koordinierte Weltzeit) anzeigen. UTC ist der Weltzeit-Standard, der nicht von Zeitzonen oder Sommerzeitänderungen betroffen ist.",
     "learnMore": "Erfahren Sie mehr über UTC in unserem Glossar",
+    "titleHome": "Zur Startseite gehen",
+    "titleLearnMore": "Erfahren Sie mehr über UTC in unserem Glossar",
+    "titleViewGlossary": "Unser vollständiges Glossar der Datum- und Zeitkonzepte anzeigen",
     "unixTimestamp": "Unix-Zeitstempel",
     "utcString": "UTC-String",
     "iso8601": "ISO 8601",

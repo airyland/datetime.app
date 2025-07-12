@@ -139,7 +139,7 @@ export default function UTCPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity">
+        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={t('titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">
@@ -161,7 +161,7 @@ export default function UTCPage() {
               {t('subtitle')}
             </h2>
             <div className="text-sm mb-4">
-              <Link href="/glossary/utc" className="text-primary hover:underline">
+              <Link href="/glossary/utc" className="text-primary hover:underline" title={t('titleLearnMore')}>
                 {t('learnMore')}
               </Link>
             </div>
@@ -276,7 +276,7 @@ export default function UTCPage() {
               ))}
             </Accordion>
             <p className="text-center my-4">
-              <Link href="/glossary" className="text-muted-foreground text-sm hover:underline">
+              <Link href="/glossary" className="text-muted-foreground text-sm hover:underline" title={t('titleViewGlossary')}>
                 {t('viewGlossary')} <ArrowRight className="inline w-4 h-4" />
               </Link>
             </p>
