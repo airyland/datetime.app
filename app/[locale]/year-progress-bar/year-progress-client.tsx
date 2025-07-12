@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react"
 import { Progress } from "@/components/ui/progress"
 import { Clock } from "lucide-react"
-import { calculateYearProgress, calculateTimeLeft } from "@/lib/year-progress"
+import { calculateYearProgress, calculateTimeLeftData, formatTimeLeft } from "@/lib/year-progress"
+import { useTranslations } from "next-intl"
 
 interface YearProgressClientProps {
   initialProgress: number
@@ -19,16 +20,44 @@ export default function YearProgressClient({
   const [progress, setProgress] = useState(initialProgress)
   const [timeLeft, setTimeLeft] = useState(initialTimeLeft)
 
+  const t = useTranslations('yearProgress')
+  
+  // Create translation function for formatTimeLeft
+  const timeTranslationFunction = (key: string, params?: any) => {
+    const count = params?.count || 0
+    switch (key) {
+      case 'yearCompleted':
+        return t('yearCompleted')
+      case 'yearNotStarted':
+        return t('yearNotStarted')
+      case 'timeLeftMonths':
+        return t('timeLeftMonths', { count })
+      case 'timeLeftDays':
+        return t('timeLeftDays', { count })
+      case 'timeLeftHours':
+        return t('timeLeftHours', { count })
+      case 'timeLeftMinutes':
+        return t('timeLeftMinutes', { count })
+      case 'timeLeftSeconds':
+        return t('timeLeftSeconds', { count })
+      case 'left':
+        return t('left')
+      default:
+        return key
+    }
+  }
+
   // Update time every second
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date()
       setProgress(calculateYearProgress(now, currentYear))
-      setTimeLeft(calculateTimeLeft(now, currentYear))
+      const timeData = calculateTimeLeftData(now, currentYear)
+      setTimeLeft(formatTimeLeft(timeData, timeTranslationFunction))
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [currentYear])
+  }, [currentYear, t])
 
   return (
     <div className="space-y-6">

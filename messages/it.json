@@ -272,7 +272,7 @@
   "common": {
     "date": "Data",
     "day": "Giorno della Settimana",
-    "description": "Ora attuale in tutto il mondo, ora UTC, giorni festivi e calcolatore di età",
+    "description": "Controlla l'ora attuale in tutto il mondo con il nostro orologio mondiale dal vivo. Convertitore UTC gratuito, calcolatore di fuso orario ed età.",
     "nav": {
       "ageCalculator": "Calcolatore di Età",
       "calendar": "Calendario",
@@ -282,7 +282,7 @@
       "utc": "Ora UTC",
       "yearProgress": "Progresso dell'Anno"
     },
-    "title": "Orologio Mondiale e Ora"
+    "title": "Orologio Mondiale e Ora - Ora Attuale in Tutto il Mondo, Convertitore di Ora UTC, Calcolatore di Fusi Orari"
   },
   "holidays": {
     "description": "Scopri giorni festivi e celebrazioni di diversi paesi",
@@ -372,7 +372,7 @@
       "worldClock": "Orologio Mondiale"
     },
     "timeZone": "Fuso Orario",
-    "title": "Ora Attuale in Tutto il Mondo",
+    "title": "Ora Attuale in Tutto il Mondo - Orologio Mondiale dal Vivo, Ora UTC, Convertitore di Fusi Orari e Strumenti Temporali",
     "tools": {
       "ageCalculator": "Calcolatore di Età",
       "title": "Strumenti Temporali",
@@ -513,6 +513,175 @@
     "subtitle": "L'anno {year} è completato al {progress}%",
     "title": "Progresso dell'Anno",
     "toggleTheme": "Cambia tema",
-    "viewOtherYears": "Visualizza il progresso di altri anni:"
+    "viewOtherYears": "Visualizza il progresso di altri anni:",
+    "backToCurrent": "Torna all'anno corrente",
+    "yearCompleted": "Questo anno è stato completato",
+    "yearNotStarted": "Questo anno non è ancora iniziato",
+    "comparisonTitle": "Confronto con l'anno corrente",
+    "yearAhead": "{year} è in anticipo del {diff}% rispetto all'anno corrente",
+    "yearBehind": "{year} è in ritardo del {diff}% rispetto all'anno corrente",
+    "yearStatistics": "Statistiche dell'anno",
+    "days": "Giorni",
+    "weeks": "Settimane",
+    "months": "Mesi",
+    "leapYear": "{year} è un anno bisestile",
+    "relatedTools": "Strumenti correlati",
+    "calendar": "Calendario",
+    "viewFullCalendar": "Visualizza il calendario completo per questo anno",
+    "ageCalculator": "Calcolatore di età",
+    "calculateAge": "Calcola l'età basata sull'anno di nascita",
+    "daysElapsed": "Giorni Trascorsi",
+    "daysRemaining": "Giorni Rimanenti",
+    "currentYearGoals": "Obiettivi dell'Anno Corrente",
+    "yearInsights": "Intuizioni dell'Anno",
+    "timeRemaining": "Tempo Rimanente",
+    "progressSummary": "Riepilogo Progressi",
+    "motivation": "Motivazione",
+    "totalDays": "Giorni Totali",
+    "totalWeeks": "Settimane Totali",
+    "inYear": "nel {year}",
+    "trackProgress": "Monitora il tuo progresso del {year} e sfrutta al meglio il tempo rimanente nel {year}.",
+    "goalTrackingDescription": "Usa questo tracker di progresso del {year} per monitorare i tuoi obiettivi annuali. Con il {progress}% del {year} completato, hai {daysRemaining} giorni rimanenti per raggiungere i tuoi obiettivi del {year}.",
+    "q1": "T1 {year} (Gen-Mar)",
+    "q2": "T2 {year} (Apr-Giu)",
+    "q3": "T3 {year} (Lug-Set)",
+    "q4": "T4 {year} (Ott-Dic)",
+    "complete": "✓ Completato",
+    "completeTitle": "Completato",
+    "notStarted": "Non iniziato",
+    "timeRemainingDescription": "Hai {timeLeft} rimanenti nel {year}. Questo rappresenta il {percentage}% dell'anno corrente. Sfrutta al meglio i {daysRemaining} giorni rimanenti nel {year} per raggiungere i tuoi obiettivi annuali.",
+    "progressSummaryDescription": "Il {year} è completato al {progress}%. Hai vissuto {daysElapsed} giorni del {year} finora. L'anno corrente {year} è un {yearType} con {totalDays} giorni totali.",
+    "motivationDescription": "Ogni giorno nel {year} è un'opportunità per progredire verso i tuoi obiettivi. Monitora i tuoi risultati del {year} e rimani motivato durante tutto l'anno corrente. Usa questa visualizzazione del progresso del {year} per mantenere il focus su ciò che conta di più.",
+    "leapYearType": "anno bisestile",
+    "regularYearType": "anno regolare",
+    "timeLeftMonths": "{count} mese",
+    "timeLeftDays": "{count} giorno",
+    "timeLeftHours": "{count} ora",
+    "timeLeftMinutes": "{count} minuto",
+    "timeLeftSeconds": "{count} secondo",
+    "left": "rimanente"
+  },
+  "glossary": {
+    "title": "Glossario Date e Orari",
+    "subtitle": "Termini e concetti tecnici essenziali per date, orari e fusi orari",
+    "searchPlaceholder": "Cerca termini nel glossario...",
+    "searchResults": "Risultati della ricerca",
+    "noResults": "Nessun risultato trovato per la tua ricerca.",
+    "allTerms": "Tutti i termini",
+    "relatedTerms": "Termini correlati",
+    "categories": {
+      "standard": "Standard",
+      "format": "Formato",
+      "concept": "Concetto",
+      "timezone": "Fuso orario",
+      "calculation": "Calcolo"
+    },
+    "terms": {
+      "utc": {
+        "title": "UTC (Tempo Coordinato Universale)",
+        "shortDescription": "Lo standard temporale primario mondiale utilizzato per regolare orologi e tempo.",
+        "longDescription": "Il Tempo Coordinato Universale (UTC) è lo standard temporale primario mondiale utilizzato per regolare orologi e tempo. È la base del tempo civile odierno ed è utilizzato in internet, aviazione, operazioni marittime e molte applicazioni scientifiche.\n\nUTC è mantenuto da una rete di orologi atomici in tutto il mondo ed è strettamente correlato, ma distinto dal Tempo Medio di Greenwich (GMT). A differenza dei fusi orari locali, UTC non cambia con le stagioni e non è influenzato dall'ora legale.\n\nUTC è lo standard temporale utilizzato per molti sistemi che richiedono cronometraggio di precisione, inclusi Internet, satelliti GPS e controllo del traffico aereo internazionale. I sistemi informatici spesso utilizzano UTC internamente e poi convertono all'ora locale per scopi di visualizzazione.\n\nIl termine \"Tempo Coordinato Universale\" è un compromesso tra l'inglese \"Coordinated Universal Time\" e il francese \"Temps Universel Coordonné\", motivo per cui l'acronimo UTC non corrisponde esattamente a nessuna delle due lingue.",
+        "name": "UTC (Tempo Coordinato Universale)",
+        "category": "standard",
+        "definition": "Il tempo standard primario mondiale utilizzato per coordinare il tempo su tutta la Terra. UTC non è influenzato da cambiamenti di fuso orario o ora legale.",
+        "example": "Quando sono le 12:00 UTC, sono le 7:00 EST (UTC-5) e le 13:00 CET (UTC+1).",
+        "relatedTerms": ["gmt", "timezone", "daylightSaving"]
+      },
+      "gmt": {
+        "title": "GMT (Tempo Medio di Greenwich)",
+        "shortDescription": "Il tempo solare medio presso l'Osservatorio Reale di Greenwich, Londra.",
+        "longDescription": "Il Tempo Medio di Greenwich (GMT) è il tempo solare medio presso l'Osservatorio Reale di Greenwich, Londra. È stato storicamente utilizzato come standard temporale civile internazionale prima di essere sostituito nei contesti scientifici dal Tempo Coordinato Universale (UTC).\n\nGMT è stato stabilito nel 1675 quando l'Osservatorio Reale fu costruito come tempo di riferimento per scopi nautici e la marina britannica. Divenne lo standard temporale globale nel 1884 alla Conferenza Internazionale del Meridiano, dove il meridiano di Greenwich fu adottato come Meridiano Primo (0° longitudine).\n\nOggi, GMT è ancora utilizzato in alcuni contesti, particolarmente nel Regno Unito durante i mesi invernali, ma è stato ampiamente sostituito da UTC per scopi scientifici e tecnici. Il termine GMT è spesso usato informalmente per riferirsi a UTC+0, anche se tecnicamente possono differire fino a 0,9 secondi a causa dei secondi intercalari e altri aggiustamenti in UTC.\n\nA differenza di UTC, che è basato sul tempo atomico, GMT è basato su osservazioni astronomiche e la rotazione della Terra, che è leggermente irregolare.",
+        "name": "GMT (Tempo Medio di Greenwich)",
+        "category": "standard",
+        "definition": "Il tempo medio solare al Meridiano Primo a Greenwich, Londra. Spesso usato intercambiabilmente con UTC, sebbene tecnicamente diverso.",
+        "example": "GMT è il fuso orario di base per il Regno Unito durante l'orario invernale.",
+        "relatedTerms": ["utc", "timezone", "atomicTime"]
+      },
+      "unixTimestamp": {
+        "title": "Timestamp Unix",
+        "shortDescription": "Il numero di secondi trascorsi dal 1° gennaio 1970 (UTC).",
+        "longDescription": "Un timestamp Unix (noto anche come tempo Unix, tempo POSIX o tempo Epoch) è un sistema per rappresentare un punto nel tempo come il numero di secondi trascorsi dal 1° gennaio 1970, alle 00:00:00 UTC, escludendo i secondi intercalari.\n\nQuesta data (1° gennaio 1970) è chiamata Epoca Unix e serve come punto di riferimento da cui viene misurato il tempo in Unix e molti altri sistemi informatici.\n\nI timestamp Unix sono ampiamente utilizzati nell'informatica perché forniscono una rappresentazione compatta e indipendente dal linguaggio di un momento specifico nel tempo. Sono particolarmente utili per memorizzare date e orari nei database e per eseguire calcoli di data/ora.\n\nEsempi:\n- 0: 1° gennaio 1970, 00:00:00 UTC (l'Epoca)\n- 1000000000: 9 settembre 2001, 01:46:40 UTC\n- 1585000000: 24 marzo 2020, 00:00:00 UTC\n\nLa maggior parte dei linguaggi di programmazione fornisce funzioni per convertire tra timestamp Unix e formati di data leggibili dall'uomo. I timestamp Unix tipicamente non tengono conto dei secondi intercalari.",
+        "name": "Timestamp Unix",
+        "category": "format",
+        "definition": "Il numero di secondi trascorsi dal 1° gennaio 1970, 00:00:00 UTC (Unix Epoch). Utilizzato ampiamente nei sistemi informatici.",
+        "example": "Il timestamp Unix 1640995200 rappresenta il 1° gennaio 2022, 00:00:00 UTC.",
+        "relatedTerms": ["epoch", "utc", "iso8601"]
+      },
+      "timezone": {
+        "title": "Fuso orario",
+        "shortDescription": "Una regione del globo che osserva un tempo standard uniforme per scopi legali, commerciali e sociali.",
+        "longDescription": "Un fuso orario è una regione del globo che osserva un tempo standard uniforme per scopi legali, commerciali e sociali. I fusi orari sono definiti come aree che differiscono dal Tempo Coordinato Universale (UTC) di un numero intero di ore, anche se alcuni sono sfasati di 30 o 45 minuti.\n\nI fusi orari furono adottati per la prima volta alla fine del XIX secolo per standardizzare l'ora locale, che precedentemente variava da città a città basandosi sul tempo solare. Il concetto fu formalizzato seguendo la Conferenza Internazionale del Meridiano del 1884.\n\nLa maggior parte dei fusi orari sono definiti come offset da UTC. Ad esempio:\n- UTC-5 (Orario Standard Orientale in Nord America)\n- UTC+1 (Orario dell'Europa Centrale)\n- UTC+8 (Orario Standard Cinese)\n\nMolte regioni osservano anche l'Ora Legale (DST), spostando temporaneamente i loro orologi avanti di un'ora durante i mesi estivi.\n\nI fusi orari sono tipicamente identificati utilizzando:\n- Identificatori del database IANA/Olson (es. \"Europe/Rome\")\n- Abbreviazioni (es. CET, EST, PST)\n- Notazioni offset UTC (es. UTC+2, UTC-7)",
+        "name": "Fuso orario",
+        "category": "timezone",
+        "definition": "Una regione della Terra che osserva un tempo standard uniforme per scopi legali, commerciali e sociali.",
+        "example": "Il fuso orario EST (UTC-5) include città come New York e Toronto.",
+        "relatedTerms": ["utc", "daylightSaving", "gmt"]
+      },
+      "daylightSaving": {
+        "title": "Ora legale (DST)",
+        "shortDescription": "La pratica di avanzare gli orologi durante i mesi estivi per estendere la luce diurna serale.",
+        "longDescription": "L'Ora Legale (DST) è la pratica di avanzare gli orologi (tipicamente di un'ora) durante i mesi estivi per estendere la luce diurna serale e ridurre l'uso di illuminazione artificiale. Le date esatte per le transizioni dell'ora legale variano per paese e regione.\n\nIl concetto moderno di DST fu proposto per la prima volta da George Vernon Hudson nel 1895 e fu implementato per la prima volta durante la Prima Guerra Mondiale come modo per conservare carbone. Oggi, circa il 40% dei paesi del mondo utilizza l'ora legale.\n\nLe transizioni dell'ora legale possono causare varie complicazioni:\n- In primavera, gli orologi \"avanzano\", risultando in un'ora che viene saltata\n- In autunno, gli orologi \"arretrano\", risultando in un'ora che si verifica due volte\n\nQueste transizioni creano sfide per la programmazione, i modelli di sonno e i sistemi informatici. L'efficacia e la necessità dell'ora legale sono state dibattute, con alcune regioni che si muovono per abolire questa pratica.",
+        "name": "Ora legale",
+        "category": "concept",
+        "definition": "La pratica di spostare avanti gli orologi durante i mesi più caldi per utilizzare meglio la luce naturale nelle ore serali.",
+        "example": "Negli Stati Uniti, l'ora legale inizia la seconda domenica di marzo e termina la prima domenica di novembre.",
+        "relatedTerms": ["timezone", "utc", "standardTime"]
+      },
+      "dst": {
+        "title": "Ora legale (DST)",
+        "shortDescription": "La pratica di avanzare gli orologi durante i mesi estivi per estendere la luce diurna serale.",
+        "longDescription": "L'Ora Legale (DST) è la pratica di avanzare gli orologi (tipicamente di un'ora) durante i mesi estivi per estendere la luce diurna serale e ridurre l'uso di illuminazione artificiale. Le date esatte per le transizioni dell'ora legale variano per paese e regione.\n\nIl concetto moderno di DST fu proposto per la prima volta da George Vernon Hudson nel 1895 e fu implementato per la prima volta durante la Prima Guerra Mondiale come modo per conservare carbone. Oggi, circa il 40% dei paesi del mondo utilizza l'ora legale.\n\nLe transizioni dell'ora legale possono causare varie complicazioni:\n- In primavera, gli orologi \"avanzano\", risultando in un'ora che viene saltata\n- In autunno, gli orologi \"arretrano\", risultando in un'ora che si verifica due volte\n\nQueste transizioni creano sfide per la programmazione, i modelli di sonno e i sistemi informatici. L'efficacia e la necessità dell'ora legale sono state dibattute, con alcune regioni che si muovono per abolire questa pratica."
+      },
+      "leapSecond": {
+        "title": "Secondo intercalare",
+        "shortDescription": "Un aggiustamento di un secondo occasionalmente aggiunto a UTC per adattarsi alle irregolarità della rotazione terrestre.",
+        "longDescription": "Un secondo intercalare è un aggiustamento di un secondo che viene occasionalmente aggiunto al Tempo Coordinato Universale (UTC) per adattarsi alla rotazione irregolare della Terra. A differenza degli anni bisestili, che seguono un modello regolare, i secondi intercalari vengono inseriti irregolarmente basandosi su osservazioni astronomiche.\n\nLa rotazione della Terra sta gradualmente rallentando a causa dell'attrito delle maree, rendendo il giorno solare medio leggermente più lungo di 86.400 secondi. Per mantenere UTC entro 0,9 secondi da UT1 (tempo basato sulla rotazione terrestre), i secondi intercalari vengono aggiunti quando necessario.\n\nDalla loro introduzione nel 1972, i secondi intercalari sono stati tipicamente aggiunti a un ritmo di circa uno ogni 18 mesi. Sono solitamente programmati per il 30 giugno o il 31 dicembre.\n\nI secondi intercalari pongono sfide per i sistemi informatici, che spesso non sono progettati per gestire un minuto di 61 secondi. A causa di queste complicazioni, ci sono state proposte per eliminare i secondi intercalari.",
+        "name": "Secondo intercalare",
+        "category": "calculation",
+        "definition": "Un aggiustamento di un secondo applicato al Tempo Coordinato Universale per tenere conto delle irregolarità nella rotazione terrestre.",
+        "example": "L'ultimo secondo intercalare è stato aggiunto il 31 dicembre 2016 alle 23:59:60 UTC.",
+        "relatedTerms": ["utc", "atomicTime", "gmt"]
+      },
+      "atomicTime": {
+        "title": "Tempo atomico (TAI)",
+        "shortDescription": "Uno standard temporale ad alta precisione basato sull'oscillazione degli atomi.",
+        "longDescription": "Il tempo atomico, ufficialmente noto come Tempo Atomico Internazionale (TAI), è uno standard temporale ad alta precisione basato sulla frequenza di risonanza degli atomi. Fornisce una scala temporale continua e stabile che non è influenzata dalle irregolarità nella rotazione terrestre.\n\nTAI è determinato da una rete mondiale di orologi atomici che misurano il tempo basandosi sulla radiazione elettromagnetica emessa dagli atomi di cesio-133. Il secondo in TAI è definito come la durata di 9.192.631.770 cicli di questa radiazione.\n\nA differenza di UTC, TAI non include secondi intercalari e quindi funziona continuamente senza aggiustamenti. Al 2023, TAI è avanti di 37 secondi rispetto a UTC a causa dei secondi intercalari aggiunti a UTC dal 1972.\n\nIl tempo atomico è cruciale per applicazioni che richiedono cronometraggio estremamente preciso, come GPS, ricerca scientifica e telecomunicazioni.",
+        "name": "Tempo atomico",
+        "category": "standard",
+        "definition": "Un tempo standard basato sulla frequenza delle transizioni atomiche, fornendo estrema precisione per la misurazione del tempo.",
+        "example": "Il Tempo Atomico Internazionale (TAI) è il più preciso standard temporale disponibile.",
+        "relatedTerms": ["utc", "leapSecond", "gmt"]
+      },
+      "julianDate": {
+        "title": "Data giuliana",
+        "shortDescription": "Un conteggio continuo di giorni da mezzogiorno Tempo Universale del 1° gennaio 4713 a.C.",
+        "longDescription": "La Data Giuliana (JD) è un conteggio continuo di giorni e frazioni di giorni da mezzogiorno Tempo Universale del 1° gennaio 4713 a.C. È stata introdotta dagli astronomi per fornire un sistema unico di date per lavorare con diversi calendari.\n\nIl sistema della Data Giuliana fu proposto da Joseph Scaliger nel 1583. Il punto di partenza fu scelto perché è precedente alla storia registrata e rappresenta il punto in cui tre cicli principali utilizzati nella cronologia antica coincidevano.\n\nLe Date Giuliane sono espresse come numeri decimali, dove la parte intera rappresenta il numero del giorno e la parte frazionaria rappresenta l'ora del giorno.\n\nUna variante chiamata Data Giuliana Modificata (MJD) è definita come MJD = JD - 2400000.5, che riduce le cifre e pone il confine intero a mezzanotte.\n\nLe Date Giuliane sono utilizzate principalmente in astronomia e scienze spaziali per semplificare i calcoli degli intervalli temporali.",
+        "name": "Data giuliana",
+        "category": "format",
+        "definition": "Un sistema di datazione continuo utilizzato principalmente dagli astronomi, contando i giorni da un'epoca specifica nel 4713 a.C.",
+        "example": "Il 1° gennaio 2000, 12:00 UTC corrisponde al Giorno Giuliano 2451545.0.",
+        "relatedTerms": ["epoch", "calendar", "astronomicalTime"]
+      },
+      "epoch": {
+        "title": "Epoca",
+        "shortDescription": "Un punto di riferimento nel tempo utilizzato come origine per un particolare sistema di misurazione temporale.",
+        "longDescription": "Nel cronometraggio, un'epoca è un punto di riferimento nel tempo utilizzato come origine per un particolare sistema di misurazione temporale. Sistemi diversi utilizzano epoche diverse come punti di partenza.\n\nAlcune epoche notevoli includono:\n\n1. Epoca Unix: 1° gennaio 1970, 00:00:00 UTC - Utilizzata per i timestamp Unix\n2. Epoca GPS: 6 gennaio 1980, 00:00:00 UTC - Punto di partenza per il tempo GPS\n3. Epoca J2000: 1° gennaio 2000, 12:00:00 TT - Epoca di riferimento standard in astronomia\n4. Epoca Windows: 1° gennaio 1601, 00:00:00 UTC - Utilizzata nei file system NTFS\n5. Epoca NTP: 1° gennaio 1900, 00:00:00 UTC - Utilizzata nel Protocollo Tempo di Rete\n\nLe epoche sono scelte per varie ragioni pratiche o storiche. Quando si lavora con diversi sistemi temporali, è importante essere consapevoli delle rispettive epoche per convertire correttamente tra di essi.",
+        "name": "Epoca",
+        "category": "concept",
+        "definition": "Un momento di riferimento nel tempo utilizzato come origine per la misurazione del tempo in un sistema particolare.",
+        "example": "L'Epoca Unix è il 1° gennaio 1970, 00:00:00 UTC.",
+        "relatedTerms": ["unixTimestamp", "julianDate", "calendar"]
+      },
+      "iso8601": {
+        "title": "ISO 8601 (Formato data e ora)",
+        "shortDescription": "Standard internazionale per rappresentare date e orari.",
+        "longDescription": "ISO 8601 è uno standard internazionale per rappresentare date e orari. È stato pubblicato dall'Organizzazione Internazionale per la Standardizzazione (ISO) e fornisce un metodo ben definito e non ambiguo per rappresentare date e orari, rendendolo ideale per comunicazioni internazionali e sistemi informatici.\n\nLo standard segue il formato YYYY-MM-DDThh:mm:ss.sssZ, dove:\n- YYYY rappresenta l'anno\n- MM rappresenta il mese\n- DD rappresenta il giorno\n- T è un separatore che indica l'inizio dell'elemento temporale\n- hh rappresenta le ore (in formato 24 ore)\n- mm rappresenta i minuti\n- ss rappresenta i secondi\n- .sss rappresenta frazioni di secondi (opzionale)\n- Z indica che l'ora è in UTC (o +/-hh:mm può essere utilizzato per indicare un offset da UTC)\n\nEsempi:\n- 2023-04-15T14:30:00Z (14:30 UTC del 15 aprile 2023)\n- 2023-04-15T14:30:00+02:00 (14:30 in un fuso orario 2 ore avanti rispetto a UTC)\n\nISO 8601 è ampiamente utilizzato nell'informatica, scambio dati e API perché elimina l'ambiguità nelle rappresentazioni delle date ed è facilmente ordinabile.",
+        "name": "ISO 8601 (Formato data e ora)",
+        "category": "format",
+        "definition": "Standard internazionale che definisce la rappresentazione numerica di date e orari. Segue il formato YYYY-MM-DDTHH:MM:SS.sssZ.",
+        "example": "2024-03-15T14:30:00.000Z rappresenta il 15 marzo 2024 alle 14:30:00 UTC in formato ISO 8601.",
+        "relatedTerms": ["utc", "timezone", "standardFormat"]
+      }
+    }
   }
 }

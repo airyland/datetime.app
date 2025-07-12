@@ -1,7 +1,7 @@
 {
   "common": {
-    "title": "World Clock & Time",
-    "description": "Current time around the world, UTC time, holidays, and age calculator",
+    "title": "World Clock & Time - Current Time Around the World, UTC Time Converter, Timezone Calculator",
+    "description": "Check current time around the world with our live world clock. Free UTC time converter, timezone calculator, age calculator, and holiday calendar tools.",
     "day": "Day of Week",
     "date": "Date",
     "nav": {
@@ -15,7 +15,7 @@
     }
   },
   "home": {
-    "title": "Current Time Around the World",
+    "title": "Current Time Around the World - Live World Clock, UTC Time, Timezone Converter & Time Tools",
     "localTime": "Your Local Time",
     "timeZone": "Time Zone",
     "tabs": {
@@ -271,7 +271,53 @@
         "question": "Why track year progress?",
         "answer": "Tracking year progress can help with time awareness, goal setting, and planning. It provides a visual reminder of how much of the year has passed and how much time remains for achieving annual goals."
       }
-    }
+    },
+    "backToCurrent": "Back to Current Year",
+    "yearCompleted": "This year has been completed",
+    "yearNotStarted": "This year hasn't started yet",
+    "comparisonTitle": "Comparison with Current Year",
+    "yearAhead": "{year} is {diff}% ahead of current year",
+    "yearBehind": "{year} is {diff}% behind current year",
+    "yearStatistics": "Year Statistics",
+    "days": "Days",
+    "weeks": "Weeks",
+    "months": "Months",
+    "leapYear": "{year} is a leap year",
+    "relatedTools": "Related Tools",
+    "calendar": "Calendar",
+    "viewFullCalendar": "View the full calendar for this year",
+    "ageCalculator": "Age Calculator",
+    "calculateAge": "Calculate age based on birth year",
+    "daysElapsed": "Days Elapsed",
+    "daysRemaining": "Days Remaining",
+    "currentYearGoals": "Current Year Goals",
+    "yearInsights": "Year Insights",
+    "timeRemaining": "Time Remaining",
+    "progressSummary": "Progress Summary",
+    "motivation": "Motivation",
+    "totalDays": "Total Days",
+    "totalWeeks": "Total Weeks",
+    "inYear": "in {year}",
+    "trackProgress": "Track your {year} progress and make the most of the remaining time in {year}.",
+    "goalTrackingDescription": "Use this {year} year progress tracker to monitor your annual goals. With {progress}% of {year} complete, you have {daysRemaining} days remaining to achieve your {year} objectives.",
+    "q1": "Q1 {year} (Jan-Mar)",
+    "q2": "Q2 {year} (Apr-Jun)",
+    "q3": "Q3 {year} (Jul-Sep)",
+    "q4": "Q4 {year} (Oct-Dec)",
+    "complete": "✓ Complete",
+    "completeTitle": "Complete",
+    "notStarted": "Not started",
+    "timeRemainingDescription": "You have {timeLeft} left in {year}. This represents {percentage}% of the current year. Make the most of the remaining {daysRemaining} days in {year} to achieve your annual goals.",
+    "progressSummaryDescription": "{year} is {progress}% complete. You've experienced {daysElapsed} days of {year} so far. The current year {year} is a {yearType} with {totalDays} total days.",
+    "motivationDescription": "Every day in {year} is an opportunity to progress toward your goals. Track your {year} achievements and stay motivated throughout the current year. Use this {year} progress visualization to maintain focus on what matters most.",
+    "leapYearType": "leap year",
+    "regularYearType": "regular year",
+    "timeLeftMonths": "{count} month{count, plural, one {} other{s}}",
+    "timeLeftDays": "{count} day{count, plural, one {} other{s}}",
+    "timeLeftHours": "{count} hour{count, plural, one {} other{s}}",
+    "timeLeftMinutes": "{count} minute{count, plural, one {} other{s}}",
+    "timeLeftSeconds": "{count} second{count, plural, one {} other{s}}",
+    "left": "left"
   },
   "cities": {
     "pageTitle": "Current Time in {cityName}",
@@ -511,6 +557,74 @@
       "daylightSaving": {
         "question": "Does {timezone} observe daylight saving time?",
         "answer": "This depends on the specific region and local regulations. The current time shown automatically adjusts for daylight saving time when applicable."
+      }
+    }
+  },
+  "glossary": {
+    "title": "Glossary of Datetime Concepts",
+    "subtitle": "Comprehensive reference for time-related terminology and concepts",
+    "searchPlaceholder": "Search glossary terms...",
+    "searchResults": "Search Results ({count})",
+    "noResults": "No matching terms found. Try a different search term.",
+    "allTerms": "All Terms",
+    "relatedTerms": "Related Terms",
+    "categories": {
+      "standard": "Time Standards",
+      "format": "Time Formats", 
+      "concept": "Time Concepts",
+      "timezone": "Timezone Related",
+      "calculation": "Time Calculations"
+    },
+    "terms": {
+      "utc": {
+        "title": "UTC (Coordinated Universal Time)",
+        "shortDescription": "The primary time standard by which the world regulates clocks and time.",
+        "longDescription": "Coordinated Universal Time (UTC) is the primary time standard by which the world regulates clocks and time. It is the basis for civil time today and is used across the internet, in aviation, maritime operations, and many scientific applications.\n\nUTC is maintained by a network of atomic clocks around the world and is closely related to, but distinct from, Greenwich Mean Time (GMT). Unlike local time zones, UTC does not change with the seasons and is not affected by Daylight Saving Time.\n\nUTC is the time standard used for many systems requiring precision timekeeping, including the Internet, GPS satellites, and international air traffic control. Computer systems often use UTC internally and then convert to local time for display purposes.\n\nThe term \"Coordinated Universal Time\" is a compromise between the English \"Coordinated Universal Time\" and the French \"Temps Universel Coordonné\", which is why the acronym UTC doesn't match either language exactly."
+      },
+      "gmt": {
+        "title": "GMT (Greenwich Mean Time)", 
+        "shortDescription": "The mean solar time at the Royal Observatory in Greenwich, London.",
+        "longDescription": "Greenwich Mean Time (GMT) is the mean solar time at the Royal Observatory in Greenwich, London. It was historically used as the international civil time standard before being replaced in scientific contexts by Coordinated Universal Time (UTC).\n\nGMT was established in 1675 when the Royal Observatory was built as a reference time for nautical purposes and the British navy. It became the global time standard in 1884 at the International Meridian Conference, where the Greenwich meridian was adopted as the Prime Meridian (0° longitude).\n\nToday, GMT is still used in some contexts, particularly in the United Kingdom during winter months, but has largely been superseded by UTC for scientific and technical purposes. The term GMT is often used informally to refer to UTC+0, though technically they can differ by up to 0.9 seconds due to leap seconds and other adjustments in UTC.\n\nUnlike UTC, which is based on atomic time, GMT is based on astronomical observations and the rotation of the Earth, which is slightly irregular."
+      },
+      "iso8601": {
+        "title": "ISO 8601 (Date and Time Format)",
+        "shortDescription": "International standard for representing dates and times.",
+        "longDescription": "ISO 8601 is an international standard for representing dates and times. It was published by the International Organization for Standardization (ISO) and provides a well-defined, unambiguous method for representing dates and times, making it ideal for international communication and computer systems.\n\nThe standard follows the format YYYY-MM-DDThh:mm:ss.sssZ, where:\n- YYYY represents the year\n- MM represents the month\n- DD represents the day\n- T is a separator indicating the start of the time element\n- hh represents hours (in 24-hour format)\n- mm represents minutes\n- ss represents seconds\n- .sss represents fractions of seconds (optional)\n- Z indicates that the time is in UTC (or +/-hh:mm can be used to indicate an offset from UTC)\n\nExamples:\n- 2023-04-15T14:30:00Z (2:30 PM UTC on April 15, 2023)\n- 2023-04-15T14:30:00+02:00 (2:30 PM in a timezone 2 hours ahead of UTC)\n\nISO 8601 is widely used in computing, data exchange, and APIs because it eliminates ambiguity in date representations and is easily sortable."
+      },
+      "unixTimestamp": {
+        "title": "Unix Timestamp",
+        "shortDescription": "The number of seconds that have elapsed since January 1, 1970 (UTC).",
+        "longDescription": "A Unix timestamp (also known as Unix time, POSIX time, or Epoch time) is a system for representing a point in time as the number of seconds that have elapsed since January 1, 1970, at 00:00:00 UTC, excluding leap seconds.\n\nThis date (January 1, 1970) is referred to as the Unix Epoch, and it serves as the reference point from which time is measured in Unix and many other computer systems.\n\nUnix timestamps are widely used in computing because they provide a compact, language-independent representation of a specific moment in time. They are particularly useful for storing dates and times in databases and for performing date/time calculations.\n\nExamples:\n- 0: January 1, 1970, 00:00:00 UTC (the Epoch)\n- 1000000000: September 9, 2001, 01:46:40 UTC\n- 1585000000: March 24, 2020, 00:00:00 UTC\n\nMost programming languages provide functions to convert between Unix timestamps and human-readable date formats. Unix timestamps typically don't account for leap seconds."
+      },
+      "timezone": {
+        "title": "Time Zone",
+        "shortDescription": "A region of the globe that observes a uniform standard time for legal, commercial, and social purposes.",
+        "longDescription": "A time zone is a region of the globe that observes a uniform standard time for legal, commercial, and social purposes. Time zones are defined as areas that differ from Coordinated Universal Time (UTC) by a whole number of hours, although some are offset by 30 or 45 minutes.\n\nTime zones were first adopted in the late 19th century to standardize local time, which previously varied from town to town based on solar time. The concept was formalized following the 1884 International Meridian Conference.\n\nMost time zones are defined as offsets from UTC. For example:\n- UTC-5 (Eastern Standard Time in North America)\n- UTC+1 (Central European Time)\n- UTC+8 (China Standard Time)\n\nMany regions also observe Daylight Saving Time (DST), temporarily shifting their clocks forward by one hour during summer months.\n\nTime zones are typically identified using:\n- IANA/Olson time zone database identifiers (e.g., \"America/New_York\")\n- Abbreviations (e.g., EST, CST, PST)\n- UTC offset notations (e.g., UTC+2, UTC-7)"
+      },
+      "dst": {
+        "title": "Daylight Saving Time (DST)",
+        "shortDescription": "The practice of advancing clocks during summer months to extend evening daylight.",
+        "longDescription": "Daylight Saving Time (DST) is the practice of advancing clocks (typically by one hour) during summer months to extend evening daylight and reduce artificial light usage. The exact dates for DST transitions vary by country and region.\n\nThe modern concept of DST was first proposed by George Vernon Hudson in 1895 and was first implemented during World War I as a way to conserve coal. Today, about 40% of countries worldwide use DST.\n\nDST transitions can cause various complications:\n- In spring, clocks \"spring forward\", resulting in one hour being skipped\n- In fall, clocks \"fall back\", resulting in one hour occurring twice\n\nThese transitions create challenges for scheduling, sleep patterns, and computer systems. The effectiveness and necessity of DST have been debated, with some regions moving to abolish the practice."
+      },
+      "leapSecond": {
+        "title": "Leap Second",
+        "shortDescription": "A one-second adjustment occasionally added to UTC to accommodate irregularities in Earth's rotation.",
+        "longDescription": "A leap second is a one-second adjustment that is occasionally added to Coordinated Universal Time (UTC) to accommodate the irregular rotation of the Earth. Unlike leap years, which follow a regular pattern, leap seconds are inserted irregularly based on astronomical observations.\n\nThe Earth's rotation is gradually slowing due to tidal friction, making the mean solar day slightly longer than 86,400 seconds. To keep UTC within 0.9 seconds of UT1 (time based on Earth's rotation), leap seconds are added when necessary.\n\nSince their introduction in 1972, leap seconds have typically been added at a rate of about one every 18 months. They are usually scheduled for June 30 or December 31.\n\nLeap seconds pose challenges for computer systems, which often aren't designed to handle a 61-second minute. Due to these complications, there have been proposals to eliminate leap seconds."
+      },
+      "atomicTime": {
+        "title": "Atomic Time (TAI)",
+        "shortDescription": "A high-precision time standard based on the oscillation of atoms.",
+        "longDescription": "Atomic time, officially known as International Atomic Time (TAI), is a high-precision time standard based on the resonance frequency of atoms. It provides a continuous, stable time scale that is not affected by irregularities in Earth's rotation.\n\nTAI is determined by a worldwide network of atomic clocks that measure time based on the electromagnetic radiation emitted by cesium-133 atoms. The second in TAI is defined as the duration of 9,192,631,770 cycles of this radiation.\n\nUnlike UTC, TAI does not include leap seconds and therefore runs continuously without adjustments. As of 2023, TAI is ahead of UTC by 37 seconds due to the leap seconds added to UTC since 1972.\n\nAtomic time is crucial for applications requiring extremely precise timekeeping, such as GPS, scientific research, and telecommunications."
+      },
+      "julianDate": {
+        "title": "Julian Date",
+        "shortDescription": "A continuous count of days since noon Universal Time on January 1, 4713 BCE.",
+        "longDescription": "The Julian Date (JD) is a continuous count of days and fractions of days since noon Universal Time on January 1, 4713 BCE. It was introduced by astronomers to provide a single system of dates for working with different calendars.\n\nThe Julian Date system was proposed by Joseph Scaliger in 1583. The starting point was chosen because it is before recorded history and represents the point at which three major cycles used in ancient chronology coincided.\n\nJulian Dates are expressed as decimal numbers, where the integer part represents the day number and the fractional part represents the time of day.\n\nA variant called the Modified Julian Date (MJD) is defined as MJD = JD - 2400000.5, which reduces digits and places the integer boundary at midnight.\n\nJulian Dates are primarily used in astronomy and space science to simplify time interval calculations."
+      },
+      "epoch": {
+        "title": "Epoch",
+        "shortDescription": "A reference point in time used as the origin for a particular time measurement system.",
+        "longDescription": "In timekeeping, an epoch is a reference point in time used as the origin for a particular time measurement system. Different systems use different epochs as their starting points.\n\nSome notable epochs include:\n\n1. Unix Epoch: January 1, 1970, 00:00:00 UTC - Used for Unix timestamps\n2. GPS Epoch: January 6, 1980, 00:00:00 UTC - Starting point for GPS time\n3. J2000 Epoch: January 1, 2000, 12:00:00 TT - Standard reference epoch in astronomy\n4. Windows Epoch: January 1, 1601, 00:00:00 UTC - Used in NTFS file systems\n5. NTP Epoch: January 1, 1900, 00:00:00 UTC - Used in Network Time Protocol\n\nEpochs are chosen for various practical or historical reasons. When working with different time systems, it's important to be aware of their respective epochs to correctly convert between them."
       }
     }
   }

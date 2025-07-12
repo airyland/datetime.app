@@ -19,44 +19,6 @@ import { FullscreenTime } from '@/components/fullscreen-time'
 import Header from '@/components/header'
 import spacetime from 'spacetime'
 
-// Declare global types for AdSense
-declare global {
-  interface Window {
-    adsbygoogle: any[];
-  }
-}
-
-// AdSense Ad Component
-function AdSenseAd() {
-  const [adLoaded, setAdLoaded] = useState(false);
-
-  useEffect(() => {
-    if (adLoaded) return;
-    
-    try {
-      if (typeof window !== 'undefined' && window.adsbygoogle) {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-        setAdLoaded(true);
-      }
-    } catch (error) {
-      console.error('AdSense error:', error);
-    }
-  }, [adLoaded]);
-
-  return (
-    <div className="min-h-[120px]">
-      <ins
-        className="adsbygoogle"
-        style={{ display: "block" }}
-        data-ad-client="ca-pub-8443907573529681"
-        data-ad-slot="7220104721"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      />
-    </div>
-  );
-}
-
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -443,7 +405,16 @@ export default function Home() {
       <Header />
       
       <div className="container mx-auto px-4 flex-grow">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">{commonT('title')}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">
+          <div className="flex flex-col items-center">
+            <span>{commonT('title').split(' - ')[0]}</span>
+            {commonT('title').includes(' - ') && (
+              <span className="text-sm md:text-base font-normal text-gray-500 dark:text-gray-500 mt-1">
+                {commonT('title').split(' - ')[1]}
+              </span>
+            )}
+          </div>
+        </h1>
         {/* SEO-friendly tabs that keep all content in the DOM */}
         <div className="w-full">
           {/* Tab navigation - improved for small screens */}
@@ -1094,14 +1065,8 @@ export default function Home() {
           </div>
         </div>
 
-         {/* Sponsor Section */}
-         <div className="mt-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 text-center">Sponsor</h2>
-          <AdSenseAd />
-        </div>
-
         {/* FAQ Section */}
-        <div className="mt-16 max-w-3xl mx-auto text-left">
+        <div className="mt-8 max-w-3xl mx-auto text-left">
           <h2 className="text-2xl font-bold mb-6 text-center">{t('faq.title')}</h2>
           <Accordion 
             type="multiple" 
