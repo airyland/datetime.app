@@ -282,6 +282,21 @@
       "utc": "UTC 시간",
       "yearProgress": "연도 진행률"
     },
+    "links": {
+      "titleHome": "홈페이지로 이동",
+      "titleAbout": "datetime.app 소개",
+      "titleCalendar": "{year}년 달력 보기",
+      "titleGlossary": "시간 용어 용어집 둘러보기",
+      "titleYearProgress": "연도 진행률 추적",
+      "titleAgeCalculator": "나이 계산하기",
+      "titleHolidays": "세계 휴일 둘러보기",
+      "titleUtc": "현재 UTC 시간",
+      "titleBackToYearProgress": "현재 연도 진행률로 돌아가기",
+      "titleViewCalendar": "올해 달력 보기",
+      "titleViewGlossary": "완전한 용어집 보기",
+      "titleLearnUtc": "UTC에 대해 더 알아보기",
+      "titleBackToHolidays": "휴일 개요로 돌아가기"
+    },
     "title": "세계 시계와 시간 - 전 세계 현재 시간, UTC 시간 변환기, 시간대 계산기"
   },
   "holidays": {
@@ -290,7 +305,13 @@
   },
   "home": {
     "cityTimes": {
-      "title": "세계 도시 시간"
+      "title": "세계 도시 시간",
+      "titleNewYork": "뉴욕의 현재 시간",
+      "titleLondon": "런던의 현재 시간",
+      "titleTokyo": "도쿄의 현재 시간",
+      "titleParis": "파리의 현재 시간",
+      "titleSydney": "시드니의 현재 시간",
+      "titleBeijing": "베이징의 현재 시간"
     },
     "faq": {
       "clockAccuracy": {
@@ -326,6 +347,7 @@
     "labels": {
       "addTimezone": "시간대 추가",
       "cancel": "취소",
+      "titleUtcTime": "현재 UTC(협정 세계시) 보기",
       "clockOffset": "시계가 약 {seconds}초 어긋남",
       "clockSynchronized": "시계 동기화됨 (±{offset}ms)",
       "convert": "변환",
@@ -375,10 +397,14 @@
     "title": "전 세계 현재 시간 - 실시간 세계 시계, UTC 시간, 시간대 변환기 및 시간 도구",
     "tools": {
       "ageCalculator": "나이 계산기",
+      "titleAgeCalculator": "년, 월, 일로 정확한 나이를 계산하세요",
       "title": "시간 도구",
       "utcTime": "UTC 시간",
+      "titleUtcTime": "현재 UTC(협정 세계시) 보기",
       "worldHolidays": "세계 휴일",
-      "yearProgress": "연도 진행률 막대"
+      "titleWorldHolidays": "다양한 국가의 휴일과 기념일을 발견하세요",
+      "yearProgress": "연도 진행률 막대",
+      "titleYearProgress": "현재 연도의 진행률을 추적하세요"
     }
   },
   "languageSuggestion": {
@@ -478,6 +504,9 @@
     },
     "iso8601": "ISO 8601",
     "learnMore": "용어집에서 UTC에 대해 더 알아보세요",
+    "titleHome": "홈페이지로 이동",
+    "titleLearnMore": "용어집에서 UTC에 대해 더 알아보세요",
+    "titleViewGlossary": "날짜와 시간 개념의 완전한 용어집 보기",
     "subtitle": "세계 시간 표준",
     "title": "협정 세계시 (UTC)",
     "toggleTheme": "테마 전환",

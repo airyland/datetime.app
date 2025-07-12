@@ -96,7 +96,7 @@ export default async function YearProgressBarWithYear({ params }: YearProgressBa
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-3xl mx-auto">
             <div className="mb-4">
-              <Link href={`/${locale === 'en' ? '' : locale + '/'}year-progress-bar`} className="inline-flex items-center text-primary hover:underline">
+              <Link href={`/${locale === 'en' ? '' : locale + '/'}year-progress-bar`} className="inline-flex items-center text-primary hover:underline" title={t('backToCurrent') || 'Back to Current Year'}>
                 <ArrowLeft className="mr-1 h-4 w-4" />
                 {t('backToCurrent') || 'Back to Current Year'}
               </Link>
@@ -224,11 +224,11 @@ export default async function YearProgressBarWithYear({ params }: YearProgressBa
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Link href={`/${locale === 'en' ? '' : locale + '/'}calendar/${yearParam}`} className="p-4 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors">
+                  <Link href={`/${locale === 'en' ? '' : locale + '/'}calendar/${yearParam}`} className="p-4 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors" title={t('viewFullCalendar') || 'View the full calendar for this year'}>
                     <h3 className="font-semibold mb-1">{t('calendar') || 'Calendar'} {yearParam}</h3>
                     <p className="text-sm text-muted-foreground">{t('viewFullCalendar') || 'View the full calendar for this year'}</p>
                   </Link>
-                  <Link href={`/${locale === 'en' ? '' : locale + '/'}age-calculator`} className="p-4 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors">
+                  <Link href={`/${locale === 'en' ? '' : locale + '/'}age-calculator`} className="p-4 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors" title={t('calculateAge') || 'Calculate age based on birth year'}>
                     <h3 className="font-semibold mb-1">{t('ageCalculator') || 'Age Calculator'}</h3>
                     <p className="text-sm text-muted-foreground">{t('calculateAge') || 'Calculate age based on birth year'}</p>
                   </Link>
@@ -244,6 +244,7 @@ export default async function YearProgressBarWithYear({ params }: YearProgressBa
                     key={year}
                     href={`/${locale === 'en' ? '' : locale + '/'}year-progress-bar/${year}`}
                     className={`px-4 py-2 rounded-md ${year === yearParam ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:bg-secondary/80'}`}
+                    title={`View year progress for ${year}`}
                   >
                     {year}
                   </Link>

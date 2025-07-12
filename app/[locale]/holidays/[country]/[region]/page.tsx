@@ -95,7 +95,7 @@ export default function RegionHolidaysPage({ params, searchParams }: RegionHolid
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-4xl mx-auto">
             <div className="mb-4">
-              <Link href={`/holidays/${country}?lang=${langParam}`} className="inline-flex items-center text-primary hover:underline">
+              <Link href={`/holidays/${country}?lang=${langParam}`} className="inline-flex items-center text-primary hover:underline" title={`Back to ${countryInfo.name} holidays`}>
                 <ArrowLeft className="mr-1 h-4 w-4" />
                 Back to {countryInfo.name}
               </Link>

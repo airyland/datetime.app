@@ -282,6 +282,21 @@
       "utc": "Hora UTC",
       "yearProgress": "Progresso do Ano"
     },
+    "links": {
+      "titleHome": "Ir para a página inicial",
+      "titleAbout": "Sobre datetime.app",
+      "titleCalendar": "Ver calendário de {year}",
+      "titleGlossary": "Navegar glossário de termos de tempo",
+      "titleYearProgress": "Acompanhar progresso do ano",
+      "titleAgeCalculator": "Calcular sua idade",
+      "titleHolidays": "Navegar feriados mundiais",
+      "titleUtc": "Hora UTC atual",
+      "titleBackToYearProgress": "Voltar ao progresso do ano atual",
+      "titleViewCalendar": "Ver calendário deste ano",
+      "titleViewGlossary": "Ver nosso glossário completo",
+      "titleLearnUtc": "Aprender mais sobre UTC",
+      "titleBackToHolidays": "Voltar à visão geral dos feriados"
+    },
     "title": "Relógio Mundial e Hora - Hora Atual ao Redor do Mundo, Conversor de Hora UTC, Calculadora de Fuso Horário"
   },
   "holidays": {
@@ -290,7 +305,13 @@
   },
   "home": {
     "cityTimes": {
-      "title": "Horários das Cidades do Mundo"
+      "title": "Horários das Cidades do Mundo",
+      "titleNewYork": "Hora atual em Nova York",
+      "titleLondon": "Hora atual em Londres",
+      "titleTokyo": "Hora atual em Tóquio",
+      "titleParis": "Hora atual em Paris",
+      "titleSydney": "Hora atual em Sydney",
+      "titleBeijing": "Hora atual em Pequim"
     },
     "faq": {
       "clockAccuracy": {
@@ -350,6 +371,7 @@
       "timeRemaining": "Tempo Restante",
       "timezoneInfo": "Informações do Fuso Horário",
       "toTimezone": "Para Fuso Horário",
+      "titleUtcTime": "Visualizar o UTC (Tempo Universal Coordenado) atual",
       "toggleTheme": "Alternar tema",
       "unixTimestamp": "Timestamp Unix",
       "utcTime": "Hora UTC"
@@ -376,6 +398,10 @@
     "tools": {
       "ageCalculator": "Calculadora de Idade",
       "title": "Ferramentas de Tempo",
+      "titleYearProgress": "Acompanhe o progresso do ano atual",
+      "titleAgeCalculator": "Calcule sua idade exata em anos, meses e dias",
+      "titleUtcTime": "Visualizar o UTC (Tempo Universal Coordenado) atual",
+      "titleWorldHolidays": "Descubra feriados e observâncias de diferentes países",
       "utcTime": "Hora UTC",
       "worldHolidays": "Feriados Mundiais",
       "yearProgress": "Barra de Progresso do Ano"
@@ -478,6 +504,9 @@
     },
     "iso8601": "ISO 8601",
     "learnMore": "Saiba mais sobre UTC em nosso glossário",
+    "titleHome": "Ir para a página inicial",
+    "titleLearnMore": "Saiba mais sobre UTC em nosso glossário",
+    "titleViewGlossary": "Ver nosso glossário completo de conceitos de data e hora",
     "subtitle": "Padrão de Tempo Mundial",
     "title": "Tempo Universal Coordenado (UTC)",
     "toggleTheme": "Alternar tema",

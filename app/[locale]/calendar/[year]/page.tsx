@@ -26,6 +26,7 @@ export default function CalendarPage({ params }: CalendarPageProps) {
   const year = parseInt(resolvedParams.year);
   const locale = resolvedParams.locale;
   const t = useTranslations('calendar');
+  const tCommon = useTranslations('common');
   
   // Validate year (limit to ±15 years from current year)
   const currentYear = new Date().getFullYear();
@@ -64,7 +65,7 @@ export default function CalendarPage({ params }: CalendarPageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity">
+        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">
@@ -162,6 +163,7 @@ export default function CalendarPage({ params }: CalendarPageProps) {
                   <Link 
                     href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year}/${String(monthIndex + 1).padStart(2, '0')}`}
                     className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    title={`View ${month.name} ${year} calendar`}
                   >
                     {month.name}
                   </Link>
@@ -281,6 +283,7 @@ export default function CalendarPage({ params }: CalendarPageProps) {
                         : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400'
                       }
                     `}
+                    title={`View ${navYear} calendar`}
                   >
                     {navYear}
                   </Link>
