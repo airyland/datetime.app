@@ -84,7 +84,7 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
     description,
     keywords: [`${year} progress`, `${year} progress bar`, `time left in ${year}`, `days left in ${year}`, `${year} completion`, `${year} tracker`, "time tracking"],
     alternates: {
-      canonical: `https://datetime.app/year-progress-bar/${year}`,
+      canonical: locale === 'en' ? `https://datetime.app/year-progress-bar/${year}` : `https://datetime.app/${locale}/year-progress-bar/${year}`,
       languages
     },
     openGraph: {
