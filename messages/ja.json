@@ -12,6 +12,21 @@
       "ageCalculator": "年齢計算機",
       "yearProgress": "年間進捗",
       "glossary": "用語集"
+    },
+    "links": {
+      "titleHome": "ホームページに戻る",
+      "titleAbout": "datetime.appについて",
+      "titleCalendar": "{year}年のカレンダーを表示",
+      "titleGlossary": "時間用語の用語集を閲覧",
+      "titleYearProgress": "年間進捗を追跡",
+      "titleAgeCalculator": "年齢を計算",
+      "titleHolidays": "世界の祝日を閲覧",
+      "titleUtc": "現在のUTC時間",
+      "titleBackToYearProgress": "現在の年間進捗に戻る",
+      "titleViewCalendar": "今年のカレンダーを表示",
+      "titleViewGlossary": "完全な用語集を表示",
+      "titleLearnUtc": "UTCについて詳しく学ぶ",
+      "titleBackToHolidays": "祝日の概要に戻る"
     }
   },
   "home": {
@@ -38,6 +53,7 @@
       "timezoneInfo": "タイムゾーン情報",
       "unixTimestamp": "Unixタイムスタンプ",
       "utcTime": "UTC時間",
+      "titleUtcTime": "現在のUTC（協定世界時）を表示",
       "isoFormat": "ISO形式",
       "addTimezone": "タイムゾーンを追加",
       "selectTimezone": "タイムゾーンを選択",
@@ -68,12 +84,22 @@
     "tools": {
       "title": "時間ツール",
       "yearProgress": "年間進捗バー",
+      "titleYearProgress": "現在の年の進捗を追跡",
       "ageCalculator": "年齢計算機",
+      "titleAgeCalculator": "年、月、日での正確な年齢を計算",
       "utcTime": "UTC時間",
-      "worldHolidays": "世界の祝日"
+      "titleUtcTime": "現在のUTC（協定世界時）を表示",
+      "worldHolidays": "世界の祝日",
+      "titleWorldHolidays": "さまざまな国の祝日や記念日を発見"
     },
     "cityTimes": {
-      "title": "世界都市の時間"
+      "title": "世界都市の時間",
+      "titleNewYork": "ニューヨークの現在時刻",
+      "titleLondon": "ロンドンの現在時刻",
+      "titleTokyo": "東京の現在時刻",
+      "titleParis": "パリの現在時刻",
+      "titleSydney": "シドニーの現在時刻",
+      "titleBeijing": "北京の現在時刻"
     },
     "faq": {
       "title": "よくある質問",
@@ -112,6 +138,9 @@
     "subtitle": "世界時間標準",
     "description": "現在のUTC（協定世界時）を表示します。UTCは世界の時間標準で、タイムゾーンや夏時間の変更の影響を受けません。",
     "learnMore": "用語集でUTCについて詳しく学ぶ",
+    "titleHome": "ホームページに戻る",
+    "titleLearnMore": "用語集でUTCについて詳しく学ぶ",
+    "titleViewGlossary": "日付と時間の概念の完全な用語集を表示",
     "unixTimestamp": "Unixタイムスタンプ",
     "utcString": "UTC文字列",
     "iso8601": "ISO 8601",

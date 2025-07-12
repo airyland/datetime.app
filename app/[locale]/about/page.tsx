@@ -27,9 +27,9 @@ export default function AboutPage() {
 
         <h2 className="text-2xl font-semibold mt-8 mb-4">Technology</h2>
         <p className="mb-4">
-          datetime.app is developed by the <Link href="https://datetime.app" className="text-blue-600 dark:text-blue-400 hover:underline">datetime.app</Link> team,
-          powered by <Link href="https://v0.dev" className="text-blue-600 dark:text-blue-400 hover:underline">v0.dev</Link> and Windsurf technology,
-          with design inspiration from <Link href="https://time.is" className="text-blue-600 dark:text-blue-400 hover:underline">time.is</Link>,
+          datetime.app is developed by the <Link href="https://datetime.app" className="text-blue-600 dark:text-blue-400 hover:underline" title="Visit datetime.app homepage">datetime.app</Link> team,
+          powered by <Link href="https://v0.dev" className="text-blue-600 dark:text-blue-400 hover:underline" title="Visit v0.dev - AI-powered development platform">v0.dev</Link> and Windsurf technology,
+          with design inspiration from <Link href="https://time.is" className="text-blue-600 dark:text-blue-400 hover:underline" title="Visit time.is - World Clock and Time Zone Converter">time.is</Link>,
           dedicated to providing the best time management experience for our users.
         </p>
       </div>

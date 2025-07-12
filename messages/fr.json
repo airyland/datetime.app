@@ -12,6 +12,21 @@
       "ageCalculator": "Calculateur d'Âge",
       "yearProgress": "Progrès de l'Année",
       "glossary": "Glossaire"
+    },
+    "links": {
+      "titleHome": "Aller à la page d'accueil",
+      "titleAbout": "À propos de datetime.app",
+      "titleCalendar": "Voir le calendrier de {year}",
+      "titleGlossary": "Parcourir le glossaire des termes temporels",
+      "titleYearProgress": "Suivre le progrès de l'année",
+      "titleAgeCalculator": "Calculer votre âge",
+      "titleHolidays": "Parcourir les jours fériés mondiaux",
+      "titleUtc": "Heure UTC actuelle",
+      "titleBackToYearProgress": "Retour au progrès de l'année actuelle",
+      "titleViewCalendar": "Voir le calendrier de cette année",
+      "titleViewGlossary": "Voir notre glossaire complet",
+      "titleLearnUtc": "En savoir plus sur UTC",
+      "titleBackToHolidays": "Retour à l'aperçu des jours fériés"
     }
   },
   "home": {
@@ -38,6 +53,7 @@
       "timezoneInfo": "Information sur le Fuseau Horaire",
       "unixTimestamp": "Horodatage Unix",
       "utcTime": "Heure UTC",
+      "titleUtcTime": "Voir l'heure UTC (Temps Universel Coordonné) actuelle",
       "isoFormat": "Format ISO",
       "addTimezone": "Ajouter un Fuseau Horaire",
       "selectTimezone": "Sélectionner un Fuseau Horaire",
@@ -68,12 +84,22 @@
     "tools": {
       "title": "Outils de Temps",
       "yearProgress": "Barre de Progrès de l'Année",
+      "titleYearProgress": "Suivre le progrès de l'année actuelle",
       "ageCalculator": "Calculateur d'Âge",
+      "titleAgeCalculator": "Calculer votre âge exact en années, mois et jours",
       "utcTime": "Heure UTC",
-      "worldHolidays": "Jours Fériés Mondiaux"
+      "titleUtcTime": "Voir l'heure UTC (Temps Universel Coordonné) actuelle",
+      "worldHolidays": "Jours Fériés Mondiaux",
+      "titleWorldHolidays": "Découvrir les jours fériés et célébrations de différents pays"
     },
     "cityTimes": {
-      "title": "Heures des Villes du Monde"
+      "title": "Heures des Villes du Monde",
+      "titleNewYork": "Heure actuelle à New York",
+      "titleLondon": "Heure actuelle à Londres",
+      "titleTokyo": "Heure actuelle à Tokyo",
+      "titleParis": "Heure actuelle à Paris",
+      "titleSydney": "Heure actuelle à Sydney",
+      "titleBeijing": "Heure actuelle à Pékin"
     },
     "faq": {
       "title": "Questions Fréquemment Posées",
@@ -112,6 +138,9 @@
     "subtitle": "Standard de Temps Mondial",
     "description": "Voir l'heure UTC (Temps Universel Coordonné) actuelle. UTC est le standard de temps mondial, non affecté par les fuseaux horaires ou les changements d'heure d'été.",
     "learnMore": "En savoir plus sur UTC dans notre glossaire",
+    "titleHome": "Aller à la page d'accueil",
+    "titleLearnMore": "En savoir plus sur UTC dans notre glossaire",
+    "titleViewGlossary": "Voir notre glossaire complet des concepts de date et d'heure",
     "unixTimestamp": "Horodatage Unix",
     "utcString": "Chaîne UTC",
     "iso8601": "ISO 8601",

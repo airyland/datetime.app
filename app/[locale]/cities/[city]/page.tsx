@@ -29,6 +29,7 @@ export default function CityPage({ params }: CityPageProps) {
   const city = resolvedParams.city;
   const locale = resolvedParams.locale;
   const t = useTranslations('cities')
+  const tCommon = useTranslations('common')
   const cityInfo = citiesData[city as keyof typeof citiesData];
   
   // Get localized city and country names
@@ -186,7 +187,7 @@ export default function CityPage({ params }: CityPageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity">
+        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">

@@ -282,6 +282,21 @@
       "utc": "Ora UTC",
       "yearProgress": "Progresso dell'Anno"
     },
+    "links": {
+      "titleHome": "Vai alla homepage",
+      "titleAbout": "Informazioni su datetime.app",
+      "titleCalendar": "Visualizza calendario per {year}",
+      "titleGlossary": "Sfoglia glossario dei termini temporali",
+      "titleYearProgress": "Traccia il progresso dell'anno",
+      "titleAgeCalculator": "Calcola la tua età",
+      "titleHolidays": "Sfoglia i giorni festivi mondiali",
+      "titleUtc": "Ora UTC attuale",
+      "titleBackToYearProgress": "Torna al progresso dell'anno attuale",
+      "titleViewCalendar": "Visualizza calendario per quest'anno",
+      "titleViewGlossary": "Visualizza il nostro glossario completo",
+      "titleLearnUtc": "Scopri di più su UTC",
+      "titleBackToHolidays": "Torna alla panoramica dei giorni festivi"
+    },
     "title": "Orologio Mondiale e Ora - Ora Attuale in Tutto il Mondo, Convertitore di Ora UTC, Calcolatore di Fusi Orari"
   },
   "holidays": {
@@ -290,7 +305,13 @@
   },
   "home": {
     "cityTimes": {
-      "title": "Orari delle Città del Mondo"
+      "title": "Orari delle Città del Mondo",
+      "titleNewYork": "Ora corrente a New York",
+      "titleLondon": "Ora corrente a Londra",
+      "titleTokyo": "Ora corrente a Tokyo",
+      "titleParis": "Ora corrente a Parigi",
+      "titleSydney": "Ora corrente a Sydney",
+      "titleBeijing": "Ora corrente a Pechino"
     },
     "faq": {
       "clockAccuracy": {
@@ -350,6 +371,7 @@
       "timeRemaining": "Tempo Rimanente",
       "timezoneInfo": "Informazioni sul Fuso Orario",
       "toTimezone": "A Fuso Orario",
+      "titleUtcTime": "Visualizza l'ora UTC (Tempo Universale Coordinato) corrente",
       "toggleTheme": "Cambia tema",
       "unixTimestamp": "Timestamp Unix",
       "utcTime": "Ora UTC"
@@ -376,6 +398,10 @@
     "tools": {
       "ageCalculator": "Calcolatore di Età",
       "title": "Strumenti Temporali",
+      "titleYearProgress": "Traccia il progresso dell'anno corrente",
+      "titleAgeCalculator": "Calcola la tua età esatta in anni, mesi e giorni",
+      "titleUtcTime": "Visualizza l'ora UTC (Tempo Universale Coordinato) corrente",
+      "titleWorldHolidays": "Scopri festività e ricorrenze di diversi paesi",
       "utcTime": "Ora UTC",
       "worldHolidays": "Giorni Festivi Mondiali",
       "yearProgress": "Barra di Progresso dell'Anno"
@@ -478,6 +504,9 @@
     },
     "iso8601": "ISO 8601",
     "learnMore": "Scopri di più su UTC nel nostro glossario",
+    "titleHome": "Vai alla homepage",
+    "titleLearnMore": "Scopri di più su UTC nel nostro glossario",
+    "titleViewGlossary": "Visualizza il nostro glossario completo dei concetti di data e ora",
     "subtitle": "Standard Temporale Mondiale",
     "title": "Tempo Coordinato Universale (UTC)",
     "toggleTheme": "Cambia tema",

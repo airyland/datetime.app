@@ -12,6 +12,21 @@
       "ageCalculator": "年齡計算器",
       "yearProgress": "年度進度",
       "glossary": "術語表"
+    },
+    "links": {
+      "titleHome": "回到主頁",
+      "titleAbout": "關於datetime.app",
+      "titleCalendar": "查看{year}年日曆",
+      "titleGlossary": "瀏覽時間術語表",
+      "titleYearProgress": "追蹤年度進度",
+      "titleAgeCalculator": "計算您的年齡",
+      "titleHolidays": "瀏覽世界節假日",
+      "titleUtc": "查看當前UTC時間",
+      "titleBackToYearProgress": "回到當前年度進度",
+      "titleViewCalendar": "查看今年的日曆",
+      "titleViewGlossary": "查看我們完整的術語表",
+      "titleLearnUtc": "了解更多關於UTC的資訊",
+      "titleBackToHolidays": "回到節假日概覽"
     }
   },
   "home": {
@@ -63,17 +78,28 @@
       "dst": "夏令時",
       "clockSynchronized": "時鐘已同步 (±{offset}ms)",
       "clockOffset": "時鐘偏差約{seconds}秒",
-      "learnAboutUtc": "了解UTC"
+      "learnAboutUtc": "了解UTC",
+      "titleUtcTime": "查看當前UTC（協調世界時）"
     },
     "tools": {
       "title": "時間工具",
       "yearProgress": "年度進度條",
       "ageCalculator": "年齡計算器",
       "utcTime": "UTC時間",
-      "worldHolidays": "世界節日"
+      "worldHolidays": "世界節日",
+      "titleYearProgress": "追蹤當前年度的進度",
+      "titleAgeCalculator": "精確計算您的年齡（年、月、日）",
+      "titleUtcTime": "查看當前UTC（協調世界時）",
+      "titleWorldHolidays": "發現世界各國的節假日和紀念日"
     },
     "cityTimes": {
-      "title": "世界城市時間"
+      "title": "世界城市時間",
+      "titleNewYork": "紐約當前時間",
+      "titleLondon": "倫敦當前時間",
+      "titleTokyo": "東京當前時間",
+      "titleParis": "巴黎當前時間",
+      "titleSydney": "雪梨當前時間",
+      "titleBeijing": "北京當前時間"
     },
     "faq": {
       "title": "常見問題",
@@ -344,6 +370,9 @@
     "subtitle": "世界時間標準",
     "description": "查看當前UTC（協調世界時）。UTC是世界時間標準，不受時區或夏令時變化影響。",
     "learnMore": "在我們的術語表中瞭解更多關於UTC的資訊",
+    "titleHome": "回到主頁",
+    "titleLearnMore": "在我們的術語表中瞭解更多關於UTC的資訊",
+    "titleViewGlossary": "查看我們完整的日期時間概念術語表",
     "unixTimestamp": "Unix時間戳",
     "utcString": "UTC字串",
     "iso8601": "ISO 8601",

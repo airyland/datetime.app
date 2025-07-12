@@ -31,6 +31,7 @@ export default function TimezonePage({ params }: TimezonePageProps) {
   const locale = resolvedParams.locale
   
   const t = useTranslations('timezones')
+  const tCommon = useTranslations('common')
   const pathname = usePathname()
   
   // Find timezone config
@@ -174,7 +175,7 @@ export default function TimezonePage({ params }: TimezonePageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity">
+        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">
@@ -306,7 +307,7 @@ export default function TimezonePage({ params }: TimezonePageProps) {
               ))}
             </Accordion>
             <p className="text-center my-4">
-              <Link href="/glossary" className="text-muted-foreground text-sm hover:underline">
+              <Link href="/glossary" className="text-muted-foreground text-sm hover:underline" title={tCommon('links.titleViewGlossary')}>
                 {t('viewGlossary')} <ArrowRight className="inline w-4 h-4" />
               </Link>
             </p>

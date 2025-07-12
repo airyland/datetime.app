@@ -282,6 +282,21 @@
       "utc": "التوقيت العالمي",
       "yearProgress": "تقدم السنة"
     },
+    "links": {
+      "titleHome": "العودة إلى الصفحة الرئيسية",
+      "titleAbout": "حول datetime.app",
+      "titleCalendar": "عرض تقويم عام {year}",
+      "titleGlossary": "تصفح مسرد مصطلحات الوقت",
+      "titleYearProgress": "تتبع تقدم السنة",
+      "titleAgeCalculator": "احسب عمرك",
+      "titleHolidays": "تصفح العطل العالمية",
+      "titleUtc": "التوقيت العالمي المنسق الحالي",
+      "titleBackToYearProgress": "العودة إلى تقدم السنة الحالية",
+      "titleViewCalendar": "عرض تقويم هذا العام",
+      "titleViewGlossary": "عرض مسردنا الكامل",
+      "titleLearnUtc": "تعلم المزيد حول التوقيت العالمي المنسق",
+      "titleBackToHolidays": "العودة إلى نظرة عامة على العطل"
+    },
     "title": "الساعة العالمية والوقت - الوقت الحالي حول العالم، محول التوقيت العالمي المنسق، حاسبة المناطق الزمنية"
   },
   "holidays": {
@@ -290,7 +305,13 @@
   },
   "home": {
     "cityTimes": {
-      "title": "أوقات مدن العالم"
+      "title": "أوقات مدن العالم",
+      "titleNewYork": "الوقت الحالي في نيويورك",
+      "titleLondon": "الوقت الحالي في لندن",
+      "titleTokyo": "الوقت الحالي في طوكيو",
+      "titleParis": "الوقت الحالي في باريس",
+      "titleSydney": "الوقت الحالي في سيدني",
+      "titleBeijing": "الوقت الحالي في بكين"
     },
     "faq": {
       "clockAccuracy": {
@@ -349,6 +370,7 @@
       "time": "الوقت",
       "timeRemaining": "الوقت المتبقي",
       "timezoneInfo": "معلومات المنطقة الزمنية",
+      "titleUtcTime": "عرض التوقيت العالمي المنسق الحالي",
       "toTimezone": "إلى المنطقة الزمنية",
       "toggleTheme": "تغيير الموضوع",
       "unixTimestamp": "طابع زمني Unix",
@@ -376,6 +398,10 @@
     "tools": {
       "ageCalculator": "حاسبة العمر",
       "title": "أدوات الوقت",
+      "titleYearProgress": "تتبع تقدم السنة الحالية",
+      "titleAgeCalculator": "احسب عمرك الدقيق بالسنوات والشهور والأيام",
+      "titleUtcTime": "عرض التوقيت العالمي المنسق الحالي",
+      "titleWorldHolidays": "اكتشف العطل والمناسبات من مختلف البلدان",
       "utcTime": "التوقيت العالمي المنسق",
       "worldHolidays": "العطل العالمية",
       "yearProgress": "شريط تقدم العام"
@@ -478,6 +504,9 @@
     },
     "iso8601": "ISO 8601",
     "learnMore": "تعرف على المزيد حول UTC في مسردنا",
+    "titleHome": "العودة إلى الصفحة الرئيسية",
+    "titleLearnMore": "تعرف على المزيد حول UTC في مسردنا",
+    "titleViewGlossary": "عرض مسردنا الكامل لمفاهيم التاريخ والوقت",
     "subtitle": "معيار الوقت العالمي",
     "title": "التوقيت العالمي المنسق (UTC)",
     "toggleTheme": "تغيير الموضوع",
