@@ -560,5 +560,95 @@
     "timeLeftMinutes": "{count} minuto",
     "timeLeftSeconds": "{count} segundo",
     "left": "restante"
+  },
+  "glossary": {
+    "title": "Glossário de Data e Hora",
+    "subtitle": "Guia abrangente de conceitos, formatos e terminologia de data e hora",
+    "searchPlaceholder": "Buscar termos...",
+    "searchResults": "Resultados da busca",
+    "noResults": "Nenhum resultado encontrado para '{query}'",
+    "allTerms": "Todos os Termos",
+    "relatedTerms": "Termos Relacionados",
+    "categories": {
+      "standard": "Padrões",
+      "format": "Formatos",
+      "concept": "Conceitos",
+      "timezone": "Fuso Horário",
+      "calculation": "Cálculos"
+    },
+    "terms": {
+      "utc": {
+        "name": "UTC (Tempo Universal Coordenado)",
+        "definition": "O padrão de tempo primário pelo qual o mundo regula relógios e tempo. UTC é baseado em relógios atômicos e serve como a base para o tempo civil mundialmente. É essencialmente o sucessor do GMT (Tempo Médio de Greenwich) mas definido de forma mais precisa.",
+        "category": "standard",
+        "title": "UTC (Tempo Universal Coordenado)",
+        "shortDescription": "O padrão de tempo primário pelo qual o mundo regula relógios e tempo.",
+        "longDescription": "O Tempo Universal Coordenado (UTC) é o padrão de tempo primário pelo qual o mundo regula relógios e tempo. É a base para o tempo civil hoje e é usado em toda a internet, na aviação, operações marítimas e muitas aplicações científicas.\n\nO UTC é mantido por uma rede de relógios atômicos ao redor do mundo e está intimamente relacionado, mas é distinto do Tempo Médio de Greenwich (GMT). Ao contrário dos fusos horários locais, o UTC não muda com as estações e não é afetado pelo Horário de Verão.\n\nO UTC é o padrão de tempo usado para muitos sistemas que requerem cronometragem de precisão, incluindo a Internet, satélites GPS e controle de tráfego aéreo internacional. Sistemas de computador frequentemente usam UTC internamente e depois convertem para hora local para exibição.\n\nO termo \"Tempo Universal Coordenado\" é um compromisso entre o inglês \"Coordinated Universal Time\" e o francês \"Temps Universel Coordonné\", razão pela qual a sigla UTC não corresponde exatamente a nenhuma das duas línguas."
+      },
+      "gmt": {
+        "name": "GMT (Tempo Médio de Greenwich)",
+        "definition": "O tempo solar médio no Observatório Real de Greenwich, em Londres. Historicamente usado como padrão de tempo mundial, agora amplamente substituído pelo UTC para a maioria dos propósitos técnicos, embora os termos sejam frequentemente usados de forma intercambiável.",
+        "category": "standard",
+        "title": "GMT (Tempo Médio de Greenwich)",
+        "shortDescription": "O tempo solar médio no Observatório Real de Greenwich, em Londres.",
+        "longDescription": "O Tempo Médio de Greenwich (GMT) é o tempo solar médio no Observatório Real de Greenwich, em Londres. Historicamente foi usado como padrão de tempo civil internacional antes de ser substituído em contextos científicos pelo Tempo Universal Coordenado (UTC).\n\nO GMT foi estabelecido em 1675 quando o Observatório Real foi construído como tempo de referência para propósitos náuticos e a marinha britânica. Tornou-se o padrão de tempo global em 1884 na Conferência Internacional do Meridiano, onde o meridiano de Greenwich foi adotado como Meridiano Principal (0° longitude).\n\nHoje, o GMT ainda é usado em alguns contextos, particularmente no Reino Unido durante os meses de inverno, mas foi amplamente substituído pelo UTC para propósitos científicos e técnicos. O termo GMT é frequentemente usado informalmente para se referir a UTC+0, embora tecnicamente possam diferir em até 0,9 segundos devido a segundos intercalares e outros ajustes no UTC.\n\nAo contrário do UTC, que é baseado no tempo atômico, o GMT é baseado em observações astronômicas e na rotação da Terra, que é ligeiramente irregular."
+      },
+      "unixTimestamp": {
+        "title": "Timestamp Unix",
+        "shortDescription": "O número de segundos que se passaram desde 1º de janeiro de 1970 (UTC).",
+        "longDescription": "Um timestamp Unix (também conhecido como tempo Unix, tempo POSIX ou tempo Epoch) é um sistema para representar um ponto no tempo como o número de segundos que se passaram desde 1º de janeiro de 1970, às 00:00:00 UTC, excluindo segundos intercalares.\n\nEsta data (1º de janeiro de 1970) é referida como a Época Unix, e serve como ponto de referência a partir do qual o tempo é medido no Unix e muitos outros sistemas de computador.\n\nTimestamps Unix são amplamente usados na computação porque fornecem uma representação compacta e independente de linguagem de um momento específico no tempo. São particularmente úteis para armazenar datas e horas em bancos de dados e para realizar cálculos de data/hora.\n\nExemplos:\n- 0: 1º de janeiro de 1970, 00:00:00 UTC (a Época)\n- 1000000000: 9 de setembro de 2001, 01:46:40 UTC\n- 1585000000: 24 de março de 2020, 00:00:00 UTC\n\nA maioria das linguagens de programação fornece funções para converter entre timestamps Unix e formatos de data legíveis por humanos. Timestamps Unix tipicamente não consideram segundos intercalares."
+      },
+      "timezone": {
+        "name": "Fuso horário",
+        "definition": "Uma região da Terra que observa um tempo padrão uniforme para propósitos legais, comerciais e sociais. Fusos horários tendem a seguir as fronteiras de países e suas subdivisões em vez de seguir estritamente a longitude, porque é conveniente para áreas em comunicação frequente manter o mesmo tempo.",
+        "category": "timezone",
+        "title": "Fuso Horário",
+        "shortDescription": "Uma região do globo que observa um horário padrão uniforme para propósitos legais, comerciais e sociais.",
+        "longDescription": "Um fuso horário é uma região do globo que observa um horário padrão uniforme para propósitos legais, comerciais e sociais. Fusos horários são definidos como áreas que diferem do Tempo Universal Coordenado (UTC) por um número inteiro de horas, embora alguns tenham deslocamentos de 30 ou 45 minutos.\n\nFusos horários foram adotados pela primeira vez no final do século XIX para padronizar a hora local, que anteriormente variava de cidade em cidade baseada no tempo solar. O conceito foi formalizado após a Conferência Internacional do Meridiano de 1884.\n\nA maioria dos fusos horários são definidos como deslocamentos do UTC. Por exemplo:\n- UTC-3 (Horário de Brasília)\n- UTC+1 (Horário da Europa Central)\n- UTC+8 (Horário Padrão da China)\n\nMuitas regiões também observam Horário de Verão, mudando temporariamente seus relógios uma hora à frente durante os meses de verão.\n\nFusos horários são tipicamente identificados usando:\n- Identificadores do banco de dados de fusos horários IANA/Olson (ex.: \"America/Sao_Paulo\")\n- Abreviações (ex.: BRT, CET, PST)\n- Notações de deslocamento UTC (ex.: UTC+2, UTC-7)"
+      },
+      "dst": {
+        "name": "Horário de verão",
+        "definition": "A prática de avançar relógios (tipicamente uma hora) durante os meses mais quentes para que a escuridão caia mais tarde no dia pelo relógio. O objetivo é fazer melhor uso da luz natural durante as horas da tarde. Nem todas as regiões observam horário de verão.",
+        "category": "concept",
+        "title": "Horário de Verão",
+        "shortDescription": "A prática de avançar relógios durante os meses de verão para estender a luz do dia vespertina.",
+        "longDescription": "O Horário de Verão é a prática de avançar relógios (tipicamente uma hora) durante os meses de verão para estender a luz do dia vespertina e reduzir o uso de luz artificial. As datas exatas para as transições do horário de verão variam por país e região.\n\nO conceito moderno do horário de verão foi proposto pela primeira vez por George Vernon Hudson em 1895 e foi implementado pela primeira vez durante a Primeira Guerra Mundial como forma de conservar carvão. Hoje, cerca de 40% dos países do mundo usam horário de verão.\n\nAs transições do horário de verão podem causar várias complicações:\n- Na primavera, os relógios \"avançam\", resultando em uma hora sendo pulada\n- No outono, os relógios \"atrasam\", resultando em uma hora ocorrendo duas vezes\n\nEssas transições criam desafios para agendamentos, padrões de sono e sistemas de computador. A eficácia e necessidade do horário de verão têm sido debatidas, com algumas regiões se movendo para abolir a prática."
+      },
+      "leapSecond": {
+        "title": "Segundo Intercalar",
+        "shortDescription": "Um ajuste de um segundo ocasionalmente adicionado ao UTC para acomodar irregularidades na rotação da Terra.",
+        "longDescription": "Um segundo intercalar é um ajuste de um segundo que é ocasionalmente adicionado ao Tempo Universal Coordenado (UTC) para acomodar a rotação irregular da Terra. Ao contrário dos anos bissextos, que seguem um padrão regular, segundos intercalares são inseridos irregularmente baseados em observações astronômicas.\n\nA rotação da Terra está gradualmente desacelerando devido ao atrito das marés, tornando o dia solar médio ligeiramente mais longo que 86.400 segundos. Para manter o UTC dentro de 0,9 segundos do UT1 (tempo baseado na rotação da Terra), segundos intercalares são adicionados quando necessário.\n\nDesde sua introdução em 1972, segundos intercalares têm sido tipicamente adicionados a uma taxa de cerca de um a cada 18 meses. Eles são geralmente agendados para 30 de junho ou 31 de dezembro.\n\nSegundos intercalares representam desafios para sistemas de computador, que frequentemente não são projetados para lidar com um minuto de 61 segundos. Devido a essas complicações, têm havido propostas para eliminar segundos intercalares."
+      },
+      "atomicTime": {
+        "title": "Tempo Atômico (TAI)",
+        "shortDescription": "Um padrão de tempo de alta precisão baseado na oscilação de átomos.",
+        "longDescription": "O tempo atômico, oficialmente conhecido como Tempo Atômico Internacional (TAI), é um padrão de tempo de alta precisão baseado na frequência de ressonância de átomos. Ele fornece uma escala de tempo contínua e estável que não é afetada por irregularidades na rotação da Terra.\n\nO TAI é determinado por uma rede mundial de relógios atômicos que medem tempo baseado na radiação eletromagnética emitida por átomos de césio-133. O segundo no TAI é definido como a duração de 9.192.631.770 ciclos desta radiação.\n\nAo contrário do UTC, o TAI não inclui segundos intercalares e portanto corre continuamente sem ajustes. A partir de 2023, o TAI está 37 segundos à frente do UTC devido aos segundos intercalares adicionados ao UTC desde 1972.\n\nO tempo atômico é crucial para aplicações que requerem cronometragem extremamente precisa, como GPS, pesquisa científica e telecomunicações."
+      },
+      "julianDate": {
+        "title": "Data Juliana",
+        "shortDescription": "Um conteggio continuo de dias desde o meio-dia do Tempo Universal em 1º de janeiro de 4713 a.C.",
+        "longDescription": "A Data Juliana (JD) é um conteggio continuo de dias e frações de dias desde o meio-dia do Tempo Universal em 1º de janeiro de 4713 a.C. Foi introduzida por astrônomos para fornecer um sistema único de datas para trabalhar com diferentes calendários.\n\nO sistema de Data Juliana foi proposto por Joseph Scaliger em 1583. O ponto de partida foi escolhido porque é anterior à história registrada e representa o ponto em que três grandes ciclos usados na cronologia antiga coincidiam.\n\nAs Datas Julianas são expressas como números decimais, onde a parte inteira representa o número do dia e a parte fracionária representa a hora do dia.\n\nUma variante chamada Data Juliana Modificada (MJD) é definida como MJD = JD - 2400000.5, que reduz os dígitos e coloca o limite inteiro à meia-noite.\n\nAs Datas Julianas são usadas principalmente em astronomia e ciências espaciais para simplificar cálculos de intervalos de tempo.",
+        "category": "format",
+        "title": "Data Juliana",
+        "shortDescription": "Uma contagem contínua de dias desde meio-dia do Tempo Universal em 1º de janeiro de 4713 AEC.",
+        "longDescription": "A Data Juliana (DJ) é uma contagem contínua de dias e frações de dias desde meio-dia do Tempo Universal em 1º de janeiro de 4713 AEC. Foi introduzida por astrônomos para fornecer um sistema único de datas para trabalhar com diferentes calendários.\n\nO sistema de Data Juliana foi proposto por Joseph Scaliger em 1583. O ponto inicial foi escolhido porque está antes da história registrada e representa o ponto em que três ciclos principais usados na cronologia antiga coincidiram.\n\nDatas Julianas são expressas como números decimais, onde a parte inteira representa o número do dia e a parte fracionária representa a hora do dia.\n\nUma variante chamada Data Juliana Modificada (DJM) é definida como DJM = DJ - 2400000,5, que reduz dígitos e coloca o limite inteiro à meia-noite.\n\nDatas Julianas são usadas principalmente em astronomia e ciência espacial para simplificar cálculos de intervalos de tempo."
+      },
+      "epoch": {
+        "name": "Época",
+        "definition": "Um momento específico no tempo usado como ponto de referência para um sistema de cronometragem. A época Unix mais comumente conhecida é 1º de janeiro de 1970, 00:00:00 UTC. Diferentes sistemas de computador podem usar épocas diferentes como seus pontos de partida.",
+        "category": "concept",
+        "title": "Época",
+        "shortDescription": "Um ponto de referência no tempo usado como origem para um sistema particular de medição de tempo.",
+        "longDescription": "Na cronometragem, uma época é um ponto de referência no tempo usado como origem para um sistema particular de medição de tempo. Diferentes sistemas usam épocas diferentes como seus pontos de partida.\n\nAlgumas épocas notáveis incluem:\n\n1. Época Unix: 1º de janeiro de 1970, 00:00:00 UTC - Usado para timestamps Unix\n2. Época GPS: 6 de janeiro de 1980, 00:00:00 UTC - Ponto inicial para o tempo GPS\n3. Época J2000: 1º de janeiro de 2000, 12:00:00 TT - Época de referência padrão em astronomia\n4. Época Windows: 1º de janeiro de 1601, 00:00:00 UTC - Usado em sistemas de arquivo NTFS\n5. Época NTP: 1º de janeiro de 1900, 00:00:00 UTC - Usado no Protocolo de Tempo de Rede\n\nÉpocas são escolhidas por várias razões práticas ou históricas. Ao trabalhar com diferentes sistemas de tempo, é importante estar ciente de suas respectivas épocas para converter corretamente entre eles."
+      },
+      "iso8601": {
+        "name": "ISO 8601 (Formato de data e hora)",
+        "definition": "Um padrão internacional para representação de datas e horas. O formato básico é YYYY-MM-DDTHH:MM:SS.sssZ, onde T separa data e hora, e Z indica UTC. Este padrão elimina ambiguidade na comunicação de data e hora entre diferentes culturas e sistemas.",
+        "category": "format",
+        "title": "ISO 8601 (Formato de Data e Hora)",
+        "shortDescription": "Padrão internacional para representação de datas e horas.",
+        "longDescription": "ISO 8601 é um padrão internacional para representação de datas e horas. Foi publicado pela Organização Internacional de Normalização (ISO) e fornece um método bem definido e não ambíguo para representar datas e horas, tornando-o ideal para comunicação internacional e sistemas de computador.\n\nO padrão segue o formato AAAA-MM-DDTHH:mm:ss.sssZ, onde:\n- AAAA representa o ano\n- MM representa o mês\n- DD representa o dia\n- T é um separador indicando o início do elemento tempo\n- HH representa horas (em formato 24 horas)\n- mm representa minutos\n- ss representa segundos\n- .sss representa frações de segundos (opcional)\n- Z indica que o tempo está em UTC (ou +/-HH:mm pode ser usado para indicar um deslocamento do UTC)\n\nExemplos:\n- 2023-04-15T14:30:00Z (14:30 UTC em 15 de abril de 2023)\n- 2023-04-15T14:30:00-03:00 (14:30 em um fuso horário 3 horas atrás do UTC)\n\nISO 8601 é amplamente usado na computação, intercâmbio de dados e APIs porque elimina ambiguidade em representações de data e é facilmente ordenável."
+      }
+    }
   }
 }
