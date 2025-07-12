@@ -1,7 +1,7 @@
 {
   "common": {
-    "title": "Reloj Mundial y Hora",
-    "description": "Hora actual en todo el mundo, hora UTC, días festivos y calculadora de edad",
+    "title": "Reloj Mundial y Hora - Hora Actual en Todo el Mundo, Convertidor de Hora UTC, Calculadora de Zonas Horarias",
+    "description": "Consulta la hora actual en todo el mundo con nuestro reloj mundial en vivo. Convertidor UTC gratuito, calculadora de zona horaria, edad y feriados.",
     "day": "Día de la Semana",
     "date": "Fecha",
     "nav": {
@@ -15,7 +15,7 @@
     }
   },
   "home": {
-    "title": "Hora Actual en Todo el Mundo",
+    "title": "Hora Actual en Todo el Mundo - Reloj Mundial en Vivo, Hora UTC, Convertidor de Zonas Horarias y Herramientas de Tiempo",
     "localTime": "Su Hora Local",
     "timeZone": "Zona Horaria",
     "tabs": {

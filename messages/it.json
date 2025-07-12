@@ -272,7 +272,7 @@
   "common": {
     "date": "Data",
     "day": "Giorno della Settimana",
-    "description": "Ora attuale in tutto il mondo, ora UTC, giorni festivi e calcolatore di età",
+    "description": "Controlla l'ora attuale in tutto il mondo con il nostro orologio mondiale dal vivo. Convertitore UTC gratuito, calcolatore di fuso orario ed età.",
     "nav": {
       "ageCalculator": "Calcolatore di Età",
       "calendar": "Calendario",
@@ -282,7 +282,7 @@
       "utc": "Ora UTC",
       "yearProgress": "Progresso dell'Anno"
     },
-    "title": "Orologio Mondiale e Ora"
+    "title": "Orologio Mondiale e Ora - Ora Attuale in Tutto il Mondo, Convertitore di Ora UTC, Calcolatore di Fusi Orari"
   },
   "holidays": {
     "description": "Scopri giorni festivi e celebrazioni di diversi paesi",
@@ -372,7 +372,7 @@
       "worldClock": "Orologio Mondiale"
     },
     "timeZone": "Fuso Orario",
-    "title": "Ora Attuale in Tutto il Mondo",
+    "title": "Ora Attuale in Tutto il Mondo - Orologio Mondiale dal Vivo, Ora UTC, Convertitore di Fusi Orari e Strumenti Temporali",
     "tools": {
       "ageCalculator": "Calcolatore di Età",
       "title": "Strumenti Temporali",

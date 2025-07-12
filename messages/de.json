@@ -1,7 +1,7 @@
 {
   "common": {
-    "title": "Weltzeituhr & Zeit",
-    "description": "Aktuelle Zeit weltweit, UTC-Zeit, Feiertage und Altersrechner",
+    "title": "Weltzeituhr & Zeit - Aktuelle Zeit weltweit, UTC-Zeit Konverter, Zeitzonen-Rechner",
+    "description": "Überprüfen Sie die aktuelle Zeit weltweit mit unserer Live-Weltzeituhr. Kostenloser UTC-Zeitkonverter, Zeitzonenrechner und Altersrechner.",
     "day": "Wochentag",
     "date": "Datum",
     "nav": {
@@ -15,7 +15,7 @@
     }
   },
   "home": {
-    "title": "Aktuelle Zeit weltweit",
+    "title": "Aktuelle Zeit weltweit - Live Weltzeituhr, UTC-Zeit, Zeitzonen-Konverter & Zeit-Tools",
     "localTime": "Ihre Ortszeit",
     "timeZone": "Zeitzone",
     "tabs": {

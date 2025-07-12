@@ -272,7 +272,7 @@
   "common": {
     "date": "Data",
     "day": "Dia da Semana",
-    "description": "Hora atual ao redor do mundo, hora UTC, feriados e calculadora de idade",
+    "description": "Verifique a hora atual ao redor do mundo com nosso relógio mundial ao vivo. Conversor UTC gratuito, calculadora de fuso horário, idade e feriados.",
     "nav": {
       "ageCalculator": "Calculadora de Idade",
       "calendar": "Calendário",
@@ -282,7 +282,7 @@
       "utc": "Hora UTC",
       "yearProgress": "Progresso do Ano"
     },
-    "title": "Relógio Mundial e Hora"
+    "title": "Relógio Mundial e Hora - Hora Atual ao Redor do Mundo, Conversor de Hora UTC, Calculadora de Fuso Horário"
   },
   "holidays": {
     "description": "Descubra feriados e celebrações de diferentes países",
@@ -372,7 +372,7 @@
       "worldClock": "Relógio Mundial"
     },
     "timeZone": "Fuso Horário",
-    "title": "Hora Atual ao Redor do Mundo",
+    "title": "Hora Atual ao Redor do Mundo - Relógio Mundial ao Vivo, Hora UTC, Conversor de Fuso Horário e Ferramentas de Tempo",
     "tools": {
       "ageCalculator": "Calculadora de Idade",
       "title": "Ferramentas de Tempo",

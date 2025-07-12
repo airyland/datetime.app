@@ -1,7 +1,7 @@
 {
   "common": {
-    "title": "Horloge Mondiale et Heure",
-    "description": "Heure actuelle dans le monde, heure UTC, jours fériés et calculateur d'âge",
+    "title": "Horloge Mondiale et Heure - Heure Actuelle dans le Monde, Convertisseur d'Heure UTC, Calculateur de Fuseaux Horaires",
+    "description": "Vérifiez l'heure actuelle dans le monde avec notre horloge mondiale en direct. Convertisseur UTC gratuit, calculateur de fuseau horaire et d'âge.",
     "day": "Jour de la Semaine",
     "date": "Date",
     "nav": {
@@ -15,7 +15,7 @@
     }
   },
   "home": {
-    "title": "Heure Actuelle dans le Monde",
+    "title": "Heure Actuelle dans le Monde - Horloge Mondiale en Direct, Heure UTC, Convertisseur de Fuseaux Horaires et Outils Temporels",
     "localTime": "Votre Heure Locale",
     "timeZone": "Fuseau Horaire",
     "tabs": {
