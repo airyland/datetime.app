@@ -15,13 +15,13 @@ const staticPages = [
   'about',
   'age-calculator',
   'utc',
-  'year-progress-bar'
+  'year-progress-bar',
+  'glossary'
 ];
 
 // English-only pages
 const englishOnlyPages = [
-  'holidays',
-  'glossary'
+  'holidays'
 ];
 
 interface SitemapURL {
@@ -130,14 +130,16 @@ function generateURLs(): SitemapURL[] {
     }
   }
 
-  // Add glossary term pages for English only
+  // Add glossary term pages for all locales
   const terms = getGlossaryTerms();
-  for (const term of terms) {
-    urls.push({
-      loc: getLocalizedURL('en', `glossary/${term}`),
-      changefreq: 'weekly',
-      priority: '0.8'
-    });
+  for (const locale of locales) {
+    for (const term of terms) {
+      urls.push({
+        loc: getLocalizedURL(locale, `glossary/${term}`),
+        changefreq: 'weekly',
+        priority: locale === defaultLocale ? '0.8' : '0.7'
+      });
+    }
   }
 
   // Add holiday pages for English only
