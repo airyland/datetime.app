@@ -1,7 +1,7 @@
 {
   "common": {
-    "title": "World Clock & Time",
-    "description": "Current time around the world, UTC time, holidays, and age calculator",
+    "title": "World Clock & Time - Current Time Around the World, UTC Time Converter, Timezone Calculator",
+    "description": "Check current time around the world with our live world clock. Free UTC time converter, timezone calculator, age calculator, and holiday calendar tools.",
     "day": "Day of Week",
     "date": "Date",
     "nav": {
@@ -15,7 +15,7 @@
     }
   },
   "home": {
-    "title": "Current Time Around the World",
+    "title": "Current Time Around the World - Live World Clock, UTC Time, Timezone Converter & Time Tools",
     "localTime": "Your Local Time",
     "timeZone": "Time Zone",
     "tabs": {

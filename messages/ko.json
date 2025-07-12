@@ -272,7 +272,7 @@
   "common": {
     "date": "날짜",
     "day": "요일",
-    "description": "전 세계 현재 시간, UTC 시간, 휴일 및 나이 계산기",
+    "description": "라이브 세계 시계로 전 세계 현재 시간을 확인하세요. 무료 UTC 시간 변환기, 시간대 계산기, 나이 계산기, 휴일 도구.",
     "nav": {
       "ageCalculator": "나이 계산기",
       "calendar": "달력",
@@ -282,7 +282,7 @@
       "utc": "UTC 시간",
       "yearProgress": "연도 진행률"
     },
-    "title": "세계 시계와 시간"
+    "title": "세계 시계와 시간 - 전 세계 현재 시간, UTC 시간 변환기, 시간대 계산기"
   },
   "holidays": {
     "description": "다양한 국가의 휴일과 기념일을 발견하세요",
@@ -372,7 +372,7 @@
       "worldClock": "세계 시계"
     },
     "timeZone": "시간대",
-    "title": "전 세계 현재 시간",
+    "title": "전 세계 현재 시간 - 실시간 세계 시계, UTC 시간, 시간대 변환기 및 시간 도구",
     "tools": {
       "ageCalculator": "나이 계산기",
       "title": "시간 도구",

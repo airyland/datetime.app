@@ -405,7 +405,16 @@ export default function Home() {
       <Header />
       
       <div className="container mx-auto px-4 flex-grow">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">{commonT('title')}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">
+          <div className="flex flex-col items-center">
+            <span>{commonT('title').split(' - ')[0]}</span>
+            {commonT('title').includes(' - ') && (
+              <span className="text-sm md:text-base font-normal text-gray-500 dark:text-gray-500 mt-1">
+                {commonT('title').split(' - ')[1]}
+              </span>
+            )}
+          </div>
+        </h1>
         {/* SEO-friendly tabs that keep all content in the DOM */}
         <div className="w-full">
           {/* Tab navigation - improved for small screens */}
