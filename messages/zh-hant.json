@@ -1,7 +1,7 @@
 {
   "common": {
-    "title": "世界時鐘與時間",
-    "description": "世界各地當前時間、UTC時間、節假日和年齡計算器",
+    "title": "世界時鐘與時間 - 全球即時時間查詢，UTC時間轉換器，時區計算器",
+    "description": "查看世界各地即時時間，國際時間轉換工具。提供免費UTC時間轉換器、時區計算器、年齡計算器和節假日日曆等實用時間工具。",
     "day": "星期",
     "date": "日期",
     "nav": {
@@ -15,7 +15,7 @@
     }
   },
   "home": {
-    "title": "世界各地當前時間",
+    "title": "世界各地當前時間 - 即時世界時鐘，UTC時間，時區轉換器和時間工具",
     "localTime": "您的本地時間",
     "timeZone": "時區",
     "tabs": {
@@ -233,7 +233,53 @@
         "question": "為什麼要跟蹤年度進度？",
         "answer": "跟蹤年度進度有助於時間意識、目標設定和規劃。它提供了年度已過去多少時間以及實現年度目標還剩多少時間的視覺提醒。"
       }
-    }
+    },
+    "backToCurrent": "返回當前年份",
+    "yearCompleted": "這一年已經結束",
+    "yearNotStarted": "這一年尚未開始",
+    "comparisonTitle": "與當前年份比較",
+    "yearAhead": "{year}年比當前年份快{diff}%",
+    "yearBehind": "{year}年比當前年份慢{diff}%",
+    "yearStatistics": "年度統計",
+    "days": "天",
+    "weeks": "週",
+    "months": "月",
+    "leapYear": "{year}年是閏年",
+    "relatedTools": "相關工具",
+    "calendar": "日曆",
+    "viewFullCalendar": "查看該年份的完整日曆",
+    "ageCalculator": "年齡計算器",
+    "calculateAge": "根據出生年份計算年齡",
+    "daysElapsed": "已過天數",
+    "daysRemaining": "剩餘天數",
+    "currentYearGoals": "今年目標",
+    "yearInsights": "年度洞察",
+    "timeRemaining": "剩餘時間",
+    "progressSummary": "進度摘要",
+    "motivation": "激勵",
+    "totalDays": "總天數",
+    "totalWeeks": "總週數",
+    "inYear": "在{year}年",
+    "trackProgress": "追蹤您的{year}年進度，充分利用{year}年剩餘的時間。",
+    "goalTrackingDescription": "使用此{year}年進度追蹤器來監控您的年度目標。{year}年已完成{progress}%，您還有{daysRemaining}天來實現您的{year}年目標。",
+    "q1": "第一季 {year}年（1月-3月）",
+    "q2": "第二季 {year}年（4月-6月）",
+    "q3": "第三季 {year}年（7月-9月）",
+    "q4": "第四季 {year}年（10月-12月）",
+    "complete": "✓ 完成",
+    "completeTitle": "完成",
+    "notStarted": "未開始",
+    "timeRemainingDescription": "您在{year}年還剩{timeLeft}。這代表當前年份的{percentage}%。充分利用{year}年剩餘的{daysRemaining}天來實現您的年度目標。",
+    "progressSummaryDescription": "{year}年已完成{progress}%。到目前為止，您已經經歷了{year}年的{daysElapsed}天。當前年份{year}年是一個總共有{totalDays}天的{yearType}。",
+    "motivationDescription": "{year}年的每一天都是朝著目標前進的機會。追蹤您在{year}年的成就，並在整個當前年份保持動力。使用這個{year}年進度視覺化來專注於最重要的事情。",
+    "leapYearType": "閏年",
+    "regularYearType": "平年",
+    "timeLeftMonths": "{count}個月",
+    "timeLeftDays": "{count}天",
+    "timeLeftHours": "{count}小時",
+    "timeLeftMinutes": "{count}分鐘",
+    "timeLeftSeconds": "{count}秒",
+    "left": "剩餘"
   },
   "cities": {
     "pageTitle": "{cityName}當前時間",
@@ -533,6 +579,114 @@
       "daylightSaving": {
         "question": "{timezone}是否實行夏令時？",
         "answer": "這取決於具體地區和當地法規。顯示的當前時間會在適用時自動調整夏令時。"
+      }
+    }
+  },
+  "glossary": {
+    "title": "日期時間術語表",
+    "subtitle": "完整的日期時間概念和技術術語指南",
+    "searchPlaceholder": "搜尋術語...",
+    "searchResults": "搜尋結果",
+    "noResults": "未找到匹配的術語",
+    "allTerms": "所有術語",
+    "relatedTerms": "相關術語",
+    "categories": {
+      "standard": "時間標準",
+      "format": "格式",
+      "concept": "概念",
+      "timezone": "時區",
+      "calculation": "計算"
+    },
+    "terms": {
+      "utc": {
+        "title": "UTC（協調世界時）",
+        "category": "standard",
+        "shortDescription": "世界調節時鐘和時間的主要時間標準。",
+        "longDescription": "協調世界時（UTC，Coordinated Universal Time）是世界調節時鐘和時間的主要時間標準。它是當今民用時間的基礎，用於網際網路、航空、海運作業和許多科學應用。\n\nUTC由全球原子鐘網路維護，與格林威治標準時間（GMT）密切相關但有所區別。與本地時區不同，UTC不會隨季節變化，也不受夏令時影響。\n\nUTC是許多需要精確計時的系統所使用的時間標準，包括網際網路、GPS衛星和國際航空交通管制。電腦系統通常在內部使用UTC，然後轉換為本地時間進行顯示。\n\n「協調世界時」這個術語是英語「Coordinated Universal Time」和法語「Temps Universel Coordonné」的折衷，這就是為什麼縮寫UTC不完全匹配任何一種語言的原因。",
+        "definition": "協調世界時（Coordinated Universal Time）是世界調節時鐘和時間的主要時間標準。它類似於GMT，但通過原子鐘更精確地定義，是全球民用時間的基礎。",
+        "examples": "2023-12-25T10:30:00Z 表示UTC時間上午10:30",
+        "relatedTerms": ["gmt", "timezone", "atomicTime"]
+      },
+      "gmt": {
+        "title": "GMT（格林威治標準時間）",
+        "category": "standard",
+        "shortDescription": "英國倫敦格林威治皇家天文台的平太陽時。",
+        "longDescription": "格林威治標準時間（GMT，Greenwich Mean Time）是英國倫敦格林威治皇家天文台的平太陽時。在科學環境中被協調世界時（UTC）取代之前，它曾被歷史上用作國際民用時間標準。\n\nGMT於1675年建立格林威治皇家天文台時確立，作為航海目的和英國海軍的參考時間。在1884年的國際子午線會議上，格林威治子午線被採用為本初子午線（0°經度），GMT成為全球時間標準。\n\n今天，GMT仍在某些情況下使用，特別是在英國的冬季月份，但在科學和技術用途方面已大部分被UTC取代。GMT一詞通常非正式地用來指代UTC+0，儘管技術上由於閏秒和UTC中的其他調整，它們可能相差多達0.9秒。\n\n與基於原子時的UTC不同，GMT基於天文觀測和地球自轉，而地球自轉略有不規律。",
+        "definition": "格林威治標準時間（Greenwich Mean Time）是基於地球自轉和太陽位置的時間標準，以經過英國格林威治皇家天文台的本初子午線為準。在實踐中與UTC幾乎相同。",
+        "examples": "GMT+0表示格林威治標準時間，GMT+8表示比格林威治時間快8小時",
+        "relatedTerms": ["utc", "timezone", "primeMeridian"]
+      },
+      "unixTimestamp": {
+        "title": "Unix時間戳",
+        "category": "format",
+        "shortDescription": "自1970年1月1日（UTC）以來經過的秒數。",
+        "longDescription": "Unix時間戳（也稱為Unix時間、POSIX時間或紀元時間）是一種表示時間點的系統，表示自1970年1月1日00:00:00 UTC以來經過的秒數，不包括閏秒。\n\n這個日期（1970年1月1日）被稱為Unix紀元，它作為Unix和許多其他電腦系統中測量時間的參考點。\n\nUnix時間戳在計算中廣泛使用，因為它們提供了緊湊且與語言無關的特定時刻表示。它們特別適用於在資料庫中儲存日期和時間以及執行日期/時間計算。\n\n範例：\n- 0：1970年1月1日00:00:00 UTC（紀元）\n- 1000000000：2001年9月9日01:46:40 UTC\n- 1585000000：2020年3月24日00:00:00 UTC\n\n大多數程式設計語言提供在Unix時間戳和人類可讀日期格式之間轉換的函數。Unix時間戳通常不考慮閏秒。",
+        "definition": "Unix時間戳（也稱為Unix時間或POSIX時間）代表自1970年1月1日00:00:00 UTC以來經過的秒數，不計算閏秒。是計算機系統中廣泛使用的時間表示方式。",
+        "examples": "1672531200代表2023年1月1日00:00:00 UTC",
+        "relatedTerms": ["epoch", "utc", "posixTime"]
+      },
+      "timezone": {
+        "title": "時區",
+        "category": "timezone",
+        "shortDescription": "為了法律、商業和社會目的而觀察統一標準時間的地球區域。",
+        "longDescription": "時區是地球上為了法律、商業和社會目的而觀察統一標準時間的區域。時區被定義為與協調世界時（UTC）相差整數小時的區域，儘管有些時區偏移30或45分鐘。\n\n時區首次在19世紀後期被採用以標準化本地時間，在此之前，各個城鎮的時間根據太陽時而有所不同。這個概念在1884年國際子午線會議後正式確立。\n\n大多數時區定義為UTC的偏移量。例如：\n- UTC-5（北美東部標準時間）\n- UTC+1（中歐時間）\n- UTC+8（中國標準時間）\n\n許多地區還觀察夏令時（DST），在夏季月份暫時將時鐘向前調整一小時。\n\n時區通常使用以下方式識別：\n- IANA/Olson時區資料庫識別碼（例如「America/New_York」）\n- 縮寫（例如EST、CST、PST）\n- UTC偏移標記（例如UTC+2、UTC-7）",
+        "definition": "時區是地球上遵守統一標準時間的區域。通常定義為相對於UTC的偏移量，以整小時為增量，但也有一些時區使用30分鐘或45分鐘的偏移量。",
+        "examples": "UTC+8表示比UTC快8小時的時區，如中國標準時間",
+        "relatedTerms": ["utc", "dst", "offset"]
+      },
+      "dst": {
+        "title": "夏令時",
+        "category": "concept",
+        "shortDescription": "在夏季月份向前調整時鐘以延長晚間日光的做法。",
+        "longDescription": "夏令時（DST，Daylight Saving Time）是在夏季月份向前調整時鐘（通常一小時）以延長晚間日光和減少人工照明使用的做法。DST轉換的確切日期因國家和地區而異。\n\n現代DST概念最初由George Vernon Hudson於1895年提出，並首次在第一次世界大戰期間作為節約煤炭的方式實施。如今，全球約40%的國家使用DST。\n\nDST轉換可能導致各種複雜情況：\n- 在春季，時鐘「向前撥」，導致跳過一小時\n- 在秋季，時鐘「向後撥」，導致一小時出現兩次\n\n這些轉換為排程、睡眠模式和電腦系統帶來挑戰。DST的有效性和必要性一直存在爭議，一些地區正在考慮廢除這種做法。",
+        "definition": "夏令時（Daylight Saving Time）是在溫暖月份將時鐘向前調整的做法，通常調整一小時，目的是更好地利用日光，在晚上時間延長日照時間。",
+        "examples": "春季「向前撥一小時」，秋季「向後撥一小時」",
+        "relatedTerms": ["timezone", "standardTime", "timeChange"]
+      },
+      "leapSecond": {
+        "title": "閏秒",
+        "category": "calculation",
+        "shortDescription": "偶爾添加到UTC中以適應地球自轉不規律性的一秒調整。",
+        "longDescription": "閏秒是偶爾添加到協調世界時（UTC）中的一秒調整，用於適應地球不規律的自轉。與遵循規律模式的閏年不同，閏秒是根據天文觀測不規律地插入的。\n\n地球的自轉由於潮汐摩擦而逐漸減慢，使得平太陽日略長於86,400秒。為了保持UTC在UT1（基於地球自轉的時間）的0.9秒內，必要時會添加閏秒。\n\n自1972年引入以來，閏秒通常以大約每18個月一次的速度添加。它們通常安排在6月30日或12月31日。\n\n閏秒對電腦系統構成挑戰，因為這些系統通常不是為處理61秒的分鐘而設計的。由於這些複雜性，已有提議取消閏秒。",
+        "definition": "閏秒是偶爾添加到協調世界時（UTC）的額外秒數，用於保持UTC與基於地球自轉的天文時間同步。由於地球自轉速度的微小變化而需要。",
+        "examples": "2016年12月31日23:59:60 UTC是一個閏秒",
+        "relatedTerms": ["utc", "atomicTime", "earthRotation"]
+      },
+      "atomicTime": {
+        "title": "原子時",
+        "category": "standard",
+        "shortDescription": "基於原子振蕩的高精度時間標準。",
+        "longDescription": "原子時，正式稱為國際原子時（TAI），是基於原子共振頻率的高精度時間標準。它提供了不受地球自轉不規律性影響的連續、穩定的時間尺度。\n\nTAI由全球原子鐘網路確定，這些原子鐘基於銫-133原子發射的電磁輻射測量時間。TAI中的秒被定義為這種輻射的9,192,631,770個週期的持續時間。\n\n與UTC不同，TAI不包括閏秒，因此連續運行而不進行調整。截至2023年，由於自1972年以來添加到UTC中的閏秒，TAI比UTC快37秒。\n\n原子時對於需要極其精確計時的應用至關重要，如GPS、科學研究和電信。",
+        "definition": "原子時是基於銫原子振蕩頻率的極其精確的時間標準。國際原子時（TAI）是UTC的基礎，比基於地球自轉的時間更穩定和精確。",
+        "examples": "TAI（國際原子時）比UTC快約37秒（截至2023年）",
+        "relatedTerms": ["utc", "tai", "caesiumClock"]
+      },
+      "julianDate": {
+        "title": "儒略日",
+        "category": "format",
+        "shortDescription": "自公元前4713年1月1日世界時正午以來的連續日數計算。",
+        "longDescription": "儒略日（JD）是自公元前4713年1月1日世界時正午以來的日數和日分數的連續計算。它由天文學家引入，為處理不同曆法提供單一的日期系統。\n\n儒略日系統由Joseph Scaliger於1583年提出。選擇這個起始點是因為它早於有記錄的歷史，代表古代年代學中使用的三個主要週期重合的點。\n\n儒略日以十進制數表示，其中整數部分表示日數，小數部分表示一天中的時間。\n\n一個稱為修正儒略日（MJD）的變體定義為MJD = JD - 2400000.5，這減少了位數並將整數邊界置於午夜。\n\n儒略日主要用於天文學和太空科學，以簡化時間間隔計算。",
+        "definition": "儒略日是一種連續計日系統，從公元前4713年1月1日開始計算。主要用於天文學和歷史日期計算，避免了不同曆法系統的複雜性。",
+        "examples": "2023年1月1日的儒略日數是2459946.5",
+        "relatedTerms": ["calendar", "astronomy", "chronology"]
+      },
+      "epoch": {
+        "title": "紀元",
+        "category": "concept",
+        "shortDescription": "用作特定時間測量系統起源的時間參考點。",
+        "longDescription": "在計時中，紀元是用作特定時間測量系統起源的時間參考點。不同的系統使用不同的紀元作為其起始點。\n\n一些著名的紀元包括：\n\n1. Unix紀元：1970年1月1日00:00:00 UTC - 用於Unix時間戳\n2. GPS紀元：1980年1月6日00:00:00 UTC - GPS時間的起始點\n3. J2000紀元：2000年1月1日12:00:00 TT - 天文學中的標準參考紀元\n4. Windows紀元：1601年1月1日00:00:00 UTC - 在NTFS檔案系統中使用\n5. NTP紀元：1900年1月1日00:00:00 UTC - 在網路時間協定中使用\n\n紀元的選擇出於各種實際或歷史原因。當處理不同的時間系統時，重要的是要了解它們各自的紀元，以便正確地在它們之間轉換。",
+        "definition": "在計算機科學中，紀元通常指Unix紀元，即1970年1月1日00:00:00 UTC。這是Unix時間戳計算的起始點，也被許多編程語言和系統採用。",
+        "examples": "Unix紀元：1970-01-01T00:00:00Z",
+        "relatedTerms": ["unixTimestamp", "unixTime", "systemTime"]
+      },
+      "iso8601": {
+        "title": "ISO 8601（日期時間格式）",
+        "category": "format",
+        "shortDescription": "表示日期和時間的國際標準。",
+        "longDescription": "ISO 8601是表示日期和時間的國際標準。它由國際標準化組織（ISO）發佈，提供了明確定義、無歧義的日期和時間表示方法，使其成為國際通信和電腦系統的理想選擇。\n\n該標準遵循YYYY-MM-DDThh:mm:ss.sssZ格式，其中：\n- YYYY代表年份\n- MM代表月份\n- DD代表日期\n- T是表示時間元素開始的分隔符\n- hh代表小時（24小時格式）\n- mm代表分鐘\n- ss代表秒\n- .sss代表秒的小數部分（可選）\n- Z表示時間為UTC（或可使用+/-hh:mm表示與UTC的偏移量）\n\n範例：\n- 2023-04-15T14:30:00Z（2023年4月15日UTC下午2:30）\n- 2023-04-15T14:30:00+02:00（比UTC快2小時時區的下午2:30）\n\nISO 8601在計算、資料交換和API中廣泛使用，因為它消除了日期表示中的歧義並且易於排序。",
+        "definition": "ISO 8601是國際標準化組織制定的日期和時間表示法國際標準。提供了明確、國際通用的日期時間格式，消除了不同地區間的歧義。",
+        "examples": "2023-12-25T14:30:00Z 或 2023-12-25T14:30:00+08:00",
+        "relatedTerms": ["utc", "timezone", "dateFormat"]
       }
     }
   }

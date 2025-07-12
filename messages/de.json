@@ -1,7 +1,7 @@
 {
   "common": {
-    "title": "Weltzeituhr & Zeit",
-    "description": "Aktuelle Zeit weltweit, UTC-Zeit, Feiertage und Altersrechner",
+    "title": "Weltzeituhr & Zeit - Aktuelle Zeit weltweit, UTC-Zeit Konverter, Zeitzonen-Rechner",
+    "description": "Überprüfen Sie die aktuelle Zeit weltweit mit unserer Live-Weltzeituhr. Kostenloser UTC-Zeitkonverter, Zeitzonenrechner und Altersrechner.",
     "day": "Wochentag",
     "date": "Datum",
     "nav": {
@@ -15,7 +15,7 @@
     }
   },
   "home": {
-    "title": "Aktuelle Zeit weltweit",
+    "title": "Aktuelle Zeit weltweit - Live Weltzeituhr, UTC-Zeit, Zeitzonen-Konverter & Zeit-Tools",
     "localTime": "Ihre Ortszeit",
     "timeZone": "Zeitzone",
     "tabs": {
@@ -271,7 +271,53 @@
         "question": "Warum den Jahresfortschritt verfolgen?",
         "answer": "Das Verfolgen des Jahresfortschritts kann bei Zeitbewusstsein, Zielsetzung und Planung helfen. Es bietet eine visuelle Erinnerung daran, wie viel vom Jahr vergangen ist und wie viel Zeit für das Erreichen der Jahresziele verbleibt."
       }
-    }
+    },
+    "backToCurrent": "Zurück zum aktuellen Jahr",
+    "yearCompleted": "Dieses Jahr wurde abgeschlossen",
+    "yearNotStarted": "Dieses Jahr hat noch nicht begonnen",
+    "comparisonTitle": "Vergleich mit dem aktuellen Jahr",
+    "yearAhead": "{year} ist dem aktuellen Jahr um {diff}% voraus",
+    "yearBehind": "{year} liegt {diff}% hinter dem aktuellen Jahr zurück",
+    "yearStatistics": "Jahresstatistiken",
+    "days": "Tage",
+    "weeks": "Wochen",
+    "months": "Monate",
+    "leapYear": "{year} ist ein Schaltjahr",
+    "relatedTools": "Verwandte Tools",
+    "calendar": "Kalender",
+    "viewFullCalendar": "Den vollständigen Kalender für dieses Jahr anzeigen",
+    "ageCalculator": "Altersrechner",
+    "calculateAge": "Alter basierend auf Geburtsjahr berechnen",
+    "daysElapsed": "Vergangene Tage",
+    "daysRemaining": "Verbleibende Tage",
+    "currentYearGoals": "Ziele für das aktuelle Jahr",
+    "yearInsights": "Jahreseinsichten",
+    "timeRemaining": "Verbleibende Zeit",
+    "progressSummary": "Fortschrittszusammenfassung",
+    "motivation": "Motivation",
+    "totalDays": "Gesamtanzahl Tage",
+    "totalWeeks": "Gesamtanzahl Wochen",
+    "inYear": "in {year}",
+    "trackProgress": "Verfolgen Sie Ihren {year} Fortschritt und machen Sie das Beste aus der verbleibenden Zeit in {year}.",
+    "goalTrackingDescription": "Nutzen Sie diesen {year} Jahresfortschritts-Tracker, um Ihre jährlichen Ziele zu überwachen. Mit {progress}% von {year} abgeschlossen haben Sie noch {daysRemaining} Tage, um Ihre {year} Ziele zu erreichen.",
+    "q1": "Q1 {year} (Jan-Mär)",
+    "q2": "Q2 {year} (Apr-Jun)",
+    "q3": "Q3 {year} (Jul-Sep)",
+    "q4": "Q4 {year} (Okt-Dez)",
+    "complete": "✓ Abgeschlossen",
+    "completeTitle": "Abgeschlossen",
+    "notStarted": "Noch nicht begonnen",
+    "timeRemainingDescription": "Sie haben {timeLeft} verbleibend in {year}. Das entspricht {percentage}% des aktuellen Jahres. Nutzen Sie die verbleibenden {daysRemaining} Tage in {year} optimal, um Ihre jährlichen Ziele zu erreichen.",
+    "progressSummaryDescription": "{year} ist zu {progress}% abgeschlossen. Sie haben bisher {daysElapsed} Tage von {year} erlebt. Das aktuelle Jahr {year} ist ein {yearType} mit {totalDays} Gesamttagen.",
+    "motivationDescription": "Jeder Tag in {year} ist eine Gelegenheit, Ihren Zielen näher zu kommen. Verfolgen Sie Ihre {year} Erfolge und bleiben Sie das ganze aktuelle Jahr über motiviert. Nutzen Sie diese {year} Fortschrittsvisualisierung, um sich auf das zu konzentrieren, was am wichtigsten ist.",
+    "leapYearType": "Schaltjahr",
+    "regularYearType": "reguläres Jahr",
+    "timeLeftMonths": "{count} Monat",
+    "timeLeftDays": "{count} Tag",
+    "timeLeftHours": "{count} Stunde",
+    "timeLeftMinutes": "{count} Minute",
+    "timeLeftSeconds": "{count} Sekunde",
+    "left": "übrig"
   },
   "cities": {
     "pageTitle": "Aktuelle Zeit in {cityName}",
@@ -534,6 +580,74 @@
       "daylightSaving": {
         "question": "Befolgt {timezone} die Sommerzeit?",
         "answer": "Dies hängt von der spezifischen Region und den örtlichen Bestimmungen ab. Die angezeigte aktuelle Zeit passt sich automatisch an die Sommerzeit an, wenn zutreffend."
+      }
+    }
+  },
+  "glossary": {
+    "title": "Glossar der Datetime-Konzepte",
+    "subtitle": "Umfassende Referenz für zeitbezogene Terminologie und Konzepte",
+    "searchPlaceholder": "Begriffe suchen...",
+    "searchResults": "Suchergebnisse ({count})",
+    "noResults": "Keine passenden Begriffe gefunden. Versuchen Sie einen anderen Suchbegriff.",
+    "allTerms": "Alle Begriffe",
+    "relatedTerms": "Verwandte Begriffe",
+    "categories": {
+      "standard": "Zeitstandards",
+      "format": "Zeitformate",
+      "concept": "Zeitkonzepte",
+      "timezone": "Zeitzonenbezogen",
+      "calculation": "Zeitberechnungen"
+    },
+    "terms": {
+      "utc": {
+        "title": "UTC (Koordinierte Weltzeit)",
+        "shortDescription": "Der primäre Zeitstandard, nach dem die Welt Uhren und Zeit reguliert.",
+        "longDescription": "Die Koordinierte Weltzeit (UTC) ist der primäre Zeitstandard, nach dem die Welt Uhren und Zeit reguliert. Sie ist die Grundlage für die Zivilzeit heute und wird im Internet, in der Luftfahrt, im Seeverkehr und in vielen wissenschaftlichen Anwendungen verwendet.\n\nUTC wird von einem Netzwerk von Atomuhren auf der ganzen Welt aufrechterhalten und ist eng verwandt mit, aber verschieden von der Greenwich Mean Time (GMT). Im Gegensatz zu lokalen Zeitzonen ändert sich UTC nicht mit den Jahreszeiten und wird nicht von der Sommerzeit beeinflusst.\n\nUTC ist der Zeitstandard für viele Systeme, die präzise Zeitmessung erfordern, einschließlich Internet, GPS-Satelliten und internationale Flugsicherung."
+      },
+      "gmt": {
+        "title": "GMT (Greenwich Mean Time)",
+        "shortDescription": "Die mittlere Sonnenzeit am Royal Observatory in Greenwich, London.",
+        "longDescription": "Die Greenwich Mean Time (GMT) ist die mittlere Sonnenzeit am Royal Observatory in Greenwich, London. Sie wurde historisch als internationaler Zivilzeitstandard verwendet, bevor sie in wissenschaftlichen Kontexten durch die Koordinierte Weltzeit (UTC) ersetzt wurde."
+      },
+      "iso8601": {
+        "title": "ISO 8601 (Datum- und Zeitformat)",
+        "shortDescription": "Internationaler Standard zur Darstellung von Daten und Zeiten.",
+        "longDescription": "ISO 8601 ist ein internationaler Standard zur Darstellung von Daten und Zeiten. Er bietet eine eindeutige Methode zur Darstellung von Daten und Zeiten und ist ideal für internationale Kommunikation und Computersysteme."
+      },
+      "unixTimestamp": {
+        "title": "Unix-Zeitstempel",
+        "shortDescription": "Die Anzahl der Sekunden, die seit dem 1. Januar 1970 (UTC) vergangen sind.",
+        "longDescription": "Ein Unix-Zeitstempel ist ein System zur Darstellung eines Zeitpunkts als Anzahl der Sekunden, die seit dem 1. Januar 1970, 00:00:00 UTC vergangen sind."
+      },
+      "timezone": {
+        "title": "Zeitzone",
+        "shortDescription": "Eine Region der Erde, die eine einheitliche Standardzeit für rechtliche, kommerzielle und soziale Zwecke beachtet.",
+        "longDescription": "Eine Zeitzone ist eine Region der Erde, die eine einheitliche Standardzeit für rechtliche, kommerzielle und soziale Zwecke beachtet."
+      },
+      "dst": {
+        "title": "Sommerzeit (DST)",
+        "shortDescription": "Die Praxis, Uhren während der Sommermonate vorzustellen, um das Abendlicht zu verlängern.",
+        "longDescription": "Die Sommerzeit ist die Praxis, Uhren während der Sommermonate vorzustellen, um das Abendlicht zu verlängern und den Verbrauch von künstlichem Licht zu reduzieren."
+      },
+      "leapSecond": {
+        "title": "Schaltsekunde",
+        "shortDescription": "Eine einsekündige Anpassung, die gelegentlich zur UTC hinzugefügt wird.",
+        "longDescription": "Eine Schaltsekunde ist eine einsekündige Anpassung, die gelegentlich zur Koordinierten Weltzeit (UTC) hinzugefügt wird, um Unregelmäßigkeiten in der Erdrotation auszugleichen."
+      },
+      "atomicTime": {
+        "title": "Atomzeit (TAI)",
+        "shortDescription": "Ein hochpräziser Zeitstandard basierend auf der Schwingung von Atomen.",
+        "longDescription": "Die Atomzeit ist ein hochpräziser Zeitstandard basierend auf der Resonanzfrequenz von Atomen."
+      },
+      "julianDate": {
+        "title": "Julianisches Datum",
+        "shortDescription": "Eine kontinuierliche Zählung von Tagen seit Mittag Weltzeit am 1. Januar 4713 v. Chr.",
+        "longDescription": "Das Julianische Datum ist eine kontinuierliche Zählung von Tagen und Tagesbruchteilen seit Mittag Weltzeit am 1. Januar 4713 v. Chr."
+      },
+      "epoch": {
+        "title": "Epoche",
+        "shortDescription": "Ein Referenzpunkt in der Zeit, der als Ursprung für ein bestimmtes Zeitmesssystem verwendet wird.",
+        "longDescription": "In der Zeitmessung ist eine Epoche ein Referenzpunkt in der Zeit, der als Ursprung für ein bestimmtes Zeitmesssystem verwendet wird."
       }
     }
   }
