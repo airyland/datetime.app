@@ -48,13 +48,10 @@ export function Footer() {
         <Link href="/age-calculator" className="hover:text-gray-900 dark:hover:text-gray-200">Age Calculator</Link>
         <Link href="/holidays" className="hover:text-gray-900 dark:hover:text-gray-200">Holidays</Link>
       </p>
-      <p className="text-xs text-gray-500 dark:text-gray-500 space-x-4">
+      <p className="text-xs text-gray-500 dark:text-gray-500">
         <Link href="/utc" className="inline-flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-300 font-mono">
           <Globe className="h-2.5 w-2.5" />
           <span>UTC: {utcTime} {utcDate}</span>
-        </Link>
-        <Link href={`/year-progress-bar/${currentYear}`} className="inline-flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-300 font-mono">
-          <span>{currentYear} Progress</span>
         </Link>
       </p>
     </footer>
