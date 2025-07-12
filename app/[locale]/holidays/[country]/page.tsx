@@ -77,7 +77,7 @@ export default function CountryHolidaysPage({ params, searchParams }: CountryHol
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-4xl mx-auto">
             <div className="mb-4">
-              <Link href="/holidays" className="inline-flex items-center text-primary hover:underline">
+              <Link href="/holidays" className="inline-flex items-center text-primary hover:underline" title="Back to holidays overview">
                 <ArrowLeft className="mr-1 h-4 w-4" />
                 Back to Countries
               </Link>
@@ -116,6 +116,7 @@ export default function CountryHolidaysPage({ params, searchParams }: CountryHol
                         key={region.code}
                         href={`/holidays/${country}/${region.code.toLowerCase()}?lang=${langParam}`}
                         className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center"
+                        title={`View holidays in ${region.name}`}
                       >
                         {region.name}
                       </Link>

@@ -282,6 +282,21 @@
       "utc": "UTC समय",
       "yearProgress": "वर्ष प्रगति"
     },
+    "links": {
+      "titleHome": "होमपेज पर जाएं",
+      "titleAbout": "datetime.app के बारे में",
+      "titleCalendar": "{year} का कैलेंडर देखें",
+      "titleGlossary": "समय शब्दों की शब्दावली ब्राउज़ करें",
+      "titleYearProgress": "वर्ष की प्रगति ट्रैक करें",
+      "titleAgeCalculator": "अपनी आयु की गणना करें",
+      "titleHolidays": "विश्व छुट्टियों को ब्राउज़ करें",
+      "titleUtc": "वर्तमान UTC समय",
+      "titleBackToYearProgress": "वर्तमान वर्ष प्रगति पर वापस जाएं",
+      "titleViewCalendar": "इस वर्ष का कैलेंडर देखें",
+      "titleViewGlossary": "हमारी पूरी शब्दावली देखें",
+      "titleLearnUtc": "UTC के बारे में और जानें",
+      "titleBackToHolidays": "छुट्टियों के अवलोकन पर वापस जाएं"
+    },
     "title": "विश्व घड़ी और समय - दुनिया भर का वर्तमान समय, UTC समय कनवर्टर, समय क्षेत्र कैलकुलेटर"
   },
   "holidays": {
@@ -290,7 +305,13 @@
   },
   "home": {
     "cityTimes": {
-      "title": "विश्व शहरों का समय"
+      "title": "विश्व शहरों का समय",
+      "titleNewYork": "न्यूयॉर्क में वर्तमान समय",
+      "titleLondon": "लंदन में वर्तमान समय",
+      "titleTokyo": "टोक्यो में वर्तमान समय",
+      "titleParis": "पेरिस में वर्तमान समय",
+      "titleSydney": "सिडनी में वर्तमान समय",
+      "titleBeijing": "बीजिंग में वर्तमान समय"
     },
     "faq": {
       "clockAccuracy": {
@@ -349,6 +370,7 @@
       "time": "समय",
       "timeRemaining": "बचा हुआ समय",
       "timezoneInfo": "समय क्षेत्र जानकारी",
+      "titleUtcTime": "वर्तमान UTC (समन्वित वैश्विक समय) देखें",
       "toTimezone": "इस समय क्षेत्र में",
       "toggleTheme": "थीम बदलें",
       "unixTimestamp": "Unix टाइमस्टैम्प",
@@ -376,6 +398,10 @@
     "tools": {
       "ageCalculator": "आयु कैलकुलेटर",
       "title": "समय उपकरण",
+      "titleYearProgress": "वर्तमान वर्ष की प्रगति ट्रैक करें",
+      "titleAgeCalculator": "वर्षों, महीनों और दिनों में अपनी सटीक आयु की गणना करें",
+      "titleUtcTime": "वर्तमान UTC (समन्वित वैश्विक समय) देखें",
+      "titleWorldHolidays": "विभिन्न देशों की छुट्टियों और पर्वों की खोज करें",
       "utcTime": "UTC समय",
       "worldHolidays": "विश्व छुट्टियां",
       "yearProgress": "वर्ष प्रगति बार"
@@ -478,6 +504,9 @@
     },
     "iso8601": "ISO 8601",
     "learnMore": "हमारी शब्दावली में UTC के बारे में और जानें",
+    "titleHome": "होमपेज पर जाएं",
+    "titleLearnMore": "हमारी शब्दावली में UTC के बारे में और जानें",
+    "titleViewGlossary": "दिनांक और समय की अवधारणाओं की हमारी संपूर्ण शब्दावली देखें",
     "subtitle": "विश्व समय मानक",
     "title": "समन्वित सार्वभौमिक समय (UTC)",
     "toggleTheme": "थीम बदलें",

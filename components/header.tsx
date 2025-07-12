@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <header className="container mx-auto px-4 py-6">
       <div className="flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity">
+        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={commonT('links.titleHome')}>
           Datetime.app
         </Link>
         
@@ -25,6 +25,7 @@ export default function Header() {
           <Link 
             href="/utc" 
             className="text-sm font-medium hover:opacity-80 transition-opacity"
+            title={commonT('links.titleUtc')}
           >
             {commonT('nav.utc')}
           </Link>
@@ -32,6 +33,7 @@ export default function Header() {
           <Link 
             href="/calendar/2025" 
             className="text-sm font-medium hover:opacity-80 transition-opacity"
+            title={commonT('links.titleCalendar', { year: 2025 })}
           >
             {commonT('nav.calendar')} 2025
           </Link>
@@ -39,6 +41,7 @@ export default function Header() {
           <Link 
             href="/holidays" 
             className="text-sm font-medium hover:opacity-80 transition-opacity"
+            title={commonT('links.titleHolidays')}
           >
             {commonT('nav.holidays')}
           </Link>
@@ -67,6 +70,7 @@ export default function Header() {
               href="/utc" 
               className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
               onClick={() => setMobileMenuOpen(false)}
+              title={commonT('links.titleUtc')}
             >
               {commonT('nav.utc')}
             </Link>
@@ -74,6 +78,7 @@ export default function Header() {
               href="/calendar/2025" 
               className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
               onClick={() => setMobileMenuOpen(false)}
+              title={commonT('links.titleCalendar', { year: 2025 })}
             >
               {commonT('nav.calendar')} 2025
             </Link>
@@ -81,6 +86,7 @@ export default function Header() {
               href="/holidays" 
               className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
               onClick={() => setMobileMenuOpen(false)}
+              title={commonT('links.titleHolidays')}
             >
               {commonT('nav.holidays')}
             </Link>

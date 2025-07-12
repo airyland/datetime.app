@@ -12,6 +12,21 @@
       "ageCalculator": "Age Calculator",
       "yearProgress": "Year Progress",
       "glossary": "Glossary"
+    },
+    "links": {
+      "titleHome": "Go to homepage",
+      "titleAbout": "About datetime.app",
+      "titleCalendar": "View calendar for {year}",
+      "titleGlossary": "Browse glossary of time terms",
+      "titleYearProgress": "Track year progress",
+      "titleAgeCalculator": "Calculate your age",
+      "titleHolidays": "Browse world holidays",
+      "titleUtc": "Current UTC time",
+      "titleBackToYearProgress": "Back to current year progress",
+      "titleViewCalendar": "View calendar for this year",
+      "titleViewGlossary": "View our complete glossary",
+      "titleLearnUtc": "Learn more about UTC",
+      "titleBackToHolidays": "Back to holidays overview"
     }
   },
   "home": {
@@ -63,17 +78,28 @@
       "dst": "DST",
       "clockSynchronized": "Clock is synchronized (±{offset}ms)",
       "clockOffset": "Clock is approximately {seconds} seconds off from server time",
-      "learnAboutUtc": "Learn about UTC"
+      "learnAboutUtc": "Learn about UTC",
+      "titleUtcTime": "View current UTC (Coordinated Universal Time)"
     },
     "tools": {
       "title": "Time Tools",
       "yearProgress": "Year Progress Bar",
       "ageCalculator": "Age Calculator",
       "utcTime": "UTC Time",
-      "worldHolidays": "World Holidays"
+      "worldHolidays": "World Holidays",
+      "titleYearProgress": "Track the progress of the current year",
+      "titleAgeCalculator": "Calculate your exact age in years, months, and days",
+      "titleUtcTime": "View current UTC (Coordinated Universal Time)",
+      "titleWorldHolidays": "Discover holidays and observances from different countries"
     },
     "cityTimes": {
-      "title": "World City Times"
+      "title": "World City Times",
+      "titleNewYork": "Current time in New York",
+      "titleLondon": "Current time in London", 
+      "titleTokyo": "Current time in Tokyo",
+      "titleParis": "Current time in Paris",
+      "titleSydney": "Current time in Sydney",
+      "titleBeijing": "Current time in Beijing"
     },
     "faq": {
       "title": "Frequently Asked Questions",
@@ -112,6 +138,9 @@
     "subtitle": "World Time Standard",
     "description": "View current UTC (Coordinated Universal Time). UTC is the world's time standard, unaffected by time zones or daylight saving time changes.",
     "learnMore": "Learn more about UTC in our glossary",
+    "titleHome": "Go to homepage",
+    "titleLearnMore": "Learn more about UTC in our glossary",
+    "titleViewGlossary": "View our complete glossary of date and time concepts",
     "unixTimestamp": "Unix Timestamp",
     "utcString": "UTC String",
     "iso8601": "ISO 8601",
