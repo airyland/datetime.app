@@ -11,7 +11,8 @@
       "holidays": "Jours Fériés",
       "ageCalculator": "Calculateur d'Âge",
       "yearProgress": "Progrès de l'Année",
-      "glossary": "Glossaire"
+      "glossary": "Glossaire",
+      "timezones": "Fuseaux horaires"
     },
     "links": {
       "titleHome": "Aller à la page d'accueil",
@@ -26,7 +27,8 @@
       "titleViewCalendar": "Voir le calendrier de cette année",
       "titleViewGlossary": "Voir notre glossaire complet",
       "titleLearnUtc": "En savoir plus sur UTC",
-      "titleBackToHolidays": "Retour à l'aperçu des jours fériés"
+      "titleBackToHolidays": "Retour à l'aperçu des jours fériés",
+      "titleTimezones": "Parcourir la base de données des fuseaux horaires IANA"
     }
   },
   "home": {
@@ -90,7 +92,9 @@
       "utcTime": "Heure UTC",
       "titleUtcTime": "Voir l'heure UTC (Temps Universel Coordonné) actuelle",
       "worldHolidays": "Jours Fériés Mondiaux",
-      "titleWorldHolidays": "Découvrir les jours fériés et célébrations de différents pays"
+      "timezones": "Fuseaux Horaires",
+      "titleWorldHolidays": "Découvrir les jours fériés et célébrations de différents pays",
+      "titleTimezones": "Parcourir la base de données complète des fuseaux horaires IANA"
     },
     "cityTimes": {
       "title": "Heures des Villes du Monde",
@@ -765,6 +769,154 @@
         "category": "format",
         "relatedTerms": ["UTC", "Format standardisé"],
         "examples": ["2024-07-12T14:30:00Z", "2024-07-12T16:30:00+02:00"]
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "Base de Données des Fuseaux Horaires IANA",
+    "description": "Liste complète des fuseaux horaires IANA du monde entier. Parcourir par région, rechercher par ville ou pays, et obtenir les informations d'heure actuelle pour n'importe quel fuseau horaire.",
+    "toggleTheme": "Basculer le thème",
+    "searchPlaceholder": "Rechercher fuseaux horaires, villes ou pays...",
+    "filterByRegion": "Filtrer par région",
+    "allRegions": "Toutes les Régions",
+    "sortBy": "Trier par",
+    "searchResults": "{count} fuseaux horaires trouvés",
+    "timezones": "fuseaux horaires",
+    "viewAll": "Voir tous les {count}",
+    "stats": {
+      "totalTimezones": "Total des Fuseaux Horaires",
+      "regions": "Régions",
+      "countries": "Pays",
+      "utcOffsets": "Décalages UTC"
+    },
+    "regions": {
+      "africa": "Afrique",
+      "america": "Amérique",
+      "antarctica": "Antarctique",
+      "arctic": "Arctique",
+      "asia": "Asie",
+      "atlantic": "Atlantique",
+      "australia": "Australie",
+      "europe": "Europe",
+      "indian": "Océan Indien",
+      "pacific": "Pacifique"
+    },
+    "sortOptions": {
+      "name": "Nom",
+      "offset": "Décalage UTC",
+      "population": "Population"
+    },
+    "tabs": {
+      "all": "Tous les Fuseaux Horaires",
+      "popular": "Populaires",
+      "byRegion": "Par Région"
+    },
+    "popularTimezones": {
+      "title": "Fuseaux Horaires les Plus Populaires",
+      "description": "Les fuseaux horaires les plus utilisés basés sur la population et l'usage mondial."
+    },
+    "noResults": {
+      "title": "Aucun fuseau horaire trouvé",
+      "description": "Essayez d'ajuster vos critères de recherche ou de filtre."
+    },
+    "seo": {
+      "about": {
+        "title": "À propos des Fuseaux Horaires IANA",
+        "content": "La Base de Données des Fuseaux Horaires IANA (tzdata) est la source faisant autorité pour les informations de fuseaux horaires dans le monde entier. Elle contient des données historiques et actuelles de fuseaux horaires pour toutes les régions, y compris les transitions d'heure d'été, les décalages UTC et les abréviations de fuseaux horaires. Cette base de données complète est maintenue par l'Autorité pour l'Attribution des Numéros Internet et est utilisée par les systèmes d'exploitation, les langages de programmation et les applications à l'échelle mondiale."
+      },
+      "features": {
+        "title": "Fonctionnalités",
+        "list": [
+          "Base de données complète des fuseaux horaires IANA avec informations en temps réel",
+          "Recherche et filtrage des fuseaux horaires par région, ville ou pays",
+          "Affichage de l'heure actuelle pour tous les fuseaux horaires avec mises à jour en direct",
+          "Données de population et coordonnées géographiques",
+          "Informations de décalage UTC incluant l'heure d'été",
+          "Abréviations de fuseaux horaires et noms alternatifs",
+          "Design réactif compatible avec les appareils mobiles",
+          "Outils complets de comparaison de fuseaux horaires",
+          "Données historiques et transitions de fuseaux horaires"
+        ]
+      },
+      "usage": {
+        "title": "Comment Utiliser",
+        "content": "Parcourez la liste complète des fuseaux horaires IANA, utilisez la fonction de recherche pour trouver des emplacements spécifiques, ou filtrez par régions géographiques. Chaque fuseau horaire fournit l'heure actuelle, le décalage UTC, les données de population et des informations détaillées sur la région. Cliquez sur n'importe quel fuseau horaire pour accéder aux informations détaillées incluant les formats d'heure, les fuseaux horaires associés et les questions fréquemment posées."
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "Basculer le thème",
+    "backToTimezones": "Retour aux Fuseaux Horaires IANA",
+    "description": "Heure actuelle et informations détaillées pour {timezone} à {city}",
+    "currentTime": "Heure Actuelle",
+    "enterFullscreen": "Entrer en mode plein écran",
+    "fullscreen": "Plein écran",
+    "tabs": {
+      "info": "Informations",
+      "compare": "Comparer",
+      "formats": "Formats",
+      "related": "Associés"
+    },
+    "basicInfo": {
+      "title": "Informations de Base",
+      "iana": "Identifiant IANA",
+      "region": "Région",
+      "country": "Pays",
+      "city": "Ville Principale",
+      "coordinates": "Coordonnées"
+    },
+    "timeInfo": {
+      "title": "Informations Temporelles",
+      "utcOffset": "Décalage UTC",
+      "dstOffset": "Décalage DST",
+      "abbreviation": "Abréviation",
+      "dstAbbreviation": "Abréviation DST",
+      "population": "Population"
+    },
+    "comparison": {
+      "title": "Différence Horaire avec les Grandes Villes"
+    },
+    "formats": {
+      "title": "Formats de Temps",
+      "iso8601": "Format ISO 8601",
+      "unix": "Horodatage Unix",
+      "rfc2822": "Format RFC 2822",
+      "local": "Format Local"
+    },
+    "related": {
+      "title": "Fuseaux Horaires Associés"
+    },
+    "regions": {
+      "africa": "Afrique",
+      "america": "Amérique",
+      "antarctica": "Antarctique",
+      "arctic": "Arctique",
+      "asia": "Asie",
+      "atlantic": "Atlantique",
+      "australia": "Australie",
+      "europe": "Europe",
+      "indian": "Océan Indien",
+      "pacific": "Pacifique"
+    },
+    "faq": {
+      "title": "Heure {timezone} - Questions Fréquemment Posées",
+      "currentTime": {
+        "question": "Quelle heure est-il maintenant à {city} ?",
+        "answer": "L'heure locale actuelle à {city}, {country} est {currentTime}. {city} est située dans le fuseau horaire {timezone}."
+      },
+      "utcDifference": {
+        "question": "Quelle est la différence horaire entre {city} et UTC ?",
+        "answer": "{city} suit l'heure {timezone}. Le décalage actuel par rapport à UTC est de {offset} heures."
+      },
+      "daylightSaving": {
+        "question": "{city} observe-t-elle l'heure d'été ?",
+        "answer": "Cela dépend des réglementations locales de {country}. L'heure actuelle est {currentTime}, qui s'ajuste automatiquement pour l'heure d'été lorsque applicable."
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "À propos de {timezone}",
+        "content": "{timezone} est l'heure standard utilisée à {city}, {country} et dans les régions environnantes. Le fuseau horaire a un décalage UTC de {offset} et est largement utilisé pour la planification et la coordination temporelle dans cette zone géographique. Ce fuseau horaire sert des millions de personnes et constitue une référence importante pour les affaires, les voyages et les communications internationales."
       }
     }
   }
