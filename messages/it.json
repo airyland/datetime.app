@@ -103,6 +103,9 @@
     "dayOfYear": "Giorno dell'Anno",
     "daysInMonth": "{days} giorni",
     "description": "Visualizza il calendario completo per {year} con tutti i mesi, date e numeri di settimana",
+    "metaTitle": "Calendario {year} - Calendario Gratuito Stampabile con Numeri di Settimana, Pianificatore Mensile e Vista Annuale",
+    "metaDescription": "Calendario {year} gratuito con numeri di settimana, vista mensile e panoramica annuale. Pianifica il tuo {year} con il nostro calendario interattivo {year} con festività, informazioni anno bisestile e formato stampabile.",
+    "metaKeywords": "calendario {year}, calendario annuale {year}, calendario mensile {year}, calendario annuale {year}, calendario gratuito {year}, calendario stampabile {year}, calendario {year} con numeri di settimana",
     "faq": {
       "currentMonth": {
         "answer": "Questo è il mese corrente ({month} {year}). Oggi è il {today}° giorno del mese, evidenziato in blu nel calendario.",
@@ -209,7 +212,28 @@
       "tue": "Mar",
       "wed": "Mer"
     },
-    "yearNavigation": "Navigazione Anno"
+    "yearNavigation": "Navigazione Anno",
+    "seo": {
+      "title": "Informazioni sul Calendario {year}",
+      "yearOverview": {
+        "title": "Panoramica dell'Anno {year}",
+        "content": "Il calendario {year} fornisce una vista completa di tutti i 12 mesi, {totalDays} giorni in totale. {year} è un {yearType} {leapYearInfo}. Il nostro calendario {year} include i numeri di settimana, rendendo facile tenere traccia degli orari settimanali e pianificare l'intero {year}."
+      },
+      "features": {
+        "title": "Caratteristiche del Nostro Calendario {year}",
+        "list": [
+          "Vista completa del calendario annuale {year} con tutti i 12 mesi",
+          "Numeri di settimana per ogni settimana nel {year}",
+          "Selezione di data interattiva per la pianificazione {year}",
+          "Design del calendario {year} compatibile con dispositivi mobili",
+          "Formato del calendario {year} gratuito e stampabile",
+          "Indicatori di anno bisestile per {year}",
+          "Evidenziazione del giorno corrente nel calendario {year}",
+          "Navigazione mensile all'interno del {year}",
+          "Confronto di calendario anno per anno"
+        ]
+      }
+    }
   },
   "cities": {
     "cityInfo": "Informazioni sulla città",

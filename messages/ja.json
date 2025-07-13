@@ -478,6 +478,9 @@
     "title": "{year}年カレンダー",
     "subtitle": "年間カレンダー表示",
     "description": "{year}年の完全なカレンダーを表示、全ての月、日付を含む",
+    "metaTitle": "{year}年カレンダー - 週番号付き無料印刷可能カレンダー、月間プランナー、年間ビュー",
+    "metaDescription": "週番号、月間ビュー、年間概要付きの無料{year}年カレンダー。祝日、うるう年情報、印刷可能フォーマットを含むインタラクティブな{year}年カレンダーで{year}年を計画しましょう。",
+    "metaKeywords": "{year}年カレンダー, {year}年間カレンダー, {year}月間カレンダー, {year}年次カレンダー, 無料{year}年カレンダー, 印刷可能{year}年カレンダー, 週番号付き{year}年カレンダー",
     "currentYear": "今年",
     "leapYear": "うるう年",
     "regularYear": "平年",
@@ -487,6 +490,27 @@
     "previousYear": "前年",
     "nextYear": "翌年",
     "yearNavigation": "年ナビゲーション",
+    "seo": {
+      "title": "{year}年カレンダーについて",
+      "yearOverview": {
+        "title": "{year}年の概要",
+        "content": "{year}年カレンダーは12か月すべての包括的なビューを提供し、合計{totalDays}日です。{year}年は{yearType}{leapYearInfo}です。{year}年カレンダーには週番号が含まれており、週間スケジュールの追跡と{year}年全体の計画を簡単にします。"
+      },
+      "features": {
+        "title": "{year}年カレンダーの機能",
+        "list": [
+          "12か月すべてを含む完全な{year}年間カレンダービュー",
+          "{year}年の各週の週番号",
+          "{year}年の計画のためのインタラクティブな日付選択",
+          "モバイルフレンドリーな{year}年カレンダーデザイン",
+          "無料印刷可能な{year}年カレンダーフォーマット",
+          "{year}年のうるう年インジケーター",
+          "{year}年カレンダーでの現在の日の強調表示",
+          "{year}年内の月間ナビゲーション",
+          "年間カレンダー比較"
+        ]
+      }
+    },
     "monthNavigation": "月ナビゲーション",
     "jumpToYear": "年にジャンプ",
     "toggleTheme": "テーマ切り替え",

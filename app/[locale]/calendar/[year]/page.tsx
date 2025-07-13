@@ -93,8 +93,15 @@ export default function CalendarPage({ params }: CalendarPageProps) {
               <h1 className="text-3xl md:text-4xl font-bold mb-2">
                 {t('title', { year })}
               </h1>
+              <div className="text-center max-w-2xl mx-auto mb-2">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                  {t('subtitle')}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {t('description', { year })}
+                </p>
+              </div>
               <div className="flex items-center justify-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                <span>{t('subtitle')}</span>
                 {isCurrentYear && (
                   <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs">
                     {t('currentYear')}
@@ -255,7 +262,7 @@ export default function CalendarPage({ params }: CalendarPageProps) {
         )}
 
         {/* Year Navigation */}
-        <Card className="mb-8 max-w-2xl mx-auto">
+        <Card className="mb-8 max-w-4xl mx-auto">
           <CardHeader className="pb-2">
             <CardTitle className="text-lg flex items-center gap-2">
               <CalendarIcon className="w-5 h-5" />
@@ -294,7 +301,7 @@ export default function CalendarPage({ params }: CalendarPageProps) {
         </Card>
 
         {/* FAQ Section */}
-        <div className="max-w-3xl mx-auto mb-8">
+        <div className="max-w-4xl mx-auto mb-8">
           <Card className="shadow-none border">
             <CardHeader>
               <CardTitle>{t('faq.title', { year })}</CardTitle>
@@ -310,6 +317,44 @@ export default function CalendarPage({ params }: CalendarPageProps) {
               </Accordion>
             </CardContent>
           </Card>
+        </div>
+
+        {/* SEO Content Section */}
+        <div className="max-w-4xl mx-auto mb-8 space-y-8">
+          {/* Year Overview */}
+          <Card className="shadow-none border">
+            <CardHeader>
+              <CardTitle>{t('seo.yearOverview.title', { year })}</CardTitle>
+            </CardHeader>
+            <CardContent className="prose dark:prose-invert max-w-none">
+              <p>
+                {t('seo.yearOverview.content', { 
+                  year, 
+                  totalDays: calendar.totalDays,
+                  yearType: calendar.isLeapYear ? t('leapYear').toLowerCase() : t('regularYear').toLowerCase(),
+                  leapYearInfo: calendar.isLeapYear ? ` with an extra day (February 29)` : ''
+                })}
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Features */}
+          <Card className="shadow-none border">
+            <CardHeader>
+              <CardTitle>{t('seo.features.title', { year })}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2 text-sm">
+                {t.raw('seo.features.list').map((feature: string, index: number) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-green-500 mt-1">✓</span>
+                    <span>{feature.replace('{year}', year.toString())}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
         </div>
       </div>
     </main>

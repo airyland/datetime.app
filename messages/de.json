@@ -416,6 +416,9 @@
     "title": "Kalender {year}",
     "subtitle": "Vollständige Jahreskalender-Ansicht mit Wochennummern",
     "description": "Betrachten Sie den vollständigen Kalender für {year} mit allen Monaten, Daten und Wochennummern",
+    "metaTitle": "Kalender {year} - Kostenloser druckbarer Kalender mit Wochennummern, Monatsplaner & Jahresansicht",
+    "metaDescription": "Kostenloser {year} Kalender mit Wochennummern, Monatsansicht und Jahresübersicht. Planen Sie Ihr {year} mit unserem interaktiven {year} Kalender mit Feiertagen, Schaltjahr-Infos und druckbarem Format.",
+    "metaKeywords": "Kalender {year}, {year} Jahreskalender, {year} Monatskalender, {year} Jahreskalender, kostenloser {year} Kalender, druckbarer {year} Kalender, {year} Kalender mit Wochennummern",
     "currentYear": "Aktuelles Jahr",
     "leapYear": "Schaltjahr",
     "regularYear": "Normales Jahr",
@@ -547,6 +550,27 @@
       "navigation": {
         "question": "Wie kann ich zu anderen Monaten navigieren?",
         "answer": "Verwenden Sie die Pfeiltasten, um zu {prevMonth} oder {nextMonth} zu gehen. Sie können auch auf jeden Monat im Navigationsgitter unten klicken oder die Schaltfläche 'Jahr anzeigen' verwenden, um alle Monate auf einmal zu sehen."
+      }
+    },
+    "seo": {
+      "title": "Über den Kalender {year}",
+      "yearOverview": {
+        "title": "Übersicht über das Jahr {year}",
+        "content": "Der Kalender {year} bietet eine umfassende Ansicht aller 12 Monate mit insgesamt {totalDays} Tagen. {year} ist ein {yearType} {leapYearInfo}. Unser Kalender {year} enthält Wochennummern, wodurch es einfach wird, wöchentliche Zeitpläne zu verfolgen und Ihr gesamtes Jahr {year} zu planen."
+      },
+      "features": {
+        "title": "Funktionen unseres Kalenders {year}",
+        "list": [
+          "Vollständige Jahreskalender-Ansicht für {year} mit allen 12 Monaten",
+          "Wochennummern für jede Woche in {year}",
+          "Interaktive Datumsauswahl für die Planung von {year}",
+          "Handyfreundliches Design für den Kalender {year}",
+          "Kostenloses druckbares Format für den Kalender {year}",
+          "Schaltjahr-Indikatoren für {year}",
+          "Hervorhebung des aktuellen Tages im Kalender {year}",
+          "Monatsnavigation innerhalb von {year}",
+          "Jahr-zu-Jahr-Kalendervergleich"
+        ]
       }
     }
   },

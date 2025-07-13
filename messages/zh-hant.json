@@ -416,6 +416,9 @@
     "title": "{year}年日曆",
     "subtitle": "完整年曆視圖，包含週數",
     "description": "查看{year}年完整日曆，包含所有月份、日期和週數",
+    "metaTitle": "{year}年日曆 - 免費可列印日曆，包含週數、月度規劃器和年度檢視",
+    "metaDescription": "免費{year}年日曆，包含週數、月度檢視和年度概覽。使用我們的互動式{year}年日曆規劃您的{year}年，包含節假日、閏年資訊和可列印格式。",
+    "metaKeywords": "{year}年日曆, {year}年度日曆, {year}月度日曆, {year}年曆, 免費{year}年日曆, 可列印{year}年日曆, 帶週數的{year}年日曆",
     "currentYear": "當前年份",
     "leapYear": "閏年",
     "regularYear": "平年",
@@ -546,6 +549,35 @@
       "navigation": {
         "question": "如何導航到其他月份？",
         "answer": "使用箭頭按鈕前往{prevMonth}或{nextMonth}。您也可以點擊下方導航網格中的任何月份，或使用「檢視年份」按鈕一次檢視所有月份。"
+      }
+    },
+    "seo": {
+      "title": "關於{year}年日曆",
+      "yearOverview": {
+        "title": "{year}年概覽",
+        "content": "{year}年日曆提供所有12個月的全面檢視，總共{totalDays}天。{year}年是{yearType}{leapYearInfo}。我們的{year}年日曆包含週數，便於追蹤每週日程並規劃整個{year}年。"
+      },
+      "features": {
+        "title": "我們{year}年日曆的特色功能",
+        "list": [
+          "完整的{year}年度日曆檢視，包含所有12個月",
+          "{year}年每週的週數顯示",
+          "用於{year}年規劃的互動式日期選擇",
+          "適合行動裝置的{year}年日曆設計",
+          "免費可列印的{year}年日曆格式",
+          "{year}年閏年指示器",
+          "{year}年日曆中當前日期高亮顯示",
+          "{year}年內的月度導航",
+          "年度間日曆對比功能"
+        ]
+      },
+      "usage": {
+        "title": "如何使用這個{year}年日曆",
+        "content": "這個互動式{year}年日曆允許您詳細瀏覽{year}年的每個月。點擊任何日期檢視詳細資訊，包括週數和年內天數。使用導航箭頭瀏覽不同年份，或點擊月份名稱檢視{year}年的單個月份。{year}年日曆非常適合在整個{year}年進行規劃、安排日程和組織活動。"
+      },
+      "benefits": {
+        "title": "使用{year}年日曆的好處",
+        "content": "全面的{year}年日曆幫助您一次性看到整年，使長期規劃更容易。包含週數後，您可以與使用基於週的規劃的商業日程進行協調。我們的{year}年日曆非常適合學術規劃、專案管理、假期安排以及整個{year}年的個人組織。"
       }
     }
   },
