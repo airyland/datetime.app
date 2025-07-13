@@ -416,6 +416,9 @@
     "title": "Calendar {year}",
     "subtitle": "Full year calendar view with week numbers",
     "description": "View the complete calendar for {year} with all months, dates, and week numbers",
+    "metaTitle": "{year} Calendar - Free Printable Calendar with Week Numbers, Monthly Planner & Annual View",
+    "metaDescription": "Free {year} calendar with week numbers, monthly view, and yearly overview. Plan your {year} with our interactive {year} calendar featuring holidays, leap year info, and printable format.",
+    "metaKeywords": "{year} calendar, {year} yearly calendar, {year} monthly calendar, {year} annual calendar, free {year} calendar, printable {year} calendar, {year} calendar with week numbers",
     "currentYear": "Current Year",
     "leapYear": "Leap Year",
     "regularYear": "Regular Year",
@@ -524,6 +527,27 @@
       "navigation": {
         "question": "How can I navigate to other months?",
         "answer": "Use the arrow buttons to go to {prevMonth} or {nextMonth}. You can also click on any month in the navigation grid below, or use the 'View Year' button to see all months at once."
+      }
+    },
+    "seo": {
+      "title": "About {year} Calendar",
+      "yearOverview": {
+        "title": "{year} Year Overview",
+        "content": "The {year} calendar provides a comprehensive view of all 12 months, {totalDays} days total. {year} is a {yearType} {leapYearInfo}. Our {year} calendar includes week numbers, making it easy to track weekly schedules and plan your entire {year}."
+      },
+      "features": {
+        "title": "Features of Our {year} Calendar",
+        "list": [
+          "Complete {year} yearly calendar view with all 12 months",
+          "Week numbers for every week in {year}",
+          "Interactive date selection for {year} planning",
+          "Mobile-friendly {year} calendar design",
+          "Free printable {year} calendar format",
+          "Leap year indicators for {year}",
+          "Current day highlighting in {year} calendar",
+          "Monthly navigation within {year}",
+          "Year-to-year calendar comparison"
+        ]
       }
     }
   },

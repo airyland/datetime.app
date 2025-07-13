@@ -103,6 +103,9 @@
     "dayOfYear": "Dia do Ano",
     "daysInMonth": "{days} dias",
     "description": "Veja o calendário completo para {year} com todos os meses, datas e números de semana",
+    "metaTitle": "Calendário {year} - Calendário Gratuito Para Imprimir com Números de Semana, Planejador Mensal e Visualização Anual",
+    "metaDescription": "Calendário {year} gratuito com números de semana, visualização mensal e resumo anual. Planeje seu {year} com nosso calendário interativo {year} com feriados, informações de ano bissexto e formato para impressão.",
+    "metaKeywords": "calendário {year}, calendário anual {year}, calendário mensal {year}, calendário anual {year}, calendário gratuito {year}, calendário para imprimir {year}, calendário {year} com números de semana",
     "faq": {
       "currentMonth": {
         "answer": "Este é o mês atual ({month} {year}). Hoje é o {today}º dia do mês, destacado em azul no calendário.",
@@ -209,7 +212,28 @@
       "tue": "Ter",
       "wed": "Qua"
     },
-    "yearNavigation": "Navegação por Ano"
+    "yearNavigation": "Navegação por Ano",
+    "seo": {
+      "title": "Sobre o Calendário {year}",
+      "yearOverview": {
+        "title": "Visão Geral do Ano {year}",
+        "content": "O calendário {year} fornece uma visualização abrangente de todos os 12 meses, {totalDays} dias no total. {year} é um {yearType} {leapYearInfo}. Nosso calendário {year} inclui números de semana, facilitando o acompanhamento de horários semanais e o planejamento de todo o seu {year}."
+      },
+      "features": {
+        "title": "Recursos do Nosso Calendário {year}",
+        "list": [
+          "Visualização completa do calendário anual {year} com todos os 12 meses",
+          "Números de semana para cada semana em {year}",
+          "Seleção de data interativa para planejamento de {year}",
+          "Design do calendário {year} compatível com dispositivos móveis",
+          "Formato do calendário {year} gratuito e para impressão",
+          "Indicadores de ano bissexto para {year}",
+          "Destaque do dia atual no calendário {year}",
+          "Navegação mensal dentro de {year}",
+          "Comparação de calendário ano a ano"
+        ]
+      }
+    }
   },
   "cities": {
     "cityInfo": "Informações da cidade",
