@@ -304,7 +304,24 @@
       "holidays": "Giorni Festivi",
       "home": "Home",
       "utc": "Ora UTC",
-      "yearProgress": "Progresso dell'Anno"
+      "yearProgress": "Progresso dell'Anno",
+      "timezones": "Fusi orari"
+    },
+    "links": {
+      "titleHome": "Vai alla homepage",
+      "titleAbout": "Informazioni su datetime.app",
+      "titleCalendar": "Visualizza calendario per {year}",
+      "titleGlossary": "Sfoglia glossario dei termini temporali",
+      "titleYearProgress": "Traccia il progresso dell'anno",
+      "titleAgeCalculator": "Calcola la tua età",
+      "titleHolidays": "Sfoglia i giorni festivi mondiali",
+      "titleUtc": "Ora UTC attuale",
+      "titleBackToYearProgress": "Torna al progresso dell'anno attuale",
+      "titleViewCalendar": "Visualizza calendario per quest'anno",
+      "titleViewGlossary": "Visualizza il nostro glossario completo",
+      "titleLearnUtc": "Scopri di più su UTC",
+      "titleBackToHolidays": "Torna alla panoramica dei giorni festivi",
+      "titleTimezones": "Sfoglia il database dei fusi orari IANA"
     },
     "links": {
       "titleHome": "Vai alla homepage",
@@ -421,9 +438,11 @@
     "title": "Ora Attuale in Tutto il Mondo - Orologio Mondiale dal Vivo, Ora UTC, Convertitore di Fusi Orari e Strumenti Temporali",
     "tools": {
       "ageCalculator": "Calcolatore di Età",
+      "timezones": "Fusi Orari",
       "title": "Strumenti Temporali",
       "titleYearProgress": "Traccia il progresso dell'anno corrente",
       "titleAgeCalculator": "Calcola la tua età esatta in anni, mesi e giorni",
+      "titleTimezones": "Sfoglia il database completo dei fusi orari IANA",
       "titleUtcTime": "Visualizza l'ora UTC (Tempo Universale Coordinato) corrente",
       "titleWorldHolidays": "Scopri festività e ricorrenze di diversi paesi",
       "utcTime": "Ora UTC",
@@ -734,6 +753,154 @@
         "definition": "Standard internazionale che definisce la rappresentazione numerica di date e orari. Segue il formato YYYY-MM-DDTHH:MM:SS.sssZ.",
         "example": "2024-03-15T14:30:00.000Z rappresenta il 15 marzo 2024 alle 14:30:00 UTC in formato ISO 8601.",
         "relatedTerms": ["utc", "timezone", "standardFormat"]
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "Database dei Fusi Orari IANA",
+    "description": "Elenco completo dei fusi orari IANA da tutto il mondo. Naviga per regione, cerca per città o paese, e ottieni informazioni sull'ora attuale per qualsiasi fuso orario.",
+    "toggleTheme": "Cambia tema",
+    "searchPlaceholder": "Cerca fusi orari, città o paesi...",
+    "filterByRegion": "Filtra per regione",
+    "allRegions": "Tutte le Regioni",
+    "sortBy": "Ordina per",
+    "searchResults": "Trovati {count} fusi orari",
+    "timezones": "fusi orari",
+    "viewAll": "Visualizza tutti i {count}",
+    "stats": {
+      "totalTimezones": "Totale Fusi Orari",
+      "regions": "Regioni",
+      "countries": "Paesi",
+      "utcOffsets": "Offset UTC"
+    },
+    "regions": {
+      "africa": "Africa",
+      "america": "America",
+      "antarctica": "Antartide",
+      "arctic": "Artico",
+      "asia": "Asia",
+      "atlantic": "Atlantico",
+      "australia": "Australia",
+      "europe": "Europa",
+      "indian": "Oceano Indiano",
+      "pacific": "Pacifico"
+    },
+    "sortOptions": {
+      "name": "Nome",
+      "offset": "Offset UTC",
+      "population": "Popolazione"
+    },
+    "tabs": {
+      "all": "Tutti i Fusi Orari",
+      "popular": "Popolari",
+      "byRegion": "Per Regione"
+    },
+    "popularTimezones": {
+      "title": "Fusi Orari Più Popolari",
+      "description": "I fusi orari più utilizzati basati su popolazione e utilizzo globale."
+    },
+    "noResults": {
+      "title": "Nessun fuso orario trovato",
+      "description": "Prova ad aggiustare i tuoi criteri di ricerca o filtro."
+    },
+    "seo": {
+      "about": {
+        "title": "Informazioni sui Fusi Orari IANA",
+        "content": "Il Database dei Fusi Orari IANA (tzdata) è la fonte autorevole per le informazioni sui fusi orari a livello mondiale. Contiene dati storici e attuali sui fusi orari per tutte le regioni, incluse le transizioni dell'ora legale, gli offset UTC e le abbreviazioni dei fusi orari. Questo database completo è mantenuto dall'Internet Assigned Numbers Authority ed è utilizzato da sistemi operativi, linguaggi di programmazione e applicazioni a livello globale."
+      },
+      "features": {
+        "title": "Caratteristiche",
+        "list": [
+          "Database completo dei fusi orari IANA con informazioni in tempo reale",
+          "Ricerca e filtro dei fusi orari per regione, città o paese",
+          "Visualizzazione dell'ora attuale per tutti i fusi orari con aggiornamenti in diretta",
+          "Dati sulla popolazione e coordinate geografiche",
+          "Informazioni sull'offset UTC inclusa l'ora legale",
+          "Abbreviazioni dei fusi orari e nomi alternativi",
+          "Design responsive adatto ai dispositivi mobili",
+          "Strumenti completi di confronto dei fusi orari",
+          "Dati storici e transizioni dei fusi orari"
+        ]
+      },
+      "usage": {
+        "title": "Come Usare",
+        "content": "Naviga l'elenco completo dei fusi orari IANA, usa la funzione di ricerca per trovare posizioni specifiche, o filtra per regioni geografiche. Ogni fuso orario fornisce ora attuale, offset UTC, dati sulla popolazione e informazioni dettagliate sulla regione. Clicca su qualsiasi fuso orario per accedere a informazioni dettagliate inclusi formati dell'ora, fusi orari correlati e domande frequenti."
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "Cambia tema",
+    "backToTimezones": "Torna ai Fusi Orari IANA",
+    "description": "Ora attuale e informazioni dettagliate per {timezone} a {city}",
+    "currentTime": "Ora Attuale",
+    "enterFullscreen": "Entra in modalità schermo intero",
+    "fullscreen": "Schermo intero",
+    "tabs": {
+      "info": "Informazioni",
+      "compare": "Confronta",
+      "formats": "Formati",
+      "related": "Correlati"
+    },
+    "basicInfo": {
+      "title": "Informazioni di Base",
+      "iana": "Identificatore IANA",
+      "region": "Regione",
+      "country": "Paese",
+      "city": "Città Principale",
+      "coordinates": "Coordinate"
+    },
+    "timeInfo": {
+      "title": "Informazioni Temporali",
+      "utcOffset": "Offset UTC",
+      "dstOffset": "Offset DST",
+      "abbreviation": "Abbreviazione",
+      "dstAbbreviation": "Abbreviazione DST",
+      "population": "Popolazione"
+    },
+    "comparison": {
+      "title": "Differenza Oraria con le Città Principali"
+    },
+    "formats": {
+      "title": "Formati Orario",
+      "iso8601": "Formato ISO 8601",
+      "unix": "Timestamp Unix",
+      "rfc2822": "Formato RFC 2822",
+      "local": "Formato Locale"
+    },
+    "related": {
+      "title": "Fusi Orari Correlati"
+    },
+    "regions": {
+      "africa": "Africa",
+      "america": "America",
+      "antarctica": "Antartide",
+      "arctic": "Artico",
+      "asia": "Asia",
+      "atlantic": "Atlantico",
+      "australia": "Australia",
+      "europe": "Europa",
+      "indian": "Oceano Indiano",
+      "pacific": "Pacifico"
+    },
+    "faq": {
+      "title": "Ora {timezone} - Domande Frequenti",
+      "currentTime": {
+        "question": "Che ora è adesso a {city}?",
+        "answer": "L'ora locale attuale a {city}, {country} è {currentTime}. {city} si trova nel fuso orario {timezone}."
+      },
+      "utcDifference": {
+        "question": "Qual è la differenza oraria tra {city} e UTC?",
+        "answer": "{city} segue l'ora {timezone}. L'offset attuale da UTC è di {offset} ore."
+      },
+      "daylightSaving": {
+        "question": "{city} osserva l'ora legale?",
+        "answer": "Questo dipende dalle normative locali di {country}. L'ora attuale è {currentTime}, che si aggiusta automaticamente per l'ora legale quando applicabile."
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "Informazioni su {timezone}",
+        "content": "{timezone} è l'ora standard utilizzata a {city}, {country} e nelle regioni circostanti. Il fuso orario ha un offset UTC di {offset} ed è ampiamente utilizzato per la pianificazione e coordinazione temporale in quest'area geografica. Questo fuso orario serve milioni di persone ed è un riferimento importante per affari, viaggi e comunicazioni internazionali."
       }
     }
   }
