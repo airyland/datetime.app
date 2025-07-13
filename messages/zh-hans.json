@@ -416,6 +416,9 @@
     "title": "{year}年日历",
     "subtitle": "完整年历视图，包含周数",
     "description": "查看{year}年完整日历，包含所有月份、日期和周数",
+    "metaTitle": "{year}年日历 - 免费可打印日历，包含周数、月度计划器和年度视图",
+    "metaDescription": "免费{year}年日历，包含周数、月度视图和年度概览。使用我们的交互式{year}年日历规划您的{year}年，包含节假日、闰年信息和可打印格式。",
+    "metaKeywords": "{year}年日历, {year}年度日历, {year}月度日历, {year}年历, 免费{year}年日历, 可打印{year}年日历, 带周数的{year}年日历",
     "currentYear": "当前年份",
     "leapYear": "闰年",
     "regularYear": "平年",
@@ -546,6 +549,35 @@
       "navigation": {
         "question": "如何导航到其他月份？",
         "answer": "使用箭头按钮前往{prevMonth}或{nextMonth}。您也可以点击下方导航网格中的任何月份，或使用\"查看年份\"按钮一次查看所有月份。"
+      }
+    },
+    "seo": {
+      "title": "关于{year}年日历",
+      "yearOverview": {
+        "title": "{year}年概览",
+        "content": "{year}年日历提供所有12个月的全面视图，总共{totalDays}天。{year}年是{yearType}{leapYearInfo}。我们的{year}年日历包含周数，便于跟踪每周日程并规划整个{year}年。"
+      },
+      "features": {
+        "title": "我们{year}年日历的特色功能",
+        "list": [
+          "完整的{year}年度日历视图，包含所有12个月",
+          "{year}年每周的周数显示",
+          "用于{year}年规划的交互式日期选择",
+          "适合移动设备的{year}年日历设计",
+          "免费可打印的{year}年日历格式",
+          "{year}年闰年指示器",
+          "{year}年日历中当前日期高亮显示",
+          "{year}年内的月度导航",
+          "年度间日历对比功能"
+        ]
+      },
+      "usage": {
+        "title": "如何使用这个{year}年日历",
+        "content": "这个交互式{year}年日历允许您详细浏览{year}年的每个月。点击任何日期查看详细信息，包括周数和年内天数。使用导航箭头浏览不同年份，或点击月份名称查看{year}年的单个月份。{year}年日历非常适合在整个{year}年进行规划、安排日程和组织活动。"
+      },
+      "benefits": {
+        "title": "使用{year}年日历的好处",
+        "content": "全面的{year}年日历帮助您一次性看到整年，使长期规划更容易。包含周数后，您可以与使用基于周的规划的商业日程进行协调。我们的{year}年日历非常适合学术规划、项目管理、假期安排以及整个{year}年的个人组织。"
       }
     }
   },

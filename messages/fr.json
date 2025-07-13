@@ -416,6 +416,9 @@
     "title": "Calendrier {year}",
     "subtitle": "Vue complète du calendrier annuel avec numéros de semaine",
     "description": "Consultez le calendrier complet pour {year} avec tous les mois, dates et numéros de semaine",
+    "metaTitle": "Calendrier {year} - Calendrier Gratuit Imprimable avec Numéros de Semaine, Planificateur Mensuel et Vue Annuelle",
+    "metaDescription": "Calendrier {year} gratuit avec numéros de semaine, vue mensuelle et aperçu annuel. Planifiez votre {year} avec notre calendrier interactif {year} avec jours fériés, informations année bissextile et format imprimable.",
+    "metaKeywords": "calendrier {year}, calendrier annuel {year}, calendrier mensuel {year}, calendrier annuel {year}, calendrier gratuit {year}, calendrier imprimable {year}, calendrier {year} avec numéros de semaine",
     "currentYear": "Année Actuelle",
     "leapYear": "Année Bissextile",
     "regularYear": "Année Régulière",
@@ -547,6 +550,27 @@
       "navigation": {
         "question": "Comment puis-je naviguer vers d'autres mois ?",
         "answer": "Utilisez les boutons fléchés pour aller à {prevMonth} ou {nextMonth}. Vous pouvez également cliquer sur n'importe quel mois dans la grille de navigation ci-dessous, ou utiliser le bouton 'Voir l'Année' pour voir tous les mois en une fois."
+      }
+    },
+    "seo": {
+      "title": "À propos du Calendrier {year}",
+      "yearOverview": {
+        "title": "Aperçu de l'année {year}",
+        "content": "Le calendrier {year} fournit une vue complète des 12 mois, {totalDays} jours au total. {year} est une {yearType} {leapYearInfo}. Notre calendrier {year} inclut les numéros de semaine, facilitant le suivi des horaires hebdomadaires et la planification de votre {year} entière."
+      },
+      "features": {
+        "title": "Fonctionnalités de Notre Calendrier {year}",
+        "list": [
+          "Vue complète du calendrier annuel {year} avec tous les 12 mois",
+          "Numéros de semaine pour chaque semaine en {year}",
+          "Sélection de date interactive pour la planification {year}",
+          "Design du calendrier {year} adapté aux mobiles",
+          "Format du calendrier {year} gratuit et imprimable",
+          "Indicateurs d'année bissextile pour {year}",
+          "Mise en évidence du jour actuel dans le calendrier {year}",
+          "Navigation mensuelle dans {year}",
+          "Comparaison de calendrier année par année"
+        ]
       }
     }
   },

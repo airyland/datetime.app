@@ -416,6 +416,9 @@
     "title": "Calendario {year}",
     "subtitle": "Vista completa del calendario anual con números de semana",
     "description": "Ve el calendario completo para {year} con todos los meses, fechas y números de semana",
+    "metaTitle": "Calendario {year} - Calendario Gratuito Imprimible con Números de Semana, Planificador Mensual y Vista Anual",
+    "metaDescription": "Calendario {year} gratuito con números de semana, vista mensual y resumen anual. Planifica tu {year} con nuestro calendario interactivo {year} con días festivos, información de año bisiesto y formato imprimible.",
+    "metaKeywords": "calendario {year}, calendario anual {year}, calendario mensual {year}, calendario anual {year}, calendario gratuito {year}, calendario imprimible {year}, calendario {year} con números de semana",
     "currentYear": "Año Actual",
     "leapYear": "Año Bisiesto",
     "regularYear": "Año Regular",
@@ -547,6 +550,27 @@
       "navigation": {
         "question": "¿Cómo puedo navegar a otros meses?",
         "answer": "Usa los botones de flecha para ir a {prevMonth} o {nextMonth}. También puedes hacer clic en cualquier mes en la cuadrícula de navegación de abajo, o usar el botón 'Ver Año' para ver todos los meses a la vez."
+      }
+    },
+    "seo": {
+      "title": "Acerca del Calendario {year}",
+      "yearOverview": {
+        "title": "Resumen del Año {year}",
+        "content": "El calendario {year} proporciona una vista completa de los 12 meses, {totalDays} días en total. {year} es un {yearType} {leapYearInfo}. Nuestro calendario {year} incluye números de semana, facilitando el seguimiento de horarios semanales y la planificación de todo tu {year}."
+      },
+      "features": {
+        "title": "Características de Nuestro Calendario {year}",
+        "list": [
+          "Vista completa del calendario anual {year} con los 12 meses",
+          "Números de semana para cada semana en {year}",
+          "Selección de fecha interactiva para planificar {year}",
+          "Diseño del calendario {year} compatible con móviles",
+          "Formato del calendario {year} gratuito e imprimible",
+          "Indicadores de año bisiesto para {year}",
+          "Resaltado del día actual en el calendario {year}",
+          "Navegación mensual dentro de {year}",
+          "Comparación de calendario año a año"
+        ]
       }
     }
   },
