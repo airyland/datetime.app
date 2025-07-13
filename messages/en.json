@@ -11,7 +11,8 @@
       "holidays": "Holidays",
       "ageCalculator": "Age Calculator",
       "yearProgress": "Year Progress",
-      "glossary": "Glossary"
+      "glossary": "Glossary",
+      "timezones": "Timezones"
     },
     "links": {
       "titleHome": "Go to homepage",
@@ -26,7 +27,8 @@
       "titleViewCalendar": "View calendar for this year",
       "titleViewGlossary": "View our complete glossary",
       "titleLearnUtc": "Learn more about UTC",
-      "titleBackToHolidays": "Back to holidays overview"
+      "titleBackToHolidays": "Back to holidays overview",
+      "titleTimezones": "Browse IANA timezone database"
     }
   },
   "home": {
@@ -87,10 +89,12 @@
       "ageCalculator": "Age Calculator",
       "utcTime": "UTC Time",
       "worldHolidays": "World Holidays",
+      "timezones": "Timezones",
       "titleYearProgress": "Track the progress of the current year",
       "titleAgeCalculator": "Calculate your exact age in years, months, and days",
       "titleUtcTime": "View current UTC (Coordinated Universal Time)",
-      "titleWorldHolidays": "Discover holidays and observances from different countries"
+      "titleWorldHolidays": "Discover holidays and observances from different countries",
+      "titleTimezones": "Browse comprehensive IANA timezone database"
     },
     "cityTimes": {
       "title": "World City Times",
@@ -678,6 +682,154 @@
         "title": "Epoch",
         "shortDescription": "A reference point in time used as the origin for a particular time measurement system.",
         "longDescription": "In timekeeping, an epoch is a reference point in time used as the origin for a particular time measurement system. Different systems use different epochs as their starting points.\n\nSome notable epochs include:\n\n1. Unix Epoch: January 1, 1970, 00:00:00 UTC - Used for Unix timestamps\n2. GPS Epoch: January 6, 1980, 00:00:00 UTC - Starting point for GPS time\n3. J2000 Epoch: January 1, 2000, 12:00:00 TT - Standard reference epoch in astronomy\n4. Windows Epoch: January 1, 1601, 00:00:00 UTC - Used in NTFS file systems\n5. NTP Epoch: January 1, 1900, 00:00:00 UTC - Used in Network Time Protocol\n\nEpochs are chosen for various practical or historical reasons. When working with different time systems, it's important to be aware of their respective epochs to correctly convert between them."
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "IANA Time Zones Database",
+    "description": "Complete list of IANA time zones from around the world. Browse by region, search by city or country, and get current time information for any timezone.",
+    "toggleTheme": "Toggle theme",
+    "searchPlaceholder": "Search timezones, cities, or countries...",
+    "filterByRegion": "Filter by region",
+    "allRegions": "All Regions",
+    "sortBy": "Sort by",
+    "searchResults": "Found {count} timezones",
+    "timezones": "timezones",
+    "viewAll": "View all {count} more",
+    "stats": {
+      "totalTimezones": "Total Timezones",
+      "regions": "Regions",
+      "countries": "Countries",
+      "utcOffsets": "UTC Offsets"
+    },
+    "regions": {
+      "africa": "Africa",
+      "america": "America",
+      "antarctica": "Antarctica",
+      "arctic": "Arctic",
+      "asia": "Asia",
+      "atlantic": "Atlantic",
+      "australia": "Australia",
+      "europe": "Europe",
+      "indian": "Indian Ocean",
+      "pacific": "Pacific"
+    },
+    "sortOptions": {
+      "name": "Name",
+      "offset": "UTC Offset",
+      "population": "Population"
+    },
+    "tabs": {
+      "all": "All Timezones",
+      "popular": "Popular",
+      "byRegion": "By Region"
+    },
+    "popularTimezones": {
+      "title": "Most Popular Timezones",
+      "description": "The most widely used timezones based on population and global usage."
+    },
+    "noResults": {
+      "title": "No timezones found",
+      "description": "Try adjusting your search or filter criteria."
+    },
+    "seo": {
+      "about": {
+        "title": "About IANA Time Zones",
+        "content": "The IANA Time Zone Database (tzdata) is the authoritative source for time zone information worldwide. It contains historical and current timezone data for all regions, including daylight saving time transitions, UTC offsets, and timezone abbreviations. This comprehensive database is maintained by the Internet Assigned Numbers Authority and is used by operating systems, programming languages, and applications globally."
+      },
+      "features": {
+        "title": "Features",
+        "list": [
+          "Complete IANA timezone database with real-time information",
+          "Search and filter timezones by region, city, or country",
+          "Current time display for all timezones with live updates",
+          "Population data and geographical coordinates",
+          "UTC offset information including daylight saving time",
+          "Timezone abbreviations and alternative names",
+          "Mobile-friendly responsive design",
+          "Comprehensive timezone comparison tools",
+          "Historical timezone data and transitions"
+        ]
+      },
+      "usage": {
+        "title": "How to Use",
+        "content": "Browse the complete list of IANA timezones, use the search function to find specific locations, or filter by geographical regions. Each timezone provides current time, UTC offset, population data, and detailed information about the region. Click on any timezone to access detailed information including time formats, related timezones, and frequently asked questions."
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "Toggle theme",
+    "backToTimezones": "Back to IANA Timezones",
+    "description": "Current time and detailed information for {timezone} in {city}",
+    "currentTime": "Current Time",
+    "enterFullscreen": "Enter fullscreen mode",
+    "fullscreen": "Fullscreen",
+    "tabs": {
+      "info": "Information",
+      "compare": "Compare",
+      "formats": "Formats",
+      "related": "Related"
+    },
+    "basicInfo": {
+      "title": "Basic Information",
+      "iana": "IANA Identifier",
+      "region": "Region",
+      "country": "Country",
+      "city": "Primary City",
+      "coordinates": "Coordinates"
+    },
+    "timeInfo": {
+      "title": "Time Information",
+      "utcOffset": "UTC Offset",
+      "dstOffset": "DST Offset",
+      "abbreviation": "Abbreviation",
+      "dstAbbreviation": "DST Abbreviation",
+      "population": "Population"
+    },
+    "comparison": {
+      "title": "Time Difference with Major Cities"
+    },
+    "formats": {
+      "title": "Time Formats",
+      "iso8601": "ISO 8601 Format",
+      "unix": "Unix Timestamp",
+      "rfc2822": "RFC 2822 Format",
+      "local": "Local Format"
+    },
+    "related": {
+      "title": "Related Timezones"
+    },
+    "regions": {
+      "africa": "Africa",
+      "america": "America",
+      "antarctica": "Antarctica",
+      "arctic": "Arctic",
+      "asia": "Asia",
+      "atlantic": "Atlantic",
+      "australia": "Australia",
+      "europe": "Europe",
+      "indian": "Indian Ocean",
+      "pacific": "Pacific"
+    },
+    "faq": {
+      "title": "{timezone} Time - Frequently Asked Questions",
+      "currentTime": {
+        "question": "What time is it now in {city}?",
+        "answer": "The current local time in {city}, {country} is {currentTime}. {city} is located in the {timezone} timezone."
+      },
+      "utcDifference": {
+        "question": "What is the time difference between {city} and UTC?",
+        "answer": "{city} follows {timezone} time. The current offset from UTC is {offset} hours."
+      },
+      "daylightSaving": {
+        "question": "Does {city} observe daylight saving time?",
+        "answer": "This depends on the local regulations of {country}. The current time is {currentTime}, which automatically adjusts for daylight saving time when applicable."
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "About {timezone}",
+        "content": "{timezone} is the standard time used in {city}, {country} and surrounding regions. The timezone has a UTC offset of {offset} and is widely used for scheduling and time coordination in this geographical area. This timezone serves millions of people and is an important reference for business, travel, and international communications."
       }
     }
   }

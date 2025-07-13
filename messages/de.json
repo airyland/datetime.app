@@ -11,7 +11,8 @@
       "holidays": "Feiertage",
       "ageCalculator": "Altersrechner",
       "yearProgress": "Jahresfortschritt",
-      "glossary": "Glossar"
+      "glossary": "Glossar",
+      "timezones": "Zeitzonen"
     },
     "links": {
       "titleHome": "Zur Startseite gehen",
@@ -26,7 +27,8 @@
       "titleViewCalendar": "Kalender für dieses Jahr anzeigen",
       "titleViewGlossary": "Unser vollständiges Glossar anzeigen",
       "titleLearnUtc": "Mehr über UTC lernen",
-      "titleBackToHolidays": "Zurück zur Feiertagsübersicht"
+      "titleBackToHolidays": "Zurück zur Feiertagsübersicht",
+      "titleTimezones": "IANA-Zeitzonendatenbank durchsuchen"
     }
   },
   "home": {
@@ -90,7 +92,9 @@
       "utcTime": "UTC-Zeit",
       "titleUtcTime": "Aktuelle UTC (Koordinierte Weltzeit) anzeigen",
       "worldHolidays": "Weltweite Feiertage",
-      "titleWorldHolidays": "Entdecken Sie Feiertage und Gedenktage aus verschiedenen Ländern"
+      "timezones": "Zeitzonen",
+      "titleWorldHolidays": "Entdecken Sie Feiertage und Gedenktage aus verschiedenen Ländern",
+      "titleTimezones": "Durchsuchen Sie die umfassende IANA-Zeitzonen-Datenbank"
     },
     "cityTimes": {
       "title": "Weltstädte-Zeiten",
@@ -701,6 +705,154 @@
         "title": "Epoche",
         "shortDescription": "Ein Referenzpunkt in der Zeit, der als Ursprung für ein bestimmtes Zeitmesssystem verwendet wird.",
         "longDescription": "In der Zeitmessung ist eine Epoche ein Referenzpunkt in der Zeit, der als Ursprung für ein bestimmtes Zeitmesssystem verwendet wird."
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "IANA-Zeitzonendatenbank",
+    "description": "Vollständige Liste der IANA-Zeitzonen aus der ganzen Welt. Nach Region durchsuchen, nach Stadt oder Land suchen und aktuelle Zeitinformationen für jede Zeitzone erhalten.",
+    "toggleTheme": "Design wechseln",
+    "searchPlaceholder": "Zeitzonen, Städte oder Länder suchen...",
+    "filterByRegion": "Nach Region filtern",
+    "allRegions": "Alle Regionen",
+    "sortBy": "Sortieren nach",
+    "searchResults": "{count} Zeitzonen gefunden",
+    "timezones": "Zeitzonen",
+    "viewAll": "Alle {count} anzeigen",
+    "stats": {
+      "totalTimezones": "Zeitzonen insgesamt",
+      "regions": "Regionen",
+      "countries": "Länder",
+      "utcOffsets": "UTC-Abweichungen"
+    },
+    "regions": {
+      "africa": "Afrika",
+      "america": "Amerika",
+      "antarctica": "Antarktis",
+      "arctic": "Arktis",
+      "asia": "Asien",
+      "atlantic": "Atlantik",
+      "australia": "Australien",
+      "europe": "Europa",
+      "indian": "Indischer Ozean",
+      "pacific": "Pazifik"
+    },
+    "sortOptions": {
+      "name": "Name",
+      "offset": "UTC-Abweichung",
+      "population": "Bevölkerung"
+    },
+    "tabs": {
+      "all": "Alle Zeitzonen",
+      "popular": "Beliebt",
+      "byRegion": "Nach Region"
+    },
+    "popularTimezones": {
+      "title": "Beliebteste Zeitzonen",
+      "description": "Die am häufigsten verwendeten Zeitzonen basierend auf Bevölkerung und globaler Nutzung."
+    },
+    "noResults": {
+      "title": "Keine Zeitzonen gefunden",
+      "description": "Versuchen Sie, Ihre Such- oder Filterkriterien anzupassen."
+    },
+    "seo": {
+      "about": {
+        "title": "Über IANA-Zeitzonen",
+        "content": "Die IANA-Zeitzonendatenbank (tzdata) ist die maßgebliche Quelle für Zeitzoneninformationen weltweit. Sie enthält historische und aktuelle Zeitzonendaten für alle Regionen, einschließlich Sommerzeit-Übergängen, UTC-Abweichungen und Zeitzonenabkürzungen. Diese umfassende Datenbank wird von der Internet Assigned Numbers Authority gepflegt und wird von Betriebssystemen, Programmiersprachen und Anwendungen weltweit verwendet."
+      },
+      "features": {
+        "title": "Funktionen",
+        "list": [
+          "Vollständige IANA-Zeitzonendatenbank mit Echtzeitinformationen",
+          "Suche und Filter für Zeitzonen nach Region, Stadt oder Land",
+          "Aktuelle Zeitanzeige für alle Zeitzonen mit Live-Updates",
+          "Bevölkerungsdaten und geografische Koordinaten",
+          "UTC-Abweichungsinformationen einschließlich Sommerzeit",
+          "Zeitzonenabkürzungen und alternative Namen",
+          "Mobilfreundliches responsives Design",
+          "Umfassende Zeitzonenvergleichstools",
+          "Historische Zeitzonendaten und -übergänge"
+        ]
+      },
+      "usage": {
+        "title": "Verwendung",
+        "content": "Durchsuchen Sie die vollständige Liste der IANA-Zeitzonen, verwenden Sie die Suchfunktion, um bestimmte Standorte zu finden, oder filtern Sie nach geografischen Regionen. Jede Zeitzone bietet aktuelle Zeit, UTC-Abweichung, Bevölkerungsdaten und detaillierte Informationen über die Region. Klicken Sie auf eine beliebige Zeitzone, um auf detaillierte Informationen zuzugreifen, einschließlich Zeitformaten, verwandten Zeitzonen und häufig gestellten Fragen."
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "Design wechseln",
+    "backToTimezones": "Zurück zu IANA-Zeitzonen",
+    "description": "Aktuelle Zeit und detaillierte Informationen für {timezone} in {city}",
+    "currentTime": "Aktuelle Zeit",
+    "enterFullscreen": "Vollbildmodus aktivieren",
+    "fullscreen": "Vollbild",
+    "tabs": {
+      "info": "Informationen",
+      "compare": "Vergleichen",
+      "formats": "Formate",
+      "related": "Verwandt"
+    },
+    "basicInfo": {
+      "title": "Grundinformationen",
+      "iana": "IANA-Kennung",
+      "region": "Region",
+      "country": "Land",
+      "city": "Hauptstadt",
+      "coordinates": "Koordinaten"
+    },
+    "timeInfo": {
+      "title": "Zeitinformationen",
+      "utcOffset": "UTC-Abweichung",
+      "dstOffset": "Sommerzeit-Abweichung",
+      "abbreviation": "Abkürzung",
+      "dstAbbreviation": "Sommerzeit-Abkürzung",
+      "population": "Bevölkerung"
+    },
+    "comparison": {
+      "title": "Zeitunterschied zu Großstädten"
+    },
+    "formats": {
+      "title": "Zeitformate",
+      "iso8601": "ISO 8601-Format",
+      "unix": "Unix-Zeitstempel",
+      "rfc2822": "RFC 2822-Format",
+      "local": "Lokales Format"
+    },
+    "related": {
+      "title": "Verwandte Zeitzonen"
+    },
+    "regions": {
+      "africa": "Afrika",
+      "america": "Amerika",
+      "antarctica": "Antarktis",
+      "arctic": "Arktis",
+      "asia": "Asien",
+      "atlantic": "Atlantik",
+      "australia": "Australien",
+      "europe": "Europa",
+      "indian": "Indischer Ozean",
+      "pacific": "Pazifik"
+    },
+    "faq": {
+      "title": "{timezone} Zeit - Häufig gestellte Fragen",
+      "currentTime": {
+        "question": "Wie spät ist es jetzt in {city}?",
+        "answer": "Die aktuelle Ortszeit in {city}, {country} ist {currentTime}. {city} befindet sich in der Zeitzone {timezone}."
+      },
+      "utcDifference": {
+        "question": "Wie groß ist der Zeitunterschied zwischen {city} und UTC?",
+        "answer": "{city} folgt der {timezone}-Zeit. Die aktuelle Abweichung von UTC beträgt {offset} Stunden."
+      },
+      "daylightSaving": {
+        "question": "Gilt in {city} die Sommerzeit?",
+        "answer": "Dies hängt von den örtlichen Bestimmungen in {country} ab. Die aktuelle Zeit ist {currentTime}, die automatisch für die Sommerzeit angepasst wird, wenn dies zutrifft."
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "Über {timezone}",
+        "content": "{timezone} ist die Standardzeit, die in {city}, {country} und den umliegenden Regionen verwendet wird. Die Zeitzone hat eine UTC-Abweichung von {offset} und wird häufig für die Terminplanung und Zeitkoordination in diesem geografischen Gebiet verwendet. Diese Zeitzone dient Millionen von Menschen und ist eine wichtige Referenz für Geschäfte, Reisen und internationale Kommunikation."
       }
     }
   }

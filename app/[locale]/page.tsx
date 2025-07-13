@@ -1020,7 +1020,7 @@ export default function Home() {
         {/* Tools Section */}
         <div className="mt-16 max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6 text-center">{t('tools.title')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
             <a href="/year-progress-bar" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleYearProgress')}>
               <Calendar className="h-5 w-5" />
               {t('tools.yearProgress')}
@@ -1036,6 +1036,10 @@ export default function Home() {
             <a href="/holidays" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleWorldHolidays')}>
               <Gift className="h-5 w-5" />
               {t('tools.worldHolidays')}
+            </a>
+            <a href="/iana-timezones" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleTimezones')}>
+              <Clock className="h-5 w-5" />
+              {t('tools.timezones')}
             </a>
           </div>
         </div>

@@ -45,6 +45,14 @@ export default function Header() {
           >
             {commonT('nav.holidays')}
           </Link>
+          <span className="text-muted-foreground">•</span>
+          <Link 
+            href="/iana-timezones" 
+            className="text-sm font-medium hover:opacity-80 transition-opacity"
+            title={commonT('links.titleTimezones')}
+          >
+            {commonT('nav.timezones')}
+          </Link>
         </div>
         
         <div className="flex items-center gap-2">
@@ -89,6 +97,14 @@ export default function Header() {
               title={commonT('links.titleHolidays')}
             >
               {commonT('nav.holidays')}
+            </Link>
+            <Link 
+              href="/iana-timezones" 
+              className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
+              onClick={() => setMobileMenuOpen(false)}
+              title={commonT('links.titleTimezones')}
+            >
+              {commonT('nav.timezones')}
             </Link>
           </div>
         </div>
