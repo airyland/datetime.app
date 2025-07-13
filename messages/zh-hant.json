@@ -11,7 +11,8 @@
       "holidays": "節假日",
       "ageCalculator": "年齡計算器",
       "yearProgress": "年度進度",
-      "glossary": "術語表"
+      "glossary": "術語表",
+      "timezones": "時區"
     },
     "links": {
       "titleHome": "回到主頁",
@@ -26,7 +27,8 @@
       "titleViewCalendar": "查看今年的日曆",
       "titleViewGlossary": "查看我們完整的術語表",
       "titleLearnUtc": "了解更多關於UTC的資訊",
-      "titleBackToHolidays": "回到節假日概覽"
+      "titleBackToHolidays": "回到節假日概覽",
+      "titleTimezones": "瀏覽IANA時區資料庫"
     }
   },
   "home": {
@@ -87,10 +89,12 @@
       "ageCalculator": "年齡計算器",
       "utcTime": "UTC時間",
       "worldHolidays": "世界節日",
+      "timezones": "時區",
       "titleYearProgress": "追蹤當前年度的進度",
       "titleAgeCalculator": "精確計算您的年齡（年、月、日）",
       "titleUtcTime": "查看當前UTC（協調世界時）",
-      "titleWorldHolidays": "發現世界各國的節假日和紀念日"
+      "titleWorldHolidays": "發現世界各國的節假日和紀念日",
+      "titleTimezones": "瀏覽全面的IANA時區資料庫"
     },
     "cityTimes": {
       "title": "世界城市時間",
@@ -748,6 +752,154 @@
         "definition": "ISO 8601是國際標準化組織制定的日期和時間表示法國際標準。提供了明確、國際通用的日期時間格式，消除了不同地區間的歧義。",
         "examples": "2023-12-25T14:30:00Z 或 2023-12-25T14:30:00+08:00",
         "relatedTerms": ["utc", "timezone", "dateFormat"]
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "IANA時區資料庫",
+    "description": "來自世界各地的完整IANA時區清單。按地區瀏覽，按城市或國家搜尋，並取得任何時區的當前時間資訊。",
+    "toggleTheme": "切換主題",
+    "searchPlaceholder": "搜尋時區、城市或國家...",
+    "filterByRegion": "按地區篩選",
+    "allRegions": "所有地區",
+    "sortBy": "排序方式",
+    "searchResults": "找到{count}個時區",
+    "timezones": "時區",
+    "viewAll": "檢視全部{count}個",
+    "stats": {
+      "totalTimezones": "總時區數",
+      "regions": "地區",
+      "countries": "國家",
+      "utcOffsets": "UTC偏移量"
+    },
+    "regions": {
+      "africa": "非洲",
+      "america": "美洲",
+      "antarctica": "南極洲",
+      "arctic": "北極",
+      "asia": "亞洲",
+      "atlantic": "大西洋",
+      "australia": "澳洲",
+      "europe": "歐洲",
+      "indian": "印度洋",
+      "pacific": "太平洋"
+    },
+    "sortOptions": {
+      "name": "名稱",
+      "offset": "UTC偏移量",
+      "population": "人口"
+    },
+    "tabs": {
+      "all": "所有時區",
+      "popular": "熱門",
+      "byRegion": "按地區"
+    },
+    "popularTimezones": {
+      "title": "最受歡迎的時區",
+      "description": "基於人口和全球使用情況的最廣泛使用的時區。"
+    },
+    "noResults": {
+      "title": "未找到時區",
+      "description": "請嘗試調整您的搜尋或篩選條件。"
+    },
+    "seo": {
+      "about": {
+        "title": "關於IANA時區",
+        "content": "IANA時區資料庫（tzdata）是全球時區資訊的權威來源。它包含所有地區的歷史和當前時區資料，包括夏令時轉換、UTC偏移量和時區縮寫。這個綜合資料庫由網際網路數字分配機構維護，被全球作業系統、程式語言和應用程式使用。"
+      },
+      "features": {
+        "title": "功能",
+        "list": [
+          "完整的IANA時區資料庫，提供即時資訊",
+          "按地區、城市或國家搜尋和篩選時區",
+          "顯示所有時區的當前時間，即時更新",
+          "人口資料和地理座標",
+          "UTC偏移資訊，包括夏令時",
+          "時區縮寫和別名",
+          "適配行動裝置的響應式設計",
+          "綜合時區比較工具",
+          "歷史時區資料和轉換"
+        ]
+      },
+      "usage": {
+        "title": "使用方法",
+        "content": "瀏覽完整的IANA時區清單，使用搜尋功能查找特定位置，或按地理區域篩選。每個時區提供當前時間、UTC偏移量、人口資料和有關該地區的詳細資訊。點擊任何時區以存取詳細資訊，包括時間格式、相關時區和常見問題。"
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "切換主題",
+    "backToTimezones": "返回IANA時區",
+    "description": "{city}的{timezone}當前時間和詳細資訊",
+    "currentTime": "當前時間",
+    "enterFullscreen": "進入全螢幕模式",
+    "fullscreen": "全螢幕",
+    "tabs": {
+      "info": "資訊",
+      "compare": "比較",
+      "formats": "格式",
+      "related": "相關"
+    },
+    "basicInfo": {
+      "title": "基本資訊",
+      "iana": "IANA識別碼",
+      "region": "地區",
+      "country": "國家",
+      "city": "主要城市",
+      "coordinates": "座標"
+    },
+    "timeInfo": {
+      "title": "時間資訊",
+      "utcOffset": "UTC偏移量",
+      "dstOffset": "夏令時偏移量",
+      "abbreviation": "縮寫",
+      "dstAbbreviation": "夏令時縮寫",
+      "population": "人口"
+    },
+    "comparison": {
+      "title": "與主要城市的時差"
+    },
+    "formats": {
+      "title": "時間格式",
+      "iso8601": "ISO 8601格式",
+      "unix": "Unix時間戳",
+      "rfc2822": "RFC 2822格式",
+      "local": "本地格式"
+    },
+    "related": {
+      "title": "相關時區"
+    },
+    "regions": {
+      "africa": "非洲",
+      "america": "美洲",
+      "antarctica": "南極洲",
+      "arctic": "北極",
+      "asia": "亞洲",
+      "atlantic": "大西洋",
+      "australia": "澳洲",
+      "europe": "歐洲",
+      "indian": "印度洋",
+      "pacific": "太平洋"
+    },
+    "faq": {
+      "title": "{timezone}時間 - 常見問題",
+      "currentTime": {
+        "question": "{city}現在是幾點？",
+        "answer": "{country}{city}的當前本地時間是{currentTime}。{city}位於{timezone}時區。"
+      },
+      "utcDifference": {
+        "question": "{city}與UTC的時差是多少？",
+        "answer": "{city}遵循{timezone}時間。當前與UTC的偏移量是{offset}小時。"
+      },
+      "daylightSaving": {
+        "question": "{city}是否實行夏令時？",
+        "answer": "這取決於{country}的當地法規。當前時間是{currentTime}，在適用時會自動調整夏令時。"
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "關於{timezone}",
+        "content": "{timezone}是{country}{city}及周邊地區使用的標準時間。該時區的UTC偏移量為{offset}，廣泛用於該地理區域的排程和時間協調。該時區為數百萬人服務，是商務、旅行和國際通訊的重要參考。"
       }
     }
   }

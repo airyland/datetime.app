@@ -11,7 +11,8 @@
       "holidays": "祝日",
       "ageCalculator": "年齢計算機",
       "yearProgress": "年間進捗",
-      "glossary": "用語集"
+      "glossary": "用語集",
+      "timezones": "タイムゾーン"
     },
     "links": {
       "titleHome": "ホームページに戻る",
@@ -26,7 +27,8 @@
       "titleViewCalendar": "今年のカレンダーを表示",
       "titleViewGlossary": "完全な用語集を表示",
       "titleLearnUtc": "UTCについて詳しく学ぶ",
-      "titleBackToHolidays": "祝日の概要に戻る"
+      "titleBackToHolidays": "祝日の概要に戻る",
+      "titleTimezones": "IANAタイムゾーンデータベースを閲覧"
     }
   },
   "home": {
@@ -90,7 +92,9 @@
       "utcTime": "UTC時間",
       "titleUtcTime": "現在のUTC（協定世界時）を表示",
       "worldHolidays": "世界の祝日",
-      "titleWorldHolidays": "さまざまな国の祝日や記念日を発見"
+      "timezones": "タイムゾーン",
+      "titleWorldHolidays": "さまざまな国の祝日や記念日を発見",
+      "titleTimezones": "包括的なIANAタイムゾーンデータベースを閲覧"
     },
     "cityTimes": {
       "title": "世界都市の時間",
@@ -700,6 +704,154 @@
         "title": "エポック",
         "shortDescription": "特定の時間測定システムの起点として使用される時間の基準点。",
         "longDescription": "時刻管理において、エポックは特定の時間測定システムの起点として使用される時間の基準点です。異なるシステムは異なるエポックを出発点として使用します。\n\n注目すべきエポックには以下があります：\n\n1. Unixエポック：1970年1月1日00:00:00 UTC - Unixタイムスタンプに使用\n2. GPSエポック：1980年1月6日00:00:00 UTC - GPS時間の開始点\n3. J2000エポック：2000年1月1日12:00:00 TT - 天文学での標準基準エポック\n4. Windowsエポック：1601年1月1日00:00:00 UTC - NTFSファイルシステムで使用\n5. NTPエポック：1900年1月1日00:00:00 UTC - ネットワークタイムプロトコルで使用\n\nエポックは、さまざまな実用的または歴史的理由で選択されます。異なる時間システムを扱う際は、それらの間で正確に変換するために、それぞれのエポックを認識することが重要です。"
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "IANAタイムゾーンデータベース",
+    "description": "世界各地からの完全なIANAタイムゾーンリスト。地域別に閲覧、都市や国で検索し、任意のタイムゾーンの現在時刻情報を取得できます。",
+    "toggleTheme": "テーマ切り替え",
+    "searchPlaceholder": "タイムゾーン、都市、国を検索...",
+    "filterByRegion": "地域で絞り込み",
+    "allRegions": "すべての地域",
+    "sortBy": "並び替え",
+    "searchResults": "{count}個のタイムゾーンが見つかりました",
+    "timezones": "タイムゾーン",
+    "viewAll": "すべての{count}個を表示",
+    "stats": {
+      "totalTimezones": "総タイムゾーン数",
+      "regions": "地域",
+      "countries": "国",
+      "utcOffsets": "UTCオフセット"
+    },
+    "regions": {
+      "africa": "アフリカ",
+      "america": "アメリカ",
+      "antarctica": "南極",
+      "arctic": "北極",
+      "asia": "アジア",
+      "atlantic": "大西洋",
+      "australia": "オーストラリア",
+      "europe": "ヨーロッパ",
+      "indian": "インド洋",
+      "pacific": "太平洋"
+    },
+    "sortOptions": {
+      "name": "名前",
+      "offset": "UTCオフセット",
+      "population": "人口"
+    },
+    "tabs": {
+      "all": "すべてのタイムゾーン",
+      "popular": "人気",
+      "byRegion": "地域別"
+    },
+    "popularTimezones": {
+      "title": "最も人気のタイムゾーン",
+      "description": "人口と世界的な使用に基づく最も広く使用されているタイムゾーン。"
+    },
+    "noResults": {
+      "title": "タイムゾーンが見つかりません",
+      "description": "検索またはフィルター条件を調整してみてください。"
+    },
+    "seo": {
+      "about": {
+        "title": "IANAタイムゾーンについて",
+        "content": "IANAタイムゾーンデータベース（tzdata）は、世界中のタイムゾーン情報の権威ある情報源です。すべての地域の歴史的および現在のタイムゾーンデータが含まれており、夏時間の移行、UTCオフセット、タイムゾーンの略語が含まれています。この包括的なデータベースは、インターネット番号管理機構によって維持され、オペレーティングシステム、プログラミング言語、およびアプリケーションによって世界的に使用されています。"
+      },
+      "features": {
+        "title": "機能",
+        "list": [
+          "リアルタイム情報を備えた完全なIANAタイムゾーンデータベース",
+          "地域、都市、国別でタイムゾーンを検索・フィルタリング",
+          "すべてのタイムゾーンの現在時刻をライブ更新で表示",
+          "人口データと地理座標",
+          "夏時間を含むUTCオフセット情報",
+          "タイムゾーンの略語と代替名",
+          "モバイルフレンドリーなレスポンシブデザイン",
+          "包括的なタイムゾーン比較ツール",
+          "歴史的なタイムゾーンデータと移行"
+        ]
+      },
+      "usage": {
+        "title": "使用方法",
+        "content": "IANAタイムゾーンの完全なリストを閲覧し、検索機能を使用して特定の場所を見つけるか、地理的地域でフィルタリングします。各タイムゾーンは、現在時刻、UTCオフセット、人口データ、およびその地域に関する詳細情報を提供します。任意のタイムゾーンをクリックして、時刻形式、関連タイムゾーン、よくある質問を含む詳細情報にアクセスします。"
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "テーマ切り替え",
+    "backToTimezones": "IANAタイムゾーンに戻る",
+    "description": "{city}の{timezone}の現在時刻と詳細情報",
+    "currentTime": "現在時刻",
+    "enterFullscreen": "フルスクリーンモードに入る",
+    "fullscreen": "フルスクリーン",
+    "tabs": {
+      "info": "情報",
+      "compare": "比較",
+      "formats": "形式",
+      "related": "関連"
+    },
+    "basicInfo": {
+      "title": "基本情報",
+      "iana": "IANA識別子",
+      "region": "地域",
+      "country": "国",
+      "city": "主要都市",
+      "coordinates": "座標"
+    },
+    "timeInfo": {
+      "title": "時刻情報",
+      "utcOffset": "UTCオフセット",
+      "dstOffset": "DSTオフセット",
+      "abbreviation": "略語",
+      "dstAbbreviation": "DST略語",
+      "population": "人口"
+    },
+    "comparison": {
+      "title": "主要都市との時差"
+    },
+    "formats": {
+      "title": "時刻フォーマット",
+      "iso8601": "ISO 8601形式",
+      "unix": "Unixタイムスタンプ",
+      "rfc2822": "RFC 2822形式",
+      "local": "ローカル形式"
+    },
+    "related": {
+      "title": "関連タイムゾーン"
+    },
+    "regions": {
+      "africa": "アフリカ",
+      "america": "アメリカ",
+      "antarctica": "南極",
+      "arctic": "北極",
+      "asia": "アジア",
+      "atlantic": "大西洋",
+      "australia": "オーストラリア",
+      "europe": "ヨーロッパ",
+      "indian": "インド洋",
+      "pacific": "太平洋"
+    },
+    "faq": {
+      "title": "{timezone}時刻 - よくある質問",
+      "currentTime": {
+        "question": "{city}の現在時刻は何時ですか？",
+        "answer": "{country}{city}の現在の現地時刻は{currentTime}です。{city}は{timezone}タイムゾーンに位置しています。"
+      },
+      "utcDifference": {
+        "question": "{city}とUTCの時差はどのくらいですか？",
+        "answer": "{city}は{timezone}時刻に従います。UTCからの現在のオフセットは{offset}時間です。"
+      },
+      "daylightSaving": {
+        "question": "{city}は夏時間を観測しますか？",
+        "answer": "これは{country}の地域規制によります。現在時刻は{currentTime}で、該当する場合は夏時間に自動的に調整されます。"
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "{timezone}について",
+        "content": "{timezone}は{country}{city}および周辺地域で使用されている標準時刻です。このタイムゾーンはUTCオフセットが{offset}で、この地理的エリアでのスケジューリングと時刻調整に広く使用されています。このタイムゾーンは数百万人にサービスを提供し、ビジネス、旅行、国際通信の重要な参考となっています。"
       }
     }
   }

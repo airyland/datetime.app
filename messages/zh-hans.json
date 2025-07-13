@@ -11,7 +11,8 @@
       "holidays": "节假日",
       "ageCalculator": "年龄计算器",
       "yearProgress": "年度进度",
-      "glossary": "术语表"
+      "glossary": "术语表",
+      "timezones": "时区"
     },
     "links": {
       "titleHome": "回到主页",
@@ -26,7 +27,8 @@
       "titleViewCalendar": "查看今年的日历",
       "titleViewGlossary": "查看我们完整的术语表",
       "titleLearnUtc": "了解更多关于UTC的信息",
-      "titleBackToHolidays": "返回节假日概览"
+      "titleBackToHolidays": "返回节假日概览",
+      "titleTimezones": "浏览IANA时区数据库"
     }
   },
   "home": {
@@ -87,10 +89,12 @@
       "ageCalculator": "年龄计算器",
       "utcTime": "UTC时间",
       "worldHolidays": "世界节日",
+      "timezones": "时区",
       "titleYearProgress": "追踪当前年度的进度",
       "titleAgeCalculator": "精确计算您的年龄（年、月、日）",
       "titleUtcTime": "查看当前UTC（协调世界时）",
-      "titleWorldHolidays": "发现世界各国的节假日和纪念日"
+      "titleWorldHolidays": "发现世界各国的节假日和纪念日",
+      "titleTimezones": "浏览全面的IANA时区数据库"
     },
     "cityTimes": {
       "title": "世界城市时间",
@@ -708,6 +712,154 @@
         "title": "纪元",
         "shortDescription": "用作特定时间测量系统起源的时间参考点。",
         "longDescription": "在计时中，纪元是用作特定时间测量系统起源的时间参考点。不同的系统使用不同的纪元作为起始点。\n\n一些著名的纪元包括：\n\n1. Unix纪元：1970年1月1日，00:00:00 UTC - 用于Unix时间戳\n2. GPS纪元：1980年1月6日，00:00:00 UTC - GPS时间的起点\n3. J2000纪元：2000年1月1日，12:00:00 TT - 天文学中的标准参考纪元\n4. Windows纪元：1601年1月1日，00:00:00 UTC - 用于NTFS文件系统\n5. NTP纪元：1900年1月1日，00:00:00 UTC - 用于网络时间协议\n\n纪元的选择基于各种实用或历史原因。在处理不同时间系统时，了解它们各自的纪元以正确在它们之间转换是很重要的。"
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "IANA时区数据库",
+    "description": "来自世界各地的完整IANA时区列表。按地区浏览，按城市或国家搜索，并获取任何时区的当前时间信息。",
+    "toggleTheme": "切换主题",
+    "searchPlaceholder": "搜索时区、城市或国家...",
+    "filterByRegion": "按地区筛选",
+    "allRegions": "所有地区",
+    "sortBy": "排序方式",
+    "searchResults": "找到{count}个时区",
+    "timezones": "时区",
+    "viewAll": "查看全部{count}个",
+    "stats": {
+      "totalTimezones": "总时区数",
+      "regions": "地区",
+      "countries": "国家",
+      "utcOffsets": "UTC偏移量"
+    },
+    "regions": {
+      "africa": "非洲",
+      "america": "美洲",
+      "antarctica": "南极洲",
+      "arctic": "北极",
+      "asia": "亚洲",
+      "atlantic": "大西洋",
+      "australia": "澳大利亚",
+      "europe": "欧洲",
+      "indian": "印度洋",
+      "pacific": "太平洋"
+    },
+    "sortOptions": {
+      "name": "名称",
+      "offset": "UTC偏移量",
+      "population": "人口"
+    },
+    "tabs": {
+      "all": "所有时区",
+      "popular": "热门",
+      "byRegion": "按地区"
+    },
+    "popularTimezones": {
+      "title": "最受欢迎的时区",
+      "description": "基于人口和全球使用情况的最广泛使用的时区。"
+    },
+    "noResults": {
+      "title": "未找到时区",
+      "description": "请尝试调整您的搜索或筛选条件。"
+    },
+    "seo": {
+      "about": {
+        "title": "关于IANA时区",
+        "content": "IANA时区数据库（tzdata）是全球时区信息的权威来源。它包含所有地区的历史和当前时区数据，包括夏令时转换、UTC偏移量和时区缩写。这个综合数据库由互联网数字分配机构维护，被全球操作系统、编程语言和应用程序使用。"
+      },
+      "features": {
+        "title": "功能",
+        "list": [
+          "完整的IANA时区数据库，提供实时信息",
+          "按地区、城市或国家搜索和筛选时区",
+          "显示所有时区的当前时间，实时更新",
+          "人口数据和地理坐标",
+          "UTC偏移信息，包括夏令时",
+          "时区缩写和别名",
+          "适配移动设备的响应式设计",
+          "综合时区比较工具",
+          "历史时区数据和转换"
+        ]
+      },
+      "usage": {
+        "title": "使用方法",
+        "content": "浏览完整的IANA时区列表，使用搜索功能查找特定位置，或按地理区域筛选。每个时区提供当前时间、UTC偏移量、人口数据和有关该地区的详细信息。单击任何时区以访问详细信息，包括时间格式、相关时区和常见问题。"
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "切换主题",
+    "backToTimezones": "返回IANA时区",
+    "description": "{city}的{timezone}当前时间和详细信息",
+    "currentTime": "当前时间",
+    "enterFullscreen": "进入全屏模式",
+    "fullscreen": "全屏",
+    "tabs": {
+      "info": "信息",
+      "compare": "比较",
+      "formats": "格式",
+      "related": "相关"
+    },
+    "basicInfo": {
+      "title": "基本信息",
+      "iana": "IANA标识符",
+      "region": "地区",
+      "country": "国家",
+      "city": "主要城市",
+      "coordinates": "坐标"
+    },
+    "timeInfo": {
+      "title": "时间信息",
+      "utcOffset": "UTC偏移量",
+      "dstOffset": "夏令时偏移量",
+      "abbreviation": "缩写",
+      "dstAbbreviation": "夏令时缩写",
+      "population": "人口"
+    },
+    "comparison": {
+      "title": "与主要城市的时差"
+    },
+    "formats": {
+      "title": "时间格式",
+      "iso8601": "ISO 8601格式",
+      "unix": "Unix时间戳",
+      "rfc2822": "RFC 2822格式",
+      "local": "本地格式"
+    },
+    "related": {
+      "title": "相关时区"
+    },
+    "regions": {
+      "africa": "非洲",
+      "america": "美洲",
+      "antarctica": "南极洲",
+      "arctic": "北极",
+      "asia": "亚洲",
+      "atlantic": "大西洋",
+      "australia": "澳大利亚",
+      "europe": "欧洲",
+      "indian": "印度洋",
+      "pacific": "太平洋"
+    },
+    "faq": {
+      "title": "{timezone}时间 - 常见问题",
+      "currentTime": {
+        "question": "{city}现在是几点？",
+        "answer": "{country}{city}的当前本地时间是{currentTime}。{city}位于{timezone}时区。"
+      },
+      "utcDifference": {
+        "question": "{city}与UTC的时差是多少？",
+        "answer": "{city}遵循{timezone}时间。当前与UTC的偏移量是{offset}小时。"
+      },
+      "daylightSaving": {
+        "question": "{city}是否实行夏令时？",
+        "answer": "这取决于{country}的当地法规。当前时间是{currentTime}，在适用时会自动调整夏令时。"
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "关于{timezone}",
+        "content": "{timezone}是{country}{city}及周边地区使用的标准时间。该时区的UTC偏移量为{offset}，广泛用于该地理区域的调度和时间协调。该时区为数百万人服务，是商务、旅行和国际通信的重要参考。"
       }
     }
   }

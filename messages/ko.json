@@ -304,7 +304,8 @@
       "holidays": "휴일",
       "home": "홈",
       "utc": "UTC 시간",
-      "yearProgress": "연도 진행률"
+      "yearProgress": "연도 진행률",
+      "timezones": "시간대"
     },
     "links": {
       "titleHome": "홈페이지로 이동",
@@ -319,7 +320,8 @@
       "titleViewCalendar": "올해 달력 보기",
       "titleViewGlossary": "완전한 용어집 보기",
       "titleLearnUtc": "UTC에 대해 더 알아보기",
-      "titleBackToHolidays": "휴일 개요로 돌아가기"
+      "titleBackToHolidays": "휴일 개요로 돌아가기",
+      "titleTimezones": "IANA 시간대 데이터베이스 검색"
     },
     "title": "세계 시계와 시간 - 전 세계 현재 시간, UTC 시간 변환기, 시간대 계산기"
   },
@@ -421,8 +423,10 @@
     "title": "전 세계 현재 시간 - 실시간 세계 시계, UTC 시간, 시간대 변환기 및 시간 도구",
     "tools": {
       "ageCalculator": "나이 계산기",
+      "timezones": "시간대",
       "titleAgeCalculator": "년, 월, 일로 정확한 나이를 계산하세요",
       "title": "시간 도구",
+      "titleTimezones": "포괄적인 IANA 시간대 데이터베이스 찾아보기",
       "utcTime": "UTC 시간",
       "titleUtcTime": "현재 UTC(협정 세계시) 보기",
       "worldHolidays": "세계 휴일",
@@ -689,6 +693,154 @@
         "shortDescription": "특정 시간 측정 시스템의 원점으로 사용되는 시간상의 기준점입니다.",
         "longDescription": "시간 측정에서 에포크는 특정 시간 측정 시스템의 원점으로 사용되는 시간상의 기준점입니다. 서로 다른 시스템은 시작점으로 서로 다른 에포크를 사용합니다.\n\n주목할 만한 에포크들:\n\n1. 유닉스 에포크: 1970년 1월 1일 00:00:00 UTC - 유닉스 타임스탬프에 사용\n2. GPS 에포크: 1980년 1월 6일 00:00:00 UTC - GPS 시간의 시작점\n3. J2000 에포크: 2000년 1월 1일 12:00:00 TT - 천문학의 표준 기준 에포크\n4. Windows 에포크: 1601년 1월 1일 00:00:00 UTC - NTFS 파일 시스템에서 사용\n5. NTP 에포크: 1900년 1월 1일 00:00:00 UTC - 네트워크 시간 프로토콜에서 사용\n\n에포크는 다양한 실용적 또는 역사적 이유로 선택됩니다. 서로 다른 시간 시스템으로 작업할 때는 그들 각각의 에포크를 알고 있어야 올바르게 변환할 수 있습니다.",
         "category": "concept"
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "IANA 시간대 데이터베이스",
+    "description": "전 세계 IANA 시간대의 완전한 목록입니다. 지역별로 탐색하고, 도시나 국가로 검색하며, 모든 시간대의 현재 시간 정보를 확인하세요.",
+    "toggleTheme": "테마 전환",
+    "searchPlaceholder": "시간대, 도시, 국가 검색...",
+    "filterByRegion": "지역별 필터",
+    "allRegions": "모든 지역",
+    "sortBy": "정렬 기준",
+    "searchResults": "{count}개 시간대 발견",
+    "timezones": "시간대",
+    "viewAll": "모든 {count}개 보기",
+    "stats": {
+      "totalTimezones": "총 시간대 수",
+      "regions": "지역",
+      "countries": "국가",
+      "utcOffsets": "UTC 오프셋"
+    },
+    "regions": {
+      "africa": "아프리카",
+      "america": "아메리카",
+      "antarctica": "남극",
+      "arctic": "북극",
+      "asia": "아시아",
+      "atlantic": "대서양",
+      "australia": "오스트레일리아",
+      "europe": "유럽",
+      "indian": "인도양",
+      "pacific": "태평양"
+    },
+    "sortOptions": {
+      "name": "이름",
+      "offset": "UTC 오프셋",
+      "population": "인구"
+    },
+    "tabs": {
+      "all": "모든 시간대",
+      "popular": "인기",
+      "byRegion": "지역별"
+    },
+    "popularTimezones": {
+      "title": "가장 인기 있는 시간대",
+      "description": "인구와 전 세계 사용량을 기반으로 한 가장 널리 사용되는 시간대입니다."
+    },
+    "noResults": {
+      "title": "시간대를 찾을 수 없음",
+      "description": "검색 또는 필터 조건을 조정해 보세요."
+    },
+    "seo": {
+      "about": {
+        "title": "IANA 시간대 정보",
+        "content": "IANA 시간대 데이터베이스(tzdata)는 전 세계 시간대 정보의 권위 있는 소스입니다. 여름시간 전환, UTC 오프셋, 시간대 약어를 포함한 모든 지역의 역사적 및 현재 시간대 데이터가 포함되어 있습니다. 이 포괄적인 데이터베이스는 인터넷 할당 번호 관리기관에서 유지 관리하며 운영 체제, 프로그래밍 언어 및 애플리케이션에서 전 세계적으로 사용됩니다."
+      },
+      "features": {
+        "title": "기능",
+        "list": [
+          "실시간 정보가 포함된 완전한 IANA 시간대 데이터베이스",
+          "지역, 도시 또는 국가별 시간대 검색 및 필터링",
+          "실시간 업데이트로 모든 시간대의 현재 시간 표시",
+          "인구 데이터 및 지리적 좌표",
+          "여름시간을 포함한 UTC 오프셋 정보",
+          "시간대 약어 및 대체 이름",
+          "모바일 친화적인 반응형 디자인",
+          "포괄적인 시간대 비교 도구",
+          "역사적 시간대 데이터 및 전환"
+        ]
+      },
+      "usage": {
+        "title": "사용 방법",
+        "content": "IANA 시간대의 완전한 목록을 탐색하고, 검색 기능을 사용하여 특정 위치를 찾거나, 지리적 지역별로 필터링하세요. 각 시간대는 현재 시간, UTC 오프셋, 인구 데이터 및 해당 지역에 대한 자세한 정보를 제공합니다. 시간 형식, 관련 시간대, 자주 묻는 질문을 포함한 자세한 정보에 액세스하려면 아무 시간대나 클릭하세요."
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "테마 전환",
+    "backToTimezones": "IANA 시간대로 돌아가기",
+    "description": "{city}의 {timezone} 현재 시간 및 자세한 정보",
+    "currentTime": "현재 시간",
+    "enterFullscreen": "전체 화면 모드 진입",
+    "fullscreen": "전체 화면",
+    "tabs": {
+      "info": "정보",
+      "compare": "비교",
+      "formats": "형식",
+      "related": "관련"
+    },
+    "basicInfo": {
+      "title": "기본 정보",
+      "iana": "IANA 식별자",
+      "region": "지역",
+      "country": "국가",
+      "city": "주요 도시",
+      "coordinates": "좌표"
+    },
+    "timeInfo": {
+      "title": "시간 정보",
+      "utcOffset": "UTC 오프셋",
+      "dstOffset": "DST 오프셋",
+      "abbreviation": "약어",
+      "dstAbbreviation": "DST 약어",
+      "population": "인구"
+    },
+    "comparison": {
+      "title": "주요 도시와의 시차"
+    },
+    "formats": {
+      "title": "시간 형식",
+      "iso8601": "ISO 8601 형식",
+      "unix": "Unix 타임스탬프",
+      "rfc2822": "RFC 2822 형식",
+      "local": "로컬 형식"
+    },
+    "related": {
+      "title": "관련 시간대"
+    },
+    "regions": {
+      "africa": "아프리카",
+      "america": "아메리카",
+      "antarctica": "남극",
+      "arctic": "북극",
+      "asia": "아시아",
+      "atlantic": "대서양",
+      "australia": "오스트레일리아",
+      "europe": "유럽",
+      "indian": "인도양",
+      "pacific": "태평양"
+    },
+    "faq": {
+      "title": "{timezone} 시간 - 자주 묻는 질문",
+      "currentTime": {
+        "question": "{city}는 지금 몇 시인가요?",
+        "answer": "{country} {city}의 현재 현지 시간은 {currentTime}입니다. {city}는 {timezone} 시간대에 위치합니다."
+      },
+      "utcDifference": {
+        "question": "{city}와 UTC의 시차는 어떻게 되나요?",
+        "answer": "{city}는 {timezone} 시간을 따릅니다. UTC로부터의 현재 오프셋은 {offset}시간입니다."
+      },
+      "daylightSaving": {
+        "question": "{city}는 일광 절약 시간제를 시행하나요?",
+        "answer": "이는 {country}의 지역 규정에 따라 다릅니다. 현재 시간은 {currentTime}이며, 해당되는 경우 일광 절약 시간제에 자동으로 조정됩니다."
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "{timezone} 정보",
+        "content": "{timezone}는 {country} {city} 및 주변 지역에서 사용되는 표준 시간입니다. 이 시간대는 UTC 오프셋이 {offset}이며 이 지리적 지역에서 일정 계획 및 시간 조정에 널리 사용됩니다. 이 시간대는 수백만 명의 사람들에게 서비스를 제공하며 비즈니스, 여행 및 국제 통신의 중요한 참조점입니다."
       }
     }
   }

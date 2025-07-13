@@ -11,7 +11,8 @@
       "holidays": "Días Festivos",
       "ageCalculator": "Calculadora de Edad",
       "yearProgress": "Progreso del Año",
-      "glossary": "Glosario"
+      "glossary": "Glosario",
+      "timezones": "Zonas horarias"
     },
     "links": {
       "titleHome": "Ir a la página de inicio",
@@ -26,7 +27,8 @@
       "titleViewCalendar": "Ver calendario de este año",
       "titleViewGlossary": "Ver nuestro glosario completo",
       "titleLearnUtc": "Aprender más sobre UTC",
-      "titleBackToHolidays": "Volver a resumen de días festivos"
+      "titleBackToHolidays": "Volver a resumen de días festivos",
+      "titleTimezones": "Explorar la base de datos de zonas horarias IANA"
     }
   },
   "home": {
@@ -90,7 +92,9 @@
       "utcTime": "Hora UTC",
       "titleUtcTime": "Ver la hora UTC (Tiempo Universal Coordinado) actual",
       "worldHolidays": "Días Festivos Mundiales",
-      "titleWorldHolidays": "Descubrir días festivos y observancias de diferentes países"
+      "timezones": "Zonas Horarias",
+      "titleWorldHolidays": "Descubrir días festivos y observancias de diferentes países",
+      "titleTimezones": "Explorar la base de datos completa de zonas horarias IANA"
     },
     "cityTimes": {
       "title": "Horarios de Ciudades del Mundo",
@@ -723,6 +727,154 @@
         "longDescription": "ISO 8601 es un estándar internacional para representar fechas y horas. Fue publicado por la Organización Internacional de Normalización (ISO) y proporciona un método bien definido y sin ambigüedades para representar fechas y horas, haciéndolo ideal para comunicación internacional y sistemas informáticos.\n\nEl estándar sigue el formato YYYY-MM-DDThh:mm:ss.sssZ, donde:\n- YYYY representa el año\n- MM representa el mes\n- DD representa el día\n- T es un separador que indica el inicio del elemento de tiempo\n- hh representa las horas (en formato de 24 horas)\n- mm representa los minutos\n- ss representa los segundos\n- .sss representa fracciones de segundos (opcional)\n- Z indica que el tiempo está en UTC (o +/-hh:mm puede usarse para indicar un desplazamiento de UTC)\n\nEjemplos:\n- 2023-04-15T14:30:00Z (2:30 PM UTC el 15 de abril de 2023)\n- 2023-04-15T14:30:00+02:00 (2:30 PM en una zona horaria 2 horas adelante de UTC)\n\nISO 8601 es ampliamente usado en informática, intercambio de datos y APIs porque elimina ambigüedad en representaciones de fecha y es fácilmente ordenable.",
         "definition": "ISO 8601 es un estándar internacional que especifica formatos numéricos de fecha y hora. Define formatos como YYYY-MM-DD para fechas y YYYY-MM-DDTHH:MM:SS para fecha y hora combinadas, eliminando ambigüedades en la comunicación internacional.",
         "category": "format"
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "Base de Datos de Zonas Horarias IANA",
+    "description": "Lista completa de zonas horarias IANA de todo el mundo. Navega por región, busca por ciudad o país, y obtén información de hora actual para cualquier zona horaria.",
+    "toggleTheme": "Cambiar tema",
+    "searchPlaceholder": "Buscar zonas horarias, ciudades o países...",
+    "filterByRegion": "Filtrar por región",
+    "allRegions": "Todas las Regiones",
+    "sortBy": "Ordenar por",
+    "searchResults": "Se encontraron {count} zonas horarias",
+    "timezones": "zonas horarias",
+    "viewAll": "Ver todas las {count}",
+    "stats": {
+      "totalTimezones": "Zonas Horarias Totales",
+      "regions": "Regiones",
+      "countries": "Países",
+      "utcOffsets": "Desfases UTC"
+    },
+    "regions": {
+      "africa": "África",
+      "america": "América",
+      "antarctica": "Antártida",
+      "arctic": "Ártico",
+      "asia": "Asia",
+      "atlantic": "Atlántico",
+      "australia": "Australia",
+      "europe": "Europa",
+      "indian": "Océano Índico",
+      "pacific": "Pacífico"
+    },
+    "sortOptions": {
+      "name": "Nombre",
+      "offset": "Desfase UTC",
+      "population": "Población"
+    },
+    "tabs": {
+      "all": "Todas las Zonas Horarias",
+      "popular": "Populares",
+      "byRegion": "Por Región"
+    },
+    "popularTimezones": {
+      "title": "Zonas Horarias Más Populares",
+      "description": "Las zonas horarias más utilizadas basadas en población y uso global."
+    },
+    "noResults": {
+      "title": "No se encontraron zonas horarias",
+      "description": "Intenta ajustar tus criterios de búsqueda o filtro."
+    },
+    "seo": {
+      "about": {
+        "title": "Acerca de las Zonas Horarias IANA",
+        "content": "La Base de Datos de Zonas Horarias IANA (tzdata) es la fuente autorizada de información de zonas horarias a nivel mundial. Contiene datos históricos y actuales de zonas horarias para todas las regiones, incluyendo transiciones de horario de verano, desfases UTC y abreviaciones de zonas horarias. Esta base de datos integral es mantenida por la Autoridad de Números Asignados de Internet y es utilizada por sistemas operativos, lenguajes de programación y aplicaciones a nivel global."
+      },
+      "features": {
+        "title": "Características",
+        "list": [
+          "Base de datos completa de zonas horarias IANA con información en tiempo real",
+          "Búsqueda y filtrado de zonas horarias por región, ciudad o país",
+          "Visualización de hora actual para todas las zonas horarias con actualizaciones en vivo",
+          "Datos de población y coordenadas geográficas",
+          "Información de desfase UTC incluyendo horario de verano",
+          "Abreviaciones de zonas horarias y nombres alternativos",
+          "Diseño responsivo compatible con dispositivos móviles",
+          "Herramientas completas de comparación de zonas horarias",
+          "Datos históricos de zonas horarias y transiciones"
+        ]
+      },
+      "usage": {
+        "title": "Cómo Usar",
+        "content": "Navega la lista completa de zonas horarias IANA, usa la función de búsqueda para encontrar ubicaciones específicas, o filtra por regiones geográficas. Cada zona horaria proporciona hora actual, desfase UTC, datos de población e información detallada sobre la región. Haz clic en cualquier zona horaria para acceder a información detallada incluyendo formatos de hora, zonas horarias relacionadas y preguntas frecuentes."
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "Cambiar tema",
+    "backToTimezones": "Volver a Zonas Horarias IANA",
+    "description": "Hora actual e información detallada para {timezone} en {city}",
+    "currentTime": "Hora Actual",
+    "enterFullscreen": "Entrar en modo pantalla completa",
+    "fullscreen": "Pantalla completa",
+    "tabs": {
+      "info": "Información",
+      "compare": "Comparar",
+      "formats": "Formatos",
+      "related": "Relacionadas"
+    },
+    "basicInfo": {
+      "title": "Información Básica",
+      "iana": "Identificador IANA",
+      "region": "Región",
+      "country": "País",
+      "city": "Ciudad Principal",
+      "coordinates": "Coordenadas"
+    },
+    "timeInfo": {
+      "title": "Información de Hora",
+      "utcOffset": "Desfase UTC",
+      "dstOffset": "Desfase DST",
+      "abbreviation": "Abreviación",
+      "dstAbbreviation": "Abreviación DST",
+      "population": "Población"
+    },
+    "comparison": {
+      "title": "Diferencia Horaria con Ciudades Principales"
+    },
+    "formats": {
+      "title": "Formatos de Tiempo",
+      "iso8601": "Formato ISO 8601",
+      "unix": "Marca de Tiempo Unix",
+      "rfc2822": "Formato RFC 2822",
+      "local": "Formato Local"
+    },
+    "related": {
+      "title": "Zonas Horarias Relacionadas"
+    },
+    "regions": {
+      "africa": "África",
+      "america": "América",
+      "antarctica": "Antártida",
+      "arctic": "Ártico",
+      "asia": "Asia",
+      "atlantic": "Atlántico",
+      "australia": "Australia",
+      "europe": "Europa",
+      "indian": "Océano Índico",
+      "pacific": "Pacífico"
+    },
+    "faq": {
+      "title": "Hora de {timezone} - Preguntas Frecuentes",
+      "currentTime": {
+        "question": "¿Qué hora es ahora en {city}?",
+        "answer": "La hora local actual en {city}, {country} es {currentTime}. {city} está ubicada en la zona horaria {timezone}."
+      },
+      "utcDifference": {
+        "question": "¿Cuál es la diferencia horaria entre {city} y UTC?",
+        "answer": "{city} sigue la hora {timezone}. El desfase actual respecto a UTC es de {offset} horas."
+      },
+      "daylightSaving": {
+        "question": "¿{city} observa el horario de verano?",
+        "answer": "Esto depende de las regulaciones locales de {country}. La hora actual es {currentTime}, que se ajusta automáticamente para el horario de verano cuando es aplicable."
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "Acerca de {timezone}",
+        "content": "{timezone} es la hora estándar utilizada en {city}, {country} y las regiones circundantes. La zona horaria tiene un desfase UTC de {offset} y se utiliza ampliamente para programación y coordinación de tiempo en esta área geográfica. Esta zona horaria sirve a millones de personas y es una referencia importante para negocios, viajes y comunicaciones internacionales."
       }
     }
   }

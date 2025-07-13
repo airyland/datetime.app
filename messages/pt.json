@@ -304,7 +304,8 @@
       "holidays": "Feriados",
       "home": "Início",
       "utc": "Hora UTC",
-      "yearProgress": "Progresso do Ano"
+      "yearProgress": "Progresso do Ano",
+      "timezones": "Fusos horários"
     },
     "links": {
       "titleHome": "Ir para a página inicial",
@@ -319,7 +320,8 @@
       "titleViewCalendar": "Ver calendário deste ano",
       "titleViewGlossary": "Ver nosso glossário completo",
       "titleLearnUtc": "Aprender mais sobre UTC",
-      "titleBackToHolidays": "Voltar à visão geral dos feriados"
+      "titleBackToHolidays": "Voltar à visão geral dos feriados",
+      "titleTimezones": "Navegar pela base de dados de fusos horários IANA"
     },
     "title": "Relógio Mundial e Hora - Hora Atual ao Redor do Mundo, Conversor de Hora UTC, Calculadora de Fuso Horário"
   },
@@ -421,9 +423,11 @@
     "title": "Hora Atual ao Redor do Mundo - Relógio Mundial ao Vivo, Hora UTC, Conversor de Fuso Horário e Ferramentas de Tempo",
     "tools": {
       "ageCalculator": "Calculadora de Idade",
+      "timezones": "Fusos Horários",
       "title": "Ferramentas de Tempo",
       "titleYearProgress": "Acompanhe o progresso do ano atual",
       "titleAgeCalculator": "Calcule sua idade exata em anos, meses e dias",
+      "titleTimezones": "Navegar pela base de dados abrangente de fusos horários IANA",
       "titleUtcTime": "Visualizar o UTC (Tempo Universal Coordenado) atual",
       "titleWorldHolidays": "Descubra feriados e observâncias de diferentes países",
       "utcTime": "Hora UTC",
@@ -701,6 +705,154 @@
         "title": "ISO 8601 (Formato de Data e Hora)",
         "shortDescription": "Padrão internacional para representação de datas e horas.",
         "longDescription": "ISO 8601 é um padrão internacional para representação de datas e horas. Foi publicado pela Organização Internacional de Normalização (ISO) e fornece um método bem definido e não ambíguo para representar datas e horas, tornando-o ideal para comunicação internacional e sistemas de computador.\n\nO padrão segue o formato AAAA-MM-DDTHH:mm:ss.sssZ, onde:\n- AAAA representa o ano\n- MM representa o mês\n- DD representa o dia\n- T é um separador indicando o início do elemento tempo\n- HH representa horas (em formato 24 horas)\n- mm representa minutos\n- ss representa segundos\n- .sss representa frações de segundos (opcional)\n- Z indica que o tempo está em UTC (ou +/-HH:mm pode ser usado para indicar um deslocamento do UTC)\n\nExemplos:\n- 2023-04-15T14:30:00Z (14:30 UTC em 15 de abril de 2023)\n- 2023-04-15T14:30:00-03:00 (14:30 em um fuso horário 3 horas atrás do UTC)\n\nISO 8601 é amplamente usado na computação, intercâmbio de dados e APIs porque elimina ambiguidade em representações de data e é facilmente ordenável."
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "Base de Dados de Fusos Horários IANA",
+    "description": "Lista completa de fusos horários IANA de todo o mundo. Navegue por região, pesquise por cidade ou país, e obtenha informações de hora atual para qualquer fuso horário.",
+    "toggleTheme": "Alternar tema",
+    "searchPlaceholder": "Pesquisar fusos horários, cidades ou países...",
+    "filterByRegion": "Filtrar por região",
+    "allRegions": "Todas as Regiões",
+    "sortBy": "Ordenar por",
+    "searchResults": "Encontrados {count} fusos horários",
+    "timezones": "fusos horários",
+    "viewAll": "Ver todos os {count}",
+    "stats": {
+      "totalTimezones": "Total de Fusos Horários",
+      "regions": "Regiões",
+      "countries": "Países",
+      "utcOffsets": "Offsets UTC"
+    },
+    "regions": {
+      "africa": "África",
+      "america": "América",
+      "antarctica": "Antártica",
+      "arctic": "Ártico",
+      "asia": "Ásia",
+      "atlantic": "Atlântico",
+      "australia": "Austrália",
+      "europe": "Europa",
+      "indian": "Oceano Índico",
+      "pacific": "Pacífico"
+    },
+    "sortOptions": {
+      "name": "Nome",
+      "offset": "Offset UTC",
+      "population": "População"
+    },
+    "tabs": {
+      "all": "Todos os Fusos Horários",
+      "popular": "Populares",
+      "byRegion": "Por Região"
+    },
+    "popularTimezones": {
+      "title": "Fusos Horários Mais Populares",
+      "description": "Os fusos horários mais utilizados baseados na população e uso global."
+    },
+    "noResults": {
+      "title": "Nenhum fuso horário encontrado",
+      "description": "Tente ajustar seus critérios de pesquisa ou filtro."
+    },
+    "seo": {
+      "about": {
+        "title": "Sobre Fusos Horários IANA",
+        "content": "A Base de Dados de Fusos Horários IANA (tzdata) é a fonte autoritativa para informações de fusos horários mundialmente. Contém dados históricos e atuais de fusos horários para todas as regiões, incluindo transições de horário de verão, offsets UTC e abreviações de fusos horários. Esta base de dados abrangente é mantida pela Autoridade de Atribuição de Números da Internet e é utilizada por sistemas operacionais, linguagens de programação e aplicações globalmente."
+      },
+      "features": {
+        "title": "Características",
+        "list": [
+          "Base de dados completa de fusos horários IANA com informações em tempo real",
+          "Pesquisa e filtro de fusos horários por região, cidade ou país",
+          "Exibição de hora atual para todos os fusos horários com atualizações ao vivo",
+          "Dados populacionais e coordenadas geográficas",
+          "Informações de offset UTC incluindo horário de verão",
+          "Abreviações de fusos horários e nomes alternativos",
+          "Design responsivo compatível com dispositivos móveis",
+          "Ferramentas abrangentes de comparação de fusos horários",
+          "Dados históricos e transições de fusos horários"
+        ]
+      },
+      "usage": {
+        "title": "Como Usar",
+        "content": "Navegue pela lista completa de fusos horários IANA, use a função de pesquisa para encontrar localizações específicas, ou filtre por regiões geográficas. Cada fuso horário fornece hora atual, offset UTC, dados populacionais e informações detalhadas sobre a região. Clique em qualquer fuso horário para aceder a informações detalhadas incluindo formatos de hora, fusos horários relacionados e perguntas frequentes."
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "Alternar tema",
+    "backToTimezones": "Voltar aos Fusos Horários IANA",
+    "description": "Hora atual e informações detalhadas para {timezone} em {city}",
+    "currentTime": "Hora Atual",
+    "enterFullscreen": "Entrar em modo de ecrã completo",
+    "fullscreen": "Ecrã completo",
+    "tabs": {
+      "info": "Informações",
+      "compare": "Comparar",
+      "formats": "Formatos",
+      "related": "Relacionados"
+    },
+    "basicInfo": {
+      "title": "Informações Básicas",
+      "iana": "Identificador IANA",
+      "region": "Região",
+      "country": "País",
+      "city": "Cidade Principal",
+      "coordinates": "Coordenadas"
+    },
+    "timeInfo": {
+      "title": "Informações de Hora",
+      "utcOffset": "Offset UTC",
+      "dstOffset": "Offset DST",
+      "abbreviation": "Abreviação",
+      "dstAbbreviation": "Abreviação DST",
+      "population": "População"
+    },
+    "comparison": {
+      "title": "Diferença Horária com Cidades Principais"
+    },
+    "formats": {
+      "title": "Formatos de Tempo",
+      "iso8601": "Formato ISO 8601",
+      "unix": "Timestamp Unix",
+      "rfc2822": "Formato RFC 2822",
+      "local": "Formato Local"
+    },
+    "related": {
+      "title": "Fusos Horários Relacionados"
+    },
+    "regions": {
+      "africa": "África",
+      "america": "América",
+      "antarctica": "Antártica",
+      "arctic": "Ártico",
+      "asia": "Ásia",
+      "atlantic": "Atlântico",
+      "australia": "Austrália",
+      "europe": "Europa",
+      "indian": "Oceano Índico",
+      "pacific": "Pacífico"
+    },
+    "faq": {
+      "title": "Hora {timezone} - Perguntas Frequentes",
+      "currentTime": {
+        "question": "Que horas são agora em {city}?",
+        "answer": "A hora local atual em {city}, {country} é {currentTime}. {city} está localizada no fuso horário {timezone}."
+      },
+      "utcDifference": {
+        "question": "Qual é a diferença horária entre {city} e UTC?",
+        "answer": "{city} segue a hora {timezone}. O offset atual do UTC é de {offset} horas."
+      },
+      "daylightSaving": {
+        "question": "{city} observa o horário de verão?",
+        "answer": "Isto depende das regulamentações locais de {country}. A hora atual é {currentTime}, que se ajusta automaticamente para o horário de verão quando aplicável."
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "Sobre {timezone}",
+        "content": "{timezone} é a hora padrão utilizada em {city}, {country} e regiões circundantes. O fuso horário tem um offset UTC de {offset} e é amplamente utilizado para agendamento e coordenação de tempo nesta área geográfica. Este fuso horário serve milhões de pessoas e é uma referência importante para negócios, viagens e comunicações internacionais."
       }
     }
   }
