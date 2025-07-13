@@ -58,6 +58,7 @@ export function Footer() {
         <Link href={getLocalizedPath("/age-calculator")} className="hover:text-gray-900 dark:hover:text-gray-200" title={t('links.titleAgeCalculator')}>Age Calculator</Link>
         <Link href="/holidays" className="hover:text-gray-900 dark:hover:text-gray-200" title={t('links.titleHolidays')}>Holidays</Link>
         <Link href={getLocalizedPath("/iana-timezones")} className="hover:text-gray-900 dark:hover:text-gray-200" title={t('links.titleTimezones')}>Timezones</Link>
+        <Link href={getLocalizedPath("/changelog")} className="hover:text-gray-900 dark:hover:text-gray-200" title="View changelog and updates">Changelog</Link>
       </p>
       <p className="text-xs text-gray-500 dark:text-gray-500">
         <Link href={getLocalizedPath("/utc")} className="inline-flex items-center gap-1 hover:text-gray-700 dark:hover:text-gray-300 font-mono" title={t('links.titleUtc')}>
