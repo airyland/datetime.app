@@ -103,6 +103,9 @@
     "dayOfYear": "연중 일수",
     "daysInMonth": "{days}일",
     "description": "모든 월, 날짜 및 주차 번호가 포함된 {year}년의 전체 달력을 확인하세요",
+    "metaTitle": "{year}년 달력 - 주차 번호, 월간 플래너 및 연간 보기가 포함된 무료 인쇄 가능한 달력",
+    "metaDescription": "주차 번호, 월간 보기 및 연간 개요가 포함된 무료 {year}년 달력. 휴일, 윤년 정보 및 인쇄 가능한 형식이 포함된 인터랙티브 {year}년 달력으로 {year}년을 계획하세요.",
+    "metaKeywords": "{year}년 달력, {year} 연간 달력, {year} 월간 달력, {year} 연간 달력, 무료 {year}년 달력, 인쇄 가능한 {year}년 달력, 주차 번호가 있는 {year}년 달력",
     "faq": {
       "currentMonth": {
         "answer": "이것은 현재 달({month} {year})입니다. 오늘은 이 달의 {today}일이며, 달력에서 파란색으로 강조되어 있습니다.",
@@ -209,7 +212,28 @@
       "tue": "화",
       "wed": "수"
     },
-    "yearNavigation": "연도 탐색"
+    "yearNavigation": "연도 탐색",
+    "seo": {
+      "title": "{year}년 달력 정보",
+      "yearOverview": {
+        "title": "{year}년 개요",
+        "content": "{year}년 달력은 총 {totalDays}일로 구성된 12개월의 전체적인 보기를 제공합니다. {year}년은 {yearType}{leapYearInfo}입니다. {year}년 달력에는 주차 번호가 포함되어 있어 주간 일정을 추적하고 전체 {year}년을 계획하기 쉽습니다."
+      },
+      "features": {
+        "title": "{year}년 달력의 기능",
+        "list": [
+          "12개월 모두가 포함된 완전한 {year}년 연간 달력 보기",
+          "{year}년의 각 주에 대한 주차 번호",
+          "{year}년 계획을 위한 인터랙티브 날짜 선택",
+          "모바일 친화적인 {year}년 달력 디자인",
+          "무료 인쇄 가능한 {year}년 달력 형식",
+          "{year}년 윤년 표시기",
+          "{year}년 달력에서 현재 날짜 강조",
+          "{year}년 내 월간 탐색",
+          "연도별 달력 비교"
+        ]
+      }
+    }
   },
   "cities": {
     "cityInfo": "도시 정보",
