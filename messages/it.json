@@ -323,21 +323,6 @@
       "titleBackToHolidays": "Torna alla panoramica dei giorni festivi",
       "titleTimezones": "Sfoglia il database dei fusi orari IANA"
     },
-    "links": {
-      "titleHome": "Vai alla homepage",
-      "titleAbout": "Informazioni su datetime.app",
-      "titleCalendar": "Visualizza calendario per {year}",
-      "titleGlossary": "Sfoglia glossario dei termini temporali",
-      "titleYearProgress": "Traccia il progresso dell'anno",
-      "titleAgeCalculator": "Calcola la tua età",
-      "titleHolidays": "Sfoglia i giorni festivi mondiali",
-      "titleUtc": "Ora UTC attuale",
-      "titleBackToYearProgress": "Torna al progresso dell'anno attuale",
-      "titleViewCalendar": "Visualizza calendario per quest'anno",
-      "titleViewGlossary": "Visualizza il nostro glossario completo",
-      "titleLearnUtc": "Scopri di più su UTC",
-      "titleBackToHolidays": "Torna alla panoramica dei giorni festivi"
-    },
     "title": "Orologio Mondiale e Ora - Ora Attuale in Tutto il Mondo, Convertitore di Ora UTC, Calcolatore di Fusi Orari"
   },
   "holidays": {

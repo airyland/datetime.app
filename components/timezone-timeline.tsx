@@ -98,7 +98,7 @@ const TimezoneTimeline = ({
           
           try {
             const s = spacetime(now, tzName)
-            const offsetInHours = s.offset() / -60
+            const offsetInHours = s.offset() / 60
             const offsetString =
               offsetInHours === 0 ? 'GMT' : `GMT${offsetInHours > 0 ? '+' : ''}${offsetInHours}`
             
