@@ -18,15 +18,23 @@ export interface HourInfo {
 }
 
 /**
- * Generate 48 hours of time data for a specific timezone
- * Starting from 12 hours ago to 35 hours ahead
+ * Generate hours of time data for a specific timezone
+ * @param timezone - The timezone to generate hours for
+ * @param currentTime - The current time
+ * @param totalHours - Total number of hours to generate (default 48)
+ * @param hoursBeforeCurrent - Hours before current time (default 12)
  */
-export function generateTimezoneHours(timezone: string, currentTime: Date = new Date()): HourInfo[] {
+export function generateTimezoneHours(
+  timezone: string, 
+  currentTime: Date = new Date(),
+  totalHours: number = 48,
+  hoursBeforeCurrent: number = 12
+): HourInfo[] {
   const hours: HourInfo[] = []
 
-  const startTime = new Date(currentTime.getTime() - 12 * 60 * 60 * 1000)
+  const startTime = new Date(currentTime.getTime() - hoursBeforeCurrent * 60 * 60 * 1000)
 
-  for (let i = 0; i < 48; i++) {
+  for (let i = 0; i < totalHours; i++) {
     const baseDate = new Date(startTime.getTime() + i * 60 * 60 * 1000)
     const tzTime = spacetime(baseDate, timezone)
     const nowInTz = spacetime(currentTime, timezone)

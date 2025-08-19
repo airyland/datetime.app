@@ -72,10 +72,6 @@
   }
   body {
     @apply bg-background text-foreground;
-    overflow-x: hidden;
-  }
-  html {
-    overflow-x: hidden;
   }
 }
 
@@ -101,6 +97,37 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  
+  /* Scrollbar styles for timeline */
+  .timeline-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .timeline-scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+  }
+  
+  .timeline-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+  }
+  
+  .timeline-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .dark .timeline-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dark .timeline-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .dark .timeline-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
   }
   
   /* Prevent overflow on large text elements */
