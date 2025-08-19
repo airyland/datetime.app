@@ -122,15 +122,19 @@ export default function Home() {
 
   // Initialize time format preference from localStorage
   useEffect(() => {
-    const saved = window.localStorage.getItem('timeFormat')
-    if (saved === '12h') {
-      setUse24Hour(false)
+    if (typeof window !== 'undefined') {
+      const saved = window.localStorage.getItem('timeFormat')
+      if (saved === '12h') {
+        setUse24Hour(false)
+      }
     }
   }, [])
 
   // Save time format preference
   useEffect(() => {
-    window.localStorage.setItem('timeFormat', use24Hour ? '24h' : '12h')
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('timeFormat', use24Hour ? '24h' : '12h')
+    }
   }, [use24Hour])
 
   const [isInitialized, setIsInitialized] = useState(false)
