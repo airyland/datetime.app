@@ -4575,13 +4575,13 @@
   <url>
     <loc>https://datetime.app/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
@@ -4791,13 +4791,13 @@
   <url>
     <loc>https://datetime.app/zh-hans/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/zh-hans/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -5007,13 +5007,13 @@
   <url>
     <loc>https://datetime.app/zh-hant/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/zh-hant/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -5223,13 +5223,13 @@
   <url>
     <loc>https://datetime.app/ar/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/ar/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -5439,13 +5439,13 @@
   <url>
     <loc>https://datetime.app/de/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/de/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -5655,13 +5655,13 @@
   <url>
     <loc>https://datetime.app/es/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/es/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -5871,13 +5871,13 @@
   <url>
     <loc>https://datetime.app/fr/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/fr/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -6087,13 +6087,13 @@
   <url>
     <loc>https://datetime.app/hi/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/hi/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -6303,13 +6303,13 @@
   <url>
     <loc>https://datetime.app/it/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/it/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -6519,13 +6519,13 @@
   <url>
     <loc>https://datetime.app/ja/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/ja/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -6735,13 +6735,13 @@
   <url>
     <loc>https://datetime.app/ko/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/ko/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -6951,13 +6951,13 @@
   <url>
     <loc>https://datetime.app/pt/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/pt/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -7167,13 +7167,13 @@
   <url>
     <loc>https://datetime.app/ru/calendar/2025/07</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
     <loc>https://datetime.app/ru/calendar/2025/08</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
