@@ -50,9 +50,12 @@ const TimezoneTimeline = ({
   const [hoveredHourIndex, setHoveredHourIndex] = useState<number | null>(null)
   const [isReady, setIsReady] = useState(false)
   const [visibleHours, setVisibleHours] = useState(24) // Default to 24 hours
+  const [isMobile, setIsMobile] = useState(false)
 
   // Calculate and set visible hours based on screen size
   const calculateVisibleHours = () => {
+    if (typeof window === 'undefined') return 24 // Default for SSR
+    
     const isMobile = window.innerWidth < 768
     const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024
     
@@ -74,21 +77,26 @@ const TimezoneTimeline = ({
     const hours = calculateVisibleHours()
     setVisibleHours(hours)
 
+    // Set mobile state
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth < 768)
+    }
+
     // Add a small delay to ensure the DOM is fully rendered
     setTimeout(() => {
-      if (currentHourRef.current && timelineRef.current) {
+      if (currentHourRef.current && timelineRef.current && typeof window !== 'undefined') {
         const container = timelineRef.current
         const element = currentHourRef.current
 
         // Check if on mobile screen (less than 768px)
-        const isMobile = window.innerWidth < 768
+        const currentlyMobile = window.innerWidth < 768
         
         // Calculate the scroll position
         const elementWidth = element.offsetWidth
         const containerWidth = container.offsetWidth
         let scrollPosition
         
-        if (isMobile) {
+        if (currentlyMobile) {
           // On mobile, don't auto scroll - let user scroll manually
           // Just set ready state without scrolling
         } else {
@@ -101,6 +109,8 @@ const TimezoneTimeline = ({
           container.scrollLeft = finalScrollPosition
         }
         setIsReady(true) // Fade in after scrolling
+      } else {
+        setIsReady(true) // Set ready on SSR
       }
     }, 100) // 100ms delay to ensure DOM is ready
   }, []) // Empty dependency array ensures this runs only once on mount
@@ -111,20 +121,25 @@ const TimezoneTimeline = ({
   // Add resize handler to adjust visible hours and scroll position when screen size changes
   useEffect(() => {
     const handleResize = () => {
+      if (typeof window === 'undefined') return
+      
       // Recalculate visible hours
       const hours = calculateVisibleHours()
       setVisibleHours(hours)
+      
+      // Update mobile state
+      const currentlyMobile = window.innerWidth < 768
+      setIsMobile(currentlyMobile)
       
       if (currentHourRef.current && timelineRef.current) {
         const container = timelineRef.current
         const element = currentHourRef.current
         const containerWidth = container.offsetWidth
-        const isMobile = window.innerWidth < 768
         
         const elementWidth = element.offsetWidth
         let scrollPosition
         
-        if (isMobile) {
+        if (currentlyMobile) {
           // On mobile, don't auto scroll on resize - preserve user's scroll position
           return
         } else {
@@ -134,8 +149,10 @@ const TimezoneTimeline = ({
       }
     }
 
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   return (
@@ -216,7 +233,6 @@ const TimezoneTimeline = ({
         {timezonesWithUTC.map((tz, tzIndex) => {
           // Generate hours for this specific timezone
           // On mobile, generate fewer hours with current time closer to the start
-          const isMobile = window.innerWidth < 768
           const hoursBeforeCurrent = isMobile ? 3 : 12 // On mobile, only show 3 hours before current
           const totalHours = visibleHours
           const timezoneHours = generateTimezoneHours(getTimezoneName(tz), now, totalHours, hoursBeforeCurrent)
@@ -258,7 +274,6 @@ const TimezoneTimeline = ({
 
         {/* Current Hour Highlight Box - spans all timezone rows */}
         {(() => {
-          const isMobile = window.innerWidth < 768
           const hoursBeforeCurrent = isMobile ? 3 : 12
           const totalHours = visibleHours
           const timezoneHours = generateTimezoneHours(getTimezoneName(timezonesWithUTC[0]), now, totalHours, hoursBeforeCurrent)
