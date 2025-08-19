@@ -565,7 +565,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="w-full max-w-6xl mx-auto my-8 relative">
+              <div className="w-full mx-auto my-8 relative px-0">
                 <TimezoneTimeline 
                   timezones={customTimezones.map(tz => ({ 
                     city: tz.label, 
