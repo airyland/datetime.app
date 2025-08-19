@@ -319,6 +319,7 @@ export default function MonthPage({ params }: MonthPageProps) {
                   <p className="text-gray-600 dark:text-gray-400">
                     {month === 2 ? 
                       t('faq.monthCharacteristics.february', { 
+                        month: calendar.name,
                         year,
                         days: daysInMonth,
                         leapYear: daysInMonth === 29 ? t('leapYear') : t('regularYear')
