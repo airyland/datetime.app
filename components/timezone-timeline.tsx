@@ -1,7 +1,7 @@
 'use client'
 
 import { useNow } from 'next-intl'
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState, useEffect } from 'react'
 import spacetime from 'spacetime'
 import { generateTimezoneHours, type HourInfo } from '@/lib/timezone-hours'
 import { X, Settings } from 'lucide-react'
@@ -49,33 +49,97 @@ const TimezoneTimeline = ({
 
   const [hoveredHourIndex, setHoveredHourIndex] = useState<number | null>(null)
   const [isReady, setIsReady] = useState(false)
-  const [visibleHours, setVisibleHours] = useState(48)
+  const [visibleHours, setVisibleHours] = useState(24) // Default to 24 hours
+
+  // Calculate and set visible hours based on screen size
+  const calculateVisibleHours = () => {
+    const isMobile = window.innerWidth < 768
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024
+    
+    if (isMobile) {
+      // On mobile, show 12-16 hours to fit the screen
+      return 16
+    } else if (isTablet) {
+      // On tablet, show 24 hours
+      return 24
+    } else {
+      // On desktop, show 48 hours
+      return 48
+    }
+  }
 
   // Scroll to current time on load and fade in to prevent flicker
   useLayoutEffect(() => {
-    if (currentHourRef.current && timelineRef.current) {
-      const container = timelineRef.current
-      const element = currentHourRef.current
+    // Calculate visible hours based on screen size
+    const hours = calculateVisibleHours()
+    setVisibleHours(hours)
 
-      // Calculate visible hours to avoid partial display
-      const containerWidth = container.offsetWidth
-      const maxVisibleHours = Math.floor(containerWidth / hourWidth)
-      setVisibleHours(Math.min(48, maxVisibleHours))
+    // Add a small delay to ensure the DOM is fully rendered
+    setTimeout(() => {
+      if (currentHourRef.current && timelineRef.current) {
+        const container = timelineRef.current
+        const element = currentHourRef.current
 
-      // Calculate the scroll position to center the element
-      const elementWidth = element.offsetWidth
-      const scrollPosition = element.offsetLeft - containerWidth / 2 + elementWidth / 2
-
-      container.scrollLeft = scrollPosition
-      setIsReady(true) // Fade in after scrolling
-    }
+        // Check if on mobile screen (less than 768px)
+        const isMobile = window.innerWidth < 768
+        
+        // Calculate the scroll position
+        const elementWidth = element.offsetWidth
+        const containerWidth = container.offsetWidth
+        let scrollPosition
+        
+        if (isMobile) {
+          // On mobile, don't auto scroll - let user scroll manually
+          // Just set ready state without scrolling
+        } else {
+          // On desktop, center the element
+          scrollPosition = element.offsetLeft - containerWidth / 2 + elementWidth / 2
+          
+          // Ensure we don't scroll into negative territory
+          const finalScrollPosition = Math.max(0, scrollPosition)
+          
+          container.scrollLeft = finalScrollPosition
+        }
+        setIsReady(true) // Fade in after scrolling
+      }
+    }, 100) // 100ms delay to ensure DOM is ready
   }, []) // Empty dependency array ensures this runs only once on mount
 
   const hourWidth = 32 // w-8
   const totalHourWidth = hourWidth // No gap between hours
 
+  // Add resize handler to adjust visible hours and scroll position when screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      // Recalculate visible hours
+      const hours = calculateVisibleHours()
+      setVisibleHours(hours)
+      
+      if (currentHourRef.current && timelineRef.current) {
+        const container = timelineRef.current
+        const element = currentHourRef.current
+        const containerWidth = container.offsetWidth
+        const isMobile = window.innerWidth < 768
+        
+        const elementWidth = element.offsetWidth
+        let scrollPosition
+        
+        if (isMobile) {
+          // On mobile, don't auto scroll on resize - preserve user's scroll position
+          return
+        } else {
+          scrollPosition = element.offsetLeft - containerWidth / 2 + elementWidth / 2
+          container.scrollLeft = Math.max(0, scrollPosition)
+        }
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
-    <div className="grid grid-cols-[auto_1fr] w-full max-w-4xl mx-auto">
+    <div className="grid grid-cols-[auto_1fr] w-full mx-auto md:max-w-4xl">
       {/* Column 1: Timezone Labels */}
       <div className="col-start-1 pr-4 grid gap-y-2 relative">
         {/* Switch to World Clock Button */}
@@ -140,19 +204,28 @@ const TimezoneTimeline = ({
 
       {/* Column 2: Timelines (in a single scrollable container) */}
       <div
-        className={`col-start-2 overflow-x-auto scrollbar-hide relative grid gap-y-2 transition-opacity ${isReady ? 'opacity-100' : 'opacity-0'}`}
+        className={`col-start-2 overflow-x-auto timeline-scroll relative grid gap-y-2 transition-opacity ${isReady ? 'opacity-100' : 'opacity-0'}`}
         ref={timelineRef}
         onMouseLeave={() => setHoveredHourIndex(null)}
+        style={{ 
+          WebkitOverflowScrolling: 'touch',
+          scrollbarWidth: 'thin',
+          msOverflowStyle: 'auto'
+        }}
       >
         {timezonesWithUTC.map((tz, tzIndex) => {
           // Generate hours for this specific timezone
-          const timezoneHours = generateTimezoneHours(getTimezoneName(tz), now)
-          // Only show the calculated visible hours to avoid partial display
-          const visibleTimezoneHours = timezoneHours.slice(0, visibleHours)
+          // On mobile, generate fewer hours with current time closer to the start
+          const isMobile = window.innerWidth < 768
+          const hoursBeforeCurrent = isMobile ? 3 : 12 // On mobile, only show 3 hours before current
+          const totalHours = visibleHours
+          const timezoneHours = generateTimezoneHours(getTimezoneName(tz), now, totalHours, hoursBeforeCurrent)
+          const visibleTimezoneHours = timezoneHours
           return (
             <div
               key={tz.name}
-              className="flex h-8 items-center rounded-lg overflow-hidden"
+              className="flex h-8 items-center rounded-lg"
+              style={{ minWidth: 'max-content' }}
             >
               {visibleTimezoneHours.map(hour => (
                 <div
@@ -183,30 +256,35 @@ const TimezoneTimeline = ({
           )
         })}
 
-        {/* Current Hour Highlight Box */}
+        {/* Current Hour Highlight Box - spans all timezone rows */}
         {(() => {
-          const timezoneHours = generateTimezoneHours(getTimezoneName(timezonesWithUTC[0]), now)
-          const visibleTimezoneHours = timezoneHours.slice(0, visibleHours)
-          const currentHour = visibleTimezoneHours.find(h => h.isCurrentHour)
+          const isMobile = window.innerWidth < 768
+          const hoursBeforeCurrent = isMobile ? 3 : 12
+          const totalHours = visibleHours
+          const timezoneHours = generateTimezoneHours(getTimezoneName(timezonesWithUTC[0]), now, totalHours, hoursBeforeCurrent)
+          const currentHour = timezoneHours.find(h => h.isCurrentHour)
           if (!currentHour) return null
 
           return (
             <div
               className="absolute top-0 bottom-0 w-8 bg-blue-500/30 border-2 border-blue-500 pointer-events-none rounded-md z-20"
-              style={{ transform: `translateX(${currentHour.index * totalHourWidth}px)` }}
+              style={{ 
+                transform: `translateX(${currentHour.index * totalHourWidth}px)`
+              }}
             />
           )
         })()}
 
-        {/* Hover/Selection Box */}
+        {/* Hover/Selection Box - spans all timezone rows */}
         {hoveredHourIndex !== null && hoveredHourIndex < visibleHours && (
           <div
             className="absolute top-0 bottom-0 w-8 bg-blue-500/20 pointer-events-none rounded-md transition-transform duration-100 ease-in-out z-10"
             style={{
-              transform: `translateX(${hoveredHourIndex * totalHourWidth}px)`,
+              transform: `translateX(${hoveredHourIndex * totalHourWidth}px)`
             }}
           />
         )}
+
       </div>
     </div>
   )
