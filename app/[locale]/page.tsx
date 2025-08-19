@@ -579,14 +579,14 @@ export default function Home() {
               </div>
 
               <h2 className="text-2xl font-bold mb-6 mt-12 text-center">{t('sections.developerTools')}</h2>
-              <div className="grid grid-cols-2 gap-2 mb-6 max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6 max-w-4xl mx-auto">
                 <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
                   <CardHeader className="py-1 px-2 text-center">
                     <CardTitle className="text-xs font-medium text-muted-foreground">{t('labels.timezoneInfo')}</CardTitle>
                   </CardHeader>
                   <CardContent className="px-2 py-1.5">
-                    <div className="flex items-center justify-center gap-1 text-sm whitespace-nowrap overflow-hidden">
-                      <p className={`${jetbrainsMono.className} text-sm text-center`}>{timezone} <span className="opacity-70">(GMT{offsetStr})</span></p>
+                    <div className="flex items-center justify-center gap-1 text-sm overflow-hidden">
+                      <p className={`${jetbrainsMono.className} text-sm text-center truncate`}>{timezone} <span className="opacity-70">(GMT{offsetStr})</span></p>
                       {isDST && <DSTTag text={t('labels.dst')} />}
                     </div>
                   </CardContent>
@@ -597,11 +597,11 @@ export default function Home() {
                     <CardTitle className="text-xs font-medium text-muted-foreground">{t('labels.unixTimestamp')}</CardTitle>
                   </CardHeader>
                   <CardContent className="px-2 py-1.5">
-                    <div className="flex items-center justify-center gap-1 whitespace-nowrap">
-                      <p className={`${jetbrainsMono.className} text-sm text-center`}>{timestamp}</p>
+                    <div className="flex items-center justify-center gap-1 overflow-hidden">
+                      <p className={`${jetbrainsMono.className} text-sm text-center truncate min-w-0 flex-1`}>{timestamp}</p>
                       <button
                         onClick={() => copyToClipboard(timestamp.toString(), 'timestamp')}
-                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
+                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group flex-shrink-0"
                         title="Copy to clipboard"
                       >
                         {copiedStates['timestamp'] ? (
@@ -624,11 +624,11 @@ export default function Home() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="px-2 py-1.5">
-                    <div className="flex items-center justify-center gap-1 whitespace-nowrap">
-                      <p className={`${jetbrainsMono.className} text-sm text-center`}>{utcTime}</p>
+                    <div className="flex items-center justify-center gap-1 overflow-hidden">
+                      <p className={`${jetbrainsMono.className} text-sm text-center truncate min-w-0 flex-1`}>{utcTime}</p>
                       <button
                         onClick={() => copyToClipboard(utcTime, 'utc')}
-                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
+                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group flex-shrink-0"
                         title="Copy to clipboard"
                       >
                         {copiedStates['utc'] ? (
@@ -646,11 +646,11 @@ export default function Home() {
                     <CardTitle className="text-xs font-medium text-muted-foreground">{t('labels.isoFormat')}</CardTitle>
                   </CardHeader>
                   <CardContent className="px-2 py-1.5">
-                    <div className="flex items-center justify-center gap-1 whitespace-nowrap">
-                      <p className={`${jetbrainsMono.className} text-sm text-center`}>{isoTime}</p>
+                    <div className="flex items-center justify-center gap-1 overflow-hidden">
+                      <p className={`${jetbrainsMono.className} text-sm text-center truncate min-w-0 flex-1`}>{isoTime}</p>
                       <button
                         onClick={() => copyToClipboard(isoTime, 'iso')}
-                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group"
+                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group flex-shrink-0"
                         title="Copy to clipboard"
                       >
                         {copiedStates['iso'] ? (
