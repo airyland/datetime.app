@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import BlogList from '@/components/blog/BlogList'
+import Header from '@/components/header'
 import { promises as fs } from 'fs'
 import path from 'path'
 
@@ -44,13 +45,16 @@ export default async function BlogPage({ params: { locale } }: { params: { local
   const posts = await getBlogPosts()
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">{t('title')}</h1>
-        <p className="text-lg text-muted-foreground">{t('description')}</p>
-      </div>
+    <>
+      <Header />
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold mb-4">{t('title')}</h1>
+          <p className="text-lg text-muted-foreground">{t('description')}</p>
+        </div>
 
-      <BlogList posts={posts} locale={locale} />
-    </div>
+        <BlogList posts={posts} locale={locale} />
+      </div>
+    </>
   )
 }

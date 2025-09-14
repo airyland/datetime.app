@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import BlogPost from '@/components/blog/BlogPost'
+import Header from '@/components/header'
 import { promises as fs } from 'fs'
 import path from 'path'
 
@@ -103,8 +104,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string;
     .slice(0, 3)
 
   return (
-    <article className="container mx-auto px-4 py-8 max-w-4xl">
-      <BlogPost post={post} relatedPosts={relatedPosts} locale={params.locale} />
-    </article>
+    <>
+      <Header />
+      <article className="container mx-auto px-4 py-8 max-w-4xl">
+        <BlogPost post={post} relatedPosts={relatedPosts} locale={params.locale} />
+      </article>
+    </>
   )
 }
