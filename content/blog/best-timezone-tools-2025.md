@@ -18,15 +18,15 @@ After testing over 30 timezone tools this month, I found the ones that actually 
 
 ## Quick Overview: Best Tools by Use Case
 
-- **Best Overall**: World Time Buddy
-- **Best Free Option**: Datetime.app
-- **Best for Teams**: Every Time Zone
-- **Best Mobile App**: Time Zone Converter by TimeandDate
-- **Best for Developers**: Moment Timezone
+- **Best Overall**: [World Time Buddy](https://www.worldtimebuddy.com/)
+- **Best Free Option**: [Datetime.app](/)
+- **Best for Teams**: [Every Time Zone](https://everytimezone.com/)
+- **Best Mobile App**: Time Zone Converter by [TimeandDate](https://www.timeanddate.com/)
+- **Best for Developers**: [Spacetime](https://github.com/spencermountain/spacetime)
 
-## 1. World Time Buddy
+## 1. [World Time Buddy](https://www.worldtimebuddy.com/)
 
-World Time Buddy remains the gold standard for timezone conversion. The interface shows multiple time zones side by side with a draggable time slider that instantly shows corresponding times across all zones.
+[World Time Buddy](https://www.worldtimebuddy.com/) remains the gold standard for timezone conversion. The interface shows multiple time zones side by side with a draggable time slider that instantly shows corresponding times across all zones.
 
 **Pros:**
 - Visual timeline makes scheduling intuitive
@@ -43,9 +43,9 @@ World Time Buddy remains the gold standard for timezone conversion. The interfac
 
 **Pricing:** Free for 3 timezones, $39/year for unlimited
 
-## 2. TimeandDate.com
+## 2. [TimeandDate.com](https://www.timeanddate.com/worldclock/converter.html)
 
-This veteran tool offers comprehensive timezone features beyond simple conversion. Their meeting planner specifically helps find optimal meeting times across multiple zones.
+[TimeandDate.com](https://www.timeanddate.com/) offers comprehensive timezone features beyond simple conversion. Their meeting planner specifically helps find optimal meeting times across multiple zones.
 
 **Pros:**
 - Completely free
@@ -62,16 +62,16 @@ This veteran tool offers comprehensive timezone features beyond simple conversio
 
 **Pricing:** Free with ads
 
-## 3. Datetime.app
+## 3. [Datetime.app](/)
 
-We built Datetime.app after getting frustrated with overcomplicated tools. It focuses on instant timezone conversion with a clean, modern interface that works perfectly on all devices.
+We built [Datetime.app](/) after getting frustrated with overcomplicated tools. It focuses on instant timezone conversion with a clean, modern interface that works perfectly on all devices.
 
 **Pros:**
 - Lightning-fast performance
 - No ads or signup required
-- Built-in world clock and calendar
+- Built-in [world clock](/) and [calendar](/calendar/2025)
 - Automatic DST handling
-- Age calculator and holiday calendar included
+- [Age calculator](/age-calculator) and [holiday calendar](/holidays) included
 
 **Cons:**
 - Newer tool (launched 2024)
@@ -81,9 +81,9 @@ We built Datetime.app after getting frustrated with overcomplicated tools. It fo
 
 **Pricing:** Completely free
 
-## 4. Every Time Zone
+## 4. [Every Time Zone](https://everytimezone.com/)
 
-Every Time Zone displays all timezones on a single screen with color-coded bands showing business hours, making it perfect for distributed teams.
+[Every Time Zone](https://everytimezone.com/) displays all timezones on a single screen with color-coded bands showing business hours, making it perfect for distributed teams.
 
 **Pros:**
 - See all zones at once
@@ -100,9 +100,9 @@ Every Time Zone displays all timezones on a single screen with color-coded bands
 
 **Pricing:** Free
 
-## 5. Slack's Built-in Timezone Feature
+## 5. [Slack's](https://slack.com/) Built-in Timezone Feature
 
-If your team uses Slack, you already have a solid timezone tool. Hover over any teammate's name to see their local time, or use `/timezone` commands.
+If your team uses [Slack](https://slack.com/), you already have a solid timezone tool. Hover over any teammate's name to see their local time, or use `/timezone` commands.
 
 **Pros:**
 - Integrated where you work
@@ -119,9 +119,9 @@ If your team uses Slack, you already have a solid timezone tool. Hover over any 
 
 **Pricing:** Included with Slack (from $8.75/user/month)
 
-## 6. Time Zone Converter by 24TimeZones
+## 6. [Time Zone Converter by 24TimeZones](https://24timezones.com/)
 
-This straightforward converter excels at bulk conversions and includes a useful timezone map for visual reference.
+[24TimeZones](https://24timezones.com/) converter excels at bulk conversions and includes a useful timezone map for visual reference.
 
 **Pros:**
 - Convert multiple times at once
@@ -138,9 +138,9 @@ This straightforward converter excels at bulk conversions and includes a useful 
 
 **Pricing:** Free with ads
 
-## 7. Spacetime (for Developers)
+## 7. [Spacetime](https://github.com/spencermountain/spacetime) (for Developers)
 
-Developers working with timezones in code need Spacetime. This JavaScript library handles timezone math with a simple, intuitive API.
+Developers working with timezones in code need [Spacetime](https://github.com/spencermountain/spacetime). This JavaScript library handles timezone math with a simple, intuitive API.
 
 **Pros:**
 - Lightweight (35kb)
@@ -157,9 +157,9 @@ Developers working with timezones in code need Spacetime. This JavaScript librar
 
 **Pricing:** Free (open source)
 
-## 8. Clockwise
+## 8. [Clockwise](https://www.getclockwise.com/)
 
-Clockwise uses AI to automatically find the best meeting times across time zones while protecting everyone's focus time. It integrates with Google Calendar and Slack to optimize team schedules.
+[Clockwise](https://www.getclockwise.com/) uses AI to automatically find the best meeting times across time zones while protecting everyone's focus time. It integrates with Google Calendar and Slack to optimize team schedules.
 
 **Pros:**
 - AI-powered scheduling optimization
@@ -189,6 +189,6 @@ Consider these factors when selecting a timezone converter:
 
 ## Final Thoughts
 
-After extensive testing, most people will be perfectly served by free tools like Datetime.app or TimeandDate.com. Teams should consider integrated solutions like Slack's timezone features or Timezone.io.
+After extensive testing, most people will be perfectly served by free tools like [Datetime.app](/) or [TimeandDate.com](https://www.timeanddate.com/). Teams should consider integrated solutions like [Slack's](https://slack.com/) timezone features or [Clockwise](https://www.getclockwise.com/).
 
-The "best" tool ultimately depends on your specific workflow. I personally use Datetime.app for quick conversions and World Time Buddy for complex scheduling. Try a few options and see what sticks – your future meeting attendees will thank you for getting the time right.
+The "best" tool ultimately depends on your specific workflow. I personally use [Datetime.app](/) for quick conversions and [World Time Buddy](https://www.worldtimebuddy.com/) for complex scheduling. Try a few options and see what sticks – your future meeting attendees will thank you for getting the time right.
