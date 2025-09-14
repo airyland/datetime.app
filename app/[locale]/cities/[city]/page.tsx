@@ -338,6 +338,20 @@ export default function CityPage({ params }: CityPageProps) {
           </div>
         </div>
 
+        {/* Google AdSense Advertisement */}
+        <div className="mt-8 max-w-3xl mx-auto">
+          <ins className="adsbygoogle"
+               style={{ display: 'block' }}
+               data-ad-format="autorelaxed"
+               data-ad-client="ca-pub-8443907573529681"
+               data-ad-slot="8712987437"></ins>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: '(adsbygoogle = window.adsbygoogle || []).push({});'
+            }}
+          />
+        </div>
+
         {/* City Information and FAQ Section */}
         <div className="mt-16 max-w-3xl mx-auto">
           <Card className="shadow-none rounded-none border mb-8">
