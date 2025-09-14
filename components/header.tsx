@@ -1,8 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { useState } from 'react'
+import { getLocalePath } from '@/lib/locale-utils'
 import { Menu, X } from 'lucide-react'
 import { ThemeToggle } from "@/components/theme-toggle"
 import { LanguageSwitcher } from "@/components/language-switcher"
@@ -11,43 +12,44 @@ import { Button } from "@/components/ui/button"
 export default function Header() {
   const t = useTranslations('home')
   const commonT = useTranslations('common')
+  const locale = useLocale()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   
   return (
     <header className="container mx-auto px-4 py-6">
       <div className="flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={commonT('links.titleHome')}>
+        <Link href={getLocalePath("/", locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={commonT('links.titleHome')}>
           Datetime.app
         </Link>
         
         {/* Desktop navigation - hidden on mobile */}
         <div className="hidden md:flex items-center gap-4">
-          <Link 
-            href="/utc" 
+          <Link
+            href={getLocalePath("/utc", locale)} 
             className="text-sm font-medium hover:opacity-80 transition-opacity"
             title={commonT('links.titleUtc')}
           >
             {commonT('nav.utc')}
           </Link>
           <span className="text-muted-foreground">•</span>
-          <Link 
-            href="/calendar/2025" 
+          <Link
+            href={getLocalePath("/calendar/2025", locale)} 
             className="text-sm font-medium hover:opacity-80 transition-opacity"
             title={commonT('links.titleCalendar', { year: 2025 })}
           >
             {commonT('nav.calendar')} 2025
           </Link>
           <span className="text-muted-foreground">•</span>
-          <Link 
-            href="/holidays" 
+          <Link
+            href={getLocalePath("/holidays", locale)} 
             className="text-sm font-medium hover:opacity-80 transition-opacity"
             title={commonT('links.titleHolidays')}
           >
             {commonT('nav.holidays')}
           </Link>
           <span className="text-muted-foreground">•</span>
-          <Link 
-            href="/iana-timezones" 
+          <Link
+            href={getLocalePath("/iana-timezones", locale)} 
             className="text-sm font-medium hover:opacity-80 transition-opacity"
             title={commonT('links.titleTimezones')}
           >
@@ -74,32 +76,32 @@ export default function Header() {
       {mobileMenuOpen && (
         <div className="md:hidden mt-4 py-4 border-t border-border">
           <div className="flex flex-col gap-3">
-            <Link 
-              href="/utc" 
+            <Link
+              href={getLocalePath("/utc", locale)} 
               className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
               onClick={() => setMobileMenuOpen(false)}
               title={commonT('links.titleUtc')}
             >
               {commonT('nav.utc')}
             </Link>
-            <Link 
-              href="/calendar/2025" 
+            <Link
+              href={getLocalePath("/calendar/2025", locale)} 
               className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
               onClick={() => setMobileMenuOpen(false)}
               title={commonT('links.titleCalendar', { year: 2025 })}
             >
               {commonT('nav.calendar')} 2025
             </Link>
-            <Link 
-              href="/holidays" 
+            <Link
+              href={getLocalePath("/holidays", locale)} 
               className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
               onClick={() => setMobileMenuOpen(false)}
               title={commonT('links.titleHolidays')}
             >
               {commonT('nav.holidays')}
             </Link>
-            <Link 
-              href="/iana-timezones" 
+            <Link
+              href={getLocalePath("/iana-timezones", locale)} 
               className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
               onClick={() => setMobileMenuOpen(false)}
               title={commonT('links.titleTimezones')}

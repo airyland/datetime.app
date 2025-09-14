@@ -186,7 +186,9 @@
         "question": "Why is UTC used in computing?",
         "answer": "UTC is used in computing because it provides a consistent time reference regardless of geographic location. This is essential for timestamps on events, synchronizing systems across different time zones, logging, and ensuring consistent data timestamps in distributed systems."
       }
-    }
+    },
+    "metaTitle": "UTC Time | Coordinated Universal Time | Datetime.app",
+    "metaDescription": "View current UTC (Coordinated Universal Time). UTC is the world's time standard, unaffected by time zones or daylight saving time changes."
   },
   "holidays": {
     "title": "Holidays Around the World",
@@ -211,7 +213,7 @@
     },
     "labels": {
       "year": "Year",
-      "month": "Month", 
+      "month": "Month",
       "day": "Day",
       "useCustomDate": "Use custom date",
       "calculateAge": "Calculate Age",
@@ -222,7 +224,7 @@
       "updatesInRealTime": "Updates in real-time",
       "asOf": "As of {date}",
       "years": "Years",
-      "months": "Months", 
+      "months": "Months",
       "days": "Days",
       "hours": "Hours",
       "nextBirthday": "Next Birthday",
@@ -231,13 +233,13 @@
     },
     "tabs": {
       "standard": "Standard",
-      "detailed": "Detailed", 
+      "detailed": "Detailed",
       "decimal": "Decimal"
     },
     "formatted": {
       "age": "Age: {age}",
       "yearsSuffix": "y",
-      "monthsSuffix": "m", 
+      "monthsSuffix": "m",
       "daysSuffix": "d"
     },
     "info": {
@@ -286,7 +288,10 @@
         "question": "Why doesn't the Next Birthday information appear when using a custom date?",
         "answer": "The Next Birthday calculation is based on the current date and shows how many days until your next birthday from today. When using a custom target date, this information isn't shown because it wouldn't be relevant to the custom date you've specified."
       }
-    }
+    },
+    "metaTitle": "Age Calculator | Calculate Your Exact Age | Datetime.app",
+    "metaDescription": "Calculate your exact age in years, months, days, hours, minutes, and seconds. Choose between calendar or manual input and calculate age as of any date.",
+    "metaKeywords": "age calculator, calculate age, how old am I, exact age, age in years, age in days, birthday calculator, time since birth, age between dates, age on specific date"
   },
   "yearProgress": {
     "title": "Year Progress",
@@ -360,7 +365,12 @@
     "timeLeftHours": "{count} hour{count, plural, one {} other{s}}",
     "timeLeftMinutes": "{count} minute{count, plural, one {} other{s}}",
     "timeLeftSeconds": "{count} second{count, plural, one {} other{s}}",
-    "left": "left"
+    "left": "left",
+    "metaTitle": "Year Progress Bar | See How Much of the Year Has Passed | Datetime.app",
+    "metaDescription": "View the current year's progress with our interactive progress bar. See the exact percentage of the year completed and days remaining.",
+    "yearMetaTitle": "{year} Year Progress Bar - {progress}% Complete | Datetime.app",
+    "yearMetaDescription": "The year {year} is {progress}% complete. Track the progress in real-time and see how much time is left in {year}.",
+    "yearMetaKeywords": "{year} progress, {year} progress bar, time left in {year}, days left in {year}, {year} completion, {year} tracker, time tracking"
   },
   "cities": {
     "pageTitle": "Current Time in {cityName}, {countryName}",
@@ -496,7 +506,9 @@
       "Saudi Arabia": "Saudi Arabia",
       "Qatar": "Qatar",
       "Kuwait": "Kuwait"
-    }
+    },
+    "metaTitle": "Current Time in {cityName}, {countryName} | Datetime.app",
+    "metaDescription": "Current local time in {cityName}, {countryName} ({timezone} time zone)"
   },
   "languageSuggestion": {
     "title": "Language Suggestion",
@@ -511,9 +523,9 @@
     "metaTitle": "{year} Calendar - Free Printable Calendar with Week Numbers, Monthly Planner & Annual View",
     "metaDescription": "Free {year} calendar with week numbers, monthly view, and yearly overview. Plan your {year} with our interactive {year} calendar featuring holidays, leap year info, and printable format.",
     "metaKeywords": "{year} calendar, {year} yearly calendar, {year} monthly calendar, {year} annual calendar, free {year} calendar, printable {year} calendar, {year} calendar with week numbers",
-    "currentYear": "Current Year",
-    "leapYear": "Leap Year",
-    "regularYear": "Regular Year",
+    "currentYear": "current year",
+    "leapYear": "leap year",
+    "regularYear": "regular year",
     "weekNumber": "Week {number}",
     "today": "Today",
     "viewYear": "View Year",
@@ -525,7 +537,7 @@
     "toggleTheme": "Toggle theme",
     "previousMonth": "Previous Month",
     "nextMonth": "Next Month",
-    "currentMonth": "Current Month",
+    "currentMonth": "Current month",
     "backToYear": "Back to {year}",
     "daysInMonth": "{days} days",
     "selectedDate": "Selected Date",
@@ -533,7 +545,7 @@
     "dayOfYear": "Day of Year",
     "months": {
       "january": "January",
-      "february": "February", 
+      "february": "February",
       "march": "March",
       "april": "April",
       "may": "May",
@@ -641,7 +653,13 @@
           "Year-to-year calendar comparison"
         ]
       }
-    }
+    },
+    "yearMetaTitle": "{year} Calendar | Full Year View | Datetime.app",
+    "yearMetaDescription": "View the complete {year} calendar with all months, week numbers, and dates. {yearType}{currentYearSuffix}.",
+    "yearMetaKeywords": "{year} calendar, yearly calendar, monthly calendar, date lookup, week numbers, {yearType}",
+    "monthMetaTitle": "{monthName} {year} Calendar | Monthly View | Datetime.app",
+    "monthMetaDescription": "View the complete calendar for {monthName} {year} with all dates and week information.{currentMonthSuffix}",
+    "monthMetaKeywords": "{monthName} {year}, monthly calendar, calendar view, date lookup, {month}"
   },
   "timezones": {
     "title": "Time in {timezone}",
@@ -658,7 +676,7 @@
     "faqTitle": "{timezone} Time - Frequently Asked Questions",
     "names": {
       "utc": "Coordinated Universal Time",
-      "gmt": "Greenwich Mean Time", 
+      "gmt": "Greenwich Mean Time",
       "cet": "Central European Time",
       "pst": "Pacific Standard Time",
       "mst": "Mountain Standard Time",
@@ -679,7 +697,7 @@
       "cet": "Central European standard time",
       "pst": "US Pacific coast time",
       "mst": "US Mountain time",
-      "cst": "US Central time", 
+      "cst": "US Central time",
       "est": "US Eastern time",
       "eet": "Eastern European time",
       "ist": "Indian standard time",
@@ -715,7 +733,7 @@
     "relatedTerms": "Related Terms",
     "categories": {
       "standard": "Time Standards",
-      "format": "Time Formats", 
+      "format": "Time Formats",
       "concept": "Time Concepts",
       "timezone": "Timezone Related",
       "calculation": "Time Calculations"
@@ -727,7 +745,7 @@
         "longDescription": "Coordinated Universal Time (UTC) is the primary time standard by which the world regulates clocks and time. It is the basis for civil time today and is used across the internet, in aviation, maritime operations, and many scientific applications.\n\nUTC is maintained by a network of atomic clocks around the world and is closely related to, but distinct from, Greenwich Mean Time (GMT). Unlike local time zones, UTC does not change with the seasons and is not affected by Daylight Saving Time.\n\nUTC is the time standard used for many systems requiring precision timekeeping, including the Internet, GPS satellites, and international air traffic control. Computer systems often use UTC internally and then convert to local time for display purposes.\n\nThe term \"Coordinated Universal Time\" is a compromise between the English \"Coordinated Universal Time\" and the French \"Temps Universel Coordonné\", which is why the acronym UTC doesn't match either language exactly."
       },
       "gmt": {
-        "title": "GMT (Greenwich Mean Time)", 
+        "title": "GMT (Greenwich Mean Time)",
         "shortDescription": "The mean solar time at the Royal Observatory in Greenwich, London.",
         "longDescription": "Greenwich Mean Time (GMT) is the mean solar time at the Royal Observatory in Greenwich, London. It was historically used as the international civil time standard before being replaced in scientific contexts by Coordinated Universal Time (UTC).\n\nGMT was established in 1675 when the Royal Observatory was built as a reference time for nautical purposes and the British navy. It became the global time standard in 1884 at the International Meridian Conference, where the Greenwich meridian was adopted as the Prime Meridian (0° longitude).\n\nToday, GMT is still used in some contexts, particularly in the United Kingdom during winter months, but has largely been superseded by UTC for scientific and technical purposes. The term GMT is often used informally to refer to UTC+0, though technically they can differ by up to 0.9 seconds due to leap seconds and other adjustments in UTC.\n\nUnlike UTC, which is based on atomic time, GMT is based on astronomical observations and the rotation of the Earth, which is slightly irregular."
       },

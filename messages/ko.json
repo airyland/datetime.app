@@ -93,11 +93,14 @@
       "detailed": "상세",
       "standard": "표준"
     },
-    "title": "나이 계산기"
+    "title": "나이 계산기",
+    "metaTitle": "나이 계산기 | 정확한 나이 계산 | Datetime.app",
+    "metaDescription": "연, 월, 일, 시, 분, 초 단위로 정확한 나이를 계산하세요. 달력 선택 또는 수동 입력으로 임의 날짜의 나이를 계산할 수 있습니다.",
+    "metaKeywords": "나이 계산기, 나이 계산, 내 나이는, 정확한 나이, 연 단위 나이, 일 단위 나이, 생일 계산기, 태어난 후 시간, 날짜 간 나이, 특정 날짜 나이"
   },
   "calendar": {
     "backToYear": "{year}로 돌아가기",
-    "currentMonth": "현재 월",
+    "currentMonth": "이번 달",
     "currentYear": "올해",
     "date": "날짜",
     "dayOfYear": "연중 일수",
@@ -233,7 +236,13 @@
           "연도별 달력 비교"
         ]
       }
-    }
+    },
+    "yearMetaTitle": "{year}년 달력 | 연간 전체 보기 | Datetime.app",
+    "yearMetaDescription": "모든 월, 주차 번호, 날짜가 포함된 {year}년 전체 달력을 확인하세요. {yearType}{currentYearSuffix}.",
+    "yearMetaKeywords": "{year}년 달력, 연간 달력, 월간 달력, 날짜 조회, 주차 번호, {yearType}",
+    "monthMetaTitle": "{year}년 {month}월 달력 | {monthName} {year} | Datetime.app",
+    "monthMetaDescription": "모든 날짜와 주 정보가 포함된 {year}년 {month}월({monthName}) 완전한 달력을 확인하세요.{currentMonthSuffix}",
+    "monthMetaKeywords": "{year}년 {month}월, {monthName} {year}, 월간 달력, 달력 보기, 날짜 조회"
   },
   "cities": {
     "cityInfo": "도시 정보",
@@ -369,7 +378,9 @@
     "timezoneLabel": "{timezone} 시간대",
     "toggleTheme": "테마 토글",
     "unixTimestamp": "Unix 타임스탬프",
-    "utcTime": "UTC 시간"
+    "utcTime": "UTC 시간",
+    "metaTitle": "{countryName} {cityName}의 현재 시간 | Datetime.app",
+    "metaDescription": "{countryName} {cityName}의 현재 현지 시간 ({timezone} 시간대)"
   },
   "common": {
     "date": "날짜",
@@ -630,7 +641,9 @@
     "utcOffset": "UTC/GMT+0",
     "utcString": "UTC 문자열",
     "viewGlossary": "날짜와 시간 개념의 완전한 용어집 보기",
-    "worldCityTimes": "세계 도시 시간"
+    "worldCityTimes": "세계 도시 시간",
+    "metaTitle": "UTC 시간 | 협정 세계시 | Datetime.app",
+    "metaDescription": "현재 UTC(협정 세계시)를 확인하세요. UTC는 시간대나 일광 절약 시간 변경에 영향을 받지 않는 세계 시간 표준입니다."
   },
   "yearProgress": {
     "description": "현재 연도의 진행률을 추적하세요",
@@ -704,7 +717,12 @@
     "timeLeftHours": "{count}시간",
     "timeLeftMinutes": "{count}분",
     "timeLeftSeconds": "{count}초",
-    "left": "남음"
+    "left": "남음",
+    "metaTitle": "연도 진행률 바 | 올해가 얼마나 지났는지 확인 | Datetime.app",
+    "metaDescription": "인터랙티브 진행률 바로 올해의 진행 상황을 확인하세요. 연도 완료율과 남은 일수를 정확히 볼 수 있습니다.",
+    "yearMetaTitle": "{year}년 진행률 바 - {progress}% 완료 | Datetime.app",
+    "yearMetaDescription": "{year}년이 {progress}% 지났습니다. 실시간으로 연도 진행 상황을 추적하고 {year}년의 남은 시간을 확인하세요.",
+    "yearMetaKeywords": "{year}년 진행률, {year}년 진행률 바, {year}년 남은 시간, {year}년 남은 일수, {year}년 완료, {year}년 추적기, 시간 추적"
   },
   "glossary": {
     "title": "날짜 및 시간 용어집",

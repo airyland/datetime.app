@@ -14,6 +14,7 @@ import { TimezoneNavigation } from "@/components/timezone-navigation"
 import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
 import { timezones, TimezoneConfig } from '../config'
+import { getLocalePath } from '@/lib/locale-utils'
 
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
@@ -175,7 +176,7 @@ export default function TimezonePage({ params }: TimezonePageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href={getLocalePath("/")} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
+        <Link href={getLocalePath("/", locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">

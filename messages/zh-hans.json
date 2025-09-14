@@ -170,7 +170,7 @@
     },
     "labels": {
       "year": "年",
-      "month": "月", 
+      "month": "月",
       "day": "日",
       "useCustomDate": "使用自定义日期",
       "calculateAge": "计算年龄",
@@ -181,7 +181,7 @@
       "updatesInRealTime": "实时更新",
       "asOf": "截至{date}",
       "years": "年",
-      "months": "月", 
+      "months": "月",
       "days": "日",
       "hours": "小时",
       "nextBirthday": "下次生日",
@@ -190,13 +190,13 @@
     },
     "tabs": {
       "standard": "标准",
-      "detailed": "详细", 
+      "detailed": "详细",
       "decimal": "小数"
     },
     "formatted": {
       "age": "年龄：{age}",
       "yearsSuffix": "岁",
-      "monthsSuffix": "个月", 
+      "monthsSuffix": "个月",
       "daysSuffix": "天"
     },
     "info": {
@@ -245,7 +245,10 @@
         "question": "为什么使用自定义日期时不显示下次生日信息？",
         "answer": "下次生日计算基于当前日期，显示从今天到您下次生日还有多少天。使用自定义目标日期时，不显示此信息，因为它与您指定的自定义日期无关。"
       }
-    }
+    },
+    "metaTitle": "年龄计算器 | 计算您的精确年龄 | Datetime.app",
+    "metaDescription": "计算您的精确年龄，包括年、月、日、时、分、秒。支持日历选择或手动输入，可计算任意日期的年龄。",
+    "metaKeywords": "年龄计算器, 计算年龄, 我多少岁, 精确年龄, 年龄计算, 生日计算器, 出生时间, 两个日期间的年龄, 特定日期年龄"
   },
   "yearProgress": {
     "title": "年度进度",
@@ -319,7 +322,12 @@
     "timeLeftHours": "{count}小时",
     "timeLeftMinutes": "{count}分钟",
     "timeLeftSeconds": "{count}秒",
-    "left": "剩余"
+    "left": "剩余",
+    "metaTitle": "年度进度条 | 查看当前年度完成百分比 | Datetime.app",
+    "metaDescription": "使用我们的交互式进度条查看当前年度的进度。查看年度完成的确切百分比和剩余天数。",
+    "yearMetaTitle": "{year}年进度条 - {progress}% 完成 | Datetime.app",
+    "yearMetaDescription": "{year}年已经过去{progress}%。实时追踪年度进度，查看{year}年剩余时间。",
+    "yearMetaKeywords": "{year}年进度, {year}年进度条, {year}年剩余时间, {year}年追踪, 时间追踪"
   },
   "cities": {
     "pageTitle": "{countryName}{cityName}当前时间",
@@ -455,7 +463,9 @@
       "Saudi Arabia": "沙特阿拉伯",
       "Qatar": "卡塔尔",
       "Kuwait": "科威特"
-    }
+    },
+    "metaTitle": "{countryName}{cityName}时间 | {countryName}{cityName}当前时间",
+    "metaDescription": "{cityName}, {countryName}的当前本地时间（{timezone}时区）"
   },
   "utc": {
     "title": "协调世界时 (UTC)",
@@ -496,7 +506,9 @@
         "question": "为什么在计算中使用UTC？",
         "answer": "在计算中使用UTC是因为它提供了与地理位置无关的一致时间参考。这对于事件时间戳、跨不同时区同步系统、日志记录以及确保分布式系统中一致的数据时间戳至关重要。"
       }
-    }
+    },
+    "metaTitle": "UTC时间 | 协调世界时 | Datetime.app",
+    "metaDescription": "查看当前UTC（协调世界时）。UTC是世界时间标准，不受时区或夏令时变化的影响。"
   },
   "languageSuggestion": {
     "title": "语言建议",
@@ -619,28 +631,6 @@
       "navigation": {
         "question": "如何导航到其他月份？",
         "answer": "使用箭头按钮前往{prevMonth}或{nextMonth}。您也可以点击下方导航网格中的任何月份，或使用\"查看年份\"按钮一次查看所有月份。"
-      },
-      "monthOverview": {
-        "question": "这个月显示了什么信息？",
-        "answer": "{month} {year}有{days}天，从{startDay}开始，到{endDay}结束。此日历视图显示所有日期及其对应的工作日和周数。"
-      },
-      "weekCount": {
-        "question": "这个月有多少周？",
-        "answer": "{month}在日历网格上跨越{weeks}周，尽管有些周可能包含上个月或下个月的天数。"
-      },
-      "currentMonth": {
-        "question": "为什么这个月被突出显示？",
-        "answer": "这是当前月份（{month} {year}）。今天是本月的第{today}天，在日历上以蓝色突出显示。"
-      },
-      "monthCharacteristics": {
-        "question": "这个月的特点是什么？",
-        "february": "{month} {year}有{days}天，使其成为{leapYear}。二月是最短的月份，也是唯一天数可变的月份。",
-        "thirtyDays": "{month}是四个恰好有30天的月份之一（四月、六月、九月、十一月）。",
-        "thirtyOneDays": "{month}有31天，是一年中七个较长月份之一。"
-      },
-      "navigation": {
-        "question": "如何导航到其他月份？",
-        "answer": "使用箭头按钮前往{prevMonth}或{nextMonth}。您也可以点击下方导航网格中的任何月份，或使用\"查看年份\"按钮一次查看所有月份。"
       }
     },
     "seo": {
@@ -671,7 +661,13 @@
         "title": "使用{year}年日历的好处",
         "content": "全面的{year}年日历帮助您一次性看到整年，使长期规划更容易。包含周数后，您可以与使用基于周的规划的商业日程进行协调。我们的{year}年日历非常适合学术规划、项目管理、假期安排以及整个{year}年的个人组织。"
       }
-    }
+    },
+    "yearMetaTitle": "{year}年日历 | 完整年历视图 | Datetime.app",
+    "yearMetaDescription": "查看{year}年完整日历，包含所有月份、周数和日期。{yearType}{currentYearSuffix}。",
+    "yearMetaKeywords": "{year}年日历, 年历, 月历, 日期查询, 周数, {yearType}",
+    "monthMetaTitle": "{year}年{month}月日历 | {monthName} {year} | Datetime.app",
+    "monthMetaDescription": "查看{year}年{month}月（{monthName}）完整日历，包含所有日期和星期信息。{currentMonthSuffix}",
+    "monthMetaKeywords": "{year}年{month}月, {monthName} {year}, 月历, 日历, 日期查询"
   },
   "timezones": {
     "title": "{timezone}时间",

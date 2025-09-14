@@ -11,11 +11,11 @@ export async function generateMetadata({ params }: LayoutProps) {
   const city = params.city;
   const locale = params.locale;
   const cityInfo = citiesData[city as keyof typeof citiesData];
-  
+
   if (!cityInfo) return {};
-  
+
   const t = await getTranslations({ locale, namespace: 'cities' });
-  
+
   // Get localized city and country names
   const getLocalizedCityName = (cityKey: string) => {
     try {
@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: LayoutProps) {
       return countryName;
     }
   };
-  
+
   const localizedCityName = getLocalizedCityName(city);
   const localizedCountryName = getLocalizedCountryName(cityInfo.country);
-  
+
   // Generate alternate language links for all supported locales
   const languages = locales.reduce((acc, loc) => {
     if (loc === 'en') {
@@ -45,48 +45,29 @@ export async function generateMetadata({ params }: LayoutProps) {
     }
     return acc;
   }, {} as Record<string, string>);
-  
-  // Generate localized metadata
-  if (locale === 'zh-hans') {
-    return {
-      title: `${localizedCountryName}${localizedCityName}时间 | ${localizedCountryName}${localizedCityName}当前时间`,
-      description: `${localizedCityName}, ${localizedCountryName}的当前本地时间（${cityInfo.timezone}时区）`,
-      alternates: {
-        canonical: `https://datetime.app/zh-hans/cities/${city}`,
-        languages
-      }
-    };
-  }
-  
-  if (locale === 'zh-hant') {
-    return {
-      title: `${localizedCountryName}${localizedCityName}時間 | ${localizedCountryName}${localizedCityName}當前時間`,
-      description: `${localizedCityName}, ${localizedCountryName}的當前本地時間（${cityInfo.timezone}時區）`,
-      alternates: {
-        canonical: `https://datetime.app/zh-hant/cities/${city}`,
-        languages
-      }
-    };
-  }
-  
-  // For all other non-English locales
-  if (locale !== 'en') {
-    return {
-      title: `Current Time in ${cityInfo.name}, ${cityInfo.country} | Datetime.app`,
-      description: `Current local time in ${cityInfo.name}, ${cityInfo.country} (${cityInfo.timezone} time zone)`,
-      alternates: {
-        canonical: `https://datetime.app/${locale}/cities/${city}`,
-        languages
-      }
-    };
-  }
-  
-  // Default English metadata
+
+  // Generate canonical URL
+  const canonical = locale === 'en'
+    ? `https://datetime.app/cities/${city}`
+    : `https://datetime.app/${locale}/cities/${city}`;
+
+  // Use translation templates for metadata
+  const title = t('metaTitle', {
+    cityName: localizedCityName,
+    countryName: localizedCountryName
+  });
+
+  const description = t('metaDescription', {
+    cityName: localizedCityName,
+    countryName: localizedCountryName,
+    timezone: cityInfo.timezone
+  });
+
   return {
-    title: `Current Time in ${cityInfo.name}, ${cityInfo.country} | Datetime.app`,
-    description: `Current local time in ${cityInfo.name}, ${cityInfo.country} (${cityInfo.timezone} time zone)`,
+    title,
+    description,
     alternates: {
-      canonical: `https://datetime.app/cities/${city}`,
+      canonical,
       languages
     }
   };

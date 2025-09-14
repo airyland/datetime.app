@@ -186,7 +186,9 @@
         "question": "Warum wird UTC in der Informatik verwendet?",
         "answer": "UTC wird in der Informatik verwendet, weil es eine konsistente Zeitreferenz unabhängig vom geografischen Standort bietet. Dies ist wesentlich für Zeitstempel von Ereignissen, Synchronisation von Systemen über verschiedene Zeitzonen hinweg, Protokollierung und Gewährleistung konsistenter Datenzeitstempel in verteilten Systemen."
       }
-    }
+    },
+    "metaTitle": "UTC-Zeit | Koordinierte Weltzeit | Datetime.app",
+    "metaDescription": "Aktuelle UTC (Koordinierte Weltzeit) anzeigen. UTC ist der weltweite Zeitstandard, unbeeinflusst von Zeitzonen oder Sommerzeitänderungen."
   },
   "holidays": {
     "title": "Feiertage weltweit",
@@ -286,7 +288,10 @@
         "question": "Warum erscheinen die Informationen zum Nächsten Geburtstag nicht bei Verwendung eines benutzerdefinierten Datums?",
         "answer": "Die Berechnung des Nächsten Geburtstags basiert auf dem aktuellen Datum und zeigt, wie viele Tage bis zu Ihrem nächsten Geburtstag von heute an verbleiben. Bei Verwendung eines benutzerdefinierten Zieldatums werden diese Informationen nicht angezeigt, da sie für das von Ihnen angegebene benutzerdefinierte Datum nicht relevant wären."
       }
-    }
+    },
+    "metaTitle": "Altersrechner | Berechnen Sie Ihr genaues Alter | Datetime.app",
+    "metaDescription": "Berechnen Sie Ihr genaues Alter in Jahren, Monaten, Tagen, Stunden, Minuten und Sekunden. Wählen Sie zwischen Kalender oder manueller Eingabe und berechnen Sie das Alter zu jedem Datum.",
+    "metaKeywords": "Altersrechner, Alter berechnen, wie alt bin ich, genaues Alter, Alter in Jahren, Alter in Tagen, Geburtstagsrechner, Zeit seit Geburt, Alter zwischen Daten, Alter an bestimmtem Datum"
   },
   "yearProgress": {
     "title": "Jahresfortschritt",
@@ -360,7 +365,12 @@
     "timeLeftHours": "{count} Stunde",
     "timeLeftMinutes": "{count} Minute",
     "timeLeftSeconds": "{count} Sekunde",
-    "left": "übrig"
+    "left": "übrig",
+    "metaTitle": "Jahresfortschrittsbalken | Sehen Sie, wie viel vom Jahr vergangen ist | Datetime.app",
+    "metaDescription": "Sehen Sie den Fortschritt des aktuellen Jahres mit unserem interaktiven Fortschrittsbalken. Sehen Sie den genauen Prozentsatz des abgeschlossenen Jahres und die verbleibenden Tage.",
+    "yearMetaTitle": "{year} Jahresfortschrittsbalken - {progress}% abgeschlossen | Datetime.app",
+    "yearMetaDescription": "Das Jahr {year} ist zu {progress}% abgeschlossen. Verfolgen Sie den Fortschritt in Echtzeit und sehen Sie, wie viel Zeit in {year} noch übrig ist.",
+    "yearMetaKeywords": "{year} Fortschritt, {year} Fortschrittsbalken, verbleibende Zeit in {year}, verbleibende Tage in {year}, {year} Abschluss, {year} Tracker, Zeitverfolgung"
   },
   "cities": {
     "pageTitle": "Aktuelle Zeit in {cityName}, {countryName}",
@@ -496,7 +506,9 @@
       "Saudi Arabia": "Saudi-Arabien",
       "Qatar": "Katar",
       "Kuwait": "Kuwait"
-    }
+    },
+    "metaTitle": "Aktuelle Zeit in {cityName}, {countryName} | Datetime.app",
+    "metaDescription": "Aktuelle Ortszeit in {cityName}, {countryName} (Zeitzone {timezone})"
   },
   "languageSuggestion": {
     "title": "Sprachvorschlag",
@@ -511,9 +523,9 @@
     "metaTitle": "Kalender {year} - Kostenloser druckbarer Kalender mit Wochennummern, Monatsplaner & Jahresansicht",
     "metaDescription": "Kostenloser {year} Kalender mit Wochennummern, Monatsansicht und Jahresübersicht. Planen Sie Ihr {year} mit unserem interaktiven {year} Kalender mit Feiertagen, Schaltjahr-Infos und druckbarem Format.",
     "metaKeywords": "Kalender {year}, {year} Jahreskalender, {year} Monatskalender, {year} Jahreskalender, kostenloser {year} Kalender, druckbarer {year} Kalender, {year} Kalender mit Wochennummern",
-    "currentYear": "Aktuelles Jahr",
+    "currentYear": "aktuelles Jahr",
     "leapYear": "Schaltjahr",
-    "regularYear": "Normales Jahr",
+    "regularYear": "normales Jahr",
     "weekNumber": "Woche {number}",
     "weekNumbers": "Wochennummern",
     "today": "Heute",
@@ -526,7 +538,7 @@
     "toggleTheme": "Design wechseln",
     "previousMonth": "Vorheriger Monat",
     "nextMonth": "Nächster Monat",
-    "currentMonth": "Aktueller Monat",
+    "currentMonth": "aktueller Monat",
     "backToYear": "Zurück zu {year}",
     "daysInMonth": "{days} Tage",
     "selectedDate": "Ausgewähltes Datum",
@@ -620,28 +632,6 @@
       "navigation": {
         "question": "Wie kann ich zu anderen Monaten navigieren?",
         "answer": "Verwenden Sie die Pfeiltasten, um zu {prevMonth} oder {nextMonth} zu gehen. Sie können auch auf jeden Monat im Navigationsgitter unten klicken oder die Schaltfläche 'Jahr anzeigen' verwenden, um alle Monate auf einmal zu sehen."
-      },
-      "monthOverview": {
-        "question": "Welche Informationen zeigt dieser Monat?",
-        "answer": "{month} {year} hat {days} Tage, beginnend am {startDay} und endend am {endDay}. Diese Kalenderansicht zeigt alle Daten mit ihren entsprechenden Wochentagen und Wochennummern."
-      },
-      "weekCount": {
-        "question": "Wie viele Wochen hat dieser Monat?",
-        "answer": "{month} erstreckt sich über {weeks} Wochen im Kalenderraster, obwohl einige Wochen Tage vom vorherigen oder nächsten Monat enthalten können."
-      },
-      "currentMonth": {
-        "question": "Warum ist dieser Monat hervorgehoben?",
-        "answer": "Dies ist der aktuelle Monat ({month} {year}). Heute ist der {today}. des Monats, der im Kalender blau hervorgehoben ist."
-      },
-      "monthCharacteristics": {
-        "question": "Was sind die Eigenschaften dieses Monats?",
-        "february": "{month} {year} hat {days} Tage, was ihn zu einem {leapYear} macht. Februar ist der kürzeste Monat und der einzige Monat mit einer variablen Anzahl von Tagen.",
-        "thirtyDays": "{month} ist einer der vier Monate mit genau 30 Tagen (April, Juni, September, November).",
-        "thirtyOneDays": "{month} hat 31 Tage und ist einer der sieben längeren Monate des Jahres."
-      },
-      "navigation": {
-        "question": "Wie kann ich zu anderen Monaten navigieren?",
-        "answer": "Verwenden Sie die Pfeiltasten, um zu {prevMonth} oder {nextMonth} zu gehen. Sie können auch auf jeden Monat im Navigationsgitter unten klicken oder die Schaltfläche 'Jahr anzeigen' verwenden, um alle Monate auf einmal zu sehen."
       }
     },
     "seo": {
@@ -664,7 +654,13 @@
           "Jahr-zu-Jahr-Kalendervergleich"
         ]
       }
-    }
+    },
+    "yearMetaTitle": "{year} Kalender | Vollständige Jahresansicht | Datetime.app",
+    "yearMetaDescription": "Vollständigen {year} Kalender mit allen Monaten, Wochennummern und Daten anzeigen. {yearType}{currentYearSuffix}.",
+    "yearMetaKeywords": "{year} Kalender, Jahreskalender, Monatskalender, Datum suchen, Wochennummern, {yearType}",
+    "monthMetaTitle": "{year} {monthName} Kalender | Monatsansicht | Datetime.app",
+    "monthMetaDescription": "Vollständigen Kalender für {monthName} {year} mit allen Daten und Wocheninformationen anzeigen.{currentMonthSuffix}",
+    "monthMetaKeywords": "{monthName} {year}, Monatskalender, Kalenderansicht, Datum suchen, {month}"
   },
   "timezones": {
     "title": "Zeit in {timezone}",

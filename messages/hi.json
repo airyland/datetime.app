@@ -93,7 +93,10 @@
       "detailed": "विस्तृत",
       "standard": "मानक"
     },
-    "title": "आयु कैलकुलेटर"
+    "title": "आयु कैलकुलेटर",
+    "metaTitle": "आयु कैलकुलेटर | अपनी सटीक आयु की गणना करें | Datetime.app",
+    "metaDescription": "वर्ष, महीने, दिन, घंटे, मिनट और सेकंड में अपनी सटीक आयु की गणना करें। कैलेंडर या मैन्युअल इनपुट के बीच चुनें और किसी भी तारीख पर आयु की गणना करें।",
+    "metaKeywords": "आयु कैलकुलेटर, आयु गणना, मैं कितने साल का हूं, सटीक आयु, वर्षों में आयु, दिनों में आयु, जन्मदिन कैलकुलेटर, जन्म से समय, तारीखों के बीच आयु, विशिष्ट तारीख पर आयु"
   },
   "calendar": {
     "backToYear": "{year} पर वापस जाएं",
@@ -151,7 +154,7 @@
       "weeksRemaining": "बाकी सप्ताह"
     },
     "jumpToYear": "वर्ष पर जाएं",
-    "leapYear": "अधिवर्ष",
+    "leapYear": "लीप वर्ष",
     "monthNavigation": "माह नेविगेशन",
     "months": {
       "april": "अप्रैल",
@@ -233,7 +236,13 @@
           "वर्ष-दर-वर्ष कैलेंडर तुलना"
         ]
       }
-    }
+    },
+    "yearMetaTitle": "{year} कैलेंडर | पूर्ण वार्षिक दृश्य | Datetime.app",
+    "yearMetaDescription": "सभी महीनों, सप्ताह संख्याओं और तारीखों के साथ {year} का पूरा कैलेंडर देखें। {yearType}{currentYearSuffix}।",
+    "yearMetaKeywords": "{year} कैलेंडर, वार्षिक कैलेंडर, मासिक कैलेंडर, दिनांक खोज, सप्ताह संख्या, {yearType}",
+    "monthMetaTitle": "{year} {monthName} कैलेंडर | मासिक दृश्य | Datetime.app",
+    "monthMetaDescription": "सभी तारीखों और सप्ताह की जानकारी के साथ {monthName} {year} का पूरा कैलेंडर देखें।{currentMonthSuffix}",
+    "monthMetaKeywords": "{monthName} {year}, मासिक कैलेंडर, कैलेंडर दृश्य, दिनांक खोज, {month}"
   },
   "cities": {
     "cityInfo": "शहर की जानकारी",
@@ -369,7 +378,9 @@
     "timezoneLabel": "{timezone} समय क्षेत्र",
     "toggleTheme": "थीम टॉगल करें",
     "unixTimestamp": "Unix टाइमस्टैम्प",
-    "utcTime": "UTC समय"
+    "utcTime": "UTC समय",
+    "metaTitle": "{countryName} के {cityName} में वर्तमान समय | Datetime.app",
+    "metaDescription": "{countryName} के {cityName} में वर्तमान स्थानीय समय ({timezone} समय क्षेत्र)"
   },
   "common": {
     "date": "दिनांक",
@@ -630,7 +641,9 @@
     "utcOffset": "UTC/GMT+0",
     "utcString": "UTC स्ट्रिंग",
     "viewGlossary": "दिनांक और समय की अवधारणाओं की हमारी संपूर्ण शब्दावली देखें",
-    "worldCityTimes": "विश्व शहरों का समय"
+    "worldCityTimes": "विश्व शहरों का समय",
+    "metaTitle": "UTC समय | समन्वित सार्वभौमिक समय | Datetime.app",
+    "metaDescription": "वर्तमान UTC (समन्वित सार्वभौमिक समय) देखें। UTC विश्व का समय मानक है, जो समय क्षेत्रों या डेलाइट सेविंग टाइम परिवर्तनों से अप्रभावित है।"
   },
   "yearProgress": {
     "description": "वर्तमान वर्ष की प्रगति को ट्रैक करें",
@@ -704,7 +717,12 @@
     "timeLeftHours": "{count} घंटा",
     "timeLeftMinutes": "{count} मिनट",
     "timeLeftSeconds": "{count} सेकंड",
-    "left": "बचा"
+    "left": "बचा",
+    "metaTitle": "वर्ष प्रगति बार | देखें कि वर्ष का कितना हिस्सा बीत चुका है | Datetime.app",
+    "metaDescription": "हमारे इंटरैक्टिव प्रगति बार के साथ वर्तमान वर्ष की प्रगति देखें। वर्ष पूर्ण होने का सटीक प्रतिशत और शेष दिन देखें।",
+    "yearMetaTitle": "{year} वर्ष प्रगति बार - {progress}% पूर्ण | Datetime.app",
+    "yearMetaDescription": "वर्ष {year} {progress}% पूर्ण हो गया है। वास्तविक समय में प्रगति को ट्रैक करें और देखें कि {year} में कितना समय बचा है।",
+    "yearMetaKeywords": "{year} प्रगति, {year} प्रगति बार, {year} में बचा समय, {year} में बचे दिन, {year} पूर्णता, {year} ट्रैकर, समय ट्रैकिंग"
   },
   "glossary": {
     "title": "तिथि और समय शब्दावली",

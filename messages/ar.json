@@ -93,7 +93,10 @@
       "detailed": "مفصّل",
       "standard": "قياسي"
     },
-    "title": "حاسبة العمر"
+    "title": "حاسبة العمر",
+    "metaTitle": "حاسبة العمر | احسب عمرك الدقيق | Datetime.app",
+    "metaDescription": "احسب عمرك الدقيق بالسنوات والشهور والأيام والساعات والدقائق والثواني. اختر بين إدخال التقويم أو الإدخال اليدوي واحسب العمر في أي تاريخ.",
+    "metaKeywords": "حاسبة العمر, حساب العمر, كم عمري, العمر الدقيق, العمر بالسنوات, العمر بالأيام, حاسبة عيد الميلاد, الوقت منذ الولادة, العمر بين التواريخ, العمر في تاريخ محدد"
   },
   "calendar": {
     "backToYear": "العودة إلى {year}",
@@ -233,7 +236,13 @@
           "مقارنة التقويم بين السنوات"
         ]
       }
-    }
+    },
+    "yearMetaTitle": "تقويم {year} | عرض سنوي كامل | Datetime.app",
+    "yearMetaDescription": "عرض التقويم الكامل لعام {year} مع جميع الشهور وأرقام الأسابيع والتواريخ. {yearType}{currentYearSuffix}.",
+    "yearMetaKeywords": "تقويم {year}, تقويم سنوي, تقويم شهري, البحث عن التاريخ, أرقام الأسابيع, {yearType}",
+    "monthMetaTitle": "تقويم {monthName} {year} | عرض شهري | Datetime.app",
+    "monthMetaDescription": "عرض التقويم الكامل لشهر {monthName} {year} مع جميع التواريخ ومعلومات الأسبوع.{currentMonthSuffix}",
+    "monthMetaKeywords": "{monthName} {year}, تقويم شهري, عرض التقويم, البحث عن التاريخ, {month}"
   },
   "cities": {
     "cityInfo": "معلومات المدينة",
@@ -369,7 +378,9 @@
     "timezoneLabel": "المنطقة الزمنية {timezone}",
     "toggleTheme": "تبديل السمة",
     "unixTimestamp": "الطابع الزمني Unix",
-    "utcTime": "وقت UTC"
+    "utcTime": "وقت UTC",
+    "metaTitle": "الوقت الحالي في {cityName}، {countryName} | Datetime.app",
+    "metaDescription": "الوقت المحلي الحالي في {cityName}، {countryName} (المنطقة الزمنية {timezone})"
   },
   "common": {
     "date": "التاريخ",
@@ -630,7 +641,9 @@
     "utcOffset": "UTC/GMT+0",
     "utcString": "نص UTC",
     "viewGlossary": "عرض مسردنا الكامل لمفاهيم التاريخ والوقت",
-    "worldCityTimes": "أوقات مدن العالم"
+    "worldCityTimes": "أوقات مدن العالم",
+    "metaTitle": "توقيت UTC | التوقيت العالمي المنسق | Datetime.app",
+    "metaDescription": "عرض التوقيت العالمي المنسق الحالي (UTC). UTC هو معيار الوقت العالمي، غير متأثر بالمناطق الزمنية أو تغييرات التوقيت الصيفي."
   },
   "yearProgress": {
     "description": "تتبع تقدم السنة الحالية",
@@ -704,7 +717,12 @@
     "timeLeftHours": "{count} ساعة",
     "timeLeftMinutes": "{count} دقيقة",
     "timeLeftSeconds": "{count} ثانية",
-    "left": "متبقي"
+    "left": "متبقي",
+    "metaTitle": "شريط تقدم السنة | شاهد كم مضى من السنة | Datetime.app",
+    "metaDescription": "عرض تقدم السنة الحالية مع شريط التقدم التفاعلي. شاهد النسبة المئوية الدقيقة للسنة المكتملة والأيام المتبقية.",
+    "yearMetaTitle": "شريط تقدم {year} - {progress}% مكتمل | Datetime.app",
+    "yearMetaDescription": "العام {year} مكتمل بنسبة {progress}%. تتبع التقدم في الوقت الفعلي وانظر كم من الوقت متبقي في {year}.",
+    "yearMetaKeywords": "تقدم {year}, شريط تقدم {year}, الوقت المتبقي في {year}, الأيام المتبقية في {year}, إكمال {year}, متتبع {year}, تتبع الوقت"
   },
   "glossary": {
     "title": "مسرد مفاهيم التاريخ والوقت",
@@ -731,7 +749,11 @@
         "category": "standard",
         "definition": "معيار الوقت الأساسي الذي ينظم به العالم الساعات والوقت. يعتمد على الساعات الذرية ويوفر مرجعاً زمنياً موحداً للعالم.",
         "example": "2024-01-01T12:00:00Z يمثل منتصف النهار بالتوقيت العالمي المنسق في اليوم الأول من عام 2024",
-        "relatedTerms": ["gmt", "timezone", "atomicTime"]
+        "relatedTerms": [
+          "gmt",
+          "timezone",
+          "atomicTime"
+        ]
       },
       "gmt": {
         "title": "توقيت غرينتش (GMT)",
@@ -742,7 +764,11 @@
         "category": "standard",
         "definition": "توقيت خط الطول الأساسي (0°) المار بغرينتش، لندن. كان المعيار الزمني العالمي قبل اعتماد UTC.",
         "example": "GMT+0 يشير إلى التوقيت في غرينتش بدون إزاحة",
-        "relatedTerms": ["utc", "timezone", "epoch"]
+        "relatedTerms": [
+          "utc",
+          "timezone",
+          "epoch"
+        ]
       },
       "unixTimestamp": {
         "title": "الطابع الزمني يونكس",
@@ -753,7 +779,11 @@
         "category": "format",
         "definition": "عدد الثواني المنقضية منذ 1 يناير 1970، 00:00:00 UTC. يُستخدم على نطاق واسع في أنظمة الحاسوب والبرمجة.",
         "example": "1704067200 يمثل 1 يناير 2024، 00:00:00 UTC",
-        "relatedTerms": ["epoch", "utc", "iso8601"]
+        "relatedTerms": [
+          "epoch",
+          "utc",
+          "iso8601"
+        ]
       },
       "timezone": {
         "title": "المنطقة الزمنية",
@@ -764,7 +794,11 @@
         "category": "timezone",
         "definition": "منطقة جغرافية تتبع وقتاً معيارياً موحداً، عادة ما تُعرّف كإزاحة من UTC.",
         "example": "EST (UTC-5) هو التوقيت المعياري الشرقي، أي 5 ساعات خلف UTC",
-        "relatedTerms": ["utc", "dst", "gmt"]
+        "relatedTerms": [
+          "utc",
+          "dst",
+          "gmt"
+        ]
       },
       "dst": {
         "title": "التوقيت الصيفي (DST)",
@@ -775,7 +809,11 @@
         "category": "concept",
         "definition": "ممارسة تقديم الساعات ساعة واحدة خلال الأشهر الأكثر دفئاً لتوفير ضوء النهار في المساء.",
         "example": "في الولايات المتحدة، يبدأ التوقيت الصيفي في الأحد الثاني من مارس وينتهي في الأحد الأول من نوفمبر",
-        "relatedTerms": ["timezone", "utc", "standardTime"]
+        "relatedTerms": [
+          "timezone",
+          "utc",
+          "standardTime"
+        ]
       },
       "leapSecond": {
         "title": "الثانية الكبيسة",
@@ -786,7 +824,11 @@
         "category": "calculation",
         "definition": "ثانية إضافية تُدرج أحياناً في UTC لتعويض التغيرات في دوران الأرض والحفاظ على التوافق مع الوقت الشمسي.",
         "example": "آخر ثانية كبيسة أُضيفت في 31 ديسمبر 2016، 23:59:60 UTC",
-        "relatedTerms": ["utc", "atomicTime", "earthRotation"]
+        "relatedTerms": [
+          "utc",
+          "atomicTime",
+          "earthRotation"
+        ]
       },
       "atomicTime": {
         "title": "الوقت الذري (TAI)",
@@ -797,7 +839,11 @@
         "category": "standard",
         "definition": "معيار وقت دقيق للغاية يعتمد على الذبذبة الطبيعية لذرات السيزيوم في الساعات الذرية.",
         "example": "TAI متقدم عن UTC بحوالي 37 ثانية اعتباراً من عام 2024",
-        "relatedTerms": ["utc", "leapSecond", "cesiumClock"]
+        "relatedTerms": [
+          "utc",
+          "leapSecond",
+          "cesiumClock"
+        ]
       },
       "julianDate": {
         "title": "التاريخ اليولياني",
@@ -808,7 +854,11 @@
         "category": "format",
         "definition": "نظام تقويم مستمر يعدّ الأيام منذ بداية فترة يوليانية في 1 يناير 4713 قبل الميلاد.",
         "example": "JD 2451545.0 يمثل 1 يناير 2000، 12:00:00 TT",
-        "relatedTerms": ["epoch", "astronomicalTime", "gregorianCalendar"]
+        "relatedTerms": [
+          "epoch",
+          "astronomicalTime",
+          "gregorianCalendar"
+        ]
       },
       "epoch": {
         "title": "العصر",
@@ -819,7 +869,11 @@
         "category": "concept",
         "definition": "نقطة مرجعية في الوقت تُستخدم كأساس لحساب التواريخ والأوقات الأخرى.",
         "example": "عصر يونكس هو 1 يناير 1970، 00:00:00 UTC",
-        "relatedTerms": ["unixTimestamp", "julianDate", "referenceTime"]
+        "relatedTerms": [
+          "unixTimestamp",
+          "julianDate",
+          "referenceTime"
+        ]
       },
       "iso8601": {
         "title": "ISO 8601 (تنسيق التاريخ والوقت)",
@@ -830,7 +884,11 @@
         "category": "format",
         "definition": "معيار دولي لتمثيل التواريخ والأوقات، يتبع تنسيق YYYY-MM-DDTHH:MM:SS.sssZ",
         "example": "2024-01-01T15:30:00.000Z يمثل 1 يناير 2024، الساعة 3:30 مساءً بالتوقيت العالمي المنسق",
-        "relatedTerms": ["utc", "standardFormat", "dateTimeString"]
+        "relatedTerms": [
+          "utc",
+          "standardFormat",
+          "dateTimeString"
+        ]
       }
     }
   },

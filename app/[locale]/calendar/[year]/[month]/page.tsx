@@ -10,6 +10,7 @@ import { JetBrains_Mono } from "next/font/google"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { generateMonthCalendar, getWeekdayNames, getDaysInMonth } from '@/lib/calendar'
+import { getLocalePath } from '@/lib/locale-utils'
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -59,7 +60,7 @@ export default function MonthPage({ params }: MonthPageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href={getLocalePath("/")} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
+        <Link href={getLocalePath("/", locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">

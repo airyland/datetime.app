@@ -186,7 +186,9 @@
         "question": "¿Por qué se usa UTC en informática?",
         "answer": "UTC se usa en informática porque proporciona una referencia de tiempo consistente independientemente de la ubicación geográfica. Esto es esencial para marcas de tiempo en eventos, sincronización de sistemas a través de diferentes zonas horarias, registro de eventos y asegurar marcas de tiempo de datos consistentes en sistemas distribuidos."
       }
-    }
+    },
+    "metaTitle": "Hora UTC | Tiempo Universal Coordinado | Datetime.app",
+    "metaDescription": "Ver la hora UTC actual (Tiempo Universal Coordinado). UTC es el estándar horario mundial, no afectado por zonas horarias o cambios de horario de verano."
   },
   "holidays": {
     "title": "Días Festivos del Mundo",
@@ -211,7 +213,7 @@
     },
     "labels": {
       "year": "Año",
-      "month": "Mes", 
+      "month": "Mes",
       "day": "Día",
       "useCustomDate": "Usar fecha personalizada",
       "calculateAge": "Calcular Edad",
@@ -222,7 +224,7 @@
       "updatesInRealTime": "Se actualiza en tiempo real",
       "asOf": "Al {date}",
       "years": "Años",
-      "months": "Meses", 
+      "months": "Meses",
       "days": "Días",
       "hours": "Horas",
       "nextBirthday": "Próximo Cumpleaños",
@@ -231,13 +233,13 @@
     },
     "tabs": {
       "standard": "Estándar",
-      "detailed": "Detallado", 
+      "detailed": "Detallado",
       "decimal": "Decimal"
     },
     "formatted": {
       "age": "Edad: {age}",
       "yearsSuffix": "a",
-      "monthsSuffix": "m", 
+      "monthsSuffix": "m",
       "daysSuffix": "d"
     },
     "info": {
@@ -286,7 +288,10 @@
         "question": "¿Por qué no aparece la información del Próximo Cumpleaños cuando uso una fecha personalizada?",
         "answer": "El cálculo del Próximo Cumpleaños se basa en la fecha actual y muestra cuántos días faltan para tu próximo cumpleaños desde hoy. Cuando usas una fecha objetivo personalizada, esta información no se muestra porque no sería relevante para la fecha personalizada que has especificado."
       }
-    }
+    },
+    "metaTitle": "Calculadora de Edad | Calcula tu Edad Exacta | Datetime.app",
+    "metaDescription": "Calcula tu edad exacta en años, meses, días, horas, minutos y segundos. Elige entre entrada de calendario o manual y calcula la edad en cualquier fecha.",
+    "metaKeywords": "calculadora de edad, calcular edad, qué edad tengo, edad exacta, edad en años, edad en días, calculadora de cumpleaños, tiempo desde nacimiento, edad entre fechas, edad en fecha específica"
   },
   "yearProgress": {
     "title": "Progreso del Año",
@@ -360,7 +365,12 @@
     "timeLeftHours": "{count} hora",
     "timeLeftMinutes": "{count} minuto",
     "timeLeftSeconds": "{count} segundo",
-    "left": "restante"
+    "left": "restante",
+    "metaTitle": "Barra de progreso del año | Vea cuánto del año ha pasado | Datetime.app",
+    "metaDescription": "Vea el progreso del año actual con nuestra barra de progreso interactiva. Vea el porcentaje exacto del año completado y los días restantes.",
+    "yearMetaTitle": "Barra de progreso {year} - {progress}% completado | Datetime.app",
+    "yearMetaDescription": "El año {year} está {progress}% completado. Sigue el progreso en tiempo real y ve cuánto tiempo queda en {year}.",
+    "yearMetaKeywords": "progreso {year}, barra de progreso {year}, tiempo restante en {year}, días restantes en {year}, finalización {year}, rastreador {year}, seguimiento de tiempo"
   },
   "cities": {
     "pageTitle": "Hora Actual en {cityName}, {countryName}",
@@ -496,7 +506,9 @@
       "Saudi Arabia": "Arabia Saudí",
       "Qatar": "Catar",
       "Kuwait": "Kuwait"
-    }
+    },
+    "metaTitle": "Hora actual en {cityName}, {countryName} | Datetime.app",
+    "metaDescription": "Hora local actual en {cityName}, {countryName} (zona horaria {timezone})"
   },
   "languageSuggestion": {
     "title": "Sugerencia de idioma",
@@ -511,9 +523,9 @@
     "metaTitle": "Calendario {year} - Calendario Gratuito Imprimible con Números de Semana, Planificador Mensual y Vista Anual",
     "metaDescription": "Calendario {year} gratuito con números de semana, vista mensual y resumen anual. Planifica tu {year} con nuestro calendario interactivo {year} con días festivos, información de año bisiesto y formato imprimible.",
     "metaKeywords": "calendario {year}, calendario anual {year}, calendario mensual {year}, calendario anual {year}, calendario gratuito {year}, calendario imprimible {year}, calendario {year} con números de semana",
-    "currentYear": "Año Actual",
-    "leapYear": "Año Bisiesto",
-    "regularYear": "Año Regular",
+    "currentYear": "año actual",
+    "leapYear": "año bisiesto",
+    "regularYear": "año regular",
     "weekNumber": "Semana {number}",
     "weekNumbers": "Números de Semana",
     "today": "Hoy",
@@ -526,7 +538,7 @@
     "toggleTheme": "Cambiar tema",
     "previousMonth": "Mes Anterior",
     "nextMonth": "Mes Siguiente",
-    "currentMonth": "Mes Actual",
+    "currentMonth": "mes actual",
     "backToYear": "Volver a {year}",
     "daysInMonth": "{days} días",
     "selectedDate": "Fecha Seleccionada",
@@ -620,28 +632,6 @@
       "navigation": {
         "question": "¿Cómo puedo navegar a otros meses?",
         "answer": "Usa los botones de flecha para ir a {prevMonth} o {nextMonth}. También puedes hacer clic en cualquier mes en la cuadrícula de navegación de abajo, o usar el botón 'Ver Año' para ver todos los meses a la vez."
-      },
-      "monthOverview": {
-        "question": "¿Qué información muestra este mes?",
-        "answer": "{month} {year} tiene {days} días, comenzando el {startDay} y terminando el {endDay}. Esta vista de calendario muestra todas las fechas con sus días de la semana correspondientes y números de semana."
-      },
-      "weekCount": {
-        "question": "¿Cuántas semanas tiene este mes?",
-        "answer": "{month} abarca {weeks} semanas en la cuadrícula del calendario, aunque algunas semanas pueden contener días del mes anterior o siguiente."
-      },
-      "currentMonth": {
-        "question": "¿Por qué está resaltado este mes?",
-        "answer": "Este es el mes actual ({month} {year}). Hoy es el día {today} del mes, resaltado en azul en el calendario."
-      },
-      "monthCharacteristics": {
-        "question": "¿Cuáles son las características de este mes?",
-        "february": "{month} {year} tiene {days} días, lo que lo convierte en un {leapYear}. Febrero es el mes más corto y el único mes con un número variable de días.",
-        "thirtyDays": "{month} es uno de los cuatro meses con exactamente 30 días (abril, junio, septiembre, noviembre).",
-        "thirtyOneDays": "{month} tiene 31 días, siendo uno de los siete meses más largos del año."
-      },
-      "navigation": {
-        "question": "¿Cómo puedo navegar a otros meses?",
-        "answer": "Usa los botones de flecha para ir a {prevMonth} o {nextMonth}. También puedes hacer clic en cualquier mes en la cuadrícula de navegación de abajo, o usar el botón 'Ver Año' para ver todos los meses a la vez."
       }
     },
     "seo": {
@@ -664,7 +654,13 @@
           "Comparación de calendario año a año"
         ]
       }
-    }
+    },
+    "yearMetaTitle": "Calendario {year} | Vista anual completa | Datetime.app",
+    "yearMetaDescription": "Ver el calendario completo de {year} con todos los meses, números de semana y fechas. {yearType}{currentYearSuffix}.",
+    "yearMetaKeywords": "calendario {year}, calendario anual, calendario mensual, búsqueda de fecha, números de semana, {yearType}",
+    "monthMetaTitle": "Calendario {monthName} {year} | Vista mensual | Datetime.app",
+    "monthMetaDescription": "Ver el calendario completo para {monthName} {year} con todas las fechas e información de semana.{currentMonthSuffix}",
+    "monthMetaKeywords": "{monthName} {year}, calendario mensual, vista de calendario, búsqueda de fecha, {month}"
   },
   "timezones": {
     "title": "Hora en {timezone}",

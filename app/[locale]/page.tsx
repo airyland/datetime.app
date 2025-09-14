@@ -18,6 +18,7 @@ import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
 import Header from '@/components/header'
 import spacetime from 'spacetime'
+import { getLocalePath } from '@/lib/locale-utils'
 
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
@@ -702,7 +703,7 @@ export default function Home() {
                 <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
                   <CardHeader className="py-1 px-2 text-center">
                     <CardTitle className="text-xs font-medium text-muted-foreground">
-                      <a href={getLocalePath('/utc')} className="inline-flex items-center justify-center gap-1 hover:underline" title={t('labels.titleUtcTime')}>
+                      <a href={getLocalePath('/utc', currentLocale)} className="inline-flex items-center justify-center gap-1 hover:underline" title={t('labels.titleUtcTime')}>
                         {t('labels.utcTime')}
                         <Globe className="h-2.5 w-2.5" />
                       </a>

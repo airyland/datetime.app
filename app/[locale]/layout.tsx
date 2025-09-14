@@ -94,7 +94,7 @@ export default async function LocaleLayout({
         <Analytics />
       </head>
       <body className={spaceGrotesk.className}>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <main>
               {children}

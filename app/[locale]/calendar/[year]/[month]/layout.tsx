@@ -36,58 +36,26 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
   const currentMonth = new Date().getMonth() + 1;
   const isCurrentMonth = year === currentYear && month === currentMonth;
   const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-  
+
   // Get localized month names
   const monthNames = getMonthNames(locale);
   const monthName = monthNames.full[month - 1];
 
-  if (locale === 'zh-hans') {
-    return {
-      title: `${year}年${month}月日历 | ${monthName} ${year} | Datetime.app`,
-      description: `查看${year}年${month}月（${monthName}）完整日历，包含所有日期和星期信息。${isCurrentMonth ? '当前月份。' : ''}`,
-      keywords: [`${year}年${month}月`, `${monthName} ${year}`, "月历", "日历", "日期查询"],
-      alternates: {
-        canonical: `https://datetime.app/zh-hans/calendar/${year}/${String(month).padStart(2, '0')}`,
-        languages
-      },
-      openGraph: {
-        title: `${year}年${month}月日历 | ${monthName} ${year} | Datetime.app`,
-        description: `查看${year}年${month}月（${monthName}）完整日历。`,
-        type: "website",
-      },
-    };
-  }
-
-  if (locale === 'zh-hant') {
-    return {
-      title: `${year}年${month}月日曆 | ${monthName} ${year} | Datetime.app`,
-      description: `查看${year}年${month}月（${monthName}）完整日曆，包含所有日期和星期資訊。${isCurrentMonth ? '當前月份。' : ''}`,
-      keywords: [`${year}年${month}月`, `${monthName} ${year}`, "月曆", "日曆", "日期查詢"],
-      alternates: {
-        canonical: `https://datetime.app/zh-hant/calendar/${year}/${String(month).padStart(2, '0')}`,
-        languages
-      },
-      openGraph: {
-        title: `${year}年${month}月日曆 | ${monthName} ${year} | Datetime.app`,
-        description: `查看${year}年${month}月（${monthName}）完整日曆。`,
-        type: "website",
-      },
-    };
-  }
+  const currentMonthSuffix = isCurrentMonth ? ` ${t('currentMonth')}.` : '';
 
   return {
-    title: `${monthName} ${year} Calendar | Monthly View | Datetime.app`,
-    description: `View the complete calendar for ${monthName} ${year} with all dates and week information. ${isCurrentMonth ? 'Current month.' : ''}`,
-    keywords: [`${monthName} ${year}`, "monthly calendar", "calendar view", "date lookup", month.toString().padStart(2, '0')],
+    title: t('monthMetaTitle', { monthName, year, month }),
+    description: t('monthMetaDescription', { year, month, monthName, currentMonthSuffix }),
+    keywords: t('monthMetaKeywords', { year, month, monthName }).split(', '),
     alternates: {
-      canonical: locale === 'en' 
+      canonical: locale === 'en'
         ? `https://datetime.app/calendar/${year}/${String(month).padStart(2, '0')}`
         : `https://datetime.app/${locale}/calendar/${year}/${String(month).padStart(2, '0')}`,
       languages
     },
     openGraph: {
-      title: `${monthName} ${year} Calendar | Monthly View | Datetime.app`,
-      description: `View the complete calendar for ${monthName} ${year}.`,
+      title: t('monthMetaTitle', { monthName, year, month }),
+      description: t('monthMetaDescription', { year, month, monthName, currentMonthSuffix }),
       type: "website",
     },
   }

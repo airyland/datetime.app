@@ -34,53 +34,22 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
   const isCurrentYear = year === currentYear;
   const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
 
-  if (locale === 'zh-hans') {
-    return {
-      title: `${year}年日历 | 完整年历视图 | Datetime.app`,
-      description: `查看${year}年完整日历，包含所有月份、周数和日期。${isLeapYear ? '闰年' : '平年'}，${isCurrentYear ? '当前年份' : ''}。`,
-      keywords: [`${year}年日历`, "年历", "月历", "日期查询", "周数", isLeapYear ? "闰年" : "平年"],
-      alternates: {
-        canonical: `https://datetime.app/zh-hans/calendar/${year}`,
-        languages
-      },
-      openGraph: {
-        title: `${year}年日历 | 完整年历视图 | Datetime.app`,
-        description: `查看${year}年完整日历，包含所有月份、周数和日期。`,
-        type: "website",
-      },
-    };
-  }
-
-  if (locale === 'zh-hant') {
-    return {
-      title: `${year}年日曆 | 完整年曆視圖 | Datetime.app`,
-      description: `查看${year}年完整日曆，包含所有月份、週數和日期。${isLeapYear ? '閏年' : '平年'}，${isCurrentYear ? '當前年份' : ''}。`,
-      keywords: [`${year}年日曆`, "年曆", "月曆", "日期查詢", "週數", isLeapYear ? "閏年" : "平年"],
-      alternates: {
-        canonical: `https://datetime.app/zh-hant/calendar/${year}`,
-        languages
-      },
-      openGraph: {
-        title: `${year}年日曆 | 完整年曆視圖 | Datetime.app`,
-        description: `查看${year}年完整日曆，包含所有月份、週數和日期。`,
-        type: "website",
-      },
-    };
-  }
+  const yearType = isLeapYear ? t('leapYear') : t('regularYear');
+  const currentYearSuffix = isCurrentYear ? ` (${t('currentYear')})` : '';
 
   return {
-    title: `${year} Calendar | Full Year View | Datetime.app`,
-    description: `View the complete ${year} calendar with all months, week numbers, and dates. ${isLeapYear ? 'Leap year' : 'Regular year'}${isCurrentYear ? ' (current year)' : ''}.`,
-    keywords: [`${year} calendar`, "yearly calendar", "monthly calendar", "date lookup", "week numbers", isLeapYear ? "leap year" : "regular year"],
+    title: t('yearMetaTitle', { year }),
+    description: t('yearMetaDescription', { year, yearType, currentYearSuffix }),
+    keywords: t('yearMetaKeywords', { year, yearType }).split(', '),
     alternates: {
-      canonical: locale === 'en' 
+      canonical: locale === 'en'
         ? `https://datetime.app/calendar/${year}`
         : `https://datetime.app/${locale}/calendar/${year}`,
       languages
     },
     openGraph: {
-      title: `${year} Calendar | Full Year View | Datetime.app`,
-      description: `View the complete ${year} calendar with all months, week numbers, and dates.`,
+      title: t('yearMetaTitle', { year }),
+      description: t('yearMetaDescription', { year, yearType, currentYearSuffix }),
       type: "website",
     },
   }

@@ -93,12 +93,15 @@
       "detailed": "Dettagliato",
       "standard": "Standard"
     },
-    "title": "Calcolatore di Età"
+    "title": "Calcolatore di Età",
+    "metaTitle": "Calcolatore di Età | Calcola la Tua Età Esatta | Datetime.app",
+    "metaDescription": "Calcola la tua età esatta in anni, mesi, giorni, ore, minuti e secondi. Scegli tra input calendario o manuale e calcola l'età in qualsiasi data.",
+    "metaKeywords": "calcolatore di età, calcolare età, quanti anni ho, età esatta, età in anni, età in giorni, calcolatore compleanno, tempo dalla nascita, età tra date, età in data specifica"
   },
   "calendar": {
     "backToYear": "Torna a {year}",
-    "currentMonth": "Mese Corrente",
-    "currentYear": "Anno Corrente",
+    "currentMonth": "mese corrente",
+    "currentYear": "anno corrente",
     "date": "Data",
     "dayOfYear": "Giorno dell'Anno",
     "daysInMonth": "{days} giorni",
@@ -151,7 +154,7 @@
       "weeksRemaining": "Settimane rimanenti"
     },
     "jumpToYear": "Vai all'Anno",
-    "leapYear": "Anno Bisestile",
+    "leapYear": "anno bisestile",
     "monthNavigation": "Navigazione Mese",
     "months": {
       "april": "Aprile",
@@ -185,7 +188,7 @@
     "nextYear": "Anno Successivo",
     "previousMonth": "Mese Precedente",
     "previousYear": "Anno Precedente",
-    "regularYear": "Anno Regolare",
+    "regularYear": "anno normale",
     "selectedDate": "Data Selezionata",
     "subtitle": "Vista completa del calendario annuale con numeri di settimana",
     "title": "Calendario {year}",
@@ -233,7 +236,13 @@
           "Confronto di calendario anno per anno"
         ]
       }
-    }
+    },
+    "yearMetaTitle": "Calendario {year} | Vista annuale completa | Datetime.app",
+    "yearMetaDescription": "Visualizza il calendario completo {year} con tutti i mesi, numeri di settimana e date. {yearType}{currentYearSuffix}.",
+    "yearMetaKeywords": "calendario {year}, calendario annuale, calendario mensile, ricerca data, numeri settimana, {yearType}",
+    "monthMetaTitle": "Calendario {monthName} {year} | Vista mensile | Datetime.app",
+    "monthMetaDescription": "Visualizza il calendario completo per {monthName} {year} con tutte le date e informazioni settimanali.{currentMonthSuffix}",
+    "monthMetaKeywords": "{monthName} {year}, calendario mensile, vista calendario, ricerca data, {month}"
   },
   "cities": {
     "cityInfo": "Informazioni sulla città",
@@ -369,7 +378,9 @@
     "timezoneLabel": "Fuso orario {timezone}",
     "toggleTheme": "Cambia tema",
     "unixTimestamp": "Timestamp Unix",
-    "utcTime": "Ora UTC"
+    "utcTime": "Ora UTC",
+    "metaTitle": "Ora attuale a {cityName}, {countryName} | Datetime.app",
+    "metaDescription": "Ora locale attuale a {cityName}, {countryName} (fuso orario {timezone})"
   },
   "common": {
     "date": "Data",
@@ -630,7 +641,9 @@
     "utcOffset": "UTC/GMT+0",
     "utcString": "Stringa UTC",
     "viewGlossary": "Visualizza il nostro glossario completo dei concetti di data e ora",
-    "worldCityTimes": "Orari delle Città del Mondo"
+    "worldCityTimes": "Orari delle Città del Mondo",
+    "metaTitle": "Ora UTC | Tempo Coordinato Universale | Datetime.app",
+    "metaDescription": "Visualizza l'ora UTC corrente (Tempo Coordinato Universale). UTC è lo standard orario mondiale, non influenzato da fusi orari o cambi dell'ora legale."
   },
   "yearProgress": {
     "description": "Traccia il progresso dell'anno attuale",
@@ -704,7 +717,12 @@
     "timeLeftHours": "{count} ora",
     "timeLeftMinutes": "{count} minuto",
     "timeLeftSeconds": "{count} secondo",
-    "left": "rimanente"
+    "left": "rimanente",
+    "metaTitle": "Barra di avanzamento dell'anno | Scopri quanto dell'anno è passato | Datetime.app",
+    "metaDescription": "Visualizza i progressi dell'anno corrente con la nostra barra di avanzamento interattiva. Vedi la percentuale esatta dell'anno completato e i giorni rimanenti.",
+    "yearMetaTitle": "Barra di avanzamento {year} - {progress}% completato | Datetime.app",
+    "yearMetaDescription": "L'anno {year} è completato al {progress}%. Segui i progressi in tempo reale e vedi quanto tempo rimane nel {year}.",
+    "yearMetaKeywords": "progresso {year}, barra progresso {year}, tempo rimanente nel {year}, giorni rimanenti nel {year}, completamento {year}, tracker {year}, monitoraggio tempo"
   },
   "glossary": {
     "title": "Glossario Date e Orari",
@@ -730,7 +748,11 @@
         "category": "standard",
         "definition": "Il tempo standard primario mondiale utilizzato per coordinare il tempo su tutta la Terra. UTC non è influenzato da cambiamenti di fuso orario o ora legale.",
         "example": "Quando sono le 12:00 UTC, sono le 7:00 EST (UTC-5) e le 13:00 CET (UTC+1).",
-        "relatedTerms": ["gmt", "timezone", "daylightSaving"]
+        "relatedTerms": [
+          "gmt",
+          "timezone",
+          "daylightSaving"
+        ]
       },
       "gmt": {
         "title": "GMT (Tempo Medio di Greenwich)",
@@ -740,7 +762,11 @@
         "category": "standard",
         "definition": "Il tempo medio solare al Meridiano Primo a Greenwich, Londra. Spesso usato intercambiabilmente con UTC, sebbene tecnicamente diverso.",
         "example": "GMT è il fuso orario di base per il Regno Unito durante l'orario invernale.",
-        "relatedTerms": ["utc", "timezone", "atomicTime"]
+        "relatedTerms": [
+          "utc",
+          "timezone",
+          "atomicTime"
+        ]
       },
       "unixTimestamp": {
         "title": "Timestamp Unix",
@@ -750,7 +776,11 @@
         "category": "format",
         "definition": "Il numero di secondi trascorsi dal 1° gennaio 1970, 00:00:00 UTC (Unix Epoch). Utilizzato ampiamente nei sistemi informatici.",
         "example": "Il timestamp Unix 1640995200 rappresenta il 1° gennaio 2022, 00:00:00 UTC.",
-        "relatedTerms": ["epoch", "utc", "iso8601"]
+        "relatedTerms": [
+          "epoch",
+          "utc",
+          "iso8601"
+        ]
       },
       "timezone": {
         "title": "Fuso orario",
@@ -760,7 +790,11 @@
         "category": "timezone",
         "definition": "Una regione della Terra che osserva un tempo standard uniforme per scopi legali, commerciali e sociali.",
         "example": "Il fuso orario EST (UTC-5) include città come New York e Toronto.",
-        "relatedTerms": ["utc", "daylightSaving", "gmt"]
+        "relatedTerms": [
+          "utc",
+          "daylightSaving",
+          "gmt"
+        ]
       },
       "daylightSaving": {
         "title": "Ora legale (DST)",
@@ -770,7 +804,11 @@
         "category": "concept",
         "definition": "La pratica di spostare avanti gli orologi durante i mesi più caldi per utilizzare meglio la luce naturale nelle ore serali.",
         "example": "Negli Stati Uniti, l'ora legale inizia la seconda domenica di marzo e termina la prima domenica di novembre.",
-        "relatedTerms": ["timezone", "utc", "standardTime"]
+        "relatedTerms": [
+          "timezone",
+          "utc",
+          "standardTime"
+        ]
       },
       "dst": {
         "title": "Ora legale (DST)",
@@ -785,7 +823,11 @@
         "category": "calculation",
         "definition": "Un aggiustamento di un secondo applicato al Tempo Coordinato Universale per tenere conto delle irregolarità nella rotazione terrestre.",
         "example": "L'ultimo secondo intercalare è stato aggiunto il 31 dicembre 2016 alle 23:59:60 UTC.",
-        "relatedTerms": ["utc", "atomicTime", "gmt"]
+        "relatedTerms": [
+          "utc",
+          "atomicTime",
+          "gmt"
+        ]
       },
       "atomicTime": {
         "title": "Tempo atomico (TAI)",
@@ -795,7 +837,11 @@
         "category": "standard",
         "definition": "Un tempo standard basato sulla frequenza delle transizioni atomiche, fornendo estrema precisione per la misurazione del tempo.",
         "example": "Il Tempo Atomico Internazionale (TAI) è il più preciso standard temporale disponibile.",
-        "relatedTerms": ["utc", "leapSecond", "gmt"]
+        "relatedTerms": [
+          "utc",
+          "leapSecond",
+          "gmt"
+        ]
       },
       "julianDate": {
         "title": "Data giuliana",
@@ -805,7 +851,11 @@
         "category": "format",
         "definition": "Un sistema di datazione continuo utilizzato principalmente dagli astronomi, contando i giorni da un'epoca specifica nel 4713 a.C.",
         "example": "Il 1° gennaio 2000, 12:00 UTC corrisponde al Giorno Giuliano 2451545.0.",
-        "relatedTerms": ["epoch", "calendar", "astronomicalTime"]
+        "relatedTerms": [
+          "epoch",
+          "calendar",
+          "astronomicalTime"
+        ]
       },
       "epoch": {
         "title": "Epoca",
@@ -815,7 +865,11 @@
         "category": "concept",
         "definition": "Un momento di riferimento nel tempo utilizzato come origine per la misurazione del tempo in un sistema particolare.",
         "example": "L'Epoca Unix è il 1° gennaio 1970, 00:00:00 UTC.",
-        "relatedTerms": ["unixTimestamp", "julianDate", "calendar"]
+        "relatedTerms": [
+          "unixTimestamp",
+          "julianDate",
+          "calendar"
+        ]
       },
       "iso8601": {
         "title": "ISO 8601 (Formato data e ora)",
@@ -825,7 +879,11 @@
         "category": "format",
         "definition": "Standard internazionale che definisce la rappresentazione numerica di date e orari. Segue il formato YYYY-MM-DDTHH:MM:SS.sssZ.",
         "example": "2024-03-15T14:30:00.000Z rappresenta il 15 marzo 2024 alle 14:30:00 UTC in formato ISO 8601.",
-        "relatedTerms": ["utc", "timezone", "standardFormat"]
+        "relatedTerms": [
+          "utc",
+          "timezone",
+          "standardFormat"
+        ]
       }
     }
   },

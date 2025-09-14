@@ -93,12 +93,15 @@
       "detailed": "Detalhado",
       "standard": "Padrão"
     },
-    "title": "Calculadora de Idade"
+    "title": "Calculadora de Idade",
+    "metaTitle": "Calculadora de Idade | Calcule Sua Idade Exata | Datetime.app",
+    "metaDescription": "Calcule sua idade exata em anos, meses, dias, horas, minutos e segundos. Escolha entre entrada de calendário ou manual e calcule a idade em qualquer data.",
+    "metaKeywords": "calculadora de idade, calcular idade, quantos anos tenho, idade exata, idade em anos, idade em dias, calculadora de aniversário, tempo desde nascimento, idade entre datas, idade em data específica"
   },
   "calendar": {
     "backToYear": "Voltar para {year}",
-    "currentMonth": "Mês Atual",
-    "currentYear": "Ano Atual",
+    "currentMonth": "mês atual",
+    "currentYear": "ano atual",
     "date": "Data",
     "dayOfYear": "Dia do Ano",
     "daysInMonth": "{days} dias",
@@ -151,7 +154,7 @@
       "weeksRemaining": "Semanas restantes"
     },
     "jumpToYear": "Pular para Ano",
-    "leapYear": "Ano Bissexto",
+    "leapYear": "ano bissexto",
     "monthNavigation": "Navegação por Mês",
     "months": {
       "april": "Abril",
@@ -185,7 +188,7 @@
     "nextYear": "Próximo Ano",
     "previousMonth": "Mês Anterior",
     "previousYear": "Ano Anterior",
-    "regularYear": "Ano Regular",
+    "regularYear": "ano normal",
     "selectedDate": "Data Selecionada",
     "subtitle": "Visualização completa do calendário anual com números de semana",
     "title": "Calendário {year}",
@@ -233,7 +236,13 @@
           "Comparação de calendário ano a ano"
         ]
       }
-    }
+    },
+    "yearMetaTitle": "Calendário {year} | Visualização anual completa | Datetime.app",
+    "yearMetaDescription": "Visualizar o calendário completo de {year} com todos os meses, números de semana e datas. {yearType}{currentYearSuffix}.",
+    "yearMetaKeywords": "calendário {year}, calendário anual, calendário mensal, pesquisa de data, números de semana, {yearType}",
+    "monthMetaTitle": "Calendário {monthName} {year} | Visualização mensal | Datetime.app",
+    "monthMetaDescription": "Visualizar o calendário completo para {monthName} {year} com todas as datas e informações de semana.{currentMonthSuffix}",
+    "monthMetaKeywords": "{monthName} {year}, calendário mensal, visualização de calendário, pesquisa de data, {month}"
   },
   "cities": {
     "cityInfo": "Informações da cidade",
@@ -369,7 +378,9 @@
     "timezoneLabel": "Fuso horário {timezone}",
     "toggleTheme": "Alternar tema",
     "unixTimestamp": "Timestamp Unix",
-    "utcTime": "Hora UTC"
+    "utcTime": "Hora UTC",
+    "metaTitle": "Hora atual em {cityName}, {countryName} | Datetime.app",
+    "metaDescription": "Hora local atual em {cityName}, {countryName} (fuso horário {timezone})"
   },
   "common": {
     "date": "Data",
@@ -630,7 +641,9 @@
     "utcOffset": "UTC/GMT+0",
     "utcString": "String UTC",
     "viewGlossary": "Ver nosso glossário completo de conceitos de data e hora",
-    "worldCityTimes": "Horários das Cidades do Mundo"
+    "worldCityTimes": "Horários das Cidades do Mundo",
+    "metaTitle": "Hora UTC | Tempo Universal Coordenado | Datetime.app",
+    "metaDescription": "Veja a hora UTC atual (Tempo Universal Coordenado). UTC é o padrão de tempo mundial, não afetado por fusos horários ou mudanças de horário de verão."
   },
   "yearProgress": {
     "description": "Acompanhe o progresso do ano atual",
@@ -704,7 +717,12 @@
     "timeLeftHours": "{count} hora",
     "timeLeftMinutes": "{count} minuto",
     "timeLeftSeconds": "{count} segundo",
-    "left": "restante"
+    "left": "restante",
+    "metaTitle": "Barra de progresso do ano | Veja quanto do ano passou | Datetime.app",
+    "metaDescription": "Veja o progresso do ano atual com nossa barra de progresso interativa. Veja a porcentagem exata do ano concluída e os dias restantes.",
+    "yearMetaTitle": "Barra de progresso {year} - {progress}% concluído | Datetime.app",
+    "yearMetaDescription": "O ano {year} está {progress}% concluído. Acompanhe o progresso em tempo real e veja quanto tempo resta em {year}.",
+    "yearMetaKeywords": "progresso {year}, barra de progresso {year}, tempo restante em {year}, dias restantes em {year}, conclusão {year}, rastreador {year}, acompanhamento de tempo"
   },
   "glossary": {
     "title": "Glossário de Data e Hora",
@@ -771,12 +789,9 @@
       },
       "julianDate": {
         "title": "Data Juliana",
-        "shortDescription": "Um conteggio continuo de dias desde o meio-dia do Tempo Universal em 1º de janeiro de 4713 a.C.",
-        "longDescription": "A Data Juliana (JD) é um conteggio continuo de dias e frações de dias desde o meio-dia do Tempo Universal em 1º de janeiro de 4713 a.C. Foi introduzida por astrônomos para fornecer um sistema único de datas para trabalhar com diferentes calendários.\n\nO sistema de Data Juliana foi proposto por Joseph Scaliger em 1583. O ponto de partida foi escolhido porque é anterior à história registrada e representa o ponto em que três grandes ciclos usados na cronologia antiga coincidiam.\n\nAs Datas Julianas são expressas como números decimais, onde a parte inteira representa o número do dia e a parte fracionária representa a hora do dia.\n\nUma variante chamada Data Juliana Modificada (MJD) é definida como MJD = JD - 2400000.5, que reduz os dígitos e coloca o limite inteiro à meia-noite.\n\nAs Datas Julianas são usadas principalmente em astronomia e ciências espaciais para simplificar cálculos de intervalos de tempo.",
-        "category": "format",
-        "title": "Data Juliana",
         "shortDescription": "Uma contagem contínua de dias desde meio-dia do Tempo Universal em 1º de janeiro de 4713 AEC.",
-        "longDescription": "A Data Juliana (DJ) é uma contagem contínua de dias e frações de dias desde meio-dia do Tempo Universal em 1º de janeiro de 4713 AEC. Foi introduzida por astrônomos para fornecer um sistema único de datas para trabalhar com diferentes calendários.\n\nO sistema de Data Juliana foi proposto por Joseph Scaliger em 1583. O ponto inicial foi escolhido porque está antes da história registrada e representa o ponto em que três ciclos principais usados na cronologia antiga coincidiram.\n\nDatas Julianas são expressas como números decimais, onde a parte inteira representa o número do dia e a parte fracionária representa a hora do dia.\n\nUma variante chamada Data Juliana Modificada (DJM) é definida como DJM = DJ - 2400000,5, que reduz dígitos e coloca o limite inteiro à meia-noite.\n\nDatas Julianas são usadas principalmente em astronomia e ciência espacial para simplificar cálculos de intervalos de tempo."
+        "longDescription": "A Data Juliana (DJ) é uma contagem contínua de dias e frações de dias desde meio-dia do Tempo Universal em 1º de janeiro de 4713 AEC. Foi introduzida por astrônomos para fornecer um sistema único de datas para trabalhar com diferentes calendários.\n\nO sistema de Data Juliana foi proposto por Joseph Scaliger em 1583. O ponto inicial foi escolhido porque está antes da história registrada e representa o ponto em que três ciclos principais usados na cronologia antiga coincidiram.\n\nDatas Julianas são expressas como números decimais, onde a parte inteira representa o número do dia e a parte fracionária representa a hora do dia.\n\nUma variante chamada Data Juliana Modificada (DJM) é definida como DJM = DJ - 2400000,5, que reduz dígitos e coloca o limite inteiro à meia-noite.\n\nDatas Julianas são usadas principalmente em astronomia e ciência espacial para simplificar cálculos de intervalos de tempo.",
+        "category": "format"
       },
       "epoch": {
         "name": "Época",

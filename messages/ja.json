@@ -186,7 +186,9 @@
         "question": "なぜコンピューティングでUTCが使用されるのですか？",
         "answer": "UTCがコンピューティングで使用される理由は、地理的位置に関係なく一貫した時間参照を提供するからです。これは、イベントのタイムスタンプ、異なるタイムゾーン間でのシステムの同期、ログ記録、ついている系での一貫したデータタイムスタンプの保証に不可欠です。"
       }
-    }
+    },
+    "metaTitle": "UTC時刻 | 協定世界時 | Datetime.app",
+    "metaDescription": "現在のUTC（協定世界時）を表示します。UTCは世界の時刻標準で、タイムゾーンや夏時間の変更に影響されません。"
   },
   "holidays": {
     "title": "世界の祝日",
@@ -286,7 +288,10 @@
         "question": "カスタム日付を使用している時に次の誕生日情報が表示されないのはなぜですか？",
         "answer": "次の誕生日の計算は現在の日付に基づいており、今日からあなたの次の誕生日まで何日あるかを表示します。カスタム対象日を使用している場合、あなたが指定したカスタム日付には関連がないため、この情報は表示されません。"
       }
-    }
+    },
+    "metaTitle": "年齢計算機 | 正確な年齢を計算 | Datetime.app",
+    "metaDescription": "年、月、日、時、分、秒単位で正確な年齢を計算します。カレンダー選択または手動入力で、任意の日付での年齢を計算できます。",
+    "metaKeywords": "年齢計算機, 年齢計算, 何歳ですか, 正確な年齢, 年数での年齢, 日数での年齢, 誕生日計算機, 生まれてからの時間, 日付間の年齢, 特定日の年齢"
   },
   "yearProgress": {
     "title": "年間進捗",
@@ -360,7 +365,12 @@
     "timeLeftHours": "{count}時間",
     "timeLeftMinutes": "{count}分",
     "timeLeftSeconds": "{count}秒",
-    "left": "残り"
+    "left": "残り",
+    "metaTitle": "年間進捗バー | 今年の経過状況を確認 | Datetime.app",
+    "metaDescription": "インタラクティブな進捗バーで今年の進捗状況を表示します。年の完了率と残り日数を正確に確認できます。",
+    "yearMetaTitle": "{year}年進捗バー - {progress}% 完了 | Datetime.app",
+    "yearMetaDescription": "{year}年は{progress}%が経過しました。リアルタイムで年の進行状況を追跡し、{year}年の残り時間を確認します。",
+    "yearMetaKeywords": "{year}年の進捗, {year}年進捗バー, {year}年の残り時間, {year}年の残り日数, {year}年の完了, {year}年トラッカー, 時間追跡"
   },
   "cities": {
     "pageTitle": "{countryName}・{cityName}の現在時刻",
@@ -496,7 +506,9 @@
       "Saudi Arabia": "サウジアラビア",
       "Qatar": "カタール",
       "Kuwait": "クウェート"
-    }
+    },
+    "metaTitle": "{countryName}・{cityName}の現在時刻 | Datetime.app",
+    "metaDescription": "{countryName}の{cityName}の現在の現地時刻（{timezone}タイムゾーン）"
   },
   "languageSuggestion": {
     "title": "言語の提案",
@@ -682,28 +694,6 @@
         "answer": "うるう年は通常の365日ではなく366日あります。4年ごと（いくつかの例外あり）に発生し、地球の太陽周りの軌道とカレンダーを合わせるために1日（2月29日）を追加します。"
       },
       "monthOverview": {
-        "question": "この月にはどのような情報が表示されますか？",
-        "answer": "{month} {year}は{days}日あり、{startDay}から始まり{endDay}で終わります。このカレンダービューでは、すべての日付とその対応する曜日、週番号が表示されます。"
-      },
-      "weekCount": {
-        "question": "この月は何週間ありますか？",
-        "answer": "{month}はカレンダーグリッド上で{weeks}週にわたりますが、一部の週には前月または翌月の日が含まれる場合があります。"
-      },
-      "currentMonth": {
-        "question": "なぜこの月がハイライトされているのですか？",
-        "answer": "これは現在の月（{month} {year}）です。今日は月の{today}日目で、カレンダー上で青色でハイライトされています。"
-      },
-      "monthCharacteristics": {
-        "question": "この月の特徴は何ですか？",
-        "february": "{month} {year}は{days}日あり、{leapYear}です。2月は最短の月で、唯一日数が変動する月です。",
-        "thirtyDays": "{month}は30日ちょうどの4つの月の一つです（4月、6月、9月、11月）。",
-        "thirtyOneDays": "{month}は31日あり、年の7つの長い月の一つです。"
-      },
-      "navigation": {
-        "question": "他の月にナビゲートするにはどうすればよいですか？",
-        "answer": "矢印ボタンを使用して{prevMonth}または{nextMonth}に移動できます。下のナビゲーショングリッドで任意の月をクリックするか、「年表示」ボタンを使用してすべての月を一度に表示することもできます。"
-      },
-      "monthOverview": {
         "question": "この月はどのような情報を表示しますか？",
         "answer": "{month} {year}は{days}日あり、{startDay}から始まり{endDay}で終わります。このカレンダービューでは、すべての日付とその対応する曜日、週番号が表示されます。"
       },
@@ -725,7 +715,13 @@
         "question": "他の月にナビゲートするにはどうすればよいですか？",
         "answer": "矢印ボタンを使用して{prevMonth}または{nextMonth}に移動できます。下のナビゲーショングリッドで任意の月をクリックするか、「年表示」ボタンを使用してすべての月を一度に表示することもできます。"
       }
-    }
+    },
+    "yearMetaTitle": "{year}年カレンダー | 年間フルビュー | Datetime.app",
+    "yearMetaDescription": "{year}年の完全なカレンダーを表示。全ての月、週番号、日付を含みます。{yearType}{currentYearSuffix}。",
+    "yearMetaKeywords": "{year}年カレンダー, 年間カレンダー, 月間カレンダー, 日付検索, 週番号, {yearType}",
+    "monthMetaTitle": "{year}年{month}月カレンダー | {monthName} {year} | Datetime.app",
+    "monthMetaDescription": "{year}年{month}月（{monthName}）の完全なカレンダーを表示。すべての日付と週情報を含みます。{currentMonthSuffix}",
+    "monthMetaKeywords": "{year}年{month}月, {monthName} {year}, 月間カレンダー, カレンダー表示, 日付検索"
   },
   "glossary": {
     "title": "日時概念の用語集",
