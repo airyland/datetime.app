@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
 import { usePathname } from 'next/navigation'
+import { getCurrentLocale, getLocalePath } from '@/lib/locale-utils'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Clock, Globe, Copy, Check, Maximize2, ArrowRight } from "lucide-react"
@@ -23,19 +24,9 @@ export default function UTCPage() {
   const t = useTranslations('utc')
   const pathname = usePathname()
   
-  // Determine current locale from pathname as it's more reliable
-  const getCurrentLocale = () => {
-    const pathSegments = pathname.split('/').filter(Boolean)
-    const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
-    if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
-      return pathSegments[0]
-    }
-    return 'en'
-  }
-  
   // Use the more reliable method to get current locale
-  const currentLocale = getCurrentLocale()
-  
+  const currentLocale = getCurrentLocale(pathname)
+
   const [currentTime, setCurrentTime] = useState(new Date())
   const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
@@ -139,7 +130,7 @@ export default function UTCPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={t('titleHome')}>
+        <Link href={getLocalePath('/', currentLocale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={t('titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">

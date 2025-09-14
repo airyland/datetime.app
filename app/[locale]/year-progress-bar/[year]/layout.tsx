@@ -36,60 +36,19 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
   const timeLeft = calculateTimeLeft(now, year)
   const { isCurrentYear, isCompleted, isFuture } = getYearStatus(now, year)
 
-  let description = ""
-  if (isCurrentYear) {
-    description = `The year ${year} is ${progress.toFixed(2)}% complete with ${timeLeft}. Track the progress in real-time.`
-  } else if (isCompleted) {
-    description = `The year ${year} is complete. View the progress bar and explore other years.`
-  } else {
-    description = `The year ${year} hasn't started yet. Explore our year progress tracking tool.`
-  }
-
-  if (locale === 'zh-hans') {
-    return {
-      title: `${year}年进度条 - ${progress.toFixed(2)}% 完成 | Datetime.app`,
-      description: `${year}年已经过去${progress.toFixed(2)}%。实时追踪年度进度。`,
-      keywords: [`${year}年进度`, `${year}年进度条`, `${year}年剩余时间`, `${year}年追踪`, "时间追踪"],
-      alternates: {
-        canonical: `https://datetime.app/zh-hans/year-progress-bar/${year}`,
-        languages
-      },
-      openGraph: {
-        title: `${year}年进度条 - ${progress.toFixed(2)}% 完成 | Datetime.app`,
-        description: `${year}年已经过去${progress.toFixed(2)}%。实时追踪年度进度。`,
-        type: "website",
-      },
-    };
-  }
-
-  if (locale === 'zh-hant') {
-    return {
-      title: `${year}年進度條 - ${progress.toFixed(2)}% 完成 | Datetime.app`,
-      description: `${year}年已經過去${progress.toFixed(2)}%。即時追蹤年度進度。`,
-      keywords: [`${year}年進度`, `${year}年進度條`, `${year}年剩餘時間`, `${year}年追蹤`, "時間追蹤"],
-      alternates: {
-        canonical: `https://datetime.app/zh-hant/year-progress-bar/${year}`,
-        languages
-      },
-      openGraph: {
-        title: `${year}年進度條 - ${progress.toFixed(2)}% 完成 | Datetime.app`,
-        description: `${year}年已經過去${progress.toFixed(2)}%。即時追蹤年度進度。`,
-        type: "website",
-      },
-    };
-  }
-
   return {
-    title: `${year} Year Progress Bar - ${progress.toFixed(2)}% Complete | Datetime.app`,
-    description,
-    keywords: [`${year} progress`, `${year} progress bar`, `time left in ${year}`, `days left in ${year}`, `${year} completion`, `${year} tracker`, "time tracking"],
+    title: t('yearMetaTitle', { year, progress: progress.toFixed(2) }),
+    description: t('yearMetaDescription', { year, progress: progress.toFixed(2), timeLeft, isCurrentYear, isCompleted, isFuture }),
+    keywords: t('yearMetaKeywords', { year }).split(', '),
     alternates: {
-      canonical: locale === 'en' ? `https://datetime.app/year-progress-bar/${year}` : `https://datetime.app/${locale}/year-progress-bar/${year}`,
+      canonical: locale === 'en'
+        ? `https://datetime.app/year-progress-bar/${year}`
+        : `https://datetime.app/${locale}/year-progress-bar/${year}`,
       languages
     },
     openGraph: {
-      title: `${year} Year Progress Bar - ${progress.toFixed(2)}% Complete | Datetime.app`,
-      description,
+      title: t('yearMetaTitle', { year, progress: progress.toFixed(2) }),
+      description: t('yearMetaDescription', { year, progress: progress.toFixed(2), timeLeft, isCurrentYear, isCompleted, isFuture }),
       type: "website",
     },
   }

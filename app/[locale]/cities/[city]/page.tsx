@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { Globe, Clock, AlertCircle, Copy, Check, Maximize2, Github } from 'lucide-react'
 import { locales } from '@/i18n/request'
+import { getLocalePath } from '@/lib/locale-utils'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { JetBrains_Mono } from "next/font/google"
@@ -34,17 +35,19 @@ export default function CityPage({ params }: CityPageProps) {
   
   // Get localized city and country names
   const getLocalizedCityName = (cityKey: string) => {
-    if (locale === 'zh-hans' || locale === 'zh-hant') {
-      return t(`cityNames.${cityKey}`) || cityInfo.name;
+    try {
+      return t(`cityNames.${cityKey}`);
+    } catch {
+      return cityInfo.name;
     }
-    return cityInfo.name;
   };
-  
+
   const getLocalizedCountryName = (countryName: string) => {
-    if (locale === 'zh-hans' || locale === 'zh-hant') {
-      return t(`countryNames.${countryName}`) || countryName;
+    try {
+      return t(`countryNames.${countryName}`);
+    } catch {
+      return countryName;
     }
-    return countryName;
   };
   
   const localizedCityName = getLocalizedCityName(city);
@@ -101,8 +104,27 @@ export default function CityPage({ params }: CityPageProps) {
     second: "2-digit",
   })
 
-  // Format date
-  const formattedDate = currentTime.toLocaleDateString("en-US", {
+  // Format date in local language
+  const getLocaleCode = (locale: string) => {
+    const localeMap: { [key: string]: string } = {
+      'zh-hans': 'zh-CN',
+      'zh-hant': 'zh-TW',
+      'en': 'en-US',
+      'ja': 'ja-JP',
+      'ko': 'ko-KR',
+      'ar': 'ar-SA',
+      'de': 'de-DE',
+      'es': 'es-ES',
+      'fr': 'fr-FR',
+      'hi': 'hi-IN',
+      'it': 'it-IT',
+      'pt': 'pt-BR',
+      'ru': 'ru-RU'
+    }
+    return localeMap[locale] || 'en-US'
+  }
+
+  const formattedDate = currentTime.toLocaleDateString(getLocaleCode(locale), {
     timeZone: cityInfo.timezone,
     weekday: "long",
     year: "numeric",
@@ -187,7 +209,7 @@ export default function CityPage({ params }: CityPageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
+        <Link href={getLocalePath('/', locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">
@@ -203,7 +225,7 @@ export default function CityPage({ params }: CityPageProps) {
         <div className="text-center">
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">
-              {t('pageTitle', { cityName: localizedCityName })}
+              {t('pageTitle', { cityName: localizedCityName, countryName: localizedCountryName })}
             </h1>
             <h2 className="text-xl md:text-2xl font-medium mb-2 text-muted-foreground">
               {t('timezoneLabel', { timezone: cityInfo.timezone })}
@@ -368,7 +390,7 @@ export default function CityPage({ params }: CityPageProps) {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h3 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
-              {t('pageTitle', { cityName: localizedCityName })} in Other Languages
+              {t('pageTitle', { cityName: localizedCityName, countryName: localizedCountryName })} in Other Languages
             </h3>
             <div className="flex flex-wrap justify-center gap-2">
               {locales.map((loc) => {

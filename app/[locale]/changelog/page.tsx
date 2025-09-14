@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Plus, Wrench, Bug, Zap } from "lucide-react"
+import { getLocalePath } from '@/lib/locale-utils'
 
 interface ChangelogPageProps {
   params: { locale: string }
@@ -242,11 +243,12 @@ const getChangeBadgeColor = (type: string) => {
 
 export default function ChangelogPage({ params }: ChangelogPageProps) {
   const locale = params.locale
+
   return (
     <main className="min-h-screen bg-background">
       {/* Header */}
       <header className="container mx-auto px-4 py-6 flex justify-between items-center border-b">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title="Go to homepage">
+        <Link href={getLocalePath('/', locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title="Go to homepage">
           Datetime.app
         </Link>
       </header>

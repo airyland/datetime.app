@@ -2,7 +2,8 @@
 
 import { useState, useMemo } from "react"
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
+import { getLocalePath } from '@/lib/locale-utils'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
@@ -31,7 +32,8 @@ const jetbrainsMono = JetBrains_Mono({
 export default function IANATimezonesPage() {
   const t = useTranslations('ianaTimezones')
   const tCommon = useTranslations('common')
-  
+  const locale = useLocale()
+
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedRegion, setSelectedRegion] = useState<TimezoneRegion | 'all'>('all')
   const [sortBy, setSortBy] = useState<'name' | 'offset' | 'population'>('name')
@@ -144,7 +146,7 @@ export default function IANATimezonesPage() {
     <main className="min-h-screen bg-background">
       {/* Header */}
       <header className="container mx-auto px-4 py-6 flex justify-between items-center border-b">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
+        <Link href={getLocalePath("/", locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">
