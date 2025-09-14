@@ -12,7 +12,8 @@
       "ageCalculator": "Age Calculator",
       "yearProgress": "Year Progress",
       "glossary": "Glossary",
-      "timezones": "Timezones"
+      "timezones": "Timezones",
+      "blog": "Blog"
     },
     "links": {
       "titleHome": "Go to homepage",
@@ -938,5 +939,18 @@
         "content": "{timezone} is the standard time used in {city}, {country} and surrounding regions. The timezone has a UTC offset of {offset} and is widely used for scheduling and time coordination in this geographical area. This timezone serves millions of people and is an important reference for business, travel, and international communications."
       }
     }
+  },
+  "blog": {
+    "title": "Blog - Time Management & Productivity Insights",
+    "description": "Expert articles on timezones, productivity, and time management for global teams and digital nomads",
+    "readMore": "Read More",
+    "publishedOn": "Published on",
+    "author": "Author",
+    "tags": "Tags",
+    "share": "Share",
+    "relatedPosts": "Related Articles",
+    "searchPlaceholder": "Search articles...",
+    "allTags": "All",
+    "noResults": "No articles found matching your criteria."
   }
 }

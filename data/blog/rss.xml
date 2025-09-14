@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Datetime.app Blog</title>
+    <description>Expert insights on timezones, time management, and productivity</description>
+    <link>https://datetime.app/blog</link>
+    <atom:link href="https://datetime.app/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    
+    <item>
+      <title>The 8 Best Timezone Converter Tools in 2025</title>
+      <description>Looking for reliable timezone conversion? We tested dozens of tools to find the best options for remote teams, travelers, and global businesses in 2025.</description>
+      <link>https://datetime.app/blog/best-timezone-tools-2025</link>
+      <guid>https://datetime.app/blog/best-timezone-tools-2025</guid>
+      <pubDate>Sun, 14 Sep 2025 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

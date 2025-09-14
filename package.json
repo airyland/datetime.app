@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "npm run validate:translations && ts-node scripts/generate-sitemap.ts && next build",
+    "dev": "npm run build:blog && next dev",
+    "build": "npm run validate:translations && npm run build:blog && ts-node scripts/generate-sitemap.ts && next build",
     "start": "next start",
     "lint": "next lint",
+    "build:blog": "node scripts/build-blog.js",
     "sitemap": "ts-node scripts/generate-sitemap.ts",
     "check:translations": "node scripts/check-translations.js",
     "validate:cities": "node scripts/validate-city-translations.js",
