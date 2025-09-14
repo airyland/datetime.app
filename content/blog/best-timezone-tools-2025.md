@@ -157,24 +157,25 @@ Developers working with timezones in code need Spacetime. This JavaScript librar
 
 **Pricing:** Free (open source)
 
-## 8. Timezone.io
+## 8. Clockwise
 
-Timezone.io automatically syncs with your team's calendars to show when everyone is available, eliminating the timezone math entirely.
+Clockwise uses AI to automatically find the best meeting times across time zones while protecting everyone's focus time. It integrates with Google Calendar and Slack to optimize team schedules.
 
 **Pros:**
-- Calendar integration
-- Shows actual availability
-- Team dashboard view
-- Slack integration
+- AI-powered scheduling optimization
+- Protects focus time automatically
+- Smart meeting suggestions
+- Slack and Calendar integration
+- Team analytics dashboard
 
 **Cons:**
-- Requires Google Calendar
-- Privacy concerns with calendar access
-- $5/user/month adds up
+- Requires Google Workspace
+- Learning curve for advanced features
+- Premium features can be expensive
 
-**Best for:** Teams heavily reliant on Google Calendar.
+**Best for:** Teams that value deep work and want AI-assisted scheduling.
 
-**Pricing:** Free for 3 users, $5/user/month after
+**Pricing:** Free for individuals, $6.75/user/month for teams
 
 ## How to Choose the Right Tool
 

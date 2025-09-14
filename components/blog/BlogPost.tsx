@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { CalendarIcon, Clock, User, Share2, Copy, Check, ChevronUp } from 'lucide-react'
 import { format } from 'date-fns'
 import { useTranslations } from 'next-intl'
+import '../../app/[locale]/blog/blog.css'
 
 interface BlogPostData {
   slug: string
@@ -121,7 +122,7 @@ export default function BlogPost({ post, relatedPosts, locale }: BlogPostProps) 
 
       {/* Article Content */}
       <div
-        className="prose prose-neutral dark:prose-invert max-w-none mb-12"
+        className="blog-content mb-12"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
 

@@ -52,9 +52,20 @@ function parseFrontmatter(content) {
   return { frontmatter, content: markdownContent };
 }
 
-// Simple markdown to HTML converter (basic implementation)
+// Improved markdown to HTML converter
 function markdownToHtml(markdown) {
   let html = markdown;
+
+  // Preserve code blocks first
+  const codeBlocks = [];
+  html = html.replace(/```([\s\S]*?)```/g, (match, code) => {
+    const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`;
+    codeBlocks.push('<pre><code>' + escapeHtml(code.trim()) + '</code></pre>');
+    return placeholder;
+  });
+
+  // Inline code
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
 
   // Headers (shift levels: # becomes h2, ## becomes h3, etc.)
   html = html.replace(/^###### (.*?)$/gm, '<h6>$1</h6>');
@@ -64,6 +75,9 @@ function markdownToHtml(markdown) {
   html = html.replace(/^## (.*?)$/gm, '<h3>$1</h3>');
   html = html.replace(/^# (.*?)$/gm, '<h2>$1</h2>');
 
+  // Blockquotes
+  html = html.replace(/^> (.*?)$/gm, '<blockquote>$1</blockquote>');
+
   // Bold and italic
   html = html.replace(/\*\*\*(.*?)\*\*\*/g, '<strong><em>$1</em></strong>');
   html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
@@ -72,33 +86,85 @@ function markdownToHtml(markdown) {
   // Links
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
 
-  // Lists
-  html = html.replace(/^\* (.+)$/gm, '<li>$1</li>');
-  html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
-  html = html.replace(/^(\d+)\. (.+)$/gm, '<li>$2</li>');
+  // Horizontal rules
+  html = html.replace(/^---$/gm, '<hr>');
+  html = html.replace(/^\*\*\*$/gm, '<hr>');
 
-  // Wrap consecutive list items
-  html = html.replace(/(<li>.*<\/li>\n?)+/g, (match) => {
-    return '<ul>' + match + '</ul>';
-  });
+  // Process lists properly
+  const lines = html.split('\n');
+  let result = [];
+  let inList = false;
+  let listType = '';
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+
+    // Unordered list
+    if (line.match(/^[\*\-] (.+)$/)) {
+      const content = line.replace(/^[\*\-] (.+)$/, '$1');
+      if (!inList || listType !== 'ul') {
+        if (inList) result.push('</' + listType + '>');
+        result.push('<ul>');
+        inList = true;
+        listType = 'ul';
+      }
+      result.push('<li>' + content + '</li>');
+    }
+    // Ordered list
+    else if (line.match(/^\d+\. (.+)$/)) {
+      const content = line.replace(/^\d+\. (.+)$/, '$1');
+      if (!inList || listType !== 'ol') {
+        if (inList) result.push('</' + listType + '>');
+        result.push('<ol>');
+        inList = true;
+        listType = 'ol';
+      }
+      result.push('<li>' + content + '</li>');
+    }
+    // End of list
+    else {
+      if (inList && line.trim() === '') {
+        result.push('</' + listType + '>');
+        inList = false;
+        listType = '';
+      }
+      result.push(line);
+    }
+  }
+
+  if (inList) {
+    result.push('</' + listType + '>');
+  }
+
+  html = result.join('\n');
 
   // Paragraphs
-  const paragraphs = html.split(/\n\n+/);
-  html = paragraphs.map(p => {
-    if (p.trim() && !p.startsWith('<')) {
-      return '<p>' + p.trim() + '</p>';
+  const blocks = html.split(/\n\n+/);
+  html = blocks.map(block => {
+    block = block.trim();
+    if (block && !block.match(/^<(h[1-6]|ul|ol|li|blockquote|pre|hr|div|p|__CODE_BLOCK_)/)) {
+      return '<p>' + block.replace(/\n/g, ' ') + '</p>';
     }
-    return p;
-  }).join('\n\n');
+    return block;
+  }).filter(b => b).join('\n\n');
 
-  // Code blocks
-  html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
-  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-  // Line breaks
-  html = html.replace(/\n/g, '<br>\n');
+  // Restore code blocks
+  codeBlocks.forEach((code, i) => {
+    html = html.replace(`__CODE_BLOCK_${i}__`, code);
+  });
 
   return html;
+}
+
+function escapeHtml(text) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
 }
 
 function generateSlug(filename) {

@@ -23,7 +23,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       description: t('description'),
     },
     alternates: {
-      canonical: `/${locale}/blog`,
+      canonical: `https://datetime.app/${locale}/blog`,
     },
   }
 }

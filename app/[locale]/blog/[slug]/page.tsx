@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
       images: [post.image],
     },
     alternates: {
-      canonical: `/${params.locale}/blog/${post.slug}`,
+      canonical: `https://datetime.app/${params.locale}/blog/${post.slug}`,
     },
   }
 }
