@@ -12,7 +12,8 @@
       "ageCalculator": "年齢計算機",
       "yearProgress": "年間進捗",
       "glossary": "用語集",
-      "timezones": "タイムゾーン"
+      "timezones": "タイムゾーン",
+      "blog": "ブログ"
     },
     "links": {
       "titleHome": "ホームページに戻る",
@@ -938,5 +939,18 @@
         "content": "{timezone}は{country}{city}および周辺地域で使用されている標準時刻です。このタイムゾーンはUTCオフセットが{offset}で、この地理的エリアでのスケジューリングと時刻調整に広く使用されています。このタイムゾーンは数百万人にサービスを提供し、ビジネス、旅行、国際通信の重要な参考となっています。"
       }
     }
+  },
+  "blog": {
+    "title": "ブログ - 時間管理と生産性の洞察",
+    "description": "グローバルチームとデジタルノマドのためのタイムゾーン、生産性、時間管理に関する専門記事",
+    "readMore": "続きを読む",
+    "publishedOn": "公開日",
+    "author": "著者",
+    "tags": "タグ",
+    "share": "シェア",
+    "relatedPosts": "関連記事",
+    "searchPlaceholder": "記事を検索...",
+    "allTags": "すべて",
+    "noResults": "条件に一致する記事が見つかりません。"
   }
 }

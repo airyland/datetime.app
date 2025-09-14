@@ -394,7 +394,8 @@
       "home": "홈",
       "utc": "UTC 시간",
       "yearProgress": "연도 진행률",
-      "timezones": "시간대"
+      "timezones": "시간대",
+      "blog": "블로그"
     },
     "links": {
       "titleHome": "홈페이지로 이동",
@@ -949,5 +950,18 @@
         "content": "{timezone}는 {country} {city} 및 주변 지역에서 사용되는 표준 시간입니다. 이 시간대는 UTC 오프셋이 {offset}이며 이 지리적 지역에서 일정 계획 및 시간 조정에 널리 사용됩니다. 이 시간대는 수백만 명의 사람들에게 서비스를 제공하며 비즈니스, 여행 및 국제 통신의 중요한 참조점입니다."
       }
     }
+  },
+  "blog": {
+    "title": "블로그 - 시간 관리 및 생산성 인사이트",
+    "description": "글로벌 팀과 디지털 노마드를 위한 시간대, 생산성, 시간 관리에 대한 전문가 아티클",
+    "readMore": "더 보기",
+    "publishedOn": "발행일",
+    "author": "저자",
+    "tags": "태그",
+    "share": "공유",
+    "relatedPosts": "관련 글",
+    "searchPlaceholder": "아티클 검색...",
+    "allTags": "전체",
+    "noResults": "기준에 맞는 아티클을 찾을 수 없습니다."
   }
 }

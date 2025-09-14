@@ -12,7 +12,8 @@
       "ageCalculator": "年龄计算器",
       "yearProgress": "年度进度",
       "glossary": "术语表",
-      "timezones": "时区"
+      "timezones": "时区",
+      "blog": "博客"
     },
     "links": {
       "titleHome": "回到主页",
@@ -946,5 +947,18 @@
         "content": "{timezone}是{country}{city}及周边地区使用的标准时间。该时区的UTC偏移量为{offset}，广泛用于该地理区域的调度和时间协调。该时区为数百万人服务，是商务、旅行和国际通信的重要参考。"
       }
     }
+  },
+  "blog": {
+    "title": "博客 - 时间管理与生产力见解",
+    "description": "为全球团队和数字游民提供时区、生产力和时间管理的专家文章",
+    "readMore": "阅读更多",
+    "publishedOn": "发布于",
+    "author": "作者",
+    "tags": "标签",
+    "share": "分享",
+    "relatedPosts": "相关文章",
+    "searchPlaceholder": "搜索文章...",
+    "allTags": "全部",
+    "noResults": "未找到符合您条件的文章。"
   }
 }

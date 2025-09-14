@@ -12,7 +12,8 @@
       "ageCalculator": "Altersrechner",
       "yearProgress": "Jahresfortschritt",
       "glossary": "Glossar",
-      "timezones": "Zeitzonen"
+      "timezones": "Zeitzonen",
+      "blog": "Blog"
     },
     "links": {
       "titleHome": "Zur Startseite gehen",
@@ -939,5 +940,18 @@
         "content": "{timezone} ist die Standardzeit, die in {city}, {country} und den umliegenden Regionen verwendet wird. Die Zeitzone hat eine UTC-Abweichung von {offset} und wird häufig für die Terminplanung und Zeitkoordination in diesem geografischen Gebiet verwendet. Diese Zeitzone dient Millionen von Menschen und ist eine wichtige Referenz für Geschäfte, Reisen und internationale Kommunikation."
       }
     }
+  },
+  "blog": {
+    "title": "Blog - Zeitmanagement & Produktivitäts-Einblicke",
+    "description": "Expertenartikel zu Zeitzonen, Produktivität und Zeitmanagement für globale Teams und digitale Nomaden",
+    "readMore": "Weiterlesen",
+    "publishedOn": "Veröffentlicht am",
+    "author": "Autor",
+    "tags": "Schlagwörter",
+    "share": "Teilen",
+    "relatedPosts": "Verwandte Artikel",
+    "searchPlaceholder": "Artikel durchsuchen...",
+    "allTags": "Alle",
+    "noResults": "Keine Artikel gefunden, die Ihren Kriterien entsprechen."
   }
 }

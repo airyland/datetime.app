@@ -12,7 +12,8 @@
       "ageCalculator": "Calculateur d'Âge",
       "yearProgress": "Progrès de l'Année",
       "glossary": "Glossaire",
-      "timezones": "Fuseaux horaires"
+      "timezones": "Fuseaux horaires",
+      "blog": "Blog"
     },
     "links": {
       "titleHome": "Aller à la page d'accueil",
@@ -1069,5 +1070,18 @@
         "content": "{timezone} est l'heure standard utilisée à {city}, {country} et dans les régions environnantes. Le fuseau horaire a un décalage UTC de {offset} et est largement utilisé pour la planification et la coordination temporelle dans cette zone géographique. Ce fuseau horaire sert des millions de personnes et constitue une référence importante pour les affaires, les voyages et les communications internationales."
       }
     }
+  },
+  "blog": {
+    "title": "Blog - Perspectives de Gestion du Temps et de Productivité",
+    "description": "Articles d'experts sur les fuseaux horaires, la productivité et la gestion du temps pour les équipes mondiales et les nomades numériques",
+    "readMore": "Lire Plus",
+    "publishedOn": "Publié le",
+    "author": "Auteur",
+    "tags": "Étiquettes",
+    "share": "Partager",
+    "relatedPosts": "Articles Connexes",
+    "searchPlaceholder": "Rechercher des articles...",
+    "allTags": "Tous",
+    "noResults": "Aucun article ne correspond à vos critères."
   }
 }

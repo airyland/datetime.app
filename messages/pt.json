@@ -394,7 +394,8 @@
       "home": "Início",
       "utc": "Hora UTC",
       "yearProgress": "Progresso do Ano",
-      "timezones": "Fusos horários"
+      "timezones": "Fusos horários",
+      "blog": "Blog"
     },
     "links": {
       "titleHome": "Ir para a página inicial",
@@ -958,5 +959,18 @@
         "content": "{timezone} é a hora padrão utilizada em {city}, {country} e regiões circundantes. O fuso horário tem um offset UTC de {offset} e é amplamente utilizado para agendamento e coordenação de tempo nesta área geográfica. Este fuso horário serve milhões de pessoas e é uma referência importante para negócios, viagens e comunicações internacionais."
       }
     }
+  },
+  "blog": {
+    "title": "Blog - Insights de Gestão de Tempo e Produtividade",
+    "description": "Artigos de especialistas sobre fusos horários, produtividade e gestão de tempo para equipes globais e nômades digitais",
+    "readMore": "Leia Mais",
+    "publishedOn": "Publicado em",
+    "author": "Autor",
+    "tags": "Tags",
+    "share": "Compartilhar",
+    "relatedPosts": "Artigos Relacionados",
+    "searchPlaceholder": "Pesquisar artigos...",
+    "allTags": "Todos",
+    "noResults": "Nenhum artigo encontrado que corresponda aos seus critérios."
   }
 }

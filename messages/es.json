@@ -12,7 +12,8 @@
       "ageCalculator": "Calculadora de Edad",
       "yearProgress": "Progreso del Año",
       "glossary": "Glosario",
-      "timezones": "Zonas horarias"
+      "timezones": "Zonas horarias",
+      "blog": "Blog"
     },
     "links": {
       "titleHome": "Ir a la página de inicio",
@@ -961,5 +962,18 @@
         "content": "{timezone} es la hora estándar utilizada en {city}, {country} y las regiones circundantes. La zona horaria tiene un desfase UTC de {offset} y se utiliza ampliamente para programación y coordinación de tiempo en esta área geográfica. Esta zona horaria sirve a millones de personas y es una referencia importante para negocios, viajes y comunicaciones internacionales."
       }
     }
+  },
+  "blog": {
+    "title": "Blog - Perspectivas de Gestión del Tiempo y Productividad",
+    "description": "Artículos especializados sobre zonas horarias, productividad y gestión del tiempo para equipos globales y nómadas digitales",
+    "readMore": "Leer Más",
+    "publishedOn": "Publicado el",
+    "author": "Autor",
+    "tags": "Etiquetas",
+    "share": "Compartir",
+    "relatedPosts": "Artículos Relacionados",
+    "searchPlaceholder": "Buscar artículos...",
+    "allTags": "Todos",
+    "noResults": "No se encontraron artículos que coincidan con sus criterios."
   }
 }

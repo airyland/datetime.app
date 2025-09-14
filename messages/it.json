@@ -394,7 +394,8 @@
       "home": "Home",
       "utc": "Ora UTC",
       "yearProgress": "Progresso dell'Anno",
-      "timezones": "Fusi orari"
+      "timezones": "Fusi orari",
+      "blog": "Blog"
     },
     "links": {
       "titleHome": "Vai alla homepage",
@@ -1034,5 +1035,18 @@
         "content": "{timezone} è l'ora standard utilizzata a {city}, {country} e nelle regioni circostanti. Il fuso orario ha un offset UTC di {offset} ed è ampiamente utilizzato per la pianificazione e coordinazione temporale in quest'area geografica. Questo fuso orario serve milioni di persone ed è un riferimento importante per affari, viaggi e comunicazioni internazionali."
       }
     }
+  },
+  "blog": {
+    "title": "Blog - Approfondimenti su Gestione del Tempo e Produttività",
+    "description": "Articoli di esperti su fusi orari, produttività e gestione del tempo per team globali e nomadi digitali",
+    "readMore": "Leggi di Più",
+    "publishedOn": "Pubblicato il",
+    "author": "Autore",
+    "tags": "Tag",
+    "share": "Condividi",
+    "relatedPosts": "Articoli Correlati",
+    "searchPlaceholder": "Cerca articoli...",
+    "allTags": "Tutti",
+    "noResults": "Nessun articolo trovato che corrisponda ai tuoi criteri."
   }
 }
