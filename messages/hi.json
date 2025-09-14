@@ -362,7 +362,7 @@
       "utcDifference": "{cityName} और UTC के बीच समय का अंतर क्या है?"
     },
     "isoFormat": "ISO प्रारूप",
-    "pageTitle": "{cityName} में वर्तमान समय",
+    "pageTitle": "{countryName} के {cityName} में वर्तमान समय",
     "population": "जनसंख्या",
     "timezone": "समय क्षेत्र",
     "timezoneInfo": "समय क्षेत्र जानकारी",

@@ -362,7 +362,7 @@
       "utcDifference": "ما الفرق الزمني بين {cityName} و UTC؟"
     },
     "isoFormat": "تنسيق ISO",
-    "pageTitle": "الوقت الحالي في {cityName}",
+    "pageTitle": "الوقت الحالي في {cityName}، {countryName}",
     "population": "عدد السكان",
     "timezone": "المنطقة الزمنية",
     "timezoneInfo": "معلومات المنطقة الزمنية",

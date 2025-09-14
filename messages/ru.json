@@ -363,7 +363,7 @@
     "left": "осталось"
   },
   "cities": {
-    "pageTitle": "Текущее время в {cityName}",
+    "pageTitle": "Текущее время в {cityName}, {countryName}",
     "timezoneLabel": "Часовой пояс {timezone}",
     "timezoneInfo": "Информация о часовом поясе",
     "unixTimestamp": "Unix временная метка",

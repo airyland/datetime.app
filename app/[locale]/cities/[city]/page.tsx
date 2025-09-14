@@ -34,17 +34,19 @@ export default function CityPage({ params }: CityPageProps) {
   
   // Get localized city and country names
   const getLocalizedCityName = (cityKey: string) => {
-    if (locale === 'zh-hans' || locale === 'zh-hant') {
-      return t(`cityNames.${cityKey}`) || cityInfo.name;
+    try {
+      return t(`cityNames.${cityKey}`);
+    } catch {
+      return cityInfo.name;
     }
-    return cityInfo.name;
   };
-  
+
   const getLocalizedCountryName = (countryName: string) => {
-    if (locale === 'zh-hans' || locale === 'zh-hant') {
-      return t(`countryNames.${countryName}`) || countryName;
+    try {
+      return t(`countryNames.${countryName}`);
+    } catch {
+      return countryName;
     }
-    return countryName;
   };
   
   const localizedCityName = getLocalizedCityName(city);
@@ -203,7 +205,7 @@ export default function CityPage({ params }: CityPageProps) {
         <div className="text-center">
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">
-              {t('pageTitle', { cityName: localizedCityName })}
+              {t('pageTitle', { cityName: localizedCityName, countryName: localizedCountryName })}
             </h1>
             <h2 className="text-xl md:text-2xl font-medium mb-2 text-muted-foreground">
               {t('timezoneLabel', { timezone: cityInfo.timezone })}

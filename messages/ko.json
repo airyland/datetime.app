@@ -362,7 +362,7 @@
       "utcDifference": "{cityName}과 UTC 간의 시간 차이는 얼마입니까?"
     },
     "isoFormat": "ISO 형식",
-    "pageTitle": "{cityName}의 현재 시간",
+    "pageTitle": "{countryName} {cityName}의 현재 시간",
     "population": "인구",
     "timezone": "시간대",
     "timezoneInfo": "시간대 정보",

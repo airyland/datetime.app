@@ -363,7 +363,7 @@
     "left": "restante"
   },
   "cities": {
-    "pageTitle": "Hora Actual en {cityName}",
+    "pageTitle": "Hora Actual en {cityName}, {countryName}",
     "timezoneLabel": "Zona Horaria {timezone}",
     "timezoneInfo": "Información de Zona Horaria",
     "unixTimestamp": "Marca de Tiempo Unix",

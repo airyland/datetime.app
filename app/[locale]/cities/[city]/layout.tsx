@@ -18,25 +18,19 @@ export async function generateMetadata({ params }: LayoutProps) {
   
   // Get localized city and country names
   const getLocalizedCityName = (cityKey: string) => {
-    if (locale === 'zh-hans' || locale === 'zh-hant') {
-      try {
-        return t(`cityNames.${cityKey}`);
-      } catch {
-        return cityInfo.name;
-      }
+    try {
+      return t(`cityNames.${cityKey}`);
+    } catch {
+      return cityInfo.name;
     }
-    return cityInfo.name;
   };
-  
+
   const getLocalizedCountryName = (countryName: string) => {
-    if (locale === 'zh-hans' || locale === 'zh-hant') {
-      try {
-        return t(`countryNames.${countryName}`);
-      } catch {
-        return countryName;
-      }
+    try {
+      return t(`countryNames.${countryName}`);
+    } catch {
+      return countryName;
     }
-    return countryName;
   };
   
   const localizedCityName = getLocalizedCityName(city);
@@ -55,7 +49,7 @@ export async function generateMetadata({ params }: LayoutProps) {
   // Generate localized metadata
   if (locale === 'zh-hans') {
     return {
-      title: `${localizedCityName}时间 | ${localizedCityName}当前时间`,
+      title: `${localizedCountryName}${localizedCityName}时间 | ${localizedCountryName}${localizedCityName}当前时间`,
       description: `${localizedCityName}, ${localizedCountryName}的当前本地时间（${cityInfo.timezone}时区）`,
       alternates: {
         canonical: `https://datetime.app/zh-hans/cities/${city}`,
@@ -66,7 +60,7 @@ export async function generateMetadata({ params }: LayoutProps) {
   
   if (locale === 'zh-hant') {
     return {
-      title: `${localizedCityName}時間 | ${localizedCityName}當前時間`,
+      title: `${localizedCountryName}${localizedCityName}時間 | ${localizedCountryName}${localizedCityName}當前時間`,
       description: `${localizedCityName}, ${localizedCountryName}的當前本地時間（${cityInfo.timezone}時區）`,
       alternates: {
         canonical: `https://datetime.app/zh-hant/cities/${city}`,

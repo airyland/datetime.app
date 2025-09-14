@@ -363,7 +363,7 @@
     "left": "残り"
   },
   "cities": {
-    "pageTitle": "{cityName}の現在時刻",
+    "pageTitle": "{countryName}・{cityName}の現在時刻",
     "timezoneLabel": "{timezone}タイムゾーン",
     "timezoneInfo": "タイムゾーン情報",
     "unixTimestamp": "Unixタイムスタンプ",

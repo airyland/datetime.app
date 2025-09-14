@@ -363,7 +363,7 @@
     "left": "left"
   },
   "cities": {
-    "pageTitle": "Current Time in {cityName}",
+    "pageTitle": "Current Time in {cityName}, {countryName}",
     "timezoneLabel": "{timezone} Timezone",
     "timezoneInfo": "Timezone Information",
     "unixTimestamp": "Unix Timestamp",

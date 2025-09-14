@@ -322,7 +322,7 @@
     "left": "剩余"
   },
   "cities": {
-    "pageTitle": "{cityName}当前时间",
+    "pageTitle": "{countryName}{cityName}当前时间",
     "timezoneLabel": "{timezone}时区",
     "timezoneInfo": "时区信息",
     "unixTimestamp": "Unix时间戳",

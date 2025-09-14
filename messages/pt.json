@@ -362,7 +362,7 @@
       "utcDifference": "Qual é a diferença horária entre {cityName} e UTC?"
     },
     "isoFormat": "Formato ISO",
-    "pageTitle": "Hora atual em {cityName}",
+    "pageTitle": "Hora atual em {cityName}, {countryName}",
     "population": "População",
     "timezone": "Fuso horário",
     "timezoneInfo": "Informações do fuso horário",
