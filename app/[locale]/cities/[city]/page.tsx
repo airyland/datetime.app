@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { Globe, Clock, AlertCircle, Copy, Check, Maximize2, Github } from 'lucide-react'
 import { locales } from '@/i18n/request'
+import { getLocalePath } from '@/lib/locale-utils'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { JetBrains_Mono } from "next/font/google"
@@ -31,11 +32,6 @@ export default function CityPage({ params }: CityPageProps) {
   const t = useTranslations('cities')
   const tCommon = useTranslations('common')
   const cityInfo = citiesData[city as keyof typeof citiesData];
-
-  // Helper function to generate locale-aware paths
-  const getLocalePath = (path: string) => {
-    return locale === 'en' ? path : `/${locale}${path}`;
-  };
   
   // Get localized city and country names
   const getLocalizedCityName = (cityKey: string) => {
@@ -108,8 +104,27 @@ export default function CityPage({ params }: CityPageProps) {
     second: "2-digit",
   })
 
-  // Format date
-  const formattedDate = currentTime.toLocaleDateString("en-US", {
+  // Format date in local language
+  const getLocaleCode = (locale: string) => {
+    const localeMap: { [key: string]: string } = {
+      'zh-hans': 'zh-CN',
+      'zh-hant': 'zh-TW',
+      'en': 'en-US',
+      'ja': 'ja-JP',
+      'ko': 'ko-KR',
+      'ar': 'ar-SA',
+      'de': 'de-DE',
+      'es': 'es-ES',
+      'fr': 'fr-FR',
+      'hi': 'hi-IN',
+      'it': 'it-IT',
+      'pt': 'pt-BR',
+      'ru': 'ru-RU'
+    }
+    return localeMap[locale] || 'en-US'
+  }
+
+  const formattedDate = currentTime.toLocaleDateString(getLocaleCode(locale), {
     timeZone: cityInfo.timezone,
     weekday: "long",
     year: "numeric",
@@ -194,7 +209,7 @@ export default function CityPage({ params }: CityPageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href={getLocalePath('/')} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
+        <Link href={getLocalePath('/', locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">
