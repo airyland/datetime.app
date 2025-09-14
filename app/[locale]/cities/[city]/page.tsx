@@ -31,6 +31,11 @@ export default function CityPage({ params }: CityPageProps) {
   const t = useTranslations('cities')
   const tCommon = useTranslations('common')
   const cityInfo = citiesData[city as keyof typeof citiesData];
+
+  // Helper function to generate locale-aware paths
+  const getLocalePath = (path: string) => {
+    return locale === 'en' ? path : `/${locale}${path}`;
+  };
   
   // Get localized city and country names
   const getLocalizedCityName = (cityKey: string) => {
@@ -189,7 +194,7 @@ export default function CityPage({ params }: CityPageProps) {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
+        <Link href={getLocalePath('/')} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">

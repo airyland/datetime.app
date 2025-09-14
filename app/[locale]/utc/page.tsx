@@ -35,7 +35,12 @@ export default function UTCPage() {
   
   // Use the more reliable method to get current locale
   const currentLocale = getCurrentLocale()
-  
+
+  // Helper function to generate locale-aware paths
+  const getLocalePath = (path: string) => {
+    return currentLocale === 'en' ? path : `/${currentLocale}${path}`
+  }
+
   const [currentTime, setCurrentTime] = useState(new Date())
   const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
@@ -139,7 +144,7 @@ export default function UTCPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title={t('titleHome')}>
+        <Link href={getLocalePath('/')} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={t('titleHome')}>
           Datetime.app
         </Link>
         <div className="flex items-center gap-4">

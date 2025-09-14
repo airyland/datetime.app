@@ -242,11 +242,17 @@ const getChangeBadgeColor = (type: string) => {
 
 export default function ChangelogPage({ params }: ChangelogPageProps) {
   const locale = params.locale
+
+  // Helper function to generate locale-aware paths
+  const getLocalePath = (path: string) => {
+    return locale === 'en' ? path : `/${locale}${path}`
+  }
+
   return (
     <main className="min-h-screen bg-background">
       {/* Header */}
       <header className="container mx-auto px-4 py-6 flex justify-between items-center border-b">
-        <Link href="/" className="text-2xl font-bold hover:opacity-80 transition-opacity" title="Go to homepage">
+        <Link href={getLocalePath('/')} className="text-2xl font-bold hover:opacity-80 transition-opacity" title="Go to homepage">
           Datetime.app
         </Link>
       </header>
