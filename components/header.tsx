@@ -49,11 +49,19 @@ export default function Header() {
           </Link>
           <span className="text-muted-foreground">•</span>
           <Link
-            href={getLocalePath("/iana-timezones", locale)} 
+            href={getLocalePath("/iana-timezones", locale)}
             className="text-sm font-medium hover:opacity-80 transition-opacity"
             title={commonT('links.titleTimezones')}
           >
             {commonT('nav.timezones')}
+          </Link>
+          <span className="text-muted-foreground">•</span>
+          <Link
+            href={getLocalePath("/blog", locale)}
+            className="text-sm font-medium hover:opacity-80 transition-opacity"
+            title="Read our blog"
+          >
+            {commonT('nav.blog')}
           </Link>
         </div>
         
@@ -101,12 +109,20 @@ export default function Header() {
               {commonT('nav.holidays')}
             </Link>
             <Link
-              href={getLocalePath("/iana-timezones", locale)} 
+              href={getLocalePath("/iana-timezones", locale)}
               className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
               onClick={() => setMobileMenuOpen(false)}
               title={commonT('links.titleTimezones')}
             >
               {commonT('nav.timezones')}
+            </Link>
+            <Link
+              href={getLocalePath("/blog", locale)}
+              className="text-sm font-medium hover:opacity-80 transition-opacity px-2 py-1"
+              onClick={() => setMobileMenuOpen(false)}
+              title="Read our blog"
+            >
+              {commonT('nav.blog')}
             </Link>
           </div>
         </div>

@@ -1,0 +1,160 @@
+/* Blog Typography Styles */
+
+.blog-content {
+  @apply text-foreground;
+}
+
+/* Headings */
+.blog-content h2 {
+  @apply text-3xl font-bold mt-8 mb-4 text-foreground;
+  @apply border-b border-border pb-2;
+}
+
+.blog-content h3 {
+  @apply text-2xl font-semibold mt-6 mb-3 text-foreground;
+}
+
+.blog-content h4 {
+  @apply text-xl font-semibold mt-5 mb-2 text-foreground;
+}
+
+.blog-content h5 {
+  @apply text-lg font-medium mt-4 mb-2 text-foreground;
+}
+
+.blog-content h6 {
+  @apply text-base font-medium mt-3 mb-2 text-foreground;
+}
+
+/* Paragraphs */
+.blog-content p {
+  @apply mb-4 leading-7 text-foreground/90;
+  @apply text-base md:text-lg;
+}
+
+/* Lists */
+.blog-content ul {
+  @apply list-disc list-inside mb-4 space-y-2;
+  @apply ml-4 md:ml-6;
+}
+
+.blog-content ol {
+  @apply list-decimal list-inside mb-4 space-y-2;
+  @apply ml-4 md:ml-6;
+}
+
+.blog-content li {
+  @apply text-foreground/90 leading-7;
+  @apply text-base md:text-lg;
+}
+
+.blog-content li > ul,
+.blog-content li > ol {
+  @apply mt-2 ml-4;
+}
+
+/* Links */
+.blog-content a {
+  @apply text-blue-600 dark:text-blue-500 underline underline-offset-2;
+  @apply hover:text-blue-700 dark:hover:text-blue-400 transition-colors;
+  @apply decoration-blue-600/30 dark:decoration-blue-500/30;
+  @apply hover:decoration-blue-700/50 dark:hover:decoration-blue-400/50;
+}
+
+/* Code */
+.blog-content code {
+  @apply bg-muted px-1.5 py-0.5 rounded text-sm;
+  @apply font-mono text-foreground;
+}
+
+.blog-content pre {
+  @apply bg-muted p-4 rounded-lg overflow-x-auto mb-4;
+  @apply border border-border;
+}
+
+.blog-content pre code {
+  @apply bg-transparent p-0;
+  @apply text-sm leading-6;
+}
+
+/* Blockquotes */
+.blog-content blockquote {
+  @apply border-l-4 border-muted-foreground/30 pl-4 italic mb-4;
+  @apply text-muted-foreground;
+}
+
+/* Images */
+.blog-content img {
+  @apply rounded-lg max-w-full h-auto my-6;
+  @apply shadow-lg;
+}
+
+/* Tables */
+.blog-content table {
+  @apply w-full mb-4 border-collapse;
+}
+
+.blog-content th {
+  @apply bg-muted p-3 text-left font-semibold;
+  @apply border border-border;
+}
+
+.blog-content td {
+  @apply p-3 border border-border;
+}
+
+.blog-content tbody tr:hover {
+  @apply bg-muted/50;
+}
+
+/* Horizontal Rules */
+.blog-content hr {
+  @apply border-t border-border my-8;
+}
+
+/* Strong and Emphasis */
+.blog-content strong {
+  @apply font-semibold text-foreground;
+}
+
+.blog-content em {
+  @apply italic;
+}
+
+/* First paragraph (lead) */
+.blog-content > p:first-of-type {
+  @apply text-lg md:text-xl leading-8 text-muted-foreground mb-6;
+}
+
+/* Spacing between sections */
+.blog-content > * + h2 {
+  @apply mt-12;
+}
+
+.blog-content > * + h3 {
+  @apply mt-8;
+}
+
+/* Better list styling */
+.blog-content ul li::marker {
+  @apply text-muted-foreground;
+}
+
+.blog-content ol li::marker {
+  @apply text-muted-foreground font-semibold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .blog-content h2 {
+    @apply text-2xl;
+  }
+
+  .blog-content h3 {
+    @apply text-xl;
+  }
+
+  .blog-content h4 {
+    @apply text-lg;
+  }
+}
