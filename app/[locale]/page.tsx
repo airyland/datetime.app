@@ -76,9 +76,73 @@ const availableTimezones: TimezoneOption[] = [
   { value: "Asia/Kolkata", label: "India (IST)" },
 ]
 
+// Featured cities for quick access
+const featuredCities = [
+  'new-york', 'london', 'tokyo', 'paris', 'sydney', 'beijing'
+]
+
+// Tools configuration
+const toolsConfig = [
+  { path: '/year-progress-bar', icon: Calendar, titleKey: 'tools.titleYearProgress', labelKey: 'tools.yearProgress' },
+  { path: '/age-calculator', icon: Calculator, titleKey: 'tools.titleAgeCalculator', labelKey: 'tools.ageCalculator' },
+  { path: '/utc', icon: Globe, titleKey: 'tools.titleUtcTime', labelKey: 'tools.utcTime' },
+  { path: '/holidays', icon: Gift, titleKey: 'tools.titleWorldHolidays', labelKey: 'tools.worldHolidays' },
+  { path: '/iana-timezones', icon: Clock, titleKey: 'tools.titleTimezones', labelKey: 'tools.timezones' }
+]
+
+// Global cities organized by region
+const globalCitiesByRegion = {
+  northAmerica: {
+    title: 'globalCities.northAmerica',
+    cities: [
+      'new-york', 'los-angeles', 'chicago', 'toronto', 'vancouver', 'mexico-city',
+      'houston', 'miami', 'atlanta', 'boston', 'seattle', 'san-francisco'
+    ]
+  },
+  europe: {
+    title: 'globalCities.europe',
+    cities: [
+      'london', 'paris', 'berlin', 'rome', 'madrid', 'amsterdam',
+      'moscow', 'vienna', 'prague', 'brussels', 'zurich', 'stockholm'
+    ]
+  },
+  asia: {
+    title: 'globalCities.asia',
+    cities: [
+      'tokyo', 'beijing', 'shanghai', 'hong-kong', 'singapore', 'seoul',
+      'bangkok', 'mumbai', 'delhi', 'dubai', 'taipei', 'kuala-lumpur'
+    ]
+  },
+  oceania: {
+    title: 'globalCities.oceania',
+    cities: [
+      'sydney', 'melbourne', 'auckland', 'brisbane', 'perth', 'wellington'
+    ]
+  },
+  southAmerica: {
+    title: 'globalCities.southAmerica',
+    cities: [
+      'sao-paulo', 'rio-de-janeiro', 'buenos-aires', 'lima', 'bogota', 'santiago'
+    ]
+  },
+  africa: {
+    title: 'globalCities.africa',
+    cities: [
+      'cairo', 'johannesburg', 'cape-town', 'lagos', 'nairobi', 'casablanca'
+    ]
+  },
+  middleEast: {
+    title: 'globalCities.middleEast',
+    cities: [
+      'istanbul', 'tel-aviv', 'jerusalem', 'riyadh', 'doha', 'kuwait-city'
+    ]
+  }
+}
+
 export default function Home() {
   const t = useTranslations('home')
   const commonT = useTranslations('common')
+  const citiesT = useTranslations('cities')
   const pathname = usePathname()
   
   // 使用已有的 activeTab 状态
@@ -95,6 +159,23 @@ export default function Home() {
   
   // Use the more reliable method to get current locale
   const currentLocale = getCurrentLocale()
+
+  // Helper function to generate locale-aware paths
+  const getLocalePath = (path: string) => {
+    return currentLocale === 'en' ? path : `/${currentLocale}${path}`
+  }
+
+  // Helper function to get translated city name
+  const getCityName = (cityKey: string) => {
+    try {
+      return citiesT(`cityNames.${cityKey}`)
+    } catch {
+      // Fallback to formatted city key if translation is missing
+      return cityKey.split('-').map(word =>
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' ')
+    }
+  }
   const [currentTime, setCurrentTime] = useState(new Date())
   const [customTimezones, setCustomTimezones] = useState<TimezoneOption[]>([]) // Custom timezones for both world clock and timeline
   const [showAddTimezone, setShowAddTimezone] = useState(false) // Control add timezone form
@@ -621,7 +702,7 @@ export default function Home() {
                 <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
                   <CardHeader className="py-1 px-2 text-center">
                     <CardTitle className="text-xs font-medium text-muted-foreground">
-                      <a href="/utc" className="inline-flex items-center justify-center gap-1 hover:underline" title={t('labels.titleUtcTime')}>
+                      <a href={getLocalePath('/utc')} className="inline-flex items-center justify-center gap-1 hover:underline" title={t('labels.titleUtcTime')}>
                         {t('labels.utcTime')}
                         <Globe className="h-2.5 w-2.5" />
                       </a>
@@ -1025,26 +1106,20 @@ export default function Home() {
         <div className="mt-16 max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6 text-center">{t('tools.title')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-            <a href="/year-progress-bar" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleYearProgress')}>
-              <Calendar className="h-5 w-5" />
-              {t('tools.yearProgress')}
-            </a>
-            <a href="/age-calculator" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleAgeCalculator')}>
-              <Calculator className="h-5 w-5" />
-              {t('tools.ageCalculator')}
-            </a>
-            <a href="/utc" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleUtcTime')}>
-              <Globe className="h-5 w-5" />
-              {t('tools.utcTime')}
-            </a>
-            <a href="/holidays" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleWorldHolidays')}>
-              <Gift className="h-5 w-5" />
-              {t('tools.worldHolidays')}
-            </a>
-            <a href="/iana-timezones" className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2" title={t('tools.titleTimezones')}>
-              <Clock className="h-5 w-5" />
-              {t('tools.timezones')}
-            </a>
+            {toolsConfig.map((tool) => {
+              const Icon = tool.icon
+              return (
+                <a
+                  key={tool.path}
+                  href={getLocalePath(tool.path)}
+                  className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2"
+                  title={t(tool.titleKey)}
+                >
+                  <Icon className="h-5 w-5" />
+                  {t(tool.labelKey)}
+                </a>
+              )
+            })}
           </div>
         </div>
 
@@ -1052,33 +1127,25 @@ export default function Home() {
         <div className="mt-16 max-w-3xl mx-auto">
           <h2 className="text-2xl font-bold mb-6 text-center">{t('cityTimes.title')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            <a href="/cities/new-york" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleNewYork')}>
-              New York
-            </a>
-            <a href="/cities/london" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleLondon')}>
-              London
-            </a>
-            <a href="/cities/tokyo" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleTokyo')}>
-              Tokyo
-            </a>
-            <a href="/cities/paris" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleParis')}>
-              Paris
-            </a>
-            <a href="/cities/sydney" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleSydney')}>
-              Sydney
-            </a>
-            <a href="/cities/beijing" className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center" title={t('cityTimes.titleBeijing')}>
-              Beijing
-            </a>
+            {featuredCities.map((cityKey) => (
+              <a
+                key={cityKey}
+                href={getLocalePath(`/cities/${cityKey}`)}
+                className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center"
+                title={t(`cityTimes.title${cityKey.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')}`)}
+              >
+                {getCityName(cityKey)}
+              </a>
+            ))}
           </div>
         </div>
 
         {/* FAQ Section */}
         <div className="mt-8 max-w-3xl mx-auto text-left">
           <h2 className="text-2xl font-bold mb-6 text-center">{t('faq.title')}</h2>
-          <Accordion 
-            type="multiple" 
-            collapsible 
+          <Accordion
+            type="multiple"
+            collapsible
             value={accordionValues}
             onValueChange={setAccordionValues}
             className="w-full"
@@ -1144,6 +1211,30 @@ export default function Home() {
               </AccordionContent>
             </AccordionItem>
           </Accordion>
+        </div>
+
+        {/* Global Cities Section */}
+        <div className="mt-16 max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6 text-center">{t('globalCities.title', 'Global Major Cities')}</h2>
+
+          {Object.entries(globalCitiesByRegion).map(([regionKey, region]) => (
+            <div key={regionKey} className="mb-8">
+              <h3 className="text-lg font-semibold mb-3 text-gray-600 dark:text-gray-400">
+                {t(region.title)}
+              </h3>
+              <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+                {region.cities.map((cityKey) => (
+                  <a
+                    key={cityKey}
+                    href={getLocalePath(`/cities/${cityKey}`)}
+                    className="text-sm py-1.5 px-3 rounded bg-accent/30 hover:bg-accent/50 transition-colors text-center"
+                  >
+                    {getCityName(cityKey)}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

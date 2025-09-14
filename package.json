@@ -4,10 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "ts-node scripts/generate-sitemap.ts && next build",
+    "build": "npm run validate:translations && ts-node scripts/generate-sitemap.ts && next build",
     "start": "next start",
     "lint": "next lint",
-    "sitemap": "ts-node scripts/generate-sitemap.ts"
+    "sitemap": "ts-node scripts/generate-sitemap.ts",
+    "check:translations": "node scripts/check-translations.js",
+    "validate:cities": "node scripts/validate-city-translations.js",
+    "validate:translations": "npm run check:translations && npm run validate:cities",
+    "validate:verbose": "node scripts/validate-city-translations.js --verbose --cross-check"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
