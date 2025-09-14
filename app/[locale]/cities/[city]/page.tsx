@@ -390,7 +390,7 @@ export default function CityPage({ params }: CityPageProps) {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h3 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
-              {t('pageTitle', { cityName: localizedCityName })} in Other Languages
+              {t('pageTitle', { cityName: localizedCityName, countryName: localizedCountryName })} in Other Languages
             </h3>
             <div className="flex flex-wrap justify-center gap-2">
               {locales.map((loc) => {
