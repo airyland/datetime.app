@@ -87,7 +87,7 @@ function markdownToHtml(markdown) {
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
     // Check if it's an external link (not starting with / or #)
     const isExternal = !url.startsWith('/') && !url.startsWith('#') && !url.includes('datetime.app');
-    const rel = isExternal ? ' rel="nofollow noopener noreferrer" target="_blank"' : '';
+    const rel = isExternal ? ' rel="nofollow noopener" target="_blank"' : '';
     return `<a href="${url}"${rel}>${text}</a>`;
   });
 
