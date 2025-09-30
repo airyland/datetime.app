@@ -65,13 +65,13 @@ export function FullscreenTime({ time, isFullscreen, onClose }: FullscreenTimePr
 
   return (
     <div 
-      className="fixed inset-0 bg-black dark:bg-white flex items-center justify-center z-50"
+      className="fixed inset-0 bg-white dark:bg-black flex items-center justify-center z-50"
       ref={containerRef}
       onClick={onClose}
     >
       <div 
         ref={timeRef}
-        className={`text-white dark:text-black font-bold tracking-tight leading-none ${jetbrainsMono.className}`}
+        className={`text-black dark:text-white font-bold tracking-tight leading-none ${jetbrainsMono.className}`}
         style={{ fontSize: `${fontSize}px` }}
       >
         {time}
