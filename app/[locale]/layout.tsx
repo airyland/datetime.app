@@ -15,7 +15,7 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 })
 
-const locales = ['en', 'zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
+const locales = ['en', 'zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru', 'tr']
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -54,6 +54,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         'ko': `${baseUrl}/ko`,
         'pt': `${baseUrl}/pt`,
         'ru': `${baseUrl}/ru`,
+        'tr': `${baseUrl}/tr`,
       }
     },
     icons: {
