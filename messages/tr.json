@@ -12,7 +12,8 @@
       "ageCalculator": "Yaş Hesaplama",
       "yearProgress": "Yıl İlerlemesi",
       "glossary": "Sözlük",
-      "timezones": "Saat Dilimleri"
+      "timezones": "Saat Dilimleri",
+      "blog": "Blog"
     },
     "links": {
       "titleHome": "Ana sayfaya git",
@@ -938,5 +939,18 @@
         "content": "{timezone}, {city}, {country} ve çevresindeki bölgelerde kullanılan standart zamandır. Saat dilimi, {offset} UTC sapmasına sahiptir ve bu coğrafi alanda programlama ve zaman koordinasyonu için yaygın olarak kullanılır. Bu saat dilimi milyonlarca insana hizmet eder ve iş, seyahat ve uluslararası iletişim için önemli bir referanstır."
       }
     }
+  },
+  "blog": {
+    "title": "Blog - Zaman Yönetimi & Verimlilik İçgörüleri",
+    "description": "Küresel ekipler ve dijital göçebeler için saat dilimleri, verimlilik ve zaman yönetimi üzerine uzman makaleleri",
+    "readMore": "Devamını Oku",
+    "publishedOn": "Yayınlanma tarihi",
+    "author": "Yazar",
+    "tags": "Etiketler",
+    "share": "Paylaş",
+    "relatedPosts": "İlgili Makaleler",
+    "searchPlaceholder": "Makalelerde ara...",
+    "allTags": "Tümü",
+    "noResults": "Kriterlerinize uygun makale bulunamadı."
   }
 }
