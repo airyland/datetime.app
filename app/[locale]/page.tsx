@@ -18,6 +18,7 @@ import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
 import Header from '@/components/header'
 import spacetime from 'spacetime'
+import { DEFAULT_LOCALE, LOCALE_PREFIXES } from '@/lib/locales'
 import { getLocalePath } from '@/lib/locale-utils'
 
 // Load JetBrains Mono for numbers
@@ -151,11 +152,10 @@ export default function Home() {
   // Determine current locale from pathname as it's more reliable
   const getCurrentLocale = () => {
     const pathSegments = pathname.split('/').filter(Boolean)
-    const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
-    if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
+    if (pathSegments.length > 0 && LOCALE_PREFIXES.includes(pathSegments[0] as typeof LOCALE_PREFIXES[number])) {
       return pathSegments[0]
     }
-    return 'en'
+    return DEFAULT_LOCALE
   }
   
   // Use the more reliable method to get current locale
@@ -163,7 +163,7 @@ export default function Home() {
 
   // Helper function to generate locale-aware paths
   const getLocalePath = (path: string) => {
-    return currentLocale === 'en' ? path : `/${currentLocale}${path}`
+    return currentLocale === DEFAULT_LOCALE ? path : `/${currentLocale}${path}`
   }
 
   // Helper function to get translated city name

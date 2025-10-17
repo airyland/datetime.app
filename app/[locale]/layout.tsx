@@ -9,20 +9,25 @@ import { LanguageSuggestionModal } from "@/components/language-suggestion-modal"
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@/lib/locales'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   display: "swap",
 })
 
-const locales = ['en', 'zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru', 'tr']
-
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'common' })
-  
+
   const baseUrl = 'https://datetime.app'
-  const canonicalUrl = locale === 'en' ? baseUrl : `${baseUrl}/${locale}`
+  const canonicalUrl = locale === DEFAULT_LOCALE ? baseUrl : `${baseUrl}/${locale}`
+  const languageAlternates = Object.fromEntries(
+    SUPPORTED_LOCALES.map((supportedLocale) => [
+      supportedLocale,
+      supportedLocale === DEFAULT_LOCALE ? baseUrl : `${baseUrl}/${supportedLocale}`
+    ])
+  ) as Record<string, string>
   
   return {
     title: t('title'),
@@ -40,22 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     alternates: {
       canonical: canonicalUrl,
-      languages: {
-        'en': baseUrl,
-        'zh-hans': `${baseUrl}/zh-hans`,
-        'zh-hant': `${baseUrl}/zh-hant`,
-        'ar': `${baseUrl}/ar`,
-        'de': `${baseUrl}/de`,
-        'es': `${baseUrl}/es`,
-        'fr': `${baseUrl}/fr`,
-        'hi': `${baseUrl}/hi`,
-        'it': `${baseUrl}/it`,
-        'ja': `${baseUrl}/ja`,
-        'ko': `${baseUrl}/ko`,
-        'pt': `${baseUrl}/pt`,
-        'ru': `${baseUrl}/ru`,
-        'tr': `${baseUrl}/tr`,
-      }
+      languages: languageAlternates
     },
     icons: {
       icon: [
@@ -77,7 +67,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params
   
-  if (!locales.includes(locale)) {
+  if (!SUPPORTED_LOCALES.includes(locale as typeof SUPPORTED_LOCALES[number])) {
     notFound()
   }
 
@@ -110,5 +100,5 @@ export default async function LocaleLayout({
 }
 
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }))
+  return SUPPORTED_LOCALES.map((locale) => ({ locale }))
 }
