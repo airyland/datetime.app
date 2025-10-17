@@ -1,13 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import prettier from 'prettier';
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '../lib/locales';
 
 // Your website URL
 const WEBSITE_URL = 'https://datetime.app';
 
 // Supported locales (English uses default paths without prefix)
-const locales = ['en', 'zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru'];
-const defaultLocale = 'en';
+const locales = SUPPORTED_LOCALES;
+const defaultLocale = DEFAULT_LOCALE;
 
 // Static pages (pages without dynamic routes)
 const staticPages = [

@@ -3,7 +3,7 @@
 import { useEffect, useState, use } from "react"
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -15,6 +15,7 @@ import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
 import { timezones, TimezoneConfig } from '../config'
 import { getLocalePath } from '@/lib/locale-utils'
+import { DEFAULT_LOCALE, LOCALE_PREFIXES } from '@/lib/locales'
 
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
@@ -45,11 +46,10 @@ export default function TimezonePage({ params }: TimezonePageProps) {
   // Determine current locale from pathname as it's more reliable
   const getCurrentLocale = () => {
     const pathSegments = pathname.split('/').filter(Boolean)
-    const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
-    if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
+    if (pathSegments.length > 0 && LOCALE_PREFIXES.includes(pathSegments[0] as typeof LOCALE_PREFIXES[number])) {
       return pathSegments[0]
     }
-    return 'en'
+    return DEFAULT_LOCALE
   }
   
   // Use the more reliable method to get current locale

@@ -1,13 +1,14 @@
 import { getRequestConfig } from 'next-intl/server'
 import { notFound } from 'next/navigation'
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@/lib/locales'
 
-export const locales = ['en', 'zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
+export const locales = SUPPORTED_LOCALES
 
 export default getRequestConfig(async ({ locale }) => {
   // If locale is undefined, default to 'en'
-  const currentLocale = locale || 'en'
-  
-  if (!locales.includes(currentLocale as any)) {
+  const currentLocale = locale || DEFAULT_LOCALE
+
+  if (!SUPPORTED_LOCALES.includes(currentLocale as typeof SUPPORTED_LOCALES[number])) {
     notFound()
   }
 

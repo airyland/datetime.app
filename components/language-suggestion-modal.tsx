@@ -6,22 +6,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Globe } from 'lucide-react'
-
-const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'zh-hans', name: '简体中文' },
-  { code: 'zh-hant', name: '繁體中文' },
-  { code: 'ar', name: 'العربية' },
-  { code: 'de', name: 'Deutsch' },
-  { code: 'es', name: 'Español' },
-  { code: 'fr', name: 'Français' },
-  { code: 'hi', name: 'हिन्दी' },
-  { code: 'it', name: 'Italiano' },
-  { code: 'ja', name: '日本語' },
-  { code: 'ko', name: '한국어' },
-  { code: 'pt', name: 'Português' },
-  { code: 'ru', name: 'Русский' }
-]
+import { DEFAULT_LOCALE, LANGUAGE_OPTIONS, LOCALE_PREFIXES } from '@/lib/locales'
 
 const STORAGE_KEY = 'language-preference'
 
@@ -33,7 +18,7 @@ interface LanguagePreference {
 
 export function LanguageSuggestionModal() {
   const [isOpen, setIsOpen] = useState(false)
-  const [suggestedLanguage, setSuggestedLanguage] = useState<{ code: string; name: string } | null>(null)
+  const [suggestedLanguage, setSuggestedLanguage] = useState<(typeof LANGUAGE_OPTIONS)[number] | null>(null)
   const locale = useLocale()
   const router = useRouter()
   const pathname = usePathname()
@@ -41,11 +26,10 @@ export function LanguageSuggestionModal() {
 
   const getCurrentLocale = () => {
     const pathSegments = pathname.split('/').filter(Boolean)
-    const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
-    if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
+    if (pathSegments.length > 0 && LOCALE_PREFIXES.includes(pathSegments[0] as typeof LOCALE_PREFIXES[number])) {
       return pathSegments[0]
     }
-    return 'en'
+    return DEFAULT_LOCALE
   }
 
   const detectBrowserLanguage = (): string | null => {
@@ -58,7 +42,7 @@ export function LanguageSuggestionModal() {
     const normalizedLang = browserLang.toLowerCase()
     
     // Direct match
-    if (languages.some(lang => lang.code === normalizedLang)) {
+    if (LANGUAGE_OPTIONS.some(lang => lang.code === normalizedLang)) {
       return normalizedLang
     }
     
@@ -77,7 +61,7 @@ export function LanguageSuggestionModal() {
     }
     
     // Find language by primary code
-    const matchedLang = languages.find(lang => lang.code.startsWith(primaryLang))
+    const matchedLang = LANGUAGE_OPTIONS.find(lang => lang.code.startsWith(primaryLang))
     return matchedLang ? matchedLang.code : null
   }
 
@@ -107,15 +91,15 @@ export function LanguageSuggestionModal() {
     const currentLocale = getCurrentLocale()
     let basePath = '/'
     
-    if (currentLocale !== 'en' && pathSegments.length > 0 && pathSegments[0] === currentLocale) {
+    if (currentLocale !== DEFAULT_LOCALE && pathSegments.length > 0 && pathSegments[0] === currentLocale) {
       const remainingSegments = pathSegments.slice(1)
       basePath = remainingSegments.length > 0 ? `/${remainingSegments.join('/')}` : '/'
-    } else if (currentLocale === 'en') {
+    } else if (currentLocale === DEFAULT_LOCALE) {
       basePath = pathname
     }
-    
+
     let newPath
-    if (newLocale === 'en') {
+    if (newLocale === DEFAULT_LOCALE) {
       newPath = basePath
     } else {
       newPath = basePath === '/' ? `/${newLocale}` : `/${newLocale}${basePath}`
@@ -165,7 +149,7 @@ export function LanguageSuggestionModal() {
       }
     }
     
-    const suggestedLang = languages.find(lang => lang.code === browserLang)
+    const suggestedLang = LANGUAGE_OPTIONS.find(lang => lang.code === browserLang)
     if (suggestedLang) {
       setSuggestedLanguage(suggestedLang)
       setIsOpen(true)

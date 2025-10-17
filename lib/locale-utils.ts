@@ -1,3 +1,5 @@
+import { DEFAULT_LOCALE, LOCALE_PREFIXES } from './locales'
+
 /**
  * Get locale-aware path for navigation
  * @param path - The path to convert
@@ -5,7 +7,7 @@
  * @returns The locale-aware path
  */
 export function getLocalePath(path: string, locale: string): string {
-  return locale === 'en' ? path : `/${locale}${path}`
+  return locale === DEFAULT_LOCALE ? path : `/${locale}${path}`
 }
 
 /**
@@ -13,11 +15,11 @@ export function getLocalePath(path: string, locale: string): string {
  * @param pathname - The current pathname
  * @returns The current locale
  */
+
 export function getCurrentLocale(pathname: string): string {
   const pathSegments = pathname.split('/').filter(Boolean)
-  const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
-  if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
+  if (pathSegments.length > 0 && LOCALE_PREFIXES.includes(pathSegments[0] as typeof LOCALE_PREFIXES[number])) {
     return pathSegments[0]
   }
-  return 'en'
+  return DEFAULT_LOCALE
 }

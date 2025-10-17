@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { timezones } from '@/app/[locale]/timezones/config'
+import { DEFAULT_LOCALE, LOCALE_PREFIXES } from '@/lib/locales'
 
 interface TimezoneNavigationProps {
   currentTimezone?: string
@@ -16,11 +17,10 @@ export function TimezoneNavigation({ currentTimezone }: TimezoneNavigationProps)
   // Get current locale from pathname more reliably
   const getCurrentLocale = () => {
     const pathSegments = pathname.split('/').filter(Boolean)
-    const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
-    if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
+    if (pathSegments.length > 0 && LOCALE_PREFIXES.includes(pathSegments[0] as typeof LOCALE_PREFIXES[number])) {
       return pathSegments[0]
     }
-    return 'en'
+    return DEFAULT_LOCALE
   }
   
   const locale = getCurrentLocale()
@@ -47,10 +47,10 @@ export function TimezoneNavigation({ currentTimezone }: TimezoneNavigationProps)
           // Special handling for UTC
           let href
           if (timezone.slug === 'utc') {
-            href = locale === 'en' ? '/utc' : `/${locale}/utc`
+            href = locale === DEFAULT_LOCALE ? '/utc' : `/${locale}/utc`
           } else {
-            href = locale === 'en' 
-              ? `/timezones/${timezone.slug}` 
+            href = locale === DEFAULT_LOCALE
+              ? `/timezones/${timezone.slug}`
               : `/${locale}/timezones/${timezone.slug}`
           }
           

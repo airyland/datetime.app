@@ -1,0 +1,942 @@
+{
+  "common": {
+    "title": "Dünya Saati & Anlık Zaman - Tüm Dünya Şehirlerinde Canlı Saat, UTC Saat Çevirici, Saat Dilimi Hesaplayıcı",
+    "description": "Dünya genelinde anlık saati canlı dünya saatimizle öğrenin. Ücretsiz UTC saat çevirici, saat dilimi hesaplayıcı, yaş hesaplama ve tatil takvimi araçları.",
+    "day": "Haftanın Günü",
+    "date": "Tarih",
+    "nav": {
+      "home": "Ana Sayfa",
+      "utc": "UTC Saati",
+      "calendar": "Takvim",
+      "holidays": "Tatiller",
+      "ageCalculator": "Yaş Hesaplama",
+      "yearProgress": "Yıl İlerlemesi",
+      "glossary": "Sözlük",
+      "timezones": "Saat Dilimleri"
+    },
+    "links": {
+      "titleHome": "Ana sayfaya git",
+      "titleAbout": "datetime.app hakkında",
+      "titleCalendar": "{year} yılı takvimini görüntüle",
+      "titleGlossary": "Zaman terimleri sözlüğüne göz at",
+      "titleYearProgress": "Yıl ilerlemesini takip et",
+      "titleAgeCalculator": "Yaşınızı hesaplayın",
+      "titleHolidays": "Dünya tatillerini keşfedin",
+      "titleUtc": "Güncel UTC saatini görüntüle",
+      "titleBackToYearProgress": "Güncel yıl ilerlemesine geri dön",
+      "titleViewCalendar": "Bu yıl için takvimi görüntüle",
+      "titleViewGlossary": "Tam sözlüğümüzü görüntüle",
+      "titleLearnUtc": "UTC hakkında daha fazla bilgi edin",
+      "titleBackToHolidays": "Tatiller sayfasına geri dön",
+      "titleTimezones": "IANA saat dilimi veritabanına göz at"
+    }
+  },
+  "home": {
+    "title": "Dünya Genelinde Anlık Saat - Canlı Dünya Saati, UTC Zaman, Saat Dilimi Çevirici & Zaman Araçları",
+    "localTime": "Sizin Saatiniz",
+    "timeZone": "Saat Dilimi",
+    "tabs": {
+      "currentTime": "Şu Anki Saat",
+      "worldClock": "Dünya Saati",
+      "calendar": "Takvim",
+      "converter": "Çevirici",
+      "timer": "Zamanlayıcı",
+      "sunTimes": "Gündoğumu & Günbatımı"
+    },
+    "sections": {
+      "worldClock": "Dünya Saati",
+      "calendar": "Takvim",
+      "timeZoneConverter": "Saat Dilimi Çevirici",
+      "countdownTimer": "Geri Sayım",
+      "sunriseSunset": "Gündoğumu & Günbatımı",
+      "developerTools": "Geliştiriciler İçin DateTime"
+    },
+    "labels": {
+      "timezoneInfo": "Saat Dilimi Bilgileri",
+      "unixTimestamp": "Unix Zaman Damgası",
+      "utcTime": "UTC Saati",
+      "isoFormat": "ISO Formatı",
+      "addTimezone": "Saat Dilimi Ekle",
+      "selectTimezone": "Saat Dilimi Seç",
+      "cancel": "İptal",
+      "fromTimezone": "Kaynak Saat Dilimi",
+      "toTimezone": "Hedef Saat Dilimi",
+      "date": "Tarih",
+      "time": "Saat",
+      "convert": "Çevir",
+      "convertedTime": "Çevrilmiş Saat",
+      "hours": "Saat",
+      "minutes": "Dakika",
+      "seconds": "Saniye",
+      "start": "Başlat",
+      "pause": "Duraklat",
+      "reset": "Sıfırla",
+      "timeRemaining": "Kalan Süre",
+      "getSunTimes": "Güneş Saatlerini Al (Konumumu Kullan)",
+      "loading": "Yükleniyor...",
+      "sunrise": "Gündoğumu",
+      "sunset": "Günbatımı",
+      "toggleTheme": "Tema değiştir",
+      "dst": "YSU",
+      "clockSynchronized": "Saat senkronize (±{offset}ms)",
+      "clockOffset": "Saat, sunucu saatinden yaklaşık {seconds} saniye farklı",
+      "learnAboutUtc": "UTC hakkında bilgi edinin",
+      "titleUtcTime": "Güncel UTC (Eşgüdümlü Evrensel Zaman) saatini görüntüle"
+    },
+    "tools": {
+      "title": "Zaman Araçları",
+      "yearProgress": "Yıl İlerleme Çubuğu",
+      "ageCalculator": "Yaş Hesaplama",
+      "utcTime": "UTC Saati",
+      "worldHolidays": "Dünya Tatilleri",
+      "timezones": "Saat Dilimleri",
+      "titleYearProgress": "Mevcut yılın ilerlemesini takip edin",
+      "titleAgeCalculator": "Yaşınızı yıl, ay ve gün cinsinden hassas şekilde hesaplayın",
+      "titleUtcTime": "Güncel UTC (Eşgüdümlü Evrensel Zaman) saatini görüntüle",
+      "titleWorldHolidays": "Farklı ülkelerden tatil ve özel günleri keşfedin",
+      "titleTimezones": "Kapsamlı IANA saat dilimi veritabanına göz atın"
+    },
+    "cityTimes": {
+      "title": "Dünya Şehirlerinde Saat",
+      "titleNewYork": "New York şu anki saat",
+      "titleLondon": "Londra şu anki saat",
+      "titleTokyo": "Tokyo şu anki saat",
+      "titleParis": "Paris şu anki saat",
+      "titleSydney": "Sidney şu anki saat",
+      "titleBeijing": "Pekin şu anki saat"
+    },
+    "globalCities": {
+      "title": "Küresel Büyük Şehirler",
+      "northAmerica": "Kuzey Amerika",
+      "europe": "Avrupa",
+      "asia": "Asya",
+      "oceania": "Okyanusya",
+      "southAmerica": "Güney Amerika",
+      "africa": "Afrika",
+      "middleEast": "Orta Doğu"
+    },
+    "faq": {
+      "title": "Sık Sorulan Sorular",
+      "utcGmt": {
+        "question": "UTC/GMT saati nedir?",
+        "answer": "UTC (Eşgüdümlü Evrensel Zaman), dünyadaki tüm saatlerin ve zaman dilimlerinin referans aldığı temel zaman standardıdır. GMT (Greenwich Ortalama Zamanı) ile benzerdir ancak atom saatleriyle daha hassas şekilde belirlenir. UTC, internet, uluslararası iletişim ve havacılık sektöründe kullanılan küresel zaman standardıdır."
+      },
+      "timezones": {
+        "question": "Saat dilimleri nasıl çalışır?",
+        "answer": "Saat dilimleri, dünya üzerinde aynı standart saati kullanan bölgelerdir. Genellikle UTC'den sapmalar (+ veya - saat farkı) olarak tanımlanır ve çoğunlukla tam saat artışlarındadır. Örneğin, Doğu Standart Saati (EST) UTC-5'tir, yani UTC'den 5 saat geridedir. Saat dilimleri, geniş coğrafi alanlar boyunca zamanı standartlaştırmak için oluşturulmuştur ve genellikle hem coğrafi hem de politik sınırlardan etkilenir."
+      },
+      "unixTimestamp": {
+        "question": "Unix zaman damgası nedir?",
+        "answer": "Unix zaman damgası (Unix time veya POSIX time olarak da bilinir), 1 Ocak 1970, saat 00:00:00 UTC'den bu yana geçen saniye sayısını temsil eder (artık saniyeler hariç). Bilgisayar sistemlerinde ve yazılım geliştirmede, saat diliminden bağımsız olarak zamanı kaydetmenin standart yöntemi olarak yaygın şekilde kullanılır. Unix zaman damgaları sayesinde zaman farkları kolayca hesaplanabilir ve takvim sistemlerinden bağımsızdır."
+      },
+      "clockAccuracy": {
+        "question": "Bu saat ne kadar doğru?",
+        "answer": "Bu saatin doğruluğu, cihazınızın sistem saatine ve internet bağlantınıza bağlıdır. Mümkün olan en doğru zamanı göstermeye çalışsak da, ağ gecikmesi veya cihazınızın saat senkronizasyonu nedeniyle küçük farklılıklar olabilir. Günlük kullanım için, gösterilen zaman gerçek zamandan birkaç saniye içinde doğrudur. Milisaniye hassasiyeti gerektiren uygulamalar için özel zaman sunucuları kullanılmalıdır."
+      },
+      "iso8601": {
+        "question": "ISO 8601 formatı nedir?",
+        "answer": "ISO 8601, tarihleri ve zamanları temsil etmek için kullanılan uluslararası bir standarttır. YYYY-MM-DDTHH:MM:SS.sssZ formatını kullanır. Burada: YYYY-MM-DD tarihi (yıl, ay, gün), T tarih ve saat arasındaki ayırıcı, HH:MM:SS.sss zamanı (saat, dakika, saniye ve milisaniye), Z ise zamanın UTC'de olduğunu gösterir (veya +01:00 gibi bir sapma belirtilebilir). Bu format, uluslararası iletişimde belirsizliği ortadan kaldırır ve bilgisayar sistemlerinde yaygın olarak kullanılır."
+      },
+      "daylightSaving": {
+        "question": "Yaz saati uygulaması nedir?",
+        "answer": "Yaz Saati Uygulaması (YSU), sıcak aylarda saatlerin ileri alınması uygulamasıdır. Böylece akşam vakti daha geç kararır. Genellikle YSU uygulayan bölgeler ilkbaharda saatleri bir saat ileri alır (\"ileri alma\") ve sonbaharda geri alır (\"geri alma\"). Ana amacı, akşam saatlerinde gün ışığından daha iyi yararlanmaktır. Tüm ülkeler YSU uygulamaz ve başlangıç-bitiş tarihleri bölgeye göre değişir."
+      },
+      "timezoneConversion": {
+        "question": "Saat dilimleri arasında nasıl dönüştürme yapabilirim?",
+        "answer": "Saat dilimleri arasında zaman dönüştürmek için: 1) Hem kaynak hem de hedef saat dilimlerinin UTC sapmasını belirleyin, 2) Kaynak zamanı, sapmasını ekleyerek veya çıkararak UTC'ye çevirin, 3) UTC'den hedef saat dilimine, hedef sapmasını ekleyerek veya çıkararak çevirin. Örneğin, New York'ta (UTC-5) saat 15:00'i Londra saatine (UTC+0) çevirmek için 5 saat eklersiniz, sonuç Londra'da saat 20:00 olur. Yaz Saati Uygulaması aktifse UTC sapmasını geçici olarak değiştirebileceğini unutmayın."
+      }
+    }
+  },
+  "utc": {
+    "title": "Eşgüdümlü Evrensel Zaman (UTC)",
+    "subtitle": "Dünya Zaman Standardı",
+    "description": "Güncel UTC (Eşgüdümlü Evrensel Zaman) saatini görüntüleyin. UTC, dünya zaman standardıdır ve saat dilimlerinden veya yaz saati uygulamasından etkilenmez.",
+    "learnMore": "Sözlüğümüzde UTC hakkında daha fazla bilgi edinin",
+    "titleHome": "Ana sayfaya git",
+    "titleLearnMore": "Sözlüğümüzde UTC hakkında daha fazla bilgi edinin",
+    "titleViewGlossary": "Tarih ve zaman kavramlarının tam sözlüğünü görüntüleyin",
+    "unixTimestamp": "Unix Zaman Damgası",
+    "utcString": "UTC String",
+    "iso8601": "ISO 8601",
+    "copyToClipboard": "Panoya kopyala",
+    "enterFullscreen": "Tam ekrana geç",
+    "toggleTheme": "Tema değiştir",
+    "utcOffset": "UTC/GMT+0",
+    "worldCityTimes": "Dünya Şehirlerinde Saat",
+    "faqTitle": "UTC Saati - Sık Sorulan Sorular",
+    "viewGlossary": "Tarih ve zaman kavramlarının tam sözlüğünü görüntüleyin",
+    "faqs": {
+      "whatIsUtc": {
+        "question": "UTC saati nedir?",
+        "answer": "UTC (Eşgüdümlü Evrensel Zaman), dünyadaki tüm saatlerin ve zaman dilimlerinin referans aldığı temel zaman standardıdır. GMT (Greenwich Ortalama Zamanı) ile benzerdir ancak atom saatleri kullanılarak daha hassas şekilde belirlenir. UTC, internet, uluslararası iletişim ve havacılık sektöründe kullanılan küresel zaman standardıdır."
+      },
+      "whyImportant": {
+        "question": "UTC neden önemlidir?",
+        "answer": "UTC önemlidir çünkü saat dilimi veya yaz saati uygulamasından etkilenmeyen standart bir referans zaman sağlar. Dünya çapında sivil zamanın temeli olarak kullanılır ve küresel iletişim, havacılık, bilimsel araştırma ve bilgisayar sistemleri için kritik önem taşır."
+      },
+      "utcVsGmt": {
+        "question": "UTC ve GMT arasındaki fark nedir?",
+        "answer": "UTC ve GMT sıklıkla birbirinin yerine kullanılır ve her ikisi de Greenwich, Londra'daki Başlangıç Meridyeni'ndeki (0° boylam) zamanı temsil eder, ancak teknik olarak farklıdırlar. GMT, Dünya'nın dönüşüne ve güneşin konumuna dayanırken, UTC atom saatlerine dayanır. Pratikte, genellikle birbirlerinden 0,9 saniye içindedirler."
+      },
+      "convertToLocal": {
+        "question": "UTC'yi yerel saatimize nasıl çevirebilirim?",
+        "answer": "UTC'yi yerel saatinize çevirmek için, saat diliminizin UTC'den sapmasını UTC saatine eklemeniz veya çıkarmanız gerekir. Örneğin, UTC-5 olan Doğu Standart Saati'nde (EST) iseniz, UTC saatinden 5 saat çıkarırsınız. Yaz saati uygulaması döneminde bu UTC-4 olur."
+      },
+      "whyInComputing": {
+        "question": "UTC bilgisayarlarda neden kullanılır?",
+        "answer": "UTC, bilgisayarlarda kullanılır çünkü coğrafi konumdan bağımsız olarak tutarlı bir zaman referansı sağlar. Bu, olaylara zaman damgası ekleme, farklı saat dilimlerindeki sistemlerin senkronizasyonu, loglama ve dağıtık sistemlerde tutarlı veri zaman damgaları sağlamak için gereklidir."
+      }
+    },
+    "metaTitle": "UTC Saati | Eşgüdümlü Evrensel Zaman | Datetime.app",
+    "metaDescription": "Güncel UTC (Eşgüdümlü Evrensel Zaman) saatini görüntüleyin. UTC, dünya zaman standardıdır ve saat dilimlerinden veya yaz saati uygulamasından etkilenmez."
+  },
+  "holidays": {
+    "title": "Dünya Çapında Tatiller",
+    "description": "Farklı ülkelerden tatil ve özel günleri keşfedin"
+  },
+  "ageCalculator": {
+    "title": "Yaş Hesaplama",
+    "description": "Yaşınızı yıl, ay ve gün cinsinden hassas şekilde hesaplayın",
+    "pageTitle": "Yaş Hesaplama",
+    "subtitle": "Yaşınızı yıl, ay, gün ve daha fazlasıyla tam olarak hesaplayın - esnek tarih giriş seçenekleriyle",
+    "calculateYourAge": "Yaşınızı Hesaplayın",
+    "enterBirthDate": "Doğum Tarihi Girin",
+    "calculateAgeAsOf": "Belirtilen Tarihe Göre Yaş Hesapla",
+    "ageResults": "Yaş Sonuçları",
+    "aboutAgeCalculation": "Yaş Hesaplama Hakkında",
+    "calendarPrecision": "Takvim Hassasiyeti",
+    "realTimeUpdates": "Gerçek Zamanlı Güncelleme",
+    "faqTitle": "Yaş Hesaplama - Sık Sorulan Sorular",
+    "inputMethods": {
+      "calendar": "Takvim",
+      "manual": "Manuel Giriş"
+    },
+    "labels": {
+      "year": "Yıl",
+      "month": "Ay",
+      "day": "Gün",
+      "useCustomDate": "Özel tarih kullan",
+      "calculateAge": "Yaş Hesapla",
+      "updateTargetDate": "Hedef Tarihi Güncelle",
+      "selectedDate": "Seçilen tarih",
+      "targetDate": "Hedef tarih",
+      "currentDateTime": "Güncel Tarih & Saat",
+      "updatesInRealTime": "Gerçek zamanlı güncellenir",
+      "asOf": "{date} tarihi itibariyle",
+      "years": "Yıl",
+      "months": "Ay",
+      "days": "Gün",
+      "hours": "Saat",
+      "nextBirthday": "Sonraki Doğum Günü",
+      "nextBirthdayText": "{days} gün içinde {age} yaşına gireceksiniz ({date})",
+      "yearsInDecimalFormat": "Ondalık formatta yıl"
+    },
+    "tabs": {
+      "standard": "Standart",
+      "detailed": "Detaylı",
+      "decimal": "Ondalık"
+    },
+    "formatted": {
+      "age": "Yaş: {age}",
+      "yearsSuffix": "y",
+      "monthsSuffix": "a",
+      "daysSuffix": "g"
+    },
+    "info": {
+      "calendarPrecisionDesc": "Yaş hesaplama aracımız, mümkün olan en doğru hesaplamayı sağlamak için artık yılları, değişen ay uzunluklarını ve yaz saati uygulaması değişikliklerini dikkate alır.",
+      "realTimeUpdatesDesc": "Doğum tarihinizi seçtikten sonra, hesaplayıcı gerçek zamanlı olarak güncellenir ve zaman geçtikçe yaşınızı saniyesine kadar gösterir."
+    },
+    "errors": {
+      "validNumbers": "Lütfen yıl, ay ve gün için geçerli sayılar girin",
+      "yearRange": "Lütfen 1900 ile güncel yıl arasında bir yıl girin",
+      "monthRange": "Lütfen 1 ile 12 arasında bir ay girin",
+      "dayRange": "Lütfen 1 ile 31 arasında bir gün girin",
+      "invalidDate": "Girdiğiniz tarih geçersiz",
+      "futureDate": "Doğum tarihi gelecekte olamaz",
+      "unknownError": "Bilinmeyen bir hata oluştu"
+    },
+    "faqs": {
+      "howCalculated": {
+        "question": "Yaş nasıl hesaplanır?",
+        "answer": "Yaş, doğum tarihiniz ile güncel tarih (veya belirlediğiniz özel bir tarih) arasında geçen süre hesaplanarak bulunur. Hesaplayıcımız, kesin yaşı yıl, ay, gün, saat, dakika ve saniye cinsinden sağlar. Artık yılları, değişen ay uzunluklarını ve diğer takvim detaylarını dikkate alarak doğruluğu garanti ederiz."
+      },
+      "differFromOthers": {
+        "question": "Yaş hesaplamam neden diğer hesaplayıcılardan farklı olabilir?",
+        "answer": "Yaş hesaplamaları, kısmi ayları ve günleri nasıl ele aldıklarına bağlı olarak farklı hesaplayıcılar arasında değişebilir. Bazı hesaplayıcılar en yakın yıla yuvarlayabilirken, bizimki gibi diğerleri aylar ve günler dahil daha ayrıntılı bir döküm sağlar. Hesaplayıcımız, artık yılları ve değişen ay uzunluklarını dikkate almak için hassas algoritmalar kullanır."
+      },
+      "customDates": {
+        "question": "İki belirli tarih arasında yaş hesaplayabilir miyim?",
+        "answer": "Evet! Hesaplayıcımız, herhangi iki tarih arasında yaş hesaplamanıza olanak tanır. Doğum tarihinizi girdikten sonra 'Özel tarih kullan' seçeneğini etkinleştirerek yaş hesaplaması için hedef tarihi belirtebilirsiniz. Bu, belirli bir tarihte kaç yaşında olduğunuzu (veya olacağınızı) belirlemek için kullanışlıdır."
+      },
+      "enterBirthDate": {
+        "question": "Doğum tarihimi nasıl girerim?",
+        "answer": "Doğum tarihinizi girmek için iki seçeneğiniz vardır: takvim seçiciyi kullanmak veya manuel giriş. Takvim seçici, tarihi görsel olarak seçmenizi sağlarken, manuel giriş yıl, ay ve günü doğrudan yazmanıza olanak tanır. Size daha uygun olan yöntemi seçin."
+      },
+      "howAccurate": {
+        "question": "Yaş hesaplaması ne kadar doğru?",
+        "answer": "Yaş hesaplayıcımız saniyesine kadar doğrudur. Gerçek zamanlı olarak (güncel tarih kullanılırken) güncellenir ve artık yılları, farklı ay uzunluklarını ve yaz saati uygulaması değişikliklerini dikkate alır. Çoğu pratik kullanım için bu hassasiyet seviyesi fazlasıyla yeterlidir."
+      },
+      "decimalAge": {
+        "question": "Ondalık yaş nedir?",
+        "answer": "Ondalık yaş, yaşınızı ayrı yıllar, aylar ve günler yerine ondalık bölümü olan tek bir sayı olarak temsil eder. Örneğin, 25,75 yıl demek 25 yıl 9 aylık olduğunuz anlamına gelir (çünkü 0,75 yıl yaklaşık 9 aya eşittir). Bu format bazen bilimsel veya tıbbi bağlamlarda kullanılır."
+      },
+      "whyNeedExact": {
+        "question": "Neden tam yaşımı bilmem gerekir?",
+        "answer": "Tam yaşınızı bilmek çeşitli amaçlar için yararlı olabilir: tıbbi değerlendirmeler, astrolojik hesaplamalar, yasal belgeler veya sadece merak. Bazı kültürler ayrıca hassas hesaplama gerektiren belirli yaş dönüm noktalarını kutlar."
+      },
+      "noNextBirthday": {
+        "question": "Özel tarih kullanırken Sonraki Doğum Günü bilgisi neden görünmüyor?",
+        "answer": "Sonraki Doğum Günü hesaplaması güncel tarihe dayalıdır ve bugünden sonraki doğum gününüze kaç gün kaldığını gösterir. Özel bir hedef tarih kullanırken, bu bilgi gösterilmez çünkü belirttiğiniz özel tarihle ilgili olmaz."
+      }
+    },
+    "metaTitle": "Yaş Hesaplama | Tam Yaşınızı Hesaplayın | Datetime.app",
+    "metaDescription": "Tam yaşınızı yıl, ay, gün, saat, dakika ve saniye cinsinden hesaplayın. Takvim veya manuel giriş arasında seçim yapın ve herhangi bir tarihe göre yaş hesaplayın.",
+    "metaKeywords": "yaş hesaplama, yaş hesapla, kaç yaşındayım, tam yaş, yıl cinsinden yaş, gün cinsinden yaş, doğum günü hesaplama, doğumdan beri geçen süre, tarihler arası yaş, belirli tarihteki yaş"
+  },
+  "yearProgress": {
+    "title": "Yıl İlerlemesi",
+    "description": "Mevcut yılın ilerlemesini takip edin",
+    "pageTitle": "{year} Yıl İlerleme Çubuğu",
+    "subtitle": "{year} yılının %{progress}'i tamamlandı",
+    "progressTitle": "Yıl İlerlemesi",
+    "toggleTheme": "Tema değiştir",
+    "viewOtherYears": "Diğer yılların ilerlemesini görüntüleyin:",
+    "faqTitle": "Yıl İlerlemesi - Sık Sorulan Sorular",
+    "faqs": {
+      "howCalculated": {
+        "question": "Yıl ilerlemesi nasıl hesaplanır?",
+        "answer": "Yıl ilerlemesi, yılın yüzde kaçının geçtiği belirlenerek hesaplanır. Güncel tarih ve saati alır, mevcut yılın 1 Ocak'ından bu yana kaç milisaniye geçtiğini hesaplar ve bunu yıldaki toplam milisaniye sayısına böleriz."
+      },
+      "isAccurate": {
+        "question": "Yıl ilerlemesi hesaplaması doğru mu?",
+        "answer": "Evet, hesaplamamız artık yılları dikkate alır ve saniyesine kadar doğrudur. İlerleme, sayfayı izlerken gerçek zamanlı olarak güncellenir."
+      },
+      "differentYear": {
+        "question": "Farklı bir yılın ilerlemesini kontrol edebilir miyim?",
+        "answer": "Evet, URL'yi /year-progress-bar/yıl şeklinde değiştirerek herhangi bir yılın ilerlemesini görüntüleyebilirsiniz. Örneğin, 2025'in ilerlemesini görmek için /year-progress-bar/2025 adresini kullanırsınız."
+      },
+      "whyTrack": {
+        "question": "Neden yıl ilerlemesini takip etmeliyim?",
+        "answer": "Yıl ilerlemesini takip etmek, zaman farkındalığı, hedef belirleme ve planlama konularında yardımcı olabilir. Yılın ne kadarının geçtiğinin ve yıllık hedeflere ulaşmak için ne kadar süre kaldığının görsel bir hatırlatıcısını sağlar."
+      }
+    },
+    "backToCurrent": "Güncel Yıla Dön",
+    "yearCompleted": "Bu yıl tamamlandı",
+    "yearNotStarted": "Bu yıl henüz başlamadı",
+    "comparisonTitle": "Güncel Yılla Karşılaştırma",
+    "yearAhead": "{year}, güncel yıldan %{diff} önde",
+    "yearBehind": "{year}, güncel yıldan %{diff} geride",
+    "yearStatistics": "Yıl İstatistikleri",
+    "days": "Gün",
+    "weeks": "Hafta",
+    "months": "Ay",
+    "leapYear": "{year} bir artık yıl",
+    "relatedTools": "İlgili Araçlar",
+    "calendar": "Takvim",
+    "viewFullCalendar": "Bu yıl için tam takvimi görüntüleyin",
+    "ageCalculator": "Yaş Hesaplama",
+    "calculateAge": "Doğum yılına göre yaş hesaplayın",
+    "daysElapsed": "Geçen Günler",
+    "daysRemaining": "Kalan Günler",
+    "currentYearGoals": "Güncel Yıl Hedefleri",
+    "yearInsights": "Yıl İçgörüleri",
+    "timeRemaining": "Kalan Süre",
+    "progressSummary": "İlerleme Özeti",
+    "motivation": "Motivasyon",
+    "totalDays": "Toplam Gün",
+    "totalWeeks": "Toplam Hafta",
+    "inYear": "{year} içinde",
+    "trackProgress": "{year} ilerlemenizi takip edin ve {year} yılında kalan süreyi en iyi şekilde değerlendirin.",
+    "goalTrackingDescription": "Yıllık hedeflerinizi izlemek için bu {year} yıl ilerleme takipçisini kullanın. {year} yılının %{progress}'i tamamlandığında, {year} hedeflerinize ulaşmak için {daysRemaining} gününüz kalmıştır.",
+    "q1": "Ç1 {year} (Oca-Mar)",
+    "q2": "Ç2 {year} (Nis-Haz)",
+    "q3": "Ç3 {year} (Tem-Eyl)",
+    "q4": "Ç4 {year} (Eki-Ara)",
+    "complete": "✓ Tamamlandı",
+    "completeTitle": "Tamamlandı",
+    "notStarted": "Başlamadı",
+    "timeRemainingDescription": "{year} yılında {timeLeft} süreniz kalmıştır. Bu, mevcut yılın %{percentage}'ini temsil eder. Yıllık hedeflerinize ulaşmak için {year} yılında kalan {daysRemaining} günü en iyi şekilde değerlendirin.",
+    "progressSummaryDescription": "{year} yılının %{progress}'i tamamlandı. Şu ana kadar {year} yılının {daysElapsed} gününü deneyimlediniz. Mevcut yıl {year}, toplam {totalDays} günü olan bir {yearType}.",
+    "motivationDescription": "{year} yılındaki her gün, hedeflerinize doğru ilerleme fırsatıdır. {year} başarılarınızı takip edin ve mevcut yıl boyunca motive kalın. En önemli olana odaklanmak için bu {year} ilerleme görselleştirmesini kullanın.",
+    "leapYearType": "artık yıl",
+    "regularYearType": "normal yıl",
+    "timeLeftMonths": "{count} ay",
+    "timeLeftDays": "{count} gün",
+    "timeLeftHours": "{count} saat",
+    "timeLeftMinutes": "{count} dakika",
+    "timeLeftSeconds": "{count} saniye",
+    "left": "kaldı",
+    "metaTitle": "Yıl İlerleme Çubuğu | Yılın Ne Kadarı Geçti | Datetime.app",
+    "metaDescription": "Etkileşimli ilerleme çubuğumuzla mevcut yılın ilerlemesini görüntüleyin. Tamamlanan yılın tam yüzdesini ve kalan günleri görün.",
+    "yearMetaTitle": "{year} Yıl İlerleme Çubuğu - %{progress} Tamamlandı | Datetime.app",
+    "yearMetaDescription": "{year} yılının %{progress}'i tamamlandı. İlerlemeyi gerçek zamanlı olarak takip edin ve {year} yılında ne kadar süre kaldığını görün.",
+    "yearMetaKeywords": "{year} ilerleme, {year} ilerleme çubuğu, {year} yılında kalan süre, {year} yılında kalan günler, {year} tamamlanma, {year} takip, zaman takibi"
+  },
+  "cities": {
+    "pageTitle": "{cityName}, {countryName} Şu Anki Saat",
+    "timezoneLabel": "{timezone} Saat Dilimi",
+    "timezoneInfo": "Saat Dilimi Bilgileri",
+    "unixTimestamp": "Unix Zaman Damgası",
+    "utcTime": "UTC Saati",
+    "isoFormat": "ISO Formatı",
+    "cityInfo": "Şehir Bilgileri",
+    "country": "Ülke",
+    "timezone": "Saat Dilimi",
+    "coordinates": "Koordinatlar",
+    "population": "Nüfus",
+    "faq": "Sık Sorulan Sorular",
+    "clockSynchronized": "Saat senkronize (±{offset}ms)",
+    "clockOffset": "Saat sapması yaklaşık {seconds} saniye",
+    "copyToClipboard": "Panoya kopyala",
+    "enterFullscreen": "Tam ekrana geç",
+    "toggleTheme": "Tema değiştir",
+    "faqQuestions": {
+      "currentTime": "{cityName}'da şu an saat kaç?",
+      "utcDifference": "{cityName} ile UTC arasındaki zaman farkı nedir?",
+      "daylightSaving": "{cityName}'da yaz saati uygulaması var mı?"
+    },
+    "faqAnswers": {
+      "currentTime": "{cityName}, {country}'deki güncel yerel saat {currentTime}. {cityName}, {timezone} saat diliminde yer almaktadır.",
+      "utcDifference": "{cityName}, {timezone} saatini takip eder. UTC'den güncel sapma {offset} saattir.",
+      "daylightSaving": "Bu, {country}'nin yerel düzenlemelerine bağlıdır. Güncel saat {currentTime} olup, geçerli olduğunda yaz saati uygulaması için otomatik olarak ayarlanır."
+    },
+    "cityNames": {
+      "new-york": "New York",
+      "los-angeles": "Los Angeles",
+      "chicago": "Chicago",
+      "toronto": "Toronto",
+      "vancouver": "Vancouver",
+      "mexico-city": "Mexico City",
+      "houston": "Houston",
+      "miami": "Miami",
+      "atlanta": "Atlanta",
+      "boston": "Boston",
+      "seattle": "Seattle",
+      "san-francisco": "San Francisco",
+      "london": "Londra",
+      "paris": "Paris",
+      "berlin": "Berlin",
+      "rome": "Roma",
+      "madrid": "Madrid",
+      "amsterdam": "Amsterdam",
+      "moscow": "Moskova",
+      "vienna": "Viyana",
+      "prague": "Prag",
+      "brussels": "Brüksel",
+      "zurich": "Zürih",
+      "stockholm": "Stockholm",
+      "tokyo": "Tokyo",
+      "beijing": "Pekin",
+      "shanghai": "Şanghay",
+      "hong-kong": "Hong Kong",
+      "singapore": "Singapur",
+      "seoul": "Seul",
+      "bangkok": "Bangkok",
+      "mumbai": "Mumbai",
+      "delhi": "Delhi",
+      "dubai": "Dubai",
+      "taipei": "Taipei",
+      "kuala-lumpur": "Kuala Lumpur",
+      "kolkata": "Kalküta",
+      "sydney": "Sidney",
+      "melbourne": "Melbourne",
+      "auckland": "Auckland",
+      "brisbane": "Brisbane",
+      "perth": "Perth",
+      "wellington": "Wellington",
+      "sao-paulo": "São Paulo",
+      "rio-de-janeiro": "Rio de Janeiro",
+      "buenos-aires": "Buenos Aires",
+      "lima": "Lima",
+      "bogota": "Bogota",
+      "santiago": "Santiago",
+      "cairo": "Kahire",
+      "johannesburg": "Johannesburg",
+      "cape-town": "Cape Town",
+      "lagos": "Lagos",
+      "nairobi": "Nairobi",
+      "casablanca": "Kazablanka",
+      "istanbul": "İstanbul",
+      "tel-aviv": "Tel Aviv",
+      "jerusalem": "Kudüs",
+      "riyadh": "Riyad",
+      "doha": "Doha",
+      "kuwait-city": "Kuveyt"
+    },
+    "countryNames": {
+      "United States": "Amerika Birleşik Devletleri",
+      "Canada": "Kanada",
+      "Mexico": "Meksika",
+      "United Kingdom": "Birleşik Krallık",
+      "France": "Fransa",
+      "Germany": "Almanya",
+      "Italy": "İtalya",
+      "Spain": "İspanya",
+      "Netherlands": "Hollanda",
+      "Russia": "Rusya",
+      "Austria": "Avusturya",
+      "Czech Republic": "Çek Cumhuriyeti",
+      "Belgium": "Belçika",
+      "Switzerland": "İsviçre",
+      "Sweden": "İsveç",
+      "Japan": "Japonya",
+      "China": "Çin",
+      "Hong Kong": "Hong Kong",
+      "Singapore": "Singapur",
+      "South Korea": "Güney Kore",
+      "Thailand": "Tayland",
+      "India": "Hindistan",
+      "United Arab Emirates": "Birleşik Arap Emirlikleri",
+      "Taiwan": "Tayvan",
+      "Malaysia": "Malezya",
+      "Australia": "Avustralya",
+      "New Zealand": "Yeni Zelanda",
+      "Brazil": "Brezilya",
+      "Argentina": "Arjantin",
+      "Peru": "Peru",
+      "Colombia": "Kolombiya",
+      "Chile": "Şili",
+      "Egypt": "Mısır",
+      "South Africa": "Güney Afrika",
+      "Nigeria": "Nijerya",
+      "Kenya": "Kenya",
+      "Morocco": "Fas",
+      "Turkey": "Türkiye",
+      "Israel": "İsrail",
+      "Saudi Arabia": "Suudi Arabistan",
+      "Qatar": "Katar",
+      "Kuwait": "Kuveyt"
+    },
+    "metaTitle": "{cityName}, {countryName} Şu Anki Saat | Datetime.app",
+    "metaDescription": "{cityName}, {countryName} güncel yerel saat ({timezone} saat dilimi)"
+  },
+  "languageSuggestion": {
+    "title": "Dil Önerisi",
+    "description": "Tarayıcı dilinizin {language} olduğunu tespit ettik. Daha iyi bir deneyim için bu dile geçmek ister misiniz?",
+    "accept": "Evet, {language} diline geç",
+    "dismiss": "Hayır, teşekkürler"
+  },
+  "calendar": {
+    "title": "{year} Takvimi",
+    "subtitle": "Hafta numaralarıyla tam yıl takvim görünümü",
+    "description": "Tüm aylar, tarihler ve hafta numaralarıyla {year} için tam takvimi görüntüleyin",
+    "metaTitle": "{year} Takvimi - Hafta Numaraları, Aylık Planlayıcı & Yıllık Görünüm ile Ücretsiz Yazdırılabilir Takvim",
+    "metaDescription": "Hafta numaraları, aylık görünüm ve yıllık genel bakış ile ücretsiz {year} takvimi. Tatiller, artık yıl bilgisi ve yazdırılabilir format içeren etkileşimli {year} takvimimizle {year} yılınızı planlayın.",
+    "metaKeywords": "{year} takvim, {year} yıllık takvim, {year} aylık takvim, {year} yıllık takvim, ücretsiz {year} takvim, yazdırılabilir {year} takvim, hafta numaralı {year} takvim",
+    "currentYear": "güncel yıl",
+    "leapYear": "artık yıl",
+    "regularYear": "normal yıl",
+    "weekNumber": "Hafta {number}",
+    "today": "Bugün",
+    "viewYear": "Yılı Görüntüle",
+    "previousYear": "Önceki Yıl",
+    "nextYear": "Sonraki Yıl",
+    "yearNavigation": "Yıl Navigasyonu",
+    "monthNavigation": "Ay Navigasyonu",
+    "jumpToYear": "Yıla Atla",
+    "toggleTheme": "Tema değiştir",
+    "previousMonth": "Önceki Ay",
+    "nextMonth": "Sonraki Ay",
+    "currentMonth": "Güncel ay",
+    "backToYear": "{year} yılına dön",
+    "daysInMonth": "{days} gün",
+    "selectedDate": "Seçilen Tarih",
+    "date": "Tarih",
+    "dayOfYear": "Yılın Günü",
+    "months": {
+      "january": "Ocak",
+      "february": "Şubat",
+      "march": "Mart",
+      "april": "Nisan",
+      "may": "Mayıs",
+      "june": "Haziran",
+      "july": "Temmuz",
+      "august": "Ağustos",
+      "september": "Eylül",
+      "october": "Ekim",
+      "november": "Kasım",
+      "december": "Aralık"
+    },
+    "monthsShort": {
+      "jan": "Oca",
+      "feb": "Şub",
+      "mar": "Mar",
+      "apr": "Nis",
+      "may": "May",
+      "jun": "Haz",
+      "jul": "Tem",
+      "aug": "Ağu",
+      "sep": "Eyl",
+      "oct": "Eki",
+      "nov": "Kas",
+      "dec": "Ara"
+    },
+    "weekdays": {
+      "sunday": "Pazar",
+      "monday": "Pazartesi",
+      "tuesday": "Salı",
+      "wednesday": "Çarşamba",
+      "thursday": "Perşembe",
+      "friday": "Cuma",
+      "saturday": "Cumartesi"
+    },
+    "weekdaysShort": {
+      "sun": "Paz",
+      "mon": "Pzt",
+      "tue": "Sal",
+      "wed": "Çar",
+      "thu": "Per",
+      "fri": "Cum",
+      "sat": "Cmt"
+    },
+    "info": {
+      "totalDays": "{year} yılındaki toplam gün",
+      "daysPassed": "Geçen günler",
+      "daysRemaining": "Kalan günler",
+      "weeksPassed": "Geçen haftalar",
+      "weeksRemaining": "Kalan haftalar"
+    },
+    "faq": {
+      "title": "Sık Sorulan Sorular",
+      "whatIsCalendar": {
+        "question": "Yıllık takvim nedir?",
+        "answer": "Yıllık takvim, belirli bir yılın tüm 12 ayını tarihleri, haftanın günlerini ve hafta numaralarını gösteren yapılandırılmış bir formatta görüntüler. Tarih planlama, programlama ve yılın yapısını anlama konusunda yardımcı olur."
+      },
+      "weekNumbers": {
+        "question": "Hafta numaraları nedir?",
+        "answer": "Hafta numaraları, yılın haftalarını 1'den 52'ye (veya bazı yıllarda 53'e) kadar numaralandırmanın bir yoludur. Yılın ilk haftası, genellikle yeni yılın en az dört gününü içeren ilk haftadır."
+      },
+      "leapYear": {
+        "question": "Artık yıl nedir?",
+        "answer": "Artık yıl, normal 365 gün yerine 366 gün içerir. Her 4 yılda bir (bazı istisnalarla) gerçekleşir ve takvimimizi Dünya'nın güneş etrafındaki yörüngesiyle uyumlu tutmak için fazladan bir gün (29 Şubat) ekler."
+      },
+      "monthOverview": {
+        "question": "Bu ay hangi bilgileri gösteriyor?",
+        "answer": "{month} {year}, {days} gün içerir, {startDay} günü başlar ve {endDay} günü biter. Bu takvim görünümü, tüm tarihleri karşılık gelen haftanın günleri ve hafta numaralarıyla gösterir."
+      },
+      "weekCount": {
+        "question": "Bu ayda kaç hafta var?",
+        "answer": "{month}, takvim ızgarasında {weeks} hafta kapsar, ancak bazı haftalar önceki veya sonraki aydan günler içerebilir."
+      },
+      "currentMonth": {
+        "question": "Bu ay neden vurgulanmış?",
+        "answer": "Bu, güncel aydır ({month} {year}). Bugün ayın {today}. günü ve takvimde mavi renkte vurgulanmıştır."
+      },
+      "monthCharacteristics": {
+        "question": "Bu ayın özellikleri nelerdir?",
+        "february": "{month} {year}, {days} gün içerir, bu da onu bir {leapYear} yapar. Şubat, en kısa aydır ve değişken gün sayısına sahip tek aydır.",
+        "thirtyDays": "{month}, tam 30 günü olan dört aydan biridir (Nisan, Haziran, Eylül, Kasım).",
+        "thirtyOneDays": "{month}, 31 günü vardır, bu da onu yılın yedi uzun ayından biri yapar."
+      },
+      "navigation": {
+        "question": "Diğer aylara nasıl gidebilirim?",
+        "answer": "{prevMonth} veya {nextMonth} için ok düğmelerini kullanın. Ayrıca aşağıdaki navigasyon ızgarasında herhangi bir aya tıklayabilir veya tüm ayları bir kerede görmek için 'Yılı Görüntüle' düğmesini kullanabilirsiniz."
+      }
+    },
+    "seo": {
+      "title": "{year} Takvimi Hakkında",
+      "yearOverview": {
+        "title": "{year} Yıl Genel Bakış",
+        "content": "{year} takvimi, tüm 12 ayın kapsamlı bir görünümünü, toplam {totalDays} günü sağlar. {year}, {leapYearInfo} bir {yearType}. {year} takvimimiz, haftalık programları takip etmeyi ve tüm {year} yılınızı planlamayı kolaylaştıran hafta numaralarını içerir."
+      },
+      "features": {
+        "title": "{year} Takvimimizin Özellikleri",
+        "list": [
+          "Tüm 12 ay ile tam {year} yıllık takvim görünümü",
+          "{year} yılındaki her hafta için hafta numaraları",
+          "{year} planlama için etkileşimli tarih seçimi",
+          "Mobil uyumlu {year} takvim tasarımı",
+          "Ücretsiz yazdırılabilir {year} takvim formatı",
+          "{year} için artık yıl göstergeleri",
+          "{year} takviminde güncel gün vurgulama",
+          "{year} içinde aylık navigasyon",
+          "Yıldan yıla takvim karşılaştırması"
+        ]
+      }
+    },
+    "yearMetaTitle": "{year} Takvimi | Tam Yıl Görünümü | Datetime.app",
+    "yearMetaDescription": "Tüm aylar, hafta numaraları ve tarihlerle tam {year} takvimini görüntüleyin. {yearType}{currentYearSuffix}.",
+    "yearMetaKeywords": "{year} takvim, yıllık takvim, aylık takvim, tarih arama, hafta numaraları, {yearType}",
+    "monthMetaTitle": "{monthName} {year} Takvimi | Aylık Görünüm | Datetime.app",
+    "monthMetaDescription": "Tüm tarihler ve hafta bilgisiyle {monthName} {year} için tam takvimi görüntüleyin.{currentMonthSuffix}",
+    "monthMetaKeywords": "{monthName} {year}, aylık takvim, takvim görünümü, tarih arama, {month}"
+  },
+  "timezones": {
+    "title": "{timezone} Saati",
+    "subtitle": "{description}",
+    "currentTime": "Şu Anki Saat",
+    "worldTimezones": "Dünya Saat Dilimleri",
+    "enterFullscreen": "Tam ekrana geç",
+    "copyToClipboard": "Panoya kopyala",
+    "toggleTheme": "Tema değiştir",
+    "unixTimestamp": "Unix Zaman Damgası",
+    "utcString": "UTC String",
+    "iso8601": "ISO 8601",
+    "viewGlossary": "Tarih ve zaman kavramlarının tam sözlüğünü görüntüleyin",
+    "faqTitle": "{timezone} Saati - Sık Sorulan Sorular",
+    "names": {
+      "utc": "Eşgüdümlü Evrensel Zaman",
+      "gmt": "Greenwich Ortalama Zamanı",
+      "cet": "Orta Avrupa Saati",
+      "pst": "Pasifik Standart Saati",
+      "mst": "Dağ Standart Saati",
+      "cst": "Merkezi Standart Saat",
+      "est": "Doğu Standart Saati",
+      "eet": "Doğu Avrupa Saati",
+      "ist": "Hindistan Standart Saati",
+      "china-cst": "Çin Standart Saati",
+      "jst": "Japonya Standart Saati",
+      "aest": "Avustralya Doğu Standart Saati",
+      "sast": "Güney Afrika Standart Saati",
+      "msk": "Moskova Standart Saati",
+      "nzst": "Yeni Zelanda Standart Saati"
+    },
+    "descriptions": {
+      "utc": "Dünya zaman standardı",
+      "gmt": "Greenwich meridyen saati",
+      "cet": "Orta Avrupa standart saati",
+      "pst": "ABD Pasifik kıyısı saati",
+      "mst": "ABD Dağ saati",
+      "cst": "ABD Merkezi saat",
+      "est": "ABD Doğu saati",
+      "eet": "Doğu Avrupa saati",
+      "ist": "Hindistan standart saati",
+      "china-cst": "Çin standart saati",
+      "jst": "Japonya standart saati",
+      "aest": "Avustralya Doğu saati",
+      "sast": "Güney Afrika saati",
+      "msk": "Moskova saati",
+      "nzst": "Yeni Zelanda saati"
+    },
+    "faqs": {
+      "whatIs": {
+        "question": "{timezone} saati nedir?",
+        "answer": "{timezone} ({abbreviation}), {description}. Şu anki saat {currentTime}."
+      },
+      "utcDifference": {
+        "question": "{timezone} ile UTC arasındaki zaman farkı nedir?",
+        "answer": "{timezone}, UTC saatinden {offset} sapmadır."
+      },
+      "daylightSaving": {
+        "question": "{timezone}'de yaz saati uygulaması var mı?",
+        "answer": "Bu, belirli bölgeye ve yerel düzenlemelere bağlıdır. Gösterilen güncel saat, geçerli olduğunda yaz saati uygulaması için otomatik olarak ayarlanır."
+      }
+    }
+  },
+  "glossary": {
+    "title": "Tarih & Zaman Kavramları Sözlüğü",
+    "subtitle": "Zamanla ilgili terminoloji ve kavramlar için kapsamlı referans",
+    "searchPlaceholder": "Sözlük terimlerinde ara...",
+    "searchResults": "Arama Sonuçları ({count})",
+    "noResults": "Eşleşen terim bulunamadı. Farklı bir arama terimi deneyin.",
+    "allTerms": "Tüm Terimler",
+    "relatedTerms": "İlgili Terimler",
+    "categories": {
+      "standard": "Zaman Standartları",
+      "format": "Zaman Formatları",
+      "concept": "Zaman Kavramları",
+      "timezone": "Saat Dilimi İlgili",
+      "calculation": "Zaman Hesaplamaları"
+    },
+    "terms": {
+      "utc": {
+        "title": "UTC (Eşgüdümlü Evrensel Zaman)",
+        "shortDescription": "Dünyanın saatleri ve zamanı düzenlediği birincil zaman standardı.",
+        "longDescription": "Eşgüdümlü Evrensel Zaman (UTC), dünyanın saatleri ve zamanı düzenlediği birincil zaman standardıdır. Bugün sivil zaman için temel oluşturur ve internet, havacılık, denizcilik operasyonları ve birçok bilimsel uygulamada kullanılır.\n\nUTC, dünya çapındaki atom saatleri ağı tarafından korunur ve Greenwich Ortalama Zamanı (GMT) ile yakından ilişkilidir ancak ondan farklıdır. Yerel saat dilimlerinin aksine, UTC mevsimlerle değişmez ve Yaz Saati Uygulamasından etkilenmez.\n\nUTC, hassas zaman tutma gerektiren birçok sistem için kullanılan zaman standardıdır; internet, GPS uyduları ve uluslararası hava trafik kontrolü dahil. Bilgisayar sistemleri genellikle dahili olarak UTC kullanır ve ardından görüntüleme amacıyla yerel saate dönüştürür.\n\n\"Eşgüdümlü Evrensel Zaman\" terimi, İngilizce \"Coordinated Universal Time\" ve Fransızca \"Temps Universel Coordonné\" arasında bir uzlaşmadır, bu nedenle UTC kısaltması her iki dille tam olarak eşleşmez."
+      },
+      "gmt": {
+        "title": "GMT (Greenwich Ortalama Zamanı)",
+        "shortDescription": "Greenwich, Londra'daki Kraliyet Gözlemevi'ndeki ortalama güneş zamanı.",
+        "longDescription": "Greenwich Ortalama Zamanı (GMT), Greenwich, Londra'daki Kraliyet Gözlemevi'ndeki ortalama güneş zamanıdır. Bilimsel bağlamlarda Eşgüdümlü Evrensel Zaman (UTC) ile değiştirilmeden önce tarihsel olarak uluslararası sivil zaman standardı olarak kullanılmıştır.\n\nGMT, 1675'te Kraliyet Gözlemevi denizcilik amaçları ve İngiliz donanması için bir referans zaman olarak inşa edildiğinde kuruldu. 1884'te, Greenwich meridyeni Başlangıç Meridyeni (0° boylam) olarak kabul edildiğinde Uluslararası Meridyen Konferansı'nda küresel zaman standardı oldu.\n\nBugün, GMT hala bazı bağlamlarda, özellikle kış aylarında Birleşik Krallık'ta kullanılır, ancak bilimsel ve teknik amaçlar için büyük ölçüde UTC ile değiştirilmiştir. GMT terimi genellikle gayri resmi olarak UTC+0'ı ifade etmek için kullanılır, ancak teknik olarak artık saniyeler ve UTC'deki diğer ayarlamalar nedeniyle 0,9 saniyeye kadar farklılık gösterebilirler.\n\nAtom zamanına dayanan UTC'nin aksine, GMT astronomik gözlemlere ve biraz düzensiz olan Dünya'nın dönüşüne dayanır."
+      },
+      "iso8601": {
+        "title": "ISO 8601 (Tarih ve Saat Formatı)",
+        "shortDescription": "Tarihleri ve zamanları temsil etmek için uluslararası standart.",
+        "longDescription": "ISO 8601, tarihleri ve zamanları temsil etmek için uluslararası bir standarttır. Uluslararası Standardizasyon Örgütü (ISO) tarafından yayınlanmıştır ve tarihleri ve zamanları temsil etmek için iyi tanımlanmış, belirsiz olmayan bir yöntem sağlar, bu da onu uluslararası iletişim ve bilgisayar sistemleri için ideal kılar.\n\nStandart, YYYY-MM-DDThh:mm:ss.sssZ formatını takip eder, burada:\n- YYYY yılı temsil eder\n- MM ayı temsil eder\n- DD günü temsil eder\n- T, zaman öğesinin başlangıcını gösteren bir ayırıcıdır\n- hh saatleri temsil eder (24 saat formatında)\n- mm dakikaları temsil eder\n- ss saniyeleri temsil eder\n- .sss saniyelerin kesirlerini temsil eder (isteğe bağlı)\n- Z, zamanın UTC'de olduğunu gösterir (veya +/-hh:mm, UTC'den bir sapmayı belirtmek için kullanılabilir)\n\nÖrnekler:\n- 2023-04-15T14:30:00Z (15 Nisan 2023'te UTC'de 14:30)\n- 2023-04-15T14:30:00+02:00 (UTC'den 2 saat ileride bir saat diliminde 14:30)\n\nISO 8601, bilgisayarlarda, veri değişiminde ve API'lerde yaygın olarak kullanılır çünkü tarih temsillerinde belirsizliği ortadan kaldırır ve kolayca sıralanabilir."
+      },
+      "unixTimestamp": {
+        "title": "Unix Zaman Damgası",
+        "shortDescription": "1 Ocak 1970 (UTC) tarihinden bu yana geçen saniye sayısı.",
+        "longDescription": "Unix zaman damgası (Unix time, POSIX time veya Epoch time olarak da bilinir), bir zaman noktasını, 1 Ocak 1970, 00:00:00 UTC'den bu yana geçen saniye sayısı olarak temsil eden bir sistemdir ve artık saniyeleri hariç tutar.\n\nBu tarih (1 Ocak 1970) Unix Epoch olarak adlandırılır ve Unix ve diğer birçok bilgisayar sisteminde zamanın ölçüldüğü referans noktası olarak hizmet eder.\n\nUnix zaman damgaları, bilgisayarlarda yaygın olarak kullanılır çünkü belirli bir anı temsil etmek için kompakt, dilden bağımsız bir temsil sağlarlar. Özellikle veritabanlarında tarih ve saatleri saklamak ve tarih/saat hesaplamaları yapmak için kullanışlıdırlar.\n\nÖrnekler:\n- 0: 1 Ocak 1970, 00:00:00 UTC (Epoch)\n- 1000000000: 9 Eylül 2001, 01:46:40 UTC\n- 1585000000: 24 Mart 2020, 00:00:00 UTC\n\nÇoğu programlama dili, Unix zaman damgaları ile insan tarafından okunabilir tarih formatları arasında dönüştürme için işlevler sağlar. Unix zaman damgaları tipik olarak artık saniyeleri hesaba katmaz."
+      },
+      "timezone": {
+        "title": "Saat Dilimi",
+        "shortDescription": "Yasal, ticari ve sosyal amaçlar için tek tip standart zaman uygulayan kürenin bir bölgesi.",
+        "longDescription": "Saat dilimi, yasal, ticari ve sosyal amaçlar için tek tip standart zaman uygulayan kürenin bir bölgesidir. Saat dilimleri, Eşgüdümlü Evrensel Zaman'dan (UTC) tam saat sayısı kadar farklılık gösteren alanlar olarak tanımlanır, ancak bazıları 30 veya 45 dakika sapmaktadır.\n\nSaat dilimleri, daha önce güneş zamanına dayalı olarak kasabadan kasabaya değişen yerel zamanı standartlaştırmak için 19. yüzyılın sonlarında ilk kez kabul edildi. Konsept, 1884 Uluslararası Meridyen Konferansı'nın ardından resmileştirildi.\n\nÇoğu saat dilimi, UTC'den sapmalar olarak tanımlanır. Örneğin:\n- UTC-5 (Kuzey Amerika'da Doğu Standart Saati)\n- UTC+1 (Orta Avrupa Saati)\n- UTC+8 (Çin Standart Saati)\n\nBirçok bölge ayrıca Yaz Saati Uygulamasını (YSU) uygular, yaz aylarında saatlerini geçici olarak bir saat ileri alır.\n\nSaat dilimleri tipik olarak şu şekilde tanımlanır:\n- IANA/Olson saat dilimi veritabanı tanımlayıcıları (örn. \"America/New_York\")\n- Kısaltmalar (örn. EST, CST, PST)\n- UTC sapma notasyonları (örn. UTC+2, UTC-7)"
+      },
+      "dst": {
+        "title": "Yaz Saati Uygulaması (YSU)",
+        "shortDescription": "Akşam gün ışığını uzatmak için yaz aylarında saatleri ileri alma uygulaması.",
+        "longDescription": "Yaz Saati Uygulaması (YSU), akşam gün ışığını uzatmak ve yapay ışık kullanımını azaltmak için yaz aylarında saatleri (tipik olarak bir saat) ileri alma uygulamasıdır. YSU geçişlerinin tam tarihleri ülkeye ve bölgeye göre değişir.\n\nModern YSU konsepti ilk olarak 1895'te George Vernon Hudson tarafından önerildi ve ilk olarak Birinci Dünya Savaşı sırasında kömürden tasarruf etmenin bir yolu olarak uygulandı. Bugün, dünya çapında ülkelerin yaklaşık %40'ı YSU kullanır.\n\nYSU geçişleri çeşitli komplikasyonlara neden olabilir:\n- İlkbaharda, saatler \"ileri alınır\", bir saatin atlanmasıyla sonuçlanır\n- Sonbaharda, saatler \"geri alınır\", bir saatin iki kez gerçekleşmesiyle sonuçlanır\n\nBu geçişler, programlama, uyku düzeni ve bilgisayar sistemleri için zorluklar yaratır. YSU'nun etkinliği ve gerekliliği tartışılmıştır ve bazı bölgeler uygulamayı kaldırmaya doğru hareket etmektedir."
+      },
+      "leapSecond": {
+        "title": "Artık Saniye",
+        "shortDescription": "Dünya'nın dönüşündeki düzensizlikleri karşılamak için ara sıra UTC'ye eklenen bir saniyelik ayarlama.",
+        "longDescription": "Artık saniye, Dünya'nın düzensiz dönüşünü karşılamak için ara sıra Eşgüdümlü Evrensel Zaman'a (UTC) eklenen bir saniyelik ayarlamadır. Düzenli bir desen izleyen artık yılların aksine, artık saniyeler astronomik gözlemlere dayalı olarak düzensiz bir şekilde eklenir.\n\nDünya'nın dönüşü, gelgit sürtünmesi nedeniyle yavaş yavaş yavaşlamaktadır, bu da ortalama güneş gününü 86.400 saniyeden biraz daha uzun yapar. UTC'yi UT1'den (Dünya'nın dönüşüne dayalı zaman) 0,9 saniye içinde tutmak için, gerektiğinde artık saniyeler eklenir.\n\n1972'de tanıtılmalarından bu yana, artık saniyeler tipik olarak yaklaşık her 18 ayda bir eklenir. Genellikle 30 Haziran veya 31 Aralık için planlanırlar.\n\nArtık saniyeler, genellikle 61 saniyelik bir dakikayı işlemek için tasarlanmamış bilgisayar sistemleri için zorluklar yaratır. Bu komplikasyonlar nedeniyle, artık saniyeleri ortadan kaldırmak için öneriler olmuştur."
+      },
+      "atomicTime": {
+        "title": "Atom Zamanı (TAI)",
+        "shortDescription": "Atomların salınımına dayalı yüksek hassasiyetli zaman standardı.",
+        "longDescription": "Atom zamanı, resmi olarak Uluslararası Atom Zamanı (TAI) olarak bilinir, atomların rezonans frekansına dayalı yüksek hassasiyetli bir zaman standardıdır. Dünya'nın dönüşündeki düzensizliklerden etkilenmeyen sürekli, kararlı bir zaman ölçeği sağlar.\n\nTAI, sezyum-133 atomları tarafından yayılan elektromanyetik radyasyona dayalı olarak zamanı ölçen dünya çapındaki atom saatleri ağı tarafından belirlenir. TAI'deki saniye, bu radyasyonun 9.192.631.770 döngüsünün süresi olarak tanımlanır.\n\nUTC'nin aksine, TAI artık saniyeleri içermez ve bu nedenle ayarlamalar olmadan sürekli çalışır. 2023 itibariyle, 1972'den bu yana UTC'ye eklenen artık saniyeler nedeniyle TAI, UTC'den 37 saniye ileridedir.\n\nAtom zamanı, GPS, bilimsel araştırma ve telekomünikasyon gibi son derece hassas zaman tutma gerektiren uygulamalar için kritik öneme sahiptir."
+      },
+      "julianDate": {
+        "title": "Jülyen Tarihi",
+        "shortDescription": "M.Ö. 4713, 1 Ocak'ta öğlen Evrensel Zaman'dan bu yana günlerin sürekli sayımı.",
+        "longDescription": "Jülyen Tarihi (JD), M.Ö. 4713, 1 Ocak'ta öğlen Evrensel Zaman'dan bu yana günlerin ve günlerin kesirlerinin sürekli sayımıdır. Farklı takvimlerle çalışmak için tek bir tarih sistemi sağlamak amacıyla astronomlar tarafından tanıtıldı.\n\nJülyen Tarihi sistemi, 1583'te Joseph Scaliger tarafından önerildi. Başlangıç noktası, kayıtlı tarihten önce olduğu için ve antik kronolojide kullanılan üç ana döngünün birleştiği noktayı temsil ettiği için seçildi.\n\nJülyen Tarihleri, ondalık sayılar olarak ifade edilir; burada tamsayı kısmı gün numarasını ve kesirli kısım günün saatini temsil eder.\n\nModifiye Jülyen Tarihi (MJD) olarak adlandırılan bir varyant, MJD = JD - 2400000,5 olarak tanımlanır; bu, basamakları azaltır ve tamsayı sınırını gece yarısına yerleştirir.\n\nJülyen Tarihleri, öncelikle astronomide ve uzay biliminde zaman aralığı hesaplamalarını basitleştirmek için kullanılır."
+      },
+      "epoch": {
+        "title": "Epoch",
+        "shortDescription": "Belirli bir zaman ölçüm sistemi için kaynak olarak kullanılan zamandaki bir referans noktası.",
+        "longDescription": "Zaman tutmada, epoch, belirli bir zaman ölçüm sistemi için kaynak olarak kullanılan zamandaki bir referans noktasıdır. Farklı sistemler, başlangıç noktaları olarak farklı epoch'lar kullanır.\n\nBazı önemli epoch'lar şunlardır:\n\n1. Unix Epoch: 1 Ocak 1970, 00:00:00 UTC - Unix zaman damgaları için kullanılır\n2. GPS Epoch: 6 Ocak 1980, 00:00:00 UTC - GPS zamanı için başlangıç noktası\n3. J2000 Epoch: 1 Ocak 2000, 12:00:00 TT - Astronomide standart referans epoch\n4. Windows Epoch: 1 Ocak 1601, 00:00:00 UTC - NTFS dosya sistemlerinde kullanılır\n5. NTP Epoch: 1 Ocak 1900, 00:00:00 UTC - Ağ Zaman Protokolü'nde kullanılır\n\nEpoch'lar, çeşitli pratik veya tarihsel nedenlerle seçilir. Farklı zaman sistemleriyle çalışırken, aralarında doğru dönüştürme yapmak için ilgili epoch'larının farkında olmak önemlidir."
+      }
+    }
+  },
+  "ianaTimezones": {
+    "title": "IANA Saat Dilimleri Veritabanı",
+    "description": "Dünyanın her yerinden IANA saat dilimlerinin tam listesi. Bölgeye göre göz atın, şehir veya ülkeye göre arayın ve herhangi bir saat dilimi için güncel saat bilgisi alın.",
+    "toggleTheme": "Tema değiştir",
+    "searchPlaceholder": "Saat dilimlerinde, şehirlerde veya ülkelerde ara...",
+    "filterByRegion": "Bölgeye göre filtrele",
+    "allRegions": "Tüm Bölgeler",
+    "sortBy": "Sırala",
+    "searchResults": "{count} saat dilimi bulundu",
+    "timezones": "saat dilimleri",
+    "viewAll": "Tüm {count} tanesini görüntüle",
+    "stats": {
+      "totalTimezones": "Toplam Saat Dilimi",
+      "regions": "Bölgeler",
+      "countries": "Ülkeler",
+      "utcOffsets": "UTC Sapmaları"
+    },
+    "regions": {
+      "africa": "Afrika",
+      "america": "Amerika",
+      "antarctica": "Antarktika",
+      "arctic": "Arktik",
+      "asia": "Asya",
+      "atlantic": "Atlantik",
+      "australia": "Avustralya",
+      "europe": "Avrupa",
+      "indian": "Hint Okyanusu",
+      "pacific": "Pasifik"
+    },
+    "sortOptions": {
+      "name": "İsim",
+      "offset": "UTC Sapması",
+      "population": "Nüfus"
+    },
+    "tabs": {
+      "all": "Tüm Saat Dilimleri",
+      "popular": "Popüler",
+      "byRegion": "Bölgeye Göre"
+    },
+    "popularTimezones": {
+      "title": "En Popüler Saat Dilimleri",
+      "description": "Nüfus ve küresel kullanıma dayalı en yaygın kullanılan saat dilimleri."
+    },
+    "noResults": {
+      "title": "Saat dilimi bulunamadı",
+      "description": "Arama veya filtre kriterlerinizi ayarlamayı deneyin."
+    },
+    "seo": {
+      "about": {
+        "title": "IANA Saat Dilimleri Hakkında",
+        "content": "IANA Saat Dilimi Veritabanı (tzdata), dünya çapında saat dilimi bilgileri için yetkili kaynaktır. Yaz saati uygulaması geçişleri, UTC sapmaları ve saat dilimi kısaltmaları dahil olmak üzere tüm bölgeler için tarihi ve güncel saat dilimi verilerini içerir. Bu kapsamlı veritabanı, İnternet Tahsis Edilmiş Numaralar Kurumu tarafından sürdürülür ve işletim sistemleri, programlama dilleri ve uygulamalar tarafından dünya çapında kullanılır."
+      },
+      "features": {
+        "title": "Özellikler",
+        "list": [
+          "Gerçek zamanlı bilgi ile tam IANA saat dilimi veritabanı",
+          "Bölge, şehir veya ülkeye göre saat dilimlerini arayın ve filtreleyin",
+          "Canlı güncellemelerle tüm saat dilimleri için güncel saat görüntüleme",
+          "Nüfus verileri ve coğrafi koordinatlar",
+          "Yaz saati uygulaması dahil UTC sapma bilgileri",
+          "Saat dilimi kısaltmaları ve alternatif isimler",
+          "Mobil uyumlu duyarlı tasarım",
+          "Kapsamlı saat dilimi karşılaştırma araçları",
+          "Tarihi saat dilimi verileri ve geçişler"
+        ]
+      },
+      "usage": {
+        "title": "Nasıl Kullanılır",
+        "content": "IANA saat dilimlerinin tam listesine göz atın, belirli konumları bulmak için arama işlevini kullanın veya coğrafi bölgelere göre filtreleyin. Her saat dilimi, güncel saat, UTC sapması, nüfus verileri ve bölge hakkında ayrıntılı bilgi sağlar. Zaman formatları, ilgili saat dilimleri ve sıkça sorulan sorular dahil ayrıntılı bilgilere erişmek için herhangi bir saat dilimine tıklayın."
+      }
+    }
+  },
+  "timezoneDetail": {
+    "toggleTheme": "Tema değiştir",
+    "backToTimezones": "IANA Saat Dilimlerine Dön",
+    "description": "{city} içinde {timezone} için güncel saat ve ayrıntılı bilgi",
+    "currentTime": "Şu Anki Saat",
+    "enterFullscreen": "Tam ekran moduna geç",
+    "fullscreen": "Tam Ekran",
+    "tabs": {
+      "info": "Bilgi",
+      "compare": "Karşılaştır",
+      "formats": "Formatlar",
+      "related": "İlgili"
+    },
+    "basicInfo": {
+      "title": "Temel Bilgiler",
+      "iana": "IANA Tanımlayıcısı",
+      "region": "Bölge",
+      "country": "Ülke",
+      "city": "Ana Şehir",
+      "coordinates": "Koordinatlar"
+    },
+    "timeInfo": {
+      "title": "Zaman Bilgileri",
+      "utcOffset": "UTC Sapması",
+      "dstOffset": "YSU Sapması",
+      "abbreviation": "Kısaltma",
+      "dstAbbreviation": "YSU Kısaltması",
+      "population": "Nüfus"
+    },
+    "comparison": {
+      "title": "Büyük Şehirlerle Zaman Farkı"
+    },
+    "formats": {
+      "title": "Zaman Formatları",
+      "iso8601": "ISO 8601 Formatı",
+      "unix": "Unix Zaman Damgası",
+      "rfc2822": "RFC 2822 Formatı",
+      "local": "Yerel Format"
+    },
+    "related": {
+      "title": "İlgili Saat Dilimleri"
+    },
+    "regions": {
+      "africa": "Afrika",
+      "america": "Amerika",
+      "antarctica": "Antarktika",
+      "arctic": "Arktik",
+      "asia": "Asya",
+      "atlantic": "Atlantik",
+      "australia": "Avustralya",
+      "europe": "Avrupa",
+      "indian": "Hint Okyanusu",
+      "pacific": "Pasifik"
+    },
+    "faq": {
+      "title": "{timezone} Saati - Sık Sorulan Sorular",
+      "currentTime": {
+        "question": "{city}'de şu an saat kaç?",
+        "answer": "{city}, {country}'deki güncel yerel saat {currentTime}. {city}, {timezone} saat diliminde yer almaktadır."
+      },
+      "utcDifference": {
+        "question": "{city} ile UTC arasındaki zaman farkı nedir?",
+        "answer": "{city}, {timezone} saatini takip eder. UTC'den güncel sapma {offset} saattir."
+      },
+      "daylightSaving": {
+        "question": "{city}'de yaz saati uygulaması var mı?",
+        "answer": "Bu, {country}'nin yerel düzenlemelerine bağlıdır. Güncel saat {currentTime} olup, geçerli olduğunda yaz saati uygulaması için otomatik olarak ayarlanır."
+      }
+    },
+    "seo": {
+      "about": {
+        "title": "{timezone} Hakkında",
+        "content": "{timezone}, {city}, {country} ve çevresindeki bölgelerde kullanılan standart zamandır. Saat dilimi, {offset} UTC sapmasına sahiptir ve bu coğrafi alanda programlama ve zaman koordinasyonu için yaygın olarak kullanılır. Bu saat dilimi milyonlarca insana hizmet eder ve iş, seyahat ve uluslararası iletişim için önemli bir referanstır."
+      }
+    }
+  }
+}
