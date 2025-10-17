@@ -18,7 +18,8 @@ const languages = [
   { code: 'ja', name: '日本語' },
   { code: 'ko', name: '한국어' },
   { code: 'pt', name: 'Português' },
-  { code: 'ru', name: 'Русский' }
+  { code: 'ru', name: 'Русский' },
+  { code: 'tr', name: 'Türkçe' }
 ]
 
 export function LanguageSwitcher() {
@@ -29,7 +30,7 @@ export function LanguageSwitcher() {
   // Determine current locale from pathname if useLocale() doesn't work correctly
   const getCurrentLocale = () => {
     const pathSegments = pathname.split('/').filter(Boolean)
-    const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
+    const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru', 'tr']
     if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
       return pathSegments[0]
     }

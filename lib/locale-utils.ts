@@ -15,7 +15,7 @@ export function getLocalePath(path: string, locale: string): string {
  */
 export function getCurrentLocale(pathname: string): string {
   const pathSegments = pathname.split('/').filter(Boolean)
-  const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru']
+  const locales = ['zh-hans', 'zh-hant', 'ar', 'de', 'es', 'fr', 'hi', 'it', 'ja', 'ko', 'pt', 'ru', 'tr']
   if (pathSegments.length > 0 && locales.includes(pathSegments[0])) {
     return pathSegments[0]
   }
