@@ -14,6 +14,7 @@ GET /api/age
 |-----------|------|----------|-------------|
 | `birthdate` | string | Yes | Date of birth in YYYY-MM-DD format (e.g., 2007-01-15) |
 | `targetDate` | string | No | Target date for age calculation in YYYY-MM-DD format (defaults to current date) |
+| `utcOffset` | string or number | No | Offset from UTC used to interpret the provided dates. Accepts minutes from UTC (e.g., `-300`) or `±HH:MM` notation. Defaults to `+00:00`. |
 
 ## Example Requests
 
@@ -33,6 +34,10 @@ curl "https://datetime.app/api/age?birthdate=2007-01-15&targetDate=2025-10-17"
 {
   "birthdate": "2007-01-15",
   "targetDate": "2025-10-17",
+  "utcOffset": {
+    "minutes": 0,
+    "label": "+00:00"
+  },
   "age": {
     "years": 18,
     "months": 9,
@@ -74,6 +79,10 @@ curl "https://datetime.app/api/age?birthdate=2007-01-15&targetDate=2025-10-17"
   "error": "Birth date cannot be in the future relative to target date"
 }
 ```
+
+## Additional Notes
+
+- Decimal ages use an average year length of 365.25 days to provide a familiar fractional representation. This matches the formatting shown in the API response.
 
 ## Use Cases
 

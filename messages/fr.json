@@ -1069,5 +1069,74 @@
         "content": "{timezone} est l'heure standard utilisée à {city}, {country} et dans les régions environnantes. Le fuseau horaire a un décalage UTC de {offset} et est largement utilisé pour la planification et la coordination temporelle dans cette zone géographique. Ce fuseau horaire sert des millions de personnes et constitue une référence importante pour les affaires, les voyages et les communications internationales."
       }
     }
+  },
+  "apiDirectory": {
+    "title": "Datetime APIs",
+    "description": "Explore our growing collection of time and date APIs with consistent responses and documentation.",
+    "age": {
+      "title": "Age Calculation API",
+      "description": "Calculate a person's age between two dates with reliable timezone handling.",
+      "cta": "View details",
+      "features": {
+        "precision": "Handles leap years and varying month lengths with calendar-accurate math.",
+        "formats": "Returns multiple formats including readable strings and decimal years.",
+        "validation": "Strict input validation with clear error responses for malformed requests."
+      }
+    }
+  },
+  "apiAge": {
+    "title": "Age Calculation API",
+    "subtitle": "Programmatically calculate ages with timezone-stable date parsing and detailed breakdowns.",
+    "breadcrumbs": {
+      "home": "Home",
+      "apiDirectory": "APIs",
+      "current": "Age calculation API"
+    },
+    "endpoint": {
+      "title": "Endpoint overview",
+      "description": "Provide a birth date and an optional target date to receive the precise age in multiple formats."
+    },
+    "parameters": {
+      "title": "Parameters",
+      "required": "Required",
+      "optional": "Optional",
+      "utcOffsetType": "string or number",
+      "birthdate": "Birth date in YYYY-MM-DD format.",
+      "targetDate": "Optional target date in YYYY-MM-DD format. Defaults to the current date at the selected UTC offset.",
+      "utcOffset": "Optional UTC offset used to interpret the provided dates. Accepts minutes from UTC or ±HH:MM notation.",
+      "table": {
+        "name": "Name",
+        "type": "Type",
+        "required": "Required",
+        "description": "Description"
+      }
+    },
+    "response": {
+      "title": "Sample response",
+      "description": "The API returns the original inputs, the resolved UTC offset, and a detailed age breakdown."
+    },
+    "tester": {
+      "title": "Interactive tester",
+      "description": "Experiment with live requests directly from the browser to understand the responses.",
+      "fields": {
+        "birthdate": "Birthdate",
+        "targetDate": "Target date",
+        "utcOffset": "UTC offset"
+      },
+      "help": {
+        "birthdate": "Use the YYYY-MM-DD format.",
+        "targetDate": "Leave blank to use today's date.",
+        "utcOffset": "Optional. Enter minutes from UTC or ±HH:MM."
+      },
+      "submit": "Send request",
+      "curlTitle": "Equivalent cURL",
+      "copy": "Copy",
+      "copied": "Copied to clipboard",
+      "statusUnknown": "No response",
+      "status": "Status {code}",
+      "duration": "Completed in {ms} ms",
+      "copyResponse": "Copy response",
+      "emptyState": "Submit the form to see the API response."
+    }
   }
 }
