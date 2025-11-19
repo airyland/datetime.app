@@ -394,12 +394,37 @@
     "faqQuestions": {
       "currentTime": "{cityName}の現在時刻は何時ですか？",
       "utcDifference": "{cityName}とUTCの時差はどのくらいですか？",
-      "daylightSaving": "{cityName}は夏時間を採用していますか？"
+      "daylightSaving": "{cityName}は夏時間を採用していますか？",
+      "timeComparison": "{cityName}の時間はほかの主要都市とどのように違いますか？"
     },
     "faqAnswers": {
       "currentTime": "{cityName}、{country}の現在の現地時間は{currentTime}です。{cityName}は{timezone}タイムゾーンにあります。",
       "utcDifference": "{cityName}は{timezone}時間に従います。UTCからの現在のオフセットは{offset}時間です。",
-      "daylightSaving": "これは{country}の地域規制によります。現在時刻は{currentTime}で、該当する場合は夏時間に自動的に調整されます。"
+      "daylightSaving": "これは{country}の地域規制によります。現在時刻は{currentTime}で、該当する場合は夏時間に自動的に調整されます。",
+      "timeComparison": "{cityName}の現在時刻と他の主要都市の時刻の比較は次のとおりです：{comparison}"
+    },
+    "sun": {
+      "dayLength": "昼の長さ"
+    },
+    "workingHours": {
+      "title": "勤務時間",
+      "approximate": "一般的な勤務時間（目安）",
+      "inBusiness": "現在は勤務時間内です",
+      "outOfBusiness": "現在は勤務時間外です"
+    },
+    "timeComparisonSection": {
+      "title": "時間の比較",
+      "unavailable": "時間の比較情報は現在利用できません。"
+    },
+    "upcomingHolidays": {
+      "title": "今後の祝日",
+      "noDataForCountry": "{country} の祝日データを取得できませんでした。",
+      "loading": "今後の祝日を読み込み中…",
+      "none": "近い将来に予定されている祝日はありません。"
+    },
+    "developerSnippet": {
+      "title": "開発者向けコードスニペット",
+      "description": "このタイムゾーンをコード内で使用："
     },
     "cityNames": {
       "new-york": "ニューヨーク",

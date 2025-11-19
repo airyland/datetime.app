@@ -363,12 +363,37 @@
     "faqAnswers": {
       "currentTime": "A hora local atual em {cityName}, {country} é {currentTime}. {cityName} está localizada no fuso horário {timezone}.",
       "daylightSaving": "Isso depende das regulamentações locais de {country}. A hora atual é {currentTime}, que se ajusta automaticamente para o horário de verão quando aplicável.",
-      "utcDifference": "{cityName} segue o horário {timezone}. A diferença atual do UTC é de {offset} horas."
+      "utcDifference": "{cityName} segue o horário {timezone}. A diferença atual do UTC é de {offset} horas.",
+      "timeComparison": "Veja como a hora atual em {cityName} se compara com outras grandes cidades: {comparison}"
     },
     "faqQuestions": {
       "currentTime": "Que horas são agora em {cityName}?",
       "daylightSaving": "{cityName} observa o horário de verão?",
-      "utcDifference": "Qual é a diferença horária entre {cityName} e UTC?"
+      "utcDifference": "Qual é a diferença horária entre {cityName} e UTC?",
+      "timeComparison": "Como o horário em {cityName} se compara com o de outras grandes cidades?"
+    },
+    "sun": {
+      "dayLength": "Duração do dia"
+    },
+    "workingHours": {
+      "title": "Horário de trabalho",
+      "approximate": "Horário comercial aproximado",
+      "inBusiness": "Atualmente dentro do horário de trabalho",
+      "outOfBusiness": "Atualmente fora do horário de trabalho"
+    },
+    "timeComparisonSection": {
+      "title": "Comparação de horário",
+      "unavailable": "A comparação de horário não está disponível no momento."
+    },
+    "upcomingHolidays": {
+      "title": "Próximos feriados",
+      "noDataForCountry": "Não há dados de feriados disponíveis para {country}.",
+      "loading": "Carregando próximos feriados…",
+      "none": "Não há feriados públicos próximos."
+    },
+    "developerSnippet": {
+      "title": "Trecho de código para desenvolvedores",
+      "description": "Use este fuso horário no seu código:"
     },
     "isoFormat": "Formato ISO",
     "pageTitle": "Hora atual em {cityName}, {countryName}",

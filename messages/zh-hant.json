@@ -348,15 +348,40 @@
     "copyToClipboard": "複製到剪貼簿",
     "enterFullscreen": "進入全螢幕",
     "toggleTheme": "切換主題",
+    "sun": {
+      "dayLength": "白晝長度"
+    },
+    "workingHours": {
+      "title": "工作時間",
+      "approximate": "典型工作時間（約）",
+      "inBusiness": "目前在工作時間內",
+      "outOfBusiness": "目前不在工作時間內"
+    },
+    "timeComparisonSection": {
+      "title": "時間比較",
+      "unavailable": "暫時無法提供時間比較資訊。"
+    },
+    "upcomingHolidays": {
+      "title": "即將到來的節假日",
+      "noDataForCountry": "暫時無法取得 {country} 的節假日資料。",
+      "loading": "正在載入即將到來的節假日…",
+      "none": "近期沒有即將到來的公共節假日。"
+    },
+    "developerSnippet": {
+      "title": "開發者程式碼範例",
+      "description": "在程式碼中使用此時區："
+    },
     "faqQuestions": {
       "currentTime": "{cityName}現在是幾點？",
       "utcDifference": "{cityName}與UTC的時差是多少？",
-      "daylightSaving": "{cityName}實行夏令時嗎？"
+      "daylightSaving": "{cityName}實行夏令時嗎？",
+      "timeComparison": "{cityName}與其他主要城市的時間差是多少？"
     },
     "faqAnswers": {
       "currentTime": "{cityName}, {country}的當前本地時間是{currentTime}。{cityName}位於{timezone}時區。",
       "utcDifference": "{cityName}遵循{timezone}時間。當前與UTC的偏移量是{offset}小時。",
-      "daylightSaving": "這取決於{country}的當地法規。當前時間是{currentTime}，適用時會自動調整夏令時。"
+      "daylightSaving": "這取決於{country}的當地法規。當前時間是{currentTime}，適用時會自動調整夏令時。",
+      "timeComparison": "{cityName}與其他主要城市的當前時間差異如下：{comparison}"
     },
     "cityNames": {
       "new-york": "紐約",

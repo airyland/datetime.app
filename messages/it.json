@@ -363,12 +363,37 @@
     "faqAnswers": {
       "currentTime": "L'ora locale attuale a {cityName}, {country} è {currentTime}. {cityName} si trova nel fuso orario {timezone}.",
       "daylightSaving": "Questo dipende dalle normative locali di {country}. L'ora attuale è {currentTime}, che si regola automaticamente per l'ora legale quando applicabile.",
-      "utcDifference": "{cityName} segue l'orario {timezone}. L'offset attuale da UTC è di {offset} ore."
+      "utcDifference": "{cityName} segue l'orario {timezone}. L'offset attuale da UTC è di {offset} ore.",
+      "timeComparison": "Ecco come l'ora attuale a {cityName} si confronta con quella di altre grandi città: {comparison}"
     },
     "faqQuestions": {
       "currentTime": "Che ora è adesso a {cityName}?",
       "daylightSaving": "{cityName} osserva l'ora legale?",
-      "utcDifference": "Qual è la differenza di orario tra {cityName} e UTC?"
+      "utcDifference": "Qual è la differenza di orario tra {cityName} e UTC?",
+      "timeComparison": "Come si confronta l'ora a {cityName} con quella di altre grandi città?"
+    },
+    "sun": {
+      "dayLength": "Durata del giorno"
+    },
+    "workingHours": {
+      "title": "Orario di lavoro",
+      "approximate": "Orario di ufficio approssimativo",
+      "inBusiness": "Attualmente in orario di lavoro",
+      "outOfBusiness": "Attualmente fuori orario di lavoro"
+    },
+    "timeComparisonSection": {
+      "title": "Confronto orario",
+      "unavailable": "Il confronto orario non è al momento disponibile."
+    },
+    "upcomingHolidays": {
+      "title": "Prossime festività",
+      "noDataForCountry": "Nessun dato sulle festività disponibile per {country}.",
+      "loading": "Caricamento delle prossime festività…",
+      "none": "Non ci sono festività pubbliche imminenti."
+    },
+    "developerSnippet": {
+      "title": "Snippet per sviluppatori",
+      "description": "Usa questo fuso orario nel tuo codice:"
     },
     "isoFormat": "Formato ISO",
     "pageTitle": "Ora attuale a {cityName}, {countryName}",

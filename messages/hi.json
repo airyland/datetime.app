@@ -363,12 +363,37 @@
     "faqAnswers": {
       "currentTime": "{cityName}, {country} में वर्तमान स्थानीय समय {currentTime} है। {cityName} {timezone} समय क्षेत्र में स्थित है।",
       "daylightSaving": "यह {country} के स्थानीय नियमों पर निर्भर करता है। वर्तमान समय {currentTime} है, जो लागू होने पर दिन की रोशनी बचत समय के लिए स्वचालित रूप से समायोजित होता है।",
-      "utcDifference": "{cityName} {timezone} समय का पालन करता है। UTC से वर्तमान ऑफसेट {offset} घंटे है।"
+      "utcDifference": "{cityName} {timezone} समय का पालन करता है। UTC से वर्तमान ऑफसेट {offset} घंटे है।",
+      "timeComparison": "{cityName} और अन्य प्रमुख शहरों के वर्तमान समय का अंतर इस प्रकार है: {comparison}"
     },
     "faqQuestions": {
       "currentTime": "{cityName} में अभी क्या समय है?",
       "daylightSaving": "क्या {cityName} में दिन की रोशनी बचत समय लागू होता है?",
-      "utcDifference": "{cityName} और UTC के बीच समय का अंतर क्या है?"
+      "utcDifference": "{cityName} और UTC के बीच समय का अंतर क्या है?",
+      "timeComparison": "{cityName} का समय अन्य प्रमुख शहरों की तुलना में कैसा है?"
+    },
+    "sun": {
+      "dayLength": "दिन की लंबाई"
+    },
+    "workingHours": {
+      "title": "कार्य समय",
+      "approximate": "लगभग सामान्य कार्य समय",
+      "inBusiness": "फिलहाल कार्य समय के भीतर",
+      "outOfBusiness": "फिलहाल कार्य समय के बाहर"
+    },
+    "timeComparisonSection": {
+      "title": "समय तुलना",
+      "unavailable": "समय तुलना वर्तमान में उपलब्ध नहीं है।"
+    },
+    "upcomingHolidays": {
+      "title": "आगामी छुट्टियाँ",
+      "noDataForCountry": "{country} के लिए छुट्टी डेटा उपलब्ध नहीं है।",
+      "loading": "आगामी छुट्टियाँ लोड की जा रही हैं…",
+      "none": "निकट भविष्य में कोई सार्वजनिक अवकाश नहीं है।"
+    },
+    "developerSnippet": {
+      "title": "डेवलपर कोड स्निपेट",
+      "description": "अपने कोड में इस समय क्षेत्र का उपयोग करें:"
     },
     "isoFormat": "ISO प्रारूप",
     "pageTitle": "{countryName} के {cityName} में वर्तमान समय",

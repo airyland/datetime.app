@@ -394,12 +394,37 @@
     "faqQuestions": {
       "currentTime": "Сколько сейчас времени в {cityName}?",
       "utcDifference": "Какая разница во времени между {cityName} и UTC?",
-      "daylightSaving": "Действует ли в {cityName} летнее время?"
+      "daylightSaving": "Действует ли в {cityName} летнее время?",
+      "timeComparison": "Как время в {cityName} соотносится со временем в других крупных городах?"
     },
     "faqAnswers": {
       "currentTime": "Текущее местное время в {cityName}, {country} - {currentTime}. {cityName} находится в часовом поясе {timezone}.",
       "utcDifference": "{cityName} следует времени {timezone}. Текущее смещение от UTC составляет {offset} часов.",
-      "daylightSaving": "Это зависит от местных правил {country}. Текущее время {currentTime}, которое автоматически корректируется на летнее время, когда это применимо."
+      "daylightSaving": "Это зависит от местных правил {country}. Текущее время {currentTime}, которое автоматически корректируется на летнее время, когда это применимо.",
+      "timeComparison": "Вот как текущее время в {cityName} сравнивается со временем в других крупных городах: {comparison}"
+    },
+    "sun": {
+      "dayLength": "Длина светового дня"
+    },
+    "workingHours": {
+      "title": "Рабочее время",
+      "approximate": "Ориентировочное рабочее время",
+      "inBusiness": "Сейчас рабочее время",
+      "outOfBusiness": "Сейчас нерабочее время"
+    },
+    "timeComparisonSection": {
+      "title": "Сравнение времени",
+      "unavailable": "Сравнение времени сейчас недоступно."
+    },
+    "upcomingHolidays": {
+      "title": "Ближайшие праздники",
+      "noDataForCountry": "Нет данных о праздниках для страны {country}.",
+      "loading": "Загрузка ближайших праздников…",
+      "none": "В ближайшее время не ожидается государственных праздников."
+    },
+    "developerSnippet": {
+      "title": "Пример кода для разработчиков",
+      "description": "Используйте этот часовой пояс в своём коде:"
     },
     "cityNames": {
       "new-york": "Нью-Йорк",

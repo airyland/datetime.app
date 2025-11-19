@@ -391,15 +391,40 @@
     "copyToClipboard": "Copier dans le presse-papiers",
     "enterFullscreen": "Entrer en plein écran",
     "toggleTheme": "Basculer le thème",
+    "sun": {
+      "dayLength": "Durée du jour"
+    },
+    "workingHours": {
+      "title": "Heures de travail",
+      "approximate": "Heures de bureau approximatives",
+      "inBusiness": "Actuellement en heures de travail",
+      "outOfBusiness": "Actuellement hors heures de travail"
+    },
+    "timeComparisonSection": {
+      "title": "Comparaison des heures",
+      "unavailable": "La comparaison des heures n'est pas disponible pour le moment."
+    },
+    "upcomingHolidays": {
+      "title": "Jours fériés à venir",
+      "noDataForCountry": "Les données de jours fériés ne sont pas disponibles pour {country}.",
+      "loading": "Chargement des jours fériés à venir…",
+      "none": "Aucun jour férié public prévu prochainement."
+    },
+    "developerSnippet": {
+      "title": "Exemple de code développeur",
+      "description": "Utilisez ce fuseau horaire dans votre code :"
+    },
     "faqQuestions": {
       "currentTime": "Quelle heure est-il maintenant à {cityName} ?",
       "utcDifference": "Quelle est la différence horaire entre {cityName} et UTC ?",
-      "daylightSaving": "{cityName} observe-t-elle l'heure d'été ?"
+      "daylightSaving": "{cityName} observe-t-elle l'heure d'été ?",
+      "timeComparison": "Comment l'heure à {cityName} se compare-t-elle à celle d'autres grandes villes ?"
     },
     "faqAnswers": {
       "currentTime": "L'heure locale actuelle à {cityName}, {country} est {currentTime}. {cityName} se trouve dans le fuseau horaire {timezone}.",
       "utcDifference": "{cityName} suit l'heure {timezone}. Le décalage actuel par rapport à UTC est de {offset} heures.",
-      "daylightSaving": "Cela dépend des réglementations locales de {country}. L'heure actuelle est {currentTime}, qui s'ajuste automatiquement à l'heure d'été le cas échéant."
+      "daylightSaving": "Cela dépend des réglementations locales de {country}. L'heure actuelle est {currentTime}, qui s'ajuste automatiquement à l'heure d'été le cas échéant.",
+      "timeComparison": "Voici comment l'heure actuelle à {cityName} se compare à celle d'autres grandes villes : {comparison}"
     },
     "cityNames": {
       "new-york": "New York",

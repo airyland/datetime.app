@@ -363,12 +363,37 @@
     "faqAnswers": {
       "currentTime": "الوقت المحلي الحالي في {cityName}، {country} هو {currentTime}. تقع {cityName} في المنطقة الزمنية {timezone}.",
       "daylightSaving": "هذا يعتمد على اللوائح المحلية في {country}. الوقت الحالي هو {currentTime}، والذي يتكيف تلقائياً مع التوقيت الصيفي عند الحاجة.",
-      "utcDifference": "تتبع {cityName} توقيت {timezone}. الإزاحة الحالية عن UTC هي {offset} ساعة."
+      "utcDifference": "تتبع {cityName} توقيت {timezone}. الإزاحة الحالية عن UTC هي {offset} ساعة.",
+      "timeComparison": "فيما يلي مقارنة بين الوقت الحالي في {cityName} وبعض المدن الكبرى الأخرى: {comparison}"
     },
     "faqQuestions": {
       "currentTime": "كم الوقت الآن في {cityName}؟",
       "daylightSaving": "هل تتبع {cityName} التوقيت الصيفي؟",
-      "utcDifference": "ما الفرق الزمني بين {cityName} و UTC؟"
+      "utcDifference": "ما الفرق الزمني بين {cityName} و UTC؟",
+      "timeComparison": "كيف يقارن الوقت في {cityName} مع المدن العالمية الرئيسية الأخرى؟"
+    },
+    "sun": {
+      "dayLength": "طول النهار"
+    },
+    "workingHours": {
+      "title": "ساعات العمل",
+      "approximate": "ساعات العمل النموذجية (تقريباً)",
+      "inBusiness": "حالياً ضمن ساعات العمل",
+      "outOfBusiness": "حالياً خارج ساعات العمل"
+    },
+    "timeComparisonSection": {
+      "title": "مقارنة الوقت",
+      "unavailable": "مقارنة الوقت غير متاحة حالياً."
+    },
+    "upcomingHolidays": {
+      "title": "العطل القادمة",
+      "noDataForCountry": "لا تتوفر بيانات عطل لـ {country}.",
+      "loading": "جاري تحميل العطل القادمة…",
+      "none": "لا توجد عطل رسمية قريبة في الوقت الحالي."
+    },
+    "developerSnippet": {
+      "title": "مقتطف كود للمطورين",
+      "description": "استخدم هذا التوقيت في الكود الخاص بك:"
     },
     "isoFormat": "تنسيق ISO",
     "pageTitle": "الوقت الحالي في {cityName}، {countryName}",

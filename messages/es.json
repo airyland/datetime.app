@@ -391,15 +391,40 @@
     "copyToClipboard": "Copiar al portapapeles",
     "enterFullscreen": "Entrar en pantalla completa",
     "toggleTheme": "Cambiar tema",
+    "sun": {
+      "dayLength": "Duración del día"
+    },
+    "workingHours": {
+      "title": "Horario laboral",
+      "approximate": "Horario laboral aproximado",
+      "inBusiness": "Dentro del horario laboral",
+      "outOfBusiness": "Fuera del horario laboral"
+    },
+    "timeComparisonSection": {
+      "title": "Comparación de horario",
+      "unavailable": "La comparación de horario no está disponible."
+    },
+    "upcomingHolidays": {
+      "title": "Próximos festivos",
+      "noDataForCountry": "No hay datos de festivos disponibles para {country}.",
+      "loading": "Cargando próximos festivos…",
+      "none": "No hay festivos públicos próximos en el corto plazo."
+    },
+    "developerSnippet": {
+      "title": "Fragmento para desarrolladores",
+      "description": "Utiliza esta zona horaria en tu código:"
+    },
     "faqQuestions": {
       "currentTime": "¿Qué hora es ahora en {cityName}?",
       "utcDifference": "¿Cuál es la diferencia horaria entre {cityName} y UTC?",
-      "daylightSaving": "¿{cityName} observa el horario de verano?"
+      "daylightSaving": "¿{cityName} observa el horario de verano?",
+      "timeComparison": "¿Cómo se compara la hora en {cityName} con otras grandes ciudades?"
     },
     "faqAnswers": {
       "currentTime": "La hora local actual en {cityName}, {country} es {currentTime}. {cityName} está ubicada en la zona horaria {timezone}.",
       "utcDifference": "{cityName} sigue la hora {timezone}. La diferencia actual con UTC es de {offset} horas.",
-      "daylightSaving": "Esto depende de las regulaciones locales de {country}. La hora actual es {currentTime}, que se ajusta automáticamente al horario de verano cuando aplica."
+      "daylightSaving": "Esto depende de las regulaciones locales de {country}. La hora actual es {currentTime}, que se ajusta automáticamente al horario de verano cuando aplica.",
+      "timeComparison": "Así se compara la hora actual en {cityName} con otras grandes ciudades: {comparison}"
     },
     "cityNames": {
       "new-york": "Nueva York",

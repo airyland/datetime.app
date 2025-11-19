@@ -363,12 +363,37 @@
     "faqAnswers": {
       "currentTime": "{country} {cityName}의 현재 현지 시간은 {currentTime}입니다. {cityName}은 {timezone} 시간대에 위치해 있습니다.",
       "daylightSaving": "이는 {country}의 현지 규정에 따라 다릅니다. 현재 시간은 {currentTime}이며, 해당하는 경우 일광 절약 시간제가 자동으로 적용됩니다.",
-      "utcDifference": "{cityName}은 {timezone} 시간을 따릅니다. 현재 UTC와의 시차는 {offset}시간입니다."
+      "utcDifference": "{cityName}은 {timezone} 시간을 따릅니다. 현재 UTC와의 시차는 {offset}시간입니다.",
+      "timeComparison": "{cityName}의 현재 시각과 다른 주요 도시들의 시각 비교는 다음과 같습니다: {comparison}"
     },
     "faqQuestions": {
       "currentTime": "{cityName}의 현재 시간은 몇 시입니까?",
       "daylightSaving": "{cityName}은 일광 절약 시간제를 적용합니까?",
-      "utcDifference": "{cityName}과 UTC 간의 시간 차이는 얼마입니까?"
+      "utcDifference": "{cityName}과 UTC 간의 시간 차이는 얼마입니까?",
+      "timeComparison": "{cityName}의 시간은 다른 주요 도시와 어떻게 비교됩니까?"
+    },
+    "sun": {
+      "dayLength": "낮의 길이"
+    },
+    "workingHours": {
+      "title": "근무 시간",
+      "approximate": "일반적인 근무 시간 (대략)",
+      "inBusiness": "현재 근무 시간입니다",
+      "outOfBusiness": "현재 근무 시간이 아닙니다"
+    },
+    "timeComparisonSection": {
+      "title": "시간 비교",
+      "unavailable": "시간 비교 정보를 현재 사용할 수 없습니다."
+    },
+    "upcomingHolidays": {
+      "title": "다가오는 공휴일",
+      "noDataForCountry": "{country}에 대한 공휴일 데이터를 가져올 수 없습니다.",
+      "loading": "다가오는 공휴일을 불러오는 중…",
+      "none": "가까운 시일 내 예정된 공휴일이 없습니다."
+    },
+    "developerSnippet": {
+      "title": "개발자 코드 스니펫",
+      "description": "코드에서 이 시간대를 사용하는 방법:"
     },
     "isoFormat": "ISO 형식",
     "pageTitle": "{countryName} {cityName}의 현재 시간",

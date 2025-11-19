@@ -391,15 +391,40 @@
     "copyToClipboard": "Copy to clipboard",
     "enterFullscreen": "Enter fullscreen",
     "toggleTheme": "Toggle theme",
+    "sun": {
+      "dayLength": "Day length"
+    },
+    "workingHours": {
+      "title": "Working hours",
+      "approximate": "Approximate business hours",
+      "inBusiness": "In business hours",
+      "outOfBusiness": "Outside business hours"
+    },
+    "timeComparisonSection": {
+      "title": "Time comparison",
+      "unavailable": "Time comparison is not available."
+    },
+    "upcomingHolidays": {
+      "title": "Upcoming holidays",
+      "noDataForCountry": "Holiday data is not available for {country}.",
+      "loading": "Loading upcoming holidays…",
+      "none": "No upcoming public holidays soon."
+    },
+    "developerSnippet": {
+      "title": "Developer snippet",
+      "description": "Use this timezone in your code:"
+    },
     "faqQuestions": {
       "currentTime": "What time is it now in {cityName}?",
       "utcDifference": "What is the time difference between {cityName} and UTC?",
-      "daylightSaving": "Does {cityName} observe daylight saving time?"
+      "daylightSaving": "Does {cityName} observe daylight saving time?",
+      "timeComparison": "How does time in {cityName} compare to other major cities?"
     },
     "faqAnswers": {
       "currentTime": "The current local time in {cityName}, {country} is {currentTime}. {cityName} is located in the {timezone} timezone.",
       "utcDifference": "{cityName} follows {timezone} time. The current offset from UTC is {offset} hours.",
-      "daylightSaving": "This depends on the local regulations of {country}. The current time is {currentTime}, which automatically adjusts for daylight saving time when applicable."
+      "daylightSaving": "This depends on the local regulations of {country}. The current time is {currentTime}, which automatically adjusts for daylight saving time when applicable.",
+      "timeComparison": "Here is how the current time in {cityName} compares to other major cities: {comparison}"
     },
     "cityNames": {
       "new-york": "New York",

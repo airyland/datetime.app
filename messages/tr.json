@@ -394,12 +394,37 @@
     "faqQuestions": {
       "currentTime": "{cityName}'da şu an saat kaç?",
       "utcDifference": "{cityName} ile UTC arasındaki zaman farkı nedir?",
-      "daylightSaving": "{cityName}'da yaz saati uygulaması var mı?"
+      "daylightSaving": "{cityName}'da yaz saati uygulaması var mı?",
+      "timeComparison": "{cityName}'daki saat, diğer büyük şehirlerle nasıl karşılaştırılır?"
     },
     "faqAnswers": {
       "currentTime": "{cityName}, {country}'deki güncel yerel saat {currentTime}. {cityName}, {timezone} saat diliminde yer almaktadır.",
       "utcDifference": "{cityName}, {timezone} saatini takip eder. UTC'den güncel sapma {offset} saattir.",
-      "daylightSaving": "Bu, {country}'nin yerel düzenlemelerine bağlıdır. Güncel saat {currentTime} olup, geçerli olduğunda yaz saati uygulaması için otomatik olarak ayarlanır."
+      "daylightSaving": "Bu, {country}'nin yerel düzenlemelerine bağlıdır. Güncel saat {currentTime} olup, geçerli olduğunda yaz saati uygulaması için otomatik olarak ayarlanır.",
+      "timeComparison": "{cityName}'daki güncel saat ile diğer büyük şehirlerin saat farkı şu şekildedir: {comparison}"
+    },
+    "sun": {
+      "dayLength": "Gün uzunluğu"
+    },
+    "workingHours": {
+      "title": "Çalışma saatleri",
+      "approximate": "Tahmini çalışma saatleri",
+      "inBusiness": "Şu anda çalışma saatleri içinde",
+      "outOfBusiness": "Şu anda çalışma saatleri dışında"
+    },
+    "timeComparisonSection": {
+      "title": "Saat karşılaştırması",
+      "unavailable": "Saat karşılaştırması şu anda kullanılamıyor."
+    },
+    "upcomingHolidays": {
+      "title": "Yaklaşan tatiller",
+      "noDataForCountry": "{country} için tatil verisi mevcut değil.",
+      "loading": "Yaklaşan tatiller yükleniyor…",
+      "none": "Yakın zamanda planlanmış resmi tatil bulunmuyor."
+    },
+    "developerSnippet": {
+      "title": "Geliştirici kod örneği",
+      "description": "Bu saat dilimini kodunuzda kullanın:"
     },
     "cityNames": {
       "new-york": "New York",

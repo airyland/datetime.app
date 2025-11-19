@@ -391,15 +391,40 @@
     "copyToClipboard": "In Zwischenablage kopieren",
     "enterFullscreen": "Vollbild öffnen",
     "toggleTheme": "Design wechseln",
+    "sun": {
+      "dayLength": "Tageslänge"
+    },
+    "workingHours": {
+      "title": "Arbeitszeiten",
+      "approximate": "Typische Arbeitszeiten (ca.)",
+      "inBusiness": "Derzeit innerhalb der Arbeitszeit",
+      "outOfBusiness": "Derzeit außerhalb der Arbeitszeit"
+    },
+    "timeComparisonSection": {
+      "title": "Zeitvergleich",
+      "unavailable": "Zeitvergleich ist derzeit nicht verfügbar."
+    },
+    "upcomingHolidays": {
+      "title": "Bevorstehende Feiertage",
+      "noDataForCountry": "Für {country} sind derzeit keine Feiertagsdaten verfügbar.",
+      "loading": "Bevorstehende Feiertage werden geladen…",
+      "none": "In nächster Zeit sind keine gesetzlichen Feiertage geplant."
+    },
+    "developerSnippet": {
+      "title": "Entwickler-Codebeispiel",
+      "description": "Verwenden Sie diese Zeitzone in Ihrem Code:"
+    },
     "faqQuestions": {
       "currentTime": "Wie spät ist es jetzt in {cityName}?",
       "utcDifference": "Wie groß ist der Zeitunterschied zwischen {cityName} und UTC?",
-      "daylightSaving": "Befolgt {cityName} die Sommerzeit?"
+      "daylightSaving": "Befolgt {cityName} die Sommerzeit?",
+      "timeComparison": "Wie verhält sich die Zeit in {cityName} im Vergleich zu anderen Großstädten?"
     },
     "faqAnswers": {
       "currentTime": "Die aktuelle Ortszeit in {cityName}, {country} ist {currentTime}. {cityName} befindet sich in der Zeitzone {timezone}.",
       "utcDifference": "{cityName} folgt der Zeit {timezone}. Der aktuelle Versatz zu UTC beträgt {offset} Stunden.",
-      "daylightSaving": "Dies hängt von den örtlichen Bestimmungen von {country} ab. Die aktuelle Zeit ist {currentTime}, die sich automatisch an die Sommerzeit anpasst, wenn zutreffend."
+      "daylightSaving": "Dies hängt von den örtlichen Bestimmungen von {country} ab. Die aktuelle Zeit ist {currentTime}, die sich automatisch an die Sommerzeit anpasst, wenn zutreffend.",
+      "timeComparison": "So verhält sich die aktuelle Uhrzeit in {cityName} im Vergleich zu anderen Großstädten: {comparison}"
     },
     "cityNames": {
       "new-york": "New York",
