@@ -1,9 +1,33 @@
 [
   {
     "url": "/blog",
-    "lastmod": "2025-09-14",
+    "lastmod": "2025-12-10",
     "changefreq": "weekly",
     "priority": 0.8
+  },
+  {
+    "url": "/blog/history-of-timekeeping-sundials-to-atomic-clocks",
+    "lastmod": "2025-12-31",
+    "changefreq": "monthly",
+    "priority": 0.7
+  },
+  {
+    "url": "/blog/weird-time-zones-why-some-countries-use-half-hour-offsets",
+    "lastmod": "2025-12-24",
+    "changefreq": "monthly",
+    "priority": 0.7
+  },
+  {
+    "url": "/blog/cross-timezone-meeting-guide-international-scheduling",
+    "lastmod": "2025-12-17",
+    "changefreq": "monthly",
+    "priority": 0.7
+  },
+  {
+    "url": "/blog/understanding-time-zones-gmt-utc-cst-dst",
+    "lastmod": "2025-12-10",
+    "changefreq": "monthly",
+    "priority": 0.7
   },
   {
     "url": "/blog/best-timezone-tools-2025",

@@ -33,7 +33,9 @@ async function getBlogPosts() {
     const filePath = path.join(process.cwd(), 'data', 'blog', 'posts.json')
     const fileContent = await fs.readFile(filePath, 'utf8')
     const posts = JSON.parse(fileContent)
-    return posts.filter((post: any) => post.published)
+    const now = new Date()
+    // Only show posts that are published AND have a date less than or equal to today
+    return posts.filter((post: any) => post.published && new Date(post.date) <= now)
   } catch (error) {
     console.error('Error loading blog posts:', error)
     return []

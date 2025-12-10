@@ -25,7 +25,8 @@ async function getPost(slug: string): Promise<BlogPostData | null> {
     const filePath = path.join(process.cwd(), 'data', 'blog', 'posts.json')
     const fileContent = await fs.readFile(filePath, 'utf8')
     const posts = JSON.parse(fileContent)
-    const post = posts.find((p: BlogPostData) => p.slug === slug && p.published)
+    const now = new Date()
+    const post = posts.find((p: BlogPostData) => p.slug === slug && p.published && new Date(p.date) <= now)
     return post || null
   } catch (error) {
     console.error('Error loading blog post:', error)
@@ -38,7 +39,8 @@ async function getAllPosts(): Promise<BlogPostData[]> {
     const filePath = path.join(process.cwd(), 'data', 'blog', 'posts.json')
     const fileContent = await fs.readFile(filePath, 'utf8')
     const posts = JSON.parse(fileContent)
-    return posts.filter((p: BlogPostData) => p.published)
+    const now = new Date()
+    return posts.filter((p: BlogPostData) => p.published && new Date(p.date) <= now)
   } catch (error) {
     console.error('Error loading blog posts:', error)
     return []

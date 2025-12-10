@@ -91,18 +91,77 @@ function markdownToHtml(markdown) {
     return `<a href="${url}"${rel}>${text}</a>`;
   });
 
-  // Horizontal rules
+  // Horizontal rules (but not table separators)
   html = html.replace(/^---$/gm, '<hr>');
   html = html.replace(/^\*\*\*$/gm, '<hr>');
 
-  // Process lists properly
+  // Process tables and lists
   const lines = html.split('\n');
   let result = [];
   let inList = false;
   let listType = '';
+  let inTable = false;
+  let tableRows = [];
 
   for (let i = 0; i < lines.length; i++) {
     let line = lines[i];
+
+    // Table detection
+    if (line.match(/^\|(.+)\|$/)) {
+      // Check if it's a separator line (contains only |, -, :, and spaces)
+      // A separator line has cells that only contain -, :, and spaces
+      const cells = line.split('|').slice(1, -1);
+      const isSeparator = cells.every(cell => /^[\s\-:]+$/.test(cell));
+
+      if (!inTable && !isSeparator) {
+        // Start of table
+        inTable = true;
+        tableRows = [];
+      }
+
+      if (inTable) {
+        if (!isSeparator) {
+          // Parse table row
+          const parsedCells = cells.map(cell => cell.trim());
+          tableRows.push(parsedCells);
+        }
+
+        // Check if next line is not a table row (end of table)
+        if (i + 1 >= lines.length || !lines[i + 1].match(/^\|(.+)\|$/)) {
+          // Build HTML table
+          let tableHtml = '<table>\n';
+
+          if (tableRows.length > 0) {
+            // First row is header
+            tableHtml += '<thead>\n<tr>\n';
+            tableRows[0].forEach(cell => {
+              tableHtml += `<th>${cell}</th>\n`;
+            });
+            tableHtml += '</tr>\n</thead>\n';
+
+            // Remaining rows are body
+            if (tableRows.length > 1) {
+              tableHtml += '<tbody>\n';
+              for (let j = 1; j < tableRows.length; j++) {
+                tableHtml += '<tr>\n';
+                tableRows[j].forEach(cell => {
+                  tableHtml += `<td>${cell}</td>\n`;
+                });
+                tableHtml += '</tr>\n';
+              }
+              tableHtml += '</tbody>\n';
+            }
+          }
+
+          tableHtml += '</table>';
+          result.push(tableHtml);
+
+          inTable = false;
+          tableRows = [];
+        }
+        continue;
+      }
+    }
 
     // Unordered list
     if (line.match(/^[\*\-] (.+)$/)) {
@@ -147,7 +206,7 @@ function markdownToHtml(markdown) {
   const blocks = html.split(/\n\n+/);
   html = blocks.map(block => {
     block = block.trim();
-    if (block && !block.match(/^<(h[1-6]|ul|ol|li|blockquote|pre|hr|div|p|__CODE_BLOCK_)/)) {
+    if (block && !block.match(/^<(h[1-6]|ul|ol|li|blockquote|pre|hr|div|p|table|__CODE_BLOCK_)/)) {
       return '<p>' + block.replace(/\n/g, ' ') + '</p>';
     }
     return block;
