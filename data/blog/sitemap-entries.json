@@ -1,7 +1,7 @@
 [
   {
     "url": "/blog",
-    "lastmod": "2025-12-10",
+    "lastmod": "2025-12-23",
     "changefreq": "weekly",
     "priority": 0.8
   },
@@ -14,6 +14,12 @@
   {
     "url": "/blog/weird-time-zones-why-some-countries-use-half-hour-offsets",
     "lastmod": "2025-12-24",
+    "changefreq": "monthly",
+    "priority": 0.7
+  },
+  {
+    "url": "/blog/why-your-phone-time-always-correct-ntp-explained",
+    "lastmod": "2025-12-23",
     "changefreq": "monthly",
     "priority": 0.7
   },
