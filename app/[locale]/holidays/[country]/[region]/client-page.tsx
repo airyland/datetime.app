@@ -14,6 +14,7 @@ interface RegionHolidaysClientProps {
   initialYear: number;
   initialLanguage: string;
   initialHolidays: Holiday[];
+  locale: string;
 }
 
 export default function RegionHolidaysClientPage({ 
@@ -23,7 +24,8 @@ export default function RegionHolidaysClientPage({
   regionName,
   initialYear, 
   initialLanguage,
-  initialHolidays
+  initialHolidays,
+  locale
 }: RegionHolidaysClientProps) {
   const [selectedYear, setSelectedYear] = useState<number>(initialYear)
   const [selectedLanguage, setSelectedLanguage] = useState<string>(initialLanguage)
@@ -70,7 +72,7 @@ export default function RegionHolidaysClientPage({
   
   holidays.forEach(holiday => {
     const date = new Date(holiday.start)
-    const monthKey = date.toLocaleString('en-US', { month: 'long' })
+    const monthKey = date.toLocaleString(locale, { month: 'long' })
     
     if (!holidaysByMonth[monthKey]) {
       holidaysByMonth[monthKey] = []
@@ -165,7 +167,7 @@ export default function RegionHolidaysClientPage({
                         <div className="flex-1">
                           <div className="font-bold">{holiday.name}</div>
                           <div className="text-sm text-muted-foreground">
-                            {date.toLocaleDateString('en-US', { 
+                            {date.toLocaleDateString(locale, { 
                               weekday: 'long', 
                               day: 'numeric', 
                               month: 'long'

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Link from 'next/link'
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { getCurrentLocale, getLocalePath } from '@/lib/locale-utils'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -13,6 +13,7 @@ import { LanguageSwitcher } from "@/components/language-switcher"
 import { TimezoneNavigation } from "@/components/timezone-navigation"
 import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
+import StructuredData from "@/components/structured-data"
 
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
@@ -26,6 +27,16 @@ export default function UTCPage() {
   
   // Use the more reliable method to get current locale
   const currentLocale = getCurrentLocale(pathname)
+
+  const webAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: t('title'),
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Any",
+    url: `https://datetime.app${getLocalePath("/utc", currentLocale)}`,
+    inLanguage: currentLocale,
+  }
 
   const [currentTime, setCurrentTime] = useState(new Date())
   const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
@@ -129,6 +140,7 @@ export default function UTCPage() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
+      <StructuredData data={webAppSchema} />
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
         <Link href={getLocalePath('/', currentLocale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={t('titleHome')}>
           Datetime.app

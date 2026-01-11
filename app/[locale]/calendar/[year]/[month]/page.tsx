@@ -1,6 +1,6 @@
 "use client"
 
-import { use, useState } from "react"
+import { use, useEffect, useMemo, useState } from "react"
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
@@ -11,6 +11,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { generateMonthCalendar, getWeekdayNames, getDaysInMonth } from '@/lib/calendar'
 import { getLocalePath } from '@/lib/locale-utils'
+import type { Holiday } from "@/lib/holidays"
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -35,6 +36,9 @@ export default function MonthPage({ params }: MonthPageProps) {
   }
   
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [holidayMap, setHolidayMap] = useState<Record<string, Holiday[]>>({})
+  const [holidayLoading, setHolidayLoading] = useState(false)
+  const [holidayError, setHolidayError] = useState<string | null>(null)
   
   const calendar = generateMonthCalendar(year, month - 1, locale);
   const weekdayNames = getWeekdayNames(locale);
@@ -56,6 +60,76 @@ export default function MonthPage({ params }: MonthPageProps) {
   const monthStart = new Date(year, month - 1, 1);
   const monthEnd = new Date(year, month, 0);
   const daysInMonth = getDaysInMonth(year, month - 1);
+  const monthHolidayList = useMemo(() => {
+    const list: { date: Date; name: string }[] = []
+    Object.entries(holidayMap).forEach(([key, holidays]) => {
+      const [yyyy, mm, dd] = key.split("-").map(Number)
+      if (yyyy === year && mm === month) {
+        holidays.forEach((holiday) => {
+          list.push({ date: new Date(yyyy, mm - 1, dd), name: holiday.name })
+        })
+      }
+    })
+    return list.sort((a, b) => a.date.getTime() - b.date.getTime())
+  }, [holidayMap, month, year])
+
+  const lunarFormatter = useMemo(
+    () => new Intl.DateTimeFormat('zh-Hans-u-ca-chinese', { day: 'numeric', month: 'short' }),
+    []
+  )
+
+  const getDateKey = (date: Date) => {
+    const yyyy = date.getFullYear()
+    const mm = String(date.getMonth() + 1).padStart(2, "0")
+    const dd = String(date.getDate()).padStart(2, "0")
+    return `${yyyy}-${mm}-${dd}`
+  }
+
+  const localeToCountry: Record<string, string> = {
+    'en': 'US',
+    'zh-hans': 'CN',
+    'zh-hant': 'CN',
+    'ja': 'JP',
+    'ko': 'KR',
+    'fr': 'FR',
+    'de': 'DE',
+    'es': 'ES',
+    'it': 'IT',
+    'pt': 'PT',
+    'ru': 'RU',
+    'ar': 'AE',
+    'hi': 'IN',
+    'tr': 'TR'
+  }
+
+  useEffect(() => {
+    const country = localeToCountry[locale] || 'US'
+    const language = locale.startsWith('zh') ? 'zh' : locale
+    setHolidayLoading(true)
+    setHolidayError(null)
+
+    fetch(`/api/holidays?country=${country}&year=${year}&language=${language}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data.holidays) {
+          setHolidayError(t('holidays.error'))
+          return
+        }
+        const map: Record<string, Holiday[]> = {}
+        data.holidays.forEach((holiday: Holiday) => {
+          const date = new Date(holiday.start)
+          const key = getDateKey(date)
+          map[key] = map[key] ? [...map[key], holiday] : [holiday]
+        })
+        setHolidayMap(map)
+      })
+      .catch(() => {
+        setHolidayError(t('holidays.error'))
+      })
+      .finally(() => {
+        setHolidayLoading(false)
+      })
+  }, [locale, year, t])
   
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
@@ -179,9 +253,17 @@ export default function MonthPage({ params }: MonthPageProps) {
                             {day.date}
                           </span>
                           {!day.isOtherMonth && (
+                            <span className={`text-[10px] mt-0.5 ${day.isToday ? 'text-white/80' : 'text-gray-500 dark:text-gray-400'}`}>
+                              {lunarFormatter.format(day.fullDate)}
+                            </span>
+                          )}
+                          {!day.isOtherMonth && (
                             <span className={`text-xs mt-1 hidden md:block ${day.isToday ? 'text-white' : 'text-gray-500 dark:text-gray-400'}`}>
                               {t('weekNumber', { number: day.weekNumber })}
                             </span>
+                          )}
+                          {!day.isOtherMonth && holidayMap[getDateKey(day.fullDate)] && (
+                            <span className="mt-1 h-1.5 w-1.5 rounded-full bg-red-400" aria-hidden="true" />
                           )}
                         </div>
                       </button>
@@ -213,6 +295,9 @@ export default function MonthPage({ params }: MonthPageProps) {
                   })}
                 </div>
                 <div>
+                  <span className="font-medium">{t('lunarDate')}:</span> {lunarFormatter.format(selectedDate)}
+                </div>
+                <div>
                   <span className="font-medium">{t('weekNumber')}:</span> {
                     calendar.days.find(d => d.fullDate.getDate() === selectedDate.getDate() && !d.isOtherMonth)?.weekNumber || 0
                   }
@@ -222,6 +307,12 @@ export default function MonthPage({ params }: MonthPageProps) {
                     Math.floor((selectedDate.getTime() - new Date(selectedDate.getFullYear(), 0, 1).getTime()) / (1000 * 60 * 60 * 24)) + 1
                   }
                 </div>
+                {holidayMap[getDateKey(selectedDate)] && (
+                  <div>
+                    <span className="font-medium">{t('holidays.label')}:</span>{' '}
+                    {holidayMap[getDateKey(selectedDate)].map((holiday) => holiday.name).join(', ')}
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
@@ -264,6 +355,39 @@ export default function MonthPage({ params }: MonthPageProps) {
                 );
               })}
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Holidays for the month */}
+        <Card className="mb-8 max-w-2xl mx-auto">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-lg flex items-center gap-2">
+              <CalendarIcon className="w-5 h-5" />
+              {t('holidays.title')}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {holidayLoading && (
+              <p className="text-sm text-muted-foreground">{t('holidays.loading')}</p>
+            )}
+            {holidayError && (
+              <p className="text-sm text-red-500">{holidayError}</p>
+            )}
+            {!holidayLoading && !holidayError && monthHolidayList.length === 0 && (
+              <p className="text-sm text-muted-foreground">{t('holidays.empty')}</p>
+            )}
+            {monthHolidayList.length > 0 && (
+              <ul className="space-y-2 text-sm">
+                {monthHolidayList.map((holiday, index) => (
+                  <li key={`${holiday.name}-${index}`} className="flex items-center justify-between">
+                    <span>{holiday.name}</span>
+                    <span className="text-muted-foreground">
+                      {holiday.date.toLocaleDateString(locale, { month: 'short', day: 'numeric' })}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </CardContent>
         </Card>
 

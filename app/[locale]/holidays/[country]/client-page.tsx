@@ -12,6 +12,7 @@ interface CountryHolidaysClientProps {
   initialYear: number;
   initialLanguage: string;
   initialHolidays: Holiday[];
+  locale: string;
 }
 
 export default function CountryHolidaysClientPage({ 
@@ -19,7 +20,8 @@ export default function CountryHolidaysClientPage({
   countryName, 
   initialYear, 
   initialLanguage,
-  initialHolidays
+  initialHolidays,
+  locale
 }: CountryHolidaysClientProps) {
   const [selectedYear, setSelectedYear] = useState<number>(initialYear)
   const [selectedLanguage, setSelectedLanguage] = useState<string>(initialLanguage)
@@ -66,7 +68,7 @@ export default function CountryHolidaysClientPage({
   
   holidays.forEach(holiday => {
     const date = new Date(holiday.start)
-    const monthKey = date.toLocaleString('en-US', { month: 'long' })
+    const monthKey = date.toLocaleString(locale, { month: 'long' })
     
     if (!holidaysByMonth[monthKey]) {
       holidaysByMonth[monthKey] = []
@@ -161,7 +163,7 @@ export default function CountryHolidaysClientPage({
                         <div className="flex-1">
                           <div className="font-bold">{holiday.name}</div>
                           <div className="text-sm text-muted-foreground">
-                            {date.toLocaleDateString('en-US', { 
+                            {date.toLocaleDateString(locale, { 
                               weekday: 'long', 
                               day: 'numeric', 
                               month: 'long'

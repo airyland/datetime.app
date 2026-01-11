@@ -11,9 +11,11 @@ import {
 import CountryHolidaysClientPage from "./client-page"
 import Header from "@/components/header"
 import { Metadata } from "next"
+import StructuredData from "@/components/structured-data"
+import { getLocalePath } from "@/lib/locale-utils"
 
 interface CountryHolidaysProps {
-  params: { country: string }
+  params: { country: string; locale: string }
   searchParams: { lang?: string; year?: string }
 }
 
@@ -47,7 +49,7 @@ export async function generateMetadata({ params, searchParams }: CountryHolidays
 }
 
 export default function CountryHolidaysPage({ params, searchParams }: CountryHolidaysProps) {
-  const { country } = params
+  const { country, locale } = params
   const langParam = searchParams.lang || 'en'
   const yearParam = searchParams.year ? parseInt(searchParams.year) : new Date().getFullYear()
   
@@ -68,9 +70,20 @@ export default function CountryHolidaysPage({ params, searchParams }: CountryHol
     yearParam,
     langParam
   )
+
+  const webAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: `${countryInfo.name} Holidays`,
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Any",
+    url: `https://datetime.app${getLocalePath(`/holidays/${country}`, locale)}`,
+    inLanguage: locale,
+  }
   
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
+      <StructuredData data={webAppSchema} />
       <Header />
 
       <div className="flex-grow">
@@ -98,6 +111,7 @@ export default function CountryHolidaysPage({ params, searchParams }: CountryHol
               initialYear={yearParam}
               initialLanguage={langParam}
               initialHolidays={holidays}
+              locale={locale}
             />
 
             {/* Regions section (if available) */}

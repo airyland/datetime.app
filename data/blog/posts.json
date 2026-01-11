@@ -1,5 +1,62 @@
 [
   {
+    "slug": "public-holidays-2026-guide",
+    "title": "2026 Public Holidays Guide: Plan Time Off Early",
+    "description": "A 2026 public holidays guide with planning tips, long-weekend ideas, and how to maximize time off across regions.",
+    "date": "2026-01-10",
+    "author": "Site Team",
+    "tags": [
+      "holidays",
+      "planning",
+      "time off",
+      "calendars"
+    ],
+    "keywords": "2026 public holidays, holiday calendar 2026, plan time off, long weekend strategy, holiday planning",
+    "image": "/images/blog/holidays-2026.jpg",
+    "readTime": "6 min read",
+    "featured": false,
+    "published": true,
+    "content": "<p>Want more time off in 2026 without burning through vacation days? Start by planning around public holidays early. Most regions publish holiday calendars well in advance, which makes it easier to build long weekends and travel plans.</p>\n\n<p>Here’s a simple planning guide you can use anywhere.</p>\n\n<h3>Step 1: List Your Core Holidays</h3>\n\n<p>Every country has a handful of fixed-date holidays. Examples include New Year’s Day, national days, and year-end holidays.</p>\n\n<p>Create a list of:</p>\n\n<ul>\n<li>Fixed-date holidays (e.g., January 1)</li>\n<li>Floating holidays (e.g., Easter, Lunar New Year)</li>\n<li>Company-specific closures</li>\n</ul>\n\n<h3>Step 2: Find Long-Weekend Opportunities</h3>\n\n<p>Look for holidays that fall on Mondays or Fridays. These naturally create three-day weekends and let you rest or travel with minimal planning.</p>\n\n<p>If a holiday falls midweek, consider taking one or two days off to create a longer break.</p>\n\n<h3>Step 3: Use Bridge Days</h3>\n\n<p>Bridge days are the days between a holiday and a weekend. Taking one day off can create 4–5 days of rest.</p>\n\n<p>Example:</p>\n\n<ul>\n<li>Thursday holiday + Friday off = 4-day break</li>\n<li>Tuesday holiday + Monday off = 4-day break</li>\n</ul>\n\n<h3>Step 4: Coordinate with Your Team</h3>\n\n<p>If you’re in a global company, note that not everyone shares the same holidays. That’s actually an advantage:</p>\n\n<ul>\n<li>Your team can stagger time off.</li>\n<li>You can cover time-sensitive work while others are away.</li>\n<li>Shared calendars prevent last-minute surprises.</li>\n</ul>\n\n<h3>Step 5: Add Reminders Early</h3>\n\n<p>Once you decide on your time-off strategy, add reminders in your calendar and book time early. This is especially important for popular travel periods.</p>\n\n<h3>Final Thought</h3>\n\n<p>A small amount of planning now saves a lot of stress later. Review your 2026 holiday calendar, identify long-weekend opportunities, and block your time before schedules fill up.</p>"
+  },
+  {
+    "slug": "remote-work-timezone-tips",
+    "title": "How to Work Across Time Zones Without Burning Out",
+    "description": "A practical guide to remote work across time zones, including scheduling habits, async workflows, and meeting tips.",
+    "date": "2026-01-08",
+    "author": "Site Team",
+    "tags": [
+      "remote work",
+      "time zones",
+      "productivity",
+      "scheduling"
+    ],
+    "keywords": "remote work time zones, async collaboration, cross time zone scheduling, global teams, meeting planning",
+    "image": "/images/blog/remote-work-timezones.jpg",
+    "readTime": "6 min read",
+    "featured": false,
+    "published": true,
+    "content": "<p>Remote work is great—until your meetings span breakfast in New York, lunch in London, and midnight in Tokyo. Working across time zones takes strategy. The good news? A few small habits make a huge difference.</p>\n\n<p>Here’s a practical playbook to keep your schedule healthy and your team aligned.</p>\n\n<h3>1. Pick One Core Overlap Window</h3>\n\n<p>Instead of scattering meetings across the day, choose a single overlap window. This is the shared time when everyone is reasonably awake.</p>\n\n<p>Examples:</p>\n\n<ul>\n<li>9–11 AM PT / 12–2 PM ET / 5–7 PM UK</li>\n<li>8–10 AM London / 4–6 PM Singapore / 6–8 PM Sydney</li>\n</ul>\n\n<p>Put this window on the calendar and protect it.</p>\n\n<h3>2. Move Everything Else Async</h3>\n\n<p>The best global teams default to async communication:</p>\n\n<ul>\n<li>Use shared docs for updates.</li>\n<li>Record short video walkthroughs.</li>\n<li>Leave clear written decisions.</li>\n</ul>\n\n<p>Async reduces unnecessary meetings and gives everyone focus time.</p>\n\n<h3>3. Rotate Meeting Times</h3>\n\n<p>If your team spans large time differences, don’t force one group to always take late calls. Rotate meeting times weekly or monthly so the burden is shared.</p>\n\n<h3>4. Use Clear Time Labels</h3>\n\n<p>Avoid vague labels like “3 PM” in chats. Use explicit time zones or UTC offsets:</p>\n\n<ul>\n<li>“3 PM ET (UTC-5)”</li>\n<li>“15:00 London time”</li>\n</ul>\n\n<p>This single change reduces most scheduling errors.</p>\n\n<h3>5. Plan Your Deep Work Blocks</h3>\n\n<p>Block 2–4 hours of focus time outside the overlap window. This is when you do your real work: writing, coding, analysis, or design.</p>\n\n<p>If meetings creep in, your productivity will drop fast.</p>\n\n<h3>6. Keep a Simple Meeting Agenda</h3>\n\n<p>Every meeting should have:</p>\n\n<ol>\n<li>A clear goal.</li>\n<li>A short agenda.</li>\n<li>A time limit.</li>\n</ol>\n\n<p>Global teams don’t have time for vague meetings.</p>\n\n<h3>7. Protect Your Personal Time</h3>\n\n<p>Don’t be available 24/7. Set hard boundaries:</p>\n\n<ul>\n<li>Define your working hours.</li>\n<li>Disable notifications after hours.</li>\n<li>Communicate your schedule clearly.</li>\n</ul>\n\n<p>Sustainable remote work is more valuable than short-term availability.</p>\n\n<h3>Final Thought</h3>\n\n<p>Working across time zones doesn’t have to be exhausting. Focus on one overlap window, lean on async updates, and protect your deep work time. Your energy—and your work quality—will improve quickly.</p>"
+  },
+  {
+    "slug": "pomodoro-technique-guide",
+    "title": "Pomodoro Technique Guide: Focus Better, Avoid Burnout, and Finish More Work",
+    "description": "A practical Pomodoro Technique guide with simple steps, break ideas, and tweaks for deep work, remote teams, and study sessions.",
+    "date": "2026-01-05",
+    "author": "Site Team",
+    "tags": [
+      "productivity",
+      "focus",
+      "pomodoro",
+      "time management"
+    ],
+    "keywords": "pomodoro technique guide, pomodoro timer, focus method, productivity system, deep work routine",
+    "image": "/images/blog/pomodoro-technique.jpg",
+    "readTime": "7 min read",
+    "featured": false,
+    "published": true,
+    "content": "<p>The Pomodoro Technique is a simple way to stay focused without burning out. You work in short, timed bursts and take planned breaks so your brain can reset. The result: more work done with less mental fatigue.</p>\n\n<p>Below is a practical, no-fluff guide to help you start in minutes, plus adjustments for longer projects and remote teams.</p>\n\n<h3>What Is the Pomodoro Technique?</h3>\n\n<p>The Pomodoro Technique divides work into focused sessions (typically 25 minutes) followed by short breaks. After four sessions, you take a longer break.</p>\n\n<p>The basic structure:</p>\n\n<ol>\n<li>Choose a task.</li>\n<li>Set a timer for 25 minutes.</li>\n<li>Work until the timer rings.</li>\n<li>Take a 5-minute break.</li>\n<li>Repeat steps 2–4 four times.</li>\n<li>Take a longer break (15–30 minutes).</li>\n</ol>\n\n<h3>Why It Works</h3>\n\n<p>Short time blocks reduce procrastination and make large tasks feel manageable. The regular breaks keep your brain from drifting and help you reset before the next session.</p>\n\n<p>Key benefits include:</p>\n\n<ul>\n<li><strong>Reduced distraction</strong>: you have a clear start and end.</li>\n<li><strong>More focus</strong>: you only need to focus for 25 minutes.</li>\n<li><strong>Better pacing</strong>: you learn how much you can accomplish per session.</li>\n</ul>\n\n<h3>A Quick Start Checklist</h3>\n\n<ul>\n<li>Pick a single, clear task.</li>\n<li>Silence notifications.</li>\n<li>Prepare everything you need (documents, tabs, notes).</li>\n<li>Start your first 25-minute session.</li>\n</ul>\n\n<p>That’s it. Don’t overcomplicate it.</p>\n\n<h3>Customize Your Pomodoro</h3>\n\n<p>The classic 25/5 pattern is a starting point—not a rule. Try:</p>\n\n<ul>\n<li><strong>50/10</strong> if you need deeper focus.</li>\n<li><strong>90/20</strong> for writing, coding, or design work.</li>\n<li><strong>20/5</strong> for admin tasks or email.</li>\n</ul>\n\n<p>The best timing is the one you can follow consistently.</p>\n\n<h3>Pomodoro Tips for Remote Work</h3>\n\n<p>If you work across time zones, Pomodoro sessions can help you coordinate overlap windows and focus time.</p>\n\n<p>Try this:</p>\n\n<ul>\n<li>Schedule overlap calls at the start or end of a Pomodoro cycle.</li>\n<li>Reserve 2–4 uninterrupted sessions for deep work.</li>\n<li>Share your Pomodoro blocks in your team calendar.</li>\n</ul>\n\n<h3>Break Ideas That Actually Refresh You</h3>\n\n<p>Use short breaks to reset your attention:</p>\n\n<ul>\n<li>Stand up and stretch.</li>\n<li>Get water or a quick snack.</li>\n<li>Walk around the room.</li>\n<li>Do a short breathing exercise.</li>\n</ul>\n\n<p>Avoid scrolling social media—it's not a real break.</p>\n\n<h3>Make It Stick</h3>\n\n<p>Pomodoro works best when it becomes a habit. Keep it simple:</p>\n\n<ul>\n<li>Use the same timer every day.</li>\n<li>Track how many sessions you finish.</li>\n<li>Adjust the timing every week if needed.</li>\n</ul>\n\n<p>The key is consistency. Start today with a single 25-minute session and build from there.</p>"
+  },
+  {
     "slug": "history-of-timekeeping-sundials-to-atomic-clocks",
     "title": "A Brief History of Timekeeping: From Sundials to Atomic Clocks",
     "description": "How did humans go from watching shadows on the ground to counting atom vibrations? Here's the surprisingly weird story of how we learned to measure time.",

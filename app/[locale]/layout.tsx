@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Footer } from "@/components/footer"
 import { Analytics } from "@/components/analytics"
 import { LanguageSuggestionModal } from "@/components/language-suggestion-modal"
+import BreadcrumbStructuredData from "@/components/breadcrumb-structured-data"
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -92,6 +93,7 @@ export default async function LocaleLayout({
       <body className={spaceGrotesk.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <BreadcrumbStructuredData />
             <main>
               {children}
             </main>

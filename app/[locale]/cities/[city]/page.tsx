@@ -221,15 +221,6 @@ export default function CityPage({ params }: CityPageProps) {
     return map[loc] || 'en'
   }
 
-  // Format time as HH:MM:SS
-  const formattedTime = currentTime.toLocaleTimeString("en-US", {
-    timeZone: cityInfo.timezone,
-    hour12: false,
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  })
-
   // Format date in local language
   const getLocaleCode = (locale: string) => {
     const localeMap: { [key: string]: string } = {
@@ -250,7 +241,18 @@ export default function CityPage({ params }: CityPageProps) {
     return localeMap[locale] || 'en-US'
   }
 
-  const formattedDate = currentTime.toLocaleDateString(getLocaleCode(locale), {
+  const localeCode = getLocaleCode(locale)
+
+  // Format time as HH:MM:SS
+  const formattedTime = currentTime.toLocaleTimeString(localeCode, {
+    timeZone: cityInfo.timezone,
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  })
+
+  const formattedDate = currentTime.toLocaleDateString(localeCode, {
     timeZone: cityInfo.timezone,
     weekday: "long",
     year: "numeric",
@@ -407,8 +409,8 @@ export default function CityPage({ params }: CityPageProps) {
 
   // Calculate GMT offset
   const now = new Date();
-  const utcDate = new Date(now.toLocaleString('en-US', { timeZone: 'UTC' }));
-  const targetDate = new Date(now.toLocaleString('en-US', { timeZone: cityInfo.timezone }));
+  const utcDate = new Date(now.toLocaleString(localeCode, { timeZone: 'UTC' }));
+  const targetDate = new Date(now.toLocaleString(localeCode, { timeZone: cityInfo.timezone }));
   const offsetInHours = (targetDate.getTime() - utcDate.getTime()) / (1000 * 60 * 60);
   
   let offsetString;
@@ -423,13 +425,13 @@ export default function CityPage({ params }: CityPageProps) {
   }
 
   // City-specific FAQs
-  const currentTimeString = currentTime.toLocaleTimeString('en-US', { 
+  const currentTimeString = currentTime.toLocaleTimeString(localeCode, { 
     hour: 'numeric', 
     minute: '2-digit', 
     timeZoneName: 'short' 
   });
   const offsetHours = currentTime.getTimezoneOffset() / -60;
-  const currentTimeWithZone = currentTime.toLocaleTimeString('en-US', { 
+  const currentTimeWithZone = currentTime.toLocaleTimeString(localeCode, { 
     timeZoneName: 'long' 
   });
 
@@ -462,7 +464,7 @@ export default function CityPage({ params }: CityPageProps) {
 
   // Business hours (approximate)
   const cityLocalNow = new Date(
-    currentTime.toLocaleString("en-US", { timeZone: cityInfo.timezone }),
+    currentTime.toLocaleString(localeCode, { timeZone: cityInfo.timezone }),
   )
   const businessStartHour = 9
   const businessEndHour = 18
@@ -516,7 +518,7 @@ export default function CityPage({ params }: CityPageProps) {
 
   const timeComparisons = comparisonTimezones.map((item) => {
     const compareDate = new Date(
-      currentTime.toLocaleString("en-US", { timeZone: item.timezone }),
+      currentTime.toLocaleString(localeCode, { timeZone: item.timezone }),
     )
     const diffMinutes = Math.round(
       (compareDate.getTime() - cityLocalNow.getTime()) / 60000,
@@ -602,8 +604,10 @@ export default function CityPage({ params }: CityPageProps) {
             </h2>
             <div className="relative group">
               <div 
-                className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none ${jetbrainsMono.className} cursor-pointer`}
+                className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none min-h-[4rem] md:min-h-[5.5rem] lg:min-h-[6.5rem] ${jetbrainsMono.className} cursor-pointer`}
                 onClick={() => setIsFullscreen(true)}
+                aria-live="polite"
+                suppressHydrationWarning
               >
                 {formattedTime}
               </div>

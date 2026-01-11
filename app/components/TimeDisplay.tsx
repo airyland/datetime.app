@@ -8,10 +8,12 @@ type TimeDisplayProps = {
   timezone: string;
   title?: string;
   showLocation?: boolean;
+  locale?: string;
 };
 
-export function TimeDisplay({ timezone, title, showLocation = true }: TimeDisplayProps) {
+export function TimeDisplay({ timezone, title, showLocation = true, locale }: TimeDisplayProps) {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const resolvedLocale = locale || Intl.DateTimeFormat().resolvedOptions().locale;
   
   useEffect(() => {
     const timer = setInterval(() => {
@@ -20,14 +22,14 @@ export function TimeDisplay({ timezone, title, showLocation = true }: TimeDispla
     return () => clearInterval(timer);
   }, []);
 
-  const timeString = currentTime.toLocaleTimeString('en-US', {
+  const timeString = currentTime.toLocaleTimeString(resolvedLocale, {
     timeZone: timezone,
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
   });
 
-  const dateString = currentTime.toLocaleDateString('en-US', {
+  const dateString = currentTime.toLocaleDateString(resolvedLocale, {
     timeZone: timezone,
     weekday: 'long',
     year: 'numeric',
