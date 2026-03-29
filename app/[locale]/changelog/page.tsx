@@ -242,6 +242,7 @@ const getChangeBadgeColor = (type: string) => {
 }
 
 export default function ChangelogPage({ params }: ChangelogPageProps) {
+  const { locale } = params
   const locale = params.locale
 
   return (
@@ -281,7 +282,7 @@ export default function ChangelogPage({ params }: ChangelogPageProps) {
             <Card key={index}>
               <CardHeader>
                 <CardTitle className="text-xl">
-                  {new Date(entry.date).toLocaleDateString('en-US', {
+                  {new Date(entry.date).toLocaleDateString(locale, {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'

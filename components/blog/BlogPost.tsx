@@ -8,6 +8,7 @@ import { CalendarIcon, Clock, User, Share2, Copy, Check, ChevronUp } from 'lucid
 import { format } from 'date-fns'
 import { useTranslations } from 'next-intl'
 import '../../app/[locale]/blog/blog.css'
+import { getLocalePath } from '@/lib/locale-utils'
 
 interface BlogPostData {
   slug: string
@@ -30,6 +31,45 @@ export default function BlogPost({ post, relatedPosts, locale }: BlogPostProps) 
   const t = useTranslations('blog')
   const [copied, setCopied] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
+
+  const keywordLinks = [
+    { keyword: 'UTC', href: getLocalePath('/utc', locale) },
+    { keyword: 'time zone', href: getLocalePath('/timezones', locale) },
+    { keyword: 'time difference', href: getLocalePath('/time-difference/london-vs-new-york', locale) },
+    { keyword: 'age calculator', href: getLocalePath('/age-calculator', locale) },
+    { keyword: 'year progress', href: getLocalePath('/year-progress-bar', locale) },
+    { keyword: 'Unix timestamp', href: getLocalePath('/unix-timestamp', locale) },
+    { keyword: 'workday', href: getLocalePath('/workday-calculator', locale) },
+    { keyword: 'date difference', href: getLocalePath('/date-difference', locale) },
+    { keyword: 'calendar', href: getLocalePath('/calendar', locale) },
+  ]
+
+  const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+  const linkifyContent = (content: string) => {
+    const segments = content.split(/(<[^>]+>)/g)
+    const used = new Set<string>()
+    return segments
+      .map((segment) => {
+        if (segment.startsWith('<')) {
+          return segment
+        }
+        let updated = segment
+        keywordLinks.forEach(({ keyword, href }) => {
+          if (used.has(keyword)) return
+          const regex = new RegExp(`\\b${escapeRegExp(keyword)}\\b`, 'i')
+          if (regex.test(updated)) {
+            updated = updated.replace(
+              regex,
+              `<a href="${href}" class="text-primary underline">${keyword}</a>`
+            )
+            used.add(keyword)
+          }
+        })
+        return updated
+      })
+      .join('')
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -123,7 +163,7 @@ export default function BlogPost({ post, relatedPosts, locale }: BlogPostProps) 
       {/* Article Content */}
       <div
         className="blog-content mb-12"
-        dangerouslySetInnerHTML={{ __html: post.content }}
+        dangerouslySetInnerHTML={{ __html: linkifyContent(post.content) }}
       />
 
       {/* Related Posts */}

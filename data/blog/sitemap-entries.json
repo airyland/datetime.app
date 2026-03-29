@@ -1,9 +1,27 @@
 [
   {
     "url": "/blog",
-    "lastmod": "2025-12-24",
+    "lastmod": "2026-01-11",
     "changefreq": "weekly",
     "priority": 0.8
+  },
+  {
+    "url": "/blog/public-holidays-2026-guide",
+    "lastmod": "2026-01-10",
+    "changefreq": "monthly",
+    "priority": 0.7
+  },
+  {
+    "url": "/blog/remote-work-timezone-tips",
+    "lastmod": "2026-01-08",
+    "changefreq": "monthly",
+    "priority": 0.7
+  },
+  {
+    "url": "/blog/pomodoro-technique-guide",
+    "lastmod": "2026-01-05",
+    "changefreq": "monthly",
+    "priority": 0.7
   },
   {
     "url": "/blog/history-of-timekeeping-sundials-to-atomic-clocks",

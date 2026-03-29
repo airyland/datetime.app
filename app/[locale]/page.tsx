@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label"
 import { format } from "date-fns"
 import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
+import StructuredData from "@/components/structured-data"
 import Header from '@/components/header'
 import spacetime from 'spacetime'
 import { DEFAULT_LOCALE, LOCALE_PREFIXES } from '@/lib/locales'
@@ -89,7 +90,16 @@ const toolsConfig = [
   { path: '/age-calculator', icon: Calculator, titleKey: 'tools.titleAgeCalculator', labelKey: 'tools.ageCalculator' },
   { path: '/utc', icon: Globe, titleKey: 'tools.titleUtcTime', labelKey: 'tools.utcTime' },
   { path: '/holidays', icon: Gift, titleKey: 'tools.titleWorldHolidays', labelKey: 'tools.worldHolidays' },
-  { path: '/iana-timezones', icon: Clock, titleKey: 'tools.titleTimezones', labelKey: 'tools.timezones' }
+  { path: '/iana-timezones', icon: Clock, titleKey: 'tools.titleTimezones', labelKey: 'tools.timezones' },
+  { path: '/unix-timestamp', icon: Timer, titleKey: 'tools.titleUnixTimestamp', labelKey: 'tools.unixTimestamp' },
+  { path: '/workday-calculator', icon: Briefcase, titleKey: 'tools.titleWorkdayCalculator', labelKey: 'tools.workdayCalculator' },
+  { path: '/date-difference', icon: CalendarIcon, titleKey: 'tools.titleDateDifference', labelKey: 'tools.dateDifference' },
+  { path: '/meeting-planner', icon: ArrowLeftRight, titleKey: 'tools.titleMeetingPlanner', labelKey: 'tools.meetingPlanner' },
+  { path: '/pomodoro', icon: Timer, titleKey: 'tools.titlePomodoro', labelKey: 'tools.pomodoro' },
+  { path: '/sunrise-sunset', icon: Sun, titleKey: 'tools.titleSunriseSunset', labelKey: 'tools.sunriseSunset' },
+  { path: '/alarm-stopwatch', icon: Clock, titleKey: 'tools.titleAlarmStopwatch', labelKey: 'tools.alarmStopwatch' },
+  { path: '/life-progress', icon: Calendar, titleKey: 'tools.titleLifeProgress', labelKey: 'tools.lifeProgress' },
+  { path: '/widgets', icon: Maximize2, titleKey: 'tools.titleWidgets', labelKey: 'tools.widgets' }
 ]
 
 // Global cities organized by region
@@ -161,9 +171,14 @@ export default function Home() {
   // Use the more reliable method to get current locale
   const currentLocale = getCurrentLocale()
 
-  // Helper function to generate locale-aware paths
-  const getLocalePath = (path: string) => {
-    return currentLocale === DEFAULT_LOCALE ? path : `/${currentLocale}${path}`
+  const webAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: commonT("title"),
+    applicationCategory: "ProductivityApplication",
+    operatingSystem: "Any",
+    url: `https://datetime.app${getLocalePath("/", currentLocale)}`,
+    inLanguage: currentLocale,
   }
 
   // Helper function to get translated city name
@@ -345,12 +360,12 @@ export default function Home() {
   const isDST = localTime.isDST()
 
   // Format time based on 12/24 hour preference
-  const formattedTime = currentTime.toLocaleTimeString("en-US", {
+  const formattedTime = currentTime.toLocaleTimeString(currentLocale, {
     hour12: !use24Hour,
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
-  }).replace(/\s+(?:AM|PM)/, '')
+  })
 
   // Format date
   const formattedDate = currentTime.toLocaleDateString(currentLocale, {
@@ -488,6 +503,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
+      <StructuredData data={webAppSchema} />
       <Header />
       
       <div className="container mx-auto px-4 flex-grow">
@@ -615,8 +631,10 @@ export default function Home() {
                   </div>
                   <div className="relative inline-block">
                     <div
-                      className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none ${jetbrainsMono.className} text-center cursor-pointer`}
+                      className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none min-h-[4rem] md:min-h-[5.5rem] lg:min-h-[6.5rem] ${jetbrainsMono.className} text-center cursor-pointer`}
                       onClick={() => setIsFullscreen(true)}
+                      aria-live="polite"
+                      suppressHydrationWarning
                     >
                       {formattedTime}
                     </div>
@@ -871,7 +889,7 @@ export default function Home() {
                       <h3 className="font-medium mb-2">Selected Date Information</h3>
                       <p>
                         <span className="font-medium">Day of Week:</span>{" "}
-                        {selectedDate.toLocaleDateString("en-US", { weekday: "long" })}
+                        {selectedDate.toLocaleDateString(currentLocale, { weekday: "long" })}
                       </p>
                       <p>
                         <span className="font-medium">Day of Year:</span>{" "}
@@ -1112,7 +1130,7 @@ export default function Home() {
               return (
                 <a
                   key={tool.path}
-                  href={getLocalePath(tool.path)}
+                  href={getLocalePath(tool.path, currentLocale)}
                   className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2"
                   title={t(tool.titleKey)}
                 >
@@ -1131,7 +1149,7 @@ export default function Home() {
             {featuredCities.map((cityKey) => (
               <a
                 key={cityKey}
-                href={getLocalePath(`/cities/${cityKey}`)}
+                href={getLocalePath(`/cities/${cityKey}`, currentLocale)}
                 className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center"
                 title={t(`cityTimes.title${cityKey.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')}`)}
               >
@@ -1227,7 +1245,7 @@ export default function Home() {
                 {region.cities.map((cityKey) => (
                   <a
                     key={cityKey}
-                    href={getLocalePath(`/cities/${cityKey}`)}
+                    href={getLocalePath(`/cities/${cityKey}`, currentLocale)}
                     className="text-sm py-1.5 px-3 rounded bg-accent/30 hover:bg-accent/50 transition-colors text-center"
                   >
                     {getCityName(cityKey)}

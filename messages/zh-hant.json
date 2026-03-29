@@ -33,119 +33,25 @@
     }
   },
   "home": {
-    "title": "世界各地當前時間 - 即時世界時鐘，UTC時間，時區轉換器和時間工具",
-    "localTime": "您的本地時間",
-    "timeZone": "時區",
-    "tabs": {
-      "currentTime": "當前時間",
-      "worldClock": "世界時鐘",
-      "calendar": "日曆",
-      "converter": "時區轉換",
-      "timer": "倒計時",
-      "sunTimes": "日出日落"
-    },
-    "sections": {
-      "worldClock": "世界時鐘",
-      "calendar": "日曆",
-      "timeZoneConverter": "時區轉換器",
-      "countdownTimer": "倒計時器",
-      "sunriseSunset": "日出日落",
-      "developerTools": "開發者日期時間工具"
-    },
-    "labels": {
-      "timezoneInfo": "時區資訊",
-      "unixTimestamp": "Unix時間戳",
-      "utcTime": "UTC時間",
-      "isoFormat": "ISO格式",
-      "addTimezone": "新增時區",
-      "selectTimezone": "選擇時區",
-      "cancel": "取消",
-      "fromTimezone": "源時區",
-      "toTimezone": "目標時區",
-      "date": "日期",
-      "time": "時間",
-      "convert": "轉換",
-      "convertedTime": "轉換後時間",
-      "hours": "小時",
-      "minutes": "分鐘",
-      "seconds": "秒",
-      "start": "開始",
-      "pause": "暫停",
-      "reset": "重置",
-      "timeRemaining": "剩餘時間",
-      "getSunTimes": "獲取日出日落時間（使用我的位置）",
-      "loading": "載入中...",
-      "sunrise": "日出",
-      "sunset": "日落",
-      "toggleTheme": "切換主題",
-      "dst": "夏令時",
-      "clockSynchronized": "時鐘已同步 (±{offset}ms)",
-      "clockOffset": "時鐘偏差約{seconds}秒",
-      "learnAboutUtc": "了解UTC",
-      "titleUtcTime": "查看當前UTC（協調世界時）"
-    },
     "tools": {
-      "title": "時間工具",
-      "yearProgress": "年度進度條",
-      "ageCalculator": "年齡計算器",
-      "utcTime": "UTC時間",
-      "worldHolidays": "世界節日",
-      "timezones": "時區",
-      "titleYearProgress": "追蹤當前年度的進度",
-      "titleAgeCalculator": "精確計算您的年齡（年、月、日）",
-      "titleUtcTime": "查看當前UTC（協調世界時）",
-      "titleWorldHolidays": "發現世界各國的節假日和紀念日",
-      "titleTimezones": "瀏覽全面的IANA時區資料庫"
-    },
-    "cityTimes": {
-      "title": "世界城市時間",
-      "titleNewYork": "紐約當前時間",
-      "titleLondon": "倫敦當前時間",
-      "titleTokyo": "東京當前時間",
-      "titleParis": "巴黎當前時間",
-      "titleSydney": "雪梨當前時間",
-      "titleBeijing": "北京當前時間"
-    },
-    "globalCities": {
-      "title": "全球主要城市",
-      "northAmerica": "北美洲",
-      "europe": "歐洲",
-      "asia": "亞洲",
-      "oceania": "大洋洲",
-      "southAmerica": "南美洲",
-      "africa": "非洲",
-      "middleEast": "中東"
-    },
-    "faq": {
-      "title": "常見問題",
-      "utcGmt": {
-        "question": "什麼是UTC/GMT時間？",
-        "answer": "UTC（協調世界時）是世界調節時鐘和時間的主要時間標準。它類似於GMT（格林威治標準時），但通過原子時鐘更精確地定義。UTC是網際網路、國際通信和航空使用的時間標準。"
-      },
-      "timezones": {
-        "question": "時區是如何運作的？",
-        "answer": "時區是地球上遵守統一標準時間的區域。它們通常定義為UTC的偏移量，通常以整時為增量。例如，東部標準時（EST）是UTC-5，意味著它比UTC晚5小時。時區被創建來在大型地理區域內標準化時間，通常受到政治邊界以及地理邊界的影響。"
-      },
-      "unixTimestamp": {
-        "question": "什麼是Unix時間戳？",
-        "answer": "Unix時間戳（也稱為Unix時間或POSIX時間）代表自1970年1月1日00:00:00 UTC以來經過的秒數，不計算閤秒。它在電腦系統和程式設計中廣泛使用，作為追蹤時間的標準化方式，獨立於時區。Unix時間戳使時間差的計算變得容易，並且獨立於日曆約定。"
-      },
-      "clockAccuracy": {
-        "question": "這個時鐘有多準確？",
-        "answer": "這個時鐘的準確性取決於您裝置的系統時鐘和網際網路連線。雖然我們努力顯示最準確的時間，但由於網路延遲或您裝置的時鐘同步，可能會有輕微的變化。對於大多數日常用途，顯示的時間應該在實際時間的幾秒內準確。對於需要毫秒精度的應用程式，應使用專業的時間伺服器。"
-      },
-      "iso8601": {
-        "question": "什麼是ISO 8601格式？",
-        "answer": "ISO 8601是表示日期和時間的國際標準。它遵循YYYY-MM-DDTHH:MM:SS.sssZ格式，其中：YYYY-MM-DD表示日期（年、月、日），T是日期和時間之間的分隔符，HH:MM:SS.sss表示時間（小時、分鐘、秒和毫秒），Z表示時間是UTC（或可以指定偏移量，如+01:00）。這種格式消除了國際通信中的歧義，在電腦運算中廣泛使用。"
-      },
-      "daylightSaving": {
-        "question": "什麼是夏令時？",
-        "answer": "夏令時（DST）是在溫暖月份將時鐘向前調整的做法，使黑暗根據時鐘在每天晚些時候降臨。通常，遵守夏令時的地區在春季將時鐘向前調整一小時（“春天向前”），在秋季向後調整（“秋天向後”）。主要目的是在晚上時間更好地利用日光。並非所有國家都遵守夏令時，開始和結束日期因地區而異。"
-      },
-      "timezoneConversion": {
-        "question": "如何在時區之間轉換時間？",
-        "answer": "要在時區之間轉換時間，您需要：1）確定源時區和目標時區的UTC偏移量，2）通過加上或減去其偏移量將源時間轉換為UTC，3）通過加上或減去目標時區的偏移量從UTC轉換為目標時區。例如，要將紐約時間下午3:00（UTC-5）轉換為倫敦時間（UTC+0），您需要加5小時得到倫敦時間晚上8:00。請記住在適用時考慮夏令時，因為它可能暫時改變UTC偏移量。"
-      }
+      "unixTimestamp": "Unix Timestamp Converter",
+      "workdayCalculator": "Workday Calculator",
+      "dateDifference": "Date Difference Calculator",
+      "titleUnixTimestamp": "Convert timestamps to dates and back",
+      "titleWorkdayCalculator": "Calculate working days between dates",
+      "titleDateDifference": "Compare two dates in days, weeks, and months",
+      "meetingPlanner": "會議調度器",
+      "pomodoro": "番茄鐘",
+      "sunriseSunset": "日出日落",
+      "alarmStopwatch": "鬧鐘與秒錶",
+      "lifeProgress": "人生進度條",
+      "widgets": "可嵌入元件",
+      "titleMeetingPlanner": "跨时区规划会议",
+      "titlePomodoro": "使用番茄钟保持专注",
+      "titleSunriseSunset": "查看日出日落与月相",
+      "titleAlarmStopwatch": "设置闹钟并计时",
+      "titleLifeProgress": "可视化人生进度",
+      "titleWidgets": "生成可嵌入的时钟组件"
     }
   },
   "holidays": {
@@ -153,103 +59,7 @@
     "description": "發現不同國家的節假日和紀念日"
   },
   "ageCalculator": {
-    "title": "年齡計算器",
-    "description": "計算您的準確年齡（年、月、日）",
-    "pageTitle": "年齡計算器",
-    "subtitle": "計算您的精確年齡（年、月、日等）- 提供靈活的日期輸入選項",
-    "calculateYourAge": "計算您的年齡",
-    "enterBirthDate": "輸入出生日期",
-    "calculateAgeAsOf": "計算截止日期",
-    "ageResults": "年齡結果",
-    "aboutAgeCalculation": "關於年齡計算",
-    "calendarPrecision": "日曆精度",
-    "realTimeUpdates": "即時更新",
-    "faqTitle": "年齡計算器 - 常見問題",
-    "inputMethods": {
-      "calendar": "日曆",
-      "manual": "手動輸入"
-    },
-    "labels": {
-      "year": "年",
-      "month": "月",
-      "day": "日",
-      "useCustomDate": "使用自訂日期",
-      "calculateAge": "計算年齡",
-      "updateTargetDate": "更新目標日期",
-      "selectedDate": "選擇的日期",
-      "targetDate": "目標日期",
-      "currentDateTime": "當前日期和時間",
-      "updatesInRealTime": "即時更新",
-      "asOf": "截至{date}",
-      "years": "年",
-      "months": "月",
-      "days": "日",
-      "hours": "小時",
-      "nextBirthday": "下次生日",
-      "nextBirthdayText": "您將在{days}天後滿{age}歲（{date}）",
-      "yearsInDecimalFormat": "年齡（小數格式）"
-    },
-    "tabs": {
-      "standard": "標準",
-      "detailed": "詳細",
-      "decimal": "小數"
-    },
-    "formatted": {
-      "age": "年齡：{age}",
-      "yearsSuffix": "歲",
-      "monthsSuffix": "個月",
-      "daysSuffix": "天"
-    },
-    "info": {
-      "calendarPrecisionDesc": "我們的年齡計算器考慮閏年、不同月份長度和夏令時變化，提供盡可能準確的計算。",
-      "realTimeUpdatesDesc": "一旦您選擇出生日期，計算器會即時更新，顯示您的年齡精確到秒。"
-    },
-    "errors": {
-      "validNumbers": "請輸入有效的年、月、日數字",
-      "yearRange": "請輸入1900年到當前年份之間的年份",
-      "monthRange": "請輸入1到12之間的月份",
-      "dayRange": "請輸入1到31之間的日期",
-      "invalidDate": "您輸入的日期無效",
-      "futureDate": "出生日期不能是將來的日期",
-      "unknownError": "發生未知錯誤"
-    },
-    "faqs": {
-      "howCalculated": {
-        "question": "年齡是如何計算的？",
-        "answer": "年齡通過計算您的出生日期與當前日期（或您指定的自訂日期）之間的時間差來確定。我們的計算器提供精確的年、月、日、小時、分鐘和秒的年齡。我們考慮閏年、不同月份長度和其他日曆複雜性以確保準確性。"
-      },
-      "differFromOthers": {
-        "question": "為什麼我的年齡計算與其他計算器不同？",
-        "answer": "不同計算器之間的年齡計算可能因處理部分月份和天數的方式而略有差異。有些計算器可能四捨五入到最近的年份，而其他計算器（如我們的）提供更詳細的分解，包括月份和天數。我們的計算器使用精確演算法來考慮閏年和不同月份長度。"
-      },
-      "customDates": {
-        "question": "我可以計算兩個特定日期之間的年齡嗎？",
-        "answer": "是的！我們的計算器允許您計算任意兩個日期之間的年齡。只需輸入您的出生日期，然後切換\"使用自訂日期\"選項來指定年齡計算的目標日期。這對於確定您在特定日期的年齡（過去或將來）很有用。"
-      },
-      "enterBirthDate": {
-        "question": "如何輸入我的出生日期？",
-        "answer": "您有兩種輸入出生日期的選項：使用日曆選擇器或手動輸入。日曆選擇器允許您直觀地選擇日期，而手動輸入讓您直接輸入年、月、日。選擇對您更方便的方法。"
-      },
-      "howAccurate": {
-        "question": "年齡計算有多準確？",
-        "answer": "我們的年齡計算器精確到秒。它即時更新（使用當前日期時），並考慮閏年、不同月份長度和夏令時變化。對於大多數實際用途，這種精度水準綽綽有餘。"
-      },
-      "decimalAge": {
-        "question": "什麼是小數年齡？",
-        "answer": "小數年齡將您的年齡表示為一個帶小數部分的單一數字，而不是分別顯示年、月、日。例如，25.75年意味著您25歲零9個月（因為0.75年約等於9個月）。這種格式有時在科學或醫學環境中使用。"
-      },
-      "whyNeedExact": {
-        "question": "為什麼我需要知道我的確切年齡？",
-        "answer": "瞭解您的確切年齡可能對各種目的有用：醫學評估、占星計算、法律文件，或僅僅是滿足好奇心。某些文化也慶祝需要精確計算的特定年齡里程碑。"
-      },
-      "noNextBirthday": {
-        "question": "為什麼使用自訂日期時不顯示下次生日資訊？",
-        "answer": "下次生日計算基於當前日期，顯示從今天到您下次生日還有多少天。使用自訂目標日期時，不顯示此資訊，因為它與您指定的自訂日期無關。"
-      }
-    },
-    "metaTitle": "年齡計算器 | 計算您的精確年齡 | Datetime.app",
-    "metaDescription": "計算您的精確年齡，包括年、月、日、時、分、秒。支持日曆選擇或手動輸入，可計算任意日期的年齡。",
-    "metaKeywords": "年齡計算器, 計算年齡, 我多少歲, 精確年齡, 年齡計算, 生日計算器, 出生時間, 兩個日期間的年齡, 特定日期年齡"
+    "breadcrumbHome": "Home"
   },
   "yearProgress": {
     "title": "年度進度",
@@ -543,157 +353,14 @@
     "dismiss": "不用了，謝謝"
   },
   "calendar": {
-    "title": "{year}年日曆",
-    "subtitle": "完整年曆視圖，包含週數",
-    "description": "查看{year}年完整日曆，包含所有月份、日期和週數",
-    "metaTitle": "{year}年日曆 - 免費可列印日曆，包含週數、月度規劃器和年度檢視",
-    "metaDescription": "免費{year}年日曆，包含週數、月度檢視和年度概覽。使用我們的互動式{year}年日曆規劃您的{year}年，包含節假日、閏年資訊和可列印格式。",
-    "metaKeywords": "{year}年日曆, {year}年度日曆, {year}月度日曆, {year}年曆, 免費{year}年日曆, 可列印{year}年日曆, 帶週數的{year}年日曆",
-    "currentYear": "當前年份",
-    "leapYear": "閏年",
-    "regularYear": "平年",
-    "weekNumber": "第{number}週",
-    "today": "今天",
-    "viewYear": "查看年份",
-    "previousYear": "上一年",
-    "nextYear": "下一年",
-    "yearNavigation": "年份導航",
-    "monthNavigation": "月份導航",
-    "jumpToYear": "跳轉到年份",
-    "toggleTheme": "切換主題",
-    "previousMonth": "上一個月",
-    "nextMonth": "下一個月",
-    "currentMonth": "當前月份",
-    "backToYear": "返回{year}年",
-    "daysInMonth": "{days}天",
-    "selectedDate": "選定日期",
-    "date": "日期",
-    "dayOfYear": "年中的第幾天",
-    "months": {
-      "january": "一月",
-      "february": "二月",
-      "march": "三月",
-      "april": "四月",
-      "may": "五月",
-      "june": "六月",
-      "july": "七月",
-      "august": "八月",
-      "september": "九月",
-      "october": "十月",
-      "november": "十一月",
-      "december": "十二月"
-    },
-    "monthsShort": {
-      "jan": "1月",
-      "feb": "2月",
-      "mar": "3月",
-      "apr": "4月",
-      "may": "5月",
-      "jun": "6月",
-      "jul": "7月",
-      "aug": "8月",
-      "sep": "9月",
-      "oct": "10月",
-      "nov": "11月",
-      "dec": "12月"
-    },
-    "weekdays": {
-      "sunday": "星期日",
-      "monday": "星期一",
-      "tuesday": "星期二",
-      "wednesday": "星期三",
-      "thursday": "星期四",
-      "friday": "星期五",
-      "saturday": "星期六"
-    },
-    "weekdaysShort": {
-      "sun": "日",
-      "mon": "一",
-      "tue": "二",
-      "wed": "三",
-      "thu": "四",
-      "fri": "五",
-      "sat": "六"
-    },
-    "info": {
-      "totalDays": "{year}年總天數",
-      "daysPassed": "已過天數",
-      "daysRemaining": "剩餘天數",
-      "weeksPassed": "已過週數",
-      "weeksRemaining": "剩餘週數"
-    },
-    "faq": {
-      "title": "常見問題",
-      "whatIsCalendar": {
-        "question": "什麼是年曆？",
-        "answer": "年曆以結構化格式顯示特定年份的所有12個月，顯示日期、星期幾和週數。它有助於日期規劃、安排日程和理解年份結構。"
-      },
-      "weekNumbers": {
-        "question": "什麼是週數？",
-        "answer": "週數是對一年中的週進行編號的方式，從1到52（某些年份為53）。一年的第一週通常是包含新年至少四天的第一週。"
-      },
-      "leapYear": {
-        "question": "什麼是閏年？",
-        "answer": "閏年有366天而不是通常的365天。每4年出現一次（有一些例外），增加一天（2月29日）以保持我們的日曆與地球繞太陽軌道對齊。"
-      },
-      "monthOverview": {
-        "question": "這個月顯示了什麼資訊？",
-        "answer": "{month} {year}有{days}天，從{startDay}開始，到{endDay}結束。此日曆檢視顯示所有日期及其對應的工作日和週數。"
-      },
-      "weekCount": {
-        "question": "這個月有多少週？",
-        "answer": "{month}在日曆網格上跨越{weeks}週，儘管有些週可能包含上個月或下個月的天數。"
-      },
-      "currentMonth": {
-        "question": "為什麼這個月被突出顯示？",
-        "answer": "這是當前月份（{month} {year}）。今天是本月的第{today}天，在日曆上以藍色突出顯示。"
-      },
-      "monthCharacteristics": {
-        "question": "這個月的特點是什麼？",
-        "february": "{month} {year}有{days}天，使其成為{leapYear}。二月是最短的月份，也是唯一天數可變的月份。",
-        "thirtyDays": "{month}是四個恰好有30天的月份之一（四月、六月、九月、十一月）。",
-        "thirtyOneDays": "{month}有31天，是一年中七個較長月份之一。"
-      },
-      "navigation": {
-        "question": "如何導航到其他月份？",
-        "answer": "使用箭頭按鈕前往{prevMonth}或{nextMonth}。您也可以點擊下方導航網格中的任何月份，或使用「檢視年份」按鈕一次檢視所有月份。"
-      }
-    },
-    "seo": {
-      "title": "關於{year}年日曆",
-      "yearOverview": {
-        "title": "{year}年概覽",
-        "content": "{year}年日曆提供所有12個月的全面檢視，總共{totalDays}天。{year}年是{yearType}{leapYearInfo}。我們的{year}年日曆包含週數，便於追蹤每週日程並規劃整個{year}年。"
-      },
-      "features": {
-        "title": "我們{year}年日曆的特色功能",
-        "list": [
-          "完整的{year}年度日曆檢視，包含所有12個月",
-          "{year}年每週的週數顯示",
-          "用於{year}年規劃的互動式日期選擇",
-          "適合行動裝置的{year}年日曆設計",
-          "免費可列印的{year}年日曆格式",
-          "{year}年閏年指示器",
-          "{year}年日曆中當前日期高亮顯示",
-          "{year}年內的月度導航",
-          "年度間日曆對比功能"
-        ]
-      },
-      "usage": {
-        "title": "如何使用這個{year}年日曆",
-        "content": "這個互動式{year}年日曆允許您詳細瀏覽{year}年的每個月。點擊任何日期檢視詳細資訊，包括週數和年內天數。使用導航箭頭瀏覽不同年份，或點擊月份名稱檢視{year}年的單個月份。{year}年日曆非常適合在整個{year}年進行規劃、安排日程和組織活動。"
-      },
-      "benefits": {
-        "title": "使用{year}年日曆的好處",
-        "content": "全面的{year}年日曆幫助您一次性看到整年，使長期規劃更容易。包含週數後，您可以與使用基於週的規劃的商業日程進行協調。我們的{year}年日曆非常適合學術規劃、專案管理、假期安排以及整個{year}年的個人組織。"
-      }
-    },
-    "yearMetaTitle": "{year}年日曆 | 完整年曆視圖 | Datetime.app",
-    "yearMetaDescription": "查看{year}年完整日曆，包含所有月份、週數和日期。{yearType}{currentYearSuffix}。",
-    "yearMetaKeywords": "{year}年日曆, 年曆, 月曆, 日期查詢, 週數, {yearType}",
-    "monthMetaTitle": "{year}年{month}月日曆 | {monthName} {year} | Datetime.app",
-    "monthMetaDescription": "查看{year}年{month}月（{monthName}）完整日曆，包含所有日期和星期資訊。{currentMonthSuffix}",
-    "monthMetaKeywords": "{year}年{month}月, {monthName} {year}, 月曆, 日曆, 日期查詢"
+    "lunarDate": "Lunar date",
+    "holidays": {
+      "title": "Public holidays",
+      "loading": "Loading holidays...",
+      "empty": "No holidays found for this month.",
+      "label": "Holidays",
+      "error": "Unable to load holidays right now."
+    }
   },
   "timezones": {
     "title": "{timezone}時間",
@@ -1065,5 +732,195 @@
     "searchPlaceholder": "搜尋文章...",
     "allTags": "全部",
     "noResults": "未找到符合您條件的文章。"
+  },
+  "timeDifference": {
+    "title": "時差對比：{cityA} vs {cityB}",
+    "subtitle": "比較 {cityA} 與 {cityB} 的當前時間、工作時段重疊與旅行估算。",
+    "metaTitle": "{cityA} vs {cityB} 時差 | 會議時間規劃",
+    "metaDescription": "查看 {cityA} 與 {cityB} 的時差、工作時間重疊，並估算飛行時長。",
+    "timeDifferenceTitle": "目前時差",
+    "timeDifferenceValue": "{cityA} 比 {cityB} {direction} {hours} 小時。",
+    "ahead": "早",
+    "behind": "晚",
+    "differenceNote": "夏令時間變化可能影響時差。",
+    "meetingPlannerTitle": "最佳會議時間",
+    "meetingToday": "今天有重疊時段",
+    "meetingInDays": "{days} 天後有重疊時段",
+    "meetingTime": "{cityA}: {timeA}–{endA} | {cityB}: {timeB}–{endB}",
+    "meetingUnavailable": "未來 7 天內暫無可用重疊時段。",
+    "flightTitle": "飛行時長估算",
+    "flightDistance": "預估距離：{distance} 公里",
+    "flightDuration": "預估直飛時長：{hours} 小時",
+    "flightUnavailable": "無法估算此城市對的飛行時長。",
+    "viewAllCities": "查看全部城市"
+  },
+  "countdown": {
+    "breadcrumbHome": "首页",
+    "countdownTitle": "实时倒计时",
+    "days": "天",
+    "hours": "小时",
+    "minutes": "分钟",
+    "seconds": "秒",
+    "eventDetails": "活动详情",
+    "targetDate": "目标日期：{date}",
+    "timezoneNote": "倒计时基于你的本地时区。",
+    "viewCalendars": "查看年度日历",
+    "events": {
+      "christmas": {
+        "title": "圣诞节倒计时",
+        "description": "距离圣诞节还有多久，随时掌握。"
+      },
+      "newYear2027": {
+        "title": "2027 新年倒计时",
+        "description": "精确查看距离 2027 年还有多久。"
+      }
+    },
+    "shareImage": "產生分享圖片"
+  },
+  "unixTimestamp": {
+    "title": "Unix 時間戳轉換器",
+    "subtitle": "在 Unix 時間戳與可讀日期之間互相轉換。",
+    "timestampToDate": "時間戳轉日期",
+    "dateToTimestamp": "日期轉時間戳",
+    "timestampPlaceholder": "输入 Unix 时间戳",
+    "datePlaceholder": "选择日期与时间",
+    "invalidTimestamp": "請輸入有效時間戳。",
+    "invalidDate": "請選擇有效日期。",
+    "breadcrumbHome": "首页",
+    "metaTitle": "Unix 時間戳轉換器 | Datetime.app",
+    "metaDescription": "将 Unix 时间戳转换为可读日期，并生成对应时间戳。"
+  },
+  "workdayCalculator": {
+    "title": "工作日計算器",
+    "subtitle": "計算兩個日期之間的工作日數量，可排除週末與節假日。",
+    "calculatorTitle": "工作日計算",
+    "startDate": "开始日期",
+    "endDate": "结束日期",
+    "excludeWeekends": "排除週末",
+    "holidayList": "節假日日期（選填）",
+    "holidayPlaceholder": "2026-01-01, 2026-02-16",
+    "holidayHint": "使用逗號分隔 YYYY-MM-DD 格式日期。",
+    "resultLabel": "工作日數量",
+    "resultPlaceholder": "選擇日期開始計算",
+    "breadcrumbHome": "首页",
+    "metaTitle": "工作日計算器 | Datetime.app",
+    "metaDescription": "计算两个日期之间的工作日数量，可排除周末与节假日。"
+  },
+  "dateDifference": {
+    "title": "日期差計算器",
+    "subtitle": "比較兩個日期之間的天數、週數與月份。",
+    "calculatorTitle": "日期差",
+    "startDate": "开始日期",
+    "endDate": "结束日期",
+    "resultLabel": "差值",
+    "daysResult": "{days} 天",
+    "summaryResult": "约 {weeks} 周 | 约 {months} 个月",
+    "resultPlaceholder": "選擇日期進行比較",
+    "breadcrumbHome": "首页",
+    "metaTitle": "日期差計算器 | Datetime.app",
+    "metaDescription": "计算两个日期之间的天数、周数与月份。"
+  },
+  "notFound": {
+    "title": "找不到頁面",
+    "description": "你造訪的頁面不存在，可以嘗試以下熱門工具。",
+    "quickLinksTitle": "熱門工具",
+    "links": {
+      "yearProgress": "年度進度條",
+      "ageCalculator": "年齡計算器",
+      "utc": "UTC 時間",
+      "holidays": "世界節假日",
+      "unixTimestamp": "Unix 時間戳轉換器"
+    }
+  },
+  "meetingPlanner": {
+    "title": "會議調度器",
+    "subtitle": "新增多個城市，快速找到工作時間重疊視窗。",
+    "metaTitle": "會議調度器 | Datetime.app",
+    "metaDescription": "跨多個時區規劃會議，快速找出重疊工作時間。",
+    "citySelector": "添加城市",
+    "selectCity": "选择城市",
+    "addCity": "新增城市",
+    "removeCity": "移除城市",
+    "workingHours": "工作时间",
+    "hourLabel": "{hour}:00",
+    "overlapTitle": "重疊時段",
+    "noOverlap": "所選工作時間沒有重疊。"
+  },
+  "pomodoro": {
+    "title": "番茄鐘",
+    "subtitle": "使用專注時段、休息與任務清單保持效率。",
+    "metaTitle": "番茄鐘 | Datetime.app",
+    "metaDescription": "使用番茄鐘專注工作並管理任務與休息。",
+    "focusSession": "专注时段",
+    "breakSession": "休息时段",
+    "start": "开始",
+    "pause": "暂停",
+    "reset": "重置",
+    "testSound": "测试提示音",
+    "sessionCount": "已完成 {count} 次专注",
+    "taskList": "任务清单",
+    "taskPlaceholder": "添加任务",
+    "addTask": "添加",
+    "emptyTasks": "暂无任务，先添加一个吧。"
+  },
+  "sunriseSunset": {
+    "title": "日出日落與月相",
+    "subtitle": "查看任何地點的日出、日落與今日月相。",
+    "metaTitle": "日出日落時間 | Datetime.app",
+    "metaDescription": "查詢任何地點的日出日落時間與月相資訊。",
+    "locationTitle": "位置",
+    "latitude": "纬度",
+    "longitude": "经度",
+    "fetchTimes": "获取时间",
+    "useLocation": "使用当前位置",
+    "sunTimes": "太阳时间",
+    "sunrise": "日出：{time}",
+    "sunset": "日落：{time}",
+    "moonTitle": "月相",
+    "moonPhase": "今日：{phase}",
+    "invalidCoordinates": "请输入有效的经纬度。",
+    "fetchError": "无法获取日出日落时间。",
+    "locationUnavailable": "无法使用定位。",
+    "locationDenied": "定位权限被拒绝。"
+  },
+  "alarmStopwatch": {
+    "title": "鬧鐘與秒錶",
+    "subtitle": "設定簡單鬧鐘並使用秒錶計時。",
+    "metaTitle": "鬧鐘與秒錶 | Datetime.app",
+    "metaDescription": "線上鬧鐘與秒錶工具。",
+    "alarmTitle": "闹钟",
+    "enableAlarm": "启用闹钟",
+    "disableAlarm": "关闭闹钟",
+    "testSound": "测试提示音",
+    "alarmTriggered": "闹钟触发！",
+    "stopwatchTitle": "秒表",
+    "start": "开始",
+    "pause": "暂停",
+    "reset": "重置",
+    "lap": "计次",
+    "noLaps": "暂无计次记录。"
+  },
+  "lifeProgress": {
+    "title": "人生進度條",
+    "subtitle": "依出生日期與壽命目標可視化人生進度。",
+    "metaTitle": "人生進度條 | Datetime.app",
+    "metaDescription": "根據出生日期與壽命目標顯示人生進度。",
+    "calculatorTitle": "人生进度",
+    "birthDate": "出生日期",
+    "lifeExpectancy": "预期寿命（年）",
+    "placeholder": "输入信息后计算进度。",
+    "progressLabel": "进度：{percent}%",
+    "shareButton": "下載分享圖片",
+    "shareTitle": "人生进度",
+    "shareSubtitle": "你已經走過的旅程"
+  },
+  "widgets": {
+    "title": "可嵌入元件",
+    "subtitle": "將 Datetime.app 小元件嵌入你的網站或儀表板。",
+    "metaTitle": "可嵌入元件 | Datetime.app",
+    "metaDescription": "生成可嵌入的小元件，例如時鐘。",
+    "clockWidget": "可嵌入時鐘",
+    "instructions": "複製程式碼並貼到你的網站。",
+    "preview": "预览组件"
   }
 }

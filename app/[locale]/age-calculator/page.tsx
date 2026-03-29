@@ -4,6 +4,8 @@ import HeaderClient from "../year-progress-bar/header-client"
 import AgeCalculatorClient from "./age-calculator-client"
 import { getTranslations } from 'next-intl/server'
 import FAQSection from './faq-section'
+import StructuredData from "@/components/structured-data"
+import { getLocalePath } from "@/lib/locale-utils"
 
 export default async function AgeCalculator({ params }: { params: { locale: string } }) {
   const { locale } = params
@@ -44,8 +46,33 @@ export default async function AgeCalculator({ params }: { params: { locale: stri
     }
   ]
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: ageCalculatorFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  }
+
+  const webAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: t('pageTitle'),
+    applicationCategory: "HealthApplication",
+    operatingSystem: "Any",
+    url: `https://datetime.app${getLocalePath("/age-calculator", locale)}`,
+    inLanguage: locale,
+  }
+
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
+      <StructuredData data={faqSchema} />
+      <StructuredData data={webAppSchema} />
       <HeaderClient />
 
       <div className="flex-grow">

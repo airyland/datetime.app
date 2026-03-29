@@ -8,8 +8,9 @@ import Link from "next/link"
 import { calculateYearProgress, calculateTimeLeft, calculateTimeLeftData, formatTimeLeft } from "@/lib/year-progress"
 import YearProgressClient from "./year-progress-client"
 import HeaderClient from "./header-client"
-import { useTranslations } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
+import StructuredData from "@/components/structured-data"
+import { getLocalePath } from "@/lib/locale-utils"
 
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
@@ -72,6 +73,16 @@ export default async function YearProgressBar({ params }: { params: { locale: st
   const daysElapsed = Math.floor((daysInCurrentYear * initialProgress) / 100)
   const daysRemaining = daysInCurrentYear - daysElapsed
 
+  const webAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: t('pageTitle', { year: currentYear }),
+    applicationCategory: "ProductivityApplication",
+    operatingSystem: "Any",
+    url: `https://datetime.app${getLocalePath("/year-progress-bar", locale)}`,
+    inLanguage: locale,
+  }
+
   // FAQs about year progress
   const yearProgressFaqs = [
     {
@@ -95,6 +106,7 @@ export default async function YearProgressBar({ params }: { params: { locale: st
 
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
+      <StructuredData data={webAppSchema} />
       <HeaderClient />
 
       <div className="flex-grow">

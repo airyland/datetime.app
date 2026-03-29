@@ -85,17 +85,24 @@
       "titleUtcTime": "View current UTC (Coordinated Universal Time)"
     },
     "tools": {
-      "title": "Time Tools",
-      "yearProgress": "Year Progress Bar",
-      "ageCalculator": "Age Calculator",
-      "utcTime": "UTC Time",
-      "worldHolidays": "World Holidays",
-      "timezones": "Timezones",
-      "titleYearProgress": "Track the progress of the current year",
-      "titleAgeCalculator": "Calculate your exact age in years, months, and days",
-      "titleUtcTime": "View current UTC (Coordinated Universal Time)",
-      "titleWorldHolidays": "Discover holidays and observances from different countries",
-      "titleTimezones": "Browse comprehensive IANA timezone database"
+      "unixTimestamp": "Unix Timestamp Converter",
+      "workdayCalculator": "Workday Calculator",
+      "dateDifference": "Date Difference Calculator",
+      "titleUnixTimestamp": "Convert timestamps to dates and back",
+      "titleWorkdayCalculator": "Calculate working days between dates",
+      "titleDateDifference": "Compare two dates in days, weeks, and months",
+      "meetingPlanner": "Meeting Planner",
+      "pomodoro": "Pomodoro Timer",
+      "sunriseSunset": "Sunrise & Sunset",
+      "alarmStopwatch": "Alarm & Stopwatch",
+      "lifeProgress": "Life Progress Bar",
+      "widgets": "Embeddable Widgets",
+      "titleMeetingPlanner": "Plan meetings across multiple time zones",
+      "titlePomodoro": "Stay focused with Pomodoro sessions and breaks",
+      "titleSunriseSunset": "Check sunrise, sunset, and moon phases",
+      "titleAlarmStopwatch": "Set alarms and track time",
+      "titleLifeProgress": "Visualize life progress with a simple bar",
+      "titleWidgets": "Generate embeddable clock widgets"
     },
     "cityTimes": {
       "title": "World City Times",
@@ -292,7 +299,8 @@
     },
     "metaTitle": "Age Calculator | Calculate Your Exact Age | Datetime.app",
     "metaDescription": "Calculate your exact age in years, months, days, hours, minutes, and seconds. Choose between calendar or manual input and calculate age as of any date.",
-    "metaKeywords": "age calculator, calculate age, how old am I, exact age, age in years, age in days, birthday calculator, time since birth, age between dates, age on specific date"
+    "metaKeywords": "age calculator, calculate age, how old am I, exact age, age in years, age in days, birthday calculator, time since birth, age between dates, age on specific date",
+    "breadcrumbHome": "Home"
   },
   "yearProgress": {
     "title": "Year Progress",
@@ -685,7 +693,15 @@
     "yearMetaKeywords": "{year} calendar, yearly calendar, monthly calendar, date lookup, week numbers, {yearType}",
     "monthMetaTitle": "{monthName} {year} Calendar | Monthly View | Datetime.app",
     "monthMetaDescription": "View the complete calendar for {monthName} {year} with all dates and week information.{currentMonthSuffix}",
-    "monthMetaKeywords": "{monthName} {year}, monthly calendar, calendar view, date lookup, {month}"
+    "monthMetaKeywords": "{monthName} {year}, monthly calendar, calendar view, date lookup, {month}",
+    "lunarDate": "Lunar date",
+    "holidays": {
+      "title": "Public holidays",
+      "loading": "Loading holidays...",
+      "empty": "No holidays found for this month.",
+      "label": "Holidays",
+      "error": "Unable to load holidays right now."
+    }
   },
   "timezones": {
     "title": "Time in {timezone}",
@@ -977,5 +993,195 @@
     "searchPlaceholder": "Search articles...",
     "allTags": "All",
     "noResults": "No articles found matching your criteria."
+  },
+  "timeDifference": {
+    "title": "Time difference: {cityA} vs {cityB}",
+    "subtitle": "Compare current time, meeting overlap, and travel estimates between {cityA} and {cityB}.",
+    "metaTitle": "Time difference {cityA} vs {cityB} | Meeting planner",
+    "metaDescription": "See the current time difference between {cityA} and {cityB}, compare working hours, and estimate flight time for better scheduling.",
+    "timeDifferenceTitle": "Current time difference",
+    "timeDifferenceValue": "{cityA} is {hours} hours {direction} {cityB}.",
+    "ahead": "ahead of",
+    "behind": "behind",
+    "differenceNote": "Time differences can vary with daylight saving time changes.",
+    "meetingPlannerTitle": "Best meeting window",
+    "meetingToday": "Overlap available today",
+    "meetingInDays": "Overlap available in {days} days",
+    "meetingTime": "{cityA}: {timeA}–{endA} | {cityB}: {timeB}–{endB}",
+    "meetingUnavailable": "No overlap found in the next 7 days.",
+    "flightTitle": "Estimated flight time",
+    "flightDistance": "Approximate distance: {distance} km",
+    "flightDuration": "Estimated nonstop flight time: {hours} hours",
+    "flightUnavailable": "Flight estimate unavailable for this city pair.",
+    "viewAllCities": "Browse all cities"
+  },
+  "countdown": {
+    "breadcrumbHome": "Home",
+    "countdownTitle": "Live countdown",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "eventDetails": "Event details",
+    "targetDate": "Target date: {date}",
+    "timezoneNote": "Countdown uses your local timezone.",
+    "viewCalendars": "Explore yearly calendars",
+    "events": {
+      "christmas": {
+        "title": "Christmas Countdown",
+        "description": "Count down to Christmas and plan the season with accurate timing."
+      },
+      "newYear2027": {
+        "title": "New Year 2027 Countdown",
+        "description": "See exactly how long until 2027 begins."
+      }
+    },
+    "shareImage": "Generate share image"
+  },
+  "unixTimestamp": {
+    "title": "Unix Timestamp Converter",
+    "subtitle": "Convert Unix timestamps to human-readable dates and back.",
+    "timestampToDate": "Timestamp to date",
+    "dateToTimestamp": "Date to timestamp",
+    "timestampPlaceholder": "Enter Unix timestamp",
+    "datePlaceholder": "Choose a date and time",
+    "invalidTimestamp": "Enter a valid timestamp to see the date.",
+    "invalidDate": "Select a valid date to see the timestamp.",
+    "breadcrumbHome": "Home",
+    "metaTitle": "Unix Timestamp Converter | Datetime.app",
+    "metaDescription": "Convert Unix timestamps to readable dates and generate timestamps from calendar dates."
+  },
+  "workdayCalculator": {
+    "title": "Workday Calculator",
+    "subtitle": "Count business days between two dates while excluding weekends and holidays.",
+    "calculatorTitle": "Business day calculator",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "excludeWeekends": "Exclude weekends",
+    "holidayList": "Holiday dates (optional)",
+    "holidayPlaceholder": "2026-01-01, 2026-02-16",
+    "holidayHint": "Add holiday dates as YYYY-MM-DD, separated by commas.",
+    "resultLabel": "Business days",
+    "resultPlaceholder": "Select dates to calculate",
+    "breadcrumbHome": "Home",
+    "metaTitle": "Workday Calculator | Datetime.app",
+    "metaDescription": "Calculate the number of working days between two dates, excluding weekends and holidays."
+  },
+  "dateDifference": {
+    "title": "Date Difference Calculator",
+    "subtitle": "Find the difference between two dates in days, weeks, and months.",
+    "calculatorTitle": "Date difference",
+    "startDate": "Start date",
+    "endDate": "End date",
+    "resultLabel": "Total difference",
+    "daysResult": "{days} days",
+    "summaryResult": "≈ {weeks} weeks | ≈ {months} months",
+    "resultPlaceholder": "Select dates to compare",
+    "breadcrumbHome": "Home",
+    "metaTitle": "Date Difference Calculator | Datetime.app",
+    "metaDescription": "Calculate the number of days between two dates, plus weeks and months estimates."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you requested does not exist. Try one of our popular tools below.",
+    "quickLinksTitle": "Popular tools",
+    "links": {
+      "yearProgress": "Year Progress Bar",
+      "ageCalculator": "Age Calculator",
+      "utc": "UTC Time",
+      "holidays": "World Holidays",
+      "unixTimestamp": "Unix Timestamp Converter"
+    }
+  },
+  "meetingPlanner": {
+    "title": "Meeting Planner",
+    "subtitle": "Add multiple cities and find overlapping working hours fast.",
+    "metaTitle": "Meeting Planner | Datetime.app",
+    "metaDescription": "Plan meetings across multiple time zones with overlap-friendly working hours.",
+    "citySelector": "Add cities",
+    "selectCity": "Select a city",
+    "addCity": "Add city",
+    "removeCity": "Remove city",
+    "workingHours": "Working hours",
+    "hourLabel": "{hour}:00",
+    "overlapTitle": "Overlap window",
+    "noOverlap": "No overlap found for the selected hours."
+  },
+  "pomodoro": {
+    "title": "Pomodoro Timer",
+    "subtitle": "Stay focused with built-in focus sessions, breaks, and task tracking.",
+    "metaTitle": "Pomodoro Timer | Datetime.app",
+    "metaDescription": "Use a Pomodoro timer with breaks, tasks, and focus tracking.",
+    "focusSession": "Focus session",
+    "breakSession": "Break session",
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "testSound": "Test sound",
+    "sessionCount": "Completed sessions: {count}",
+    "taskList": "Task list",
+    "taskPlaceholder": "Add a task",
+    "addTask": "Add",
+    "emptyTasks": "No tasks yet. Add one to get started."
+  },
+  "sunriseSunset": {
+    "title": "Sunrise, Sunset & Moon Phase",
+    "subtitle": "Check sunrise, sunset, and today’s moon phase for any location.",
+    "metaTitle": "Sunrise & Sunset Times | Datetime.app",
+    "metaDescription": "Find sunrise and sunset times with moon phase details for any location.",
+    "locationTitle": "Location",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "fetchTimes": "Get times",
+    "useLocation": "Use current location",
+    "sunTimes": "Sun times",
+    "sunrise": "Sunrise: {time}",
+    "sunset": "Sunset: {time}",
+    "moonTitle": "Moon phase",
+    "moonPhase": "Today: {phase}",
+    "invalidCoordinates": "Enter valid latitude and longitude.",
+    "fetchError": "Unable to fetch sun times.",
+    "locationUnavailable": "Geolocation is not available.",
+    "locationDenied": "Location access denied."
+  },
+  "alarmStopwatch": {
+    "title": "Alarm & Stopwatch",
+    "subtitle": "Set a simple alarm and track time with a stopwatch.",
+    "metaTitle": "Alarm & Stopwatch | Datetime.app",
+    "metaDescription": "Use a simple alarm and stopwatch online.",
+    "alarmTitle": "Alarm",
+    "enableAlarm": "Enable alarm",
+    "disableAlarm": "Disable alarm",
+    "testSound": "Test sound",
+    "alarmTriggered": "Alarm triggered!",
+    "stopwatchTitle": "Stopwatch",
+    "start": "Start",
+    "pause": "Pause",
+    "reset": "Reset",
+    "lap": "Lap",
+    "noLaps": "No laps yet."
+  },
+  "lifeProgress": {
+    "title": "Life Progress Bar",
+    "subtitle": "Visualize your life progress based on your birth date and target lifespan.",
+    "metaTitle": "Life Progress Bar | Datetime.app",
+    "metaDescription": "See a visual life progress bar based on your birth date and lifespan.",
+    "calculatorTitle": "Life progress",
+    "birthDate": "Birth date",
+    "lifeExpectancy": "Life expectancy (years)",
+    "placeholder": "Enter your details to calculate progress.",
+    "progressLabel": "Progress: {percent}%",
+    "shareButton": "Download share image",
+    "shareTitle": "Life Progress",
+    "shareSubtitle": "Your journey so far"
+  },
+  "widgets": {
+    "title": "Embeddable Widgets",
+    "subtitle": "Embed Datetime.app widgets into your website or dashboard.",
+    "metaTitle": "Embeddable Widgets | Datetime.app",
+    "metaDescription": "Generate embeddable widgets like clocks for your site.",
+    "clockWidget": "Embeddable clock",
+    "instructions": "Copy and paste this code into your website.",
+    "preview": "Preview widget"
   }
 }
