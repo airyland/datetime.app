@@ -1000,5 +1000,185 @@
     "searchPlaceholder": "Buscar artículos...",
     "allTags": "Todos",
     "noResults": "No se encontraron artículos que coincidan con sus criterios."
+  },
+  "notFound": {
+    "title": "Página No Encontrada",
+    "description": "La página que buscabas no existe. Aquí tienes algunas herramientas populares para comenzar.",
+    "worldClock": "Reloj Mundial",
+    "worldClockDesc": "Consulta la hora actual en ciudades de todo el mundo.",
+    "ageCalculator": "Calculadora de Edad",
+    "ageCalculatorDesc": "Calcula tu edad exacta a partir de tu fecha de nacimiento.",
+    "calendar": "Calendario",
+    "calendarDesc": "Explora el calendario de cualquier año o mes.",
+    "holidays": "Días Festivos",
+    "holidaysDesc": "Encuentra los días festivos por país y año.",
+    "yearProgress": "Progreso del Año",
+    "yearProgressDesc": "Mira cuánto del año actual ha transcurrido.",
+    "utcTime": "Hora UTC",
+    "utcTimeDesc": "Consulta la hora universal coordinada actual."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Convertidor de Marca de Tiempo Unix",
+    "subtitle": "Convierte marcas de tiempo Unix / epoch a fechas legibles — y viceversa.",
+    "aboutTitle": "Acerca de las Marcas de Tiempo Unix",
+    "epochTimeTitle": "¿Qué es el tiempo epoch?",
+    "epochTimeDesc": "Las marcas de tiempo Unix cuentan los segundos desde el 1 de enero de 1970 00:00:00 UTC. Proporcionan una forma independiente de zona horaria e idioma para almacenar y comparar momentos en el tiempo — una piedra angular de la ingeniería de software.",
+    "secondsVsMillisecondsTitle": "Segundos vs. milisegundos",
+    "secondsVsMillisecondsDesc": "El tiempo Unix clásico está en segundos. JavaScript y muchas APIs modernas usan milisegundos. Como regla general: un número de 10 dígitos son segundos; un número de 13 dígitos son milisegundos. Este convertidor maneja ambos automáticamente.",
+    "whereUsedTitle": "¿Dónde se usan las marcas de tiempo?",
+    "whereUsedDesc": "Las marcas de tiempo Unix se utilizan en bases de datos, archivos de registro, tokens JWT, encabezados HTTP (Last-Modified), sistemas de control de versiones y prácticamente todos los lenguajes de programación. Eliminan la ambigüedad causada por el horario de verano y las diferencias de zona horaria.",
+    "iso8601Title": "Formato ISO 8601",
+    "iso8601Desc": "ISO 8601 (por ejemplo, 2026-01-01T00:00:00.000Z) es el estándar internacional para cadenas de fecha/hora. Es legible por humanos, ordenable y siempre inequívoco. Úsalo cuando necesites una representación en texto de una marca de tiempo Unix.",
+    "faqTitle": "Preguntas Frecuentes",
+    "faqs": {
+      "whatIs": {
+        "question": "¿Qué es una marca de tiempo Unix?",
+        "answer": "Una marca de tiempo Unix (también llamada tiempo epoch) es el número de segundos transcurridos desde el 1 de enero de 1970, 00:00:00 UTC, sin contar los segundos intercalares. Es una forma estándar de representar un punto en el tiempo como un solo número entero, ampliamente utilizada en programación, bases de datos y APIs."
+      },
+      "howToConvert": {
+        "question": "¿Cómo convierto una marca de tiempo Unix a una fecha legible?",
+        "answer": "Pega tu marca de tiempo Unix en el campo 'Marca de tiempo a Fecha' de arriba y el convertidor te mostrará instantáneamente la fecha equivalente en hora local, UTC, formato ISO 8601 y como una descripción relativa (por ejemplo, 'hace 3 días')."
+      },
+      "howToConvertDate": {
+        "question": "¿Cómo convierto una fecha a una marca de tiempo Unix?",
+        "answer": "Usa la sección 'Fecha a Marca de tiempo'. Selecciona tu fecha y hora usando el selector de fechas (usa tu zona horaria local) y la marca de tiempo Unix correspondiente aparecerá de inmediato."
+      },
+      "secondsOrMilliseconds": {
+        "question": "¿La marca de tiempo Unix cuenta milisegundos o segundos?",
+        "answer": "La marca de tiempo Unix original se mide en segundos. Muchos entornos de programación modernos (incluyendo Date.now() de JavaScript) devuelven milisegundos. Este convertidor acepta ambos — si tu valor es mayor que 9.999.999.999, se trata como milisegundos y se convierte automáticamente."
+      },
+      "y2038": {
+        "question": "¿Qué es el problema del año 2038?",
+        "answer": "Muchos sistemas heredados de 32 bits almacenan el tiempo Unix como un entero con signo de 32 bits, que se desborda el 19 de enero de 2038 a las 03:14:07 UTC (marca de tiempo 2147483647). Los sistemas modernos de 64 bits no se ven afectados y pueden representar fechas miles de millones de años en el futuro."
+      },
+      "epoch": {
+        "question": "¿Qué es la época Unix?",
+        "answer": "La época Unix es el punto de referencia para todas las marcas de tiempo Unix: 1 de enero de 1970, 00:00:00 UTC, representado como el valor 0. Cada marca de tiempo positiva es el número de segundos después de ese momento; las marcas de tiempo negativas representan fechas anteriores a 1970."
+      }
+    },
+    "currentTimestamp": "Marca de Tiempo Unix Actual",
+    "copyTimestamp": "Copiar marca de tiempo",
+    "secondsElapsed": "Segundos transcurridos desde el 1 de enero de 1970 00:00:00 UTC — se actualiza cada segundo.",
+    "timestampToDate": "Marca de Tiempo a Fecha",
+    "timestampInputLabel": "Marca de tiempo Unix (segundos o milisegundos)",
+    "timestampPlaceholder": "p. ej. 1735689600",
+    "invalidInteger": "Por favor, introduce un número entero válido.",
+    "outOfRange": "La marca de tiempo está fuera del rango admitido (1970–9999).",
+    "localTime": "Hora Local",
+    "utcTime": "Hora UTC",
+    "iso8601": "ISO 8601",
+    "relative": "Relativo",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "dateToTimestamp": "Fecha a Marca de Tiempo",
+    "selectDateTime": "Selecciona una fecha y hora (zona horaria local)",
+    "unixTimestampLabel": "Marca de Tiempo Unix",
+    "referenceTimestamps": "Marcas de Tiempo de Referencia Comunes",
+    "referenceHint": "Haz clic en cualquier entrada para cargarla en el convertidor de arriba.",
+    "convert": "Convertir",
+    "refEpoch": "Época Unix (1 ene. 1970)",
+    "refY2K": "Y2K (1 ene. 2000)",
+    "refY2K38": "Y2K38 (19 ene. 2038)",
+    "refStartOf2025": "Inicio de 2025",
+    "refStartOf2026": "Inicio de 2026",
+    "relativeSeconds": "hace {count} segundos",
+    "relativeSecondsIn": "en {count} segundos",
+    "relativeMinutes": "hace {count} minuto",
+    "relativeMinutesPlural": "hace {count} minutos",
+    "relativeMinutesIn": "en {count} minuto",
+    "relativeMinutesPluralIn": "en {count} minutos",
+    "relativeHours": "hace {count} hora",
+    "relativeHoursPlural": "hace {count} horas",
+    "relativeHoursIn": "en {count} hora",
+    "relativeHoursPluralIn": "en {count} horas",
+    "relativeDays": "hace {count} día",
+    "relativeDaysPlural": "hace {count} días",
+    "relativeDaysIn": "en {count} día",
+    "relativeDaysPluralIn": "en {count} días",
+    "relativeMonths": "hace {count} mes",
+    "relativeMonthsPlural": "hace {count} meses",
+    "relativeMonthsIn": "en {count} mes",
+    "relativeMonthsPluralIn": "en {count} meses",
+    "relativeYears": "hace {count} año",
+    "relativeYearsPlural": "hace {count} años",
+    "relativeYearsIn": "en {count} año",
+    "relativeYearsPluralIn": "en {count} años"
+  },
+  "timeDifference": {
+    "pageTitle": "Diferencia Horaria Entre Ciudades",
+    "subtitle": "Compara las zonas horarias actuales y encuentra los mejores horarios de reunión entre ciudades de todo el mundo.",
+    "sameTime": "Misma hora",
+    "hourDifference": "{count} hora de diferencia",
+    "hoursDifference": "{count} horas de diferencia",
+    "hourMinDifference": "{hours}h {minutes}m de diferencia",
+    "sameTimezone": "Misma zona horaria",
+    "hour": "{count} hora",
+    "hours": "{count} horas",
+    "hourMin": "{hours}h {minutes}m",
+    "timeDifferenceBreadcrumb": "Diferencia Horaria",
+    "timeDifferenceLabel": "Diferencia horaria:",
+    "apart": "de diferencia",
+    "summaryTitle": "Resumen de Diferencia Horaria",
+    "isAhead": "{city} va adelante",
+    "sameOffset": "Mismo desfase",
+    "bestMeetingTimes": "Mejores Horarios de Reunión",
+    "businessHoursDesc": "Horas laborales superpuestas (9 AM–6 PM) en ambas ciudades",
+    "noOverlap": "No hay horas laborales superpuestas entre {cityA} y {cityB}. Considera programar reuniones temprano por la mañana o a última hora de la tarde.",
+    "overlappingHours": "{count} hora superpuesta por día",
+    "overlappingHoursPlural": "{count} horas superpuestas por día",
+    "inCity": "en {city}",
+    "timelineTitle": "Línea de Tiempo de 24 Horas",
+    "timelineDesc": "Las horas laborales (9 AM–6 PM) se muestran en color. La hora actual está marcada con un punto.",
+    "localTimeNote": "Las horas se muestran en la hora local de cada ciudad.",
+    "viewAllComparisons": "Ver todas las comparaciones de ciudades"
+  },
+  "countdown": {
+    "pageTitle": "Temporizadores de Cuenta Regresiva",
+    "subtitle": "Sigue cuánto falta para tus eventos y días festivos favoritos",
+    "today": "¡Hoy!",
+    "dayLeft": "Queda 1 día",
+    "daysLeft": "Quedan {count} días",
+    "countdownTo": "Cuenta regresiva para {event}",
+    "eventIsHere": "¡{event} ha llegado! {emoji}",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos",
+    "otherCountdowns": "Otras Cuentas Regresivas",
+    "viewAll": "Ver todas las cuentas regresivas",
+    "events": {
+      "new-year": {
+        "name": "Año Nuevo",
+        "description": "Cuenta regresiva para el Día de Año Nuevo"
+      },
+      "christmas": {
+        "name": "Navidad",
+        "description": "Cuenta regresiva para el Día de Navidad"
+      },
+      "halloween": {
+        "name": "Halloween",
+        "description": "Cuenta regresiva para Halloween"
+      },
+      "valentines-day": {
+        "name": "Día de San Valentín",
+        "description": "Cuenta regresiva para el Día de San Valentín"
+      },
+      "mid-autumn": {
+        "name": "Festival del Medio Otoño",
+        "description": "Cuenta regresiva para el Festival del Medio Otoño"
+      },
+      "spring-festival": {
+        "name": "Año Nuevo Chino",
+        "description": "Cuenta regresiva para el Año Nuevo Chino / Festival de Primavera"
+      },
+      "independence-day": {
+        "name": "Día de la Independencia (EE. UU.)",
+        "description": "Cuenta regresiva para el Día de la Independencia de EE. UU. (4 de julio)"
+      },
+      "thanksgiving": {
+        "name": "Acción de Gracias (EE. UU.)",
+        "description": "Cuenta regresiva para Acción de Gracias"
+      }
+    }
   }
 }

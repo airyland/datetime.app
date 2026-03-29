@@ -1073,5 +1073,185 @@
     "searchPlaceholder": "Cerca articoli...",
     "allTags": "Tutti",
     "noResults": "Nessun articolo trovato che corrisponda ai tuoi criteri."
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "description": "La pagina che stavi cercando non esiste. Ecco alcuni strumenti popolari per iniziare.",
+    "worldClock": "Orologio mondiale",
+    "worldClockDesc": "Controlla l'ora attuale nelle città di tutto il mondo.",
+    "ageCalculator": "Calcolatore dell'età",
+    "ageCalculatorDesc": "Calcola la tua età esatta dalla data di nascita.",
+    "calendar": "Calendario",
+    "calendarDesc": "Sfoglia il calendario per qualsiasi anno o mese.",
+    "holidays": "Festività",
+    "holidaysDesc": "Trova le festività nazionali per paese e anno.",
+    "yearProgress": "Avanzamento dell'anno",
+    "yearProgressDesc": "Scopri quanto dell'anno corrente è trascorso.",
+    "utcTime": "Ora UTC",
+    "utcTimeDesc": "Visualizza l'ora coordinata universale attuale."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Convertitore di timestamp Unix",
+    "subtitle": "Converti i timestamp Unix / epoch in date leggibili — e viceversa.",
+    "aboutTitle": "Informazioni sui timestamp Unix",
+    "epochTimeTitle": "Cos'è il tempo epoch?",
+    "epochTimeDesc": "I timestamp Unix contano i secondi dal 1° gennaio 1970 00:00:00 UTC. Forniscono un modo indipendente da fuso orario e lingua per memorizzare e confrontare momenti nel tempo — un pilastro dell'ingegneria del software.",
+    "secondsVsMillisecondsTitle": "Secondi vs. millisecondi",
+    "secondsVsMillisecondsDesc": "Il tempo Unix classico è in secondi. JavaScript e molte API moderne usano millisecondi. Come regola generale: un numero a 10 cifre sono secondi; un numero a 13 cifre sono millisecondi. Questo convertitore gestisce entrambi automaticamente.",
+    "whereUsedTitle": "Dove vengono usati i timestamp?",
+    "whereUsedDesc": "I timestamp Unix sono usati in database, file di log, token JWT, header HTTP (Last-Modified), sistemi di controllo versione e praticamente in ogni linguaggio di programmazione. Eliminano le ambiguità causate dall'ora legale e dalle differenze di fuso orario.",
+    "iso8601Title": "Formato ISO 8601",
+    "iso8601Desc": "ISO 8601 (es. 2026-01-01T00:00:00.000Z) è lo standard internazionale per le stringhe di data/ora. È leggibile, ordinabile e sempre univoco. Usalo quando hai bisogno di una rappresentazione testuale di un timestamp Unix.",
+    "faqTitle": "Domande frequenti",
+    "faqs": {
+      "whatIs": {
+        "question": "Cos'è un timestamp Unix?",
+        "answer": "Un timestamp Unix (chiamato anche tempo epoch) è il numero di secondi trascorsi dal 1° gennaio 1970, 00:00:00 UTC, senza contare i secondi intercalari. È un modo standard per rappresentare un punto nel tempo come un singolo intero, ampiamente utilizzato nella programmazione, nei database e nelle API."
+      },
+      "howToConvert": {
+        "question": "Come converto un timestamp Unix in una data leggibile?",
+        "answer": "Incolla il tuo timestamp Unix nel campo 'Timestamp a data' qui sopra e il convertitore ti mostrerà istantaneamente la data equivalente in ora locale, UTC, formato ISO 8601 e come descrizione relativa (es. '3 giorni fa')."
+      },
+      "howToConvertDate": {
+        "question": "Come converto una data in un timestamp Unix?",
+        "answer": "Usa la sezione 'Data a timestamp'. Scegli la data e l'ora usando il selettore di date (usa il tuo fuso orario locale) e il timestamp Unix corrispondente apparirà immediatamente."
+      },
+      "secondsOrMilliseconds": {
+        "question": "Il timestamp Unix conta millisecondi o secondi?",
+        "answer": "Il timestamp Unix originale è misurato in secondi. Molti ambienti di programmazione moderni (incluso Date.now() di JavaScript) restituiscono millisecondi. Questo convertitore accetta entrambi — se il valore è maggiore di 9.999.999.999, viene trattato come millisecondi e convertito automaticamente."
+      },
+      "y2038": {
+        "question": "Cos'è il problema dell'anno 2038?",
+        "answer": "Molti sistemi legacy a 32 bit memorizzano il tempo Unix come intero con segno a 32 bit, che va in overflow il 19 gennaio 2038 alle 03:14:07 UTC (timestamp 2147483647). I sistemi moderni a 64 bit non sono interessati e possono rappresentare date miliardi di anni nel futuro."
+      },
+      "epoch": {
+        "question": "Cos'è l'epoca Unix?",
+        "answer": "L'epoca Unix è il punto di riferimento per tutti i timestamp Unix: 1° gennaio 1970, 00:00:00 UTC, rappresentato come valore 0. Ogni timestamp positivo è il numero di secondi dopo quel momento; i timestamp negativi rappresentano date precedenti al 1970."
+      }
+    },
+    "currentTimestamp": "Timestamp Unix attuale",
+    "copyTimestamp": "Copia timestamp",
+    "secondsElapsed": "Secondi trascorsi dal 1° gennaio 1970 00:00:00 UTC — aggiornamento ogni secondo.",
+    "timestampToDate": "Timestamp a data",
+    "timestampInputLabel": "Timestamp Unix (secondi o millisecondi)",
+    "timestampPlaceholder": "es. 1735689600",
+    "invalidInteger": "Inserisci un numero intero valido.",
+    "outOfRange": "Il timestamp è fuori dall'intervallo supportato (1970–9999).",
+    "localTime": "Ora locale",
+    "utcTime": "Ora UTC",
+    "iso8601": "ISO 8601",
+    "relative": "Relativo",
+    "copy": "Copia",
+    "copied": "Copiato!",
+    "dateToTimestamp": "Data a timestamp",
+    "selectDateTime": "Seleziona una data e un'ora (fuso orario locale)",
+    "unixTimestampLabel": "Timestamp Unix",
+    "referenceTimestamps": "Timestamp di riferimento comuni",
+    "referenceHint": "Clicca su una voce per caricarla nel convertitore sopra.",
+    "convert": "Converti",
+    "refEpoch": "Epoca Unix (1 gen 1970)",
+    "refY2K": "Y2K (1 gen 2000)",
+    "refY2K38": "Y2K38 (19 gen 2038)",
+    "refStartOf2025": "Inizio 2025",
+    "refStartOf2026": "Inizio 2026",
+    "relativeSeconds": "{count} secondi fa",
+    "relativeSecondsIn": "tra {count} secondi",
+    "relativeMinutes": "{count} minuto fa",
+    "relativeMinutesPlural": "{count} minuti fa",
+    "relativeMinutesIn": "tra {count} minuto",
+    "relativeMinutesPluralIn": "tra {count} minuti",
+    "relativeHours": "{count} ora fa",
+    "relativeHoursPlural": "{count} ore fa",
+    "relativeHoursIn": "tra {count} ora",
+    "relativeHoursPluralIn": "tra {count} ore",
+    "relativeDays": "{count} giorno fa",
+    "relativeDaysPlural": "{count} giorni fa",
+    "relativeDaysIn": "tra {count} giorno",
+    "relativeDaysPluralIn": "tra {count} giorni",
+    "relativeMonths": "{count} mese fa",
+    "relativeMonthsPlural": "{count} mesi fa",
+    "relativeMonthsIn": "tra {count} mese",
+    "relativeMonthsPluralIn": "tra {count} mesi",
+    "relativeYears": "{count} anno fa",
+    "relativeYearsPlural": "{count} anni fa",
+    "relativeYearsIn": "tra {count} anno",
+    "relativeYearsPluralIn": "tra {count} anni"
+  },
+  "timeDifference": {
+    "pageTitle": "Differenza di fuso orario tra città",
+    "subtitle": "Confronta i fusi orari attuali e trova gli orari migliori per le riunioni tra città di tutto il mondo.",
+    "sameTime": "Stessa ora",
+    "hourDifference": "{count} ora di differenza",
+    "hoursDifference": "{count} ore di differenza",
+    "hourMinDifference": "{hours}h {minutes}m di differenza",
+    "sameTimezone": "Stesso fuso orario",
+    "hour": "{count} ora",
+    "hours": "{count} ore",
+    "hourMin": "{hours}h {minutes}m",
+    "timeDifferenceBreadcrumb": "Differenza di fuso orario",
+    "timeDifferenceLabel": "Differenza di fuso orario:",
+    "apart": "di distanza",
+    "summaryTitle": "Riepilogo della differenza oraria",
+    "isAhead": "{city} è avanti",
+    "sameOffset": "Stesso offset",
+    "bestMeetingTimes": "Orari migliori per le riunioni",
+    "businessHoursDesc": "Orari lavorativi sovrapposti (9:00–18:00) in entrambe le città",
+    "noOverlap": "Nessun orario lavorativo sovrapposto tra {cityA} e {cityB}. Considera di pianificare riunioni al mattino presto o alla sera tardi.",
+    "overlappingHours": "{count} ora sovrapposta al giorno",
+    "overlappingHoursPlural": "{count} ore sovrapposte al giorno",
+    "inCity": "a {city}",
+    "timelineTitle": "Linea temporale 24 ore",
+    "timelineDesc": "Orari lavorativi (9:00–18:00) mostrati a colori. Ora attuale indicata con un punto.",
+    "localTimeNote": "Gli orari sono mostrati nell'ora locale di ciascuna città.",
+    "viewAllComparisons": "Visualizza tutti i confronti tra città"
+  },
+  "countdown": {
+    "pageTitle": "Timer per il conto alla rovescia",
+    "subtitle": "Tieni traccia di quanto manca ai tuoi eventi e festività preferiti",
+    "today": "Oggi!",
+    "dayLeft": "Manca 1 giorno",
+    "daysLeft": "Mancano {count} giorni",
+    "countdownTo": "Conto alla rovescia per {event}",
+    "eventIsHere": "{event} è arrivato! {emoji}",
+    "days": "Giorni",
+    "hours": "Ore",
+    "minutes": "Minuti",
+    "seconds": "Secondi",
+    "otherCountdowns": "Altri conti alla rovescia",
+    "viewAll": "Visualizza tutti i conti alla rovescia",
+    "events": {
+      "new-year": {
+        "name": "Capodanno",
+        "description": "Conto alla rovescia per Capodanno"
+      },
+      "christmas": {
+        "name": "Natale",
+        "description": "Conto alla rovescia per Natale"
+      },
+      "halloween": {
+        "name": "Halloween",
+        "description": "Conto alla rovescia per Halloween"
+      },
+      "valentines-day": {
+        "name": "San Valentino",
+        "description": "Conto alla rovescia per San Valentino"
+      },
+      "mid-autumn": {
+        "name": "Festa di metà autunno",
+        "description": "Conto alla rovescia per la Festa di metà autunno"
+      },
+      "spring-festival": {
+        "name": "Capodanno cinese",
+        "description": "Conto alla rovescia per il Capodanno cinese / Festa di primavera"
+      },
+      "independence-day": {
+        "name": "Giorno dell'Indipendenza (USA)",
+        "description": "Conto alla rovescia per il Giorno dell'Indipendenza USA (4 luglio)"
+      },
+      "thanksgiving": {
+        "name": "Giorno del Ringraziamento (USA)",
+        "description": "Conto alla rovescia per il Giorno del Ringraziamento"
+      }
+    }
   }
 }

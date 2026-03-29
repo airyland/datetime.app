@@ -1108,5 +1108,185 @@
     "searchPlaceholder": "Rechercher des articles...",
     "allTags": "Tous",
     "noResults": "Aucun article ne correspond à vos critères."
+  },
+  "notFound": {
+    "title": "Page Introuvable",
+    "description": "La page que vous recherchiez n'existe pas. Voici quelques outils populaires pour commencer.",
+    "worldClock": "Horloge Mondiale",
+    "worldClockDesc": "Consultez l'heure actuelle dans les villes du monde entier.",
+    "ageCalculator": "Calculateur d'Âge",
+    "ageCalculatorDesc": "Calculez votre âge exact à partir de votre date de naissance.",
+    "calendar": "Calendrier",
+    "calendarDesc": "Parcourez le calendrier de n'importe quelle année ou mois.",
+    "holidays": "Jours Fériés",
+    "holidaysDesc": "Trouvez les jours fériés par pays et par année.",
+    "yearProgress": "Progression de l'Année",
+    "yearProgressDesc": "Voyez quelle part de l'année en cours s'est écoulée.",
+    "utcTime": "Heure UTC",
+    "utcTimeDesc": "Consultez l'heure universelle coordonnée actuelle."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Convertisseur d'Horodatage Unix",
+    "subtitle": "Convertissez les horodatages Unix / epoch en dates lisibles — et inversement.",
+    "aboutTitle": "À propos des Horodatages Unix",
+    "epochTimeTitle": "Qu'est-ce que le temps epoch ?",
+    "epochTimeDesc": "Les horodatages Unix comptent les secondes écoulées depuis le 1er janvier 1970 à 00:00:00 UTC. Ils offrent un moyen indépendant du fuseau horaire et du langage pour stocker et comparer des instants — une pierre angulaire de l'ingénierie logicielle.",
+    "secondsVsMillisecondsTitle": "Secondes vs. millisecondes",
+    "secondsVsMillisecondsDesc": "Le temps Unix classique est en secondes. JavaScript et de nombreuses API modernes utilisent les millisecondes. En règle générale : un nombre à 10 chiffres correspond aux secondes ; un nombre à 13 chiffres correspond aux millisecondes. Ce convertisseur gère les deux automatiquement.",
+    "whereUsedTitle": "Où les horodatages sont-ils utilisés ?",
+    "whereUsedDesc": "Les horodatages Unix sont utilisés dans les bases de données, les fichiers journaux, les jetons JWT, les en-têtes HTTP (Last-Modified), les systèmes de contrôle de version et pratiquement tous les langages de programmation. Ils éliminent l'ambiguïté causée par l'heure d'été et les différences de fuseau horaire.",
+    "iso8601Title": "Format ISO 8601",
+    "iso8601Desc": "ISO 8601 (ex. 2026-01-01T00:00:00.000Z) est la norme internationale pour les chaînes de date/heure. Elle est lisible, triable et toujours non ambiguë. Utilisez-la lorsque vous avez besoin d'une représentation textuelle d'un horodatage Unix.",
+    "faqTitle": "Questions Fréquemment Posées",
+    "faqs": {
+      "whatIs": {
+        "question": "Qu'est-ce qu'un horodatage Unix ?",
+        "answer": "Un horodatage Unix (aussi appelé temps epoch) est le nombre de secondes écoulées depuis le 1er janvier 1970 à 00:00:00 UTC, sans compter les secondes intercalaires. C'est un moyen standard de représenter un instant sous forme d'un seul entier, largement utilisé en programmation, dans les bases de données et les API."
+      },
+      "howToConvert": {
+        "question": "Comment convertir un horodatage Unix en date lisible ?",
+        "answer": "Collez votre horodatage Unix dans le champ « Horodatage vers Date » ci-dessus et le convertisseur vous affichera instantanément la date équivalente en heure locale, UTC, au format ISO 8601 et sous forme de description relative (ex. « il y a 3 jours »)."
+      },
+      "howToConvertDate": {
+        "question": "Comment convertir une date en horodatage Unix ?",
+        "answer": "Utilisez la section « Date vers Horodatage ». Choisissez votre date et heure à l'aide du sélecteur de date (il utilise votre fuseau horaire local) et l'horodatage Unix correspondant apparaîtra immédiatement."
+      },
+      "secondsOrMilliseconds": {
+        "question": "L'horodatage Unix compte-t-il les millisecondes ou les secondes ?",
+        "answer": "L'horodatage Unix original est mesuré en secondes. De nombreux environnements de programmation modernes (y compris Date.now() de JavaScript) renvoient des millisecondes. Ce convertisseur accepte les deux — si votre valeur est supérieure à 9 999 999 999, elle est traitée comme des millisecondes et convertie automatiquement."
+      },
+      "y2038": {
+        "question": "Qu'est-ce que le problème de l'année 2038 ?",
+        "answer": "De nombreux systèmes hérités 32 bits stockent le temps Unix sous forme d'un entier signé de 32 bits, qui déborde le 19 janvier 2038 à 03:14:07 UTC (horodatage 2147483647). Les systèmes 64 bits modernes ne sont pas affectés et peuvent représenter des dates sur des milliards d'années dans le futur."
+      },
+      "epoch": {
+        "question": "Qu'est-ce que l'epoch Unix ?",
+        "answer": "L'epoch Unix est le point de référence de tous les horodatages Unix : le 1er janvier 1970 à 00:00:00 UTC, représenté par la valeur 0. Chaque horodatage positif correspond au nombre de secondes après cet instant ; les horodatages négatifs représentent des dates antérieures à 1970."
+      }
+    },
+    "currentTimestamp": "Horodatage Unix Actuel",
+    "copyTimestamp": "Copier l'horodatage",
+    "secondsElapsed": "Secondes écoulées depuis le 1er janvier 1970 à 00:00:00 UTC — mise à jour chaque seconde.",
+    "timestampToDate": "Horodatage vers Date",
+    "timestampInputLabel": "Horodatage Unix (secondes ou millisecondes)",
+    "timestampPlaceholder": "ex. 1735689600",
+    "invalidInteger": "Veuillez entrer un entier valide.",
+    "outOfRange": "L'horodatage est hors de la plage prise en charge (1970–9999).",
+    "localTime": "Heure Locale",
+    "utcTime": "Heure UTC",
+    "iso8601": "ISO 8601",
+    "relative": "Relatif",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "dateToTimestamp": "Date vers Horodatage",
+    "selectDateTime": "Sélectionnez une date et une heure (fuseau horaire local)",
+    "unixTimestampLabel": "Horodatage Unix",
+    "referenceTimestamps": "Horodatages de Référence Courants",
+    "referenceHint": "Cliquez sur une entrée pour la charger dans le convertisseur ci-dessus.",
+    "convert": "Convertir",
+    "refEpoch": "Epoch Unix (1er janv. 1970)",
+    "refY2K": "Y2K (1er janv. 2000)",
+    "refY2K38": "Y2K38 (19 janv. 2038)",
+    "refStartOf2025": "Début de 2025",
+    "refStartOf2026": "Début de 2026",
+    "relativeSeconds": "il y a {count} secondes",
+    "relativeSecondsIn": "dans {count} secondes",
+    "relativeMinutes": "il y a {count} minute",
+    "relativeMinutesPlural": "il y a {count} minutes",
+    "relativeMinutesIn": "dans {count} minute",
+    "relativeMinutesPluralIn": "dans {count} minutes",
+    "relativeHours": "il y a {count} heure",
+    "relativeHoursPlural": "il y a {count} heures",
+    "relativeHoursIn": "dans {count} heure",
+    "relativeHoursPluralIn": "dans {count} heures",
+    "relativeDays": "il y a {count} jour",
+    "relativeDaysPlural": "il y a {count} jours",
+    "relativeDaysIn": "dans {count} jour",
+    "relativeDaysPluralIn": "dans {count} jours",
+    "relativeMonths": "il y a {count} mois",
+    "relativeMonthsPlural": "il y a {count} mois",
+    "relativeMonthsIn": "dans {count} mois",
+    "relativeMonthsPluralIn": "dans {count} mois",
+    "relativeYears": "il y a {count} an",
+    "relativeYearsPlural": "il y a {count} ans",
+    "relativeYearsIn": "dans {count} an",
+    "relativeYearsPluralIn": "dans {count} ans"
+  },
+  "timeDifference": {
+    "pageTitle": "Décalage Horaire Entre les Villes",
+    "subtitle": "Comparez les fuseaux horaires actuels et trouvez les meilleurs horaires de réunion entre les villes du monde entier.",
+    "sameTime": "Même heure",
+    "hourDifference": "{count} heure de décalage",
+    "hoursDifference": "{count} heures de décalage",
+    "hourMinDifference": "{hours}h {minutes}min de décalage",
+    "sameTimezone": "Même fuseau horaire",
+    "hour": "{count} heure",
+    "hours": "{count} heures",
+    "hourMin": "{hours}h {minutes}min",
+    "timeDifferenceBreadcrumb": "Décalage Horaire",
+    "timeDifferenceLabel": "Décalage horaire :",
+    "apart": "d'écart",
+    "summaryTitle": "Résumé du Décalage Horaire",
+    "isAhead": "{city} est en avance",
+    "sameOffset": "Même décalage",
+    "bestMeetingTimes": "Meilleurs Horaires de Réunion",
+    "businessHoursDesc": "Heures de bureau communes (9h–18h) dans les deux villes",
+    "noOverlap": "Aucune heure de bureau commune entre {cityA} et {cityB}. Envisagez de planifier des réunions tôt le matin ou tard le soir.",
+    "overlappingHours": "{count} heure commune par jour",
+    "overlappingHoursPlural": "{count} heures communes par jour",
+    "inCity": "à {city}",
+    "timelineTitle": "Chronologie sur 24 Heures",
+    "timelineDesc": "Les heures de travail (9h–18h) sont affichées en couleur. L'heure actuelle est marquée d'un point.",
+    "localTimeNote": "Les heures sont affichées dans le fuseau horaire local de chaque ville.",
+    "viewAllComparisons": "Voir toutes les comparaisons de villes"
+  },
+  "countdown": {
+    "pageTitle": "Comptes à Rebours",
+    "subtitle": "Suivez le temps restant avant vos événements et fêtes préférés",
+    "today": "C'est aujourd'hui !",
+    "dayLeft": "1 jour restant",
+    "daysLeft": "{count} jours restants",
+    "countdownTo": "Compte à rebours jusqu'à {event}",
+    "eventIsHere": "{event} est arrivé ! {emoji}",
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes",
+    "otherCountdowns": "Autres Comptes à Rebours",
+    "viewAll": "Voir tous les comptes à rebours",
+    "events": {
+      "new-year": {
+        "name": "Nouvel An",
+        "description": "Compte à rebours jusqu'au Jour de l'An"
+      },
+      "christmas": {
+        "name": "Noël",
+        "description": "Compte à rebours jusqu'à Noël"
+      },
+      "halloween": {
+        "name": "Halloween",
+        "description": "Compte à rebours jusqu'à Halloween"
+      },
+      "valentines-day": {
+        "name": "Saint-Valentin",
+        "description": "Compte à rebours jusqu'à la Saint-Valentin"
+      },
+      "mid-autumn": {
+        "name": "Fête de la Mi-Automne",
+        "description": "Compte à rebours jusqu'à la Fête de la Mi-Automne"
+      },
+      "spring-festival": {
+        "name": "Nouvel An Chinois",
+        "description": "Compte à rebours jusqu'au Nouvel An Chinois / Fête du Printemps"
+      },
+      "independence-day": {
+        "name": "Fête de l'Indépendance (US)",
+        "description": "Compte à rebours jusqu'à la Fête de l'Indépendance américaine (4 juillet)"
+      },
+      "thanksgiving": {
+        "name": "Thanksgiving (US)",
+        "description": "Compte à rebours jusqu'à Thanksgiving"
+      }
+    }
   }
 }

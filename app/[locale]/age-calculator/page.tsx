@@ -4,6 +4,7 @@ import HeaderClient from "../year-progress-bar/header-client"
 import AgeCalculatorClient from "./age-calculator-client"
 import { getTranslations } from 'next-intl/server'
 import FAQSection from './faq-section'
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld'
 
 export default async function AgeCalculator({ params }: { params: { locale: string } }) {
   const { locale } = params
@@ -102,6 +103,29 @@ export default async function AgeCalculator({ params }: { params: { locale: stri
 
             {/* FAQ Section */}
             <FAQSection title={t('faqTitle')} faqs={ageCalculatorFaqs} />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": ageCalculatorFaqs.map(faq => ({
+                    "@type": "Question",
+                    "name": faq.question,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": faq.answer
+                    }
+                  }))
+                })
+              }}
+            />
+            <BreadcrumbJsonLd
+              items={[
+                { name: "Home", url: "https://datetime.app" },
+                { name: "Age Calculator", url: "https://datetime.app/age-calculator" }
+              ]}
+            />
           </div>
         </div>
       </div>

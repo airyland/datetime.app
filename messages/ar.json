@@ -1078,5 +1078,185 @@
     "searchPlaceholder": "البحث في المقالات...",
     "allTags": "الكل",
     "noResults": "لا توجد مقالات مطابقة لمعاييرك."
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "description": "الصفحة التي كنت تبحث عنها غير موجودة. إليك بعض الأدوات الشائعة للبدء.",
+    "worldClock": "الساعة العالمية",
+    "worldClockDesc": "تحقق من الوقت الحالي في مدن حول العالم.",
+    "ageCalculator": "حاسبة العمر",
+    "ageCalculatorDesc": "احسب عمرك الدقيق من تاريخ ميلادك.",
+    "calendar": "التقويم",
+    "calendarDesc": "تصفح التقويم لأي سنة أو شهر.",
+    "holidays": "العطلات",
+    "holidaysDesc": "ابحث عن العطلات الرسمية حسب البلد والسنة.",
+    "yearProgress": "تقدم السنة",
+    "yearProgressDesc": "شاهد كم مضى من السنة الحالية.",
+    "utcTime": "توقيت UTC",
+    "utcTimeDesc": "عرض التوقيت العالمي المنسق (UTC) الحالي."
+  },
+  "unixTimestamp": {
+    "pageTitle": "محوّل طابع Unix الزمني",
+    "subtitle": "حوّل طوابع Unix / epoch الزمنية إلى تواريخ مقروءة — والعكس.",
+    "aboutTitle": "حول طوابع Unix الزمنية",
+    "epochTimeTitle": "ما هو وقت epoch؟",
+    "epochTimeDesc": "تعدّ طوابع Unix الزمنية الثواني منذ 1 يناير 1970 الساعة 00:00:00 UTC. توفر طريقة مستقلة عن المنطقة الزمنية واللغة لتخزين ومقارنة اللحظات الزمنية — وهي حجر الأساس في هندسة البرمجيات.",
+    "secondsVsMillisecondsTitle": "الثواني مقابل الميلي ثانية",
+    "secondsVsMillisecondsDesc": "وقت Unix الكلاسيكي بالثواني. يستخدم JavaScript والعديد من واجهات API الحديثة الميلي ثانية. كقاعدة عامة: الرقم المكون من 10 خانات هو بالثواني؛ والرقم المكون من 13 خانة هو بالميلي ثانية. يتعامل هذا المحوّل مع كليهما تلقائياً.",
+    "whereUsedTitle": "أين تُستخدم الطوابع الزمنية؟",
+    "whereUsedDesc": "تُستخدم طوابع Unix الزمنية في قواعد البيانات وملفات السجل ورموز JWT ورؤوس HTTP (مثل Last-Modified) وأنظمة التحكم بالإصدارات وفي كل لغة برمجة تقريباً. إنها تزيل الغموض الناتج عن التوقيت الصيفي واختلافات المناطق الزمنية.",
+    "iso8601Title": "صيغة ISO 8601",
+    "iso8601Desc": "ISO 8601 (مثال: 2026-01-01T00:00:00.000Z) هو المعيار الدولي لسلاسل التاريخ/الوقت. وهو مقروء بشرياً وقابل للفرز ودائماً واضح المعنى. استخدمه عندما تحتاج إلى تمثيل نصي لطابع Unix الزمني.",
+    "faqTitle": "الأسئلة الشائعة",
+    "faqs": {
+      "whatIs": {
+        "question": "ما هو طابع Unix الزمني؟",
+        "answer": "طابع Unix الزمني (المعروف أيضاً بوقت epoch) هو عدد الثواني التي انقضت منذ 1 يناير 1970، الساعة 00:00:00 UTC، بدون احتساب الثواني الكبيسة. إنه طريقة قياسية لتمثيل لحظة زمنية كعدد صحيح واحد، ويُستخدم على نطاق واسع في البرمجة وقواعد البيانات وواجهات API."
+      },
+      "howToConvert": {
+        "question": "كيف أحوّل طابع Unix الزمني إلى تاريخ مقروء؟",
+        "answer": "الصق طابع Unix الزمني في حقل 'من الطابع الزمني إلى التاريخ' أعلاه وسيعرض المحوّل فوراً التاريخ المكافئ بالتوقيت المحلي وUTC وصيغة ISO 8601 ووصف نسبي (مثل 'منذ 3 أيام')."
+      },
+      "howToConvertDate": {
+        "question": "كيف أحوّل تاريخاً إلى طابع Unix الزمني؟",
+        "answer": "استخدم قسم 'من التاريخ إلى الطابع الزمني'. اختر التاريخ والوقت باستخدام منتقي التاريخ (يستخدم منطقتك الزمنية المحلية) وسيظهر طابع Unix الزمني المقابل فوراً."
+      },
+      "secondsOrMilliseconds": {
+        "question": "هل يحسب طابع Unix الزمني بالميلي ثانية أم بالثواني؟",
+        "answer": "طابع Unix الزمني الأصلي يُقاس بالثواني. تُرجع العديد من بيئات البرمجة الحديثة (بما في ذلك Date.now() في JavaScript) الميلي ثانية. يقبل هذا المحوّل كليهما — إذا كانت القيمة أكبر من 9,999,999,999 فيتم التعامل معها كميلي ثانية وتحويلها تلقائياً."
+      },
+      "y2038": {
+        "question": "ما هي مشكلة عام 2038؟",
+        "answer": "تخزن العديد من الأنظمة القديمة ذات 32 بت وقت Unix كعدد صحيح موقّع بـ 32 بت، والذي سيفيض في 19 يناير 2038 الساعة 03:14:07 UTC (الطابع الزمني 2147483647). لا تتأثر الأنظمة الحديثة ذات 64 بت ويمكنها تمثيل تواريخ تمتد لمليارات السنين في المستقبل."
+      },
+      "epoch": {
+        "question": "ما هو Unix epoch؟",
+        "answer": "Unix epoch هو نقطة المرجع لجميع طوابع Unix الزمنية: 1 يناير 1970، الساعة 00:00:00 UTC، ويُمثَّل بالقيمة 0. كل طابع زمني موجب هو عدد الثواني بعد تلك اللحظة؛ والطوابع الزمنية السالبة تمثل تواريخ قبل عام 1970."
+      }
+    },
+    "currentTimestamp": "طابع Unix الزمني الحالي",
+    "copyTimestamp": "نسخ الطابع الزمني",
+    "secondsElapsed": "الثواني المنقضية منذ 1 يناير 1970 الساعة 00:00:00 UTC — يُحدَّث كل ثانية.",
+    "timestampToDate": "من الطابع الزمني إلى التاريخ",
+    "timestampInputLabel": "طابع Unix الزمني (ثوانٍ أو ميلي ثانية)",
+    "timestampPlaceholder": "مثال: 1735689600",
+    "invalidInteger": "يرجى إدخال عدد صحيح صالح.",
+    "outOfRange": "الطابع الزمني خارج النطاق المدعوم (1970–9999).",
+    "localTime": "التوقيت المحلي",
+    "utcTime": "توقيت UTC",
+    "iso8601": "ISO 8601",
+    "relative": "نسبي",
+    "copy": "نسخ",
+    "copied": "تم النسخ!",
+    "dateToTimestamp": "من التاريخ إلى الطابع الزمني",
+    "selectDateTime": "اختر التاريخ والوقت (المنطقة الزمنية المحلية)",
+    "unixTimestampLabel": "طابع Unix الزمني",
+    "referenceTimestamps": "طوابع زمنية مرجعية شائعة",
+    "referenceHint": "انقر على أي إدخال لتحميله في المحوّل أعلاه.",
+    "convert": "تحويل",
+    "refEpoch": "Unix Epoch (1 يناير 1970)",
+    "refY2K": "Y2K (1 يناير 2000)",
+    "refY2K38": "Y2K38 (19 يناير 2038)",
+    "refStartOf2025": "بداية 2025",
+    "refStartOf2026": "بداية 2026",
+    "relativeSeconds": "منذ {count} ثانية",
+    "relativeSecondsIn": "بعد {count} ثانية",
+    "relativeMinutes": "منذ {count} دقيقة",
+    "relativeMinutesPlural": "منذ {count} دقائق",
+    "relativeMinutesIn": "بعد {count} دقيقة",
+    "relativeMinutesPluralIn": "بعد {count} دقائق",
+    "relativeHours": "منذ {count} ساعة",
+    "relativeHoursPlural": "منذ {count} ساعات",
+    "relativeHoursIn": "بعد {count} ساعة",
+    "relativeHoursPluralIn": "بعد {count} ساعات",
+    "relativeDays": "منذ {count} يوم",
+    "relativeDaysPlural": "منذ {count} أيام",
+    "relativeDaysIn": "بعد {count} يوم",
+    "relativeDaysPluralIn": "بعد {count} أيام",
+    "relativeMonths": "منذ {count} شهر",
+    "relativeMonthsPlural": "منذ {count} أشهر",
+    "relativeMonthsIn": "بعد {count} شهر",
+    "relativeMonthsPluralIn": "بعد {count} أشهر",
+    "relativeYears": "منذ {count} سنة",
+    "relativeYearsPlural": "منذ {count} سنوات",
+    "relativeYearsIn": "بعد {count} سنة",
+    "relativeYearsPluralIn": "بعد {count} سنوات"
+  },
+  "timeDifference": {
+    "pageTitle": "فرق التوقيت بين المدن",
+    "subtitle": "قارن المناطق الزمنية الحالية واعثر على أفضل أوقات الاجتماعات عبر مدن العالم.",
+    "sameTime": "نفس الوقت",
+    "hourDifference": "فرق {count} ساعة",
+    "hoursDifference": "فرق {count} ساعات",
+    "hourMinDifference": "فرق {hours} ساعة و{minutes} دقيقة",
+    "sameTimezone": "نفس المنطقة الزمنية",
+    "hour": "{count} ساعة",
+    "hours": "{count} ساعات",
+    "hourMin": "{hours} ساعة و{minutes} دقيقة",
+    "timeDifferenceBreadcrumb": "فرق التوقيت",
+    "timeDifferenceLabel": "فرق التوقيت:",
+    "apart": "فرق",
+    "summaryTitle": "ملخص فرق التوقيت",
+    "isAhead": "{city} متقدمة",
+    "sameOffset": "نفس الإزاحة",
+    "bestMeetingTimes": "أفضل أوقات الاجتماعات",
+    "businessHoursDesc": "ساعات العمل المتداخلة (9 صباحاً – 6 مساءً) في كلتا المدينتين",
+    "noOverlap": "لا توجد ساعات عمل متداخلة بين {cityA} و{cityB}. فكّر في جدولة الاجتماعات في الصباح الباكر أو المساء المتأخر.",
+    "overlappingHours": "{count} ساعة متداخلة في اليوم",
+    "overlappingHoursPlural": "{count} ساعات متداخلة في اليوم",
+    "inCity": "في {city}",
+    "timelineTitle": "الجدول الزمني على مدار 24 ساعة",
+    "timelineDesc": "ساعات العمل (9 صباحاً – 6 مساءً) معروضة بالألوان. الساعة الحالية مميزة بنقطة.",
+    "localTimeNote": "الساعات معروضة بالتوقيت المحلي لكل مدينة.",
+    "viewAllComparisons": "عرض جميع مقارنات المدن"
+  },
+  "countdown": {
+    "pageTitle": "مؤقتات العد التنازلي",
+    "subtitle": "تتبع المدة المتبقية حتى فعالياتك وعطلاتك المفضلة",
+    "today": "اليوم!",
+    "dayLeft": "يوم واحد متبقٍ",
+    "daysLeft": "{count} أيام متبقية",
+    "countdownTo": "العد التنازلي لـ{event}",
+    "eventIsHere": "{event} قد حلّ! {emoji}",
+    "days": "أيام",
+    "hours": "ساعات",
+    "minutes": "دقائق",
+    "seconds": "ثوانٍ",
+    "otherCountdowns": "عدّادات تنازلية أخرى",
+    "viewAll": "عرض جميع العدّادات التنازلية",
+    "events": {
+      "new-year": {
+        "name": "رأس السنة الجديدة",
+        "description": "العد التنازلي ليوم رأس السنة الجديدة"
+      },
+      "christmas": {
+        "name": "عيد الميلاد",
+        "description": "العد التنازلي ليوم عيد الميلاد"
+      },
+      "halloween": {
+        "name": "هالوين",
+        "description": "العد التنازلي لعيد الهالوين"
+      },
+      "valentines-day": {
+        "name": "عيد الحب",
+        "description": "العد التنازلي لعيد الحب"
+      },
+      "mid-autumn": {
+        "name": "مهرجان منتصف الخريف",
+        "description": "العد التنازلي لمهرجان منتصف الخريف"
+      },
+      "spring-festival": {
+        "name": "السنة الصينية الجديدة",
+        "description": "العد التنازلي للسنة الصينية الجديدة / مهرجان الربيع"
+      },
+      "independence-day": {
+        "name": "عيد الاستقلال (الولايات المتحدة)",
+        "description": "العد التنازلي لعيد الاستقلال الأمريكي (4 يوليو)"
+      },
+      "thanksgiving": {
+        "name": "عيد الشكر (الولايات المتحدة)",
+        "description": "العد التنازلي لعيد الشكر"
+      }
+    }
   }
 }

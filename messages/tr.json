@@ -977,5 +977,185 @@
     "searchPlaceholder": "Makalelerde ara...",
     "allTags": "Tümü",
     "noResults": "Kriterlerinize uygun makale bulunamadı."
+  },
+  "notFound": {
+    "title": "Sayfa Bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil. İşte başlamanız için bazı popüler araçlar.",
+    "worldClock": "Dünya Saati",
+    "worldClockDesc": "Dünyanın dört bir yanındaki şehirlerde güncel saati kontrol edin.",
+    "ageCalculator": "Yaş Hesaplayıcı",
+    "ageCalculatorDesc": "Doğum tarihinizden itibaren tam yaşınızı hesaplayın.",
+    "calendar": "Takvim",
+    "calendarDesc": "Herhangi bir yıl veya ay için takvimi görüntüleyin.",
+    "holidays": "Tatiller",
+    "holidaysDesc": "Ülkeye ve yıla göre resmi tatilleri bulun.",
+    "yearProgress": "Yıl İlerlemesi",
+    "yearProgressDesc": "Mevcut yılın ne kadarının geçtiğini görün.",
+    "utcTime": "UTC Saati",
+    "utcTimeDesc": "Güncel Koordineli Evrensel Zamanı (UTC) görüntüleyin."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Unix Zaman Damgası Çevirici",
+    "subtitle": "Unix / epoch zaman damgalarını okunabilir tarihlere çevirin — ve tersini yapın.",
+    "aboutTitle": "Unix Zaman Damgaları Hakkında",
+    "epochTimeTitle": "Epoch zamanı nedir?",
+    "epochTimeDesc": "Unix zaman damgaları, 1 Ocak 1970 00:00:00 UTC'den bu yana geçen saniyeleri sayar. Zaman diliminden ve dilden bağımsız olarak anları depolama ve karşılaştırma imkânı sunar — yazılım mühendisliğinin temel taşlarından biridir.",
+    "secondsVsMillisecondsTitle": "Saniye ve milisaniye karşılaştırması",
+    "secondsVsMillisecondsDesc": "Klasik Unix zamanı saniye cinsindendir. JavaScript ve birçok modern API milisaniye kullanır. Kural olarak: 10 haneli bir sayı saniyedir; 13 haneli bir sayı milisaniyedir. Bu çevirici her ikisini de otomatik olarak işler.",
+    "whereUsedTitle": "Zaman damgaları nerede kullanılır?",
+    "whereUsedDesc": "Unix zaman damgaları veritabanlarında, günlük dosyalarında, JWT tokenlarında, HTTP başlıklarında (Last-Modified), sürüm kontrol sistemlerinde ve neredeyse her programlama dilinde kullanılır. Yaz saati uygulaması ve saat dilimi farklılıklarından kaynaklanan belirsizlikleri ortadan kaldırır.",
+    "iso8601Title": "ISO 8601 formatı",
+    "iso8601Desc": "ISO 8601 (örn. 2026-01-01T00:00:00.000Z), tarih/saat dizileri için uluslararası standarttır. İnsan tarafından okunabilir, sıralanabilir ve her zaman açıktır. Bir Unix zaman damgasının metin temsilini kullanmanız gerektiğinde bunu tercih edin.",
+    "faqTitle": "Sıkça Sorulan Sorular",
+    "faqs": {
+      "whatIs": {
+        "question": "Unix zaman damgası nedir?",
+        "answer": "Unix zaman damgası (epoch zamanı olarak da bilinir), 1 Ocak 1970, 00:00:00 UTC'den bu yana artık saniyeler hariç geçen saniye sayısıdır. Programlama, veritabanları ve API'lerde yaygın olarak kullanılan, bir zaman noktasını tek bir tamsayı olarak temsil etmenin standart yoludur."
+      },
+      "howToConvert": {
+        "question": "Unix zaman damgasını okunabilir tarihe nasıl çeviririm?",
+        "answer": "Unix zaman damganızı yukarıdaki 'Zaman Damgasından Tarihe' alanına yapıştırın; çevirici yerel saat, UTC, ISO 8601 formatı ve göreceli açıklama (örn. '3 gün önce') olarak eşdeğer tarihi anında gösterecektir."
+      },
+      "howToConvertDate": {
+        "question": "Bir tarihi Unix zaman damgasına nasıl çeviririm?",
+        "answer": "'Tarihten Zaman Damgasına' bölümünü kullanın. Tarih seçici ile tarih ve saati seçin (yerel saat diliminiz kullanılır) ve ilgili Unix zaman damgası anında görüntülenir."
+      },
+      "secondsOrMilliseconds": {
+        "question": "Unix zaman damgası milisaniye mi saniye mi sayar?",
+        "answer": "Orijinal Unix zaman damgası saniye cinsindendir. Birçok modern programlama ortamı (JavaScript'in Date.now() dahil) milisaniye döndürür. Bu çevirici her ikisini de kabul eder — değer 9.999.999.999'dan büyükse milisaniye olarak kabul edilir ve otomatik olarak dönüştürülür."
+      },
+      "y2038": {
+        "question": "2038 yılı sorunu nedir?",
+        "answer": "Birçok eski 32-bit sistem, Unix zamanını işaretli 32-bit tamsayı olarak depolar ve bu değer 19 Ocak 2038'de 03:14:07 UTC'de taşar (zaman damgası 2147483647). Modern 64-bit sistemler bu sorundan etkilenmez ve milyarlarca yıl sonrasını temsil edebilir."
+      },
+      "epoch": {
+        "question": "Unix epoch nedir?",
+        "answer": "Unix epoch, tüm Unix zaman damgalarının başlangıç noktasıdır: 1 Ocak 1970, 00:00:00 UTC, 0 değeri olarak temsil edilir. Her pozitif zaman damgası bu andan sonraki saniye sayısıdır; negatif zaman damgaları 1970 öncesi tarihleri temsil eder."
+      }
+    },
+    "currentTimestamp": "Güncel Unix Zaman Damgası",
+    "copyTimestamp": "Zaman damgasını kopyala",
+    "secondsElapsed": "1 Ocak 1970 00:00:00 UTC'den bu yana geçen saniye — her saniye güncellenir.",
+    "timestampToDate": "Zaman Damgasından Tarihe",
+    "timestampInputLabel": "Unix zaman damgası (saniye veya milisaniye)",
+    "timestampPlaceholder": "örn. 1735689600",
+    "invalidInteger": "Lütfen geçerli bir tamsayı girin.",
+    "outOfRange": "Zaman damgası desteklenen aralığın dışında (1970–9999).",
+    "localTime": "Yerel Saat",
+    "utcTime": "UTC Saati",
+    "iso8601": "ISO 8601",
+    "relative": "Göreceli",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı!",
+    "dateToTimestamp": "Tarihten Zaman Damgasına",
+    "selectDateTime": "Bir tarih ve saat seçin (yerel saat dilimi)",
+    "unixTimestampLabel": "Unix Zaman Damgası",
+    "referenceTimestamps": "Yaygın Referans Zaman Damgaları",
+    "referenceHint": "Yukarıdaki çeviriciye yüklemek için herhangi bir girişe tıklayın.",
+    "convert": "Çevir",
+    "refEpoch": "Unix Epoch (1 Oca 1970)",
+    "refY2K": "Y2K (1 Oca 2000)",
+    "refY2K38": "Y2K38 (19 Oca 2038)",
+    "refStartOf2025": "2025 Başlangıcı",
+    "refStartOf2026": "2026 Başlangıcı",
+    "relativeSeconds": "{count} saniye önce",
+    "relativeSecondsIn": "{count} saniye sonra",
+    "relativeMinutes": "{count} dakika önce",
+    "relativeMinutesPlural": "{count} dakika önce",
+    "relativeMinutesIn": "{count} dakika sonra",
+    "relativeMinutesPluralIn": "{count} dakika sonra",
+    "relativeHours": "{count} saat önce",
+    "relativeHoursPlural": "{count} saat önce",
+    "relativeHoursIn": "{count} saat sonra",
+    "relativeHoursPluralIn": "{count} saat sonra",
+    "relativeDays": "{count} gün önce",
+    "relativeDaysPlural": "{count} gün önce",
+    "relativeDaysIn": "{count} gün sonra",
+    "relativeDaysPluralIn": "{count} gün sonra",
+    "relativeMonths": "{count} ay önce",
+    "relativeMonthsPlural": "{count} ay önce",
+    "relativeMonthsIn": "{count} ay sonra",
+    "relativeMonthsPluralIn": "{count} ay sonra",
+    "relativeYears": "{count} yıl önce",
+    "relativeYearsPlural": "{count} yıl önce",
+    "relativeYearsIn": "{count} yıl sonra",
+    "relativeYearsPluralIn": "{count} yıl sonra"
+  },
+  "timeDifference": {
+    "pageTitle": "Şehirler Arası Saat Farkı",
+    "subtitle": "Güncel saat dilimlerini karşılaştırın ve dünya genelinde şehirler arası en uygun toplantı saatlerini bulun.",
+    "sameTime": "Aynı saat",
+    "hourDifference": "{count} saat fark",
+    "hoursDifference": "{count} saat fark",
+    "hourMinDifference": "{hours} sa {minutes} dk fark",
+    "sameTimezone": "Aynı saat dilimi",
+    "hour": "{count} saat",
+    "hours": "{count} saat",
+    "hourMin": "{hours} sa {minutes} dk",
+    "timeDifferenceBreadcrumb": "Saat Farkı",
+    "timeDifferenceLabel": "Saat farkı:",
+    "apart": "fark",
+    "summaryTitle": "Saat Farkı Özeti",
+    "isAhead": "{city} ileride",
+    "sameOffset": "Aynı ofset",
+    "bestMeetingTimes": "En Uygun Toplantı Saatleri",
+    "businessHoursDesc": "Her iki şehirde örtüşen çalışma saatleri (09:00–18:00)",
+    "noOverlap": "{cityA} ile {cityB} arasında örtüşen çalışma saati yok. Sabah erken veya akşam geç saatlerde toplantı planlamayı değerlendirin.",
+    "overlappingHours": "Günde {count} örtüşen saat",
+    "overlappingHoursPlural": "Günde {count} örtüşen saat",
+    "inCity": "{city} saatiyle",
+    "timelineTitle": "24 Saatlik Zaman Çizelgesi",
+    "timelineDesc": "Çalışma saatleri (09:00–18:00) renkli gösterilir. Mevcut saat bir noktayla işaretlenir.",
+    "localTimeNote": "Saatler her şehrin yerel saatinde gösterilir.",
+    "viewAllComparisons": "Tüm şehir karşılaştırmalarını görüntüle"
+  },
+  "countdown": {
+    "pageTitle": "Geri Sayım Zamanlayıcıları",
+    "subtitle": "En sevdiğiniz etkinlik ve tatillere ne kadar kaldığını takip edin",
+    "today": "Bugün!",
+    "dayLeft": "1 gün kaldı",
+    "daysLeft": "{count} gün kaldı",
+    "countdownTo": "{event} için geri sayım",
+    "eventIsHere": "{event} geldi! {emoji}",
+    "days": "Gün",
+    "hours": "Saat",
+    "minutes": "Dakika",
+    "seconds": "Saniye",
+    "otherCountdowns": "Diğer Geri Sayımlar",
+    "viewAll": "Tüm geri sayımları görüntüle",
+    "events": {
+      "new-year": {
+        "name": "Yeni Yıl",
+        "description": "Yeni Yıl için geri sayım"
+      },
+      "christmas": {
+        "name": "Noel",
+        "description": "Noel Günü için geri sayım"
+      },
+      "halloween": {
+        "name": "Cadılar Bayramı",
+        "description": "Cadılar Bayramı için geri sayım"
+      },
+      "valentines-day": {
+        "name": "Sevgililer Günü",
+        "description": "Sevgililer Günü için geri sayım"
+      },
+      "mid-autumn": {
+        "name": "Sonbahar Ortası Festivali",
+        "description": "Sonbahar Ortası Festivali için geri sayım"
+      },
+      "spring-festival": {
+        "name": "Çin Yeni Yılı",
+        "description": "Çin Yeni Yılı / Bahar Festivali için geri sayım"
+      },
+      "independence-day": {
+        "name": "Bağımsızlık Günü (ABD)",
+        "description": "ABD Bağımsızlık Günü (4 Temmuz) için geri sayım"
+      },
+      "thanksgiving": {
+        "name": "Şükran Günü (ABD)",
+        "description": "Şükran Günü için geri sayım"
+      }
+    }
   }
 }

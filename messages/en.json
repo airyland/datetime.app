@@ -977,5 +977,185 @@
     "searchPlaceholder": "Search articles...",
     "allTags": "All",
     "noResults": "No articles found matching your criteria."
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "The page you were looking for does not exist. Here are some popular tools to get you started.",
+    "worldClock": "World Clock",
+    "worldClockDesc": "Check the current time in cities around the world.",
+    "ageCalculator": "Age Calculator",
+    "ageCalculatorDesc": "Calculate your exact age from your birth date.",
+    "calendar": "Calendar",
+    "calendarDesc": "Browse the calendar for any year or month.",
+    "holidays": "Holidays",
+    "holidaysDesc": "Find public holidays by country and year.",
+    "yearProgress": "Year Progress",
+    "yearProgressDesc": "See how much of the current year has passed.",
+    "utcTime": "UTC Time",
+    "utcTimeDesc": "View the current Coordinated Universal Time."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Unix Timestamp Converter",
+    "subtitle": "Convert Unix / epoch timestamps to human-readable dates — and back.",
+    "aboutTitle": "About Unix Timestamps",
+    "epochTimeTitle": "What is epoch time?",
+    "epochTimeDesc": "Unix timestamps count the seconds since January 1, 1970 00:00:00 UTC. They provide a timezone-agnostic, language-agnostic way to store and compare moments in time — a cornerstone of software engineering.",
+    "secondsVsMillisecondsTitle": "Seconds vs. milliseconds",
+    "secondsVsMillisecondsDesc": "Classic Unix time is in seconds. JavaScript and many modern APIs use milliseconds. As a rule of thumb: a 10-digit number is seconds; a 13-digit number is milliseconds. This converter handles both automatically.",
+    "whereUsedTitle": "Where are timestamps used?",
+    "whereUsedDesc": "Unix timestamps are used in databases, log files, JWT tokens, HTTP headers (Last-Modified), version control systems, and virtually every programming language. They eliminate ambiguity caused by daylight saving time and timezone differences.",
+    "iso8601Title": "ISO 8601 format",
+    "iso8601Desc": "ISO 8601 (e.g. 2026-01-01T00:00:00.000Z) is the international standard for date/time strings. It is human-readable, sortable, and always unambiguous. Use it when you need a text representation of a Unix timestamp.",
+    "faqTitle": "Frequently Asked Questions",
+    "faqs": {
+      "whatIs": {
+        "question": "What is a Unix timestamp?",
+        "answer": "A Unix timestamp (also called epoch time) is the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC, not counting leap seconds. It is a standard way to represent a point in time as a single integer, used widely in programming, databases, and APIs."
+      },
+      "howToConvert": {
+        "question": "How do I convert a Unix timestamp to a human-readable date?",
+        "answer": "Paste your Unix timestamp into the 'Timestamp to Date' field above and the converter will instantly show you the equivalent date in local time, UTC, ISO 8601 format, and as a relative description (e.g. '3 days ago')."
+      },
+      "howToConvertDate": {
+        "question": "How do I convert a date to a Unix timestamp?",
+        "answer": "Use the 'Date to Timestamp' section. Pick your date and time using the date picker (it uses your local timezone) and the corresponding Unix timestamp will appear immediately."
+      },
+      "secondsOrMilliseconds": {
+        "question": "Does Unix timestamp count milliseconds or seconds?",
+        "answer": "The original Unix timestamp is measured in seconds. Many modern programming environments (including JavaScript's Date.now()) return milliseconds. This converter accepts both — if your value is larger than 9,999,999,999 it is treated as milliseconds and converted automatically."
+      },
+      "y2038": {
+        "question": "What is the Year 2038 problem?",
+        "answer": "Many legacy 32-bit systems store Unix time as a signed 32-bit integer, which overflows on January 19, 2038 at 03:14:07 UTC (timestamp 2147483647). Modern 64-bit systems are not affected and can represent dates billions of years into the future."
+      },
+      "epoch": {
+        "question": "What is the Unix epoch?",
+        "answer": "The Unix epoch is the reference point for all Unix timestamps: January 1, 1970, 00:00:00 UTC, represented as the value 0. Every positive timestamp is the number of seconds after that moment; negative timestamps represent dates before 1970."
+      }
+    },
+    "currentTimestamp": "Current Unix Timestamp",
+    "copyTimestamp": "Copy timestamp",
+    "secondsElapsed": "Seconds elapsed since January 1, 1970 00:00:00 UTC — updates every second.",
+    "timestampToDate": "Timestamp to Date",
+    "timestampInputLabel": "Unix timestamp (seconds or milliseconds)",
+    "timestampPlaceholder": "e.g. 1735689600",
+    "invalidInteger": "Please enter a valid integer.",
+    "outOfRange": "Timestamp is out of the supported range (1970–9999).",
+    "localTime": "Local Time",
+    "utcTime": "UTC Time",
+    "iso8601": "ISO 8601",
+    "relative": "Relative",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "dateToTimestamp": "Date to Timestamp",
+    "selectDateTime": "Select a date and time (local timezone)",
+    "unixTimestampLabel": "Unix Timestamp",
+    "referenceTimestamps": "Common Reference Timestamps",
+    "referenceHint": "Click any entry to load it into the converter above.",
+    "convert": "Convert",
+    "refEpoch": "Unix Epoch (Jan 1, 1970)",
+    "refY2K": "Y2K (Jan 1, 2000)",
+    "refY2K38": "Y2K38 (Jan 19, 2038)",
+    "refStartOf2025": "Start of 2025",
+    "refStartOf2026": "Start of 2026",
+    "relativeSeconds": "{count} seconds ago",
+    "relativeSecondsIn": "in {count} seconds",
+    "relativeMinutes": "{count} minute ago",
+    "relativeMinutesPlural": "{count} minutes ago",
+    "relativeMinutesIn": "in {count} minute",
+    "relativeMinutesPluralIn": "in {count} minutes",
+    "relativeHours": "{count} hour ago",
+    "relativeHoursPlural": "{count} hours ago",
+    "relativeHoursIn": "in {count} hour",
+    "relativeHoursPluralIn": "in {count} hours",
+    "relativeDays": "{count} day ago",
+    "relativeDaysPlural": "{count} days ago",
+    "relativeDaysIn": "in {count} day",
+    "relativeDaysPluralIn": "in {count} days",
+    "relativeMonths": "{count} month ago",
+    "relativeMonthsPlural": "{count} months ago",
+    "relativeMonthsIn": "in {count} month",
+    "relativeMonthsPluralIn": "in {count} months",
+    "relativeYears": "{count} year ago",
+    "relativeYearsPlural": "{count} years ago",
+    "relativeYearsIn": "in {count} year",
+    "relativeYearsPluralIn": "in {count} years"
+  },
+  "timeDifference": {
+    "pageTitle": "Time Difference Between Cities",
+    "subtitle": "Compare current time zones and find the best meeting times across cities worldwide.",
+    "sameTime": "Same time",
+    "hourDifference": "{count} hour difference",
+    "hoursDifference": "{count} hours difference",
+    "hourMinDifference": "{hours}h {minutes}m difference",
+    "sameTimezone": "Same time zone",
+    "hour": "{count} hour",
+    "hours": "{count} hours",
+    "hourMin": "{hours}h {minutes}m",
+    "timeDifferenceBreadcrumb": "Time Difference",
+    "timeDifferenceLabel": "Time difference:",
+    "apart": "apart",
+    "summaryTitle": "Time Difference Summary",
+    "isAhead": "{city} is ahead",
+    "sameOffset": "Same offset",
+    "bestMeetingTimes": "Best Meeting Times",
+    "businessHoursDesc": "Overlapping business hours (9 AM–6 PM) in both cities",
+    "noOverlap": "No overlapping business hours between {cityA} and {cityB}. Consider scheduling early morning or late evening meetings.",
+    "overlappingHours": "{count} overlapping hour per day",
+    "overlappingHoursPlural": "{count} overlapping hours per day",
+    "inCity": "in {city}",
+    "timelineTitle": "24-Hour Timeline",
+    "timelineDesc": "Work hours (9 AM–6 PM) shown in color. Current hour marked with a dot.",
+    "localTimeNote": "Hours are shown in each city's local time.",
+    "viewAllComparisons": "View all city comparisons"
+  },
+  "countdown": {
+    "pageTitle": "Countdown Timers",
+    "subtitle": "Track how long until your favorite events and holidays",
+    "today": "Today!",
+    "dayLeft": "1 day left",
+    "daysLeft": "{count} days left",
+    "countdownTo": "Countdown to {event}",
+    "eventIsHere": "{event} is here! {emoji}",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "otherCountdowns": "Other Countdowns",
+    "viewAll": "View all countdowns",
+    "events": {
+      "new-year": {
+        "name": "New Year",
+        "description": "Countdown to New Year's Day"
+      },
+      "christmas": {
+        "name": "Christmas",
+        "description": "Countdown to Christmas Day"
+      },
+      "halloween": {
+        "name": "Halloween",
+        "description": "Countdown to Halloween"
+      },
+      "valentines-day": {
+        "name": "Valentine's Day",
+        "description": "Countdown to Valentine's Day"
+      },
+      "mid-autumn": {
+        "name": "Mid-Autumn Festival",
+        "description": "Countdown to Mid-Autumn Festival"
+      },
+      "spring-festival": {
+        "name": "Chinese New Year",
+        "description": "Countdown to Chinese New Year / Spring Festival"
+      },
+      "independence-day": {
+        "name": "Independence Day (US)",
+        "description": "Countdown to US Independence Day (July 4th)"
+      },
+      "thanksgiving": {
+        "name": "Thanksgiving (US)",
+        "description": "Countdown to Thanksgiving"
+      }
+    }
   }
 }

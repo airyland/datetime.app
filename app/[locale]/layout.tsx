@@ -82,10 +82,29 @@ export default async function LocaleLayout({
             content={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}
           />
         )}
-        <script 
-          async 
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8443907573529681"
           crossOrigin="anonymous"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Datetime.app",
+              "url": "https://datetime.app",
+              "applicationCategory": "UtilitiesApplication",
+              "operatingSystem": "All",
+              "description": "World clock, time zone converter, calendar, and date tools",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
         />
         <Analytics />
       </head>

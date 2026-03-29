@@ -988,5 +988,365 @@
     "searchPlaceholder": "아티클 검색...",
     "allTags": "전체",
     "noResults": "기준에 맞는 아티클을 찾을 수 없습니다."
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "description": "찾으시는 페이지가 존재하지 않습니다. 다음의 인기 도구를 이용해 보세요.",
+    "worldClock": "세계 시계",
+    "worldClockDesc": "전 세계 도시의 현재 시간을 확인하세요.",
+    "ageCalculator": "나이 계산기",
+    "ageCalculatorDesc": "생년월일로 정확한 나이를 계산하세요.",
+    "calendar": "달력",
+    "calendarDesc": "원하는 연도와 월의 달력을 탐색하세요.",
+    "holidays": "공휴일",
+    "holidaysDesc": "국가별, 연도별 공휴일을 확인하세요.",
+    "yearProgress": "연간 진행률",
+    "yearProgressDesc": "올해가 얼마나 지났는지 확인하세요.",
+    "utcTime": "UTC 시간",
+    "utcTimeDesc": "현재 협정 세계시(UTC)를 확인하세요."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Unix 타임스탬프 변환기",
+    "subtitle": "Unix / 에포크 타임스탬프를 읽기 쉬운 날짜로 변환하거나 그 반대로 변환하세요.",
+    "aboutTitle": "Unix 타임스탬프 소개",
+    "epochTimeTitle": "에포크 시간이란?",
+    "epochTimeDesc": "Unix 타임스탬프는 1970년 1월 1일 00:00:00 UTC 이후 경과한 초를 셉니다. 시간대와 언어에 구애받지 않는 방식으로 시점을 저장하고 비교할 수 있어 소프트웨어 공학의 초석이 됩니다.",
+    "secondsVsMillisecondsTitle": "초 vs. 밀리초",
+    "secondsVsMillisecondsDesc": "전통적인 Unix 시간은 초 단위입니다. JavaScript와 많은 최신 API는 밀리초를 사용합니다. 경험 법칙: 10자리 숫자는 초, 13자리 숫자는 밀리초입니다. 이 변환기는 두 가지 모두 자동으로 처리합니다.",
+    "whereUsedTitle": "타임스탬프는 어디에 사용되나요?",
+    "whereUsedDesc": "Unix 타임스탬프는 데이터베이스, 로그 파일, JWT 토큰, HTTP 헤더(Last-Modified), 버전 관리 시스템, 그리고 거의 모든 프로그래밍 언어에서 사용됩니다. 일광 절약 시간과 시간대 차이로 인한 모호성을 제거합니다.",
+    "iso8601Title": "ISO 8601 형식",
+    "iso8601Desc": "ISO 8601(예: 2026-01-01T00:00:00.000Z)은 날짜/시간 문자열의 국제 표준입니다. 사람이 읽을 수 있고, 정렬 가능하며, 항상 명확합니다. Unix 타임스탬프의 텍스트 표현이 필요할 때 사용하세요.",
+    "faqTitle": "자주 묻는 질문",
+    "faqs": {
+      "whatIs": {
+        "question": "Unix 타임스탬프란 무엇인가요?",
+        "answer": "Unix 타임스탬프(에포크 시간이라고도 함)는 1970년 1월 1일 00:00:00 UTC 이후 경과한 초의 수로, 윤초는 포함하지 않습니다. 프로그래밍, 데이터베이스, API에서 널리 사용되는 시점 표현의 표준 방식입니다."
+      },
+      "howToConvert": {
+        "question": "Unix 타임스탬프를 읽기 쉬운 날짜로 변환하려면 어떻게 하나요?",
+        "answer": "위의 '타임스탬프를 날짜로' 필드에 Unix 타임스탬프를 붙여넣으면 변환기가 즉시 현지 시간, UTC, ISO 8601 형식 및 상대적 설명(예: '3일 전')으로 표시합니다."
+      },
+      "howToConvertDate": {
+        "question": "날짜를 Unix 타임스탬프로 변환하려면 어떻게 하나요?",
+        "answer": "'날짜를 타임스탬프로' 섹션을 사용하세요. 날짜 선택기를 사용하여 날짜와 시간을 선택하면(현지 시간대 사용) 해당하는 Unix 타임스탬프가 즉시 표시됩니다."
+      },
+      "secondsOrMilliseconds": {
+        "question": "Unix 타임스탬프는 밀리초인가요, 초인가요?",
+        "answer": "원래 Unix 타임스탬프는 초 단위입니다. JavaScript의 Date.now()를 포함한 많은 최신 프로그래밍 환경은 밀리초를 반환합니다. 이 변환기는 둘 다 허용하며, 값이 9,999,999,999보다 크면 밀리초로 처리하여 자동 변환합니다."
+      },
+      "y2038": {
+        "question": "Y2K38 문제란 무엇인가요?",
+        "answer": "많은 레거시 32비트 시스템은 Unix 시간을 부호 있는 32비트 정수로 저장하며, 이는 2038년 1월 19일 03:14:07 UTC(타임스탬프 2147483647)에 오버플로됩니다. 최신 64비트 시스템은 영향을 받지 않으며 수십억 년 후까지 표현할 수 있습니다."
+      },
+      "epoch": {
+        "question": "Unix 에포크란 무엇인가요?",
+        "answer": "Unix 에포크는 모든 Unix 타임스탬프의 기준점으로, 1970년 1월 1일 00:00:00 UTC이며 값 0으로 표현됩니다. 양수 타임스탬프는 그 이후의 초 수이고, 음수 타임스탬프는 1970년 이전 날짜를 나타냅니다."
+      }
+    },
+    "currentTimestamp": "현재 Unix 타임스탬프",
+    "copyTimestamp": "타임스탬프 복사",
+    "secondsElapsed": "1970년 1월 1일 00:00:00 UTC 이후 경과한 초 — 매초 업데이트됩니다.",
+    "timestampToDate": "타임스탬프를 날짜로",
+    "timestampInputLabel": "Unix 타임스탬프 (초 또는 밀리초)",
+    "timestampPlaceholder": "예: 1735689600",
+    "invalidInteger": "유효한 정수를 입력해 주세요.",
+    "outOfRange": "타임스탬프가 지원 범위(1970–9999)를 벗어났습니다.",
+    "localTime": "현지 시간",
+    "utcTime": "UTC 시간",
+    "iso8601": "ISO 8601",
+    "relative": "상대 시간",
+    "copy": "복사",
+    "copied": "복사됨!",
+    "dateToTimestamp": "날짜를 타임스탬프로",
+    "selectDateTime": "날짜와 시간을 선택하세요 (현지 시간대)",
+    "unixTimestampLabel": "Unix 타임스탬프",
+    "referenceTimestamps": "주요 참조 타임스탬프",
+    "referenceHint": "항목을 클릭하면 위의 변환기에 로드됩니다.",
+    "convert": "변환",
+    "refEpoch": "Unix 에포크 (1970년 1월 1일)",
+    "refY2K": "Y2K (2000년 1월 1일)",
+    "refY2K38": "Y2K38 (2038년 1월 19일)",
+    "refStartOf2025": "2025년 시작",
+    "refStartOf2026": "2026년 시작",
+    "relativeSeconds": "{count}초 전",
+    "relativeSecondsIn": "{count}초 후",
+    "relativeMinutes": "{count}분 전",
+    "relativeMinutesPlural": "{count}분 전",
+    "relativeMinutesIn": "{count}분 후",
+    "relativeMinutesPluralIn": "{count}분 후",
+    "relativeHours": "{count}시간 전",
+    "relativeHoursPlural": "{count}시간 전",
+    "relativeHoursIn": "{count}시간 후",
+    "relativeHoursPluralIn": "{count}시간 후",
+    "relativeDays": "{count}일 전",
+    "relativeDaysPlural": "{count}일 전",
+    "relativeDaysIn": "{count}일 후",
+    "relativeDaysPluralIn": "{count}일 후",
+    "relativeMonths": "{count}개월 전",
+    "relativeMonthsPlural": "{count}개월 전",
+    "relativeMonthsIn": "{count}개월 후",
+    "relativeMonthsPluralIn": "{count}개월 후",
+    "relativeYears": "{count}년 전",
+    "relativeYearsPlural": "{count}년 전",
+    "relativeYearsIn": "{count}년 후",
+    "relativeYearsPluralIn": "{count}년 후"
+  },
+  "timeDifference": {
+    "pageTitle": "도시 간 시차",
+    "subtitle": "현재 시간대를 비교하고 전 세계 도시 간 최적의 회의 시간을 찾으세요.",
+    "sameTime": "같은 시간",
+    "hourDifference": "{count}시간 차이",
+    "hoursDifference": "{count}시간 차이",
+    "hourMinDifference": "{hours}시간 {minutes}분 차이",
+    "sameTimezone": "같은 시간대",
+    "hour": "{count}시간",
+    "hours": "{count}시간",
+    "hourMin": "{hours}시간 {minutes}분",
+    "timeDifferenceBreadcrumb": "시차",
+    "timeDifferenceLabel": "시차:",
+    "apart": "차이",
+    "summaryTitle": "시차 요약",
+    "isAhead": "{city}이(가) 앞서 있음",
+    "sameOffset": "같은 오프셋",
+    "bestMeetingTimes": "최적 회의 시간",
+    "businessHoursDesc": "두 도시의 겹치는 업무 시간 (오전 9시~오후 6시)",
+    "noOverlap": "{cityA}와(과) {cityB} 사이에 겹치는 업무 시간이 없습니다. 이른 아침이나 늦은 저녁 회의를 고려해 보세요.",
+    "overlappingHours": "하루 {count}시간 겹침",
+    "overlappingHoursPlural": "하루 {count}시간 겹침",
+    "inCity": "{city} 기준",
+    "timelineTitle": "24시간 타임라인",
+    "timelineDesc": "업무 시간(오전 9시~오후 6시)이 색상으로 표시됩니다. 현재 시간은 점으로 표시됩니다.",
+    "localTimeNote": "시간은 각 도시의 현지 시간으로 표시됩니다.",
+    "viewAllComparisons": "모든 도시 비교 보기"
+  },
+  "countdown": {
+    "pageTitle": "카운트다운 타이머",
+    "subtitle": "좋아하는 이벤트와 공휴일까지 남은 시간을 추적하세요",
+    "today": "오늘!",
+    "dayLeft": "1일 남음",
+    "daysLeft": "{count}일 남음",
+    "countdownTo": "{event} 카운트다운",
+    "eventIsHere": "{event}이(가) 왔습니다! {emoji}",
+    "days": "일",
+    "hours": "시간",
+    "minutes": "분",
+    "seconds": "초",
+    "otherCountdowns": "다른 카운트다운",
+    "viewAll": "모든 카운트다운 보기",
+    "events": {
+      "new-year": {
+        "name": "새해",
+        "description": "새해 첫날 카운트다운"
+      },
+      "christmas": {
+        "name": "크리스마스",
+        "description": "크리스마스 카운트다운"
+      },
+      "halloween": {
+        "name": "할로윈",
+        "description": "할로윈 카운트다운"
+      },
+      "valentines-day": {
+        "name": "발렌타인데이",
+        "description": "발렌타인데이 카운트다운"
+      },
+      "mid-autumn": {
+        "name": "추석",
+        "description": "추석 카운트다운"
+      },
+      "spring-festival": {
+        "name": "설날",
+        "description": "설날 카운트다운"
+      },
+      "independence-day": {
+        "name": "미국 독립기념일",
+        "description": "미국 독립기념일(7월 4일) 카운트다운"
+      },
+      "thanksgiving": {
+        "name": "추수감사절(미국)",
+        "description": "추수감사절 카운트다운"
+      }
+    }
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "description": "찾으시는 페이지가 존재하지 않습니다. 다음의 인기 도구들을 이용해 보세요.",
+    "worldClock": "세계 시계",
+    "worldClockDesc": "전 세계 도시의 현재 시간을 확인하세요.",
+    "ageCalculator": "나이 계산기",
+    "ageCalculatorDesc": "생년월일로 정확한 나이를 계산하세요.",
+    "calendar": "달력",
+    "calendarDesc": "원하는 연도나 월의 달력을 탐색하세요.",
+    "holidays": "공휴일",
+    "holidaysDesc": "국가와 연도별 공휴일을 찾아보세요.",
+    "yearProgress": "연도 진행률",
+    "yearProgressDesc": "올해가 얼마나 지났는지 확인하세요.",
+    "utcTime": "UTC 시간",
+    "utcTimeDesc": "현재 협정 세계시(UTC)를 확인하세요."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Unix 타임스탬프 변환기",
+    "subtitle": "Unix / 에포크 타임스탬프를 읽기 쉬운 날짜로 변환하거나 그 반대로 변환하세요.",
+    "aboutTitle": "Unix 타임스탬프에 대하여",
+    "epochTimeTitle": "에포크 시간이란?",
+    "epochTimeDesc": "Unix 타임스탬프는 1970년 1월 1일 00:00:00 UTC 이후 경과한 초를 셉니다. 시간대와 언어에 구애받지 않는 방식으로 시간을 저장하고 비교할 수 있으며, 소프트웨어 엔지니어링의 핵심 요소입니다.",
+    "secondsVsMillisecondsTitle": "초 vs. 밀리초",
+    "secondsVsMillisecondsDesc": "기존 Unix 시간은 초 단위입니다. JavaScript와 많은 최신 API는 밀리초를 사용합니다. 일반적으로 10자리 숫자는 초이고, 13자리 숫자는 밀리초입니다. 이 변환기는 둘 다 자동으로 처리합니다.",
+    "whereUsedTitle": "타임스탬프는 어디에 사용되나요?",
+    "whereUsedDesc": "Unix 타임스탬프는 데이터베이스, 로그 파일, JWT 토큰, HTTP 헤더(Last-Modified), 버전 관리 시스템 및 거의 모든 프로그래밍 언어에서 사용됩니다. 일광 절약 시간과 시간대 차이로 인한 모호성을 제거합니다.",
+    "iso8601Title": "ISO 8601 형식",
+    "iso8601Desc": "ISO 8601(예: 2026-01-01T00:00:00.000Z)은 날짜/시간 문자열의 국제 표준입니다. 사람이 읽을 수 있고, 정렬 가능하며, 항상 명확합니다. Unix 타임스탬프의 텍스트 표현이 필요할 때 사용하세요.",
+    "faqTitle": "자주 묻는 질문",
+    "faqs": {
+      "whatIs": {
+        "question": "Unix 타임스탬프란 무엇인가요?",
+        "answer": "Unix 타임스탬프(에포크 시간이라고도 함)는 1970년 1월 1일 00:00:00 UTC 이후 윤초를 제외하고 경과한 초의 수입니다. 하나의 정수로 시점을 나타내는 표준 방법으로, 프로그래밍, 데이터베이스, API에서 널리 사용됩니다."
+      },
+      "howToConvert": {
+        "question": "Unix 타임스탬프를 읽기 쉬운 날짜로 변환하려면 어떻게 하나요?",
+        "answer": "위의 '타임스탬프를 날짜로' 필드에 Unix 타임스탬프를 붙여넣으면 변환기가 즉시 현지 시간, UTC, ISO 8601 형식 및 상대적 설명(예: '3일 전')으로 동일한 날짜를 표시합니다."
+      },
+      "howToConvertDate": {
+        "question": "날짜를 Unix 타임스탬프로 변환하려면 어떻게 하나요?",
+        "answer": "'날짜를 타임스탬프로' 섹션을 사용하세요. 날짜 선택기로 날짜와 시간을 선택하면(현지 시간대 사용) 해당하는 Unix 타임스탬프가 즉시 나타납니다."
+      },
+      "secondsOrMilliseconds": {
+        "question": "Unix 타임스탬프는 밀리초인가요, 초인가요?",
+        "answer": "원래 Unix 타임스탬프는 초 단위로 측정됩니다. JavaScript의 Date.now()를 포함한 많은 최신 프로그래밍 환경에서는 밀리초를 반환합니다. 이 변환기는 두 가지 모두 처리하며, 값이 9,999,999,999보다 크면 밀리초로 간주하여 자동으로 변환합니다."
+      },
+      "y2038": {
+        "question": "Y2K38 문제란 무엇인가요?",
+        "answer": "많은 레거시 32비트 시스템은 Unix 시간을 부호 있는 32비트 정수로 저장하며, 이는 2038년 1월 19일 03:14:07 UTC(타임스탬프 2147483647)에 오버플로됩니다. 최신 64비트 시스템은 영향을 받지 않으며 수십억 년 후의 날짜까지 표현할 수 있습니다."
+      },
+      "epoch": {
+        "question": "Unix 에포크란 무엇인가요?",
+        "answer": "Unix 에포크는 모든 Unix 타임스탬프의 기준점입니다: 1970년 1월 1일 00:00:00 UTC이며, 값 0으로 표현됩니다. 모든 양수 타임스탬프는 그 시점 이후의 초 수이고, 음수 타임스탬프는 1970년 이전의 날짜를 나타냅니다."
+      }
+    },
+    "currentTimestamp": "현재 Unix 타임스탬프",
+    "copyTimestamp": "타임스탬프 복사",
+    "secondsElapsed": "1970년 1월 1일 00:00:00 UTC 이후 경과한 초 — 매초 업데이트됩니다.",
+    "timestampToDate": "타임스탬프를 날짜로",
+    "timestampInputLabel": "Unix 타임스탬프 (초 또는 밀리초)",
+    "timestampPlaceholder": "예: 1735689600",
+    "invalidInteger": "유효한 정수를 입력해 주세요.",
+    "outOfRange": "타임스탬프가 지원 범위(1970–9999)를 벗어났습니다.",
+    "localTime": "현지 시간",
+    "utcTime": "UTC 시간",
+    "iso8601": "ISO 8601",
+    "relative": "상대적",
+    "copy": "복사",
+    "copied": "복사됨!",
+    "dateToTimestamp": "날짜를 타임스탬프로",
+    "selectDateTime": "날짜와 시간을 선택하세요 (현지 시간대)",
+    "unixTimestampLabel": "Unix 타임스탬프",
+    "referenceTimestamps": "주요 참조 타임스탬프",
+    "referenceHint": "항목을 클릭하면 위의 변환기에 로드됩니다.",
+    "convert": "변환",
+    "refEpoch": "Unix 에포크 (1970년 1월 1일)",
+    "refY2K": "Y2K (2000년 1월 1일)",
+    "refY2K38": "Y2K38 (2038년 1월 19일)",
+    "refStartOf2025": "2025년 시작",
+    "refStartOf2026": "2026년 시작",
+    "relativeSeconds": "{count}초 전",
+    "relativeSecondsIn": "{count}초 후",
+    "relativeMinutes": "{count}분 전",
+    "relativeMinutesPlural": "{count}분 전",
+    "relativeMinutesIn": "{count}분 후",
+    "relativeMinutesPluralIn": "{count}분 후",
+    "relativeHours": "{count}시간 전",
+    "relativeHoursPlural": "{count}시간 전",
+    "relativeHoursIn": "{count}시간 후",
+    "relativeHoursPluralIn": "{count}시간 후",
+    "relativeDays": "{count}일 전",
+    "relativeDaysPlural": "{count}일 전",
+    "relativeDaysIn": "{count}일 후",
+    "relativeDaysPluralIn": "{count}일 후",
+    "relativeMonths": "{count}개월 전",
+    "relativeMonthsPlural": "{count}개월 전",
+    "relativeMonthsIn": "{count}개월 후",
+    "relativeMonthsPluralIn": "{count}개월 후",
+    "relativeYears": "{count}년 전",
+    "relativeYearsPlural": "{count}년 전",
+    "relativeYearsIn": "{count}년 후",
+    "relativeYearsPluralIn": "{count}년 후"
+  },
+  "timeDifference": {
+    "pageTitle": "도시 간 시차",
+    "subtitle": "현재 시간대를 비교하고 전 세계 도시 간 최적의 회의 시간을 찾아보세요.",
+    "sameTime": "동일한 시간",
+    "hourDifference": "{count}시간 차이",
+    "hoursDifference": "{count}시간 차이",
+    "hourMinDifference": "{hours}시간 {minutes}분 차이",
+    "sameTimezone": "동일한 시간대",
+    "hour": "{count}시간",
+    "hours": "{count}시간",
+    "hourMin": "{hours}시간 {minutes}분",
+    "timeDifferenceBreadcrumb": "시차",
+    "timeDifferenceLabel": "시차:",
+    "apart": "차이",
+    "summaryTitle": "시차 요약",
+    "isAhead": "{city}이(가) 앞서 있습니다",
+    "sameOffset": "동일한 오프셋",
+    "bestMeetingTimes": "최적의 회의 시간",
+    "businessHoursDesc": "두 도시의 겹치는 업무 시간 (오전 9시~오후 6시)",
+    "noOverlap": "{cityA}과(와) {cityB} 사이에 겹치는 업무 시간이 없습니다. 이른 아침이나 늦은 저녁 회의를 고려해 보세요.",
+    "overlappingHours": "하루 {count}시간 겹침",
+    "overlappingHoursPlural": "하루 {count}시간 겹침",
+    "inCity": "{city} 기준",
+    "timelineTitle": "24시간 타임라인",
+    "timelineDesc": "업무 시간(오전 9시~오후 6시)이 색상으로 표시됩니다. 현재 시간은 점으로 표시됩니다.",
+    "localTimeNote": "시간은 각 도시의 현지 시간으로 표시됩니다.",
+    "viewAllComparisons": "모든 도시 비교 보기"
+  },
+  "countdown": {
+    "pageTitle": "카운트다운 타이머",
+    "subtitle": "좋아하는 이벤트와 공휴일까지 남은 시간을 추적하세요",
+    "today": "오늘!",
+    "dayLeft": "1일 남음",
+    "daysLeft": "{count}일 남음",
+    "countdownTo": "{event} 카운트다운",
+    "eventIsHere": "{event}이(가) 왔습니다! {emoji}",
+    "days": "일",
+    "hours": "시간",
+    "minutes": "분",
+    "seconds": "초",
+    "otherCountdowns": "다른 카운트다운",
+    "viewAll": "모든 카운트다운 보기",
+    "events": {
+      "new-year": {
+        "name": "새해",
+        "description": "새해 첫날 카운트다운"
+      },
+      "christmas": {
+        "name": "크리스마스",
+        "description": "크리스마스 카운트다운"
+      },
+      "halloween": {
+        "name": "할로윈",
+        "description": "할로윈 카운트다운"
+      },
+      "valentines-day": {
+        "name": "발렌타인데이",
+        "description": "발렌타인데이 카운트다운"
+      },
+      "mid-autumn": {
+        "name": "추석",
+        "description": "추석 카운트다운"
+      },
+      "spring-festival": {
+        "name": "설날",
+        "description": "설날 카운트다운"
+      },
+      "independence-day": {
+        "name": "독립기념일(미국)",
+        "description": "미국 독립기념일(7월 4일) 카운트다운"
+      },
+      "thanksgiving": {
+        "name": "추수감사절(미국)",
+        "description": "추수감사절 카운트다운"
+      }
+    }
   }
 }

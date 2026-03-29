@@ -10,6 +10,7 @@ import YearProgressClient from "./year-progress-client"
 import HeaderClient from "./header-client"
 import { useTranslations } from 'next-intl'
 import { getTranslations } from 'next-intl/server'
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld'
 
 // Load JetBrains Mono for numbers
 const jetbrainsMono = JetBrains_Mono({
@@ -290,6 +291,29 @@ export default async function YearProgressBar({ params }: { params: { locale: st
                 ))}
               </Accordion>
             </div>
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": yearProgressFaqs.map(faq => ({
+                    "@type": "Question",
+                    "name": faq.question,
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": faq.answer
+                    }
+                  }))
+                })
+              }}
+            />
+            <BreadcrumbJsonLd
+              items={[
+                { name: "Home", url: "https://datetime.app" },
+                { name: "Year Progress Bar", url: "https://datetime.app/year-progress-bar" }
+              ]}
+            />
           </div>
         </div>
       </div>

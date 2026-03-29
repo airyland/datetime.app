@@ -978,5 +978,185 @@
     "searchPlaceholder": "Artikel durchsuchen...",
     "allTags": "Alle",
     "noResults": "Keine Artikel gefunden, die Ihren Kriterien entsprechen."
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht. Hier sind einige beliebte Tools für den Einstieg.",
+    "worldClock": "Weltzeituhr",
+    "worldClockDesc": "Aktuelle Uhrzeit in Städten weltweit anzeigen.",
+    "ageCalculator": "Altersrechner",
+    "ageCalculatorDesc": "Berechnen Sie Ihr genaues Alter anhand Ihres Geburtsdatums.",
+    "calendar": "Kalender",
+    "calendarDesc": "Durchsuchen Sie den Kalender für jedes Jahr oder jeden Monat.",
+    "holidays": "Feiertage",
+    "holidaysDesc": "Finden Sie gesetzliche Feiertage nach Land und Jahr.",
+    "yearProgress": "Jahresfortschritt",
+    "yearProgressDesc": "Sehen Sie, wie viel vom aktuellen Jahr bereits vergangen ist.",
+    "utcTime": "UTC-Zeit",
+    "utcTimeDesc": "Aktuelle koordinierte Weltzeit anzeigen."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Unix-Zeitstempel-Konverter",
+    "subtitle": "Unix-/Epoch-Zeitstempel in lesbare Daten umwandeln — und umgekehrt.",
+    "aboutTitle": "Über Unix-Zeitstempel",
+    "epochTimeTitle": "Was ist Epoch-Zeit?",
+    "epochTimeDesc": "Unix-Zeitstempel zählen die Sekunden seit dem 1. Januar 1970 00:00:00 UTC. Sie bieten eine zeitzonen- und sprachunabhängige Möglichkeit, Zeitpunkte zu speichern und zu vergleichen — ein Grundpfeiler der Softwareentwicklung.",
+    "secondsVsMillisecondsTitle": "Sekunden vs. Millisekunden",
+    "secondsVsMillisecondsDesc": "Klassische Unix-Zeit wird in Sekunden angegeben. JavaScript und viele moderne APIs verwenden Millisekunden. Als Faustregel: Eine 10-stellige Zahl sind Sekunden; eine 13-stellige Zahl sind Millisekunden. Dieser Konverter erkennt beides automatisch.",
+    "whereUsedTitle": "Wo werden Zeitstempel verwendet?",
+    "whereUsedDesc": "Unix-Zeitstempel werden in Datenbanken, Logdateien, JWT-Tokens, HTTP-Headern (Last-Modified), Versionskontrollsystemen und praktisch jeder Programmiersprache verwendet. Sie eliminieren Mehrdeutigkeiten durch Sommerzeit und Zeitzonenunterschiede.",
+    "iso8601Title": "ISO 8601-Format",
+    "iso8601Desc": "ISO 8601 (z. B. 2026-01-01T00:00:00.000Z) ist der internationale Standard für Datums-/Zeitzeichenketten. Es ist menschenlesbar, sortierbar und immer eindeutig. Verwenden Sie es, wenn Sie eine Textdarstellung eines Unix-Zeitstempels benötigen.",
+    "faqTitle": "Häufig gestellte Fragen",
+    "faqs": {
+      "whatIs": {
+        "question": "Was ist ein Unix-Zeitstempel?",
+        "answer": "Ein Unix-Zeitstempel (auch Epoch-Zeit genannt) ist die Anzahl der Sekunden, die seit dem 1. Januar 1970, 00:00:00 UTC vergangen sind, ohne Schaltsekunden. Es ist eine Standardmethode, einen Zeitpunkt als einzelne Ganzzahl darzustellen, die in der Programmierung, in Datenbanken und APIs weit verbreitet ist."
+      },
+      "howToConvert": {
+        "question": "Wie konvertiere ich einen Unix-Zeitstempel in ein lesbares Datum?",
+        "answer": "Fügen Sie Ihren Unix-Zeitstempel in das Feld 'Zeitstempel zu Datum' oben ein, und der Konverter zeigt Ihnen sofort das entsprechende Datum in Ortszeit, UTC, ISO 8601-Format und als relative Beschreibung (z. B. 'vor 3 Tagen')."
+      },
+      "howToConvertDate": {
+        "question": "Wie konvertiere ich ein Datum in einen Unix-Zeitstempel?",
+        "answer": "Verwenden Sie den Abschnitt 'Datum zu Zeitstempel'. Wählen Sie Datum und Uhrzeit mit der Datumsauswahl (sie verwendet Ihre lokale Zeitzone), und der entsprechende Unix-Zeitstempel erscheint sofort."
+      },
+      "secondsOrMilliseconds": {
+        "question": "Zählt der Unix-Zeitstempel Millisekunden oder Sekunden?",
+        "answer": "Der ursprüngliche Unix-Zeitstempel wird in Sekunden gemessen. Viele moderne Programmierumgebungen (einschließlich JavaScripts Date.now()) geben Millisekunden zurück. Dieser Konverter akzeptiert beides — wenn Ihr Wert größer als 9.999.999.999 ist, wird er als Millisekunden behandelt und automatisch umgerechnet."
+      },
+      "y2038": {
+        "question": "Was ist das Jahr-2038-Problem?",
+        "answer": "Viele ältere 32-Bit-Systeme speichern die Unix-Zeit als vorzeichenbehaftete 32-Bit-Ganzzahl, die am 19. Januar 2038 um 03:14:07 UTC überläuft (Zeitstempel 2147483647). Moderne 64-Bit-Systeme sind nicht betroffen und können Daten Milliarden von Jahren in der Zukunft darstellen."
+      },
+      "epoch": {
+        "question": "Was ist die Unix-Epoche?",
+        "answer": "Die Unix-Epoche ist der Bezugspunkt für alle Unix-Zeitstempel: 1. Januar 1970, 00:00:00 UTC, dargestellt als Wert 0. Jeder positive Zeitstempel ist die Anzahl der Sekunden nach diesem Zeitpunkt; negative Zeitstempel stellen Daten vor 1970 dar."
+      }
+    },
+    "currentTimestamp": "Aktueller Unix-Zeitstempel",
+    "copyTimestamp": "Zeitstempel kopieren",
+    "secondsElapsed": "Sekunden seit dem 1. Januar 1970 00:00:00 UTC — wird jede Sekunde aktualisiert.",
+    "timestampToDate": "Zeitstempel zu Datum",
+    "timestampInputLabel": "Unix-Zeitstempel (Sekunden oder Millisekunden)",
+    "timestampPlaceholder": "z. B. 1735689600",
+    "invalidInteger": "Bitte geben Sie eine gültige Ganzzahl ein.",
+    "outOfRange": "Der Zeitstempel liegt außerhalb des unterstützten Bereichs (1970–9999).",
+    "localTime": "Ortszeit",
+    "utcTime": "UTC-Zeit",
+    "iso8601": "ISO 8601",
+    "relative": "Relativ",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "dateToTimestamp": "Datum zu Zeitstempel",
+    "selectDateTime": "Datum und Uhrzeit auswählen (lokale Zeitzone)",
+    "unixTimestampLabel": "Unix-Zeitstempel",
+    "referenceTimestamps": "Häufige Referenz-Zeitstempel",
+    "referenceHint": "Klicken Sie auf einen Eintrag, um ihn in den Konverter oben zu laden.",
+    "convert": "Konvertieren",
+    "refEpoch": "Unix-Epoche (1. Jan. 1970)",
+    "refY2K": "Y2K (1. Jan. 2000)",
+    "refY2K38": "Y2K38 (19. Jan. 2038)",
+    "refStartOf2025": "Anfang 2025",
+    "refStartOf2026": "Anfang 2026",
+    "relativeSeconds": "vor {count} Sekunden",
+    "relativeSecondsIn": "in {count} Sekunden",
+    "relativeMinutes": "vor {count} Minute",
+    "relativeMinutesPlural": "vor {count} Minuten",
+    "relativeMinutesIn": "in {count} Minute",
+    "relativeMinutesPluralIn": "in {count} Minuten",
+    "relativeHours": "vor {count} Stunde",
+    "relativeHoursPlural": "vor {count} Stunden",
+    "relativeHoursIn": "in {count} Stunde",
+    "relativeHoursPluralIn": "in {count} Stunden",
+    "relativeDays": "vor {count} Tag",
+    "relativeDaysPlural": "vor {count} Tagen",
+    "relativeDaysIn": "in {count} Tag",
+    "relativeDaysPluralIn": "in {count} Tagen",
+    "relativeMonths": "vor {count} Monat",
+    "relativeMonthsPlural": "vor {count} Monaten",
+    "relativeMonthsIn": "in {count} Monat",
+    "relativeMonthsPluralIn": "in {count} Monaten",
+    "relativeYears": "vor {count} Jahr",
+    "relativeYearsPlural": "vor {count} Jahren",
+    "relativeYearsIn": "in {count} Jahr",
+    "relativeYearsPluralIn": "in {count} Jahren"
+  },
+  "timeDifference": {
+    "pageTitle": "Zeitunterschied zwischen Städten",
+    "subtitle": "Vergleichen Sie aktuelle Zeitzonen und finden Sie die besten Besprechungszeiten zwischen Städten weltweit.",
+    "sameTime": "Gleiche Zeit",
+    "hourDifference": "{count} Stunde Unterschied",
+    "hoursDifference": "{count} Stunden Unterschied",
+    "hourMinDifference": "{hours}h {minutes}m Unterschied",
+    "sameTimezone": "Gleiche Zeitzone",
+    "hour": "{count} Stunde",
+    "hours": "{count} Stunden",
+    "hourMin": "{hours}h {minutes}m",
+    "timeDifferenceBreadcrumb": "Zeitunterschied",
+    "timeDifferenceLabel": "Zeitunterschied:",
+    "apart": "auseinander",
+    "summaryTitle": "Zusammenfassung des Zeitunterschieds",
+    "isAhead": "{city} ist voraus",
+    "sameOffset": "Gleiche Zeitverschiebung",
+    "bestMeetingTimes": "Beste Besprechungszeiten",
+    "businessHoursDesc": "Überlappende Geschäftszeiten (9:00–18:00) in beiden Städten",
+    "noOverlap": "Keine überlappenden Geschäftszeiten zwischen {cityA} und {cityB}. Erwägen Sie, Besprechungen am frühen Morgen oder späten Abend zu planen.",
+    "overlappingHours": "{count} überlappende Stunde pro Tag",
+    "overlappingHoursPlural": "{count} überlappende Stunden pro Tag",
+    "inCity": "in {city}",
+    "timelineTitle": "24-Stunden-Zeitleiste",
+    "timelineDesc": "Arbeitszeiten (9:00–18:00) farblich dargestellt. Aktuelle Stunde mit einem Punkt markiert.",
+    "localTimeNote": "Die Uhrzeiten werden in der jeweiligen Ortszeit der Stadt angezeigt.",
+    "viewAllComparisons": "Alle Städtevergleiche anzeigen"
+  },
+  "countdown": {
+    "pageTitle": "Countdown-Timer",
+    "subtitle": "Verfolgen Sie, wie lange es noch bis zu Ihren Lieblingsereignissen und Feiertagen dauert",
+    "today": "Heute!",
+    "dayLeft": "Noch 1 Tag",
+    "daysLeft": "Noch {count} Tage",
+    "countdownTo": "Countdown bis {event}",
+    "eventIsHere": "{event} ist da! {emoji}",
+    "days": "Tage",
+    "hours": "Stunden",
+    "minutes": "Minuten",
+    "seconds": "Sekunden",
+    "otherCountdowns": "Weitere Countdowns",
+    "viewAll": "Alle Countdowns anzeigen",
+    "events": {
+      "new-year": {
+        "name": "Neujahr",
+        "description": "Countdown bis Neujahr"
+      },
+      "christmas": {
+        "name": "Weihnachten",
+        "description": "Countdown bis Weihnachten"
+      },
+      "halloween": {
+        "name": "Halloween",
+        "description": "Countdown bis Halloween"
+      },
+      "valentines-day": {
+        "name": "Valentinstag",
+        "description": "Countdown bis Valentinstag"
+      },
+      "mid-autumn": {
+        "name": "Mittherbstfest",
+        "description": "Countdown bis zum Mittherbstfest"
+      },
+      "spring-festival": {
+        "name": "Chinesisches Neujahr",
+        "description": "Countdown bis zum Chinesischen Neujahr / Frühlingsfest"
+      },
+      "independence-day": {
+        "name": "Unabhängigkeitstag (USA)",
+        "description": "Countdown bis zum US-Unabhängigkeitstag (4. Juli)"
+      },
+      "thanksgiving": {
+        "name": "Thanksgiving (USA)",
+        "description": "Countdown bis Thanksgiving"
+      }
+    }
   }
 }
