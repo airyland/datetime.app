@@ -29,8 +29,10 @@ export default function MonthPage({ params }: MonthPageProps) {
   const t = useTranslations('calendar');
   const tCommon = useTranslations('common');
   
-  // Validate year and month
-  if (isNaN(year) || year < 1970 || year > 2100 || isNaN(month) || month < 1 || month > 12) {
+  // Validate year and month (limit to ±15 years from current year)
+  const minYear = new Date().getFullYear() - 15;
+  const maxYear = new Date().getFullYear() + 15;
+  if (isNaN(year) || year < minYear || year > maxYear || isNaN(month) || month < 1 || month > 12) {
     notFound();
   }
   
@@ -76,13 +78,17 @@ export default function MonthPage({ params }: MonthPageProps) {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <Link 
-              href={`/${locale === 'en' ? '' : locale + '/'}calendar/${prevYear}/${String(prevMonth).padStart(2, '0')}`}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
-              title={t('previousMonth')}
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </Link>
+            {prevYear >= minYear ? (
+              <Link
+                href={`/${locale === 'en' ? '' : locale + '/'}calendar/${prevYear}/${String(prevMonth).padStart(2, '0')}`}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
+                title={t('previousMonth')}
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </Link>
+            ) : (
+              <span className="p-2 opacity-30"><ChevronLeft className="w-6 h-6" /></span>
+            )}
             
             <div className="text-center">
               <h1 className="text-3xl md:text-4xl font-bold mb-2">
@@ -107,13 +113,17 @@ export default function MonthPage({ params }: MonthPageProps) {
               </div>
             </div>
             
-            <Link 
-              href={`/${locale === 'en' ? '' : locale + '/'}calendar/${nextYear}/${String(nextMonth).padStart(2, '0')}`}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
-              title={t('nextMonth')}
-            >
-              <ChevronRight className="w-6 h-6" />
-            </Link>
+            {nextYear <= maxYear ? (
+              <Link
+                href={`/${locale === 'en' ? '' : locale + '/'}calendar/${nextYear}/${String(nextMonth).padStart(2, '0')}`}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
+                title={t('nextMonth')}
+              >
+                <ChevronRight className="w-6 h-6" />
+              </Link>
+            ) : (
+              <span className="p-2 opacity-30"><ChevronRight className="w-6 h-6" /></span>
+            )}
           </div>
         </div>
 

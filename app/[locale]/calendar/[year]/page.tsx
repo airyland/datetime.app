@@ -33,7 +33,7 @@ export default function CalendarPage({ params }: CalendarPageProps) {
   const currentYear = new Date().getFullYear();
   const minYear = currentYear - 15;
   const maxYear = currentYear + 15;
-  
+
   if (isNaN(year) || year < minYear || year > maxYear) {
     notFound();
   }
@@ -82,13 +82,17 @@ export default function CalendarPage({ params }: CalendarPageProps) {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-4 mb-4">
-            <Link 
-              href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year - 1}`}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
-              title={t('previousYear')}
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </Link>
+            {year - 1 >= minYear ? (
+              <Link
+                href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year - 1}`}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
+                title={t('previousYear')}
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </Link>
+            ) : (
+              <span className="p-2 opacity-30"><ChevronLeft className="w-6 h-6" /></span>
+            )}
             
             <div className="text-center">
               <h1 className="text-3xl md:text-4xl font-bold mb-2">
@@ -114,13 +118,17 @@ export default function CalendarPage({ params }: CalendarPageProps) {
               </div>
             </div>
             
-            <Link 
-              href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year + 1}`}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
-              title={t('nextYear')}
-            >
-              <ChevronRight className="w-6 h-6" />
-            </Link>
+            {year + 1 <= maxYear ? (
+              <Link
+                href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year + 1}`}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
+                title={t('nextYear')}
+              >
+                <ChevronRight className="w-6 h-6" />
+              </Link>
+            ) : (
+              <span className="p-2 opacity-30"><ChevronRight className="w-6 h-6" /></span>
+            )}
           </div>
           
           {/* Year statistics */}

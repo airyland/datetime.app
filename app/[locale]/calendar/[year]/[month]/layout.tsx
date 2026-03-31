@@ -14,11 +14,14 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
   const locale = params.locale;
   const t = await getTranslations({ locale, namespace: 'calendar' });
 
-  // Handle invalid year or month
-  if (isNaN(year) || year < 1970 || year > 2100 || isNaN(month) || month < 1 || month > 12) {
+  // Handle invalid year or month (must match page.tsx ±15 year range)
+  const currentYear = new Date().getFullYear();
+  const minYear = currentYear - 15;
+  const maxYear = currentYear + 15;
+  if (isNaN(year) || year < minYear || year > maxYear || isNaN(month) || month < 1 || month > 12) {
     return {
       title: "Invalid Date | Calendar | Datetime.app",
-      description: "The requested date is invalid. Please select a valid year and month.",
+      description: `The requested date is invalid. Please select a valid year between ${minYear} and ${maxYear}.`,
     }
   }
 
@@ -32,7 +35,6 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
     return acc;
   }, {} as Record<string, string>);
 
-  const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth() + 1;
   const isCurrentMonth = year === currentYear && month === currentMonth;
   const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);

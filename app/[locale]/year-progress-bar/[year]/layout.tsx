@@ -13,11 +13,14 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
   const locale = params.locale;
   const t = await getTranslations({ locale, namespace: 'yearProgress' });
 
-  // Handle invalid year
-  if (isNaN(year) || year < 1970) {
+  // Handle invalid year (must match page.tsx ±15 year range)
+  const currentYear = new Date().getFullYear();
+  const minYear = currentYear - 15;
+  const maxYear = currentYear + 15;
+  if (isNaN(year) || year < minYear || year > maxYear) {
     return {
       title: "Invalid Year | Year Progress Bar | Datetime.app",
-      description: "The requested year is invalid. Please select a valid year after 1970.",
+      description: `The requested year is invalid. Please select a valid year between ${minYear} and ${maxYear}.`,
     }
   }
 

@@ -14,9 +14,18 @@ interface TermPageProps {
 export async function generateMetadata({ params }: TermPageProps): Promise<Metadata> {
   const { term, locale } = params
   const t = await getTranslations({ locale, namespace: 'glossary' })
-  
+
+  // Map kebab-case URLs to camelCase term keys
+  const kebabToCamelMap: Record<string, string> = {
+    'leap-second': 'leapSecond',
+    'atomic-time': 'atomicTime',
+    'julian-date': 'julianDate',
+    'unix-timestamp': 'unixTimestamp',
+  }
+  const resolvedTerm = kebabToCamelMap[term] || term
+
   // Check if term exists
-  const termKey = `terms.${term}`
+  const termKey = `terms.${resolvedTerm}`
   try {
     const title = t(`${termKey}.title`)
     const description = t(`${termKey}.shortDescription`)
@@ -52,14 +61,25 @@ export default async function TermPage({ params }: TermPageProps) {
   
   // Define available terms
   const availableTerms = ['utc', 'gmt', 'iso8601', 'unixTimestamp', 'timezone', 'dst', 'leapSecond', 'atomicTime', 'julianDate', 'epoch']
-  
+
+  // Map kebab-case URLs to camelCase term keys
+  const kebabToCamelMap: Record<string, string> = {
+    'leap-second': 'leapSecond',
+    'atomic-time': 'atomicTime',
+    'julian-date': 'julianDate',
+    'unix-timestamp': 'unixTimestamp',
+  }
+
+  // Resolve term (support both kebab-case and camelCase)
+  const resolvedTerm = kebabToCamelMap[term] || term
+
   // If term doesn't exist, show 404
-  if (!availableTerms.includes(term)) {
+  if (!availableTerms.includes(resolvedTerm)) {
     notFound()
   }
   
   // Get term information from translations
-  const termKey = `terms.${term}`
+  const termKey = `terms.${resolvedTerm}`
   const title = t(`${termKey}.title`)
   const shortDescription = t(`${termKey}.shortDescription`)
   const longDescription = t(`${termKey}.longDescription`)
@@ -83,7 +103,7 @@ export default async function TermPage({ params }: TermPageProps) {
     epoch: ['unixTimestamp', 'julianDate']
   }
   
-  const relatedTerms = relatedTermsMap[term] || []
+  const relatedTerms = relatedTermsMap[resolvedTerm] || []
   
   return (
     <main className="min-h-screen bg-white dark:bg-black flex flex-col">
