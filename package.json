@@ -11,7 +11,8 @@
     "check:translations": "node scripts/check-translations.js",
     "validate:cities": "node scripts/validate-city-translations.js",
     "validate:translations": "npm run check:translations && npm run validate:cities",
-    "validate:verbose": "node scripts/validate-city-translations.js --verbose --cross-check"
+    "validate:verbose": "node scripts/validate-city-translations.js --verbose --cross-check",
+    "test": "rm -rf dist-tests && tsc --project tsconfig.test.json --pretty false && node dist-tests/tests/run-tests.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

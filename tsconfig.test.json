@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "dist-tests",
+    "noEmit": false,
+    "declaration": false,
+    "emitDeclarationOnly": false
+  },
+  "include": [
+    "tests/run-tests.ts",
+    "app/api/age/date-utils.ts",
+    "lib/age-calculator.ts"
+  ]
+}

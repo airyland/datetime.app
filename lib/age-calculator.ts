@@ -5,56 +5,54 @@
  * @returns Object with age in different formats
  */
 export function calculateAge(birthDate: Date, toDate: Date = new Date()) {
-  // Validate dates
   if (birthDate > toDate) {
     throw new Error("Birth date cannot be in the future");
   }
 
-  // Calculate years
-  let years = toDate.getFullYear() - birthDate.getFullYear();
-  
-  // Adjust years if the current month/day is before birth month/day
-  const birthMonth = birthDate.getMonth();
-  const currentMonth = toDate.getMonth();
-  
-  if (currentMonth < birthMonth || 
-      (currentMonth === birthMonth && toDate.getDate() < birthDate.getDate())) {
+  const birthYear = birthDate.getUTCFullYear();
+  const birthMonth = birthDate.getUTCMonth();
+  const birthDay = birthDate.getUTCDate();
+
+  const targetYear = toDate.getUTCFullYear();
+  const targetMonth = toDate.getUTCMonth();
+  const targetDay = toDate.getUTCDate();
+
+  let years = targetYear - birthYear;
+
+  if (targetMonth < birthMonth || (targetMonth === birthMonth && targetDay < birthDay)) {
     years--;
   }
-  
-  // Calculate months
-  let months = toDate.getMonth() - birthDate.getMonth();
-  if (months < 0) months += 12;
-  
-  // Adjust for day of month
-  if (toDate.getDate() < birthDate.getDate()) {
+
+  let months = targetMonth - birthMonth;
+  if (months < 0) {
+    months += 12;
+  }
+
+  if (targetDay < birthDay) {
     months--;
-    if (months < 0) months += 12;
+    if (months < 0) {
+      months += 12;
+    }
   }
-  
-  // Calculate days
-  let days = toDate.getDate() - birthDate.getDate();
+
+  let days = targetDay - birthDay;
   if (days < 0) {
-    // Get the number of days in the previous month
-    const lastMonth = new Date(toDate.getFullYear(), toDate.getMonth(), 0);
-    days += lastMonth.getDate();
+    const lastMonth = new Date(Date.UTC(targetYear, targetMonth, 0));
+    days += lastMonth.getUTCDate();
   }
-  
-  // Calculate total values
-  const totalDays = Math.floor((toDate.getTime() - birthDate.getTime()) / (1000 * 60 * 60 * 24));
-  const totalMonths = years * 12 + months;
-  
-  // Calculate hours, minutes, seconds
+
   const millisecondsInDay = 24 * 60 * 60 * 1000;
-  const remainingMilliseconds = (toDate.getTime() - birthDate.getTime()) % millisecondsInDay;
-  
-  const hours = Math.floor(remainingMilliseconds / (60 * 60 * 1000));
-  const minutes = Math.floor((remainingMilliseconds % (60 * 60 * 1000)) / (60 * 1000));
-  const seconds = Math.floor((remainingMilliseconds % (60 * 1000)) / 1000);
-  
-  // Calculate decimal age (years with decimal)
+  const totalMilliseconds = toDate.getTime() - birthDate.getTime();
+  const totalDays = Math.floor(totalMilliseconds / millisecondsInDay);
+  const totalMonths = years * 12 + months;
+  const normalizedRemainder = ((totalMilliseconds % millisecondsInDay) + millisecondsInDay) % millisecondsInDay;
+
+  const hours = Math.floor(normalizedRemainder / (60 * 60 * 1000));
+  const minutes = Math.floor((normalizedRemainder % (60 * 60 * 1000)) / (60 * 1000));
+  const seconds = Math.floor((normalizedRemainder % (60 * 1000)) / 1000);
+
   const decimalAge = totalDays / 365.25;
-  
+
   return {
     years,
     months,
@@ -66,6 +64,7 @@ export function calculateAge(birthDate: Date, toDate: Date = new Date()) {
     totalMonths,
     decimalAge: parseFloat(decimalAge.toFixed(2)),
     formatted: {
+      readable: `${years} years and ${months} months`,
       full: `${years} years, ${months} months, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`,
       short: `${years}y ${months}m ${days}d`,
       ymd: `${years} years, ${months} months, ${days} days`,
