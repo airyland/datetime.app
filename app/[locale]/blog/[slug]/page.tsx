@@ -3,8 +3,7 @@ import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import BlogPost from '@/components/blog/BlogPost'
 import Header from '@/components/header'
-import { promises as fs } from 'fs'
-import path from 'path'
+import postsData from '@/data/blog/posts.json'
 
 interface BlogPostData {
   slug: string
@@ -22,9 +21,7 @@ interface BlogPostData {
 
 async function getPost(slug: string): Promise<BlogPostData | null> {
   try {
-    const filePath = path.join(process.cwd(), 'data', 'blog', 'posts.json')
-    const fileContent = await fs.readFile(filePath, 'utf8')
-    const posts = JSON.parse(fileContent)
+    const posts = postsData
     const now = new Date()
     const post = posts.find((p: BlogPostData) => p.slug === slug && p.published && new Date(p.date) <= now)
     return post || null
@@ -36,9 +33,7 @@ async function getPost(slug: string): Promise<BlogPostData | null> {
 
 async function getAllPosts(): Promise<BlogPostData[]> {
   try {
-    const filePath = path.join(process.cwd(), 'data', 'blog', 'posts.json')
-    const fileContent = await fs.readFile(filePath, 'utf8')
-    const posts = JSON.parse(fileContent)
+    const posts = postsData
     const now = new Date()
     return posts.filter((p: BlogPostData) => p.published && new Date(p.date) <= now)
   } catch (error) {

@@ -29,3 +29,7 @@ next-env.d.ts*.log
 # markdown files (except README)
 *.md
 !README.md
+
+.open-next/
+.wrangler/
+.dev.vars*

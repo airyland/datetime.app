@@ -82,3 +82,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+## Zeabur deployment
+
+The `codex/datetime-zeabur` branch preserves the Cloudflare production source deployed on 2026-10-11 (Worker version `23834b61-e20a-42db-802f-f5577960f034`, application base `105c9f2`), including the patched Next.js 15.5.27 / React 19.1.8 runtime and bundled blog data. It does not include the local redesign.
+
+Deploy the repository Dockerfile on Zeabur with port 3000. Set `NEXT_PUBLIC_GOOGLE_ADSENSE_ID`, `NEXT_PUBLIC_ANALYTICS_DOMAIN` and `NEXT_PUBLIC_ANALYTICS_SCRIPT` as build environment variables. The Dockerfile uses Next.js standalone output and an unprivileged runtime user.
+
+This deployment has no Cloudflare bindings, OpenNext adapter or R2 credentials. Next.js uses its default memory/filesystem cache within a single service replica. Cache contents may be rebuilt after deployment or restart; no user data depends on this cache. Keep one replica unless a shared cache is explicitly introduced.
+
+The previous Worker and R2 bucket are retained for rollback. The existing Cloudflare www-to-apex redirect should remain enabled.

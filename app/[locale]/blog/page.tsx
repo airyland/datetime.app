@@ -2,8 +2,7 @@ import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import BlogList from '@/components/blog/BlogList'
 import Header from '@/components/header'
-import { promises as fs } from 'fs'
-import path from 'path'
+import postsData from '@/data/blog/posts.json'
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'blog' })
@@ -30,9 +29,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
 
 async function getBlogPosts() {
   try {
-    const filePath = path.join(process.cwd(), 'data', 'blog', 'posts.json')
-    const fileContent = await fs.readFile(filePath, 'utf8')
-    const posts = JSON.parse(fileContent)
+    const posts = postsData
     const now = new Date()
     // Only show posts that are published AND have a date less than or equal to today
     return posts.filter((post: any) => post.published && new Date(post.date) <= now)
