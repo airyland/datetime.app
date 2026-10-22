@@ -4,14 +4,22 @@ RUN npm install -g pnpm
 
 WORKDIR /app
 
-FROM base AS deps
+# Build on the runner's native platform: emulated (qemu) arm64 builds crash during
+# static generation. The .next output is architecture independent.
+FROM --platform=$BUILDPLATFORM node:22.23.4-alpine AS build-base
+
+RUN npm install -g pnpm
+
+WORKDIR /app
+
+FROM build-base AS deps
 # Because of docker layer caching dependencies should only be re-installed if package.json or pnpm-lock.yaml change.
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
 RUN pnpm install --frozen-lockfile
 
-FROM base AS builder
+FROM build-base AS builder
 
 COPY --from=deps /app/node_modules ./node_modules
 
