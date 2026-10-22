@@ -20,8 +20,10 @@ export default function MonthPage({ params }: MonthPageProps) {
   const locale = resolvedParams.locale;
   const t = useTranslations('calendar');
   
-  // Validate year and month
-  if (isNaN(year) || year < 1970 || year > 2100 || isNaN(month) || month < 1 || month > 12) {
+  // Validate year and month (limit to ±15 years from current year)
+  const minYear = new Date().getFullYear() - 15;
+  const maxYear = new Date().getFullYear() + 15;
+  if (isNaN(year) || year < minYear || year > maxYear || isNaN(month) || month < 1 || month > 12) {
     notFound();
   }
   
@@ -115,11 +117,11 @@ export default function MonthPage({ params }: MonthPageProps) {
             {t('viewYear', { year })}
           </ArrowLink>
           <div className="flex items-center gap-2.5">
-            <CalNavLink href={monthHref(prevYear, prevMonth)} title={t('previousMonth')} dir="prev" />
+            {prevYear >= minYear && <CalNavLink href={monthHref(prevYear, prevMonth)} title={t('previousMonth')} dir="prev" />}
             <div className="tnum min-w-[112px] text-center font-mono text-[22px] font-light tracking-[-0.03em]">
               {String(month).padStart(2, '0')}/{year}
             </div>
-            <CalNavLink href={monthHref(nextYear, nextMonth)} title={t('nextMonth')} dir="next" />
+            {nextYear <= maxYear && <CalNavLink href={monthHref(nextYear, nextMonth)} title={t('nextMonth')} dir="next" />}
           </div>
         </div>
 

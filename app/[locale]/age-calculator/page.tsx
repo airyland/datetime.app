@@ -2,6 +2,7 @@ import { Calendar, Clock } from "lucide-react"
 import { Faq, PageIntro, Section, SectionHeading, cardClass } from "@/components/ds"
 import { getLocalePath } from "@/lib/locale-utils"
 import AgeCalculatorClient from "./age-calculator-client"
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld'
 import { getTranslations } from 'next-intl/server'
 
 export default async function AgeCalculator({ params }: { params: Promise<{ locale: string }> }) {
@@ -84,6 +85,17 @@ export default async function AgeCalculator({ params }: { params: Promise<{ loca
 
       {/* FAQ Section */}
       <Faq title={t('faqTitle')} items={ageCalculatorFaqs.map((f) => ({ q: f.question, a: f.answer }))} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: ageCalculatorFaqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+          }),
+        }}
+      />
+      <BreadcrumbJsonLd items={[{ name: "Home", url: "https://datetime.app" }, { name: "Age Calculator", url: "https://datetime.app/age-calculator" }]} />
     </>
   )
 }

@@ -3,6 +3,7 @@ import { calculateYearProgress, calculateTimeLeft, calculateTimeLeftData, format
 import YearProgressClient from "./year-progress-client"
 import { CardList, Faq, Pill, PageIntro, RowLink, Section, SectionHeading, Stat, StatGrid, cardClass, monoLabel, ArrowLink } from "@/components/ds"
 import { getLocalePath } from "@/lib/locale-utils"
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld'
 import { getTranslations } from 'next-intl/server'
 
 // Generate metadata with current progress
@@ -214,6 +215,17 @@ export default async function YearProgressBar({ params }: { params: Promise<{ lo
       </Section>
 
       <Faq title={t('faqTitle')} items={yearProgressFaqs.map((f) => ({ q: f.question, a: f.answer }))} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: yearProgressFaqs.map((f) => ({ "@type": "Question", name: f.question, acceptedAnswer: { "@type": "Answer", text: f.answer } })),
+          }),
+        }}
+      />
+      <BreadcrumbJsonLd items={[{ name: "Home", url: "https://datetime.app" }, { name: "Year Progress Bar", url: "https://datetime.app/year-progress-bar" }]} />
     </>
   )
 }

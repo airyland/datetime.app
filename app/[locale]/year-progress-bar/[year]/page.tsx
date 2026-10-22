@@ -19,7 +19,7 @@ export default async function YearProgressBarWithYear({ params }: YearProgressBa
   const currentYear = new Date().getFullYear()
   const minYear = currentYear - 15
   const maxYear = currentYear + 15
-  
+
   if (isNaN(yearParam) || yearParam < minYear || yearParam > maxYear) {
     notFound()
   }

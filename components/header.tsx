@@ -45,6 +45,7 @@ export default function Header() {
     { href: `/calendar/${year}`, label: `${commonT('nav.calendar')} ${year}`, title: commonT('links.titleCalendar', { year }) },
     { href: "/holidays", label: commonT('nav.holidays'), title: commonT('links.titleHolidays') },
     { href: "/iana-timezones", label: commonT('nav.timezones'), title: commonT('links.titleTimezones') },
+    { href: "/blog", label: commonT('nav.blog'), title: "Read our blog" },
   ]
 
   return (
