@@ -407,7 +407,8 @@
       "title": "Upcoming holidays",
       "noDataForCountry": "Holiday data is not available for {country}.",
       "loading": "Loading upcoming holidays…",
-      "none": "No upcoming public holidays soon."
+      "none": "No upcoming public holidays soon.",
+      "all": "All holidays"
     },
     "developerSnippet": {
       "title": "Developer snippet",
@@ -963,5 +964,278 @@
         "content": "{timezone} is the standard time used in {city}, {country} and surrounding regions. The timezone has a UTC offset of {offset} and is widely used for scheduling and time coordination in this geographical area. This timezone serves millions of people and is an important reference for business, travel, and international communications."
       }
     }
+  },
+  "homeSeo": {
+    "introTitle": "The time, exactly right",
+    "intro1": "datetime.app is a free world clock that shows the current time in your location and in cities around the world. The clock runs to the second, is corrected against a trusted time source, and follows the IANA time zone database, so every offset and daylight saving rule is current.",
+    "intro2": "Use it to compare time zones side by side, convert between cities, check UTC, or copy a ready-made timestamp. No sign-up and nothing to install.",
+    "basicsTitle": "Time zone basics",
+    "basicsDesc": "The six terms you meet most often when working across time zones.",
+    "facts": {
+      "utc": {
+        "name": "Coordinated Universal Time",
+        "desc": "The global reference every time zone is defined against. It has no daylight saving and never changes."
+      },
+      "gmt": {
+        "name": "Greenwich Mean Time",
+        "desc": "The UTC+0 zone used in the UK in winter. For everyday purposes it matches UTC."
+      },
+      "iana": {
+        "name": "Time zone database",
+        "desc": "Names like America/New_York or Asia/Tokyo identify a region's full history of offsets and DST rules."
+      },
+      "dst": {
+        "name": "Daylight saving time",
+        "desc": "Clocks move forward in spring and back in autumn in many countries, so offsets change twice a year."
+      },
+      "iso": {
+        "name": "Date & time format",
+        "desc": "2026-03-08T14:30:00Z is unambiguous, sortable and understood by every programming language."
+      },
+      "unix": {
+        "name": "Seconds since 1970",
+        "desc": "A single integer that represents an exact moment, independent of any time zone."
+      }
+    },
+    "glossaryLink": "Browse the full glossary",
+    "zonesTitle": "Popular time zones",
+    "zonesDesc": "Current time and offset for the zones people look up most.",
+    "zoneTitle": "Current time in {name}",
+    "zoneMeta": {
+      "pst": "Pacific · UTC−8 / −7",
+      "est": "Eastern · UTC−5 / −4",
+      "cst": "Central · UTC−6 / −5",
+      "gmt": "Greenwich · UTC+0",
+      "cet": "Central Europe · UTC+1 / +2",
+      "ist": "India · UTC+5:30",
+      "jst": "Japan · UTC+9",
+      "aest": "Eastern Australia · UTC+10 / +11"
+    },
+    "allIana": "All IANA time zones",
+    "utcNow": "UTC now",
+    "dstTitle": "Daylight saving time {year}",
+    "dstDesc": "When clocks change this year in the main regions.",
+    "dstCols": {
+      "region": "Region",
+      "forward": "Clocks forward",
+      "back": "Clocks back",
+      "rule": "Rule"
+    },
+    "dstRegions": {
+      "us": {
+        "name": "United States & Canada",
+        "rule": "2nd Sunday of March to 1st Sunday of November"
+      },
+      "eu": {
+        "name": "European Union & UK",
+        "rule": "Last Sunday of March to last Sunday of October"
+      },
+      "au": {
+        "name": "Australia (NSW, VIC)",
+        "rule": "1st Sunday of October to 1st Sunday of April"
+      }
+    },
+    "dstNote": "Southern hemisphere dates run across the new year. Many regions, including most of Asia and Africa, do not observe daylight saving.",
+    "usesTitle": "Who uses datetime.app",
+    "uses": {
+      "remote": {
+        "title": "Remote teams",
+        "desc": "Put every teammate's city on one timeline and see which hours overlap before you schedule the call."
+      },
+      "dev": {
+        "title": "Developers",
+        "desc": "Copy the current Unix timestamp, ISO 8601 and RFC 2822 strings, or an Intl snippet for the zone you are viewing."
+      },
+      "travel": {
+        "title": "Travellers",
+        "desc": "Check the local time at your destination, the offset from home, and whether it is a good moment to phone someone."
+      },
+      "trade": {
+        "title": "Traders and gamers",
+        "desc": "Know when a market opens or a server resets, in your own time and in UTC."
+      }
+    },
+    "faqTitle": "Common questions",
+    "faq": {
+      "q1": "How does datetime.app show the exact time?",
+      "a1": "It reads your device clock and corrects it against a trusted time source, then updates every second. Time zone offsets come from the IANA database, so daylight saving changes are applied automatically.",
+      "q2": "What is the difference between UTC and a local time zone?",
+      "a2": "UTC is the fixed global standard. A local time zone is UTC plus an offset, such as UTC+9 for Tokyo, and may shift by an hour when daylight saving begins or ends.",
+      "q3": "How do I find the best time for a meeting across time zones?",
+      "a3": "Add each city to the world clock timeline. The shaded bars show daytime, early and late hours, and night, so you can pick a slot that falls inside everyone's working day.",
+      "q4": "Does the site work for any city?",
+      "a4": "Yes. Use the Add Timezone menu on the home page, or open one of the city and time zone pages linked below."
+    }
+  },
+  "legal": {
+    "home": "Home",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "lastUpdated": "Last updated · {date}",
+    "contents": "Contents",
+    "privacyMetaTitle": "Privacy Policy | Datetime.app",
+    "privacyMetaDesc": "How datetime.app handles your data: what we collect, what we don't, and the choices you have.",
+    "privacyTitle": "Privacy Policy",
+    "privacyIntro": "Short version: we keep the data we need to run the site, and not a byte more.",
+    "summary": {
+      "stored": {
+        "k": "Stored",
+        "v": "Your clock list and preferences stay in your browser."
+      },
+      "collected": {
+        "k": "Collected",
+        "v": "Anonymous usage statistics via Plausible."
+      },
+      "sold": {
+        "k": "Sold",
+        "v": "Nothing. We never sell personal data."
+      }
+    },
+    "privacySections": {
+      "overview": {
+        "title": "Overview",
+        "p1": "datetime.app is a time and time zone tool. It works without an account and does not ask you for personal information."
+      },
+      "collect": {
+        "title": "Information we collect",
+        "p1": "We do not require registration. Your selected time zones and display preferences are stored locally in your browser (localStorage) and are never sent to our servers.",
+        "p2": "Standard server logs (IP address, user agent, requested page) may be kept briefly for security and debugging."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "p1": "We use Plausible to understand which pages are used. Data is aggregated and not used to identify you."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "p1": "We do not use tracking cookies. Preferences such as theme and language are kept in your browser's local storage."
+      },
+      "thirdParties": {
+        "title": "Third parties",
+        "p1": "Plausible Analytics (usage statistics) and WorldTimeAPI (used to detect your time zone from your IP address)."
+      },
+      "rights": {
+        "title": "Your choices",
+        "p1": "You can clear local data at any time from your browser settings. You may also block analytics with your browser's privacy features."
+      },
+      "changes": {
+        "title": "Changes to this policy",
+        "p1": "If this policy changes, the date above will be updated."
+      },
+      "contact": {
+        "title": "Contact",
+        "p1": "Questions? Write to hi@datetime.app."
+      }
+    },
+    "termsMetaTitle": "Terms of Service | Datetime.app",
+    "termsMetaDesc": "The terms that apply when you use datetime.app.",
+    "termsTitle": "Terms of Service",
+    "termsIntro": "Plain terms for a simple tool. By using datetime.app you agree to them.",
+    "termsSummary": {
+      "free": {
+        "k": "Free",
+        "v": "The site is free to use, with no account required."
+      },
+      "asis": {
+        "k": "As is",
+        "v": "Provided without warranty. Do not rely on it for safety-critical timing."
+      },
+      "yours": {
+        "k": "Your content",
+        "v": "We do not store what you type. You stay responsible for how you use the results."
+      }
+    },
+    "termsSections": {
+      "acceptance": {
+        "title": "Acceptance of terms",
+        "p1": "By accessing or using datetime.app you agree to these terms. If you do not agree, please do not use the site."
+      },
+      "use": {
+        "title": "Use of the service",
+        "p1": "You may use datetime.app for personal and commercial purposes. You agree not to disrupt the service, attempt to gain unauthorised access, or use automated means to place unreasonable load on it."
+      },
+      "accuracy": {
+        "title": "Accuracy of time data",
+        "p1": "We work to keep times, offsets and daylight saving rules correct, but they depend on your device clock, network conditions and government rule changes. Do not rely on datetime.app for safety-critical, legal or financial timing."
+      },
+      "ip": {
+        "title": "Intellectual property",
+        "p1": "The site design, text and code are owned by datetime.app or its licensors, except where marked as open source. You may link to the site freely."
+      },
+      "links": {
+        "title": "Third-party links",
+        "p1": "The site may link to external services. We do not control them and are not responsible for their content or practices."
+      },
+      "liability": {
+        "title": "Limitation of liability",
+        "p1": "The service is provided as is and as available, without warranties of any kind. To the extent permitted by law, we are not liable for any loss arising from the use of, or inability to use, the site."
+      },
+      "changes": {
+        "title": "Changes to these terms",
+        "p1": "We may update these terms from time to time. Continued use of the site after a change means you accept the new terms."
+      },
+      "contact": {
+        "title": "Contact",
+        "p1": "Questions? Write to hi@datetime.app."
+      }
+    }
+  },
+  "embed": {
+    "crumb": "Embed",
+    "metaTitle": "Embed Datetime — the current year, as a service | Datetime.app",
+    "metaDesc": "Show the current year on your site with one iframe. Calculated remotely, with care.",
+    "eyebrow": "Embed Datetime",
+    "title": "The current year, delivered by iframe.",
+    "desc": "Your site already knows what year it is. We would still like to tell it. Paste one line and a remote server will work it out for you.",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "size": "Size",
+    "iframeTitle": "Current year",
+    "copy": "Copy snippet",
+    "specsTitle": "Specifications",
+    "specsDesc": "Numbers we are comfortable standing behind.",
+    "latency": {
+      "label": "Latency",
+      "sub": "to learn a thing your device knew"
+    },
+    "uptime": {
+      "label": "Uptime",
+      "sub": "the year is very reliable"
+    },
+    "requests": {
+      "label": "Requests",
+      "value": "1 / load",
+      "sub": "per visitor, per year"
+    },
+    "payload": {
+      "label": "Payload",
+      "sub": "figuratively"
+    },
+    "comparedTitle": "Compared",
+    "without": "Without Embed Datetime",
+    "withoutText": "instant, offline, free.",
+    "with": "With Embed Datetime",
+    "withText": "An iframe, a network round trip and a dependency. Same answer.",
+    "faqTitle": "Questions",
+    "faq": {
+      "q1": "Why would I need this?",
+      "a1": "You would not. That is the charm.",
+      "q2": "Is it accurate?",
+      "a2": "Yes. It is the year.",
+      "q3": "What happens on New Year's Eve?",
+      "a3": "At midnight UTC we change it. Your visitors will be notified by the calendar.",
+      "q4": "Can I style it?",
+      "a4": "Choose light or dark, and one of three sizes via query parameters.",
+      "q5": "Will it work offline?",
+      "a5": "No. Your browser will, regrettably, remember the year."
+    }
+  },
+  "homeUpcoming": {
+    "title": "Upcoming holidays",
+    "description": "Live countdowns to the next holidays, in your time zone.",
+    "all": "All countdowns",
+    "today": "today",
+    "day": "day",
+    "days": "days"
   }
 }

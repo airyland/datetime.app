@@ -5,23 +5,13 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Clock, Globe, Copy, Check, Maximize2, ArrowRight } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { LanguageSwitcher } from "@/components/language-switcher"
+import { Copy, Check, Maximize2 } from "lucide-react"
+import { PageIntro, Section, Faq, ArrowLink, cardClass, monoLabel } from "@/components/ds"
 import { TimezoneNavigation } from "@/components/timezone-navigation"
-import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
 import { timezones, TimezoneConfig } from '../config'
 import { getLocalePath } from '@/lib/locale-utils'
 import { DEFAULT_LOCALE, LOCALE_PREFIXES } from '@/lib/locales'
-
-// Load JetBrains Mono for numbers
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-})
 
 interface TimezonePageProps {
   params: { timezone: string; locale: string };
@@ -173,148 +163,87 @@ export default function TimezonePage({ params }: TimezonePageProps) {
     }
   ]
 
-  return (
-    <main className="min-h-screen bg-white dark:bg-black flex flex-col">
-      <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href={getLocalePath("/", locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
-          Datetime.app
-        </Link>
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher />
-          <div className="flex items-center gap-2">
-            <span className="text-sm hidden md:inline">{t('toggleTheme')}:</span>
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+  const [hm, ss] = [formattedTime.slice(0, formattedTime.lastIndexOf(':')), formattedTime.slice(formattedTime.lastIndexOf(':'))]
 
-      <div className="container mx-auto px-4 flex-grow">
-        <div className="text-center">
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">
-              {t('title', { timezone: timezoneName })}
-            </h1>
-            <h2 className="text-xl md:text-2xl font-medium mb-2 text-muted-foreground">
-              {t('subtitle', { description: timezoneDescription })}
-            </h2>
-            <div className="relative group">
-              <div
-                className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none ${jetbrainsMono.className} cursor-pointer`}
-                onClick={() => setIsFullscreen(true)}
-              >
-                {formattedTime}
+  const formats = [
+    { key: 'timestamp', label: t('unixTimestamp'), value: timestamp.toString() },
+    { key: 'utc', label: t('utcString'), value: utcTime },
+    { key: 'iso', label: t('iso8601'), value: isoTime },
+  ]
+
+  return (
+    <main>
+      <PageIntro
+        crumbs={[{ label: "Home", href: getLocalePath("/", locale) }, { label: timezoneName }]}
+        eyebrow={timezoneConfig.abbreviation}
+        title={t('title', { timezone: timezoneName })}
+        description={t('subtitle', { description: timezoneDescription })}
+      />
+
+      <Section top="clamp(8px,2vw,24px)">
+        <div className={`${cardClass} p-[clamp(24px,3.4vw,44px)]`}>
+          <div className={`${monoLabel} flex flex-wrap items-center gap-x-3 gap-y-1`}>
+            <span className="tnum text-ink">{timezoneConfig.utcOffset}</span>
+            <span aria-hidden="true" className="opacity-45">/</span>
+            <span>{timezoneConfig.abbreviation}</span>
+            <span className="flex-1" />
+            <button
+              type="button"
+              onClick={() => setIsFullscreen(true)}
+              className="inline-flex size-10 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-ink"
+              title={t('enterFullscreen')}
+              aria-label={t('enterFullscreen')}
+            >
+              <Maximize2 className="size-4" />
+            </button>
+          </div>
+          <div
+            className="tnum mt-4 cursor-pointer whitespace-nowrap font-mono text-[clamp(56px,13vw,176px)] font-light leading-none tracking-[-0.055em]"
+            onClick={() => setIsFullscreen(true)}
+            title={t('enterFullscreen')}
+            suppressHydrationWarning
+          >
+            {hm}<span className="text-brand">{ss}</span>
+          </div>
+          <div className="mt-6 text-[clamp(18px,2vw,24px)] font-medium tracking-[-0.02em]" suppressHydrationWarning>{formattedDate}</div>
+        </div>
+      </Section>
+
+      <Section top="14px">
+        <div className="grid gap-3.5" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,300px),1fr))" }}>
+          {formats.map((f) => (
+            <div key={f.key} className={`${cardClass} flex min-w-0 items-center justify-between gap-3 px-[22px] py-[18px]`}>
+              <div className="min-w-0">
+                <div className={monoLabel}>{f.label}</div>
+                <p className="tnum m-0 mt-1.5 break-words font-mono text-[15px]" suppressHydrationWarning>{f.value}</p>
               </div>
               <button
-                onClick={() => setIsFullscreen(true)}
-                className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-all"
-                title={t('enterFullscreen')}
+                type="button"
+                onClick={() => copyToClipboard(f.value, f.key)}
+                className="inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-line text-subtle transition-colors hover:border-ink hover:text-ink"
+                title={t('copyToClipboard')}
+                aria-label={t('copyToClipboard')}
               >
-                <Maximize2 className="w-6 h-6" />
+                {copiedStates[f.key] ? <Check className="size-4 text-ok" /> : <Copy className="size-4" />}
               </button>
             </div>
-            <p className="text-xl mt-4">{formattedDate}</p>
-            <div className="flex items-center justify-center gap-2 mt-2 text-muted-foreground">
-              <Globe className="w-4 h-4" />
-              <span>{timezoneConfig.utcOffset}</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8">
-            <div className="bg-card text-card-foreground shadow-none rounded-none border">
-              <div className="flex flex-col space-y-1.5 p-6 py-2 px-4">
-                <div className="tracking-tight text-sm font-medium text-muted-foreground text-center">{t('unixTimestamp')}</div>
-              </div>
-              <div className="p-6 px-4 py-2">
-                <div className="flex items-center gap-2 justify-center">
-                  <p className={jetbrainsMono.className}>{timestamp}</p>
-                  <button
-                    onClick={() => copyToClipboard(timestamp.toString(), 'timestamp')}
-                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title={t('copyToClipboard')}
-                  >
-                    {copiedStates['timestamp'] ? (
-                      <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    ) : (
-                      <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-card text-card-foreground shadow-none rounded-none border">
-              <div className="flex flex-col space-y-1.5 p-6 py-2 px-4">
-                <div className="tracking-tight text-sm font-medium text-muted-foreground text-center">{t('utcString')}</div>
-              </div>
-              <div className="p-6 px-4 py-2">
-                <div className="flex items-center gap-2 justify-center">
-                  <p className={jetbrainsMono.className}>{utcTime}</p>
-                  <button
-                    onClick={() => copyToClipboard(utcTime, 'utc')}
-                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title={t('copyToClipboard')}
-                  >
-                    {copiedStates['utc'] ? (
-                      <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    ) : (
-                      <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-card text-card-foreground shadow-none rounded-none border">
-              <div className="flex flex-col space-y-1.5 p-6 py-2 px-4">
-                <div className="tracking-tight text-sm font-medium text-muted-foreground text-center">{t('iso8601')}</div>
-              </div>
-              <div className="p-6 px-4 py-2">
-                <div className="flex items-center gap-2 justify-center">
-                  <p className={jetbrainsMono.className}>{isoTime}</p>
-                  <button
-                    onClick={() => copyToClipboard(isoTime, 'iso')}
-                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title={t('copyToClipboard')}
-                  >
-                    {copiedStates['iso'] ? (
-                      <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    ) : (
-                      <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Timezone Navigation */}
-          <TimezoneNavigation currentTimezone={timezoneSlug} />
-
-          {/* FAQ Section */}
-          <div className="mt-16 max-w-3xl mx-auto text-left">
-            <h2 className="text-2xl font-bold mb-6 text-center">{t('faqTitle', { timezone: timezoneName })}</h2>
-            <Accordion 
-              type="multiple" 
-              className="w-full"
-              defaultValue={timezoneFaqs.map((_, index) => `item-${index}`)}
-            >
-              {timezoneFaqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent>
-                    <p>{faq.answer}</p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-            <p className="text-center my-4">
-              <Link href="/glossary" className="text-muted-foreground text-sm hover:underline" title={tCommon('links.titleViewGlossary')}>
-                {t('viewGlossary')} <ArrowRight className="inline w-4 h-4" />
-              </Link>
-            </p>
-          </div>
+          ))}
         </div>
-      </div>
+      </Section>
+
+      {/* Timezone Navigation */}
+      <Section top="0">
+        <TimezoneNavigation currentTimezone={timezoneSlug} />
+      </Section>
+
+      <Faq
+        title={t('faqTitle', { timezone: timezoneName })}
+        items={timezoneFaqs.map((f) => ({ q: f.question, a: <p className="m-0">{f.answer}</p> }))}
+      />
+
+      <Section className="pb-[clamp(56px,8vw,96px)]">
+        <ArrowLink href={getLocalePath('/glossary', locale)} title={tCommon('links.titleViewGlossary')}>{t('viewGlossary')}</ArrowLink>
+      </Section>
 
       <FullscreenTime
         time={formattedTime}

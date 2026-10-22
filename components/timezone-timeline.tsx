@@ -1,11 +1,8 @@
 'use client'
 
-import { useNow } from 'next-intl'
-import { useLayoutEffect, useRef, useState, useEffect } from 'react'
-import spacetime from 'spacetime'
-import { generateTimezoneHours, type HourInfo } from '@/lib/timezone-hours'
-import { X, Settings } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { useMemo } from 'react'
+import { X } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 // Type for timezone info
 export interface TimezoneInfo {
@@ -16,290 +13,281 @@ export interface TimezoneInfo {
   isLocal?: boolean
 }
 
-// Helper function to get the timezone name regardless of data format
-function getTimezoneName(tz: TimezoneInfo): string {
-  return tz.name || tz.value || 'UTC'
-}
-
-// Helper function to get the timezone display name regardless of data format
-function getTimezoneDisplayName(tz: TimezoneInfo): string {
-  return tz.city || tz.label || ''
-}
-
 interface TimezoneTimelineProps {
   timezones: TimezoneInfo[]
+  /** Current instant; defaults to a self-updating clock owned by the caller. */
+  now: Date
+  use24Hour?: boolean
+  dstLabel?: string
+  localLabel?: string
+  removeLabel?: string
+  dayLabel?: string
+  twilightLabel?: string
+  nightLabel?: string
+  nowLabel?: string
+  onRemove?: (value: string) => void
+  /** @deprecated kept for backwards compatibility, no longer used */
   onSwitchToWorldClock?: () => void
 }
 
-const TimezoneTimeline = ({ 
-  timezones, 
-  onSwitchToWorldClock
-}: TimezoneTimelineProps) => {
-  // Add UTC as the second timezone if timezones array is not empty
-  const timezonesWithUTC = timezones.length > 0 
-    ? [
-        timezones[0], // First timezone
-        { city: 'UTC', name: 'UTC', value: 'UTC', label: 'UTC', isLocal: false }, // UTC as second
-        ...timezones.slice(1) // Rest of the timezones
-      ]
-    : [{ city: 'Local', name: Intl.DateTimeFormat().resolvedOptions().timeZone, label: 'Local', value: Intl.DateTimeFormat().resolvedOptions().timeZone, isLocal: true }] // Default if empty
-  const now = useNow({ updateInterval: 1000 })
-  const timelineRef = useRef<HTMLDivElement>(null)
-  const currentHourRef = useRef<HTMLDivElement>(null) // Ref for the current hour element
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const HOUR_MS = 3600000
 
-  const [hoveredHourIndex, setHoveredHourIndex] = useState<number | null>(null)
-  const [isReady, setIsReady] = useState(false)
-  const [visibleHours, setVisibleHours] = useState(24) // Default to 24 hours
-  const [isMobile, setIsMobile] = useState(false)
-
-  // Calculate and set visible hours based on screen size
-  const calculateVisibleHours = () => {
-    if (typeof window === 'undefined') return 24 // Default for SSR
-    
-    const isMobile = window.innerWidth < 768
-    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024
-    
-    if (isMobile) {
-      // On mobile, show 12-16 hours to fit the screen
-      return 16
-    } else if (isTablet) {
-      // On tablet, show 24 hours
-      return 24
-    } else {
-      // On desktop, show 48 hours
-      return 48
-    }
+const formatters = new Map<string, Intl.DateTimeFormat>()
+function getFormatter(tz: string) {
+  let f = formatters.get(tz)
+  if (!f) {
+    f = new Intl.DateTimeFormat('en-US', {
+      timeZone: tz,
+      hourCycle: 'h23',
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+    })
+    formatters.set(tz, f)
   }
+  return f
+}
 
-  // Scroll to current time on load and fade in to prevent flicker
-  useLayoutEffect(() => {
-    // Calculate visible hours based on screen size
-    const hours = calculateVisibleHours()
-    setVisibleHours(hours)
+function parts(tz: string, ts: number) {
+  const o: Record<string, string> = {}
+  getFormatter(tz)
+    .formatToParts(ts)
+    .forEach((p) => {
+      o[p.type] = p.value
+    })
+  const h = Number(o.hour) % 24
+  const asUtc = Date.UTC(Number(o.year), Number(o.month) - 1, Number(o.day), h, Number(o.minute), Number(o.second))
+  return {
+    y: Number(o.year),
+    mo: Number(o.month),
+    d: Number(o.day),
+    h,
+    mi: Number(o.minute),
+    off: Math.round((asUtc - Math.floor(ts / 1000) * 1000) / 60000),
+  }
+}
 
-    // Set mobile state
-    if (typeof window !== 'undefined') {
-      setIsMobile(window.innerWidth < 768)
-    }
+function offLabel(off: number) {
+  const a = Math.abs(off)
+  const h = Math.floor(a / 60)
+  const m = a % 60
+  return `GMT${off < 0 ? '-' : '+'}${h}${m ? ':' + String(m).padStart(2, '0') : ''}`
+}
 
-    // Add a small delay to ensure the DOM is fully rendered
-    setTimeout(() => {
-      if (currentHourRef.current && timelineRef.current && typeof window !== 'undefined') {
-        const container = timelineRef.current
-        const element = currentHourRef.current
+function isDst(tz: string, p: { y: number; off: number }) {
+  const a = parts(tz, Date.UTC(p.y, 0, 1)).off
+  const b = parts(tz, Date.UTC(p.y, 6, 1)).off
+  return a !== b && p.off === Math.max(a, b)
+}
 
-        // Check if on mobile screen (less than 768px)
-        const currentlyMobile = window.innerWidth < 768
-        
-        // Calculate the scroll position
-        const elementWidth = element.offsetWidth
-        const containerWidth = container.offsetWidth
-        let scrollPosition
-        
-        if (currentlyMobile) {
-          // On mobile, don't auto scroll - let user scroll manually
-          // Just set ready state without scrolling
-        } else {
-          // On desktop, center the element
-          scrollPosition = element.offsetLeft - containerWidth / 2 + elementWidth / 2
-          
-          // Ensure we don't scroll into negative territory
-          const finalScrollPosition = Math.max(0, scrollPosition)
-          
-          container.scrollLeft = finalScrollPosition
-        }
-        setIsReady(true) // Fade in after scrolling
-      } else {
-        setIsReady(true) // Set ready on SSR
-      }
-    }, 100) // 100ms delay to ensure DOM is ready
-  }, []) // Empty dependency array ensures this runs only once on mount
+function band(h: number): 'day' | 'mid' | 'night' {
+  if (h >= 8 && h < 18) return 'day'
+  if ((h >= 6 && h < 8) || (h >= 18 && h < 22)) return 'mid'
+  return 'night'
+}
 
-  const hourWidth = 32 // w-8
-  const totalHourWidth = hourWidth // No gap between hours
+function cityLabel(id: string) {
+  return id.split('/').pop()!.replace(/_/g, ' ')
+}
 
-  // Add resize handler to adjust visible hours and scroll position when screen size changes
-  useEffect(() => {
-    const handleResize = () => {
-      if (typeof window === 'undefined') return
-      
-      // Recalculate visible hours
-      const hours = calculateVisibleHours()
-      setVisibleHours(hours)
-      
-      // Update mobile state
-      const currentlyMobile = window.innerWidth < 768
-      setIsMobile(currentlyMobile)
-      
-      if (currentHourRef.current && timelineRef.current) {
-        const container = timelineRef.current
-        const element = currentHourRef.current
-        const containerWidth = container.offsetWidth
-        
-        const elementWidth = element.offsetWidth
-        let scrollPosition
-        
-        if (currentlyMobile) {
-          // On mobile, don't auto scroll on resize - preserve user's scroll position
-          return
-        } else {
-          scrollPosition = element.offsetLeft - containerWidth / 2 + elementWidth / 2
-          container.scrollLeft = Math.max(0, scrollPosition)
-        }
-      }
-    }
+function safeTz(name: string) {
+  try {
+    getFormatter(name)
+    return name
+  } catch {
+    return 'UTC'
+  }
+}
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', handleResize)
-      return () => window.removeEventListener('resize', handleResize)
+const AXIS = [0, 3, 6, 9, 12, 15, 18, 21]
+
+/**
+ * World-clock rows aligned to the viewer's local day, with a single accent
+ * "now" line spanning every row.
+ *
+ * Usage:
+ *   <TimezoneTimeline timezones={[{ label: 'Local', value: tz, isLocal: true }]} now={now} onRemove={fn} />
+ */
+const TimezoneTimeline = ({
+  timezones,
+  now,
+  use24Hour = true,
+  dstLabel = 'DST',
+  localLabel = 'Local',
+  removeLabel = 'Remove timezone',
+  dayLabel = 'Daytime',
+  twilightLabel = 'Early / late',
+  nightLabel = 'Night',
+  nowLabel = 'Now',
+  onRemove,
+}: TimezoneTimelineProps) => {
+  const ts = now.getTime()
+  const localId = useMemo(() => {
+    try {
+      return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
+    } catch {
+      return 'UTC'
     }
   }, [])
 
+  const list: TimezoneInfo[] = timezones.length > 0 ? timezones : [{ label: 'Local', value: localId, isLocal: true }]
+
+  // Local midnight (the strips are anchored to the viewer's day)
+  const dayStart = new Date(ts)
+  dayStart.setHours(0, 0, 0, 0)
+  const mid = dayStart.getTime()
+  const secOfDay = (ts - mid) / 1000
+  const linePos = Math.min(100, Math.max(0, (secOfDay / 86400) * 100))
+  const lp = parts(localId, ts)
+  const hm = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+
+  const rows = list.map((z) => {
+    const id = safeTz(z.name || z.value || 'UTC')
+    const p = parts(id, ts)
+    const hh = p.h
+    const time = use24Hour ? `${String(hh).padStart(2, '0')}:${String(p.mi).padStart(2, '0')}` : `${String(hh % 12 || 12).padStart(2, '0')}:${String(p.mi).padStart(2, '0')}`
+    const ap = use24Hour ? '' : hh < 12 ? 'AM' : 'PM'
+    const diff = Math.round((Date.UTC(p.y, p.mo - 1, p.d) - Date.UTC(lp.y, lp.mo - 1, lp.d)) / 864e5)
+    const rel = diff === 0 ? 'Today' : diff > 0 ? 'Tomorrow' : 'Yesterday'
+
+    const cells: { t: string; b: string }[] = []
+    let midnightAt = -1
+    for (let i = 0; i < 24; i++) {
+      const q = parts(id, mid + i * HOUR_MS + HOUR_MS / 2)
+      cells.push({ t: `${String(q.h).padStart(2, '0')}:00`, b: band(q.h) })
+      if (midnightAt < 0 && q.h === 0) midnightAt = i
+    }
+    const mark = midnightAt > 0 ? { pos: (midnightAt / 24) * 100, ...(() => { const q = parts(id, mid + midnightAt * HOUR_MS + HOUR_MS / 2); return { label: `${MONTHS[q.mo - 1]} ${q.d}` } })() } : null
+
+    return {
+      key: (z.name || z.value || 'UTC') + (z.isLocal ? '-local' : ''),
+      value: z.value || z.name || 'UTC',
+      name: z.isLocal ? cityLabel(id) : z.city || z.label || cityLabel(id),
+      isLocal: !!z.isLocal,
+      sub: `${offLabel(p.off)} · ${rel}`,
+      dst: isDst(id, p),
+      time,
+      ap,
+      cells,
+      mark,
+    }
+  })
+
+  const gridCls =
+    'grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-6 gap-y-3 px-5 min-[821px]:grid-cols-[minmax(140px,210px)_116px_minmax(0,1fr)_28px] min-[821px]:gap-y-0'
+
   return (
-    <div className="grid grid-cols-[auto_1fr] w-full mx-auto md:max-w-4xl">
-      {/* Column 1: Timezone Labels */}
-      <div className="col-start-1 pr-4 grid gap-y-2 relative">
-        {/* Switch to World Clock Button */}
-        {onSwitchToWorldClock && (
-          <button 
-            onClick={onSwitchToWorldClock} 
-            className="absolute -top-8 right-0 p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            title="Manage timezones in World Clock"
-          >
-            <Settings className="w-4 h-4" />
-          </button>
-        )}
-        {timezonesWithUTC.map(tz => {
-          // 确保 tz 存在且有可用的时区名称
-          if (!tz || (!tz.name && !tz.value)) return null
-          
-          // 获取时区名称和显示名称
-          const tzName = getTimezoneName(tz)
-          const tzDisplayName = getTimezoneDisplayName(tz)
-          
-          try {
-            const s = spacetime(now, tzName)
-            const offsetInHours = s.offset() / 60
-            const offsetString =
-              offsetInHours === 0 ? 'GMT' : `GMT${offsetInHours >= 0 ? '+' : ''}${offsetInHours}`
-            
-            return (
-              <div key={tzName || 'timezone-' + Math.random()} className="flex h-8 items-center justify-end relative group">
-                <div className="text-right">
-                  <div className="flex items-center justify-end">
-                    <div className="font-bold text-sm">{tzDisplayName}</div>
-                    <span className="ml-2 text-[8px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 px-0.5 py-0 rounded font-mono">
-                      {offsetString}
-                    </span>
-                  </div>
-                  <div className="text-xs text-gray-500 whitespace-nowrap">
-                    {s.format('{month-pad}-{date-pad} {hour-24-pad}:{minute-pad}')}
-                  </div>
-                </div>
-              </div>
-            )
-          } catch (error) {
-            console.error(`Error displaying timezone ${tz.name}:`, error)
-            return (
-              <div key={tzName || 'unknown-' + Math.random()} className="flex h-8 items-center justify-end relative group">
-                <div className="text-right">
-                  <div className="flex items-center justify-end">
-                    <div className="font-bold text-sm">{tzDisplayName || 'Unknown'}</div>
-                    <span className="ml-2 text-[8px] border border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 px-0.5 py-0 rounded font-mono">
-                      ERROR
-                    </span>
-                  </div>
-                  <div className="text-xs text-gray-500 whitespace-nowrap">
-                    Invalid timezone
-                  </div>
-                </div>
-              </div>
-            )
-          }
-        })}
+    <div className="relative overflow-hidden rounded-[18px] border border-line bg-surface">
+      {/* axis */}
+      <div aria-hidden="true" className={cn(gridCls, 'hidden h-[52px] border-b border-line min-[821px]:grid')}>
+        <div />
+        <div />
+        <div className="relative h-full">
+          {AXIS.map((h) => (
+            <div key={h} className="absolute bottom-0 flex h-full flex-col justify-end" style={{ left: `${(h / 24) * 100}%` }}>
+              <span className="mb-[7px] ml-[5px] block font-mono text-[10.5px] text-subtle">{String(h).padStart(2, '0')}:00</span>
+              <span className="absolute bottom-0 left-0 block h-[7px] w-px bg-line2" />
+            </div>
+          ))}
+        </div>
+        <div />
       </div>
 
-      {/* Column 2: Timelines (in a single scrollable container) */}
-      <div
-        className={`col-start-2 overflow-x-auto timeline-scroll relative grid gap-y-2 transition-opacity ${isReady ? 'opacity-100' : 'opacity-0'}`}
-        ref={timelineRef}
-        onMouseLeave={() => setHoveredHourIndex(null)}
-        style={{ 
-          WebkitOverflowScrolling: 'touch',
-          scrollbarWidth: 'thin',
-          msOverflowStyle: 'auto'
-        }}
-      >
-        {timezonesWithUTC.map((tz, tzIndex) => {
-          // Generate hours for this specific timezone
-          // On mobile, generate fewer hours with current time closer to the start
-          const hoursBeforeCurrent = isMobile ? 3 : 12 // On mobile, only show 3 hours before current
-          const totalHours = visibleHours
-          const timezoneHours = generateTimezoneHours(getTimezoneName(tz), now, totalHours, hoursBeforeCurrent)
-          const visibleTimezoneHours = timezoneHours
-          return (
-            <div
-              key={tz.name}
-              className="flex h-8 items-center rounded-lg"
-              style={{ minWidth: 'max-content' }}
-            >
-              {visibleTimezoneHours.map(hour => (
-                <div
-                  key={hour.index}
-                  ref={hour.isCurrentHour && tzIndex === 0 ? currentHourRef : null}
-                  className={`flex-shrink-0 h-full w-8 cursor-pointer flex flex-col items-center justify-center ${hour.backgroundClass} ${hour.isMidnight && hour.index === 12 ? 'border-l-2 border-l-blue-500' : ''}`}
-                  onMouseEnter={() => setHoveredHourIndex(hour.index)}
-                >
-                  <div className="flex flex-col items-center leading-none">
-                    <span
-                      className={`text-xs font-medium ${
-                        hour.isMidnight ? 'text-xs uppercase font-bold text-blue-600 dark:text-blue-400' : ''
-                      }`}
-                    >
-                      {hour.displayText}
-                    </span>
-                    <span
-                      className={`text-[10px] -mt-1 ${
-                        hour.isMidnight ? 'text-xs font-bold text-blue-600 dark:text-blue-400' : 'text-gray-500'
-                      }`}
-                    >
-                      {hour.displaySubText}
-                    </span>
-                  </div>
-                </div>
-              ))}
+      {/* rows */}
+      <div className="cl">
+        {rows.map((r) => (
+          <div key={r.key} className={cn(gridCls, 'border-t border-line py-3.5')}>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 text-base font-medium tracking-[-0.01em]">
+                <span className="truncate">{r.name}</span>
+                {r.isLocal && (
+                  <span className="flex-none rounded-full bg-ink px-[7px] py-px text-[10.5px] font-medium uppercase tracking-[.04em] text-btn-ink">{localLabel}</span>
+                )}
+              </div>
+              <div className="mt-0.5 flex items-center gap-2 text-[12.5px] text-subtle">
+                <span>{r.sub}</span>
+                {r.dst && <span className="rounded-full border border-line2 px-1.5 text-[10.5px]">{dstLabel}</span>}
+              </div>
             </div>
-          )
-        })}
+            <div className="tnum whitespace-nowrap text-right font-mono text-[28px] font-light leading-none tracking-[-0.045em]">
+              {r.time}
+              {r.ap && <span className="ml-[5px] text-[11px] font-normal tracking-normal text-subtle">{r.ap}</span>}
+            </div>
+            <div className="relative col-span-full min-[821px]:col-auto">
+              <div className="grid h-[26px] grid-cols-[repeat(24,minmax(0,1fr))] overflow-hidden rounded-[7px] shadow-[inset_0_0_0_1px_var(--line)]">
+                {r.cells.map((c, i) => (
+                  <div key={i} title={c.t} className={c.b === 'day' ? 'bg-day' : c.b === 'mid' ? 'bg-mid' : 'bg-night'} />
+                ))}
+              </div>
+              {r.mark && (
+                <>
+                  <span aria-hidden="true" className="absolute inset-y-0 -ml-px w-0.5 bg-surface" style={{ left: `${r.mark.pos}%` }} />
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-[5px] h-4 whitespace-nowrap rounded bg-surface px-1.5 font-mono text-[10px] leading-4 text-ink shadow-[0_0_0_1px_var(--line)]"
+                    style={{ left: `calc(${r.mark.pos}% + 6px)` }}
+                  >
+                    {r.mark.label}
+                  </span>
+                </>
+              )}
+              <span
+                aria-hidden="true"
+                className="absolute -inset-y-1 -ml-px w-0.5 rounded-[1px] bg-brand min-[821px]:hidden"
+                style={{ left: `${linePos}%` }}
+              />
+            </div>
+            <div className="hidden text-right min-[821px]:block">
+              {onRemove && !r.isLocal && (
+                <button
+                  type="button"
+                  onClick={() => onRemove(r.value)}
+                  aria-label={removeLabel}
+                  title={removeLabel}
+                  className="inline-flex size-7 items-center justify-center rounded-lg border border-transparent text-subtle transition-colors hover:border-line2 hover:bg-paper"
+                >
+                  <X className="size-3.5" strokeWidth={2} />
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
 
-        {/* Current Hour Highlight Box - spans all timezone rows */}
-        {(() => {
-          const hoursBeforeCurrent = isMobile ? 3 : 12
-          const totalHours = visibleHours
-          const timezoneHours = generateTimezoneHours(getTimezoneName(timezonesWithUTC[0]), now, totalHours, hoursBeforeCurrent)
-          const currentHour = timezoneHours.find(h => h.isCurrentHour)
-          if (!currentHour) return null
+      {/* legend */}
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line px-5 py-3 text-[12.5px] text-subtle">
+        {[
+          ['bg-day', dayLabel, '08:00–18:00'],
+          ['bg-mid', twilightLabel, '06:00–08:00 · 18:00–22:00'],
+          ['bg-night', nightLabel, '22:00–06:00'],
+        ].map(([cls, name, range]) => (
+          <span key={cls} className="inline-flex items-center gap-2">
+            <span aria-hidden="true" className={cn('inline-block h-3 w-5 rounded-[4px] shadow-[inset_0_0_0_1px_var(--line)]', cls)} />
+            <span className="text-ink">{name}</span>
+            <span className="font-mono text-[11.5px] max-sm:hidden">{range}</span>
+          </span>
+        ))}
+        <span className="inline-flex items-center gap-2">
+          <span aria-hidden="true" className="inline-block h-3 w-0.5 rounded-[1px] bg-brand" />
+          <span className="text-ink">{nowLabel}</span>
+        </span>
+      </div>
 
-          return (
-            <div
-              className="absolute top-0 bottom-0 w-8 bg-blue-500/30 border-2 border-blue-500 pointer-events-none rounded-md z-20"
-              style={{ 
-                transform: `translateX(${currentHour.index * totalHourWidth}px)`
-              }}
-            />
-          )
-        })()}
-
-        {/* Hover/Selection Box - spans all timezone rows */}
-        {hoveredHourIndex !== null && hoveredHourIndex < visibleHours && (
-          <div
-            className="absolute top-0 bottom-0 w-8 bg-blue-500/20 pointer-events-none rounded-md transition-transform duration-100 ease-in-out z-10"
-            style={{
-              transform: `translateX(${hoveredHourIndex * totalHourWidth}px)`
-            }}
-          />
-        )}
-
+      {/* one now-line across every row */}
+      <div aria-hidden="true" className={cn(gridCls, 'pointer-events-none absolute inset-0 hidden grid-rows-[100%] min-[821px]:grid')}>
+        <div />
+        <div />
+        <div className="relative h-full">
+          <div className="absolute inset-y-0 w-0" style={{ left: `${linePos}%` }}>
+            <span className="tnum absolute left-0 top-2 -translate-x-1/2 whitespace-nowrap rounded-full bg-brand px-2 py-0.5 font-mono text-[11px] font-medium leading-4 text-white">{hm}</span>
+            <span className="absolute -left-px bottom-0 top-[30px] w-0.5 bg-brand" />
+          </div>
+        </div>
+        <div />
       </div>
     </div>
   )

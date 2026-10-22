@@ -1,12 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react'
-import { JetBrains_Mono } from "next/font/google"
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-})
+import { X } from 'lucide-react'
 
 interface FullscreenTimeProps {
   time: string
@@ -59,22 +54,53 @@ export function FullscreenTime({ time, isFullscreen, onClose }: FullscreenTimePr
     calculateFontSize()
 
     return () => observer.disconnect()
-  }, [time])
+  }, [time, isFullscreen])
+
+  useEffect(() => {
+    if (!isFullscreen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [isFullscreen, onClose])
 
   if (!isFullscreen) return null
 
+  // Accent the trailing ":SS" when the time is HH:MM:SS
+  const match = /^(.*\d{2}:\d{2})(:\d{2})$/.exec(time)
+
   return (
-    <div 
-      className="fixed inset-0 bg-white dark:bg-black flex items-center justify-center z-50"
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-paper text-ink"
       ref={containerRef}
       onClick={onClose}
     >
-      <div 
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation()
+          onClose()
+        }}
+        aria-label="Exit fullscreen"
+        title="Exit fullscreen"
+        className="absolute right-6 top-6 inline-flex size-11 items-center justify-center rounded-full border border-line bg-transparent transition-colors hover:border-line2 hover:bg-surface"
+      >
+        <X className="size-[18px]" strokeWidth={1.75} />
+      </button>
+      <div
         ref={timeRef}
-        className={`text-black dark:text-white font-bold tracking-tight leading-none ${jetbrainsMono.className}`}
+        className="tnum whitespace-nowrap font-mono font-light leading-none tracking-[-0.055em]"
         style={{ fontSize: `${fontSize}px` }}
       >
-        {time}
+        {match ? (
+          <>
+            {match[1]}
+            <span className="text-brand">{match[2]}</span>
+          </>
+        ) : (
+          time
+        )}
       </div>
     </div>
   )

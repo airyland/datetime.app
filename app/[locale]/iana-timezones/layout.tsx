@@ -3,10 +3,11 @@ import { getTranslations } from 'next-intl/server'
 
 interface LayoutProps {
   children: React.ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params: paramsPromise }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const params = await paramsPromise
   const t = await getTranslations({ locale: params.locale, namespace: 'ianaTimezones' })
   
   return {

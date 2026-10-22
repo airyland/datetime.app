@@ -1,5 +1,5 @@
 interface LayoutProps {
-  params: { term: string; locale: string };
+  params: Promise<{ term: string; locale: string }>;
   children: React.ReactNode;
 }
 

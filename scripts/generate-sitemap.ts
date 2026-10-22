@@ -17,12 +17,16 @@ const staticPages = [
   'age-calculator',
   'utc',
   'year-progress-bar',
-  'glossary'
+  'glossary',
+  'privacy',
+  'terms',
+  'embed'
 ];
 
 // English-only pages
 const englishOnlyPages = [
-  'holidays'
+  'holidays',
+  'countdown'
 ];
 
 interface SitemapURL {
@@ -151,6 +155,18 @@ function generateURLs(): SitemapURL[] {
       changefreq: 'weekly',
       priority: '0.8'
     });
+  }
+
+  // Add countdown pages (English only): hub + every holiday x year
+  {
+    const dataSrc = fs.readFileSync(path.join(process.cwd(), 'lib/countdown.ts'), 'utf-8');
+    const ids = Array.from(dataSrc.matchAll(/\["([a-z-]+)", "[^"]+", "[^"]+", [^\]]+\]/g)).map(m => m[1]);
+    const years = (dataSrc.match(/COUNTDOWN_YEARS = \[([^\]]+)\]/)?.[1] || '').split(',').map(x => x.trim()).filter(Boolean);
+    for (const id of ids) {
+      for (const y of years) {
+        urls.push({ loc: getLocalizedURL('en', `countdown/${id}-${y}`), changefreq: 'daily', priority: '0.7' });
+      }
+    }
   }
 
   // Add year progress pages for current and next year

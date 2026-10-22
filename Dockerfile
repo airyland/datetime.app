@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:22.23.4-alpine AS base
 
 RUN npm install -g pnpm
 

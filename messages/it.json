@@ -389,7 +389,8 @@
       "title": "Prossime festività",
       "noDataForCountry": "Nessun dato sulle festività disponibile per {country}.",
       "loading": "Caricamento delle prossime festività…",
-      "none": "Non ci sono festività pubbliche imminenti."
+      "none": "Non ci sono festività pubbliche imminenti.",
+      "all": "Tutte le festività"
     },
     "developerSnippet": {
       "title": "Snippet per sviluppatori",
@@ -1059,5 +1060,278 @@
         "content": "{timezone} è l'ora standard utilizzata a {city}, {country} e nelle regioni circostanti. Il fuso orario ha un offset UTC di {offset} ed è ampiamente utilizzato per la pianificazione e coordinazione temporale in quest'area geografica. Questo fuso orario serve milioni di persone ed è un riferimento importante per affari, viaggi e comunicazioni internazionali."
       }
     }
+  },
+  "homeSeo": {
+    "introTitle": "L'ora, esattamente giusta",
+    "intro1": "datetime.app è un orologio mondiale gratuito che mostra l'ora attuale nella tua posizione e nelle città di tutto il mondo. L'orologio scorre al secondo, è corretto rispetto a una fonte oraria affidabile e segue il database dei fusi orari IANA, così ogni offset e ogni regola dell'ora legale è aggiornata.",
+    "intro2": "Usalo per confrontare i fusi orari affiancati, convertire tra città, controllare l'UTC o copiare un timestamp pronto all'uso. Nessuna registrazione e nulla da installare.",
+    "basicsTitle": "Nozioni di base sui fusi orari",
+    "basicsDesc": "I sei termini che incontri più spesso quando lavori con fusi orari diversi.",
+    "facts": {
+      "utc": {
+        "name": "Tempo coordinato universale",
+        "desc": "Il riferimento globale rispetto al quale è definito ogni fuso orario. Non ha ora legale e non cambia mai."
+      },
+      "gmt": {
+        "name": "Ora media di Greenwich",
+        "desc": "Il fuso UTC+0 usato nel Regno Unito in inverno. Per l'uso quotidiano coincide con l'UTC."
+      },
+      "iana": {
+        "name": "Database dei fusi orari",
+        "desc": "Nomi come America/New_York o Asia/Tokyo identificano l'intera storia di offset e regole DST di una regione."
+      },
+      "dst": {
+        "name": "Ora legale",
+        "desc": "In molti paesi gli orologi vanno avanti in primavera e indietro in autunno, quindi gli offset cambiano due volte l'anno."
+      },
+      "iso": {
+        "name": "Formato di data e ora",
+        "desc": "2026-03-08T14:30:00Z è privo di ambiguità, ordinabile e compreso da ogni linguaggio di programmazione."
+      },
+      "unix": {
+        "name": "Secondi dal 1970",
+        "desc": "Un singolo numero intero che rappresenta un momento preciso, indipendente da qualsiasi fuso orario."
+      }
+    },
+    "glossaryLink": "Sfoglia il glossario completo",
+    "zonesTitle": "Fusi orari popolari",
+    "zonesDesc": "Ora attuale e offset dei fusi più cercati.",
+    "zoneTitle": "Ora attuale a {name}",
+    "zoneMeta": {
+      "pst": "Pacifico · UTC−8 / −7",
+      "est": "Orientale · UTC−5 / −4",
+      "cst": "Centrale · UTC−6 / −5",
+      "gmt": "Greenwich · UTC+0",
+      "cet": "Europa centrale · UTC+1 / +2",
+      "ist": "India · UTC+5:30",
+      "jst": "Giappone · UTC+9",
+      "aest": "Australia orientale · UTC+10 / +11"
+    },
+    "allIana": "Tutti i fusi orari IANA",
+    "utcNow": "UTC adesso",
+    "dstTitle": "Ora legale {year}",
+    "dstDesc": "Quando cambiano gli orologi quest'anno nelle principali regioni.",
+    "dstCols": {
+      "region": "Regione",
+      "forward": "Orologi avanti",
+      "back": "Orologi indietro",
+      "rule": "Regola"
+    },
+    "dstRegions": {
+      "us": {
+        "name": "Stati Uniti e Canada",
+        "rule": "2ª domenica di marzo – 1ª domenica di novembre"
+      },
+      "eu": {
+        "name": "Unione Europea e Regno Unito",
+        "rule": "Ultima domenica di marzo – ultima domenica di ottobre"
+      },
+      "au": {
+        "name": "Australia (NSW, VIC)",
+        "rule": "1ª domenica di ottobre – 1ª domenica di aprile"
+      }
+    },
+    "dstNote": "Nell'emisfero australe le date attraversano il cambio d'anno. Molte regioni, tra cui gran parte dell'Asia e dell'Africa, non adottano l'ora legale.",
+    "usesTitle": "Chi usa datetime.app",
+    "uses": {
+      "remote": {
+        "title": "Team da remoto",
+        "desc": "Metti la città di ogni collega su un'unica linea del tempo e vedi quali ore si sovrappongono prima di fissare la chiamata."
+      },
+      "dev": {
+        "title": "Sviluppatori",
+        "desc": "Copia il timestamp Unix attuale, le stringhe ISO 8601 e RFC 2822, o uno snippet Intl per il fuso che stai guardando."
+      },
+      "travel": {
+        "title": "Viaggiatori",
+        "desc": "Controlla l'ora locale a destinazione, la differenza rispetto a casa e se è un buon momento per telefonare a qualcuno."
+      },
+      "trade": {
+        "title": "Trader e gamer",
+        "desc": "Scopri quando apre un mercato o si resetta un server, nel tuo orario e in UTC."
+      }
+    },
+    "faqTitle": "Domande frequenti",
+    "faq": {
+      "q1": "Come mostra datetime.app l'ora esatta?",
+      "a1": "Legge l'orologio del tuo dispositivo e lo corregge rispetto a una fonte oraria affidabile, poi si aggiorna ogni secondo. Gli offset dei fusi orari provengono dal database IANA, quindi i cambi di ora legale vengono applicati automaticamente.",
+      "q2": "Qual è la differenza tra UTC e un fuso orario locale?",
+      "a2": "L'UTC è lo standard globale fisso. Un fuso orario locale è l'UTC più un offset, come UTC+9 per Tokyo, e può spostarsi di un'ora quando inizia o finisce l'ora legale.",
+      "q3": "Come trovo l'orario migliore per una riunione tra fusi orari diversi?",
+      "a3": "Aggiungi ogni città alla linea del tempo dell'orologio mondiale. Le barre ombreggiate mostrano giorno, ore del mattino presto e della sera tardi, e notte, così puoi scegliere una fascia che rientri nella giornata lavorativa di tutti.",
+      "q4": "Il sito funziona per qualsiasi città?",
+      "a4": "Sì. Usa il menu Aggiungi fuso orario nella home page, oppure apri una delle pagine di città e fusi orari linkate qui sotto."
+    }
+  },
+  "legal": {
+    "home": "Home",
+    "privacy": "Privacy",
+    "terms": "Termini",
+    "lastUpdated": "Ultimo aggiornamento · {date}",
+    "contents": "Indice",
+    "privacyMetaTitle": "Informativa sulla privacy | Datetime.app",
+    "privacyMetaDesc": "Come datetime.app tratta i tuoi dati: cosa raccogliamo, cosa no e le scelte a tua disposizione.",
+    "privacyTitle": "Informativa sulla privacy",
+    "privacyIntro": "In breve: conserviamo i dati che servono a far funzionare il sito, e non un byte in più.",
+    "summary": {
+      "stored": {
+        "k": "Memorizzato",
+        "v": "L'elenco dei tuoi orologi e le preferenze restano nel tuo browser."
+      },
+      "collected": {
+        "k": "Raccolto",
+        "v": "Statistiche d'uso anonime tramite Plausible."
+      },
+      "sold": {
+        "k": "Venduto",
+        "v": "Niente. Non vendiamo mai dati personali."
+      }
+    },
+    "privacySections": {
+      "overview": {
+        "title": "Panoramica",
+        "p1": "datetime.app è uno strumento per l'ora e i fusi orari. Funziona senza account e non ti chiede informazioni personali."
+      },
+      "collect": {
+        "title": "Informazioni che raccogliamo",
+        "p1": "Non richiediamo registrazione. I fusi orari selezionati e le preferenze di visualizzazione sono salvati localmente nel tuo browser (localStorage) e non vengono mai inviati ai nostri server.",
+        "p2": "I log standard del server (indirizzo IP, user agent, pagina richiesta) possono essere conservati per breve tempo per motivi di sicurezza e debug."
+      },
+      "analytics": {
+        "title": "Analisi",
+        "p1": "Usiamo Plausible per capire quali pagine vengono utilizzate. I dati sono aggregati e non vengono usati per identificarti."
+      },
+      "cookies": {
+        "title": "Cookie",
+        "p1": "Non usiamo cookie di tracciamento. Le preferenze come tema e lingua restano nella memoria locale del tuo browser."
+      },
+      "thirdParties": {
+        "title": "Terze parti",
+        "p1": "Plausible Analytics (statistiche di utilizzo) e WorldTimeAPI (usato per rilevare il tuo fuso orario dal tuo indirizzo IP)."
+      },
+      "rights": {
+        "title": "Le tue scelte",
+        "p1": "Puoi cancellare i dati locali in qualsiasi momento dalle impostazioni del browser. Puoi anche bloccare l'analisi con le funzioni di privacy del tuo browser."
+      },
+      "changes": {
+        "title": "Modifiche a questa informativa",
+        "p1": "Se questa informativa cambia, la data indicata sopra verrà aggiornata."
+      },
+      "contact": {
+        "title": "Contatti",
+        "p1": "Domande? Scrivi a hi@datetime.app."
+      }
+    },
+    "termsMetaTitle": "Termini di servizio | Datetime.app",
+    "termsMetaDesc": "I termini che si applicano quando usi datetime.app.",
+    "termsTitle": "Termini di servizio",
+    "termsIntro": "Termini chiari per uno strumento semplice. Usando datetime.app li accetti.",
+    "termsSummary": {
+      "free": {
+        "k": "Gratuito",
+        "v": "Il sito è gratuito, senza bisogno di un account."
+      },
+      "asis": {
+        "k": "Così com'è",
+        "v": "Fornito senza garanzia. Non fare affidamento su di esso per misurazioni del tempo critiche per la sicurezza."
+      },
+      "yours": {
+        "k": "I tuoi contenuti",
+        "v": "Non conserviamo ciò che scrivi. Resti responsabile di come usi i risultati."
+      }
+    },
+    "termsSections": {
+      "acceptance": {
+        "title": "Accettazione dei termini",
+        "p1": "Accedendo a datetime.app o usandolo, accetti questi termini. Se non sei d'accordo, ti preghiamo di non usare il sito."
+      },
+      "use": {
+        "title": "Uso del servizio",
+        "p1": "Puoi usare datetime.app per scopi personali e commerciali. Ti impegni a non interrompere il servizio, a non tentare accessi non autorizzati e a non usare mezzi automatizzati per sovraccaricarlo in modo irragionevole."
+      },
+      "accuracy": {
+        "title": "Accuratezza dei dati orari",
+        "p1": "Ci impegniamo a mantenere corretti orari, offset e regole dell'ora legale, ma dipendono dall'orologio del tuo dispositivo, dalle condizioni di rete e dalle modifiche normative dei governi. Non fare affidamento su datetime.app per misurazioni del tempo critiche per la sicurezza, legali o finanziarie."
+      },
+      "ip": {
+        "title": "Proprietà intellettuale",
+        "p1": "Il design, i testi e il codice del sito appartengono a datetime.app o ai suoi licenzianti, salvo dove indicato come open source. Puoi collegarti liberamente al sito."
+      },
+      "links": {
+        "title": "Link di terze parti",
+        "p1": "Il sito può contenere link a servizi esterni. Non li controlliamo e non siamo responsabili dei loro contenuti o delle loro pratiche."
+      },
+      "liability": {
+        "title": "Limitazione di responsabilità",
+        "p1": "Il servizio è fornito così com'è e come disponibile, senza garanzie di alcun tipo. Nella misura consentita dalla legge, non siamo responsabili per alcuna perdita derivante dall'uso o dall'impossibilità di usare il sito."
+      },
+      "changes": {
+        "title": "Modifiche a questi termini",
+        "p1": "Potremmo aggiornare questi termini di tanto in tanto. Continuare a usare il sito dopo una modifica significa accettare i nuovi termini."
+      },
+      "contact": {
+        "title": "Contatti",
+        "p1": "Domande? Scrivi a hi@datetime.app."
+      }
+    }
+  },
+  "embed": {
+    "crumb": "Incorpora",
+    "metaTitle": "Incorpora Datetime: l'anno corrente, come servizio | Datetime.app",
+    "metaDesc": "Mostra l'anno corrente sul tuo sito con un iframe. Calcolato da remoto, con cura.",
+    "eyebrow": "Incorpora Datetime",
+    "title": "L'anno corrente, consegnato via iframe.",
+    "desc": "Il tuo sito sa già in che anno siamo. Vorremmo comunque dirglielo. Incolla una riga e un server remoto lo calcolerà per te.",
+    "theme": "Tema",
+    "light": "Chiaro",
+    "dark": "Scuro",
+    "size": "Dimensione",
+    "iframeTitle": "Anno corrente",
+    "copy": "Copia snippet",
+    "specsTitle": "Specifiche",
+    "specsDesc": "Numeri che ci sentiamo di garantire.",
+    "latency": {
+      "label": "Latenza",
+      "sub": "per scoprire una cosa che il tuo dispositivo sapeva già"
+    },
+    "uptime": {
+      "label": "Uptime",
+      "sub": "l'anno è molto affidabile"
+    },
+    "requests": {
+      "label": "Richieste",
+      "value": "1 / caricamento",
+      "sub": "per visitatore, per anno"
+    },
+    "payload": {
+      "label": "Payload",
+      "sub": "in senso figurato"
+    },
+    "comparedTitle": "A confronto",
+    "without": "Senza Incorpora Datetime",
+    "withoutText": "istantaneo, offline, gratis.",
+    "with": "Con Incorpora Datetime",
+    "withText": "Un iframe, un viaggio di andata e ritorno in rete e una dipendenza. Stessa risposta.",
+    "faqTitle": "Domande",
+    "faq": {
+      "q1": "Perché dovrei averne bisogno?",
+      "a1": "Non ne avresti bisogno. È questo il bello.",
+      "q2": "È preciso?",
+      "a2": "Sì. È l'anno.",
+      "q3": "Cosa succede a Capodanno?",
+      "a3": "A mezzanotte UTC lo cambiamo. I tuoi visitatori verranno avvisati dal calendario.",
+      "q4": "Posso personalizzarlo?",
+      "a4": "Scegli chiaro o scuro, e una di tre dimensioni tramite parametri di query.",
+      "q5": "Funzionerà offline?",
+      "a5": "No. Il tuo browser, purtroppo, ricorderà l'anno."
+    }
+  },
+  "homeUpcoming": {
+    "title": "Prossime festività",
+    "description": "Conti alla rovescia in tempo reale per le prossime festività, nel tuo fuso orario.",
+    "all": "Tutti i conti alla rovescia",
+    "today": "oggi",
+    "day": "giorno",
+    "days": "giorni"
   }
 }

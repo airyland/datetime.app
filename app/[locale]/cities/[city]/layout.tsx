@@ -3,11 +3,12 @@ import { getTranslations } from 'next-intl/server'
 import { locales } from '@/i18n/request'
 
 interface LayoutProps {
-  params: { city: string; locale: string };
+  params: Promise<{ city: string; locale: string }>;
   children: React.ReactNode;
 }
 
-export async function generateMetadata({ params }: LayoutProps) {
+export async function generateMetadata({ params: paramsPromise }: LayoutProps) {
+  const params = await paramsPromise
   const city = params.city;
   const locale = params.locale;
   const cityInfo = citiesData[city as keyof typeof citiesData];

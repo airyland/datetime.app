@@ -1,1 +1,8 @@
-<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><rect width="512" height="512" fill="#131516" rx="80" ry="80"/><text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Arial" font-weight="normal" fill="#ffffff" font-size="409.6" dy="0">D</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#101114"/>
+  <g transform="translate(8 8) scale(2)" stroke-width="1.75" stroke-linecap="round">
+    <circle cx="12" cy="12" r="9.25" stroke="#F5F5F2"/>
+    <path d="M12 6.5V12" stroke="#F5F5F2"/>
+    <path d="M12 12l3.6 2.2" stroke="#FF6A45"/>
+  </g>
+</svg>

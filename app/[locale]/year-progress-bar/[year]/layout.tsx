@@ -4,11 +4,12 @@ import { getTranslations } from 'next-intl/server'
 import { locales } from '@/i18n/request'
 
 interface LayoutProps {
-  params: { year: string; locale: string }
+  params: Promise<{ year: string; locale: string }>
   children: React.ReactNode
 }
 
-export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>): Promise<Metadata> {
+export async function generateMetadata({ params: paramsPromise }: Omit<LayoutProps, 'children'>): Promise<Metadata> {
+  const params = await paramsPromise
   const year = parseInt(params.year)
   const locale = params.locale;
   const t = await getTranslations({ locale, namespace: 'yearProgress' });

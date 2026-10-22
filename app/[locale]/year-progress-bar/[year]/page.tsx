@@ -1,28 +1,18 @@
 import { notFound } from 'next/navigation'
-import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { JetBrains_Mono } from "next/font/google"
-import { Clock, Calendar, ArrowLeft, Info, BarChart3, Calculator } from "lucide-react"
+import { ArrowLink, CardList, Faq, PageIntro, Pill, RowLink, Section, SectionHeading, Stat, StatGrid, cardClass, monoLabel } from "@/components/ds"
+import { getLocalePath } from "@/lib/locale-utils"
 import { calculateYearProgress, calculateTimeLeft, calculateTimeLeftData, formatTimeLeft, getYearStatus } from "@/lib/year-progress"
 import YearProgressClient from "../year-progress-client"
-import HeaderClient from "../header-client"
 import { getTranslations } from 'next-intl/server'
 
-// Load JetBrains Mono for numbers
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-})
-
 interface YearProgressBarProps {
-  params: { year: string; locale: string }
+  params: Promise<{ year: string; locale: string }>
 }
 
 export default async function YearProgressBarWithYear({ params }: YearProgressBarProps) {
-  const yearParam = parseInt(params.year)
-  const { locale } = params
+  const resolvedParams = await params
+  const yearParam = parseInt(resolvedParams.year)
+  const { locale } = resolvedParams
   const t = await getTranslations({ locale, namespace: 'yearProgress' })
 
   // Validate year parameter (limit to ±15 years from current year)
@@ -88,187 +78,111 @@ export default async function YearProgressBarWithYear({ params }: YearProgressBa
     }
   ]
 
+  const yearHref = (y: number) => getLocalePath(`/year-progress-bar/${y}`, locale)
+
   return (
-    <main className="min-h-screen bg-white dark:bg-black flex flex-col">
-      <HeaderClient />
+    <>
+      <PageIntro
+        crumbs={[
+          { label: "Home", href: getLocalePath("/", locale) },
+          { label: t('title'), href: getLocalePath("/year-progress-bar", locale) },
+          { label: yearParam },
+        ]}
+        eyebrow={t('title')}
+        title={t('pageTitle', { year: yearParam })}
+        description={
+          isCurrentYear ? (
+            <span dangerouslySetInnerHTML={{ __html: t('subtitle', { year: yearParam, progress: `<strong class="font-medium text-ink">${initialProgress.toFixed(2)}</strong>` }) }} />
+          ) : isCompleted ? (
+            t('yearCompleted') || "This year has been completed"
+          ) : (
+            t('yearNotStarted') || "This year hasn't started yet"
+          )
+        }
+        right={
+          <ArrowLink href={getLocalePath("/year-progress-bar", locale)} title={t('backToCurrent') || 'Back to Current Year'}>
+            {t('backToCurrent') || 'Back to Current Year'}
+          </ArrowLink>
+        }
+      />
 
-      <div className="flex-grow">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-3xl mx-auto">
-            <div className="mb-4">
-              <Link href={`/${locale === 'en' ? '' : locale + '/'}year-progress-bar`} className="inline-flex items-center text-primary hover:underline" title={t('backToCurrent') || 'Back to Current Year'}>
-                <ArrowLeft className="mr-1 h-4 w-4" />
-                {t('backToCurrent') || 'Back to Current Year'}
-              </Link>
+      <Section top="clamp(8px,2vw,24px)">
+        <div className={`${cardClass} p-[clamp(22px,3.4vw,44px)]`}>
+          <div className={`flex flex-wrap items-center justify-between gap-x-6 gap-y-2.5 ${monoLabel}`}>
+            <h2 className="m-0 font-[inherit] text-[length:inherit] font-normal tracking-[inherit]">{t('progressTitle')} {yearParam}</h2>
+            <span className="text-ink">{isLeapYear ? t('leapYearType') : t('regularYearType')} &middot; {daysInYear}</span>
+          </div>
+          {/* Live updates only for the current year; static otherwise */}
+          <YearProgressClient
+            initialProgress={initialProgress}
+            initialTimeLeft={initialTimeLeftTranslated}
+            currentYear={yearParam}
+            live={isCurrentYear}
+          />
+        </div>
+
+        {/* Year Comparison with Current Year */}
+        {!isCurrentYear && (
+          <div className={`${cardClass} mt-5 p-[clamp(22px,3vw,32px)]`}>
+            <h2 className={`m-0 font-normal ${monoLabel}`}>{t('comparisonTitle') || 'Comparison with Current Year'}</h2>
+            <div className="mt-5 grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,300px),1fr))" }}>
+              {[{ y: currentYear, v: currentYearProgress, bar: "bg-ink" }, { y: yearParam, v: initialProgress, bar: "bg-brand" }].map((r) => (
+                <div key={r.y}>
+                  <div className="flex items-baseline justify-between gap-3 text-sm text-subtle">
+                    <span>{r.y} {t('progressTitle')}</span>
+                    <span className="tnum font-mono text-ink">{r.v.toFixed(2)}%</span>
+                  </div>
+                  <div className="mt-2.5 h-1.5 overflow-hidden rounded-[3px] bg-line" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(r.v)} aria-label={`${r.y} ${t('progressTitle')}`}>
+                    <div className={`h-full ${r.bar}`} style={{ width: `${r.v}%` }} />
+                  </div>
+                </div>
+              ))}
             </div>
-
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center">
-              {t('pageTitle', { year: yearParam })}
-            </h1>
-            <p className="text-xl text-center text-muted-foreground mb-8">
-              {isCurrentYear ? (
-                <span dangerouslySetInnerHTML={{ __html: t('subtitle', { year: yearParam, progress: `<strong>${initialProgress.toFixed(2)}</strong>` }) }} />
-              ) : isCompleted ? (
-                t('yearCompleted') || "This year has been completed"
+            <p className="m-0 mt-5 border-t border-line pt-4 text-sm text-subtle">
+              {progressDifference > 0 ? (
+                t('yearAhead', { year: yearParam, diff: progressDifference.toFixed(2) }) || `${yearParam} is ${progressDifference.toFixed(2)}% ahead of ${currentYear}`
               ) : (
-                t('yearNotStarted') || "This year hasn't started yet"
+                t('yearBehind', { year: yearParam, diff: Math.abs(progressDifference).toFixed(2) }) || `${yearParam} is ${Math.abs(progressDifference).toFixed(2)}% behind ${currentYear}`
               )}
             </p>
+          </div>
+        )}
 
-            <Card className="mb-8">
-              <CardHeader>
-                <CardTitle className="text-center flex items-center justify-center gap-2">
-                  <Calendar className="h-5 w-5" />
-                  <span>{t('progressTitle')} {yearParam}</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {isCurrentYear ? (
-                  /* Client component for real-time updates (only for current year) */
-                  <YearProgressClient
-                    initialProgress={initialProgress}
-                    initialTimeLeft={initialTimeLeftTranslated}
-                    currentYear={yearParam}
-                  />
-                ) : (
-                  /* Static display for non-current years */
-                  <div className="space-y-6">
-                    <div className="text-center">
-                      <span className={`text-5xl md:text-6xl font-bold ${jetbrainsMono.className}`}>
-                        {initialProgress.toFixed(2)}%
-                      </span>
-                    </div>
-                    <Progress value={initialProgress} className="h-6" />
-                    <div className="text-center text-muted-foreground">
-                      <Clock className="inline-block mr-2 h-4 w-4" />
-                      <span>{initialTimeLeftTranslated}</span>
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+        {/* Year Statistics */}
+        <div className="mt-5">
+          <h2 className={`m-0 mb-3 ${monoLabel}`}>{t('yearStatistics') || 'Year Statistics'}</h2>
+          <StatGrid min={220}>
+            <Stat label={t('days') || 'Days'} value={daysInYear} />
+            <Stat label={t('weeks') || 'Weeks'} value={weeksInYear} />
+            <Stat label={t('months') || 'Months'} value={monthsInYear} />
+          </StatGrid>
+          {isLeapYear && (
+            <p className="m-0 mt-4 text-sm text-subtle">{t('leapYear', { year: yearParam }) || `${yearParam} is a leap year`}</p>
+          )}
+        </div>
+      </Section>
 
-            {/* Year Comparison with Current Year */}
-            {!isCurrentYear && (
-              <Card className="mb-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <BarChart3 className="h-5 w-5" />
-                    {t('comparisonTitle') || 'Comparison with Current Year'}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-2">{currentYear} {t('progressTitle')}</p>
-                      <Progress value={currentYearProgress} className="h-4 mb-1" />
-                      <p className="text-sm text-right">{currentYearProgress.toFixed(2)}%</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-2">{yearParam} {t('progressTitle')}</p>
-                      <Progress value={initialProgress} className="h-4 mb-1" />
-                      <p className="text-sm text-right">{initialProgress.toFixed(2)}%</p>
-                    </div>
-                    <div className="text-center pt-2 border-t">
-                      <p className="text-sm text-muted-foreground">
-                        {progressDifference > 0 ? (
-                          t('yearAhead', { year: yearParam, diff: progressDifference.toFixed(2) }) || `${yearParam} is ${progressDifference.toFixed(2)}% ahead of ${currentYear}`
-                        ) : (
-                          t('yearBehind', { year: yearParam, diff: Math.abs(progressDifference).toFixed(2) }) || `${yearParam} is ${Math.abs(progressDifference).toFixed(2)}% behind ${currentYear}`
-                        )}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
+      {/* Related Tools */}
+      <Section>
+        <SectionHeading title={t('relatedTools') || 'Related Tools'} />
+        <CardList>
+          <RowLink href={getLocalePath(`/calendar/${yearParam}`, locale)} title={t('viewFullCalendar') || 'View the full calendar for this year'} label={`${t('calendar') || 'Calendar'} ${yearParam}`} description={t('viewFullCalendar') || 'View the full calendar for this year'} />
+          <RowLink href={getLocalePath("/age-calculator", locale)} title={t('calculateAge') || 'Calculate age based on birth year'} label={t('ageCalculator') || 'Age Calculator'} description={t('calculateAge') || 'Calculate age based on birth year'} />
+        </CardList>
+      </Section>
 
-            {/* Year Statistics */}
-            <Card className="mb-8">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Info className="h-5 w-5" />
-                  {t('yearStatistics') || 'Year Statistics'}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="text-center p-4 bg-secondary rounded-lg">
-                    <p className="text-2xl font-bold">{daysInYear}</p>
-                    <p className="text-sm text-muted-foreground">{t('days') || 'Days'}</p>
-                  </div>
-                  <div className="text-center p-4 bg-secondary rounded-lg">
-                    <p className="text-2xl font-bold">{weeksInYear}</p>
-                    <p className="text-sm text-muted-foreground">{t('weeks') || 'Weeks'}</p>
-                  </div>
-                  <div className="text-center p-4 bg-secondary rounded-lg">
-                    <p className="text-2xl font-bold">{monthsInYear}</p>
-                    <p className="text-sm text-muted-foreground">{t('months') || 'Months'}</p>
-                  </div>
-                </div>
-                {isLeapYear && (
-                  <p className="text-center text-sm text-muted-foreground mt-4">
-                    {t('leapYear', { year: yearParam }) || `${yearParam} is a leap year`}
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Related Tools */}
-            <Card className="mb-8">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Calculator className="h-5 w-5" />
-                  {t('relatedTools') || 'Related Tools'}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Link href={`/${locale === 'en' ? '' : locale + '/'}calendar/${yearParam}`} className="p-4 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors" title={t('viewFullCalendar') || 'View the full calendar for this year'}>
-                    <h3 className="font-semibold mb-1">{t('calendar') || 'Calendar'} {yearParam}</h3>
-                    <p className="text-sm text-muted-foreground">{t('viewFullCalendar') || 'View the full calendar for this year'}</p>
-                  </Link>
-                  <Link href={`/${locale === 'en' ? '' : locale + '/'}age-calculator`} className="p-4 bg-secondary rounded-lg hover:bg-secondary/80 transition-colors" title={t('calculateAge') || 'Calculate age based on birth year'}>
-                    <h3 className="font-semibold mb-1">{t('ageCalculator') || 'Age Calculator'}</h3>
-                    <p className="text-sm text-muted-foreground">{t('calculateAge') || 'Calculate age based on birth year'}</p>
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-
-            <div className="text-center mb-8">
-              <p className="mb-4">{t('viewOtherYears')}</p>
-              <div className="flex flex-wrap justify-center gap-2">
-                {[yearParam - 2, yearParam - 1, yearParam, yearParam + 1, yearParam + 2].filter(year => year >= minYear && year <= maxYear).map((year) => (
-                  <Link
-                    key={year}
-                    href={`/${locale === 'en' ? '' : locale + '/'}year-progress-bar/${year}`}
-                    className={`px-4 py-2 rounded-md ${year === yearParam ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:bg-secondary/80'}`}
-                    title={`View year progress for ${year}`}
-                  >
-                    {year}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* FAQ Section */}
-            <div className="mt-8 max-w-3xl mx-auto text-left">
-              <h2 className="text-2xl font-bold mb-6 text-center">{t('faqTitle')}</h2>
-              <Accordion type="multiple" defaultValue={yearProgressFaqs.map((_, index) => `item-${index}`)} collapsible className="w-full">
-                {yearProgressFaqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger>{faq.question}</AccordionTrigger>
-                    <AccordionContent>
-                      <p>{faq.answer}</p>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
+      <Section top="clamp(40px,5vw,64px)">
+        <div className="flex flex-wrap items-center justify-between gap-x-12 gap-y-6">
+          <div className="text-[15px] text-subtle">{t('viewOtherYears')}</div>
+          <div className="flex flex-wrap gap-2">
+            {[yearParam - 2, yearParam - 1, yearParam, yearParam + 1, yearParam + 2].filter((year) => year >= minYear && year <= maxYear).map((year) => (
+              <Pill key={year} href={yearHref(year)} active={year === yearParam} title={`View year progress for ${year}`}>{year}</Pill>
+            ))}
           </div>
         </div>
-      </div>
-    </main>
+      </Section>
+
+      <Faq title={t('faqTitle')} items={yearProgressFaqs.map((f) => ({ q: f.question, a: f.answer }))} />
+    </>
   )
 }

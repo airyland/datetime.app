@@ -3,11 +3,12 @@ import { getTranslations } from 'next-intl/server'
 import { locales } from '@/i18n/request'
 
 interface LayoutProps {
-  params: { timezone: string; locale: string };
+  params: Promise<{ timezone: string; locale: string }>;
   children: React.ReactNode;
 }
 
-export async function generateMetadata({ params }: LayoutProps) {
+export async function generateMetadata({ params: paramsPromise }: LayoutProps) {
+  const params = await paramsPromise
   const timezone = params.timezone;
   const locale = params.locale;
   const timezoneConfig = timezones.find(tz => tz.slug === timezone);

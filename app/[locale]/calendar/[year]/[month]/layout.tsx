@@ -4,11 +4,12 @@ import { locales } from '@/i18n/request'
 import { getMonthNames } from '@/lib/calendar'
 
 interface LayoutProps {
-  params: { year: string; month: string; locale: string }
+  params: Promise<{ year: string; month: string; locale: string }>
   children: React.ReactNode
 }
 
-export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>): Promise<Metadata> {
+export async function generateMetadata({ params: paramsPromise }: Omit<LayoutProps, 'children'>): Promise<Metadata> {
+  const params = await paramsPromise
   const year = parseInt(params.year)
   const month = parseInt(params.month)
   const locale = params.locale;
