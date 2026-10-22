@@ -2,21 +2,12 @@
 
 import { use, useState } from "react"
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, Info } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { JetBrains_Mono } from "next/font/google"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { LanguageSwitcher } from "@/components/language-switcher"
+import { Check } from 'lucide-react'
+import { Faq, PageIntro, Pill, Section, Stat, StatGrid, cardClass, monoLabel } from '@/components/ds'
+import { CalNavLink, CalPillLink, MonthMini, SelectedDateCard } from '@/components/calendar-parts'
 import { generateYearCalendar, getWeekdayNames } from '@/lib/calendar'
 import { getLocalePath } from '@/lib/locale-utils'
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-})
 
 interface CalendarPageProps {
   params: { year: string; locale: string };
@@ -27,7 +18,6 @@ export default function CalendarPage({ params }: CalendarPageProps) {
   const year = parseInt(resolvedParams.year);
   const locale = resolvedParams.locale;
   const t = useTranslations('calendar');
-  const tCommon = useTranslations('common');
   
   // Validate year (limit to ±15 years from current year)
   const currentYear = new Date().getFullYear();
@@ -63,301 +53,130 @@ export default function CalendarPage({ params }: CalendarPageProps) {
     }
   ];
   
+  const yearHref = (y: number) => getLocalePath(`/calendar/${y}`, locale)
+  const yearType = calendar.isLeapYear ? t('leapYear') : t('regularYear')
+  const passedPct = calendar.daysPassed ? ((calendar.daysPassed / calendar.totalDays) * 100).toFixed(1) : null
+
   return (
-    <main className="min-h-screen bg-white dark:bg-black flex flex-col">
-      <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href={getLocalePath("/", locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
-          Datetime.app
-        </Link>
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher />
-          <div className="flex items-center gap-2">
-            <span className="text-sm hidden md:inline">{t('toggleTheme')}:</span>
-            <ThemeToggle />
+    <>
+      <PageIntro
+        crumbs={[{ label: "Home", href: getLocalePath("/", locale) }, { label: "Calendar" }, { label: year }]}
+        title={t('title', { year })}
+        description={
+          <>
+            {t('subtitle')}
+            <br />
+            {t('description', { year })}
+          </>
+        }
+        right={
+          <div className={`flex flex-wrap items-center gap-2 ${monoLabel}`}>
+            {isCurrentYear && <span className="rounded-full border border-brand px-3 py-1.5 text-brand">{t('currentYear')}</span>}
+            <span className="rounded-full border border-line px-3 py-1.5 text-ink">{yearType}</span>
           </div>
-        </div>
-      </header>
+        }
+      />
 
-      <div className="container mx-auto px-4 flex-grow">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <Link 
-              href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year - 1}`}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
-              title={t('previousYear')}
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </Link>
-            
-            <div className="text-center">
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">
-                {t('title', { year })}
-              </h1>
-              <div className="text-center max-w-2xl mx-auto mb-2">
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                  {t('subtitle')}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {t('description', { year })}
-                </p>
-              </div>
-              <div className="flex items-center justify-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                {isCurrentYear && (
-                  <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-2 py-1 rounded text-xs">
-                    {t('currentYear')}
-                  </span>
-                )}
-                <span className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">
-                  {calendar.isLeapYear ? t('leapYear') : t('regularYear')}
-                </span>
-              </div>
-            </div>
-            
-            <Link 
-              href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year + 1}`}
-              className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
-              title={t('nextYear')}
-            >
-              <ChevronRight className="w-6 h-6" />
-            </Link>
-          </div>
-          
-          {/* Year statistics */}
+      {/* Year statistics */}
+      <Section top="clamp(8px,2vw,24px)">
+        <StatGrid min={190}>
+          <Stat label={t('info.totalDays', { year })} value={calendar.totalDays} sub={yearType} />
           {isCurrentYear && calendar.daysPassed && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto text-sm">
-              <div className="text-center">
-                <div className={`text-lg font-bold ${jetbrainsMono.className}`}>
-                  {calendar.totalDays}
-                </div>
-                <div className="text-gray-600 dark:text-gray-400">
-                  {t('info.totalDays', { year })}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className={`text-lg font-bold ${jetbrainsMono.className}`}>
-                  {calendar.daysPassed}
-                </div>
-                <div className="text-gray-600 dark:text-gray-400">
-                  {t('info.daysPassed')}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className={`text-lg font-bold ${jetbrainsMono.className}`}>
-                  {calendar.daysRemaining}
-                </div>
-                <div className="text-gray-600 dark:text-gray-400">
-                  {t('info.daysRemaining')}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className={`text-lg font-bold ${jetbrainsMono.className}`}>
-                  {calendar.weeksPassed}
-                </div>
-                <div className="text-gray-600 dark:text-gray-400">
-                  {t('info.weeksPassed')}
-                </div>
-              </div>
-            </div>
+            <>
+              <Stat label={t('info.daysPassed')} value={calendar.daysPassed} sub={passedPct ? `${passedPct}%` : undefined} />
+              <Stat label={t('info.daysRemaining')} value={calendar.daysRemaining} />
+              <Stat label={t('info.weeksPassed')} value={calendar.weeksPassed} />
+              <Stat label={t('info.weeksRemaining')} value={calendar.weeksRemaining} />
+            </>
           )}
-        </div>
+        </StatGrid>
+      </Section>
 
-        {/* Calendar Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+      {/* Calendar Grid */}
+      <Section top="clamp(40px,5vw,64px)">
+        <div className="mb-6 flex flex-wrap items-center justify-end gap-2.5">
+          <CalNavLink href={yearHref(year - 1)} title={t('previousYear')} dir="prev" />
+          <div className="tnum min-w-[112px] text-center font-mono text-[22px] font-light tracking-[-0.03em]">{year}</div>
+          <CalNavLink href={yearHref(year + 1)} title={t('nextYear')} dir="next" />
+          {!isCurrentYear && <CalPillLink href={yearHref(currentYear)} title={`View ${currentYear} calendar`}>{t('today')}</CalPillLink>}
+        </div>
+        <div className="grid gap-3.5" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,300px),1fr))" }}>
           {calendar.months.map((month, monthIndex) => (
-            <Card key={monthIndex} className="shadow-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg text-center">
-                  <Link 
-                    href={`/${locale === 'en' ? '' : locale + '/'}calendar/${year}/${String(monthIndex + 1).padStart(2, '0')}`}
-                    className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                    title={`View ${month.name} ${year} calendar`}
-                  >
-                    {month.name}
-                  </Link>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {/* Weekday headers */}
-                <div className="grid grid-cols-7 gap-1 mb-2 text-xs text-gray-500 dark:text-gray-400">
-                  {weekdayNames.short.map((day, index) => (
-                    <div key={index} className="text-center font-medium">
-                      {day}
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Calendar days */}
-                <div className="space-y-1">
-                  {Array.from({ length: 6 }, (_, weekIndex) => {
-                    const weekStart = weekIndex * 7;
-                    const weekDays = month.days.slice(weekStart, weekStart + 7);
-                    if (weekDays.length === 0) return null;
-                    
-                    return (
-                      <div key={weekIndex} className="grid grid-cols-7 gap-1">
-                        {/* Days */}
-                        {weekDays.map((day, dayIndex) => (
-                          <button
-                            key={dayIndex}
-                            onClick={() => handleDateClick(day.fullDate)}
-                            className={`
-                              text-xs py-1 text-center rounded transition-colors
-                              ${day.isToday 
-                                ? 'bg-blue-500 text-white hover:bg-blue-600 dark:hover:bg-blue-600' 
-                                : day.isOtherMonth 
-                                ? 'text-gray-300 dark:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800' 
-                                : 'text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800'
-                              }
-                              ${selectedDate?.getTime() === day.fullDate.getTime() && !day.isToday
-                                ? 'ring-2 ring-blue-500 ring-offset-1 dark:ring-offset-gray-900'
-                                : ''
-                              }
-                            `}
-                          >
-                            {day.date}
-                          </button>
-                        ))}
-                      </div>
-                    );
-                  })}
-                </div>
-              </CardContent>
-            </Card>
+            <MonthMini
+              key={monthIndex}
+              month={month}
+              year={year}
+              weekdayShort={weekdayNames.short}
+              monthHref={getLocalePath(`/calendar/${year}/${String(monthIndex + 1).padStart(2, '0')}`, locale)}
+              monthTitle={`View ${month.name} ${year} calendar`}
+              daysLabel={t('daysInMonth', { days: month.totalDays })}
+              isCurrent={isCurrentYear && monthIndex === new Date().getMonth()}
+              selectedDate={selectedDate}
+              onSelect={handleDateClick}
+            />
           ))}
         </div>
 
         {/* Selected date info */}
         {selectedDate && (
-          <Card className="mb-8 max-w-md mx-auto">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-lg flex items-center gap-2">
-                <Info className="w-5 h-5" />
-                Selected Date
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-2 text-sm">
-                <div>
-                  <span className="font-medium">Date:</span> {selectedDate.toLocaleDateString(locale, { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}
-                </div>
-                <div>
-                  <span className="font-medium">Week Number:</span> {t('weekNumber', { 
-                    number: calendar.months[selectedDate.getMonth()].days
-                      .find(d => d.fullDate.getDate() === selectedDate.getDate() && !d.isOtherMonth)?.weekNumber || 0
-                  })}
-                </div>
-                <div>
-                  <span className="font-medium">Day of Year:</span> {
-                    Math.floor((selectedDate.getTime() - new Date(selectedDate.getFullYear(), 0, 1).getTime()) / (1000 * 60 * 60 * 24)) + 1
-                  }
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <SelectedDateCard
+            title={t('selectedDate')}
+            rows={[
+              { label: t('date'), value: selectedDate.toLocaleDateString(locale, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) },
+              {
+                label: 'Week Number',
+                value: t('weekNumber', { number: calendar.months[selectedDate.getMonth()].days.find((d) => d.fullDate.getDate() === selectedDate.getDate() && !d.isOtherMonth)?.weekNumber || 0 }),
+              },
+              { label: t('dayOfYear'), value: Math.floor((selectedDate.getTime() - new Date(selectedDate.getFullYear(), 0, 1).getTime()) / (1000 * 60 * 60 * 24)) + 1 },
+            ]}
+          />
         )}
+      </Section>
 
-        {/* Year Navigation */}
-        <Card className="mb-8 max-w-4xl mx-auto">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg flex items-center gap-2">
-              <CalendarIcon className="w-5 h-5" />
-              {t('yearNavigation')}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap justify-center gap-2">
-              {Array.from({ length: 11 }, (_, i) => {
-                const navYear = year - 5 + i;
-                // Filter out years outside the allowed range
-                if (navYear < minYear || navYear > maxYear) {
-                  return null;
-                }
-                return (
-                  <Link
-                    key={navYear}
-                    href={`/${locale === 'en' ? '' : locale + '/'}calendar/${navYear}`}
-                    className={`
-                      px-3 py-1 rounded text-sm transition-colors
-                      ${navYear === year
-                        ? 'bg-blue-500 text-white'
-                        : navYear === currentYear
-                        ? 'bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 font-medium'
-                        : 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400'
-                      }
-                    `}
-                    title={`View ${navYear} calendar`}
-                  >
-                    {navYear}
-                  </Link>
-                );
+      {/* SEO Content Section */}
+      <Section>
+        <div className={`${cardClass} flex flex-wrap gap-x-16 gap-y-8 p-[clamp(24px,3.4vw,44px)]`}>
+          <div className="min-w-0 flex-[1_1_320px]">
+            <h2 className="m-0 text-[clamp(24px,2.6vw,32px)] font-semibold leading-[1.15] tracking-[-0.025em]">{t('seo.yearOverview.title', { year })}</h2>
+            <p className="m-0 mt-5 text-[15.5px] leading-[1.75] text-subtle">
+              {t('seo.yearOverview.content', {
+                year,
+                totalDays: calendar.totalDays,
+                yearType: calendar.isLeapYear ? t('leapYear').toLowerCase() : t('regularYear').toLowerCase(),
+                leapYearInfo: calendar.isLeapYear ? ` with an extra day (February 29)` : '',
               })}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto mb-8">
-          <Card className="shadow-none border">
-            <CardHeader>
-              <CardTitle>{t('faq.title', { year })}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Accordion type="multiple" collapsible>
-                {faqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger>{faq.question}</AccordionTrigger>
-                    <AccordionContent>{faq.answer}</AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </CardContent>
-          </Card>
+            </p>
+          </div>
+          <div className="min-w-0 flex-[1_1_320px]">
+            <h2 className="m-0 mb-3.5 text-lg font-semibold tracking-[-0.015em]">{t('seo.features.title', { year })}</h2>
+            <ul className="m-0 flex list-none flex-col gap-[11px] p-0">
+              {t.raw('seo.features.list').map((feature: string, index: number) => (
+                <li key={index} className="flex gap-3 text-[15px] leading-normal">
+                  <Check className="mt-1 size-4 shrink-0 text-ok" strokeWidth={2} aria-hidden="true" />
+                  <span>{feature.replace('{year}', year.toString())}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
+      </Section>
 
-        {/* SEO Content Section */}
-        <div className="max-w-4xl mx-auto mb-8 space-y-8">
-          {/* Year Overview */}
-          <Card className="shadow-none border">
-            <CardHeader>
-              <CardTitle>{t('seo.yearOverview.title', { year })}</CardTitle>
-            </CardHeader>
-            <CardContent className="prose dark:prose-invert max-w-none">
-              <p>
-                {t('seo.yearOverview.content', { 
-                  year, 
-                  totalDays: calendar.totalDays,
-                  yearType: calendar.isLeapYear ? t('leapYear').toLowerCase() : t('regularYear').toLowerCase(),
-                  leapYearInfo: calendar.isLeapYear ? ` with an extra day (February 29)` : ''
-                })}
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* Features */}
-          <Card className="shadow-none border">
-            <CardHeader>
-              <CardTitle>{t('seo.features.title', { year })}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2 text-sm">
-                {t.raw('seo.features.list').map((feature: string, index: number) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <span className="text-green-500 mt-1">✓</span>
-                    <span>{feature.replace('{year}', year.toString())}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
+      {/* Year Navigation */}
+      <Section top="clamp(40px,5vw,64px)">
+        <div className="flex flex-wrap items-center justify-between gap-x-12 gap-y-6">
+          <h2 className="m-0 text-[15px] font-normal text-subtle">{t('yearNavigation')}</h2>
+          <div className="flex flex-wrap gap-2">
+            {Array.from({ length: 11 }, (_, i) => year - 5 + i)
+              .filter((navYear) => navYear >= minYear && navYear <= maxYear)
+              .map((navYear) => (
+                <Pill key={navYear} href={yearHref(navYear)} active={navYear === year} title={`View ${navYear} calendar`}>{navYear}</Pill>
+              ))}
+          </div>
         </div>
-      </div>
-    </main>
+      </Section>
+
+      {/* FAQ Section */}
+      <Faq title={t('faq.title', { year })} items={faqs.map((f) => ({ q: f.question, a: f.answer }))} />
+    </>
   );
 }

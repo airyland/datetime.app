@@ -2,23 +2,14 @@
 
 import { useEffect, useState } from "react"
 import Link from 'next/link'
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { getCurrentLocale, getLocalePath } from '@/lib/locale-utils'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Clock, Globe, Copy, Check, Maximize2, ArrowRight } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { LanguageSwitcher } from "@/components/language-switcher"
+import { Copy, Check, Maximize2 } from "lucide-react"
+import { PageIntro, Section, Faq, ArrowLink, Pill, cardClass, monoLabel } from "@/components/ds"
+import { cn } from "@/lib/utils"
 import { TimezoneNavigation } from "@/components/timezone-navigation"
-import { JetBrains_Mono } from "next/font/google"
 import { FullscreenTime } from '@/components/fullscreen-time'
-
-// Load JetBrains Mono for numbers
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-})
 
 export default function UTCPage() {
   const t = useTranslations('utc')
@@ -69,7 +60,7 @@ export default function UTCPage() {
   // Format time as HH:MM:SS in UTC
   const formattedTime = currentTime.toLocaleTimeString(currentLocale, {
     timeZone: "UTC",
-    hour12: false,
+    hourCycle: "h23",
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
@@ -103,6 +94,16 @@ export default function UTCPage() {
     }).catch(console.error)
   }
 
+  const hm = formattedTime.slice(0, 5)
+  const ss = formattedTime.slice(5)
+  const lp = (path: string) => getLocalePath(path, currentLocale)
+
+  const readouts = [
+    { key: 'timestamp', label: t('unixTimestamp'), value: String(timestamp) },
+    { key: 'utc', label: t('utcString'), value: utcTime },
+    { key: 'iso', label: t('iso8601'), value: isoTime },
+  ]
+
   // UTC-related FAQs
   const utcFaqs = [
     {
@@ -128,152 +129,86 @@ export default function UTCPage() {
   ]
 
   return (
-    <main className="min-h-screen bg-white dark:bg-black flex flex-col">
-      <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href={getLocalePath('/', currentLocale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={t('titleHome')}>
-          Datetime.app
-        </Link>
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher />
-          <div className="flex items-center gap-2">
-            <span className="text-sm hidden md:inline">{t('toggleTheme')}:</span>
-            <ThemeToggle />
+    <main className="flex min-h-screen flex-col bg-paper text-ink">
+      <PageIntro
+        crumbs={[{ label: "Datetime.app", href: lp('/') }, { label: "UTC" }]}
+        eyebrow="UTC / GMT+0"
+        title={t('title')}
+        description={
+          <>
+            {t('subtitle')}{" "}
+            <Link href={lp('/glossary/utc')} className="whitespace-nowrap text-ink underline underline-offset-4 hover:text-brand" title={t('titleLearnMore')}>
+              {t('learnMore')}
+            </Link>
+          </>
+        }
+      />
+
+      <Section top="clamp(20px,3vw,36px)">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-2 text-[13px]">
+            <span className="rounded-full border border-line2 px-2.5 py-1 font-mono">{t('utcOffset')}</span>
+            <span className="rounded-full border border-line2 px-2.5 py-1 font-mono text-subtle">no DST</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setIsFullscreen(true)}
+            aria-label={t('enterFullscreen')}
+            title={t('enterFullscreen')}
+            className="inline-flex size-10 items-center justify-center rounded-full border border-line bg-transparent transition-colors hover:border-line2 hover:bg-surface"
+          >
+            <Maximize2 className="size-4" strokeWidth={1.75} />
+          </button>
+        </div>
+
+        <div
+          onClick={() => setIsFullscreen(true)}
+          suppressHydrationWarning
+          className="tnum -ml-[0.045em] mt-6 flex cursor-zoom-in items-baseline whitespace-nowrap font-mono text-[clamp(46px,13.6vw,190px)] font-light leading-none tracking-[-0.055em]"
+        >
+          <span suppressHydrationWarning>{hm}</span>
+          <span className="text-brand" suppressHydrationWarning>{ss}</span>
+        </div>
+
+        <div className="mt-[30px] flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+          <p suppressHydrationWarning className="m-0 text-[clamp(24px,3.6vw,44px)] font-medium leading-[1.1] tracking-[-0.03em]">{formattedDate}</p>
+          <div className="inline-flex items-center gap-2.5 text-[13px] text-subtle">
+            <span className="relative inline-block size-2">
+              <span className="animate-ping-soft absolute inset-0 rounded-full bg-ok" />
+              <span className="absolute inset-0 rounded-full bg-ok" />
+            </span>
+            <span suppressHydrationWarning>{Math.round(accuracy.offset)} ms</span>
           </div>
         </div>
-      </header>
 
-      <div className="container mx-auto px-4 flex-grow">
-        <div className="text-center">
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">
-              {t('title')}
-            </h1>
-            <h2 className="text-xl md:text-2xl font-medium mb-2 text-muted-foreground">
-              {t('subtitle')}
-            </h2>
-            <div className="text-sm mb-4">
-              <Link href="/glossary/utc" className="text-primary hover:underline" title={t('titleLearnMore')}>
-                {t('learnMore')}
-              </Link>
-            </div>
-            <div className="relative group">
-              <div
-                className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none ${jetbrainsMono.className} cursor-pointer`}
-                onClick={() => setIsFullscreen(true)}
-              >
-                {formattedTime}
+        <div className="mt-10 grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-px overflow-hidden rounded-2xl border border-line bg-line">
+          {readouts.map((r) => (
+            <div key={r.key} className="flex min-w-0 items-center justify-between gap-3 bg-surface px-[18px] py-4">
+              <div className="min-w-0">
+                <div className="mb-1 text-[12.5px] text-subtle">{r.label}</div>
+                <div className="tnum break-all font-mono text-sm leading-snug" suppressHydrationWarning>{r.value}</div>
               </div>
               <button
-                onClick={() => setIsFullscreen(true)}
-                className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-all"
-                title={t('enterFullscreen')}
+                type="button"
+                onClick={() => copyToClipboard(r.value, r.key)}
+                aria-label={t('copyToClipboard')}
+                title={t('copyToClipboard')}
+                className="inline-flex size-[34px] flex-none items-center justify-center rounded-lg border border-transparent text-subtle transition-colors hover:border-line2 hover:bg-paper"
               >
-                <Maximize2 className="w-6 h-6" />
+                {copiedStates[r.key] ? <Check className="size-4 text-ok" strokeWidth={2} /> : <Copy className="size-4" strokeWidth={1.75} />}
               </button>
             </div>
-            <p className="text-xl mt-4">{formattedDate}</p>
-            <div className="flex items-center justify-center gap-2 mt-2 text-muted-foreground">
-              <Globe className="w-4 h-4" />
-              <span>{t('utcOffset')}</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8">
-            <div className="bg-card text-card-foreground shadow-none rounded-none border">
-              <div className="flex flex-col space-y-1.5 p-6 py-2 px-4">
-                <div className="tracking-tight text-sm font-medium text-muted-foreground text-center">{t('unixTimestamp')}</div>
-              </div>
-              <div className="p-6 px-4 py-2">
-                <div className="flex items-center gap-2 justify-center">
-                  <p className={jetbrainsMono.className}>{timestamp}</p>
-                  <button
-                    onClick={() => copyToClipboard(timestamp.toString(), 'timestamp')}
-                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title={t('copyToClipboard')}
-                  >
-                    {copiedStates['timestamp'] ? (
-                      <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    ) : (
-                      <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-card text-card-foreground shadow-none rounded-none border">
-              <div className="flex flex-col space-y-1.5 p-6 py-2 px-4">
-                <div className="tracking-tight text-sm font-medium text-muted-foreground text-center">{t('utcString')}</div>
-              </div>
-              <div className="p-6 px-4 py-2">
-                <div className="flex items-center gap-2 justify-center">
-                  <p className={jetbrainsMono.className}>{utcTime}</p>
-                  <button
-                    onClick={() => copyToClipboard(utcTime, 'utc')}
-                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title={t('copyToClipboard')}
-                  >
-                    {copiedStates['utc'] ? (
-                      <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    ) : (
-                      <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-card text-card-foreground shadow-none rounded-none border">
-              <div className="flex flex-col space-y-1.5 p-6 py-2 px-4">
-                <div className="tracking-tight text-sm font-medium text-muted-foreground text-center">{t('iso8601')}</div>
-              </div>
-              <div className="p-6 px-4 py-2">
-                <div className="flex items-center gap-2 justify-center">
-                  <p className={jetbrainsMono.className}>{isoTime}</p>
-                  <button
-                    onClick={() => copyToClipboard(isoTime, 'iso')}
-                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title={t('copyToClipboard')}
-                  >
-                    {copiedStates['iso'] ? (
-                      <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    ) : (
-                      <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Timezone Navigation */}
-          <TimezoneNavigation currentTimezone="utc" />
-
-          {/* FAQ Section */}
-          <div className="mt-8 max-w-3xl mx-auto text-left">
-            <h2 className="text-2xl font-bold mb-6 text-center">{t('faqTitle')}</h2>
-            <Accordion 
-              type="multiple" 
-              className="w-full"
-              defaultValue={utcFaqs.map((_, index) => `item-${index}`)}
-            >
-              {utcFaqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent>
-                    <p>{faq.answer}</p>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-            <p className="text-center my-4">
-              <Link href="/glossary" className="text-muted-foreground text-sm hover:underline" title={t('titleViewGlossary')}>
-                {t('viewGlossary')} <ArrowRight className="inline w-4 h-4" />
-              </Link>
-            </p>
-          </div>
+          ))}
         </div>
-      </div>
+      </Section>
+
+      <TimezoneNavigation currentTimezone="utc" />
+
+      <Faq title={t('faqTitle')} items={utcFaqs.map((f) => ({ q: f.question, a: f.answer }))} />
+
+      <Section top="0px" className="pb-12">
+        <ArrowLink href={lp('/glossary')} title={t('titleViewGlossary')}>{t('viewGlossary')}</ArrowLink>
+      </Section>
 
       <FullscreenTime
         time={formattedTime}

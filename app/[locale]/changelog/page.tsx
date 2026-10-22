@@ -1,15 +1,14 @@
 import { Metadata } from 'next'
-import Link from 'next/link'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Plus, Wrench, Bug, Zap } from "lucide-react"
+import { PageIntro, Section, Card } from "@/components/ds"
+import ChangelogList from "./changelog-list"
 import { getLocalePath } from '@/lib/locale-utils'
 
 interface ChangelogPageProps {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params: paramsPromise }: ChangelogPageProps): Promise<Metadata> {
+  const params = await paramsPromise
   return {
     title: 'Changelog - Datetime.app',
     description: 'Stay up to date with the latest features, improvements, and bug fixes to Datetime.app.',
@@ -40,7 +39,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   }
 }
 
-interface ChangelogEntry {
+export interface ChangelogEntry {
   date: string
   changes: {
     type: 'added' | 'changed' | 'fixed' | 'removed'
@@ -48,7 +47,7 @@ interface ChangelogEntry {
   }[]
 }
 
-const changelog: ChangelogEntry[] = [
+export const changelog: ChangelogEntry[] = [
   {
     date: '2025-07-12',
     changes: [
@@ -211,150 +210,41 @@ const changelog: ChangelogEntry[] = [
   }
 ]
 
-const getChangeIcon = (type: string) => {
-  switch (type) {
-    case 'added':
-      return <Plus className="w-4 h-4 text-green-600" />
-    case 'changed':
-      return <Wrench className="w-4 h-4 text-blue-600" />
-    case 'fixed':
-      return <Bug className="w-4 h-4 text-red-600" />
-    case 'removed':
-      return <Zap className="w-4 h-4 text-orange-600" />
-    default:
-      return null
-  }
-}
-
-const getChangeBadgeColor = (type: string) => {
-  switch (type) {
-    case 'added':
-      return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
-    case 'changed':
-      return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
-    case 'fixed':
-      return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
-    case 'removed':
-      return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200'
-    default:
-      return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
-  }
-}
-
-export default function ChangelogPage({ params }: ChangelogPageProps) {
-  const locale = params.locale
+export default async function ChangelogPage({ params }: ChangelogPageProps) {
+  const { locale } = await params
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="container mx-auto px-4 py-6 flex justify-between items-center border-b">
-        <Link href={getLocalePath('/', locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title="Go to homepage">
-          Datetime.app
-        </Link>
-      </header>
+    <main>
+      <PageIntro
+        crumbs={[{ label: 'Home', href: getLocalePath('/', locale) }, { label: 'Changelog' }]}
+        eyebrow="Release notes"
+        title="Changelog"
+        description="Stay up to date with the latest features, improvements, and bug fixes to Datetime.app. All notable changes to this project are documented here."
+      />
 
-      <div className="container mx-auto px-4 py-8">
-        {/* Breadcrumb */}
-        <div className="mb-6">
-          <Link 
-            href={locale === 'en' ? '/' : `/${locale}`}
-            className="inline-flex items-center gap-2 text-primary hover:underline"
-            title="Back to homepage"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </Link>
-        </div>
+      <ChangelogList entries={changelog} />
 
-        {/* Page Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">Changelog</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Stay up to date with the latest features, improvements, and bug fixes to Datetime.app. 
-            All notable changes to this project are documented here.
-          </p>
-        </div>
-
-        {/* Changelog Entries */}
-        <div className="max-w-4xl mx-auto space-y-8">
-          {changelog.map((entry, index) => (
-            <Card key={index}>
-              <CardHeader>
-                <CardTitle className="text-xl">
-                  {new Date(entry.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {entry.changes.map((change, changeIndex) => (
-                    <div key={changeIndex} className="flex items-start gap-3">
-                      {getChangeIcon(change.type)}
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <Badge 
-                            variant="secondary" 
-                            className={`text-xs ${getChangeBadgeColor(change.type)}`}
-                          >
-                            {change.type.charAt(0).toUpperCase() + change.type.slice(1)}
-                          </Badge>
-                        </div>
-                        <p className="text-sm text-muted-foreground">{change.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Footer Note */}
-        <div className="max-w-4xl mx-auto mt-12 p-6 bg-muted rounded-lg">
-          <h3 className="font-semibold mb-2">About This Changelog</h3>
-          <p className="text-sm text-muted-foreground mb-2">
+      <Section className="pb-[clamp(56px,8vw,96px)]">
+        <Card className="p-6">
+          <h2 className="m-0 mb-2 text-lg font-semibold tracking-[-0.02em]">About This Changelog</h2>
+          <p className="m-0 text-sm leading-relaxed text-subtle">
             This changelog follows the{' '}
-            <a 
-              href="https://keepachangelog.com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
+            <a href="https://keepachangelog.com/" target="_blank" rel="noopener noreferrer" className="text-ink underline decoration-line2 underline-offset-4 hover:decoration-brand">
               Keep a Changelog
             </a>{' '}
             format and{' '}
-            <a 
-              href="https://semver.org/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
+            <a href="https://semver.org/" target="_blank" rel="noopener noreferrer" className="text-ink underline decoration-line2 underline-offset-4 hover:decoration-brand">
               Semantic Versioning
             </a>.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
-            <div className="flex items-center gap-2">
-              <Plus className="w-3 h-3 text-green-600" />
-              <span><strong>Added</strong> for new features</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Wrench className="w-3 h-3 text-blue-600" />
-              <span><strong>Changed</strong> for changes in existing functionality</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Bug className="w-3 h-3 text-red-600" />
-              <span><strong>Fixed</strong> for bug fixes</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Zap className="w-3 h-3 text-orange-600" />
-              <span><strong>Removed</strong> for removed features</span>
-            </div>
-          </div>
-        </div>
-      </div>
+          <ul className="m-0 mt-4 grid list-none grid-cols-1 gap-3 p-0 text-[13px] text-subtle sm:grid-cols-2 lg:grid-cols-4">
+            <li><strong className="text-ink">Added</strong> for new features</li>
+            <li><strong className="text-ink">Changed</strong> for changes in existing functionality</li>
+            <li><strong className="text-ink">Fixed</strong> for bug fixes</li>
+            <li><strong className="text-ink">Removed</strong> for removed features</li>
+          </ul>
+        </Card>
+      </Section>
     </main>
   )
 }

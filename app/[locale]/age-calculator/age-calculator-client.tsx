@@ -1,25 +1,34 @@
 "use client"
 
+import * as React from "react"
 import { useState, useEffect } from "react"
-import { Calendar } from "@/components/ui/calendar"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Switch } from "@/components/ui/switch"
-import { JetBrains_Mono } from "next/font/google"
 import { calculateAge, getNextBirthday } from "@/lib/age-calculator"
-import { Clock, Calendar as CalendarIcon, Gift, Calculator } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { inputClass, monoLabel } from "@/components/ds"
 import { format } from "date-fns"
 import { useTranslations } from 'next-intl'
 
-// Load JetBrains Mono for numbers
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-})
+const labelClass = "mb-1.5 block text-[12.5px] font-medium text-subtle"
+const tabsWrap = "inline-flex flex-wrap gap-0.5 rounded-full border border-line bg-surface p-1"
+const toISODate = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`
+const fromISODate = (v: string) => {
+  const [y, m, d] = v.split("-").map(Number)
+  return y && m && d ? new Date(y, m - 1, d) : undefined
+}
+
+function SegTab({ on, onClick, children }: { on: boolean; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <button
+      type="button"
+      role="tab"
+      aria-selected={on}
+      onClick={onClick}
+      className={cn("h-9 rounded-full px-4 text-sm font-medium transition-colors", on ? "bg-ink text-btn-ink" : "bg-transparent text-subtle hover:text-ink")}
+    >
+      {children}
+    </button>
+  )
+}
 
 interface AgeCalculatorClientProps {
   initialBirthDate?: Date
@@ -49,6 +58,9 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
   const [nextBirthday, setNextBirthday] = useState<ReturnType<typeof getNextBirthday> | null>(null)
   const [currentTime, setCurrentTime] = useState(new Date())
   const [error, setError] = useState<string | null>(null)
+  const [resultTab, setResultTab] = useState<'standard' | 'detailed' | 'decimal'>('standard')
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
 
   // Handle manual birth date input
   const handleManualBirthDateSubmit = () => {
@@ -168,278 +180,199 @@ export default function AgeCalculatorClient({ initialBirthDate }: AgeCalculatorC
     return () => clearInterval(timer)
   }, [birthDate, useCustomTargetDate])
 
+  const todayISO = toISODate(new Date())
+  const dec = age ? String(age.decimalAge).split(".") : ["", ""]
+  const unit = "ml-[.1em] text-[.3em] text-subtle"
+  const bigNum = "tnum mt-2.5 flex flex-wrap items-baseline gap-x-[22px] gap-y-1 whitespace-nowrap font-mono font-light leading-none tracking-[-0.055em] -ml-[0.04em]"
+
   return (
-    <div className="space-y-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <CalendarIcon className="h-5 w-5" />
-              <span>{t('enterBirthDate')}</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="mb-4">
-              <RadioGroup
-                value={inputMethod}
-                onValueChange={(value) => setInputMethod(value as 'calendar' | 'manual')}
-                className="flex space-x-4"
+    <div className="flex flex-wrap gap-x-14 gap-y-8">
+      <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-[22px]">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 className="m-0 text-xl font-semibold tracking-[-0.02em]">{t('calculateYourAge')}</h2>
+          <div role="tablist" aria-label={t('enterBirthDate')} className={tabsWrap}>
+            <SegTab on={inputMethod === 'calendar'} onClick={() => setInputMethod('calendar')}>{t('inputMethods.calendar')}</SegTab>
+            <SegTab on={inputMethod === 'manual'} onClick={() => setInputMethod('manual')}>{t('inputMethods.manual')}</SegTab>
+          </div>
+        </div>
+
+        <div>
+          <h3 className={cn("m-0 mb-3 font-normal", monoLabel)}>{t('enterBirthDate')}</h3>
+          {inputMethod === 'calendar' ? (
+            <div className="min-w-0">
+              <label htmlFor="birth-date" className={labelClass}>{t('inputMethods.calendar')}</label>
+              <input
+                id="birth-date"
+                type="date"
+                max={todayISO}
+                min="1900-01-01"
+                value={birthDate ? toISODate(birthDate) : ""}
+                onChange={(e) => setBirthDate(e.target.value ? fromISODate(e.target.value) : undefined)}
+                className={cn(inputClass, "h-[46px] rounded-[10px] bg-paper font-mono text-sm")}
+              />
+            </div>
+          ) : (
+            <div className="space-y-4">
+              <div className="flex flex-wrap gap-3">
+                {([
+                  ["birth-year", t('labels.year'), "YYYY", birthYear, setBirthYear, undefined, undefined, "flex-[1_1_90px]"],
+                  ["birth-month", t('labels.month'), "MM", birthMonth, setBirthMonth, 1, 12, "flex-[1_1_70px]"],
+                  ["birth-day", t('labels.day'), "DD", birthDay, setBirthDay, 1, 31, "flex-[1_1_70px]"],
+                ] as const).map(([id, label, ph, val, set, min, max, flex]) => (
+                  <div key={id} className={cn("min-w-0", flex)}>
+                    <label htmlFor={id} className={labelClass}>{label}</label>
+                    <input
+                      id={id}
+                      type="number"
+                      inputMode="numeric"
+                      placeholder={ph}
+                      min={min}
+                      max={max}
+                      value={val}
+                      onChange={(e) => set(e.target.value)}
+                      className={cn(inputClass, "h-[46px] rounded-[10px] bg-paper font-mono text-sm")}
+                    />
+                  </div>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={handleManualBirthDateSubmit}
+                className="h-11 w-full rounded-full bg-ink px-5 text-sm font-medium text-btn-ink transition-opacity hover:opacity-90"
               >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="calendar" id="calendar" />
-                  <Label htmlFor="calendar">{t('inputMethods.calendar')}</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem value="manual" id="manual" />
-                  <Label htmlFor="manual">{t('inputMethods.manual')}</Label>
-                </div>
-              </RadioGroup>
+                {t('labels.calculateAge')}
+              </button>
+              {birthDate && (
+                <div className="text-sm text-subtle">{t('labels.selectedDate')}: {birthDate.toLocaleDateString()}</div>
+              )}
             </div>
+          )}
+        </div>
 
-            {inputMethod === 'calendar' ? (
-              <Calendar
-                mode="single"
-                selected={birthDate}
-                onSelect={setBirthDate}
-                disabled={(date) => date > new Date()}
-                className="mx-auto"
-              />
-            ) : (
-              <div className="space-y-4">
-                <div className="grid grid-cols-3 gap-2">
-                  <div>
-                    <Label htmlFor="birth-year">{t('labels.year')}</Label>
-                    <Input
-                      id="birth-year"
-                      type="number"
-                      placeholder="YYYY"
-                      value={birthYear}
-                      onChange={(e) => setBirthYear(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="birth-month">{t('labels.month')}</Label>
-                    <Input
-                      id="birth-month"
-                      type="number"
-                      placeholder="MM"
-                      min="1"
-                      max="12"
-                      value={birthMonth}
-                      onChange={(e) => setBirthMonth(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="birth-day">{t('labels.day')}</Label>
-                    <Input
-                      id="birth-day"
-                      type="number"
-                      placeholder="DD"
-                      min="1"
-                      max="31"
-                      value={birthDay}
-                      onChange={(e) => setBirthDay(e.target.value)}
-                    />
-                  </div>
-                </div>
+        <label className="flex cursor-pointer items-center gap-3 text-[14.5px]">
+          <input
+            id="custom-date"
+            type="checkbox"
+            checked={useCustomTargetDate}
+            onChange={(e) => setUseCustomTargetDate(e.target.checked)}
+            className="size-[18px] accent-[var(--accent)]"
+          />
+          {t('labels.useCustomDate')}
+        </label>
 
-                <Button
-                  onClick={handleManualBirthDateSubmit}
-                  className="w-full"
-                >
-                  {t('labels.calculateAge')}
-                </Button>
+        {useCustomTargetDate && (
+          <div>
+            <h3 className={cn("m-0 mb-3 font-normal", monoLabel)}>{t('calculateAgeAsOf')}</h3>
+            <label htmlFor="target-date" className={labelClass}>{t('labels.targetDate')}</label>
+            <input
+              id="target-date"
+              type="date"
+              value={toISODate(targetDate)}
+              onChange={(e) => {
+                const d = e.target.value ? fromISODate(e.target.value) : undefined
+                if (d) {
+                  setError(null)
+                  setTargetDate(d)
+                  setTargetYear(String(d.getFullYear()))
+                  setTargetMonth(String(d.getMonth() + 1).padStart(2, "0"))
+                  setTargetDay(String(d.getDate()).padStart(2, "0"))
+                }
+              }}
+              className={cn(inputClass, "h-[46px] rounded-[10px] bg-paper font-mono text-sm")}
+            />
+          </div>
+        )}
 
-                {birthDate && (
-                  <div className="text-sm text-muted-foreground mt-2">
-                    {t('labels.selectedDate')}: {birthDate.toLocaleDateString()}
-                  </div>
-                )}
+        {error && (
+          <div role="alert" className="rounded-[10px] border border-brand px-3.5 py-3 text-sm text-brand">{error}</div>
+        )}
 
-                {error && (
-                  <div className="text-sm text-red-500 mt-2">
-                    {error}
-                  </div>
-                )}
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Clock className="h-5 w-5" />
-              <span>{t('calculateAgeAsOf')}</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center space-x-2 mb-4">
-              <Switch
-                id="custom-date"
-                checked={useCustomTargetDate}
-                onCheckedChange={setUseCustomTargetDate}
-              />
-              <Label htmlFor="custom-date">{t('labels.useCustomDate')}</Label>
-            </div>
-
-            {useCustomTargetDate ? (
-              <div className="space-y-4">
-                <div className="grid grid-cols-3 gap-2">
-                  <div>
-                    <Label htmlFor="target-year">{t('labels.year')}</Label>
-                    <Input
-                      id="target-year"
-                      type="number"
-                      placeholder="YYYY"
-                      value={targetYear}
-                      onChange={(e) => setTargetYear(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="target-month">{t('labels.month')}</Label>
-                    <Input
-                      id="target-month"
-                      type="number"
-                      placeholder="MM"
-                      min="1"
-                      max="12"
-                      value={targetMonth}
-                      onChange={(e) => setTargetMonth(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="target-day">{t('labels.day')}</Label>
-                    <Input
-                      id="target-day"
-                      type="number"
-                      placeholder="DD"
-                      min="1"
-                      max="31"
-                      value={targetDay}
-                      onChange={(e) => setTargetDay(e.target.value)}
-                    />
-                  </div>
-                </div>
-
-                <Button
-                  onClick={handleManualTargetDateSubmit}
-                  className="w-full"
-                >
-                  {t('labels.updateTargetDate')}
-                </Button>
-
-                <div className="text-sm text-muted-foreground mt-2">
-                  {t('labels.targetDate')}: {targetDate.toLocaleDateString()}
-                </div>
-              </div>
-            ) : (
-              <div className="text-center p-4 border rounded-md">
-                <p className="text-lg font-medium mb-2">{t('labels.currentDateTime')}</p>
-                <p className={`text-xl ${jetbrainsMono.className}`}>
-                  {format(currentTime, "yyyy-MM-dd HH:mm:ss")}
-                </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  <Clock className="inline-block mr-1 h-3 w-3" />
-                  <span>{t('labels.updatesInRealTime')}</span>
-                </p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+        {!useCustomTargetDate && (
+          <div className="flex flex-wrap items-center gap-2.5 text-[13px] text-subtle">
+            <span className="relative inline-block size-[7px] rounded-full bg-brand" aria-hidden="true" />
+            <span>{t('labels.updatesInRealTime')}</span>
+            <span className="tnum font-mono" suppressHydrationWarning>&middot; {mounted ? format(currentTime, "yyyy-MM-dd HH:mm:ss") : ""}</span>
+          </div>
+        )}
       </div>
 
-      {birthDate && age && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
-              <span>{t('ageResults')}</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Tabs defaultValue="standard">
-              <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="standard">{t('tabs.standard')}</TabsTrigger>
-                <TabsTrigger value="detailed">{t('tabs.detailed')}</TabsTrigger>
-                <TabsTrigger value="decimal">{t('tabs.decimal')}</TabsTrigger>
-              </TabsList>
+      <div aria-hidden="true" className="hidden w-px bg-line min-[1000px]:block" />
 
-              <TabsContent value="standard" className="mt-4">
-                <div className="text-center">
-                  <div className={`text-4xl font-bold ${jetbrainsMono.className}`}>
-                    {age.years}<span className="text-muted-foreground text-xl">y</span> {age.months}<span className="text-muted-foreground text-xl">m</span> {age.days}<span className="text-muted-foreground text-xl">d</span>
-                  </div>
-                  <p className="mt-2 text-muted-foreground">Age: {age.formatted.ymd}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">
-                    {useCustomTargetDate
-                      ? `As of ${targetDate.toLocaleDateString()}`
-                      : "Updates in real-time"
-                    }
-                  </p>
-                </div>
-              </TabsContent>
+      <div className="flex min-w-0 flex-[1.15_1_420px] flex-col gap-[22px]">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 className="m-0 text-xl font-semibold tracking-[-0.02em]">{t('ageResults')}</h2>
+          <div role="tablist" aria-label={t('ageResults')} className={tabsWrap}>
+            <SegTab on={resultTab === 'standard'} onClick={() => setResultTab('standard')}>{t('tabs.standard')}</SegTab>
+            <SegTab on={resultTab === 'detailed'} onClick={() => setResultTab('detailed')}>{t('tabs.detailed')}</SegTab>
+            <SegTab on={resultTab === 'decimal'} onClick={() => setResultTab('decimal')}>{t('tabs.decimal')}</SegTab>
+          </div>
+        </div>
 
-              <TabsContent value="detailed" className="mt-4">
-                <div className="space-y-2">
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="bg-muted p-2 rounded">
-                      <div className="text-sm text-muted-foreground">{t('labels.years')}</div>
-                      <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>{age.years}</div>
-                    </div>
-                    <div className="bg-muted p-2 rounded">
-                      <div className="text-sm text-muted-foreground">{t('labels.months')}</div>
-                      <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>{age.totalMonths}</div>
-                    </div>
-                    <div className="bg-muted p-2 rounded">
-                      <div className="text-sm text-muted-foreground">{t('labels.days')}</div>
-                      <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>{age.totalDays}</div>
-                    </div>
-                    <div className="bg-muted p-2 rounded">
-                      <div className="text-sm text-muted-foreground">{t('labels.hours')}</div>
-                      <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>{age.totalDays * 24 + age.hours}</div>
-                    </div>
+        {birthDate && age ? (
+          <>
+            <div>
+              <div className={monoLabel}>
+                {useCustomTargetDate ? `As of ${targetDate.toLocaleDateString()}` : "Updates in real-time"}
+              </div>
+
+              {resultTab === 'standard' && (
+                <>
+                  <div className={cn(bigNum, "text-[clamp(52px,8vw,108px)]")}>
+                    <span>{age.years}<span className={unit}>y</span></span>
+                    <span>{age.months}<span className={unit}>m</span></span>
+                    <span className="text-brand">{age.days}<span className={unit}>d</span></span>
                   </div>
-                  <div className="text-center text-sm text-muted-foreground mt-2">
-                    {useCustomTargetDate
-                      ? `As of ${targetDate.toLocaleDateString()}`
-                      : (
-                        <>
-                          <Clock className="inline-block mr-1 h-3 w-3" />
-                          <span>{t('labels.updatesInRealTime')}</span>
-                        </>
-                      )
-                    }
+                  <p className="m-0 mt-3 text-sm text-subtle">Age: {age.formatted.ymd}</p>
+                </>
+              )}
+
+              {resultTab === 'decimal' && (
+                <>
+                  <div className={cn(bigNum, "text-[clamp(40px,6vw,84px)]")}>
+                    <span>{dec[0]}</span>
+                    {dec[1] !== undefined && <span className="text-brand">.{dec[1]}</span>}
+                  </div>
+                  <div className="mt-2.5 text-sm text-subtle">{t('labels.yearsInDecimalFormat')}</div>
+                </>
+              )}
+
+              {resultTab === 'detailed' && (
+                <div className="mt-3">
+                  <div
+                    className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line"
+                    style={{ gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,150px),1fr))" }}
+                  >
+                    {[
+                      [t('labels.years'), age.years],
+                      [t('labels.months'), age.totalMonths],
+                      [t('labels.days'), age.totalDays],
+                      [t('labels.hours'), age.totalDays * 24 + age.hours],
+                    ].map(([l, v]) => (
+                      <div key={String(l)} className="min-w-0 bg-surface px-[18px] py-4">
+                        <div className="text-[12.5px] text-subtle">{l}</div>
+                        <div className="tnum mt-1.5 font-mono text-[22px] font-light tracking-[-0.03em]">{v}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </TabsContent>
-
-              <TabsContent value="decimal" className="mt-4">
-                <div className="text-center">
-                  <div className={`text-4xl font-bold ${jetbrainsMono.className}`}>
-                    {age.decimalAge}
-                  </div>
-                  <p className="mt-2 text-muted-foreground">{t('labels.yearsInDecimalFormat')}</p>
-                </div>
-              </TabsContent>
-            </Tabs>
+              )}
+            </div>
 
             {!useCustomTargetDate && nextBirthday && (
-              <div className="mt-6 border-t pt-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Gift className="h-4 w-4 text-primary" />
-                  <span className="font-medium">{t('labels.nextBirthday')}</span>
-                </div>
-                <p className="text-sm">
-                  You will be <span className="font-bold">{nextBirthday.nextAge}</span> in{" "}
-                  <span className="font-bold">{nextBirthday.daysUntil}</span> days
+              <div className="border-t border-line pt-5">
+                <div className={monoLabel}>{t('labels.nextBirthday')}</div>
+                <p className="m-0 mt-2 text-[17px] leading-normal tracking-[-0.01em]">
+                  You will be <span className="font-semibold">{nextBirthday.nextAge}</span> in{" "}
+                  <span className="font-semibold">{nextBirthday.daysUntil}</span> days
                   ({nextBirthday.date.toLocaleDateString()})
                 </p>
               </div>
             )}
-          </CardContent>
-        </Card>
-      )}
+          </>
+        ) : (
+          <div className="py-12 text-center text-[15px] text-subtle">{t('enterBirthDate')}</div>
+        )}
+      </div>
     </div>
   )
 }

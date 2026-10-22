@@ -1,394 +1,282 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
+import { ChevronDown, Search, Check } from "lucide-react"
+import { cn } from "@/lib/utils"
 import { getLocalePath } from '@/lib/locale-utils'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Search, Globe, Clock, Users, MapPin, Filter } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { LanguageSwitcher } from "@/components/language-switcher"
-import { JetBrains_Mono } from "next/font/google"
-import { 
-  ianaTimezones, 
-  getTimezonesByRegion, 
-  searchTimezones, 
+import { PageIntro, Section, SectionHeading, StatGrid, Stat, CardList, cardClass, inputClass, monoLabel, h2Class } from "@/components/ds"
+import {
+  ianaTimezones,
+  searchTimezones,
   getPopularTimezones,
   sortTimezonesByOffset,
   getCurrentTimeForTimezone,
   regions,
-  type TimezoneRegion 
+  type IANATimezone,
+  type TimezoneRegion,
 } from '@/lib/iana-timezones'
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-})
+// Usage: <TzTable zones={[...]} locale="en" labels={...} />
+const GRID = "grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-5 gap-y-1 px-[22px] py-3.5 md:grid-cols-[minmax(0,2.2fr)_minmax(0,1.5fr)_76px_92px_128px]"
+
+function TzTable({
+  zones,
+  locale,
+  labels,
+  timeOf,
+}: {
+  zones: IANATimezone[]
+  locale: string
+  labels: { timezone: string; country: string; abbr: string; offset: string; time: string }
+  timeOf: (id: string) => string
+}) {
+  return (
+    <CardList>
+      <div className={cn(GRID, monoLabel, "hidden bg-paper py-3 md:grid")} aria-hidden="true">
+        <span>{labels.timezone}</span>
+        <span>{labels.country}</span>
+        <span>{labels.abbr}</span>
+        <span>{labels.offset}</span>
+        <span>{labels.time}</span>
+      </div>
+      {zones.map((tz) => (
+        <Link
+          key={tz.id}
+          href={getLocalePath(`/iana-timezones/${encodeURIComponent(tz.id)}`, locale)}
+          title={`${tz.name} (${tz.id})`}
+          className={cn(GRID, "group border-t border-line transition-colors hover:bg-paper")}
+        >
+          <span className="min-w-0">
+            <span className="block truncate text-base font-medium tracking-[-0.01em]">{tz.name}</span>
+            <span className="block truncate font-mono text-xs text-subtle">{tz.id}</span>
+          </span>
+          <span className="hidden truncate text-sm text-subtle md:block">{tz.city}, {tz.country}</span>
+          <span className="hidden font-mono text-[13px] text-subtle md:block">{tz.abbreviation}</span>
+          <span className="tnum text-right font-mono text-[13px] md:text-left">
+            {tz.utcOffset}
+            {tz.dstOffset && <span className="hidden text-subtle md:inline"> / {tz.dstOffset}</span>}
+          </span>
+          <span className="tnum col-start-2 row-start-2 text-right font-mono text-[13px] text-subtle md:col-start-auto md:row-start-auto md:text-left md:text-ink" suppressHydrationWarning>
+            {timeOf(tz.id)}
+          </span>
+        </Link>
+      ))}
+    </CardList>
+  )
+}
+
+const selectWrap = "relative min-w-0 flex-[1_1_200px]"
+const selectClass = cn(inputClass, "appearance-none rounded-full pr-10")
 
 export default function IANATimezonesPage() {
   const t = useTranslations('ianaTimezones')
-  const tCommon = useTranslations('common')
+  const tDetail = useTranslations('timezoneDetail')
   const locale = useLocale()
 
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedRegion, setSelectedRegion] = useState<TimezoneRegion | 'all'>('all')
   const [sortBy, setSortBy] = useState<'name' | 'offset' | 'population'>('name')
-  const [activeTab, setActiveTab] = useState('all')
+  const [activeTab, setActiveTab] = useState<'all' | 'popular' | 'regions'>('all')
+  const [, setTick] = useState(0)
 
-  // Get filtered and sorted timezones
+  useEffect(() => {
+    const id = setInterval(() => setTick((n) => n + 1), 1000)
+    return () => clearInterval(id)
+  }, [])
+
   const filteredTimezones = useMemo(() => {
-    let timezones = ianaTimezones;
-
-    // Filter by search query
-    if (searchQuery) {
-      timezones = searchTimezones(searchQuery);
-    }
-
-    // Filter by region
-    if (selectedRegion !== 'all') {
-      timezones = timezones.filter(tz => tz.region === selectedRegion);
-    }
-
-    // Sort timezones
+    let timezones = [...ianaTimezones]
+    if (searchQuery) timezones = [...searchTimezones(searchQuery)]
+    if (selectedRegion !== 'all') timezones = timezones.filter((tz) => tz.region === selectedRegion)
     switch (sortBy) {
       case 'offset':
-        timezones = sortTimezonesByOffset(timezones);
-        break;
+        timezones = sortTimezonesByOffset(timezones)
+        break
       case 'population':
         timezones = timezones
-          .filter(tz => tz.population)
+          .filter((tz) => tz.population)
           .sort((a, b) => (b.population || 0) - (a.population || 0))
-          .concat(timezones.filter(tz => !tz.population));
-        break;
+          .concat(timezones.filter((tz) => !tz.population))
+        break
       default:
-        timezones = timezones.sort((a, b) => a.name.localeCompare(b.name));
+        timezones = timezones.sort((a, b) => a.name.localeCompare(b.name))
     }
+    return timezones
+  }, [searchQuery, selectedRegion, sortBy])
 
-    return timezones;
-  }, [searchQuery, selectedRegion, sortBy]);
+  const popularTimezones = getPopularTimezones(12)
+  const groupedByRegion = regions
+    .map((region) => ({ region, timezones: ianaTimezones.filter((tz) => tz.region === region) }))
+    .filter((g) => g.timezones.length > 0)
 
-  const popularTimezones = getPopularTimezones(12);
-  const groupedByRegion = regions.map(region => ({
-    region,
-    timezones: getTimezonesByRegion(region)
-  })).filter(group => group.timezones.length > 0);
+  const timeOf = (id: string) => getCurrentTimeForTimezone(id).time
+  const labels = {
+    timezone: t('timezones'),
+    country: tDetail('basicInfo.country'),
+    abbr: tDetail('timeInfo.abbreviation'),
+    offset: tDetail('timeInfo.utcOffset'),
+    time: tDetail('currentTime'),
+  }
 
-  const TimezoneCard = ({ timezone }: { timezone: typeof ianaTimezones[0] }) => {
-    const currentTime = getCurrentTimeForTimezone(timezone.id);
-    
-    return (
-      <Link 
-        href={`/iana-timezones/${encodeURIComponent(timezone.id)}`}
-        className="block h-full"
-      >
-        <Card className="h-full hover:shadow-md transition-shadow cursor-pointer border hover:border-primary/20">
-          <CardHeader className="pb-3">
-            <div className="flex items-start justify-between">
-              <div className="flex-1 min-w-0">
-                <CardTitle className="text-base leading-tight mb-1 line-clamp-2">
-                  {timezone.name}
-                </CardTitle>
-                <p className="text-sm text-muted-foreground font-mono">
-                  {timezone.id}
-                </p>
-              </div>
-              <Badge variant="outline" className="ml-2 shrink-0">
-                {timezone.abbreviation}
-              </Badge>
-            </div>
-          </CardHeader>
-          <CardContent className="pt-0 space-y-3">
-            {/* Current Time */}
-            <div className="bg-primary/5 rounded-lg p-3">
-              <div className={`text-lg font-bold ${jetbrainsMono.className}`}>
-                {currentTime.time}
-              </div>
-              <div className="text-xs text-muted-foreground">
-                {currentTime.date}
-              </div>
-            </div>
+  const tabs = [
+    { key: 'all', label: t('tabs.all') },
+    { key: 'popular', label: t('tabs.popular') },
+    { key: 'regions', label: t('tabs.byRegion') },
+  ] as const
 
-            {/* Location Info */}
-            <div className="space-y-2 text-sm">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-3 h-3 text-muted-foreground shrink-0" />
-                <span className="line-clamp-1">{timezone.city}, {timezone.country}</span>
-              </div>
-              
-              <div className="flex items-center gap-2">
-                <Globe className="w-3 h-3 text-muted-foreground shrink-0" />
-                <span>{timezone.utcOffset}</span>
-                {timezone.dstOffset && (
-                  <span className="text-muted-foreground">
-                    / {timezone.dstOffset} (DST)
-                  </span>
-                )}
-              </div>
-
-              {timezone.population && (
-                <div className="flex items-center gap-2">
-                  <Users className="w-3 h-3 text-muted-foreground shrink-0" />
-                  <span>{(timezone.population / 1000000).toFixed(1)}M people</span>
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      </Link>
-    );
-  };
+  const filtering = !!searchQuery || selectedRegion !== 'all'
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="container mx-auto px-4 py-6 flex justify-between items-center border-b">
-        <Link href={getLocalePath("/", locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
-          Datetime.app
-        </Link>
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher />
-          <div className="flex items-center gap-2">
-            <span className="text-sm hidden md:inline">{t('toggleTheme')}:</span>
-            <ThemeToggle />
-          </div>
+    <main>
+      <PageIntro
+        crumbs={[{ label: "Home", href: getLocalePath("/", locale) }, { label: "Timezones" }]}
+        eyebrow="IANA timezone database"
+        title={t('title')}
+        description={t('description')}
+      />
+
+      <Section top="clamp(8px,2vw,24px)">
+        <StatGrid min={180}>
+          <Stat label={t('stats.totalTimezones')} value={ianaTimezones.length} big />
+          <Stat label={t('stats.regions')} value={regions.length} big />
+          <Stat label={t('stats.countries')} value={new Set(ianaTimezones.map((tz) => tz.country)).size} big />
+          <Stat label={t('stats.utcOffsets')} value={new Set(ianaTimezones.map((tz) => tz.utcOffset)).size} big />
+        </StatGrid>
+      </Section>
+
+      <Section>
+        <SectionHeading title={t('popularTimezones.title')} description={t('popularTimezones.description')} />
+        <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,240px),1fr))" }}>
+          {popularTimezones.map((tz) => (
+            <Link
+              key={tz.id}
+              href={getLocalePath(`/iana-timezones/${encodeURIComponent(tz.id)}`, locale)}
+              title={`${tz.name} (${tz.id})`}
+              className={cn(cardClass, "group flex min-w-0 items-center justify-between gap-3 px-5 py-4 transition-colors hover:border-ink")}
+            >
+              <span className="min-w-0 truncate text-base font-medium tracking-[-0.01em]">{tz.city}</span>
+              <span className="tnum shrink-0 font-mono text-[13px] text-subtle">{tz.utcOffset}</span>
+            </Link>
+          ))}
         </div>
-      </header>
+      </Section>
 
-      <div className="container mx-auto px-4 py-8">
-        {/* Page Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            {t('title')}
-          </h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-            {t('description')}
-          </p>
-          
-          {/* Statistics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>
-                {ianaTimezones.length}
-              </div>
-              <div className="text-sm text-muted-foreground">
-                {t('stats.totalTimezones')}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>
-                {regions.length}
-              </div>
-              <div className="text-sm text-muted-foreground">
-                {t('stats.regions')}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>
-                {new Set(ianaTimezones.map(tz => tz.country)).size}
-              </div>
-              <div className="text-sm text-muted-foreground">
-                {t('stats.countries')}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className={`text-2xl font-bold ${jetbrainsMono.className}`}>
-                {new Set(ianaTimezones.map(tz => tz.utcOffset)).size}
-              </div>
-              <div className="text-sm text-muted-foreground">
-                {t('stats.utcOffsets')}
-              </div>
-            </div>
+      <Section>
+        <SectionHeading
+          title={t('tabs.all')}
+          description={filtering ? t('searchResults', { count: filteredTimezones.length }) : undefined}
+        />
+        <div className="flex flex-wrap items-center gap-x-3.5 gap-y-3">
+          <div className="relative min-w-0 flex-[2_1_280px]">
+            <Search aria-hidden="true" className="pointer-events-none absolute left-4 top-3.5 size-4 text-subtle" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={t('searchPlaceholder')}
+              aria-label={t('searchPlaceholder')}
+              className={cn(inputClass, "rounded-full pl-11 pr-4")}
+            />
           </div>
-        </div>
-
-        {/* Search and Filters */}
-        <Card className="mb-8">
-          <CardContent className="p-6">
-            <div className="space-y-4">
-              {/* Search */}
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-                <Input
-                  placeholder={t('searchPlaceholder')}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10"
-                />
-              </div>
-
-              {/* Filters */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1">
-                  <Select value={selectedRegion} onValueChange={(value) => setSelectedRegion(value as TimezoneRegion | 'all')}>
-                    <SelectTrigger>
-                      <div className="flex items-center gap-2">
-                        <Filter className="w-4 h-4" />
-                        <SelectValue placeholder={t('filterByRegion')} />
-                      </div>
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">{t('allRegions')}</SelectItem>
-                      {regions.map(region => (
-                        <SelectItem key={region} value={region}>
-                          {t(`regions.${region.toLowerCase()}`)}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="flex-1">
-                  <Select value={sortBy} onValueChange={(value) => setSortBy(value as 'name' | 'offset' | 'population')}>
-                    <SelectTrigger>
-                      <SelectValue placeholder={t('sortBy')} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="name">{t('sortOptions.name')}</SelectItem>
-                      <SelectItem value="offset">{t('sortOptions.offset')}</SelectItem>
-                      <SelectItem value="population">{t('sortOptions.population')}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-
-              {/* Results count */}
-              {(searchQuery || selectedRegion !== 'all') && (
-                <div className="text-sm text-muted-foreground">
-                  {t('searchResults', { count: filteredTimezones.length })}
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Content Tabs */}
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="all" className="flex items-center gap-2">
-              <Globe className="w-4 h-4" />
-              {t('tabs.all')}
-            </TabsTrigger>
-            <TabsTrigger value="popular" className="flex items-center gap-2">
-              <Users className="w-4 h-4" />
-              {t('tabs.popular')}
-            </TabsTrigger>
-            <TabsTrigger value="regions" className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" />
-              {t('tabs.byRegion')}
-            </TabsTrigger>
-          </TabsList>
-
-          {/* All Timezones */}
-          <TabsContent value="all" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-              {filteredTimezones.map((timezone) => (
-                <TimezoneCard key={timezone.id} timezone={timezone} />
+          <div className={selectWrap}>
+            <select
+              value={selectedRegion}
+              onChange={(e) => setSelectedRegion(e.target.value as TimezoneRegion | 'all')}
+              aria-label={t('filterByRegion')}
+              className={selectClass}
+            >
+              <option value="all">{t('allRegions')}</option>
+              {regions.map((region) => (
+                <option key={region} value={region}>{t(`regions.${region.toLowerCase()}`)}</option>
               ))}
-            </div>
-            
+            </select>
+            <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-4 top-4 size-3.5 text-subtle" />
+          </div>
+          <div className={selectWrap}>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as 'name' | 'offset' | 'population')}
+              aria-label={t('sortBy')}
+              className={selectClass}
+            >
+              <option value="name">{t('sortBy')}: {t('sortOptions.name')}</option>
+              <option value="offset">{t('sortBy')}: {t('sortOptions.offset')}</option>
+              <option value="population">{t('sortBy')}: {t('sortOptions.population')}</option>
+            </select>
+            <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-4 top-4 size-3.5 text-subtle" />
+          </div>
+        </div>
+
+        <div role="tablist" aria-label="View" className="mt-3.5 inline-flex max-w-full flex-wrap gap-0.5 rounded-full border border-line bg-surface p-1">
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              type="button"
+              role="tab"
+              aria-selected={activeTab === tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={cn("h-9 rounded-full px-4 text-sm font-medium transition-colors", activeTab === tab.key ? "bg-ink text-paper" : "text-subtle hover:text-ink")}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-5">
+          {/* All timezones */}
+          <div hidden={activeTab !== 'all'}>
+            <TzTable zones={filteredTimezones} locale={locale} labels={labels} timeOf={timeOf} />
             {filteredTimezones.length === 0 && (
-              <div className="text-center py-12">
-                <Clock className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">{t('noResults.title')}</h3>
-                <p className="text-muted-foreground">{t('noResults.description')}</p>
+              <div className="py-14 text-center text-subtle">
+                <h3 className="m-0 mb-1.5 text-[17px] font-normal text-ink">{t('noResults.title')}</h3>
+                {t('noResults.description')}
               </div>
             )}
-          </TabsContent>
+          </div>
 
-          {/* Popular Timezones */}
-          <TabsContent value="popular" className="space-y-6">
-            <div className="mb-4">
-              <h2 className="text-xl font-semibold mb-2">{t('popularTimezones.title')}</h2>
-              <p className="text-muted-foreground">{t('popularTimezones.description')}</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-              {popularTimezones.map((timezone) => (
-                <TimezoneCard key={timezone.id} timezone={timezone} />
-              ))}
-            </div>
-          </TabsContent>
+          {/* Popular timezones */}
+          <div hidden={activeTab !== 'popular'}>
+            <TzTable zones={popularTimezones} locale={locale} labels={labels} timeOf={timeOf} />
+          </div>
 
-          {/* By Region */}
-          <TabsContent value="regions" className="space-y-8">
+          {/* By region */}
+          <div hidden={activeTab !== 'regions'} className="space-y-10">
             {groupedByRegion.map(({ region, timezones }) => (
-              <div key={region} className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <h2 className="text-xl font-semibold">
-                    {t(`regions.${region.toLowerCase()}`)} 
-                  </h2>
-                  <Badge variant="secondary">
-                    {timezones.length} {t('timezones')}
-                  </Badge>
+              <div key={region}>
+                <div className="mb-3.5 flex items-baseline gap-3">
+                  <h3 className="m-0 text-xl font-semibold tracking-[-0.02em]">{t(`regions.${region.toLowerCase()}`)}</h3>
+                  <span className={cn(monoLabel, "tnum")}>{timezones.length} {t('timezones')}</span>
                 </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                  {timezones.slice(0, 6).map((timezone) => (
-                    <TimezoneCard key={timezone.id} timezone={timezone} />
-                  ))}
-                </div>
-
-                {timezones.length > 6 && (
-                  <div className="text-center">
-                    <button
-                      onClick={() => {
-                        setSelectedRegion(region);
-                        setActiveTab('all');
-                      }}
-                      className="text-primary hover:underline"
-                    >
-                      {t('viewAll', { count: timezones.length - 6 })}
-                    </button>
-                  </div>
-                )}
+                <TzTable zones={timezones} locale={locale} labels={labels} timeOf={timeOf} />
               </div>
             ))}
-          </TabsContent>
-        </Tabs>
-
-        {/* SEO Content */}
-        <div className="mt-16 space-y-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('seo.about.title')}</CardTitle>
-            </CardHeader>
-            <CardContent className="prose dark:prose-invert max-w-none">
-              <p>{t('seo.about.content')}</p>
-            </CardContent>
-          </Card>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>{t('seo.features.title')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm">
-                  {t.raw('seo.features.list').map((feature: string, index: number) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <span className="text-green-500 mt-1">✓</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>{t('seo.usage.title')}</CardTitle>
-              </CardHeader>
-              <CardContent className="prose dark:prose-invert max-w-none text-sm">
-                <p>{t('seo.usage.content')}</p>
-              </CardContent>
-            </Card>
           </div>
         </div>
-      </div>
+      </Section>
+
+      <Section className="pb-[clamp(56px,8vw,96px)]">
+        <div className={cn(cardClass, "flex flex-wrap gap-x-16 gap-y-8 p-[clamp(24px,3.4vw,44px)]")}>
+          <div className="min-w-0 flex-[3_1_460px]">
+            <h2 className={h2Class}>{t('seo.about.title')}</h2>
+            <p className="m-0 mt-4 max-w-[68ch] text-[15.5px] leading-[1.75] text-subtle">{t('seo.about.content')}</p>
+            <h3 className="m-0 mt-8 text-lg font-semibold tracking-[-0.02em]">{t('seo.usage.title')}</h3>
+            <p className="m-0 mt-3 max-w-[68ch] text-[15.5px] leading-[1.75] text-subtle">{t('seo.usage.content')}</p>
+          </div>
+          <div className="min-w-0 flex-[2_1_320px]">
+            <h3 className="m-0 text-lg font-semibold tracking-[-0.02em]">{t('seo.features.title')}</h3>
+            <ul className="m-0 mt-4 grid list-none gap-3 p-0 text-[14.5px] leading-snug">
+              {(t.raw('seo.features.list') as string[]).map((feature, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <Check aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-brand" strokeWidth={2.25} />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Section>
     </main>
-  );
+  )
 }

@@ -160,21 +160,21 @@ export function LanguageSuggestionModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="rounded-2xl border-line bg-surface text-ink sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Globe className="h-5 w-5" />
+          <DialogTitle className="flex items-center gap-2 tracking-[-0.015em]">
+            <Globe className="h-5 w-5 text-brand" />
             {t('title')}
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-subtle">
             {t('description', { language: suggestedLanguage.name })}
           </DialogDescription>
         </DialogHeader>
         <div className="flex justify-end gap-3 mt-4">
-          <Button variant="outline" onClick={handleDismiss}>
+          <Button variant="outline" className="rounded-full border-line2 bg-transparent" onClick={handleDismiss}>
             {t('dismiss')}
           </Button>
-          <Button onClick={handleAccept}>
+          <Button className="rounded-full" onClick={handleAccept}>
             {t('accept', { language: suggestedLanguage.name })}
           </Button>
         </div>

@@ -5,10 +5,11 @@ import { notFound } from 'next/navigation'
 
 interface LayoutProps {
   children: React.ReactNode
-  params: { locale: string; timezoneId: string }
+  params: Promise<{ locale: string; timezoneId: string }>
 }
 
-export async function generateMetadata({ params }: { params: { locale: string; timezoneId: string } }): Promise<Metadata> {
+export async function generateMetadata({ params: paramsPromise }: { params: Promise<{ locale: string; timezoneId: string }> }): Promise<Metadata> {
+  const params = await paramsPromise
   const timezoneId = decodeURIComponent(params.timezoneId)
   const timezone = getTimezoneById(timezoneId)
   

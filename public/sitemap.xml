@@ -37,6 +37,24 @@
   </url>
 
   <url>
+    <loc>https://datetime.app/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/embed</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
     <loc>https://datetime.app/zh-hans</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -68,6 +86,24 @@
 
   <url>
     <loc>https://datetime.app/zh-hans/glossary</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/zh-hans/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/zh-hans/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/zh-hans/embed</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -109,6 +145,24 @@
   </url>
 
   <url>
+    <loc>https://datetime.app/zh-hant/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/zh-hant/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/zh-hant/embed</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://datetime.app/ar</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -140,6 +194,24 @@
 
   <url>
     <loc>https://datetime.app/ar/glossary</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/ar/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/ar/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/ar/embed</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -181,6 +253,24 @@
   </url>
 
   <url>
+    <loc>https://datetime.app/de/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/de/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/de/embed</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://datetime.app/es</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -212,6 +302,24 @@
 
   <url>
     <loc>https://datetime.app/es/glossary</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/es/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/es/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/es/embed</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -253,6 +361,24 @@
   </url>
 
   <url>
+    <loc>https://datetime.app/fr/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/fr/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/fr/embed</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://datetime.app/hi</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -284,6 +410,24 @@
 
   <url>
     <loc>https://datetime.app/hi/glossary</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/hi/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/hi/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/hi/embed</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -325,6 +469,24 @@
   </url>
 
   <url>
+    <loc>https://datetime.app/it/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/it/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/it/embed</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://datetime.app/ja</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -356,6 +518,24 @@
 
   <url>
     <loc>https://datetime.app/ja/glossary</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/ja/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/ja/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/ja/embed</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -397,6 +577,24 @@
   </url>
 
   <url>
+    <loc>https://datetime.app/ko/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/ko/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/ko/embed</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://datetime.app/pt</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -428,6 +626,24 @@
 
   <url>
     <loc>https://datetime.app/pt/glossary</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/pt/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/pt/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/pt/embed</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -469,6 +685,24 @@
   </url>
 
   <url>
+    <loc>https://datetime.app/ru/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/ru/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/ru/embed</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://datetime.app/tr</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -505,7 +739,31 @@
   </url>
 
   <url>
+    <loc>https://datetime.app/tr/privacy</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/tr/terms</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/tr/embed</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://datetime.app/holidays</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -7969,6 +8227,906 @@
   </url>
 
   <url>
+    <loc>https://datetime.app/countdown/new-year-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/new-year-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/new-year-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/new-year-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/new-year-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/valentines-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/valentines-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/valentines-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/valentines-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/valentines-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/easter-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/easter-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/easter-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/easter-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/easter-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/mothers-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/mothers-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/mothers-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/mothers-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/mothers-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/independence-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/independence-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/independence-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/independence-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/independence-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/halloween-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/halloween-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/halloween-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/halloween-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/halloween-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/thanksgiving-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/thanksgiving-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/thanksgiving-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/thanksgiving-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/thanksgiving-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/black-friday-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/black-friday-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/black-friday-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/black-friday-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/black-friday-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/christmas-eve-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/christmas-eve-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/christmas-eve-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/christmas-eve-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/christmas-eve-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/christmas-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/christmas-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/christmas-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/christmas-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/christmas-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/new-years-eve-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/new-years-eve-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/new-years-eve-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/new-years-eve-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/new-years-eve-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/boxing-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/boxing-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/boxing-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/boxing-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/boxing-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/mlk-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/mlk-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/mlk-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/mlk-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/mlk-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/presidents-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/presidents-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/presidents-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/presidents-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/presidents-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/st-patricks-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/st-patricks-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/st-patricks-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/st-patricks-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/st-patricks-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/good-friday-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/good-friday-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/good-friday-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/good-friday-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/good-friday-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/april-fools-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/april-fools-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/april-fools-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/april-fools-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/april-fools-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/cinco-de-mayo-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/cinco-de-mayo-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/cinco-de-mayo-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/cinco-de-mayo-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/cinco-de-mayo-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/memorial-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/memorial-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/memorial-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/memorial-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/memorial-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/fathers-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/fathers-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/fathers-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/fathers-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/fathers-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/juneteenth-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/juneteenth-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/juneteenth-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/juneteenth-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/juneteenth-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/canada-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/canada-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/canada-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/canada-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/canada-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/labor-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/labor-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/labor-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/labor-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/labor-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/veterans-day-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/veterans-day-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/veterans-day-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/veterans-day-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/veterans-day-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/hanukkah-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/hanukkah-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/hanukkah-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/hanukkah-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/hanukkah-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/ramadan-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/ramadan-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/ramadan-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/ramadan-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/ramadan-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/eid-al-fitr-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/eid-al-fitr-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/eid-al-fitr-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/eid-al-fitr-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/eid-al-fitr-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/eid-al-adha-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/eid-al-adha-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/eid-al-adha-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/eid-al-adha-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/eid-al-adha-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/lunar-new-year-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/lunar-new-year-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/lunar-new-year-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/lunar-new-year-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/lunar-new-year-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/diwali-2026</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/diwali-2027</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/diwali-2028</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/diwali-2029</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://datetime.app/countdown/diwali-2030</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://datetime.app/year-progress-bar/2026</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -9069,7 +10227,7 @@
   <url>
     <loc>https://datetime.app/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
 
   <url>
@@ -9117,7 +10275,7 @@
   <url>
     <loc>https://datetime.app/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
 
   <url>
@@ -9285,7 +10443,7 @@
   <url>
     <loc>https://datetime.app/zh-hans/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -9333,7 +10491,7 @@
   <url>
     <loc>https://datetime.app/zh-hans/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -9501,7 +10659,7 @@
   <url>
     <loc>https://datetime.app/zh-hant/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -9549,7 +10707,7 @@
   <url>
     <loc>https://datetime.app/zh-hant/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -9717,7 +10875,7 @@
   <url>
     <loc>https://datetime.app/ar/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -9765,7 +10923,7 @@
   <url>
     <loc>https://datetime.app/ar/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -9933,7 +11091,7 @@
   <url>
     <loc>https://datetime.app/de/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -9981,7 +11139,7 @@
   <url>
     <loc>https://datetime.app/de/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -10149,7 +11307,7 @@
   <url>
     <loc>https://datetime.app/es/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -10197,7 +11355,7 @@
   <url>
     <loc>https://datetime.app/es/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -10365,7 +11523,7 @@
   <url>
     <loc>https://datetime.app/fr/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -10413,7 +11571,7 @@
   <url>
     <loc>https://datetime.app/fr/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -10581,7 +11739,7 @@
   <url>
     <loc>https://datetime.app/hi/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -10629,7 +11787,7 @@
   <url>
     <loc>https://datetime.app/hi/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -10797,7 +11955,7 @@
   <url>
     <loc>https://datetime.app/it/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -10845,7 +12003,7 @@
   <url>
     <loc>https://datetime.app/it/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -11013,7 +12171,7 @@
   <url>
     <loc>https://datetime.app/ja/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -11061,7 +12219,7 @@
   <url>
     <loc>https://datetime.app/ja/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -11229,7 +12387,7 @@
   <url>
     <loc>https://datetime.app/ko/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -11277,7 +12435,7 @@
   <url>
     <loc>https://datetime.app/ko/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -11445,7 +12603,7 @@
   <url>
     <loc>https://datetime.app/pt/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -11493,7 +12651,7 @@
   <url>
     <loc>https://datetime.app/pt/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -11661,7 +12819,7 @@
   <url>
     <loc>https://datetime.app/ru/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -11709,7 +12867,7 @@
   <url>
     <loc>https://datetime.app/ru/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>
@@ -11877,7 +13035,7 @@
   <url>
     <loc>https://datetime.app/tr/calendar/2026/02</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.4</priority>
   </url>
 
   <url>
@@ -11925,7 +13083,7 @@
   <url>
     <loc>https://datetime.app/tr/calendar/2026/10</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.6</priority>
   </url>
 
   <url>

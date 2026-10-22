@@ -12,7 +12,8 @@
       "ageCalculator": "Altersrechner",
       "yearProgress": "Jahresfortschritt",
       "glossary": "Glossar",
-      "timezones": "Zeitzonen"
+      "timezones": "Zeitzonen",
+      "blog": "Blog"
     },
     "links": {
       "titleHome": "Zur Startseite gehen",
@@ -407,7 +408,8 @@
       "title": "Bevorstehende Feiertage",
       "noDataForCountry": "Für {country} sind derzeit keine Feiertagsdaten verfügbar.",
       "loading": "Bevorstehende Feiertage werden geladen…",
-      "none": "In nächster Zeit sind keine gesetzlichen Feiertage geplant."
+      "none": "In nächster Zeit sind keine gesetzlichen Feiertage geplant.",
+      "all": "Alle Feiertage"
     },
     "developerSnippet": {
       "title": "Entwickler-Codebeispiel",
@@ -964,5 +966,422 @@
         "content": "{timezone} ist die Standardzeit, die in {city}, {country} und den umliegenden Regionen verwendet wird. Die Zeitzone hat eine UTC-Abweichung von {offset} und wird häufig für die Terminplanung und Zeitkoordination in diesem geografischen Gebiet verwendet. Diese Zeitzone dient Millionen von Menschen und ist eine wichtige Referenz für Geschäfte, Reisen und internationale Kommunikation."
       }
     }
+  },
+  "homeSeo": {
+    "introTitle": "Die Uhrzeit, auf die Sekunde genau",
+    "intro1": "datetime.app ist eine kostenlose Weltuhr, die die aktuelle Uhrzeit an deinem Standort und in Städten auf der ganzen Welt anzeigt. Die Uhr läuft sekundengenau, wird mit einer vertrauenswürdigen Zeitquelle abgeglichen und folgt der IANA-Zeitzonendatenbank, sodass jeder Offset und jede Sommerzeitregel aktuell ist.",
+    "intro2": "Vergleiche Zeitzonen nebeneinander, rechne zwischen Städten um, prüfe UTC oder kopiere einen fertigen Zeitstempel. Ohne Anmeldung und ohne Installation.",
+    "basicsTitle": "Zeitzonen-Grundlagen",
+    "basicsDesc": "Die sechs Begriffe, die dir bei der Arbeit mit Zeitzonen am häufigsten begegnen.",
+    "facts": {
+      "utc": {
+        "name": "Koordinierte Weltzeit",
+        "desc": "Der globale Bezugspunkt, an dem jede Zeitzone ausgerichtet ist. Sie kennt keine Sommerzeit und ändert sich nie."
+      },
+      "gmt": {
+        "name": "Greenwich Mean Time",
+        "desc": "Die Zone UTC+0, die im Winter in Großbritannien gilt. Im Alltag entspricht sie UTC."
+      },
+      "iana": {
+        "name": "Zeitzonendatenbank",
+        "desc": "Namen wie America/New_York oder Asia/Tokyo stehen für die gesamte Geschichte der Offsets und DST-Regeln einer Region."
+      },
+      "dst": {
+        "name": "Sommerzeit",
+        "desc": "In vielen Ländern werden die Uhren im Frühjahr vor- und im Herbst zurückgestellt, sodass sich die Offsets zweimal im Jahr ändern."
+      },
+      "iso": {
+        "name": "Datums- und Zeitformat",
+        "desc": "2026-03-08T14:30:00Z ist eindeutig, sortierbar und wird von jeder Programmiersprache verstanden."
+      },
+      "unix": {
+        "name": "Sekunden seit 1970",
+        "desc": "Eine einzelne ganze Zahl, die einen exakten Zeitpunkt darstellt, unabhängig von jeder Zeitzone."
+      }
+    },
+    "glossaryLink": "Das ganze Glossar durchstöbern",
+    "zonesTitle": "Beliebte Zeitzonen",
+    "zonesDesc": "Aktuelle Uhrzeit und Offset der Zonen, die am häufigsten nachgeschlagen werden.",
+    "zoneTitle": "Aktuelle Uhrzeit in {name}",
+    "zoneMeta": {
+      "pst": "Pazifik · UTC−8 / −7",
+      "est": "Osten · UTC−5 / −4",
+      "cst": "Zentral · UTC−6 / −5",
+      "gmt": "Greenwich · UTC+0",
+      "cet": "Mitteleuropa · UTC+1 / +2",
+      "ist": "Indien · UTC+5:30",
+      "jst": "Japan · UTC+9",
+      "aest": "Ostaustralien · UTC+10 / +11"
+    },
+    "allIana": "Alle IANA-Zeitzonen",
+    "utcNow": "UTC jetzt",
+    "dstTitle": "Sommerzeit {year}",
+    "dstDesc": "Wann die Uhren in diesem Jahr in den wichtigsten Regionen umgestellt werden.",
+    "dstCols": {
+      "region": "Region",
+      "forward": "Uhren vor",
+      "back": "Uhren zurück",
+      "rule": "Regel"
+    },
+    "dstRegions": {
+      "us": {
+        "name": "USA & Kanada",
+        "rule": "2. Sonntag im März bis 1. Sonntag im November"
+      },
+      "eu": {
+        "name": "Europäische Union & Vereinigtes Königreich",
+        "rule": "Letzter Sonntag im März bis letzter Sonntag im Oktober"
+      },
+      "au": {
+        "name": "Australien (NSW, VIC)",
+        "rule": "1. Sonntag im Oktober bis 1. Sonntag im April"
+      }
+    },
+    "dstNote": "Auf der Südhalbkugel reichen die Zeiträume über den Jahreswechsel. Viele Regionen, darunter der Großteil Asiens und Afrikas, kennen keine Sommerzeit.",
+    "usesTitle": "Wer datetime.app nutzt",
+    "uses": {
+      "remote": {
+        "title": "Remote-Teams",
+        "desc": "Bring die Städte aller Teammitglieder auf eine Zeitleiste und sieh, welche Stunden sich überschneiden, bevor du den Call planst."
+      },
+      "dev": {
+        "title": "Entwickler",
+        "desc": "Kopiere den aktuellen Unix-Zeitstempel, ISO-8601- und RFC-2822-Strings oder ein Intl-Snippet für die Zone, die du gerade ansiehst."
+      },
+      "travel": {
+        "title": "Reisende",
+        "desc": "Prüfe die Ortszeit an deinem Reiseziel, den Unterschied zur Heimat und ob es ein guter Moment für einen Anruf ist."
+      },
+      "trade": {
+        "title": "Trader und Gamer",
+        "desc": "Wisse, wann ein Markt öffnet oder ein Server zurückgesetzt wird, in deiner Zeit und in UTC."
+      }
+    },
+    "faqTitle": "Häufige Fragen",
+    "faq": {
+      "q1": "Wie zeigt datetime.app die genaue Uhrzeit an?",
+      "a1": "Es liest die Uhr deines Geräts, gleicht sie mit einer vertrauenswürdigen Zeitquelle ab und aktualisiert sie jede Sekunde. Die Zeitzonen-Offsets stammen aus der IANA-Datenbank, daher werden Sommerzeitwechsel automatisch berücksichtigt.",
+      "q2": "Was ist der Unterschied zwischen UTC und einer lokalen Zeitzone?",
+      "a2": "UTC ist der feste globale Standard. Eine lokale Zeitzone ist UTC plus ein Offset, etwa UTC+9 für Tokio, und kann sich um eine Stunde verschieben, wenn die Sommerzeit beginnt oder endet.",
+      "q3": "Wie finde ich die beste Zeit für ein Meeting über Zeitzonen hinweg?",
+      "a3": "Füge jede Stadt zur Weltuhr-Zeitleiste hinzu. Die schattierten Balken zeigen Tag, frühe und späte Stunden sowie Nacht, sodass du einen Termin wählen kannst, der für alle in den Arbeitstag fällt.",
+      "q4": "Funktioniert die Seite für jede Stadt?",
+      "a4": "Ja. Nutze das Menü „Zeitzone hinzufügen“ auf der Startseite oder öffne eine der unten verlinkten Stadt- und Zeitzonenseiten."
+    }
+  },
+  "legal": {
+    "home": "Startseite",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "lastUpdated": "Zuletzt aktualisiert · {date}",
+    "contents": "Inhalt",
+    "privacyMetaTitle": "Datenschutzerklärung | Datetime.app",
+    "privacyMetaDesc": "Wie datetime.app mit deinen Daten umgeht: was wir erfassen, was nicht und welche Wahlmöglichkeiten du hast.",
+    "privacyTitle": "Datenschutzerklärung",
+    "privacyIntro": "Kurz gesagt: Wir speichern die Daten, die wir für den Betrieb der Seite brauchen, und kein Byte mehr.",
+    "summary": {
+      "stored": {
+        "k": "Gespeichert",
+        "v": "Deine Uhrenliste und Einstellungen bleiben in deinem Browser."
+      },
+      "collected": {
+        "k": "Erfasst",
+        "v": "Anonyme Nutzungsstatistiken über Plausible."
+      },
+      "sold": {
+        "k": "Verkauft",
+        "v": "Nichts. Wir verkaufen niemals personenbezogene Daten."
+      }
+    },
+    "privacySections": {
+      "overview": {
+        "title": "Überblick",
+        "p1": "datetime.app ist ein Tool für Uhrzeit und Zeitzonen. Es funktioniert ohne Konto und fragt dich nicht nach persönlichen Informationen."
+      },
+      "collect": {
+        "title": "Informationen, die wir erfassen",
+        "p1": "Wir verlangen keine Registrierung. Deine ausgewählten Zeitzonen und Anzeigeeinstellungen werden lokal in deinem Browser (localStorage) gespeichert und nie an unsere Server gesendet.",
+        "p2": "Standard-Serverprotokolle (IP-Adresse, User-Agent, aufgerufene Seite) können kurzzeitig für Sicherheit und Fehlersuche aufbewahrt werden."
+      },
+      "analytics": {
+        "title": "Analyse",
+        "p1": "Wir verwenden Plausible, um zu verstehen, welche Seiten genutzt werden. Die Daten sind aggregiert und werden nicht verwendet, um dich zu identifizieren."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "p1": "Wir verwenden keine Tracking-Cookies. Einstellungen wie Design und Sprache werden im lokalen Speicher deines Browsers abgelegt."
+      },
+      "thirdParties": {
+        "title": "Dritte",
+        "p1": "Plausible Analytics (Nutzungsstatistik) und WorldTimeAPI (zur Ermittlung deiner Zeitzone anhand deiner IP-Adresse)."
+      },
+      "rights": {
+        "title": "Deine Wahlmöglichkeiten",
+        "p1": "Du kannst lokale Daten jederzeit in den Browsereinstellungen löschen. Außerdem kannst du Analysen mit den Datenschutzfunktionen deines Browsers blockieren."
+      },
+      "changes": {
+        "title": "Änderungen dieser Erklärung",
+        "p1": "Wenn sich diese Erklärung ändert, wird das obige Datum aktualisiert."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "p1": "Fragen? Schreib an hi@datetime.app."
+      }
+    },
+    "termsMetaTitle": "Nutzungsbedingungen | Datetime.app",
+    "termsMetaDesc": "Die Bedingungen, die für die Nutzung von datetime.app gelten.",
+    "termsTitle": "Nutzungsbedingungen",
+    "termsIntro": "Klare Bedingungen für ein einfaches Tool. Mit der Nutzung von datetime.app stimmst du ihnen zu.",
+    "termsSummary": {
+      "free": {
+        "k": "Kostenlos",
+        "v": "Die Seite ist kostenlos nutzbar, ein Konto ist nicht nötig."
+      },
+      "asis": {
+        "k": "Wie besehen",
+        "v": "Ohne Gewährleistung bereitgestellt. Verlasse dich nicht darauf für sicherheitskritische Zeitmessung."
+      },
+      "yours": {
+        "k": "Deine Inhalte",
+        "v": "Wir speichern nicht, was du eingibst. Du bleibst dafür verantwortlich, wie du die Ergebnisse verwendest."
+      }
+    },
+    "termsSections": {
+      "acceptance": {
+        "title": "Annahme der Bedingungen",
+        "p1": "Mit dem Zugriff auf datetime.app oder dessen Nutzung stimmst du diesen Bedingungen zu. Wenn du nicht zustimmst, nutze die Seite bitte nicht."
+      },
+      "use": {
+        "title": "Nutzung des Dienstes",
+        "p1": "Du darfst datetime.app privat und gewerblich nutzen. Du verpflichtest dich, den Dienst nicht zu stören, keinen unbefugten Zugriff zu versuchen und ihn nicht mit automatisierten Mitteln unangemessen zu belasten."
+      },
+      "accuracy": {
+        "title": "Genauigkeit der Zeitdaten",
+        "p1": "Wir bemühen uns, Uhrzeiten, Offsets und Sommerzeitregeln korrekt zu halten, doch sie hängen von der Uhr deines Geräts, den Netzwerkbedingungen und behördlichen Regeländerungen ab. Verlasse dich bei sicherheitskritischer, rechtlicher oder finanzieller Zeitmessung nicht auf datetime.app."
+      },
+      "ip": {
+        "title": "Geistiges Eigentum",
+        "p1": "Design, Texte und Code der Seite gehören datetime.app oder seinen Lizenzgebern, sofern nicht als Open Source gekennzeichnet. Du kannst frei auf die Seite verlinken."
+      },
+      "links": {
+        "title": "Links zu Dritten",
+        "p1": "Die Seite kann auf externe Dienste verlinken. Wir haben keine Kontrolle über sie und sind nicht für deren Inhalte oder Praktiken verantwortlich."
+      },
+      "liability": {
+        "title": "Haftungsbeschränkung",
+        "p1": "Der Dienst wird so bereitgestellt, wie er ist und verfügbar ist, ohne Gewährleistung jeglicher Art. Soweit gesetzlich zulässig, haften wir nicht für Verluste, die aus der Nutzung oder Nichtnutzbarkeit der Seite entstehen."
+      },
+      "changes": {
+        "title": "Änderungen dieser Bedingungen",
+        "p1": "Wir können diese Bedingungen von Zeit zu Zeit aktualisieren. Die weitere Nutzung der Seite nach einer Änderung bedeutet, dass du die neuen Bedingungen akzeptierst."
+      },
+      "contact": {
+        "title": "Kontakt",
+        "p1": "Fragen? Schreib an hi@datetime.app."
+      }
+    }
+  },
+  "embed": {
+    "crumb": "Einbetten",
+    "metaTitle": "Datetime einbetten – das aktuelle Jahr als Service | Datetime.app",
+    "metaDesc": "Zeige das aktuelle Jahr auf deiner Seite mit einem iframe. Aus der Ferne berechnet, mit Sorgfalt.",
+    "eyebrow": "Datetime einbetten",
+    "title": "Das aktuelle Jahr, geliefert per iframe.",
+    "desc": "Deine Seite weiß längst, welches Jahr wir haben. Wir würden es ihr trotzdem gern sagen. Füge eine Zeile ein, und ein entfernter Server rechnet es für dich aus.",
+    "theme": "Design",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "size": "Größe",
+    "iframeTitle": "Aktuelles Jahr",
+    "copy": "Snippet kopieren",
+    "specsTitle": "Spezifikationen",
+    "specsDesc": "Zahlen, hinter denen wir mit gutem Gewissen stehen.",
+    "latency": {
+      "label": "Latenz",
+      "sub": "um etwas zu erfahren, das dein Gerät längst wusste"
+    },
+    "uptime": {
+      "label": "Verfügbarkeit",
+      "sub": "das Jahr ist sehr zuverlässig"
+    },
+    "requests": {
+      "label": "Anfragen",
+      "value": "1 / Aufruf",
+      "sub": "pro Besucher, pro Jahr"
+    },
+    "payload": {
+      "label": "Nutzlast",
+      "sub": "im übertragenen Sinne"
+    },
+    "comparedTitle": "Im Vergleich",
+    "without": "Ohne Datetime einbetten",
+    "withoutText": "sofort, offline, kostenlos.",
+    "with": "Mit Datetime einbetten",
+    "withText": "Ein iframe, ein Netzwerk-Roundtrip und eine Abhängigkeit. Dieselbe Antwort.",
+    "faqTitle": "Fragen",
+    "faq": {
+      "q1": "Wozu brauche ich das?",
+      "a1": "Brauchst du nicht. Genau das ist der Charme.",
+      "q2": "Ist es genau?",
+      "a2": "Ja. Es ist das Jahr.",
+      "q3": "Was passiert an Silvester?",
+      "a3": "Um Mitternacht UTC ändern wir es. Deine Besucher werden vom Kalender benachrichtigt.",
+      "q4": "Kann ich es gestalten?",
+      "a4": "Wähle per Query-Parameter hell oder dunkel und eine von drei Größen.",
+      "q5": "Funktioniert es offline?",
+      "a5": "Nein. Dein Browser wird sich leider trotzdem an das Jahr erinnern."
+    }
+  },
+  "homeUpcoming": {
+    "title": "Kommende Feiertage",
+    "description": "Live-Countdowns bis zu den nächsten Feiertagen, in deiner Zeitzone.",
+    "all": "Alle Countdowns",
+    "today": "heute",
+    "day": "Tag",
+    "days": "Tage"
+  },
+  "blog": {
+    "title": "Blog - Zeitmanagement & Produktivitäts-Einblicke",
+    "description": "Expertenartikel zu Zeitzonen, Produktivität und Zeitmanagement für globale Teams und digitale Nomaden",
+    "readMore": "Weiterlesen",
+    "publishedOn": "Veröffentlicht am",
+    "author": "Autor",
+    "tags": "Schlagwörter",
+    "share": "Teilen",
+    "relatedPosts": "Verwandte Artikel",
+    "searchPlaceholder": "Artikel durchsuchen...",
+    "allTags": "Alle",
+    "noResults": "Keine Artikel gefunden, die Ihren Kriterien entsprechen."
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht. Hier sind einige beliebte Tools für den Einstieg.",
+    "worldClock": "Weltzeituhr",
+    "worldClockDesc": "Aktuelle Uhrzeit in Städten weltweit anzeigen.",
+    "ageCalculator": "Altersrechner",
+    "ageCalculatorDesc": "Berechnen Sie Ihr genaues Alter anhand Ihres Geburtsdatums.",
+    "calendar": "Kalender",
+    "calendarDesc": "Durchsuchen Sie den Kalender für jedes Jahr oder jeden Monat.",
+    "holidays": "Feiertage",
+    "holidaysDesc": "Finden Sie gesetzliche Feiertage nach Land und Jahr.",
+    "yearProgress": "Jahresfortschritt",
+    "yearProgressDesc": "Sehen Sie, wie viel vom aktuellen Jahr bereits vergangen ist.",
+    "utcTime": "UTC-Zeit",
+    "utcTimeDesc": "Aktuelle koordinierte Weltzeit anzeigen."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Unix-Zeitstempel-Konverter",
+    "subtitle": "Unix-/Epoch-Zeitstempel in lesbare Daten umwandeln — und umgekehrt.",
+    "aboutTitle": "Über Unix-Zeitstempel",
+    "epochTimeTitle": "Was ist Epoch-Zeit?",
+    "epochTimeDesc": "Unix-Zeitstempel zählen die Sekunden seit dem 1. Januar 1970 00:00:00 UTC. Sie bieten eine zeitzonen- und sprachunabhängige Möglichkeit, Zeitpunkte zu speichern und zu vergleichen — ein Grundpfeiler der Softwareentwicklung.",
+    "secondsVsMillisecondsTitle": "Sekunden vs. Millisekunden",
+    "secondsVsMillisecondsDesc": "Klassische Unix-Zeit wird in Sekunden angegeben. JavaScript und viele moderne APIs verwenden Millisekunden. Als Faustregel: Eine 10-stellige Zahl sind Sekunden; eine 13-stellige Zahl sind Millisekunden. Dieser Konverter erkennt beides automatisch.",
+    "whereUsedTitle": "Wo werden Zeitstempel verwendet?",
+    "whereUsedDesc": "Unix-Zeitstempel werden in Datenbanken, Logdateien, JWT-Tokens, HTTP-Headern (Last-Modified), Versionskontrollsystemen und praktisch jeder Programmiersprache verwendet. Sie eliminieren Mehrdeutigkeiten durch Sommerzeit und Zeitzonenunterschiede.",
+    "iso8601Title": "ISO 8601-Format",
+    "iso8601Desc": "ISO 8601 (z. B. 2026-01-01T00:00:00.000Z) ist der internationale Standard für Datums-/Zeitzeichenketten. Es ist menschenlesbar, sortierbar und immer eindeutig. Verwenden Sie es, wenn Sie eine Textdarstellung eines Unix-Zeitstempels benötigen.",
+    "faqTitle": "Häufig gestellte Fragen",
+    "faqs": {
+      "whatIs": {
+        "question": "Was ist ein Unix-Zeitstempel?",
+        "answer": "Ein Unix-Zeitstempel (auch Epoch-Zeit genannt) ist die Anzahl der Sekunden, die seit dem 1. Januar 1970, 00:00:00 UTC vergangen sind, ohne Schaltsekunden. Es ist eine Standardmethode, einen Zeitpunkt als einzelne Ganzzahl darzustellen, die in der Programmierung, in Datenbanken und APIs weit verbreitet ist."
+      },
+      "howToConvert": {
+        "question": "Wie konvertiere ich einen Unix-Zeitstempel in ein lesbares Datum?",
+        "answer": "Fügen Sie Ihren Unix-Zeitstempel in das Feld 'Zeitstempel zu Datum' oben ein, und der Konverter zeigt Ihnen sofort das entsprechende Datum in Ortszeit, UTC, ISO 8601-Format und als relative Beschreibung (z. B. 'vor 3 Tagen')."
+      },
+      "howToConvertDate": {
+        "question": "Wie konvertiere ich ein Datum in einen Unix-Zeitstempel?",
+        "answer": "Verwenden Sie den Abschnitt 'Datum zu Zeitstempel'. Wählen Sie Datum und Uhrzeit mit der Datumsauswahl (sie verwendet Ihre lokale Zeitzone), und der entsprechende Unix-Zeitstempel erscheint sofort."
+      },
+      "secondsOrMilliseconds": {
+        "question": "Zählt der Unix-Zeitstempel Millisekunden oder Sekunden?",
+        "answer": "Der ursprüngliche Unix-Zeitstempel wird in Sekunden gemessen. Viele moderne Programmierumgebungen (einschließlich JavaScripts Date.now()) geben Millisekunden zurück. Dieser Konverter akzeptiert beides — wenn Ihr Wert größer als 9.999.999.999 ist, wird er als Millisekunden behandelt und automatisch umgerechnet."
+      },
+      "y2038": {
+        "question": "Was ist das Jahr-2038-Problem?",
+        "answer": "Viele ältere 32-Bit-Systeme speichern die Unix-Zeit als vorzeichenbehaftete 32-Bit-Ganzzahl, die am 19. Januar 2038 um 03:14:07 UTC überläuft (Zeitstempel 2147483647). Moderne 64-Bit-Systeme sind nicht betroffen und können Daten Milliarden von Jahren in der Zukunft darstellen."
+      },
+      "epoch": {
+        "question": "Was ist die Unix-Epoche?",
+        "answer": "Die Unix-Epoche ist der Bezugspunkt für alle Unix-Zeitstempel: 1. Januar 1970, 00:00:00 UTC, dargestellt als Wert 0. Jeder positive Zeitstempel ist die Anzahl der Sekunden nach diesem Zeitpunkt; negative Zeitstempel stellen Daten vor 1970 dar."
+      }
+    },
+    "currentTimestamp": "Aktueller Unix-Zeitstempel",
+    "copyTimestamp": "Zeitstempel kopieren",
+    "secondsElapsed": "Sekunden seit dem 1. Januar 1970 00:00:00 UTC — wird jede Sekunde aktualisiert.",
+    "timestampToDate": "Zeitstempel zu Datum",
+    "timestampInputLabel": "Unix-Zeitstempel (Sekunden oder Millisekunden)",
+    "timestampPlaceholder": "z. B. 1735689600",
+    "invalidInteger": "Bitte geben Sie eine gültige Ganzzahl ein.",
+    "outOfRange": "Der Zeitstempel liegt außerhalb des unterstützten Bereichs (1970–9999).",
+    "localTime": "Ortszeit",
+    "utcTime": "UTC-Zeit",
+    "iso8601": "ISO 8601",
+    "relative": "Relativ",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "dateToTimestamp": "Datum zu Zeitstempel",
+    "selectDateTime": "Datum und Uhrzeit auswählen (lokale Zeitzone)",
+    "unixTimestampLabel": "Unix-Zeitstempel",
+    "referenceTimestamps": "Häufige Referenz-Zeitstempel",
+    "referenceHint": "Klicken Sie auf einen Eintrag, um ihn in den Konverter oben zu laden.",
+    "convert": "Konvertieren",
+    "refEpoch": "Unix-Epoche (1. Jan. 1970)",
+    "refY2K": "Y2K (1. Jan. 2000)",
+    "refY2K38": "Y2K38 (19. Jan. 2038)",
+    "refStartOf2025": "Anfang 2025",
+    "refStartOf2026": "Anfang 2026",
+    "relativeSeconds": "vor {count} Sekunden",
+    "relativeSecondsIn": "in {count} Sekunden",
+    "relativeMinutes": "vor {count} Minute",
+    "relativeMinutesPlural": "vor {count} Minuten",
+    "relativeMinutesIn": "in {count} Minute",
+    "relativeMinutesPluralIn": "in {count} Minuten",
+    "relativeHours": "vor {count} Stunde",
+    "relativeHoursPlural": "vor {count} Stunden",
+    "relativeHoursIn": "in {count} Stunde",
+    "relativeHoursPluralIn": "in {count} Stunden",
+    "relativeDays": "vor {count} Tag",
+    "relativeDaysPlural": "vor {count} Tagen",
+    "relativeDaysIn": "in {count} Tag",
+    "relativeDaysPluralIn": "in {count} Tagen",
+    "relativeMonths": "vor {count} Monat",
+    "relativeMonthsPlural": "vor {count} Monaten",
+    "relativeMonthsIn": "in {count} Monat",
+    "relativeMonthsPluralIn": "in {count} Monaten",
+    "relativeYears": "vor {count} Jahr",
+    "relativeYearsPlural": "vor {count} Jahren",
+    "relativeYearsIn": "in {count} Jahr",
+    "relativeYearsPluralIn": "in {count} Jahren"
+  },
+  "timeDifference": {
+    "pageTitle": "Zeitunterschied zwischen Städten",
+    "subtitle": "Vergleichen Sie aktuelle Zeitzonen und finden Sie die besten Besprechungszeiten zwischen Städten weltweit.",
+    "sameTime": "Gleiche Zeit",
+    "hourDifference": "{count} Stunde Unterschied",
+    "hoursDifference": "{count} Stunden Unterschied",
+    "hourMinDifference": "{hours}h {minutes}m Unterschied",
+    "sameTimezone": "Gleiche Zeitzone",
+    "hour": "{count} Stunde",
+    "hours": "{count} Stunden",
+    "hourMin": "{hours}h {minutes}m",
+    "timeDifferenceBreadcrumb": "Zeitunterschied",
+    "timeDifferenceLabel": "Zeitunterschied:",
+    "apart": "auseinander",
+    "summaryTitle": "Zusammenfassung des Zeitunterschieds",
+    "isAhead": "{city} ist voraus",
+    "sameOffset": "Gleiche Zeitverschiebung",
+    "bestMeetingTimes": "Beste Besprechungszeiten",
+    "businessHoursDesc": "Überlappende Geschäftszeiten (9:00–18:00) in beiden Städten",
+    "noOverlap": "Keine überlappenden Geschäftszeiten zwischen {cityA} und {cityB}. Erwägen Sie, Besprechungen am frühen Morgen oder späten Abend zu planen.",
+    "overlappingHours": "{count} überlappende Stunde pro Tag",
+    "overlappingHoursPlural": "{count} überlappende Stunden pro Tag",
+    "inCity": "in {city}",
+    "timelineTitle": "24-Stunden-Zeitleiste",
+    "timelineDesc": "Arbeitszeiten (9:00–18:00) farblich dargestellt. Aktuelle Stunde mit einem Punkt markiert.",
+    "localTimeNote": "Die Uhrzeiten werden in der jeweiligen Ortszeit der Stadt angezeigt.",
+    "viewAllComparisons": "Alle Städtevergleiche anzeigen"
   }
 }

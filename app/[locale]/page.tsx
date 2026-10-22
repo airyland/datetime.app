@@ -3,36 +3,41 @@
 import { useEffect, useState } from "react"
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
-import TimezoneTimeline, { TimezoneInfo } from '@/components/timezone-timeline'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Calendar as CalendarComponent } from "@/components/ui/calendar"
-import { Clock, Globe, CalendarIcon, Timer, ArrowLeftRight, Sun, Moon, AlertCircle, Copy, Check, Maximize2, Calendar, Calculator, Gift } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { Label } from "@/components/ui/label"
+import { TimezonePicker } from "@/components/timezone-picker"
+import TimezoneTimeline from '@/components/timezone-timeline'
+import { HomeSeoSections } from '@/components/home-seo'
+import { HomeUpcoming } from '@/components/home-upcoming'
+import { Section, SectionHeading, CardList, RowLink, Faq, Pill, Eyebrow, h2Class, monoLabel, cardClass } from '@/components/ds'
+import { ChevronDown, ChevronLeft, ChevronRight, ArrowLeftRight, Copy, Check, Maximize2, Moon, Sun, Sunrise, Sunset, Calendar, Calculator, Globe, Gift, Clock, ArrowUpRight } from "lucide-react"
 import { format } from "date-fns"
-import { JetBrains_Mono } from "next/font/google"
+import { cn } from "@/lib/utils"
 import { FullscreenTime } from '@/components/fullscreen-time'
-import Header from '@/components/header'
 import spacetime from 'spacetime'
-import { DEFAULT_LOCALE, LOCALE_PREFIXES } from '@/lib/locales'
-import { getLocalePath } from '@/lib/locale-utils'
+import { getCurrentLocale, getLocalePath } from '@/lib/locale-utils'
+import Link from 'next/link'
 
-// Load JetBrains Mono for numbers
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-})
-
-// DST tag component
+// Small pill used for DST markers
 const DSTTag = ({ text }: { text: string }) => (
-  <span className="px-1.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 rounded">
-    {text}
-  </span>
+  <span className="rounded-full border border-line2 px-[7px] py-px font-mono text-[11px] tracking-[.06em]">{text}</span>
 )
+
+const labelCls = "mb-1.5 block text-[12.5px] font-medium text-subtle"
+const fieldCls = "h-[46px] w-full rounded-[10px] border border-line2 bg-paper px-3.5 text-[15px] text-ink outline-none transition-colors focus:border-ink disabled:opacity-60"
+const primaryBtn = "inline-flex h-12 items-center justify-center rounded-[10px] bg-ink px-6 text-[15px] font-medium text-btn-ink transition-opacity hover:opacity-90 disabled:opacity-60"
+const ghostBtn = "inline-flex h-12 items-center justify-center rounded-[10px] border border-line2 bg-transparent px-6 text-[15px] font-medium transition-colors hover:bg-paper"
+const iconBtn = "inline-flex items-center justify-center rounded-full border border-line bg-transparent transition-colors hover:border-line2 hover:bg-surface"
+const resultPanel = "flex min-w-0 flex-[1_1_320px] flex-col justify-center rounded-[14px] border border-line bg-paper p-[clamp(20px,3vw,32px)]"
+const panelWrap = "flex flex-wrap gap-x-14 gap-y-8 px-[clamp(20px,3vw,36px)] pb-[clamp(20px,3vw,36px)] pt-[clamp(14px,2vw,22px)]"
+const panelTitle = "m-0 px-[clamp(20px,3vw,36px)] pt-[clamp(20px,3vw,32px)] text-xl font-semibold tracking-[-0.02em]"
+
+function SelectWrap({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative">
+      {children}
+      <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-[15px] top-[16px] size-3.5" strokeWidth={2} />
+    </div>
+  )
+}
 
 // Define timezone type
 type TimezoneOption = {
@@ -147,24 +152,16 @@ export default function Home() {
   const citiesT = useTranslations('cities')
   const pathname = usePathname()
   
-  // 使用已有的 activeTab 状态
-  
-  // Determine current locale from pathname as it's more reliable
-  const getCurrentLocale = () => {
-    const pathSegments = pathname.split('/').filter(Boolean)
-    if (pathSegments.length > 0 && LOCALE_PREFIXES.includes(pathSegments[0] as typeof LOCALE_PREFIXES[number])) {
-      return pathSegments[0]
-    }
-    return DEFAULT_LOCALE
-  }
-  
-  // Use the more reliable method to get current locale
-  const currentLocale = getCurrentLocale()
+  const currentLocale = getCurrentLocale(pathname)
 
   // Helper function to generate locale-aware paths
-  const getLocalePath = (path: string) => {
-    return currentLocale === DEFAULT_LOCALE ? path : `/${currentLocale}${path}`
-  }
+  const localePath = (path: string) => getLocalePath(path, currentLocale)
+
+  const seoT = useTranslations('homeSeo')
+  const faqItems = [
+    ...['utcGmt', 'timezones', 'unixTimestamp', 'clockAccuracy', 'iso8601', 'daylightSaving', 'timezoneConversion'].map((k) => ({ q: t(`faq.${k}.question`), a: t(`faq.${k}.answer`) })),
+    ...[1, 2, 3, 4].map((n) => ({ q: seoT(`faq.q${n}`), a: seoT(`faq.a${n}`) })),
+  ]
 
   // Helper function to get translated city name
   const getCityName = (cityKey: string) => {
@@ -179,9 +176,9 @@ export default function Home() {
   }
   const [currentTime, setCurrentTime] = useState(new Date())
   const [customTimezones, setCustomTimezones] = useState<TimezoneOption[]>([]) // Custom timezones for both world clock and timeline
-  const [showAddTimezone, setShowAddTimezone] = useState(false) // Control add timezone form
-  const [fullscreenTime, setFullscreenTime] = useState(false)
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date())
+  const [calMonth, setCalMonth] = useState(() => new Date(new Date().getFullYear(), new Date().getMonth(), 1))
+  const [activeRegion, setActiveRegion] = useState<string>("northAmerica")
   const [fromTimezone, setFromTimezone] = useState("UTC")
   const [toTimezone, setToTimezone] = useState(Intl.DateTimeFormat().resolvedOptions().timeZone)
   const [convertTime, setConvertTime] = useState("12:00")
@@ -196,11 +193,10 @@ export default function Home() {
   // const [location, setLocation] = useState("") // Removed location state
   const [isFetchingSunTimes, setIsFetchingSunTimes] = useState(false)
   const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
-  const [activeTab, setActiveTab] = useState("current-time")
+  const [activeTab, setActiveTab] = useState("converter")
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [use24Hour, setUse24Hour] = useState(true)
-  const [accordionValues, setAccordionValues] = useState<string[]>(["item-1","item-2","item-3","item-4","item-5","item-6","item-7"])
 
   // Initialize time format preference from localStorage
   useEffect(() => {
@@ -292,10 +288,6 @@ export default function Home() {
     return () => clearInterval(timer)
   }, [])
 
-  useEffect(() => {
-    setAccordionValues([])
-  }, [])
-
   // Countdown timer logic
   useEffect(() => {
     let countdownInterval: NodeJS.Timeout | null = null
@@ -346,11 +338,14 @@ export default function Home() {
 
   // Format time based on 12/24 hour preference
   const formattedTime = currentTime.toLocaleTimeString("en-US", {
-    hour12: !use24Hour,
+    hourCycle: use24Hour ? "h23" : "h12",
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
   }).replace(/\s+(?:AM|PM)/, '')
+  const heroHm = formattedTime.slice(0, 5)
+  const heroSs = formattedTime.slice(5)
+  const heroAp = use24Hour ? "" : currentTime.getHours() < 12 ? "AM" : "PM"
 
   // Format date
   const formattedDate = currentTime.toLocaleDateString(currentLocale, {
@@ -486,761 +481,600 @@ export default function Home() {
     }).catch(console.error)
   }
 
+  // ---- derived values for the redesigned layout ----
+  const titleParts = commonT('title').split(' - ')
+  const tzShort = (id: string) => id.split('/').pop()!.replace(/_/g, ' ')
+
+  const toolTabs = [
+    { id: "converter", label: t('tabs.converter') },
+    { id: "timer", label: t('tabs.timer') },
+    { id: "sun", label: t('tabs.sunTimes') },
+    { id: "calendar", label: t('tabs.calendar') },
+  ]
+
+  // Calendar grid
+  const calYear = calMonth.getFullYear()
+  const calMon = calMonth.getMonth()
+  const calLead = new Date(calYear, calMon, 1).getDay()
+  const calDays = new Date(calYear, calMon + 1, 0).getDate()
+  const calCells = Array.from({ length: Math.ceil((calLead + calDays) / 7) * 7 }, (_, i) => i - calLead + 1)
+  const weekdayNames = Array.from({ length: 7 }, (_, i) => new Date(2023, 0, 1 + i).toLocaleDateString(currentLocale, { weekday: "short" }))
+  const isSameDay = (a: Date, b: Date) => a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate()
+  const dayOfYear = (d: Date) => Math.floor((d.getTime() - new Date(d.getFullYear(), 0, 0).getTime()) / (1000 * 60 * 60 * 24))
+
+  const readouts: { key: string; label: React.ReactNode; value: string; copyText: string }[] = [
+    { key: 'tz', label: t('labels.timezoneInfo'), value: `${timezone} (GMT${offsetStr})${isDST ? ` · ${t('labels.dst')}` : ''}`, copyText: timezone },
+    { key: 'timestamp', label: t('labels.unixTimestamp'), value: String(timestamp), copyText: String(timestamp) },
+    {
+      key: 'utc',
+      label: (
+        <Link href={localePath('/utc')} className="inline-flex items-center gap-1 hover:text-ink hover:underline" title={t('labels.titleUtcTime')}>
+          {t('labels.utcTime')}
+          <Globe className="size-3" />
+        </Link>
+      ),
+      value: utcTime,
+      copyText: utcTime,
+    },
+    { key: 'iso', label: t('labels.isoFormat'), value: isoTime, copyText: isoTime },
+  ]
+
+  // Featured city tiles
+  const cityTz: Record<string, { tz: string; cc: string }> = {
+    'new-york': { tz: 'America/New_York', cc: 'US' },
+    london: { tz: 'Europe/London', cc: 'GB' },
+    tokyo: { tz: 'Asia/Tokyo', cc: 'JP' },
+    paris: { tz: 'Europe/Paris', cc: 'FR' },
+    sydney: { tz: 'Australia/Sydney', cc: 'AU' },
+    beijing: { tz: 'Asia/Shanghai', cc: 'CN' },
+  }
+  const cityTiles = featuredCities.map((cityKey) => {
+    const info = cityTz[cityKey]
+    const cs = info ? spacetime(currentTime, info.tz) : null
+    const h = cs ? cs.hour() : 12
+    const m = cs ? cs.minute() : 0
+    const off = cs ? cs.timezone().current.offset : 0
+    const night = !(h >= 6 && h < 18)
+    return { cityKey, info, h, m, off, night }
+  })
+
+  const regionEntries = Object.entries(globalCitiesByRegion)
+
   return (
-    <main className="min-h-screen bg-white dark:bg-black flex flex-col">
-      <Header />
-      
-      <div className="container mx-auto px-4 flex-grow">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">
-          <div className="flex flex-col items-center">
-            <span>{commonT('title').split(' - ')[0]}</span>
-            {commonT('title').includes(' - ') && (
-              <span className="text-sm md:text-base font-normal text-gray-500 dark:text-gray-500 mt-1">
-                {commonT('title').split(' - ')[1]}
-              </span>
+    <main className="flex min-h-screen flex-col bg-paper text-ink">
+      {/* ============ Hero ============ */}
+      <Section top="clamp(20px,4vw,44px)">
+        <div className="flex flex-wrap items-start justify-between gap-5">
+          <h1 className="m-0 max-w-[520px] text-[clamp(22px,2.4vw,28px)] font-semibold leading-[1.15] tracking-[-0.02em]">
+            <span className="block">{titleParts[0]}</span>
+            {titleParts.length > 1 && (
+              <span className="mt-2 block text-[15px] font-normal leading-normal tracking-normal text-subtle">{titleParts[1]}</span>
             )}
-          </div>
-        </h1>
-        {/* SEO-friendly tabs that keep all content in the DOM */}
-        <div className="w-full">
-          {/* Tab navigation - improved for small screens */}
-          <div className="flex justify-between md:justify-center md:space-x-4 mb-8 border-b overflow-x-auto no-scrollbar">
-            <button
-              onClick={() => setActiveTab("current-time")}
-              className={`flex items-center justify-center gap-1 px-3 py-2 border-b-2 transition-colors whitespace-nowrap ${
-                activeTab === "current-time"
-                  ? "border-black dark:border-white"
-                  : "border-transparent hover:text-gray-700 dark:hover:text-gray-300"
-              }`}
-              aria-selected={activeTab === "current-time"}
-              role="tab"
-            >
-              <Clock className="h-4 w-4" />
-              <span className="hidden md:inline">{t('tabs.currentTime')}</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("world-clock")}
-              className={`flex items-center justify-center gap-1 px-3 py-2 border-b-2 transition-colors whitespace-nowrap ${
-                activeTab === "world-clock"
-                  ? "border-black dark:border-white"
-                  : "border-transparent hover:text-gray-700 dark:hover:text-gray-300"
-              }`}
-              aria-selected={activeTab === "world-clock"}
-              role="tab"
-            >
-              <Globe className="h-4 w-4" />
-              <span className="hidden md:inline">{t('tabs.worldClock')}</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("calendar")}
-              className={`flex items-center justify-center gap-1 px-3 py-2 border-b-2 transition-colors whitespace-nowrap ${
-                activeTab === "calendar"
-                  ? "border-black dark:border-white"
-                  : "border-transparent hover:text-gray-700 dark:hover:text-gray-300"
-              }`}
-              aria-selected={activeTab === "calendar"}
-              role="tab"
-            >
-              <CalendarIcon className="h-4 w-4" />
-              <span className="hidden md:inline">{t('tabs.calendar')}</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("converter")}
-              className={`flex items-center justify-center gap-1 px-3 py-2 border-b-2 transition-colors whitespace-nowrap ${
-                activeTab === "converter"
-                  ? "border-black dark:border-white"
-                  : "border-transparent hover:text-gray-700 dark:hover:text-gray-300"
-              }`}
-              aria-selected={activeTab === "converter"}
-              role="tab"
-            >
-              <ArrowLeftRight className="h-4 w-4" />
-              <span className="hidden md:inline">{t('tabs.converter')}</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("timer")}
-              className={`flex items-center justify-center gap-1 px-3 py-2 border-b-2 transition-colors whitespace-nowrap ${
-                activeTab === "timer"
-                  ? "border-black dark:border-white"
-                  : "border-transparent hover:text-gray-700 dark:hover:text-gray-300"
-              }`}
-              aria-selected={activeTab === "timer"}
-              role="tab"
-            >
-              <Timer className="h-4 w-4" />
-              <span className="hidden md:inline">{t('tabs.timer')}</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("sun")}
-              className={`flex items-center justify-center gap-1 px-3 py-2 border-b-2 transition-colors whitespace-nowrap ${
-                activeTab === "sun"
-                  ? "border-black dark:border-white"
-                  : "border-transparent hover:text-gray-700 dark:hover:text-gray-300"
-              }`}
-              aria-selected={activeTab === "sun"}
-              role="tab"
-            >
-              <Sun className="h-4 w-4" />
-              <span className="hidden md:inline">{t('tabs.sunTimes')}</span>
-            </button>
-          </div>
-
-          {/* Tab content - all content is rendered but only the active tab is visible */}
-
-          {/* Current Time Tab */}
-          <div
-            className={`space-y-8 ${activeTab === "current-time" ? "block" : "hidden"}`}
-            role="tabpanel"
-            aria-hidden={activeTab !== "current-time"}
-          >
-            <div className="text-center">
-              <div className="mb-8">
-                <div className="flex flex-col items-center mb-2 gap-4">
-                  <div className="flex items-center gap-3">
-                    <h2 className="text-xl md:text-2xl font-medium">{t('localTime')}</h2>
-                    <div className="flex items-center rounded-md bg-secondary/30 p-0.5 text-sm shadow-sm">
-                      <button
-                        onClick={() => setUse24Hour(false)}
-                        className={`px-2.5 py-1 rounded-md transition-colors font-medium ${!use24Hour ? 'bg-white dark:bg-gray-800 shadow-sm' : 'hover:bg-secondary/50'}`}
-                      >
-                        12h
-                      </button>
-                      <button
-                        onClick={() => setUse24Hour(true)}
-                        className={`px-2.5 py-1 rounded-md transition-colors font-medium ${use24Hour ? 'bg-white dark:bg-gray-800 shadow-sm' : 'hover:bg-secondary/50'}`}
-                      >
-                        24h
-                      </button>
-                    </div>
-                  </div>
-                  <div className="relative inline-block">
-                    <div
-                      className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none ${jetbrainsMono.className} text-center cursor-pointer`}
-                      onClick={() => setIsFullscreen(true)}
-                    >
-                      {formattedTime}
-                    </div>
-                    <button
-                      onClick={() => setIsFullscreen(true)}
-                      className="absolute top-2 -right-8 p-1.5 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors"
-                      title="Enter fullscreen"
-                    >
-                      <Maximize2 size={18} />
-                    </button>
-                  </div>
+          </h1>
+          <div className="flex items-center gap-2">
+            <div role="group" aria-label="Time format" className="inline-flex rounded-full border border-line bg-surface p-[3px]">
+              {[false, true].map((is24) => {
+                const on = use24Hour === is24
+                return (
                   <button
-                    onClick={() => setIsFullscreen(true)}
-                    className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-all"
-                    title="Enter fullscreen"
+                    key={String(is24)}
+                    type="button"
+                    onClick={() => setUse24Hour(is24)}
+                    aria-pressed={on}
+                    className={cn("h-8 min-w-[52px] rounded-full px-3 font-mono text-[13px] transition-colors", on ? "bg-ink text-btn-ink" : "text-ink")}
                   >
-                    <Maximize2 className="w-6 h-6" />
+                    {is24 ? "24h" : "12h"}
                   </button>
-                </div>
-                <div className="text-xl md:text-2xl font-medium mt-2">{formattedDate}</div>
-
-                {/* Time accuracy indicator */}
-                <div className="flex items-center justify-center mt-4 text-sm text-gray-500 dark:text-gray-400">
-                  <AlertCircle className="h-4 w-4 mr-1" />
-                  {accuracy.offset > 1000 ? (
-                    <span>
-                      {t('labels.clockOffset', { seconds: Math.round(accuracy.offset / 1000) })}
-                    </span>
-                  ) : (
-                    <span>{t('labels.clockSynchronized', { offset: Math.round(accuracy.offset) })}</span>
-                  )}
-                </div>
-              </div>
-
-              <div className="w-full mx-auto my-8 relative px-0">
-                <TimezoneTimeline 
-                  timezones={customTimezones.map(tz => ({ 
-                    city: tz.label, 
-                    name: tz.value,
-                    isLocal: tz.isLocal
-                  }))} 
-                  onSwitchToWorldClock={() => {
-                    setActiveTab('world-clock')
-                  }}
-                />
-              </div>
-
-              <h2 className="text-2xl font-bold mb-6 mt-12 text-center">{t('sections.developerTools')}</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6 max-w-4xl mx-auto">
-                <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
-                  <CardHeader className="py-1 px-2 text-center">
-                    <CardTitle className="text-xs font-medium text-muted-foreground">{t('labels.timezoneInfo')}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="px-2 py-1.5">
-                    <div className="flex items-center justify-center gap-1 text-sm overflow-hidden">
-                      <p className={`${jetbrainsMono.className} text-sm text-center truncate`}>{timezone} <span className="opacity-70">(GMT{offsetStr})</span></p>
-                      {isDST && <DSTTag text={t('labels.dst')} />}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
-                  <CardHeader className="py-1 px-2 text-center">
-                    <CardTitle className="text-xs font-medium text-muted-foreground">{t('labels.unixTimestamp')}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="px-2 py-1.5">
-                    <div className="flex items-center justify-center gap-1 overflow-hidden">
-                      <p className={`${jetbrainsMono.className} text-sm text-center truncate min-w-0 flex-1`}>{timestamp}</p>
-                      <button
-                        onClick={() => copyToClipboard(timestamp.toString(), 'timestamp')}
-                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group flex-shrink-0"
-                        title="Copy to clipboard"
-                      >
-                        {copiedStates['timestamp'] ? (
-                          <Check className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                        ) : (
-                          <Copy className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                        )}
-                      </button>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
-                  <CardHeader className="py-1 px-2 text-center">
-                    <CardTitle className="text-xs font-medium text-muted-foreground">
-                      <a href={getLocalePath('/utc', currentLocale)} className="inline-flex items-center justify-center gap-1 hover:underline" title={t('labels.titleUtcTime')}>
-                        {t('labels.utcTime')}
-                        <Globe className="h-2.5 w-2.5" />
-                      </a>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="px-2 py-1.5">
-                    <div className="flex items-center justify-center gap-1 overflow-hidden">
-                      <p className={`${jetbrainsMono.className} text-sm text-center truncate min-w-0 flex-1`}>{utcTime}</p>
-                      <button
-                        onClick={() => copyToClipboard(utcTime, 'utc')}
-                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group flex-shrink-0"
-                        title="Copy to clipboard"
-                      >
-                        {copiedStates['utc'] ? (
-                          <Check className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                        ) : (
-                          <Copy className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                        )}
-                      </button>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border border-gray-200 dark:border-gray-800 rounded-none shadow-none">
-                  <CardHeader className="py-1 px-2 text-center">
-                    <CardTitle className="text-xs font-medium text-muted-foreground">{t('labels.isoFormat')}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="px-2 py-1.5">
-                    <div className="flex items-center justify-center gap-1 overflow-hidden">
-                      <p className={`${jetbrainsMono.className} text-sm text-center truncate min-w-0 flex-1`}>{isoTime}</p>
-                      <button
-                        onClick={() => copyToClipboard(isoTime, 'iso')}
-                        className="p-0.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group flex-shrink-0"
-                        title="Copy to clipboard"
-                      >
-                        {copiedStates['iso'] ? (
-                          <Check className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                        ) : (
-                          <Copy className="h-3 w-3 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                        )}
-                      </button>
-                    </div>
-                  </CardContent>
-                </Card>
-                
-
-              </div>
+                )
+              })}
             </div>
-          </div>
-
-          {/* World Clock Tab */}
-          <div
-            className={`${activeTab === "world-clock" ? "block" : "hidden"}`}
-            role="tabpanel"
-            aria-hidden={activeTab !== "world-clock"}
-          >
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">{t('sections.worldClock')}</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {showAddTimezone && (
-                  <Card className="col-span-full">
-                    <CardContent className="pt-4">
-                      <div className="flex flex-col gap-4">
-                        <Label>{t('labels.selectTimezone')}</Label>
-                        <Select
-                          onValueChange={(value) => {
-                            const tz = availableTimezones.find(t => t.value === value)
-                            if (tz && !customTimezones.some(ct => ct.value === tz.value)) {
-                              setCustomTimezones(prev => [...prev, tz])
-                              setShowAddTimezone(false)
-                            }
-                          }}
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Choose a timezone" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {availableTimezones
-                              .filter(tz => !customTimezones.some(ct => ct.value === tz.value))
-                              .map((tz) => {
-                                const s = spacetime(currentTime, tz.value)
-                                const offset = s.timezone().current.offset
-                                return (
-                                  <SelectItem key={tz.value} value={tz.value}>
-                                    {tz.label} (GMT{offset >= 0 ? `+${offset}` : offset})
-                                  </SelectItem>
-                                )
-                              })}
-                          </SelectContent>
-                        </Select>
-                        <Button
-                          variant="outline"
-                          onClick={() => setShowAddTimezone(false)}
-                          className="w-full"
-                        >
-                          {t('labels.cancel')}
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                )}
-                {customTimezones.map((tz) => {
-                  const s = spacetime(currentTime, tz.value)
-                  const offset = s.timezone().current.offset
-                  return (
-                    <Card key={tz.value} className="group relative">
-                      <button
-                        onClick={() => setCustomTimezones(prev => prev.filter(t => t.value !== tz.value))}
-                        className="absolute top-2 right-2 p-1 rounded-full bg-red-100 hover:bg-red-200 dark:bg-red-900 dark:hover:bg-red-800 opacity-0 group-hover:opacity-100 transition-opacity"
-                        title="Remove timezone"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-red-600 dark:text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                          <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                        </svg>
-                      </button>
-                      <CardHeader className="pb-2">
-                        <CardTitle className="text-lg">{tz.label}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className={`text-3xl font-bold ${jetbrainsMono.className}`}>
-                          {s.time()}
-                        </p>
-                        <div className="flex items-center gap-1.5 mt-1">
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
-                          GMT{offset >= 0 ? `+${offset}` : offset}
-                        </p>
-                        {s.isDST() && <DSTTag text={t('labels.dst')} />}
-                      </div>
-                      </CardContent>
-                    </Card>
-                  )
-                })}
-                {/* Add timezone button */}
-                <Card 
-                  className="group relative flex items-center justify-center p-4 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors" 
-                  onClick={() => setShowAddTimezone(true)}
-                >
-                  <div className="text-center">
-                    <div className="flex items-center justify-center mb-2">
-                      <Globe className="h-5 w-5 text-gray-400" />
-                    </div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{t('labels.addTimezone')}</p>
-                  </div>
-                </Card>
-              </div>
-            </div>
-          </div>
-
-          {/* Calendar Tab */}
-          <div
-            className={`${activeTab === "calendar" ? "block" : "hidden"}`}
-            role="tabpanel"
-            aria-hidden={activeTab !== "calendar"}
-          >
-            <div className="max-w-md mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">{t('sections.calendar')}</h2>
-              <Card>
-                <CardContent className="pt-6">
-                  <div className="flex justify-center">
-                    <CalendarComponent mode="single" selected={selectedDate} onSelect={setSelectedDate} />
-                  </div>
-
-                  {selectedDate && (
-                    <div className="mt-4 p-4 border border-gray-200 dark:border-gray-800 rounded-md">
-                      <h3 className="font-medium mb-2">Selected Date Information</h3>
-                      <p>
-                        <span className="font-medium">Day of Week:</span>{" "}
-                        {selectedDate.toLocaleDateString("en-US", { weekday: "long" })}
-                      </p>
-                      <p>
-                        <span className="font-medium">Day of Year:</span>{" "}
-                        {Math.floor(
-                          (selectedDate.getTime() - new Date(selectedDate.getFullYear(), 0, 0).getTime()) /
-                            (1000 * 60 * 60 * 24),
-                        )}
-                      </p>
-                      <p>
-                        <span className="font-medium">Week Number:</span>{" "}
-                        {Math.ceil(
-                          ((selectedDate.getTime() - new Date(selectedDate.getFullYear(), 0, 0).getTime()) / 86400000 +
-                            1) /
-                            7,
-                        )}
-                      </p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Converter Tab */}
-          <div
-            className={`${activeTab === "converter" ? "block" : "hidden"}`}
-            role="tabpanel"
-            aria-hidden={activeTab !== "converter"}
-          >
-            <div className="max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">{t('sections.timeZoneConverter')}</h2>
-              <Card>
-                <CardContent className="pt-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <Label htmlFor="from-timezone">{t('labels.fromTimezone')}</Label>
-                      <Select value={fromTimezone} onValueChange={setFromTimezone}>
-                        <SelectTrigger id="from-timezone" className="w-full">
-                          <SelectValue placeholder="Select time zone" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="UTC">UTC</SelectItem>
-                          {availableTimezones.map((tz) => (
-                            <SelectItem key={tz.value} value={tz.value}>
-                              {(() => {
-                                const s = spacetime(currentTime, tz.value)
-                                const offset = s.timezone().current.offset
-                                return `${tz.label} (GMT${offset >= 0 ? `+${offset}` : offset})`
-                              })()}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="to-timezone">{t('labels.toTimezone')}</Label>
-                      <Select value={toTimezone} onValueChange={setToTimezone}>
-                        <SelectTrigger id="to-timezone" className="w-full">
-                          <SelectValue placeholder="Select time zone" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="UTC">UTC</SelectItem>
-                          {availableTimezones.map((tz) => (
-                            <SelectItem key={tz.value} value={tz.value}>
-                              {(() => {
-                                const s = spacetime(currentTime, tz.value)
-                                const offset = s.timezone().current.offset
-                                return `${tz.label} (GMT${offset >= 0 ? `+${offset}` : offset})`
-                              })()}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                    <div>
-                      <Label htmlFor="convert-date">{t('labels.date')}</Label>
-                      <Input
-                        id="convert-date"
-                        type="date"
-                        value={convertDate}
-                        onChange={(e) => setConvertDate(e.target.value)}
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="convert-time">{t('labels.time')}</Label>
-                      <Input
-                        id="convert-time"
-                        type="time"
-                        value={convertTime}
-                        onChange={(e) => setConvertTime(e.target.value)}
-                      />
-                    </div>
-                  </div>
-
-                  <Button className="w-full mt-6" onClick={handleConvertTime}>
-                    {t('labels.convert')}
-                  </Button>
-
-                  {convertedTime && (
-                    <div className="mt-6 p-4 border border-gray-200 dark:border-gray-800 rounded-md">
-                      <h3 className="font-medium mb-2">{t('labels.convertedTime')}</h3>
-                      <p className={`text-xl ${jetbrainsMono.className}`}>{convertedTime}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Timer Tab */}
-          <div
-            className={`${activeTab === "timer" ? "block" : "hidden"}`}
-            role="tabpanel"
-            aria-hidden={activeTab !== "timer"}
-          >
-            <div className="max-w-md mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">{t('sections.countdownTimer')}</h2>
-              <Card>
-                <CardContent className="pt-6">
-                  <div className="grid grid-cols-3 gap-4">
-                    <div>
-                      <Label htmlFor="hours">{t('labels.hours')}</Label>
-                      <Input
-                        id="hours"
-                        type="number"
-                        min="0"
-                        max="23"
-                        value={countdownHours}
-                        onChange={(e) => setCountdownHours(e.target.value)}
-                        disabled={countdownRunning}
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="minutes">{t('labels.minutes')}</Label>
-                      <Input
-                        id="minutes"
-                        type="number"
-                        min="0"
-                        max="59"
-                        value={countdownMinutes}
-                        onChange={(e) => setCountdownMinutes(e.target.value)}
-                        disabled={countdownRunning}
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="seconds">{t('labels.seconds')}</Label>
-                      <Input
-                        id="seconds"
-                        type="number"
-                        min="0"
-                        max="59"
-                        value={countdownSeconds}
-                        onChange={(e) => setCountdownSeconds(e.target.value)}
-                        disabled={countdownRunning}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 mt-6">
-                    {!countdownRunning ? (
-                      <Button className="flex-1" onClick={startCountdown}>
-                        {t('labels.start')}
-                      </Button>
-                    ) : (
-                      <Button className="flex-1" variant="destructive" onClick={() => setCountdownRunning(false)}>
-                        {t('labels.pause')}
-                      </Button>
-                    )}
-                    <Button className="flex-1" variant="outline" onClick={resetCountdown}>
-                      {t('labels.reset')}
-                    </Button>
-                  </div>
-
-                  {countdownTimeLeft && (
-                    <div className="mt-6 text-center">
-                      <h3 className="font-medium mb-2">{t('labels.timeRemaining')}</h3>
-                      <p className={`text-4xl font-bold ${jetbrainsMono.className}`}>{countdownTimeLeft}</p>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-
-          {/* Sun Times Tab */}
-          <div
-            className={`${activeTab === "sun" ? "block" : "hidden"}`}
-            role="tabpanel"
-            aria-hidden={activeTab !== "sun"}
-          >
-            <div className="max-w-md mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">{t('sections.sunriseSunset')}</h2>
-              <Card>
-                <CardContent className="pt-6">
-                  {/* Removed location input field */}
-                  <Button className="w-full" onClick={handleGetSunTimes} disabled={isFetchingSunTimes}>
-                    {isFetchingSunTimes ? t('labels.loading') : t('labels.getSunTimes')}
-                  </Button>
-
-                  {sunriseSunset.sunrise && (
-                    <div className="mt-6 grid grid-cols-2 gap-4">
-                      <div className="p-4 border border-gray-200 dark:border-gray-800 rounded-md text-center">
-                        <div className="flex justify-center mb-2">
-                          <Sun className="h-6 w-6 text-yellow-500" />
-                        </div>
-                        <h3 className="font-medium mb-1">{t('labels.sunrise')}</h3>
-                        <p className={`text-xl ${jetbrainsMono.className}`}>{sunriseSunset.sunrise}</p>
-                      </div>
-
-                      <div className="p-4 border border-gray-200 dark:border-gray-800 rounded-md text-center">
-                        <div className="flex justify-center mb-2">
-                          <Moon className="h-6 w-6 text-blue-500" />
-                        </div>
-                        <h3 className="font-medium mb-1">{t('labels.sunset')}</h3>
-                        <p className={`text-xl ${jetbrainsMono.className}`}>{sunriseSunset.sunset}</p>
-                      </div>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
+            <button type="button" onClick={() => setIsFullscreen(true)} aria-label="Enter fullscreen" title="Enter fullscreen" className={cn(iconBtn, "size-10")}>
+              <Maximize2 className="size-4" strokeWidth={1.75} />
+            </button>
           </div>
         </div>
 
-        {/* Tools Section */}
-        <div className="mt-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 text-center">{t('tools.title')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
-            {toolsConfig.map((tool) => {
-              const Icon = tool.icon
+        <h2 className={cn("m-0 mt-[clamp(36px,6vw,76px)] flex flex-wrap items-center gap-x-3 gap-y-1.5 font-normal tracking-[.08em]", monoLabel)}>
+          <span>{t('localTime')}</span>
+          <span aria-hidden="true">/</span>
+          <span suppressHydrationWarning>{timezone}</span>
+          <span className="text-ink" suppressHydrationWarning>GMT{offsetStr}</span>
+          {isDST && <DSTTag text={t('labels.dst')} />}
+        </h2>
+
+        <div
+          onClick={() => setIsFullscreen(true)}
+          title="Enter fullscreen"
+          suppressHydrationWarning
+          className="tnum -ml-[0.045em] mt-2.5 flex cursor-zoom-in items-baseline whitespace-nowrap font-mono text-[clamp(46px,13.6vw,190px)] font-light leading-none tracking-[-0.055em]"
+        >
+          <span suppressHydrationWarning>{heroHm}</span>
+          <span className="text-brand" suppressHydrationWarning>{heroSs}</span>
+          {heroAp && <span className="ml-[.14em] text-[.15em] font-normal tracking-normal text-subtle">{heroAp}</span>}
+        </div>
+
+        <div aria-hidden="true" className="mt-[22px]">
+          <div className="flex h-[30px] items-end justify-between">
+            {Array.from({ length: 60 }, (_, i) => {
+              const sec = currentTime.getSeconds()
               return (
-                <a
-                  key={tool.path}
-                  href={getLocalePath(tool.path)}
-                  className="text-primary font-medium py-3 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center gap-2"
-                  title={t(tool.titleKey)}
-                >
-                  <Icon className="h-5 w-5" />
-                  {t(tool.labelKey)}
-                </a>
+                <span
+                  key={i}
+                  className={cn("block w-px rounded-[1px] min-[500px]:w-0.5", i === sec ? "bg-brand" : i < sec ? "bg-ink" : "bg-tick")}
+                  style={{ height: i === sec ? 30 : i % 15 === 0 ? 22 : i % 5 === 0 ? 16 : 10 }}
+                />
               )
             })}
           </div>
-        </div>
-
-        {/* City Links Section */}
-        <div className="mt-16 max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 text-center">{t('cityTimes.title')}</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            {featuredCities.map((cityKey) => (
-              <a
-                key={cityKey}
-                href={getLocalePath(`/cities/${cityKey}`)}
-                className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center"
-                title={t(`cityTimes.title${cityKey.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')}`)}
-              >
-                {getCityName(cityKey)}
-              </a>
-            ))}
+          <div className="mt-2 flex justify-between font-mono text-[10.5px] text-subtle">
+            <span>00</span><span>15</span><span>30</span><span>45</span><span>60</span>
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <div className="mt-8 max-w-3xl mx-auto text-left">
-          <h2 className="text-2xl font-bold mb-6 text-center">{t('faq.title')}</h2>
-          <Accordion
-            type="multiple"
-            collapsible
-            value={accordionValues}
-            onValueChange={setAccordionValues}
-            className="w-full"
-          >
-            <AccordionItem value="item-1">
-              <AccordionTrigger>{t('faq.utcGmt.question')}</AccordionTrigger>
-              <AccordionContent>
-                <p>
-                  {t('faq.utcGmt.answer')}
-                </p>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-2">
-              <AccordionTrigger>{t('faq.timezones.question')}</AccordionTrigger>
-              <AccordionContent>
-                <p>
-                  {t('faq.timezones.answer')}
-                </p>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-3">
-              <AccordionTrigger>{t('faq.unixTimestamp.question')}</AccordionTrigger>
-              <AccordionContent>
-                <p>
-                  {t('faq.unixTimestamp.answer')}
-                </p>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-4">
-              <AccordionTrigger>{t('faq.clockAccuracy.question')}</AccordionTrigger>
-              <AccordionContent>
-                <p>
-                  {t('faq.clockAccuracy.answer')}
-                </p>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-5">
-              <AccordionTrigger>{t('faq.iso8601.question')}</AccordionTrigger>
-              <AccordionContent>
-                <p>
-                  {t('faq.iso8601.answer')}
-                </p>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-6">
-              <AccordionTrigger>{t('faq.daylightSaving.question')}</AccordionTrigger>
-              <AccordionContent>
-                <p>
-                  {t('faq.daylightSaving.answer')}
-                </p>
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="item-7">
-              <AccordionTrigger>{t('faq.timezoneConversion.question')}</AccordionTrigger>
-              <AccordionContent>
-                <p>{t('faq.timezoneConversion.answer')}</p>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+        <div className="mt-[34px] flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+          <div className="min-w-0">
+            <Eyebrow>{currentTime.toLocaleDateString(currentLocale, { weekday: "long" })}</Eyebrow>
+            <div suppressHydrationWarning className="mt-2 text-[clamp(28px,4.4vw,56px)] font-medium leading-[1.05] tracking-[-0.035em]">
+              {currentTime.toLocaleDateString(currentLocale, { year: "numeric", month: "long", day: "numeric" })}
+            </div>
+          </div>
+          <div className="inline-flex items-center gap-2.5 text-[13px] text-subtle">
+            <span className="relative inline-block size-2">
+              <span className="animate-ping-soft absolute inset-0 rounded-full bg-ok" />
+              <span className="absolute inset-0 rounded-full bg-ok" />
+            </span>
+            {accuracy.offset > 1000 ? (
+              <span>{t('labels.clockOffset', { seconds: Math.round(accuracy.offset / 1000) })}</span>
+            ) : (
+              <span>{t('labels.clockSynchronized', { offset: Math.round(accuracy.offset) })}</span>
+            )}
+          </div>
         </div>
 
-        {/* Global Cities Section */}
-        <div className="mt-16 max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6 text-center">{t('globalCities.title', 'Global Major Cities')}</h2>
+        {/* Developer readouts */}
+        <div className="mt-10">
+          <h2 className={cn("m-0 mb-3 font-normal", monoLabel)}>{t('sections.developerTools')}</h2>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-px overflow-hidden rounded-2xl border border-line bg-line">
+            {readouts.map((r) => (
+              <div key={r.key} className="flex min-w-0 items-center justify-between gap-3 bg-surface px-[18px] py-4">
+                <div className="min-w-0">
+                  <div className="mb-1 text-[12.5px] text-subtle">{r.label}</div>
+                  <div className="tnum break-all font-mono text-sm leading-snug" suppressHydrationWarning>{r.value}</div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard(r.copyText, r.key)}
+                  aria-label="Copy to clipboard"
+                  title="Copy to clipboard"
+                  className="inline-flex size-[34px] flex-none items-center justify-center rounded-lg border border-transparent text-subtle transition-colors hover:border-line2 hover:bg-paper"
+                >
+                  {copiedStates[r.key] ? <Check className="size-4 text-ok" strokeWidth={2} /> : <Copy className="size-4" strokeWidth={1.75} />}
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
 
-          {Object.entries(globalCitiesByRegion).map(([regionKey, region]) => (
-            <div key={regionKey} className="mb-8">
-              <h3 className="text-lg font-semibold mb-3 text-gray-600 dark:text-gray-400">
-                {t(region.title)}
-              </h3>
-              <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-                {region.cities.map((cityKey) => (
-                  <a
-                    key={cityKey}
-                    href={getLocalePath(`/cities/${cityKey}`)}
-                    className="text-sm py-1.5 px-3 rounded bg-accent/30 hover:bg-accent/50 transition-colors text-center"
+      {/* ============ World clock timeline ============ */}
+      <Section top="clamp(64px,9vw,112px)">
+        <SectionHeading
+          title={t('sections.worldClock')}
+          right={
+            <TimezonePicker
+              label={t('labels.addTimezone')}
+              onSelect={(value) => {
+                const tz = availableTimezones.find((x) => x.value === value)
+                if (tz && !customTimezones.some((ct) => ct.value === tz.value)) {
+                  setCustomTimezones((prev) => [...prev, tz])
+                }
+              }}
+              options={availableTimezones
+                .filter((tz) => !customTimezones.some((ct) => ct.value === tz.value))
+                .map((tz) => {
+                  const o = spacetime(currentTime, tz.value).timezone().current.offset
+                  return { value: tz.value, label: tz.label, meta: `GMT${o >= 0 ? `+${o}` : o}` }
+                })}
+            />
+          }
+        />
+        <TimezoneTimeline
+          timezones={customTimezones.map((tz) => ({ city: tz.label, name: tz.value, value: tz.value, isLocal: tz.isLocal }))}
+          now={currentTime}
+          use24Hour={use24Hour}
+          dstLabel={t('labels.dst')}
+          removeLabel="Remove timezone"
+          onRemove={(value) => setCustomTimezones((prev) => prev.filter((x) => x.value !== value))}
+        />
+      </Section>
+
+      {/* ============ Toolkit (all panels stay in the DOM) ============ */}
+      <Section top="clamp(64px,9vw,112px)">
+        <div className={cn(cardClass, "overflow-hidden rounded-[18px]")}>
+          <div role="tablist" aria-label="Tools" className="no-scrollbar flex gap-1 overflow-x-auto border-b border-line px-3">
+            {toolTabs.map((tab) => {
+              const on = activeTab === tab.id
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  id={`tab-${tab.id}`}
+                  aria-selected={on}
+                  aria-controls={`panel-${tab.id}`}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={cn("-mb-px h-14 flex-none whitespace-nowrap border-b-2 bg-transparent px-4 text-[14.5px] font-medium transition-colors", on ? "border-ink text-ink" : "border-transparent text-subtle hover:text-ink")}
+                >
+                  {tab.label}
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Converter */}
+          <div id="panel-converter" role="tabpanel" aria-labelledby="tab-converter" className={activeTab === "converter" ? "block" : "hidden"}>
+            <h2 className={panelTitle}>{t('sections.timeZoneConverter')}</h2>
+            <div className={panelWrap}>
+              <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-[18px]">
+                <div>
+                  <label htmlFor="from-timezone" className={labelCls}>{t('labels.fromTimezone')}</label>
+                  <SelectWrap>
+                    <select id="from-timezone" value={fromTimezone} onChange={(e) => setFromTimezone(e.target.value)} className={cn(fieldCls, "appearance-none pr-10")}>
+                      <option value="UTC">UTC</option>
+                      {availableTimezones.map((tz) => {
+                        const o = spacetime(currentTime, tz.value).timezone().current.offset
+                        return <option key={tz.value} value={tz.value}>{`${tz.label} (GMT${o >= 0 ? `+${o}` : o})`}</option>
+                      })}
+                    </select>
+                  </SelectWrap>
+                </div>
+                <div className="flex flex-wrap gap-3.5">
+                  <div className="min-w-0 flex-[1_1_150px]">
+                    <label htmlFor="convert-date" className={labelCls}>{t('labels.date')}</label>
+                    <input id="convert-date" type="date" value={convertDate} onChange={(e) => setConvertDate(e.target.value)} className={cn(fieldCls, "font-mono text-sm")} />
+                  </div>
+                  <div className="min-w-0 flex-[1_1_130px]">
+                    <label htmlFor="convert-time" className={labelCls}>{t('labels.time')}</label>
+                    <input id="convert-time" type="time" value={convertTime} onChange={(e) => setConvertTime(e.target.value)} className={cn(fieldCls, "font-mono text-sm")} />
+                  </div>
+                </div>
+                <div className="flex items-end gap-2.5">
+                  <div className="min-w-0 flex-1">
+                    <label htmlFor="to-timezone" className={labelCls}>{t('labels.toTimezone')}</label>
+                    <SelectWrap>
+                      <select id="to-timezone" value={toTimezone} onChange={(e) => setToTimezone(e.target.value)} className={cn(fieldCls, "appearance-none pr-10")}>
+                        <option value="UTC">UTC</option>
+                        {availableTimezones.map((tz) => {
+                          const o = spacetime(currentTime, tz.value).timezone().current.offset
+                          return <option key={tz.value} value={tz.value}>{`${tz.label} (GMT${o >= 0 ? `+${o}` : o})`}</option>
+                        })}
+                        {!availableTimezones.some((tz) => tz.value === toTimezone) && toTimezone !== "UTC" && (
+                          <option value={toTimezone}>{tzShort(toTimezone)}</option>
+                        )}
+                      </select>
+                    </SelectWrap>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFromTimezone(toTimezone)
+                      setToTimezone(fromTimezone)
+                    }}
+                    aria-label="Swap time zones"
+                    title="Swap"
+                    className="inline-flex size-[46px] flex-none items-center justify-center rounded-[10px] border border-line2 bg-transparent transition-colors hover:bg-paper"
                   >
-                    {getCityName(cityKey)}
-                  </a>
+                    <ArrowLeftRight className="size-[18px]" strokeWidth={1.75} />
+                  </button>
+                </div>
+                <button type="button" className={cn(primaryBtn, "w-full")} onClick={handleConvertTime}>
+                  {t('labels.convert')}
+                </button>
+              </div>
+              <div className={resultPanel}>
+                <h3 className={cn("m-0 font-normal", monoLabel)}>{t('labels.convertedTime')}</h3>
+                <p className="tnum m-0 mt-3.5 break-words font-mono text-[clamp(22px,2.6vw,34px)] font-light leading-tight tracking-[-0.03em]">
+                  {convertedTime || "--:--"}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Timer */}
+          <div id="panel-timer" role="tabpanel" aria-labelledby="tab-timer" className={activeTab === "timer" ? "block" : "hidden"}>
+            <h2 className={panelTitle}>{t('sections.countdownTimer')}</h2>
+            <div className={panelWrap}>
+              <div className="min-w-0 flex-[1_1_380px]">
+                <div className="flex gap-3.5">
+                  {[
+                    { id: "hours", label: t('labels.hours'), max: "23", value: countdownHours, set: setCountdownHours },
+                    { id: "minutes", label: t('labels.minutes'), max: "59", value: countdownMinutes, set: setCountdownMinutes },
+                    { id: "seconds", label: t('labels.seconds'), max: "59", value: countdownSeconds, set: setCountdownSeconds },
+                  ].map((f) => (
+                    <div key={f.id} className="min-w-0 flex-1">
+                      <label htmlFor={f.id} className={labelCls}>{f.label}</label>
+                      <input
+                        id={f.id}
+                        type="number"
+                        min="0"
+                        max={f.max}
+                        value={f.value}
+                        onChange={(e) => f.set(e.target.value)}
+                        disabled={countdownRunning}
+                        className="tnum h-[60px] w-full rounded-[10px] border border-line2 bg-paper px-2 text-center font-mono text-[28px] font-light outline-none transition-colors focus:border-ink disabled:opacity-60"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 flex gap-3">
+                  {!countdownRunning ? (
+                    <button type="button" className={cn(primaryBtn, "flex-1")} onClick={startCountdown}>{t('labels.start')}</button>
+                  ) : (
+                    <button type="button" className={cn(primaryBtn, "flex-1")} onClick={() => setCountdownRunning(false)}>{t('labels.pause')}</button>
+                  )}
+                  <button type="button" className={cn(ghostBtn, "flex-1")} onClick={resetCountdown}>{t('labels.reset')}</button>
+                </div>
+              </div>
+              <div className={resultPanel}>
+                <h3 className={cn("m-0 font-normal", monoLabel)}>{t('labels.timeRemaining')}</h3>
+                <p className={cn("tnum m-0 mt-3.5 break-words font-mono text-[clamp(30px,5vw,64px)] font-light leading-none tracking-[-0.05em]", countdownRunning ? "text-brand" : "text-ink")}>
+                  {countdownTimeLeft || "00:00:00"}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Sun times */}
+          <div id="panel-sun" role="tabpanel" aria-labelledby="tab-sun" className={activeTab === "sun" ? "block" : "hidden"}>
+            <h2 className={panelTitle}>{t('sections.sunriseSunset')}</h2>
+            <div className={panelWrap}>
+              <div className="flex min-w-0 flex-[1_1_380px] flex-col justify-center gap-4">
+                <div>
+                  <button type="button" className={primaryBtn} onClick={handleGetSunTimes} disabled={isFetchingSunTimes}>
+                    {isFetchingSunTimes ? t('labels.loading') : t('labels.getSunTimes')}
+                  </button>
+                </div>
+              </div>
+              <div className="grid min-w-0 flex-[1_1_320px] grid-cols-2 gap-3.5">
+                <div className="min-w-0 rounded-[14px] border border-line bg-paper p-[clamp(16px,2.4vw,28px)]">
+                  <Sunrise className="size-[22px]" strokeWidth={1.75} />
+                  <h3 className="m-0 mt-[18px] text-[13px] font-normal text-subtle">{t('labels.sunrise')}</h3>
+                  <p className={cn("tnum m-0 mt-1 break-words font-mono text-[clamp(20px,3.4vw,40px)] font-light tracking-[-0.04em]", sunriseSunset.sunrise ? "text-ink" : "text-subtle")}>{sunriseSunset.sunrise || "--:--"}</p>
+                </div>
+                <div className="min-w-0 rounded-[14px] border border-line bg-paper p-[clamp(16px,2.4vw,28px)]">
+                  <Sunset className="size-[22px]" strokeWidth={1.75} />
+                  <h3 className="m-0 mt-[18px] text-[13px] font-normal text-subtle">{t('labels.sunset')}</h3>
+                  <p className={cn("tnum m-0 mt-1 break-words font-mono text-[clamp(20px,3.4vw,40px)] font-light tracking-[-0.04em]", sunriseSunset.sunset ? "text-ink" : "text-subtle")}>{sunriseSunset.sunset || "--:--"}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Calendar */}
+          <div id="panel-calendar" role="tabpanel" aria-labelledby="tab-calendar" className={activeTab === "calendar" ? "block" : "hidden"}>
+            <h2 className={panelTitle}>{t('sections.calendar')}</h2>
+            <div className={panelWrap}>
+              <div className="min-w-0 max-w-[440px] flex-[1_1_300px]">
+                <div className="mb-3.5 flex items-center justify-between">
+                  <div className="text-[17px] font-medium tracking-[-0.015em]">
+                    {calMonth.toLocaleDateString(currentLocale, { month: "long", year: "numeric" })}
+                  </div>
+                  <div className="flex gap-1.5">
+                    <button type="button" aria-label="Previous month" onClick={() => setCalMonth(new Date(calYear, calMon - 1, 1))} className="inline-flex size-9 items-center justify-center rounded-lg border border-line2 bg-transparent transition-colors hover:bg-paper">
+                      <ChevronLeft className="size-4" strokeWidth={2} />
+                    </button>
+                    <button type="button" aria-label="Next month" onClick={() => setCalMonth(new Date(calYear, calMon + 1, 1))} className="inline-flex size-9 items-center justify-center rounded-lg border border-line2 bg-transparent transition-colors hover:bg-paper">
+                      <ChevronRight className="size-4" strokeWidth={2} />
+                    </button>
+                  </div>
+                </div>
+                <div className="mb-1.5 grid grid-cols-7 gap-0.5 text-center font-mono text-[11.5px] text-subtle">
+                  {weekdayNames.map((w, i) => <span key={i}>{w}</span>)}
+                </div>
+                <div className="grid grid-cols-7 gap-0.5">
+                  {calCells.map((n, i) => {
+                    const valid = n >= 1 && n <= calDays
+                    const d = new Date(calYear, calMon, n)
+                    const sel = valid && !!selectedDate && isSameDay(d, selectedDate)
+                    const today = valid && isSameDay(d, currentTime)
+                    return (
+                      <button
+                        key={i}
+                        type="button"
+                        tabIndex={valid ? 0 : -1}
+                        aria-hidden={!valid}
+                        aria-pressed={sel}
+                        onClick={() => valid && setSelectedDate(d)}
+                        className={cn(
+                          "tnum h-11 rounded-lg border font-mono text-sm transition-colors",
+                          !valid && "invisible",
+                          sel ? "border-ink bg-ink text-btn-ink" : today ? "border-brand text-brand" : "border-transparent hover:bg-paper",
+                        )}
+                      >
+                        {valid ? n : ""}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+              <div className={resultPanel}>
+                {selectedDate && (
+                  <>
+                    <h3 className={cn("m-0 font-normal", monoLabel)}>Selected Date Information</h3>
+                    <p className="m-0 mt-3 text-[clamp(20px,2.8vw,34px)] font-medium leading-[1.15] tracking-[-0.025em]">
+                      {selectedDate.toLocaleDateString(currentLocale, { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
+                    </p>
+                    <div className="mt-7 grid grid-cols-3 gap-3 border-t border-line pt-5">
+                      <div className="min-w-0">
+                        <div className="text-[12.5px] text-subtle">Day of Week:</div>
+                        <div className="mt-1 text-base font-medium">{selectedDate.toLocaleDateString("en-US", { weekday: "long" })}</div>
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-[12.5px] text-subtle">Day of Year:</div>
+                        <div className="tnum mt-1 font-mono text-base">{dayOfYear(selectedDate)}</div>
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-[12.5px] text-subtle">Week Number:</div>
+                        <div className="tnum mt-1 font-mono text-base">{Math.ceil(dayOfYear(selectedDate) / 7)}</div>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* ============ Time tools ============ */}
+      <Section top="clamp(64px,9vw,112px)">
+        <div className="flex flex-wrap gap-x-16 gap-y-7">
+          <div className="min-w-0 flex-[1_1_220px]">
+            <h2 className={h2Class}>{t('tools.title')}</h2>
+          </div>
+          <CardList className="min-w-0 flex-[3_1_560px] rounded-[18px]">
+            {toolsConfig.map((tool, i) => {
+              const Icon = tool.icon
+              return (
+                <RowLink
+                  key={tool.path}
+                  href={localePath(tool.path)}
+                  title={t(tool.titleKey)}
+                  label={
+                    <span className="inline-flex items-center gap-3.5">
+                      <span className="font-mono text-[12.5px] font-normal text-subtle">{String(i + 1).padStart(2, '0')}</span>
+                      <Icon className="size-[18px] text-subtle" strokeWidth={1.75} aria-hidden="true" />
+                      {t(tool.labelKey)}
+                    </span>
+                  }
+                />
+              )
+            })}
+          </CardList>
+        </div>
+      </Section>
+
+      {/* ============ World city times ============ */}
+      <Section top="clamp(64px,9vw,112px)">
+        <SectionHeading title={t('cityTimes.title')} />
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,262px),1fr))] gap-2.5">
+          {cityTiles.map(({ cityKey, info, h, m, off, night }) => {
+            const time = use24Hour ? `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}` : `${String(h % 12 || 12).padStart(2, '0')}:${String(m).padStart(2, '0')}`
+            const ap = use24Hour ? '' : h < 12 ? 'AM' : 'PM'
+            const pos = ((h * 60 + m) / 1440) * 100
+            return (
+              <Link
+                key={cityKey}
+                href={localePath(`/cities/${cityKey}`)}
+                title={t(`cityTimes.title${cityKey.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('')}`)}
+                className={cn(
+                  "flex flex-col justify-between gap-3.5 rounded-xl border px-4 py-3.5 transition-colors",
+                  night ? "border-night bg-night text-foot-ink hover:border-foot-muted" : "border-line bg-surface text-ink hover:border-ink",
+                )}
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <div className="text-[15px] font-medium tracking-[-0.01em]">{getCityName(cityKey)}</div>
+                    <div className={cn("mt-px font-mono text-[10.5px] tracking-[.06em]", night ? "text-foot-muted" : "text-subtle")}>
+                      {info?.cc} · GMT{off >= 0 ? `+${off}` : off}
+                    </div>
+                  </div>
+                  <span aria-hidden="true" className={night ? "text-foot-muted" : "text-subtle"}>
+                    {night ? <Moon className="size-4" strokeWidth={1.75} /> : <Sun className="size-4" strokeWidth={1.75} />}
+                  </span>
+                </div>
+                <div>
+                  <div className="tnum whitespace-nowrap font-mono text-[30px] font-light leading-none tracking-[-0.05em]" suppressHydrationWarning>
+                    {time}
+                    {ap && <span className={cn("ml-[5px] text-[11px] font-normal tracking-normal", night ? "text-foot-muted" : "text-subtle")}>{ap}</span>}
+                  </div>
+                  <div aria-hidden="true" className="relative mt-3.5">
+                    <div className="grid h-2 grid-cols-[repeat(24,minmax(0,1fr))] items-end gap-[1.5px]">
+                      {Array.from({ length: 24 }, (_, i) => {
+                        const day = i >= 8 && i < 18
+                        const mid = (i >= 6 && i < 8) || (i >= 18 && i < 22)
+                        return (
+                          <span
+                            key={i}
+                            className={cn("block rounded-[1.5px]", night ? "bg-foot-ink" : "bg-ink")}
+                            style={{ height: day ? '100%' : mid ? '65%' : '35%', opacity: day ? 0.85 : mid ? 0.5 : 0.25 }}
+                          />
+                        )
+                      })}
+                    </div>
+                    <span className="absolute -inset-y-[3px] -ml-px w-0.5 rounded-[1px] bg-brand" style={{ left: `${pos}%` }} />
+                  </div>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      </Section>
+
+      {/* ============ Global cities directory (all regions stay in the DOM) ============ */}
+      <Section top="clamp(64px,9vw,112px)">
+        <SectionHeading
+          title={t('globalCities.title')}
+          right={
+            <div role="tablist" aria-label="Regions" className="flex flex-wrap gap-1.5">
+              {regionEntries.map(([regionKey, region]) => (
+                <button
+                  key={regionKey}
+                  type="button"
+                  role="tab"
+                  id={`region-tab-${regionKey}`}
+                  aria-selected={activeRegion === regionKey}
+                  aria-controls={`region-${regionKey}`}
+                  onClick={() => setActiveRegion(regionKey)}
+                  className={cn(
+                    "inline-flex h-[38px] items-center gap-2 rounded-full border px-3.5 text-[13.5px] font-medium transition-colors",
+                    activeRegion === regionKey ? "border-ink bg-ink text-btn-ink" : "border-line bg-surface text-ink hover:border-ink",
+                  )}
+                >
+                  {t(region.title)}
+                  <span className="font-mono text-[11.5px] opacity-60">{region.cities.length}</span>
+                </button>
+              ))}
+            </div>
+          }
+        />
+        <div className="overflow-hidden rounded-[18px] border border-line bg-surface">
+          {regionEntries.map(([regionKey, region]) => (
+            <div
+              key={regionKey}
+              id={`region-${regionKey}`}
+              role="tabpanel"
+              aria-labelledby={`region-tab-${regionKey}`}
+              className={activeRegion === regionKey ? "block" : "hidden"}
+            >
+              <h3 className="sr-only">{t(region.title)}</h3>
+              <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,190px),1fr))]">
+                {region.cities.map((cityKey, i) => (
+                  <Link
+                    key={cityKey}
+                    href={localePath(`/cities/${cityKey}`)}
+                    className="group flex items-center gap-2.5 px-3.5 py-[11px] text-sm font-medium tracking-[-0.01em] shadow-[inset_-1px_-1px_0_var(--line)] transition-colors hover:bg-paper"
+                  >
+                    <span className="min-w-[18px] flex-none font-mono text-[10.5px] font-normal text-subtle">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="min-w-0 flex-1 truncate">{getCityName(cityKey)}</span>
+                    <ArrowUpRight aria-hidden="true" className="size-[13px] text-subtle transition-all group-hover:-translate-y-[3px] group-hover:translate-x-[3px] group-hover:text-brand" strokeWidth={1.75} />
+                  </Link>
                 ))}
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </Section>
+
+      <HomeUpcoming />
+      <HomeSeoSections year={new Date().getUTCFullYear()} localePath={localePath} />
+
+      {/* ============ FAQ (last) ============ */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqItems.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) }) }} />
+      <Faq title={t('faq.title')} items={faqItems} />
 
       <FullscreenTime
-        time={formattedTime}
+        time={`${heroHm}${heroSs}`}
         isFullscreen={isFullscreen}
         onClose={() => setIsFullscreen(false)}
       />

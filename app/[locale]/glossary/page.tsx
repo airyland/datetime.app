@@ -1,12 +1,12 @@
 import { Metadata } from "next"
-import Link from "next/link"
 import { getTranslations } from 'next-intl/server'
-import Header from "@/components/header"
 import GlossaryClient from "./glossary-client"
+import { PageIntro } from "@/components/ds"
+import { getLocalePath } from "@/lib/locale-utils"
 
 // Generate metadata
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const { locale } = params
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'glossary' })
 
   const canonicalUrl = locale === 'en' 
@@ -28,8 +28,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   }
 }
 
-export default async function GlossaryPage({ params }: { params: { locale: string } }) {
-  const { locale } = params
+export default async function GlossaryPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'glossary' })
   
   // Prepare translations for client component
@@ -112,27 +112,19 @@ export default async function GlossaryPage({ params }: { params: { locale: strin
   }
 
   return (
-    <main className="min-h-screen bg-white dark:bg-black flex flex-col">
-      <Header />
-
-      <div className="container mx-auto px-4 flex-grow">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              {t('title')}
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              {t('subtitle')}
-            </p>
-          </div>
-
-          <GlossaryClient
-            locale={locale}
-            translations={translations}
-            glossaryItems={glossaryItems}
-          />
-        </div>
-      </div>
+    <main>
+      <PageIntro
+        crumbs={[{ label: "Home", href: getLocalePath("/", locale) }, { label: t('title') }]}
+        eyebrow="Reference"
+        title={t('title')}
+        description={t('subtitle')}
+      />
+      <GlossaryClient
+        locale={locale}
+        translations={translations}
+        glossaryItems={glossaryItems}
+      />
+      <div className="h-[clamp(56px,8vw,96px)]" />
     </main>
   )
 }

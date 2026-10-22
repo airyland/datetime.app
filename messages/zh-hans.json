@@ -12,7 +12,8 @@
       "ageCalculator": "年龄计算器",
       "yearProgress": "年度进度",
       "glossary": "术语表",
-      "timezones": "时区"
+      "timezones": "时区",
+      "blog": "博客"
     },
     "links": {
       "titleHome": "回到主页",
@@ -364,7 +365,8 @@
       "title": "即将到来的节假日",
       "noDataForCountry": "暂无法获取 {country} 的节假日数据。",
       "loading": "正在加载即将到来的节假日…",
-      "none": "近期没有即将到来的公共节假日。"
+      "none": "近期没有即将到来的公共节假日。",
+      "all": "全部节日"
     },
     "developerSnippet": {
       "title": "开发者代码示例",
@@ -971,5 +973,422 @@
         "content": "{timezone}是{country}{city}及周边地区使用的标准时间。该时区的UTC偏移量为{offset}，广泛用于该地理区域的调度和时间协调。该时区为数百万人服务，是商务、旅行和国际通信的重要参考。"
       }
     }
+  },
+  "homeSeo": {
+    "introTitle": "精准到秒的时间",
+    "intro1": "datetime.app 是一款免费的世界时钟，可显示你所在位置以及全球各大城市的当前时间。时钟精确到秒，并与可信时间源校准，遵循 IANA 时区数据库，因此每一个偏移量和夏令时规则都是最新的。",
+    "intro2": "你可以用它并排对比时区、在城市之间换算时间、查看 UTC，或复制现成的时间戳。无需注册，也无需安装。",
+    "basicsTitle": "时区基础知识",
+    "basicsDesc": "跨时区工作时最常遇到的六个术语。",
+    "facts": {
+      "utc": {
+        "name": "协调世界时",
+        "desc": "所有时区的全球参照标准。没有夏令时，也永远不会变动。"
+      },
+      "gmt": {
+        "name": "格林尼治标准时间",
+        "desc": "英国冬季使用的 UTC+0 时区。日常使用中等同于 UTC。"
+      },
+      "iana": {
+        "name": "时区数据库",
+        "desc": "America/New_York、Asia/Tokyo 这样的名称，对应某个地区完整的偏移量与 DST 规则历史。"
+      },
+      "dst": {
+        "name": "夏令时",
+        "desc": "许多国家春季将时钟拨快、秋季拨回，因此偏移量每年会变化两次。"
+      },
+      "iso": {
+        "name": "日期与时间格式",
+        "desc": "2026-03-08T14:30:00Z 含义明确、便于排序，所有编程语言都能理解。"
+      },
+      "unix": {
+        "name": "自 1970 年起的秒数",
+        "desc": "用一个整数表示一个精确的时刻，与任何时区无关。"
+      }
+    },
+    "glossaryLink": "查看完整词汇表",
+    "zonesTitle": "热门时区",
+    "zonesDesc": "大家查询最多的时区的当前时间与偏移量。",
+    "zoneTitle": "{name}当前时间",
+    "zoneMeta": {
+      "pst": "太平洋 · UTC−8 / −7",
+      "est": "东部 · UTC−5 / −4",
+      "cst": "中部 · UTC−6 / −5",
+      "gmt": "格林尼治 · UTC+0",
+      "cet": "中欧 · UTC+1 / +2",
+      "ist": "印度 · UTC+5:30",
+      "jst": "日本 · UTC+9",
+      "aest": "澳大利亚东部 · UTC+10 / +11"
+    },
+    "allIana": "所有 IANA 时区",
+    "utcNow": "当前 UTC 时间",
+    "dstTitle": "{year} 年夏令时",
+    "dstDesc": "今年主要地区的时钟调整时间。",
+    "dstCols": {
+      "region": "地区",
+      "forward": "拨快时钟",
+      "back": "拨回时钟",
+      "rule": "规则"
+    },
+    "dstRegions": {
+      "us": {
+        "name": "美国和加拿大",
+        "rule": "3 月第二个星期日至 11 月第一个星期日"
+      },
+      "eu": {
+        "name": "欧盟和英国",
+        "rule": "3 月最后一个星期日至 10 月最后一个星期日"
+      },
+      "au": {
+        "name": "澳大利亚（新南威尔士州、维多利亚州）",
+        "rule": "10 月第一个星期日至次年 4 月第一个星期日"
+      }
+    },
+    "dstNote": "南半球的日期会跨越新年。许多地区，包括亚洲和非洲的大部分地区，并不实行夏令时。",
+    "usesTitle": "谁在使用 datetime.app",
+    "uses": {
+      "remote": {
+        "title": "远程团队",
+        "desc": "把每位队友所在的城市放在同一条时间轴上，安排会议前先看清哪些时段重叠。"
+      },
+      "dev": {
+        "title": "开发者",
+        "desc": "复制当前的 Unix 时间戳、ISO 8601 和 RFC 2822 字符串，或所查看时区对应的 Intl 代码片段。"
+      },
+      "travel": {
+        "title": "旅行者",
+        "desc": "查看目的地的当地时间、与家乡的时差，以及现在适不适合打电话。"
+      },
+      "trade": {
+        "title": "交易者和玩家",
+        "desc": "用你自己的时间和 UTC 掌握市场何时开盘、服务器何时重置。"
+      }
+    },
+    "faqTitle": "常见问题",
+    "faq": {
+      "q1": "datetime.app 如何显示精确时间？",
+      "a1": "它读取你设备的时钟，并与可信时间源校准，然后每秒更新一次。时区偏移量来自 IANA 数据库，因此夏令时变化会自动生效。",
+      "q2": "UTC 与本地时区有什么区别？",
+      "a2": "UTC 是固定的全球标准。本地时区是 UTC 加上一个偏移量，例如东京为 UTC+9，并可能在夏令时开始或结束时偏移一小时。",
+      "q3": "如何找到跨时区开会的最佳时间？",
+      "a3": "把每个城市添加到世界时钟时间轴。阴影条会标出白天、清晨与深夜、夜间，让你选出落在所有人工作时间内的时段。",
+      "q4": "这个网站适用于任何城市吗？",
+      "a4": "是的。使用首页的“添加时区”菜单，或打开下方链接的城市与时区页面。"
+    }
+  },
+  "legal": {
+    "home": "首页",
+    "privacy": "隐私",
+    "terms": "条款",
+    "lastUpdated": "最后更新 · {date}",
+    "contents": "目录",
+    "privacyMetaTitle": "隐私政策 | Datetime.app",
+    "privacyMetaDesc": "datetime.app 如何处理你的数据：我们收集什么、不收集什么，以及你可以做的选择。",
+    "privacyTitle": "隐私政策",
+    "privacyIntro": "简而言之：我们只保留运行网站所需的数据，多一个字节都不留。",
+    "summary": {
+      "stored": {
+        "k": "存储",
+        "v": "你的时钟列表和偏好设置保存在你的浏览器中。"
+      },
+      "collected": {
+        "k": "收集",
+        "v": "通过 Plausible 收集匿名使用统计。"
+      },
+      "sold": {
+        "k": "出售",
+        "v": "没有。我们绝不出售个人数据。"
+      }
+    },
+    "privacySections": {
+      "overview": {
+        "title": "概述",
+        "p1": "datetime.app 是一款时间与时区工具。无需账号即可使用，也不会要求你提供个人信息。"
+      },
+      "collect": {
+        "title": "我们收集的信息",
+        "p1": "我们不要求注册。你选择的时区和显示偏好保存在浏览器本地（localStorage），不会发送到我们的服务器。",
+        "p2": "出于安全和调试目的，可能会短期保留标准服务器日志（IP 地址、用户代理、请求的页面）。"
+      },
+      "analytics": {
+        "title": "统计分析",
+        "p1": "我们使用 Plausible 了解哪些页面被使用。数据经过汇总，不会用于识别你的身份。"
+      },
+      "cookies": {
+        "title": "Cookie",
+        "p1": "我们不使用跟踪类 Cookie。主题、语言等偏好仅保存在浏览器的本地存储中。"
+      },
+      "thirdParties": {
+        "title": "第三方",
+        "p1": "Plausible Analytics（使用统计）和 WorldTimeAPI（根据 IP 地址判断你所在的时区）。"
+      },
+      "rights": {
+        "title": "你的选择",
+        "p1": "你可以随时在浏览器设置中清除本地数据，也可以通过浏览器的隐私功能屏蔽统计分析。"
+      },
+      "changes": {
+        "title": "本政策的变更",
+        "p1": "如果本政策有变更，上方的日期将随之更新。"
+      },
+      "contact": {
+        "title": "联系我们",
+        "p1": "有疑问？请发邮件至 hi@datetime.app。"
+      }
+    },
+    "termsMetaTitle": "服务条款 | Datetime.app",
+    "termsMetaDesc": "使用 datetime.app 时适用的条款。",
+    "termsTitle": "服务条款",
+    "termsIntro": "简单工具，简单条款。使用 datetime.app 即表示你同意这些条款。",
+    "termsSummary": {
+      "free": {
+        "k": "免费",
+        "v": "本网站可免费使用，无需账号。"
+      },
+      "asis": {
+        "k": "按现状",
+        "v": "不提供任何担保。请勿将其用于对安全至关重要的计时。"
+      },
+      "yours": {
+        "k": "你的内容",
+        "v": "我们不会存储你输入的内容。你需自行对结果的使用负责。"
+      }
+    },
+    "termsSections": {
+      "acceptance": {
+        "title": "条款的接受",
+        "p1": "访问或使用 datetime.app 即表示你同意这些条款。如果你不同意，请不要使用本网站。"
+      },
+      "use": {
+        "title": "服务的使用",
+        "p1": "你可以将 datetime.app 用于个人和商业用途。你同意不干扰本服务、不试图未经授权访问，也不使用自动化手段对其造成不合理的负载。"
+      },
+      "accuracy": {
+        "title": "时间数据的准确性",
+        "p1": "我们努力保证时间、偏移量和夏令时规则正确，但它们取决于你设备的时钟、网络状况以及政府规则的变更。请勿将 datetime.app 用于对安全、法律或财务至关重要的计时。"
+      },
+      "ip": {
+        "title": "知识产权",
+        "p1": "本网站的设计、文字和代码归 datetime.app 或其许可方所有，标明为开源的部分除外。你可以自由链接到本网站。"
+      },
+      "links": {
+        "title": "第三方链接",
+        "p1": "本网站可能链接到外部服务。我们无法控制这些服务，也不对其内容或做法负责。"
+      },
+      "liability": {
+        "title": "责任限制",
+        "p1": "本服务按“现状”和“可用”状态提供，不附带任何形式的担保。在法律允许的范围内，对于因使用或无法使用本网站而产生的任何损失，我们概不负责。"
+      },
+      "changes": {
+        "title": "条款的变更",
+        "p1": "我们可能会不时更新这些条款。条款变更后继续使用本网站，即表示你接受新条款。"
+      },
+      "contact": {
+        "title": "联系我们",
+        "p1": "有疑问？请发邮件至 hi@datetime.app。"
+      }
+    }
+  },
+  "embed": {
+    "crumb": "嵌入",
+    "metaTitle": "嵌入 Datetime — 把当前年份做成一项服务 | Datetime.app",
+    "metaDesc": "用一个 iframe 在你的网站上显示当前年份。远程计算，精心处理。",
+    "eyebrow": "嵌入 Datetime",
+    "title": "当前年份，通过 iframe 送达。",
+    "desc": "你的网站其实早就知道现在是哪一年。但我们还是想告诉它。粘贴一行代码，远程服务器会替你算出来。",
+    "theme": "主题",
+    "light": "浅色",
+    "dark": "深色",
+    "size": "尺寸",
+    "iframeTitle": "当前年份",
+    "copy": "复制代码片段",
+    "specsTitle": "规格",
+    "specsDesc": "我们敢拍胸脯保证的数字。",
+    "latency": {
+      "label": "延迟",
+      "sub": "只为了得知设备本来就知道的事"
+    },
+    "uptime": {
+      "label": "可用时间",
+      "sub": "年份非常可靠"
+    },
+    "requests": {
+      "label": "请求数",
+      "value": "1 / 次加载",
+      "sub": "每位访客，每年"
+    },
+    "payload": {
+      "label": "负载",
+      "sub": "比喻意义上的"
+    },
+    "comparedTitle": "对比",
+    "without": "不使用嵌入 Datetime",
+    "withoutText": "即时、离线、免费。",
+    "with": "使用嵌入 Datetime",
+    "withText": "一个 iframe、一次网络往返、一项依赖。答案不变。",
+    "faqTitle": "问题",
+    "faq": {
+      "q1": "我为什么需要这个？",
+      "a1": "你并不需要。这正是它的魅力所在。",
+      "q2": "准确吗？",
+      "a2": "准确。毕竟是年份。",
+      "q3": "除夕夜会发生什么？",
+      "a3": "UTC 午夜时我们会把它改掉。日历会通知你的访客。",
+      "q4": "可以自定义样式吗？",
+      "a4": "可通过查询参数选择浅色或深色，以及三种尺寸之一。",
+      "q5": "离线能用吗？",
+      "a5": "不能。很遗憾，你的浏览器会记得现在是哪一年。"
+    }
+  },
+  "homeUpcoming": {
+    "title": "即将到来的节日",
+    "description": "实时倒计时，按你的时区计算。",
+    "all": "全部倒计时",
+    "today": "今天",
+    "day": "天",
+    "days": "天"
+  },
+  "blog": {
+    "title": "博客 - 时间管理与生产力见解",
+    "description": "为全球团队和数字游民提供时区、生产力和时间管理的专家文章",
+    "readMore": "阅读更多",
+    "publishedOn": "发布于",
+    "author": "作者",
+    "tags": "标签",
+    "share": "分享",
+    "relatedPosts": "相关文章",
+    "searchPlaceholder": "搜索文章...",
+    "allTags": "全部",
+    "noResults": "未找到符合您条件的文章。"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "description": "您访问的页面不存在。以下是一些热门工具，帮助您快速开始。",
+    "worldClock": "世界时钟",
+    "worldClockDesc": "查看世界各地城市的当前时间。",
+    "ageCalculator": "年龄计算器",
+    "ageCalculatorDesc": "根据出生日期计算您的精确年龄。",
+    "calendar": "日历",
+    "calendarDesc": "浏览任意年份或月份的日历。",
+    "holidays": "节假日",
+    "holidaysDesc": "按国家和年份查找公共假日。",
+    "yearProgress": "年度进度",
+    "yearProgressDesc": "查看今年已经过去了多少。",
+    "utcTime": "UTC时间",
+    "utcTimeDesc": "查看当前协调世界时（UTC）。"
+  },
+  "unixTimestamp": {
+    "pageTitle": "Unix 时间戳转换器",
+    "subtitle": "将 Unix / epoch 时间戳转换为可读日期，也可反向转换。",
+    "aboutTitle": "关于 Unix 时间戳",
+    "epochTimeTitle": "什么是 epoch 时间？",
+    "epochTimeDesc": "Unix 时间戳计算自 1970 年 1 月 1 日 00:00:00 UTC 以来经过的秒数。它提供了一种与时区和语言无关的方式来存储和比较时间点，是软件工程的基石。",
+    "secondsVsMillisecondsTitle": "秒与毫秒",
+    "secondsVsMillisecondsDesc": "传统的 Unix 时间以秒为单位。JavaScript 和许多现代 API 使用毫秒。经验法则：10 位数字是秒，13 位数字是毫秒。本转换器会自动处理两种格式。",
+    "whereUsedTitle": "时间戳的应用场景",
+    "whereUsedDesc": "Unix 时间戳广泛应用于数据库、日志文件、JWT 令牌、HTTP 头部（Last-Modified）、版本控制系统以及几乎所有编程语言中。它消除了因夏令时和时区差异导致的歧义。",
+    "iso8601Title": "ISO 8601 格式",
+    "iso8601Desc": "ISO 8601（例如 2026-01-01T00:00:00.000Z）是日期/时间字符串的国际标准。它可读性强、可排序且始终明确无歧义。当您需要 Unix 时间戳的文本表示时，请使用此格式。",
+    "faqTitle": "常见问题",
+    "faqs": {
+      "whatIs": {
+        "question": "什么是 Unix 时间戳？",
+        "answer": "Unix 时间戳（也称为 epoch 时间）是自 1970 年 1 月 1 日 00:00:00 UTC 以来经过的秒数（不计闰秒）。它是将时间点表示为单个整数的标准方式，广泛应用于编程、数据库和 API 中。"
+      },
+      "howToConvert": {
+        "question": "如何将 Unix 时间戳转换为可读日期？",
+        "answer": "将您的 Unix 时间戳粘贴到上方的「时间戳转日期」字段中，转换器将立即显示等效日期，包括本地时间、UTC 时间、ISO 8601 格式以及相对描述（例如「3 天前」）。"
+      },
+      "howToConvertDate": {
+        "question": "如何将日期转换为 Unix 时间戳？",
+        "answer": "使用「日期转时间戳」部分。通过日期选择器选择日期和时间（使用您的本地时区），对应的 Unix 时间戳将立即显示。"
+      },
+      "secondsOrMilliseconds": {
+        "question": "Unix 时间戳计算的是毫秒还是秒？",
+        "answer": "原始的 Unix 时间戳以秒为单位。许多现代编程环境（包括 JavaScript 的 Date.now()）返回毫秒。本转换器两种格式都接受——如果您输入的值大于 9,999,999,999，将被视为毫秒并自动转换。"
+      },
+      "y2038": {
+        "question": "什么是 Y2K38 问题？",
+        "answer": "许多传统的 32 位系统将 Unix 时间存储为有符号 32 位整数，该值将在 2038 年 1 月 19 日 03:14:07 UTC（时间戳 2147483647）时溢出。现代 64 位系统不受影响，可以表示数十亿年后的日期。"
+      },
+      "epoch": {
+        "question": "什么是 Unix 纪元？",
+        "answer": "Unix 纪元是所有 Unix 时间戳的参考起点：1970 年 1 月 1 日 00:00:00 UTC，表示为值 0。每个正时间戳是该时刻之后的秒数；负时间戳表示 1970 年之前的日期。"
+      }
+    },
+    "currentTimestamp": "当前 Unix 时间戳",
+    "copyTimestamp": "复制时间戳",
+    "secondsElapsed": "自 1970 年 1 月 1 日 00:00:00 UTC 以来经过的秒数——每秒更新。",
+    "timestampToDate": "时间戳转日期",
+    "timestampInputLabel": "Unix 时间戳（秒或毫秒）",
+    "timestampPlaceholder": "例如 1735689600",
+    "invalidInteger": "请输入有效的整数。",
+    "outOfRange": "时间戳超出支持范围（1970–9999）。",
+    "localTime": "本地时间",
+    "utcTime": "UTC 时间",
+    "iso8601": "ISO 8601",
+    "relative": "相对时间",
+    "copy": "复制",
+    "copied": "已复制！",
+    "dateToTimestamp": "日期转时间戳",
+    "selectDateTime": "选择日期和时间（本地时区）",
+    "unixTimestampLabel": "Unix 时间戳",
+    "referenceTimestamps": "常用参考时间戳",
+    "referenceHint": "点击任意条目可加载到上方的转换器中。",
+    "convert": "转换",
+    "refEpoch": "Unix 纪元（1970 年 1 月 1 日）",
+    "refY2K": "Y2K（2000 年 1 月 1 日）",
+    "refY2K38": "Y2K38（2038 年 1 月 19 日）",
+    "refStartOf2025": "2025 年初",
+    "refStartOf2026": "2026 年初",
+    "relativeSeconds": "{count} 秒前",
+    "relativeSecondsIn": "{count} 秒后",
+    "relativeMinutes": "{count} 分钟前",
+    "relativeMinutesPlural": "{count} 分钟前",
+    "relativeMinutesIn": "{count} 分钟后",
+    "relativeMinutesPluralIn": "{count} 分钟后",
+    "relativeHours": "{count} 小时前",
+    "relativeHoursPlural": "{count} 小时前",
+    "relativeHoursIn": "{count} 小时后",
+    "relativeHoursPluralIn": "{count} 小时后",
+    "relativeDays": "{count} 天前",
+    "relativeDaysPlural": "{count} 天前",
+    "relativeDaysIn": "{count} 天后",
+    "relativeDaysPluralIn": "{count} 天后",
+    "relativeMonths": "{count} 个月前",
+    "relativeMonthsPlural": "{count} 个月前",
+    "relativeMonthsIn": "{count} 个月后",
+    "relativeMonthsPluralIn": "{count} 个月后",
+    "relativeYears": "{count} 年前",
+    "relativeYearsPlural": "{count} 年前",
+    "relativeYearsIn": "{count} 年后",
+    "relativeYearsPluralIn": "{count} 年后"
+  },
+  "timeDifference": {
+    "pageTitle": "城市间时差查询",
+    "subtitle": "比较当前时区，找到全球各城市之间的最佳会议时间。",
+    "sameTime": "相同时间",
+    "hourDifference": "相差 {count} 小时",
+    "hoursDifference": "相差 {count} 小时",
+    "hourMinDifference": "相差 {hours} 小时 {minutes} 分钟",
+    "sameTimezone": "相同时区",
+    "hour": "{count} 小时",
+    "hours": "{count} 小时",
+    "hourMin": "{hours} 小时 {minutes} 分钟",
+    "timeDifferenceBreadcrumb": "时差",
+    "timeDifferenceLabel": "时差：",
+    "apart": "",
+    "summaryTitle": "时差概览",
+    "isAhead": "{city} 时间更早",
+    "sameOffset": "相同偏移量",
+    "bestMeetingTimes": "最佳会议时间",
+    "businessHoursDesc": "两个城市重叠的工作时间（上午 9 点至下午 6 点）",
+    "noOverlap": "{cityA} 和 {cityB} 之间没有重叠的工作时间。建议安排清晨或傍晚会议。",
+    "overlappingHours": "每天 {count} 小时重叠",
+    "overlappingHoursPlural": "每天 {count} 小时重叠",
+    "inCity": "在{city}",
+    "timelineTitle": "24 小时时间轴",
+    "timelineDesc": "工作时间（上午 9 点至下午 6 点）以颜色标示。当前小时以圆点标记。",
+    "localTimeNote": "时间以各城市当地时间显示。",
+    "viewAllComparisons": "查看所有城市对比"
   }
 }

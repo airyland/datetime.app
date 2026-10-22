@@ -12,7 +12,8 @@
       "ageCalculator": "Calculateur d'Âge",
       "yearProgress": "Progrès de l'Année",
       "glossary": "Glossaire",
-      "timezones": "Fuseaux horaires"
+      "timezones": "Fuseaux horaires",
+      "blog": "Blog"
     },
     "links": {
       "titleHome": "Aller à la page d'accueil",
@@ -407,7 +408,8 @@
       "title": "Jours fériés à venir",
       "noDataForCountry": "Les données de jours fériés ne sont pas disponibles pour {country}.",
       "loading": "Chargement des jours fériés à venir…",
-      "none": "Aucun jour férié public prévu prochainement."
+      "none": "Aucun jour férié public prévu prochainement.",
+      "all": "Tous les jours fériés"
     },
     "developerSnippet": {
       "title": "Exemple de code développeur",
@@ -1094,5 +1096,422 @@
         "content": "{timezone} est l'heure standard utilisée à {city}, {country} et dans les régions environnantes. Le fuseau horaire a un décalage UTC de {offset} et est largement utilisé pour la planification et la coordination temporelle dans cette zone géographique. Ce fuseau horaire sert des millions de personnes et constitue une référence importante pour les affaires, les voyages et les communications internationales."
       }
     }
+  },
+  "homeSeo": {
+    "introTitle": "L'heure, pile à l'heure",
+    "intro1": "datetime.app est une horloge mondiale gratuite qui affiche l'heure actuelle à votre position et dans les villes du monde entier. L'horloge tourne à la seconde près, est corrigée d'après une source de temps fiable et suit la base de données de fuseaux horaires IANA, de sorte que chaque décalage et chaque règle d'heure d'été sont à jour.",
+    "intro2": "Utilisez-la pour comparer les fuseaux horaires côte à côte, convertir d'une ville à l'autre, consulter l'UTC ou copier un horodatage prêt à l'emploi. Sans inscription et sans rien à installer.",
+    "basicsTitle": "Les bases des fuseaux horaires",
+    "basicsDesc": "Les six termes que l'on rencontre le plus souvent quand on travaille entre fuseaux horaires.",
+    "facts": {
+      "utc": {
+        "name": "Temps universel coordonné",
+        "desc": "La référence mondiale à laquelle tous les fuseaux horaires sont rattachés. Il n'y a pas d'heure d'été et il ne change jamais."
+      },
+      "gmt": {
+        "name": "Heure moyenne de Greenwich",
+        "desc": "Le fuseau UTC+0 utilisé au Royaume-Uni en hiver. Au quotidien, il équivaut à l'UTC."
+      },
+      "iana": {
+        "name": "Base de données des fuseaux horaires",
+        "desc": "Des noms comme America/New_York ou Asia/Tokyo désignent tout l'historique des décalages et des règles DST d'une région."
+      },
+      "dst": {
+        "name": "Heure d'été",
+        "desc": "Dans de nombreux pays, les horloges avancent au printemps et reculent à l'automne : les décalages changent donc deux fois par an."
+      },
+      "iso": {
+        "name": "Format de date et d'heure",
+        "desc": "2026-03-08T14:30:00Z est sans ambiguïté, triable et compris par tous les langages de programmation."
+      },
+      "unix": {
+        "name": "Secondes depuis 1970",
+        "desc": "Un simple entier qui représente un instant précis, indépendamment de tout fuseau horaire."
+      }
+    },
+    "glossaryLink": "Parcourir tout le glossaire",
+    "zonesTitle": "Fuseaux horaires populaires",
+    "zonesDesc": "Heure actuelle et décalage des fuseaux les plus recherchés.",
+    "zoneTitle": "Heure actuelle à {name}",
+    "zoneMeta": {
+      "pst": "Pacifique · UTC−8 / −7",
+      "est": "Est · UTC−5 / −4",
+      "cst": "Centre · UTC−6 / −5",
+      "gmt": "Greenwich · UTC+0",
+      "cet": "Europe centrale · UTC+1 / +2",
+      "ist": "Inde · UTC+5:30",
+      "jst": "Japon · UTC+9",
+      "aest": "Australie orientale · UTC+10 / +11"
+    },
+    "allIana": "Tous les fuseaux horaires IANA",
+    "utcNow": "UTC maintenant",
+    "dstTitle": "Heure d'été {year}",
+    "dstDesc": "Quand les horloges changent cette année dans les principales régions.",
+    "dstCols": {
+      "region": "Région",
+      "forward": "Avance des horloges",
+      "back": "Recul des horloges",
+      "rule": "Règle"
+    },
+    "dstRegions": {
+      "us": {
+        "name": "États-Unis et Canada",
+        "rule": "2e dimanche de mars au 1er dimanche de novembre"
+      },
+      "eu": {
+        "name": "Union européenne et Royaume-Uni",
+        "rule": "Dernier dimanche de mars au dernier dimanche d'octobre"
+      },
+      "au": {
+        "name": "Australie (NSW, VIC)",
+        "rule": "1er dimanche d'octobre au 1er dimanche d'avril"
+      }
+    },
+    "dstNote": "Dans l'hémisphère sud, les dates chevauchent le nouvel an. De nombreuses régions, dont la plus grande partie de l'Asie et de l'Afrique, n'observent pas l'heure d'été.",
+    "usesTitle": "Qui utilise datetime.app",
+    "uses": {
+      "remote": {
+        "title": "Équipes à distance",
+        "desc": "Placez la ville de chaque coéquipier sur une même frise et repérez les heures qui se recoupent avant de planifier l'appel."
+      },
+      "dev": {
+        "title": "Développeurs",
+        "desc": "Copiez l'horodatage Unix actuel, les chaînes ISO 8601 et RFC 2822, ou un extrait Intl pour le fuseau que vous consultez."
+      },
+      "travel": {
+        "title": "Voyageurs",
+        "desc": "Vérifiez l'heure locale à destination, le décalage avec chez vous et si c'est le bon moment pour appeler quelqu'un."
+      },
+      "trade": {
+        "title": "Traders et joueurs",
+        "desc": "Sachez quand un marché ouvre ou quand un serveur redémarre, à votre heure et en UTC."
+      }
+    },
+    "faqTitle": "Questions fréquentes",
+    "faq": {
+      "q1": "Comment datetime.app affiche-t-il l'heure exacte ?",
+      "a1": "Il lit l'horloge de votre appareil, la corrige d'après une source de temps fiable, puis se met à jour chaque seconde. Les décalages des fuseaux horaires proviennent de la base IANA, donc les changements d'heure d'été sont appliqués automatiquement.",
+      "q2": "Quelle est la différence entre l'UTC et un fuseau horaire local ?",
+      "a2": "L'UTC est la norme mondiale fixe. Un fuseau horaire local est l'UTC plus un décalage, comme UTC+9 pour Tokyo, et peut bouger d'une heure au début ou à la fin de l'heure d'été.",
+      "q3": "Comment trouver le meilleur moment pour une réunion entre fuseaux horaires ?",
+      "a3": "Ajoutez chaque ville à la frise de l'horloge mondiale. Les barres colorées indiquent le jour, les heures matinales et tardives, et la nuit, ce qui permet de choisir un créneau qui tombe dans la journée de travail de chacun.",
+      "q4": "Le site fonctionne-t-il pour n'importe quelle ville ?",
+      "a4": "Oui. Utilisez le menu Ajouter un fuseau horaire sur la page d'accueil, ou ouvrez l'une des pages de villes et de fuseaux horaires listées plus bas."
+    }
+  },
+  "legal": {
+    "home": "Accueil",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "lastUpdated": "Dernière mise à jour · {date}",
+    "contents": "Sommaire",
+    "privacyMetaTitle": "Politique de confidentialité | Datetime.app",
+    "privacyMetaDesc": "Comment datetime.app traite vos données : ce que nous collectons, ce que nous ne collectons pas et les choix dont vous disposez.",
+    "privacyTitle": "Politique de confidentialité",
+    "privacyIntro": "En bref : nous conservons les données nécessaires au fonctionnement du site, et pas un octet de plus.",
+    "summary": {
+      "stored": {
+        "k": "Stocké",
+        "v": "Votre liste d'horloges et vos préférences restent dans votre navigateur."
+      },
+      "collected": {
+        "k": "Collecté",
+        "v": "Statistiques d'usage anonymes via Plausible."
+      },
+      "sold": {
+        "k": "Vendu",
+        "v": "Rien. Nous ne vendons jamais de données personnelles."
+      }
+    },
+    "privacySections": {
+      "overview": {
+        "title": "Vue d'ensemble",
+        "p1": "datetime.app est un outil d'heure et de fuseaux horaires. Il fonctionne sans compte et ne vous demande aucune information personnelle."
+      },
+      "collect": {
+        "title": "Informations que nous collectons",
+        "p1": "Nous n'exigeons aucune inscription. Les fuseaux horaires que vous sélectionnez et vos préférences d'affichage sont stockés localement dans votre navigateur (localStorage) et ne sont jamais envoyés à nos serveurs.",
+        "p2": "Les journaux de serveur standard (adresse IP, user agent, page demandée) peuvent être conservés brièvement à des fins de sécurité et de débogage."
+      },
+      "analytics": {
+        "title": "Statistiques",
+        "p1": "Nous utilisons Plausible pour savoir quelles pages sont utilisées. Les données sont agrégées et ne servent pas à vous identifier."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "p1": "Nous n'utilisons pas de cookies de suivi. Les préférences comme le thème et la langue sont conservées dans le stockage local de votre navigateur."
+      },
+      "thirdParties": {
+        "title": "Tiers",
+        "p1": "Plausible Analytics (statistiques d'usage) et WorldTimeAPI (utilisé pour déterminer votre fuseau horaire à partir de votre adresse IP)."
+      },
+      "rights": {
+        "title": "Vos choix",
+        "p1": "Vous pouvez effacer les données locales à tout moment depuis les paramètres de votre navigateur. Vous pouvez aussi bloquer les statistiques grâce aux fonctions de confidentialité de votre navigateur."
+      },
+      "changes": {
+        "title": "Modifications de cette politique",
+        "p1": "Si cette politique change, la date ci-dessus sera mise à jour."
+      },
+      "contact": {
+        "title": "Contact",
+        "p1": "Une question ? Écrivez à hi@datetime.app."
+      }
+    },
+    "termsMetaTitle": "Conditions d'utilisation | Datetime.app",
+    "termsMetaDesc": "Les conditions qui s'appliquent lorsque vous utilisez datetime.app.",
+    "termsTitle": "Conditions d'utilisation",
+    "termsIntro": "Des conditions simples pour un outil simple. En utilisant datetime.app, vous les acceptez.",
+    "termsSummary": {
+      "free": {
+        "k": "Gratuit",
+        "v": "Le site est gratuit, sans compte requis."
+      },
+      "asis": {
+        "k": "En l'état",
+        "v": "Fourni sans garantie. Ne vous y fiez pas pour une mesure du temps critique pour la sécurité."
+      },
+      "yours": {
+        "k": "Votre contenu",
+        "v": "Nous ne conservons pas ce que vous saisissez. Vous restez responsable de l'usage que vous faites des résultats."
+      }
+    },
+    "termsSections": {
+      "acceptance": {
+        "title": "Acceptation des conditions",
+        "p1": "En accédant à datetime.app ou en l'utilisant, vous acceptez ces conditions. Si vous n'êtes pas d'accord, veuillez ne pas utiliser le site."
+      },
+      "use": {
+        "title": "Utilisation du service",
+        "p1": "Vous pouvez utiliser datetime.app à des fins personnelles et commerciales. Vous vous engagez à ne pas perturber le service, à ne pas tenter d'obtenir un accès non autorisé et à ne pas utiliser de moyens automatisés pour lui imposer une charge déraisonnable."
+      },
+      "accuracy": {
+        "title": "Exactitude des données horaires",
+        "p1": "Nous nous efforçons de maintenir l'exactitude des heures, des décalages et des règles d'heure d'été, mais celles-ci dépendent de l'horloge de votre appareil, des conditions réseau et des changements de réglementation. Ne vous fiez pas à datetime.app pour une mesure du temps critique pour la sécurité, juridique ou financière."
+      },
+      "ip": {
+        "title": "Propriété intellectuelle",
+        "p1": "Le design, les textes et le code du site appartiennent à datetime.app ou à ses concédants, sauf mention open source. Vous pouvez librement créer des liens vers le site."
+      },
+      "links": {
+        "title": "Liens vers des tiers",
+        "p1": "Le site peut renvoyer vers des services externes. Nous ne les contrôlons pas et ne sommes pas responsables de leur contenu ni de leurs pratiques."
+      },
+      "liability": {
+        "title": "Limitation de responsabilité",
+        "p1": "Le service est fourni en l'état et selon disponibilité, sans garantie d'aucune sorte. Dans la mesure permise par la loi, nous ne sommes pas responsables des pertes résultant de l'utilisation du site ou de l'impossibilité de l'utiliser."
+      },
+      "changes": {
+        "title": "Modifications de ces conditions",
+        "p1": "Nous pouvons mettre à jour ces conditions de temps à autre. Continuer à utiliser le site après une modification signifie que vous acceptez les nouvelles conditions."
+      },
+      "contact": {
+        "title": "Contact",
+        "p1": "Une question ? Écrivez à hi@datetime.app."
+      }
+    }
+  },
+  "embed": {
+    "crumb": "Intégrer",
+    "metaTitle": "Intégrer Datetime – l'année en cours, en tant que service | Datetime.app",
+    "metaDesc": "Affichez l'année en cours sur votre site avec un seul iframe. Calculée à distance, avec soin.",
+    "eyebrow": "Intégrer Datetime",
+    "title": "L'année en cours, livrée par iframe.",
+    "desc": "Votre site sait déjà en quelle année nous sommes. Nous aimerions pourtant le lui dire. Collez une ligne et un serveur distant s'en chargera pour vous.",
+    "theme": "Thème",
+    "light": "Clair",
+    "dark": "Sombre",
+    "size": "Taille",
+    "iframeTitle": "Année en cours",
+    "copy": "Copier l'extrait",
+    "specsTitle": "Spécifications",
+    "specsDesc": "Des chiffres que nous assumons pleinement.",
+    "latency": {
+      "label": "Latence",
+      "sub": "pour apprendre ce que votre appareil savait déjà"
+    },
+    "uptime": {
+      "label": "Disponibilité",
+      "sub": "l'année est très fiable"
+    },
+    "requests": {
+      "label": "Requêtes",
+      "value": "1 / chargement",
+      "sub": "par visiteur, par an"
+    },
+    "payload": {
+      "label": "Charge utile",
+      "sub": "au sens figuré"
+    },
+    "comparedTitle": "Comparaison",
+    "without": "Sans Intégrer Datetime",
+    "withoutText": "instantané, hors ligne, gratuit.",
+    "with": "Avec Intégrer Datetime",
+    "withText": "Un iframe, un aller-retour réseau et une dépendance. Même réponse.",
+    "faqTitle": "Questions",
+    "faq": {
+      "q1": "Pourquoi en aurais-je besoin ?",
+      "a1": "Vous n'en auriez pas besoin. C'est tout le charme.",
+      "q2": "Est-ce précis ?",
+      "a2": "Oui. C'est l'année.",
+      "q3": "Que se passe-t-il le soir du Nouvel An ?",
+      "a3": "À minuit UTC, nous la changeons. Vos visiteurs seront prévenus par le calendrier.",
+      "q4": "Puis-je le personnaliser ?",
+      "a4": "Choisissez clair ou sombre, et l'une des trois tailles via les paramètres de requête.",
+      "q5": "Fonctionnera-t-il hors ligne ?",
+      "a5": "Non. Votre navigateur, hélas, se souviendra de l'année."
+    }
+  },
+  "homeUpcoming": {
+    "title": "Prochains jours fériés",
+    "description": "Comptes à rebours en direct jusqu'aux prochains jours fériés, dans votre fuseau horaire.",
+    "all": "Tous les comptes à rebours",
+    "today": "aujourd'hui",
+    "day": "jour",
+    "days": "jours"
+  },
+  "blog": {
+    "title": "Blog - Perspectives de Gestion du Temps et de Productivité",
+    "description": "Articles d'experts sur les fuseaux horaires, la productivité et la gestion du temps pour les équipes mondiales et les nomades numériques",
+    "readMore": "Lire Plus",
+    "publishedOn": "Publié le",
+    "author": "Auteur",
+    "tags": "Étiquettes",
+    "share": "Partager",
+    "relatedPosts": "Articles Connexes",
+    "searchPlaceholder": "Rechercher des articles...",
+    "allTags": "Tous",
+    "noResults": "Aucun article ne correspond à vos critères."
+  },
+  "notFound": {
+    "title": "Page Introuvable",
+    "description": "La page que vous recherchiez n'existe pas. Voici quelques outils populaires pour commencer.",
+    "worldClock": "Horloge Mondiale",
+    "worldClockDesc": "Consultez l'heure actuelle dans les villes du monde entier.",
+    "ageCalculator": "Calculateur d'Âge",
+    "ageCalculatorDesc": "Calculez votre âge exact à partir de votre date de naissance.",
+    "calendar": "Calendrier",
+    "calendarDesc": "Parcourez le calendrier de n'importe quelle année ou mois.",
+    "holidays": "Jours Fériés",
+    "holidaysDesc": "Trouvez les jours fériés par pays et par année.",
+    "yearProgress": "Progression de l'Année",
+    "yearProgressDesc": "Voyez quelle part de l'année en cours s'est écoulée.",
+    "utcTime": "Heure UTC",
+    "utcTimeDesc": "Consultez l'heure universelle coordonnée actuelle."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Convertisseur d'Horodatage Unix",
+    "subtitle": "Convertissez les horodatages Unix / epoch en dates lisibles — et inversement.",
+    "aboutTitle": "À propos des Horodatages Unix",
+    "epochTimeTitle": "Qu'est-ce que le temps epoch ?",
+    "epochTimeDesc": "Les horodatages Unix comptent les secondes écoulées depuis le 1er janvier 1970 à 00:00:00 UTC. Ils offrent un moyen indépendant du fuseau horaire et du langage pour stocker et comparer des instants — une pierre angulaire de l'ingénierie logicielle.",
+    "secondsVsMillisecondsTitle": "Secondes vs. millisecondes",
+    "secondsVsMillisecondsDesc": "Le temps Unix classique est en secondes. JavaScript et de nombreuses API modernes utilisent les millisecondes. En règle générale : un nombre à 10 chiffres correspond aux secondes ; un nombre à 13 chiffres correspond aux millisecondes. Ce convertisseur gère les deux automatiquement.",
+    "whereUsedTitle": "Où les horodatages sont-ils utilisés ?",
+    "whereUsedDesc": "Les horodatages Unix sont utilisés dans les bases de données, les fichiers journaux, les jetons JWT, les en-têtes HTTP (Last-Modified), les systèmes de contrôle de version et pratiquement tous les langages de programmation. Ils éliminent l'ambiguïté causée par l'heure d'été et les différences de fuseau horaire.",
+    "iso8601Title": "Format ISO 8601",
+    "iso8601Desc": "ISO 8601 (ex. 2026-01-01T00:00:00.000Z) est la norme internationale pour les chaînes de date/heure. Elle est lisible, triable et toujours non ambiguë. Utilisez-la lorsque vous avez besoin d'une représentation textuelle d'un horodatage Unix.",
+    "faqTitle": "Questions Fréquemment Posées",
+    "faqs": {
+      "whatIs": {
+        "question": "Qu'est-ce qu'un horodatage Unix ?",
+        "answer": "Un horodatage Unix (aussi appelé temps epoch) est le nombre de secondes écoulées depuis le 1er janvier 1970 à 00:00:00 UTC, sans compter les secondes intercalaires. C'est un moyen standard de représenter un instant sous forme d'un seul entier, largement utilisé en programmation, dans les bases de données et les API."
+      },
+      "howToConvert": {
+        "question": "Comment convertir un horodatage Unix en date lisible ?",
+        "answer": "Collez votre horodatage Unix dans le champ « Horodatage vers Date » ci-dessus et le convertisseur vous affichera instantanément la date équivalente en heure locale, UTC, au format ISO 8601 et sous forme de description relative (ex. « il y a 3 jours »)."
+      },
+      "howToConvertDate": {
+        "question": "Comment convertir une date en horodatage Unix ?",
+        "answer": "Utilisez la section « Date vers Horodatage ». Choisissez votre date et heure à l'aide du sélecteur de date (il utilise votre fuseau horaire local) et l'horodatage Unix correspondant apparaîtra immédiatement."
+      },
+      "secondsOrMilliseconds": {
+        "question": "L'horodatage Unix compte-t-il les millisecondes ou les secondes ?",
+        "answer": "L'horodatage Unix original est mesuré en secondes. De nombreux environnements de programmation modernes (y compris Date.now() de JavaScript) renvoient des millisecondes. Ce convertisseur accepte les deux — si votre valeur est supérieure à 9 999 999 999, elle est traitée comme des millisecondes et convertie automatiquement."
+      },
+      "y2038": {
+        "question": "Qu'est-ce que le problème de l'année 2038 ?",
+        "answer": "De nombreux systèmes hérités 32 bits stockent le temps Unix sous forme d'un entier signé de 32 bits, qui déborde le 19 janvier 2038 à 03:14:07 UTC (horodatage 2147483647). Les systèmes 64 bits modernes ne sont pas affectés et peuvent représenter des dates sur des milliards d'années dans le futur."
+      },
+      "epoch": {
+        "question": "Qu'est-ce que l'epoch Unix ?",
+        "answer": "L'epoch Unix est le point de référence de tous les horodatages Unix : le 1er janvier 1970 à 00:00:00 UTC, représenté par la valeur 0. Chaque horodatage positif correspond au nombre de secondes après cet instant ; les horodatages négatifs représentent des dates antérieures à 1970."
+      }
+    },
+    "currentTimestamp": "Horodatage Unix Actuel",
+    "copyTimestamp": "Copier l'horodatage",
+    "secondsElapsed": "Secondes écoulées depuis le 1er janvier 1970 à 00:00:00 UTC — mise à jour chaque seconde.",
+    "timestampToDate": "Horodatage vers Date",
+    "timestampInputLabel": "Horodatage Unix (secondes ou millisecondes)",
+    "timestampPlaceholder": "ex. 1735689600",
+    "invalidInteger": "Veuillez entrer un entier valide.",
+    "outOfRange": "L'horodatage est hors de la plage prise en charge (1970–9999).",
+    "localTime": "Heure Locale",
+    "utcTime": "Heure UTC",
+    "iso8601": "ISO 8601",
+    "relative": "Relatif",
+    "copy": "Copier",
+    "copied": "Copié !",
+    "dateToTimestamp": "Date vers Horodatage",
+    "selectDateTime": "Sélectionnez une date et une heure (fuseau horaire local)",
+    "unixTimestampLabel": "Horodatage Unix",
+    "referenceTimestamps": "Horodatages de Référence Courants",
+    "referenceHint": "Cliquez sur une entrée pour la charger dans le convertisseur ci-dessus.",
+    "convert": "Convertir",
+    "refEpoch": "Epoch Unix (1er janv. 1970)",
+    "refY2K": "Y2K (1er janv. 2000)",
+    "refY2K38": "Y2K38 (19 janv. 2038)",
+    "refStartOf2025": "Début de 2025",
+    "refStartOf2026": "Début de 2026",
+    "relativeSeconds": "il y a {count} secondes",
+    "relativeSecondsIn": "dans {count} secondes",
+    "relativeMinutes": "il y a {count} minute",
+    "relativeMinutesPlural": "il y a {count} minutes",
+    "relativeMinutesIn": "dans {count} minute",
+    "relativeMinutesPluralIn": "dans {count} minutes",
+    "relativeHours": "il y a {count} heure",
+    "relativeHoursPlural": "il y a {count} heures",
+    "relativeHoursIn": "dans {count} heure",
+    "relativeHoursPluralIn": "dans {count} heures",
+    "relativeDays": "il y a {count} jour",
+    "relativeDaysPlural": "il y a {count} jours",
+    "relativeDaysIn": "dans {count} jour",
+    "relativeDaysPluralIn": "dans {count} jours",
+    "relativeMonths": "il y a {count} mois",
+    "relativeMonthsPlural": "il y a {count} mois",
+    "relativeMonthsIn": "dans {count} mois",
+    "relativeMonthsPluralIn": "dans {count} mois",
+    "relativeYears": "il y a {count} an",
+    "relativeYearsPlural": "il y a {count} ans",
+    "relativeYearsIn": "dans {count} an",
+    "relativeYearsPluralIn": "dans {count} ans"
+  },
+  "timeDifference": {
+    "pageTitle": "Décalage Horaire Entre les Villes",
+    "subtitle": "Comparez les fuseaux horaires actuels et trouvez les meilleurs horaires de réunion entre les villes du monde entier.",
+    "sameTime": "Même heure",
+    "hourDifference": "{count} heure de décalage",
+    "hoursDifference": "{count} heures de décalage",
+    "hourMinDifference": "{hours}h {minutes}min de décalage",
+    "sameTimezone": "Même fuseau horaire",
+    "hour": "{count} heure",
+    "hours": "{count} heures",
+    "hourMin": "{hours}h {minutes}min",
+    "timeDifferenceBreadcrumb": "Décalage Horaire",
+    "timeDifferenceLabel": "Décalage horaire :",
+    "apart": "d'écart",
+    "summaryTitle": "Résumé du Décalage Horaire",
+    "isAhead": "{city} est en avance",
+    "sameOffset": "Même décalage",
+    "bestMeetingTimes": "Meilleurs Horaires de Réunion",
+    "businessHoursDesc": "Heures de bureau communes (9h–18h) dans les deux villes",
+    "noOverlap": "Aucune heure de bureau commune entre {cityA} et {cityB}. Envisagez de planifier des réunions tôt le matin ou tard le soir.",
+    "overlappingHours": "{count} heure commune par jour",
+    "overlappingHoursPlural": "{count} heures communes par jour",
+    "inCity": "à {city}",
+    "timelineTitle": "Chronologie sur 24 Heures",
+    "timelineDesc": "Les heures de travail (9h–18h) sont affichées en couleur. L'heure actuelle est marquée d'un point.",
+    "localTimeNote": "Les heures sont affichées dans le fuseau horaire local de chaque ville.",
+    "viewAllComparisons": "Voir toutes les comparaisons de villes"
   }
 }

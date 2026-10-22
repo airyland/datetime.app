@@ -1,7 +1,5 @@
-import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowLeft, Calendar, Globe } from "lucide-react"
+import { Section, Card, PageIntro, SectionHeading, Pill, h2Class } from "@/components/ds"
 import {
   COUNTRIES,
   REGIONS,
@@ -9,16 +7,16 @@ import {
   getHolidays
 } from "@/lib/holidays"
 import CountryHolidaysClientPage from "./client-page"
-import Header from "@/components/header"
 import { Metadata } from "next"
 
 interface CountryHolidaysProps {
-  params: { country: string }
-  searchParams: { lang?: string; year?: string }
+  params: Promise<{ country: string }>
+  searchParams: Promise<{ lang?: string; year?: string }>
 }
 
-export async function generateMetadata({ params, searchParams }: CountryHolidaysProps): Promise<Metadata> {
-  const { country } = params
+export async function generateMetadata({ params, searchParams: searchParamsPromise }: CountryHolidaysProps): Promise<Metadata> {
+  const { country } = await params
+  const searchParams = await searchParamsPromise
   const countryInfo = COUNTRIES.find(c => c.code.toLowerCase() === country.toLowerCase())
   
   if (!countryInfo) {
@@ -46,113 +44,87 @@ export async function generateMetadata({ params, searchParams }: CountryHolidays
   }
 }
 
-export default function CountryHolidaysPage({ params, searchParams }: CountryHolidaysProps) {
-  const { country } = params
-  const langParam = searchParams.lang || 'en'
-  const yearParam = searchParams.year ? parseInt(searchParams.year) : new Date().getFullYear()
-  
+export default async function CountryHolidaysPage({ params, searchParams }: CountryHolidaysProps) {
+  const { country } = await params
+  const searchParams_ = await searchParams
+  const langParam = searchParams_.lang || 'en'
+  const yearParam = searchParams_.year ? parseInt(searchParams_.year) : new Date().getFullYear()
+
   // Find country info
   const countryInfo = COUNTRIES.find(c => c.code.toLowerCase() === country.toLowerCase())
-  
+
   // If country doesn't exist, show 404
   if (!countryInfo) {
     notFound()
   }
-  
+
   // Get regions for this country
   const countryRegions = REGIONS[countryInfo.code] || []
-  
+
   // Get holidays for server-side rendering
   const holidays = getHolidays(
     countryInfo.code,
     yearParam,
     langParam
   )
-  
+
   return (
-    <main className="min-h-screen bg-white dark:bg-black flex flex-col">
-      <Header />
+    <main>
+      <PageIntro
+        crumbs={[{ label: "Home", href: "/" }, { label: "Holidays", href: "/holidays" }, { label: countryInfo.name }]}
+        eyebrow={`Public holidays · ${countryInfo.code}`}
+        title={`Holidays in ${countryInfo.name}`}
+        description={`Public holidays and observances in ${countryInfo.name} for ${yearParam}, grouped by month.`}
+      />
 
-      <div className="flex-grow">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-4">
-              <Link href="/holidays" className="inline-flex items-center text-primary hover:underline" title="Back to holidays overview">
-                <ArrowLeft className="mr-1 h-4 w-4" />
-                Back to Countries
-              </Link>
-            </div>
+      {/* Client-side interactive components */}
+      <Section top="clamp(24px,3vw,40px)">
+        <CountryHolidaysClientPage
+          countryCode={countryInfo.code}
+          countryName={countryInfo.name}
+          initialYear={yearParam}
+          initialLanguage={langParam}
+          initialHolidays={holidays}
+        />
+      </Section>
 
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center flex items-center justify-center gap-2">
-              <Globe className="h-8 w-8" />
-              <span>Holidays in {countryInfo.name}</span>
-            </h1>
-            <p className="text-xl text-center text-muted-foreground mb-8">
-              {yearParam} holiday calendar for {countryInfo.name}
-            </p>
-
-            {/* Client-side interactive components */}
-            <CountryHolidaysClientPage 
-              countryCode={countryInfo.code}
-              countryName={countryInfo.name}
-              initialYear={yearParam}
-              initialLanguage={langParam}
-              initialHolidays={holidays}
-            />
-
-            {/* Regions section (if available) */}
-            {countryRegions.length > 0 && (
-              <Card className="mb-8 mt-8">
-                <CardHeader>
-                  <CardTitle className="text-center flex items-center justify-center gap-2">
-                    <Globe className="h-5 w-5" />
-                    <span>Regions in {countryInfo.name}</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                    {countryRegions.map((region: RegionInfo) => (
-                      <Link
-                        key={region.code}
-                        href={`/holidays/${country}/${region.code.toLowerCase()}?lang=${langParam}`}
-                        className="text-primary font-medium py-2 px-4 rounded-lg bg-accent/50 hover:bg-accent transition-colors flex items-center justify-center"
-                        title={`View holidays in ${region.name}`}
-                      >
-                        {region.name}
-                      </Link>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* SEO content */}
-            <Card className="mt-8">
-              <CardHeader>
-                <CardTitle className="text-center flex items-center justify-center gap-2">
-                  <Calendar className="h-5 w-5" />
-                  <span>About {countryInfo.name} Holidays</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="mb-4">
-                  This page provides a comprehensive list of holidays in {countryInfo.name} for {yearParam}. 
-                  The list includes public holidays, bank holidays, school holidays, and observances.
-                </p>
-                <p className="mb-4">
-                  In {countryInfo.name}, holidays are an important part of the cultural and social calendar. 
-                  Public holidays are typically non-working days established by law, while observances are 
-                  special days that may not be official holidays but are still celebrated or commemorated.
-                </p>
-                <p>
-                  You can use the controls above to change the year or language of the holiday names. 
-                  {countryRegions.length > 0 && ` ${countryInfo.name} also has region-specific holidays, which you can explore by selecting a region from the list above.`}
-                </p>
-              </CardContent>
-            </Card>
+      {/* Regions section (if available) */}
+      {countryRegions.length > 0 && (
+        <Section top="clamp(40px,5vw,64px)">
+          <SectionHeading title="Regions" description="Some holidays differ by state or region." />
+          <div className="flex flex-wrap gap-2.5">
+            {countryRegions.map((region: RegionInfo) => (
+              <Pill
+                key={region.code}
+                href={`/holidays/${country}/${region.code.toLowerCase()}?lang=${langParam}`}
+                title={`View holidays in ${region.name}`}
+              >
+                {region.name}
+              </Pill>
+            ))}
           </div>
-        </div>
-      </div>
+        </Section>
+      )}
+
+      {/* SEO content */}
+      <Section>
+        <Card className="p-[clamp(22px,3vw,36px)]">
+          <h2 className={h2Class}>About {countryInfo.name} Holidays</h2>
+          <p className="mb-0 mt-4 max-w-[70ch] leading-relaxed text-subtle">
+            This page provides a comprehensive list of holidays in {countryInfo.name} for {yearParam}.
+            The list includes public holidays, bank holidays, school holidays, and observances.
+          </p>
+          <p className="mb-0 mt-3 max-w-[70ch] leading-relaxed text-subtle">
+            In {countryInfo.name}, holidays are an important part of the cultural and social calendar.
+            Public holidays are typically non-working days established by law, while observances are
+            special days that may not be official holidays but are still celebrated or commemorated.
+          </p>
+          <p className="mb-0 mt-3 max-w-[70ch] leading-relaxed text-subtle">
+            You can use the controls above to change the year or language of the holiday names.
+            {countryRegions.length > 0 && ` ${countryInfo.name} also has region-specific holidays, which you can explore by selecting a region from the list above.`}
+          </p>
+        </Card>
+      </Section>
     </main>
   )
 }

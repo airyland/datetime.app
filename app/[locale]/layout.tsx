@@ -1,9 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Space_Grotesk } from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google"
 import "../globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Footer } from "@/components/footer"
+import Header from "@/components/header"
 import { Analytics } from "@/components/analytics"
 import { LanguageSuggestionModal } from "@/components/language-suggestion-modal"
 import { NextIntlClientProvider } from 'next-intl'
@@ -11,8 +12,15 @@ import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@/lib/locales'
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
+const geistSans = Geist({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-geist-sans",
+  display: "swap",
+})
+
+const geistMono = Geist_Mono({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-geist-mono",
   display: "swap",
 })
 
@@ -82,11 +90,36 @@ export default async function LocaleLayout({
             content={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ID}
           />
         )}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8443907573529681"
+          crossOrigin="anonymous"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "Datetime.app",
+              "url": "https://datetime.app",
+              "applicationCategory": "UtilitiesApplication",
+              "operatingSystem": "All",
+              "description": "World clock, time zone converter, calendar, and date tools",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            })
+          }}
+        />
         <Analytics />
       </head>
-      <body className={spaceGrotesk.className}>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <Header />
             <main>
               {children}
             </main>

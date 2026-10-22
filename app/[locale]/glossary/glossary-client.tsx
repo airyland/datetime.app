@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Input } from "@/components/ui/input"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Book, Search } from "lucide-react"
+import { Search } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Section, inputClass, monoLabel, h2Class } from "@/components/ds"
 
 interface GlossaryItem {
   id: string
@@ -27,121 +27,88 @@ interface GlossaryClientProps {
 
 export default function GlossaryClient({ locale, translations, glossaryItems }: GlossaryClientProps) {
   const [searchTerm, setSearchTerm] = useState("")
-  
-  // Group items by category
-  const categories = {
-    standard: { title: translations.categories.standard, items: [] as string[] },
-    format: { title: translations.categories.format, items: [] as string[] },
-    concept: { title: translations.categories.concept, items: [] as string[] },
-    timezone: { title: translations.categories.timezone, items: [] as string[] },
-    calculation: { title: translations.categories.calculation, items: [] as string[] },
-  }
-  
-  // Populate categories
-  Object.entries(glossaryItems).forEach(([id, item]) => {
-    categories[item.category as keyof typeof categories].items.push(id)
-  })
-  
-  // Filter items based on search term
-  const filteredItems = Object.entries(glossaryItems).filter(([_, item]) => {
-    if (!searchTerm) return true
-    const searchLower = searchTerm.toLowerCase()
-    return (
-      item.title.toLowerCase().includes(searchLower) ||
-      item.shortDescription.toLowerCase().includes(searchLower)
-    )
-  })
+  const [cat, setCat] = useState("all")
+
+  const categoryKeys = Object.keys(translations.categories)
+  const entries = Object.entries(glossaryItems)
+  const q = searchTerm.trim().toLowerCase()
+
+  const matches = (item: GlossaryItem) =>
+    (!q || item.title.toLowerCase().includes(q) || item.shortDescription.toLowerCase().includes(q)) &&
+    (q || cat === "all" || item.category === cat)
+
+  const visibleCount = entries.filter(([, item]) => matches(item)).length
+  const heading = q
+    ? translations.searchResults.replace("{count}", String(visibleCount))
+    : cat === "all"
+      ? translations.allTerms
+      : translations.categories[cat]
+
+  const tabs = [{ key: "all", label: translations.allTerms }, ...categoryKeys.map((k) => ({ key: k, label: translations.categories[k] }))]
 
   return (
-    <div className="container mx-auto px-4 flex-grow">
-      <div className="max-w-4xl mx-auto">
-        {/* Search bar */}
-        <div className="relative mb-8">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-          <Input
+    <Section top="clamp(8px,2vw,24px)">
+      <div className="flex flex-wrap items-center gap-x-3.5 gap-y-3">
+        <div className="relative min-w-0 flex-[1_1_280px]">
+          <Search aria-hidden="true" className="pointer-events-none absolute left-4 top-3.5 size-4 text-subtle" />
+          <input
             type="text"
-            placeholder={translations.searchPlaceholder}
-            className="pl-10"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder={translations.searchPlaceholder}
+            aria-label={translations.searchPlaceholder}
+            className={cn(inputClass, "h-[46px] rounded-full pl-11 pr-4")}
           />
         </div>
-
-        {searchTerm ? (
-          // Search results
-          <div>
-            <h2 className="text-xl font-semibold mb-4">
-              {translations.searchResults.replace('{count}', filteredItems.length.toString())}
-            </h2>
-            {filteredItems.length > 0 ? (
-              <div className="grid gap-4 md:grid-cols-2">
-                {filteredItems.map(([id, item]) => (
-                  <Link 
-                    key={id} 
-                    href={`/${locale === 'en' ? '' : locale + '/'}glossary/${id}`}
-                    className="block p-4 border rounded-lg hover:bg-accent/50 transition-colors"
-                  >
-                    <h3 className="font-bold mb-1">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.shortDescription}</p>
-                  </Link>
-                ))}
-              </div>
-            ) : (
-              <p className="text-center py-8 text-muted-foreground">
-                {translations.noResults}
-              </p>
-            )}
-          </div>
-        ) : (
-          // Categorized listing
-          <Tabs defaultValue="all" className="w-full">
-            <TabsList className="w-full justify-start overflow-x-auto mb-6">
-              <TabsTrigger value="all" className="flex items-center gap-1">
-                <Book className="h-4 w-4" />
-                <span>{translations.allTerms}</span>
-              </TabsTrigger>
-              {Object.entries(categories).map(([key, category]) => (
-                <TabsTrigger key={key} value={key}>
-                  {category.title}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            
-            <TabsContent value="all" className="mt-0">
-              <div className="grid gap-4 md:grid-cols-2">
-                {Object.entries(glossaryItems).map(([id, item]) => (
-                  <Link 
-                    key={id} 
-                    href={`/${locale === 'en' ? '' : locale + '/'}glossary/${id}`}
-                    className="block p-4 border rounded-lg hover:bg-accent/50 transition-colors"
-                  >
-                    <h3 className="font-bold mb-1">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.shortDescription}</p>
-                  </Link>
-                ))}
-              </div>
-            </TabsContent>
-            
-            {Object.entries(categories).map(([key, category]) => (
-              <TabsContent key={key} value={key} className="mt-0">
-                <h2 className="text-xl font-semibold mb-4">{category.title}</h2>
-                <div className="grid gap-4 md:grid-cols-2">
-                  {category.items.map((id) => (
-                    <Link 
-                      key={id} 
-                      href={`/${locale === 'en' ? '' : locale + '/'}glossary/${id}`}
-                      className="block p-4 border rounded-lg hover:bg-accent/50 transition-colors"
-                    >
-                      <h3 className="font-bold mb-1">{glossaryItems[id].title}</h3>
-                      <p className="text-sm text-muted-foreground">{glossaryItems[id].shortDescription}</p>
-                    </Link>
-                  ))}
-                </div>
-              </TabsContent>
-            ))}
-          </Tabs>
-        )}
       </div>
-    </div>
+
+      <div className={cn("mt-3.5 transition-opacity", q && "pointer-events-none opacity-40")}>
+        <div role="tablist" aria-label="Category" className="inline-flex max-w-full flex-wrap gap-0.5 rounded-[22px] border border-line bg-surface p-1">
+          {tabs.map((t) => (
+            <button
+              key={t.key}
+              type="button"
+              role="tab"
+              aria-selected={cat === t.key}
+              onClick={() => setCat(t.key)}
+              className={cn(
+                "h-9 rounded-full px-4 text-sm font-medium transition-colors",
+                cat === t.key ? "bg-ink text-paper" : "text-subtle hover:text-ink",
+              )}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-6 flex items-baseline justify-between gap-4">
+        <h2 className={h2Class}>{heading}</h2>
+        <span className={cn(monoLabel, "tnum shrink-0")}>{visibleCount} / {entries.length}</span>
+      </div>
+
+      <div className="mt-5 grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,360px),1fr))" }}>
+        {entries.map(([id, item]) => (
+          <Link
+            key={id}
+            href={`/${locale === "en" ? "" : locale + "/"}glossary/${id}`}
+            title={item.title}
+            hidden={!matches(item)}
+            className="group flex min-w-0 flex-col gap-3 rounded-[18px] border border-line bg-surface px-6 py-[22px] transition-colors hover:border-ink [&[hidden]]:hidden"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <span className={monoLabel}>{translations.categories[item.category]}</span>
+              <span aria-hidden="true" className="text-subtle transition-all group-hover:-translate-y-[3px] group-hover:translate-x-[3px] group-hover:text-brand">↗</span>
+            </div>
+            <h3 className="m-0 text-[19px] font-medium leading-tight tracking-[-0.02em]">{item.title}</h3>
+            <p className="m-0 text-[14.5px] leading-relaxed text-subtle">{item.shortDescription}</p>
+          </Link>
+        ))}
+      </div>
+
+      {visibleCount === 0 && (
+        <p className="py-14 text-center text-[17px] text-ink">{translations.noResults}</p>
+      )}
+    </Section>
   )
 }

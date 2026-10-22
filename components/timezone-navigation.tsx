@@ -38,12 +38,12 @@ export function TimezoneNavigation({ currentTimezone }: TimezoneNavigationProps)
   const allTimezones = [utcTimezone, ...timezones]
   
   return (
-    <div className="mt-16 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-center">{t('worldTimezones')}</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+    <section className="mx-auto mt-[clamp(56px,8vw,96px)] w-full max-w-[1200px]">
+      <h2 className="m-0 mb-6 text-[clamp(24px,2.6vw,32px)] font-semibold leading-[1.15] tracking-[-0.025em]">{t('worldTimezones')}</h2>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,164px),1fr))] gap-2.5">
         {allTimezones.map((timezone) => {
           const isActive = currentTimezone === timezone.slug
-          
+
           // Special handling for UTC
           let href
           if (timezone.slug === 'utc') {
@@ -53,28 +53,31 @@ export function TimezoneNavigation({ currentTimezone }: TimezoneNavigationProps)
               ? `/timezones/${timezone.slug}`
               : `/${locale}/timezones/${timezone.slug}`
           }
-          
+
           return (
             <Link
               key={timezone.slug}
               href={href}
-              className={`text-center py-3 px-4 rounded-lg transition-colors ${
+              aria-current={isActive ? 'page' : undefined}
+              className={`flex min-w-0 flex-col gap-1 rounded-xl border px-3.5 py-3 transition-colors ${
                 isActive
-                  ? 'bg-primary text-primary-foreground font-medium'
-                  : 'bg-accent/50 hover:bg-accent text-primary font-medium'
+                  ? 'border-ink bg-ink text-paper'
+                  : 'border-line bg-surface text-ink hover:border-ink'
               }`}
             >
-              <div className="text-sm font-semibold">{timezone.abbreviation}</div>
-              <div className="text-xs opacity-80 mt-1">
-                {t(`names.${timezone.slug}`)}
+              <div className="flex items-baseline justify-between gap-2">
+                <span className="font-mono text-xs font-medium tracking-[.04em]">{timezone.abbreviation}</span>
+                <span className={`font-mono text-[10.5px] tracking-[.06em] ${isActive ? 'opacity-70' : 'text-subtle'}`}>
+                  {timezone.utcOffset}
+                </span>
               </div>
-              <div className="text-xs opacity-70 mt-1 font-mono">
-                {timezone.utcOffset}
+              <div className={`truncate text-[13px] ${isActive ? 'opacity-80' : 'text-subtle'}`}>
+                {t(`names.${timezone.slug}`)}
               </div>
             </Link>
           )
         })}
       </div>
-    </div>
+    </section>
   )
 }

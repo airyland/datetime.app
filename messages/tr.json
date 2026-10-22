@@ -12,7 +12,8 @@
       "ageCalculator": "Yaş Hesaplama",
       "yearProgress": "Yıl İlerlemesi",
       "glossary": "Sözlük",
-      "timezones": "Saat Dilimleri"
+      "timezones": "Saat Dilimleri",
+      "blog": "Blog"
     },
     "links": {
       "titleHome": "Ana sayfaya git",
@@ -419,7 +420,8 @@
       "title": "Yaklaşan tatiller",
       "noDataForCountry": "{country} için tatil verisi mevcut değil.",
       "loading": "Yaklaşan tatiller yükleniyor…",
-      "none": "Yakın zamanda planlanmış resmi tatil bulunmuyor."
+      "none": "Yakın zamanda planlanmış resmi tatil bulunmuyor.",
+      "all": "Tüm tatiller"
     },
     "developerSnippet": {
       "title": "Geliştirici kod örneği",
@@ -963,5 +965,422 @@
         "content": "{timezone}, {city}, {country} ve çevresindeki bölgelerde kullanılan standart zamandır. Saat dilimi, {offset} UTC sapmasına sahiptir ve bu coğrafi alanda programlama ve zaman koordinasyonu için yaygın olarak kullanılır. Bu saat dilimi milyonlarca insana hizmet eder ve iş, seyahat ve uluslararası iletişim için önemli bir referanstır."
       }
     }
+  },
+  "homeSeo": {
+    "introTitle": "Saat tam olarak doğru",
+    "intro1": "datetime.app, bulunduğunuz yerdeki ve dünya genelindeki şehirlerdeki güncel saati gösteren ücretsiz bir dünya saatidir. Saat saniyesine kadar işler, güvenilir bir zaman kaynağıyla düzeltilir ve IANA saat dilimi veritabanını izler; böylece tüm farklar ve yaz saati kuralları günceldir.",
+    "intro2": "Saat dilimlerini yan yana karşılaştırın, şehirler arasında dönüştürün, UTC'yi kontrol edin ya da hazır bir zaman damgasını kopyalayın. Kayıt yok, kurulum yok.",
+    "basicsTitle": "Saat dilimi temelleri",
+    "basicsDesc": "Saat dilimleriyle çalışırken en sık karşılaşılan altı terim.",
+    "facts": {
+      "utc": {
+        "name": "Eş Güdümlü Evrensel Zaman",
+        "desc": "Tüm saat dilimlerinin tanımlandığı küresel referans. Yaz saati uygulaması yoktur ve asla değişmez."
+      },
+      "gmt": {
+        "name": "Greenwich Ortalama Saati",
+        "desc": "Birleşik Krallık'ta kışın kullanılan UTC+0 dilimi. Günlük kullanımda UTC ile aynıdır."
+      },
+      "iana": {
+        "name": "Saat dilimi veritabanı",
+        "desc": "America/New_York veya Asia/Tokyo gibi adlar, bir bölgenin tüm fark ve DST kuralları geçmişini tanımlar."
+      },
+      "dst": {
+        "name": "Yaz saati uygulaması",
+        "desc": "Birçok ülkede saatler ilkbaharda ileri, sonbaharda geri alınır; bu yüzden fark yılda iki kez değişir."
+      },
+      "iso": {
+        "name": "Tarih ve saat biçimi",
+        "desc": "2026-03-08T14:30:00Z belirsiz değildir, sıralanabilir ve her programlama dili tarafından anlaşılır."
+      },
+      "unix": {
+        "name": "1970'ten beri saniye",
+        "desc": "Herhangi bir saat diliminden bağımsız olarak tam bir anı temsil eden tek bir tam sayı."
+      }
+    },
+    "glossaryLink": "Tüm sözlüğe göz atın",
+    "zonesTitle": "Popüler saat dilimleri",
+    "zonesDesc": "İnsanların en çok baktığı dilimlerin güncel saati ve farkı.",
+    "zoneTitle": "{name} için güncel saat",
+    "zoneMeta": {
+      "pst": "Pasifik · UTC−8 / −7",
+      "est": "Doğu · UTC−5 / −4",
+      "cst": "Merkez · UTC−6 / −5",
+      "gmt": "Greenwich · UTC+0",
+      "cet": "Orta Avrupa · UTC+1 / +2",
+      "ist": "Hindistan · UTC+5:30",
+      "jst": "Japonya · UTC+9",
+      "aest": "Doğu Avustralya · UTC+10 / +11"
+    },
+    "allIana": "Tüm IANA saat dilimleri",
+    "utcNow": "Şu an UTC",
+    "dstTitle": "Yaz saati uygulaması {year}",
+    "dstDesc": "Bu yıl ana bölgelerde saatlerin değiştiği tarihler.",
+    "dstCols": {
+      "region": "Bölge",
+      "forward": "Saatler ileri",
+      "back": "Saatler geri",
+      "rule": "Kural"
+    },
+    "dstRegions": {
+      "us": {
+        "name": "ABD ve Kanada",
+        "rule": "Mart'ın 2. Pazarı'ndan Kasım'ın 1. Pazarı'na"
+      },
+      "eu": {
+        "name": "Avrupa Birliği ve Birleşik Krallık",
+        "rule": "Mart'ın son Pazarı'ndan Ekim'in son Pazarı'na"
+      },
+      "au": {
+        "name": "Avustralya (NSW, VIC)",
+        "rule": "Ekim'in 1. Pazarı'ndan Nisan'ın 1. Pazarı'na"
+      }
+    },
+    "dstNote": "Güney yarımküredeki tarihler yeni yılı aşar. Asya ve Afrika'nın çoğu dahil birçok bölgede yaz saati uygulanmaz.",
+    "usesTitle": "datetime.app'i kimler kullanıyor",
+    "uses": {
+      "remote": {
+        "title": "Uzaktan çalışan ekipler",
+        "desc": "Herkesin şehrini tek bir zaman çizelgesine koyun ve görüşmeyi planlamadan önce hangi saatlerin çakıştığını görün."
+      },
+      "dev": {
+        "title": "Geliştiriciler",
+        "desc": "Güncel Unix zaman damgasını, ISO 8601 ve RFC 2822 dizelerini ya da baktığınız dilim için bir Intl kod parçasını kopyalayın."
+      },
+      "travel": {
+        "title": "Gezginler",
+        "desc": "Gideceğiniz yerdeki yerel saati, evinizle farkı ve birini aramak için uygun bir an olup olmadığını öğrenin."
+      },
+      "trade": {
+        "title": "Yatırımcılar ve oyuncular",
+        "desc": "Bir piyasanın ne zaman açıldığını veya sunucunun ne zaman sıfırlandığını kendi saatinizle ve UTC ile bilin."
+      }
+    },
+    "faqTitle": "Sık sorulan sorular",
+    "faq": {
+      "q1": "datetime.app tam saati nasıl gösteriyor?",
+      "a1": "Cihazınızın saatini okur, güvenilir bir zaman kaynağıyla düzeltir ve her saniye günceller. Saat dilimi farkları IANA veritabanından gelir, bu yüzden yaz saati değişiklikleri otomatik uygulanır.",
+      "q2": "UTC ile yerel saat dilimi arasındaki fark nedir?",
+      "a2": "UTC sabit küresel standarttır. Yerel saat dilimi, UTC artı bir farktır (örneğin Tokyo için UTC+9) ve yaz saati başlarken ya da biterken bir saat kayabilir.",
+      "q3": "Saat dilimleri arası bir toplantı için en iyi zamanı nasıl bulurum?",
+      "a3": "Her şehri dünya saati zaman çizelgesine ekleyin. Gölgeli çubuklar gündüzü, erken ve geç saatleri ve geceyi gösterir; böylece herkesin mesai saatlerine denk gelen bir aralık seçebilirsiniz.",
+      "q4": "Site her şehir için çalışıyor mu?",
+      "a4": "Evet. Ana sayfadaki Saat Dilimi Ekle menüsünü kullanın ya da aşağıda bağlantısı verilen şehir ve saat dilimi sayfalarından birini açın."
+    }
+  },
+  "legal": {
+    "home": "Ana sayfa",
+    "privacy": "Gizlilik",
+    "terms": "Şartlar",
+    "lastUpdated": "Son güncelleme · {date}",
+    "contents": "İçindekiler",
+    "privacyMetaTitle": "Gizlilik Politikası | Datetime.app",
+    "privacyMetaDesc": "datetime.app verilerinizi nasıl ele alır: neleri topluyoruz, neleri toplamıyoruz ve hangi seçeneklere sahipsiniz.",
+    "privacyTitle": "Gizlilik Politikası",
+    "privacyIntro": "Kısaca: siteyi çalıştırmak için gereken veriyi tutarız, bir bayt fazlasını değil.",
+    "summary": {
+      "stored": {
+        "k": "Saklanan",
+        "v": "Saat listeniz ve tercihleriniz tarayıcınızda kalır."
+      },
+      "collected": {
+        "k": "Toplanan",
+        "v": "Plausible aracılığıyla anonim kullanım istatistikleri."
+      },
+      "sold": {
+        "k": "Satılan",
+        "v": "Hiçbir şey. Kişisel verileri asla satmayız."
+      }
+    },
+    "privacySections": {
+      "overview": {
+        "title": "Genel bakış",
+        "p1": "datetime.app bir zaman ve saat dilimi aracıdır. Hesap olmadan çalışır ve sizden kişisel bilgi istemez."
+      },
+      "collect": {
+        "title": "Topladığımız bilgiler",
+        "p1": "Kayıt gerektirmiyoruz. Seçtiğiniz saat dilimleri ve görüntüleme tercihleriniz tarayıcınızda yerel olarak (localStorage) saklanır ve sunucularımıza asla gönderilmez.",
+        "p2": "Standart sunucu kayıtları (IP adresi, user agent, istenen sayfa) güvenlik ve hata ayıklama için kısa süreliğine tutulabilir."
+      },
+      "analytics": {
+        "title": "Analitik",
+        "p1": "Hangi sayfaların kullanıldığını anlamak için Plausible kullanıyoruz. Veriler toplu haldedir ve sizi tanımlamak için kullanılmaz."
+      },
+      "cookies": {
+        "title": "Çerezler",
+        "p1": "İzleme çerezleri kullanmıyoruz. Tema ve dil gibi tercihler tarayıcınızın yerel depolamasında tutulur."
+      },
+      "thirdParties": {
+        "title": "Üçüncü taraflar",
+        "p1": "Plausible Analytics (kullanım istatistikleri) ve WorldTimeAPI (IP adresinizden saat diliminizi belirlemek için kullanılır)."
+      },
+      "rights": {
+        "title": "Seçimleriniz",
+        "p1": "Yerel verileri istediğiniz zaman tarayıcı ayarlarınızdan silebilirsiniz. Tarayıcınızın gizlilik özellikleriyle analitiği de engelleyebilirsiniz."
+      },
+      "changes": {
+        "title": "Bu politikadaki değişiklikler",
+        "p1": "Bu politika değişirse yukarıdaki tarih güncellenir."
+      },
+      "contact": {
+        "title": "İletişim",
+        "p1": "Sorunuz mu var? hi@datetime.app adresine yazın."
+      }
+    },
+    "termsMetaTitle": "Hizmet Şartları | Datetime.app",
+    "termsMetaDesc": "datetime.app'i kullandığınızda geçerli olan şartlar.",
+    "termsTitle": "Hizmet Şartları",
+    "termsIntro": "Basit bir araç için sade şartlar. datetime.app'i kullanarak bunları kabul etmiş olursunuz.",
+    "termsSummary": {
+      "free": {
+        "k": "Ücretsiz",
+        "v": "Site ücretsizdir, hesap gerekmez."
+      },
+      "asis": {
+        "k": "Olduğu gibi",
+        "v": "Garanti verilmeden sunulur. Güvenliğin kritik olduğu zamanlama işlerinde buna güvenmeyin."
+      },
+      "yours": {
+        "k": "İçeriğiniz",
+        "v": "Yazdıklarınızı saklamayız. Sonuçları nasıl kullandığınızdan siz sorumlusunuz."
+      }
+    },
+    "termsSections": {
+      "acceptance": {
+        "title": "Şartların kabulü",
+        "p1": "datetime.app'e erişerek veya kullanarak bu şartları kabul edersiniz. Kabul etmiyorsanız lütfen siteyi kullanmayın."
+      },
+      "use": {
+        "title": "Hizmetin kullanımı",
+        "p1": "datetime.app'i kişisel ve ticari amaçlarla kullanabilirsiniz. Hizmeti aksatmamayı, yetkisiz erişim girişiminde bulunmamayı ve otomatik yollarla makul olmayan yük bindirmemeyi kabul edersiniz."
+      },
+      "accuracy": {
+        "title": "Zaman verilerinin doğruluğu",
+        "p1": "Saatleri, farkları ve yaz saati kurallarını doğru tutmaya çalışırız, ancak bunlar cihaz saatinize, ağ koşullarına ve hükümet kural değişikliklerine bağlıdır. Güvenlik, hukuk veya finans açısından kritik zamanlama için datetime.app'e güvenmeyin."
+      },
+      "ip": {
+        "title": "Fikri mülkiyet",
+        "p1": "Açık kaynak olarak belirtilenler dışında site tasarımı, metinler ve kod datetime.app'e veya lisans verenlerine aittir. Siteye serbestçe bağlantı verebilirsiniz."
+      },
+      "links": {
+        "title": "Üçüncü taraf bağlantıları",
+        "p1": "Site harici hizmetlere bağlantı verebilir. Bunları denetlemeyiz ve içeriklerinden ya da uygulamalarından sorumlu değiliz."
+      },
+      "liability": {
+        "title": "Sorumluluğun sınırlandırılması",
+        "p1": "Hizmet olduğu gibi ve mevcut olduğu şekilde, herhangi bir garanti verilmeden sunulur. Yasaların izin verdiği ölçüde, sitenin kullanımından veya kullanılamamasından doğan hiçbir kayıptan sorumlu değiliz."
+      },
+      "changes": {
+        "title": "Bu şartlardaki değişiklikler",
+        "p1": "Bu şartları zaman zaman güncelleyebiliriz. Değişiklikten sonra siteyi kullanmaya devam etmeniz yeni şartları kabul ettiğiniz anlamına gelir."
+      },
+      "contact": {
+        "title": "İletişim",
+        "p1": "Sorunuz mu var? hi@datetime.app adresine yazın."
+      }
+    }
+  },
+  "embed": {
+    "crumb": "Gömme",
+    "metaTitle": "Embed Datetime — hizmet olarak güncel yıl | Datetime.app",
+    "metaDesc": "Güncel yılı sitenizde tek bir iframe ile gösterin. Uzaktan, özenle hesaplanır.",
+    "eyebrow": "Embed Datetime",
+    "title": "Güncel yıl, iframe ile kapınızda.",
+    "desc": "Siteniz hangi yılda olduğumuzu zaten biliyor. Yine de biz söylemek istiyoruz. Tek satır yapıştırın, uzak bir sunucu sizin yerinize hesaplasın.",
+    "theme": "Tema",
+    "light": "Açık",
+    "dark": "Koyu",
+    "size": "Boyut",
+    "iframeTitle": "Güncel yıl",
+    "copy": "Kod parçasını kopyala",
+    "specsTitle": "Özellikler",
+    "specsDesc": "Arkasında durmaktan çekinmediğimiz rakamlar.",
+    "latency": {
+      "label": "Gecikme",
+      "sub": "cihazınızın zaten bildiği şeyi öğrenmek için"
+    },
+    "uptime": {
+      "label": "Çalışma süresi",
+      "sub": "yıl çok güvenilirdir"
+    },
+    "requests": {
+      "label": "İstekler",
+      "value": "1 / yükleme",
+      "sub": "ziyaretçi başına, yıl başına"
+    },
+    "payload": {
+      "label": "Yük",
+      "sub": "mecazen"
+    },
+    "comparedTitle": "Karşılaştırma",
+    "without": "Embed Datetime olmadan",
+    "withoutText": "anında, çevrimdışı, ücretsiz.",
+    "with": "Embed Datetime ile",
+    "withText": "Bir iframe, bir ağ gidiş dönüşü ve bir bağımlılık. Aynı cevap.",
+    "faqTitle": "Sorular",
+    "faq": {
+      "q1": "Buna neden ihtiyacım olsun?",
+      "a1": "Olmaz. Çekici olan da bu.",
+      "q2": "Doğru mu?",
+      "a2": "Evet. Sonuçta yıl bu.",
+      "q3": "Yılbaşı gecesi ne olur?",
+      "a3": "UTC gece yarısında değiştiririz. Ziyaretçilerinizi takvim bilgilendirir.",
+      "q4": "Stilini değiştirebilir miyim?",
+      "a4": "Sorgu parametreleriyle açık veya koyu temayı ve üç boyuttan birini seçin.",
+      "q5": "Çevrimdışı çalışır mı?",
+      "a5": "Hayır. Tarayıcınız maalesef yılı zaten hatırlayacak."
+    }
+  },
+  "homeUpcoming": {
+    "title": "Yaklaşan tatiller",
+    "description": "Saat diliminize göre yaklaşan tatillere canlı geri sayım.",
+    "all": "Tüm geri sayımlar",
+    "today": "bugün",
+    "day": "gün",
+    "days": "gün"
+  },
+  "blog": {
+    "title": "Blog - Zaman Yönetimi & Verimlilik İçgörüleri",
+    "description": "Küresel ekipler ve dijital göçebeler için saat dilimleri, verimlilik ve zaman yönetimi üzerine uzman makaleleri",
+    "readMore": "Devamını Oku",
+    "publishedOn": "Yayınlanma tarihi",
+    "author": "Yazar",
+    "tags": "Etiketler",
+    "share": "Paylaş",
+    "relatedPosts": "İlgili Makaleler",
+    "searchPlaceholder": "Makalelerde ara...",
+    "allTags": "Tümü",
+    "noResults": "Kriterlerinize uygun makale bulunamadı."
+  },
+  "notFound": {
+    "title": "Sayfa Bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil. İşte başlamanız için bazı popüler araçlar.",
+    "worldClock": "Dünya Saati",
+    "worldClockDesc": "Dünyanın dört bir yanındaki şehirlerde güncel saati kontrol edin.",
+    "ageCalculator": "Yaş Hesaplayıcı",
+    "ageCalculatorDesc": "Doğum tarihinizden itibaren tam yaşınızı hesaplayın.",
+    "calendar": "Takvim",
+    "calendarDesc": "Herhangi bir yıl veya ay için takvimi görüntüleyin.",
+    "holidays": "Tatiller",
+    "holidaysDesc": "Ülkeye ve yıla göre resmi tatilleri bulun.",
+    "yearProgress": "Yıl İlerlemesi",
+    "yearProgressDesc": "Mevcut yılın ne kadarının geçtiğini görün.",
+    "utcTime": "UTC Saati",
+    "utcTimeDesc": "Güncel Koordineli Evrensel Zamanı (UTC) görüntüleyin."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Unix Zaman Damgası Çevirici",
+    "subtitle": "Unix / epoch zaman damgalarını okunabilir tarihlere çevirin — ve tersini yapın.",
+    "aboutTitle": "Unix Zaman Damgaları Hakkında",
+    "epochTimeTitle": "Epoch zamanı nedir?",
+    "epochTimeDesc": "Unix zaman damgaları, 1 Ocak 1970 00:00:00 UTC'den bu yana geçen saniyeleri sayar. Zaman diliminden ve dilden bağımsız olarak anları depolama ve karşılaştırma imkânı sunar — yazılım mühendisliğinin temel taşlarından biridir.",
+    "secondsVsMillisecondsTitle": "Saniye ve milisaniye karşılaştırması",
+    "secondsVsMillisecondsDesc": "Klasik Unix zamanı saniye cinsindendir. JavaScript ve birçok modern API milisaniye kullanır. Kural olarak: 10 haneli bir sayı saniyedir; 13 haneli bir sayı milisaniyedir. Bu çevirici her ikisini de otomatik olarak işler.",
+    "whereUsedTitle": "Zaman damgaları nerede kullanılır?",
+    "whereUsedDesc": "Unix zaman damgaları veritabanlarında, günlük dosyalarında, JWT tokenlarında, HTTP başlıklarında (Last-Modified), sürüm kontrol sistemlerinde ve neredeyse her programlama dilinde kullanılır. Yaz saati uygulaması ve saat dilimi farklılıklarından kaynaklanan belirsizlikleri ortadan kaldırır.",
+    "iso8601Title": "ISO 8601 formatı",
+    "iso8601Desc": "ISO 8601 (örn. 2026-01-01T00:00:00.000Z), tarih/saat dizileri için uluslararası standarttır. İnsan tarafından okunabilir, sıralanabilir ve her zaman açıktır. Bir Unix zaman damgasının metin temsilini kullanmanız gerektiğinde bunu tercih edin.",
+    "faqTitle": "Sıkça Sorulan Sorular",
+    "faqs": {
+      "whatIs": {
+        "question": "Unix zaman damgası nedir?",
+        "answer": "Unix zaman damgası (epoch zamanı olarak da bilinir), 1 Ocak 1970, 00:00:00 UTC'den bu yana artık saniyeler hariç geçen saniye sayısıdır. Programlama, veritabanları ve API'lerde yaygın olarak kullanılan, bir zaman noktasını tek bir tamsayı olarak temsil etmenin standart yoludur."
+      },
+      "howToConvert": {
+        "question": "Unix zaman damgasını okunabilir tarihe nasıl çeviririm?",
+        "answer": "Unix zaman damganızı yukarıdaki 'Zaman Damgasından Tarihe' alanına yapıştırın; çevirici yerel saat, UTC, ISO 8601 formatı ve göreceli açıklama (örn. '3 gün önce') olarak eşdeğer tarihi anında gösterecektir."
+      },
+      "howToConvertDate": {
+        "question": "Bir tarihi Unix zaman damgasına nasıl çeviririm?",
+        "answer": "'Tarihten Zaman Damgasına' bölümünü kullanın. Tarih seçici ile tarih ve saati seçin (yerel saat diliminiz kullanılır) ve ilgili Unix zaman damgası anında görüntülenir."
+      },
+      "secondsOrMilliseconds": {
+        "question": "Unix zaman damgası milisaniye mi saniye mi sayar?",
+        "answer": "Orijinal Unix zaman damgası saniye cinsindendir. Birçok modern programlama ortamı (JavaScript'in Date.now() dahil) milisaniye döndürür. Bu çevirici her ikisini de kabul eder — değer 9.999.999.999'dan büyükse milisaniye olarak kabul edilir ve otomatik olarak dönüştürülür."
+      },
+      "y2038": {
+        "question": "2038 yılı sorunu nedir?",
+        "answer": "Birçok eski 32-bit sistem, Unix zamanını işaretli 32-bit tamsayı olarak depolar ve bu değer 19 Ocak 2038'de 03:14:07 UTC'de taşar (zaman damgası 2147483647). Modern 64-bit sistemler bu sorundan etkilenmez ve milyarlarca yıl sonrasını temsil edebilir."
+      },
+      "epoch": {
+        "question": "Unix epoch nedir?",
+        "answer": "Unix epoch, tüm Unix zaman damgalarının başlangıç noktasıdır: 1 Ocak 1970, 00:00:00 UTC, 0 değeri olarak temsil edilir. Her pozitif zaman damgası bu andan sonraki saniye sayısıdır; negatif zaman damgaları 1970 öncesi tarihleri temsil eder."
+      }
+    },
+    "currentTimestamp": "Güncel Unix Zaman Damgası",
+    "copyTimestamp": "Zaman damgasını kopyala",
+    "secondsElapsed": "1 Ocak 1970 00:00:00 UTC'den bu yana geçen saniye — her saniye güncellenir.",
+    "timestampToDate": "Zaman Damgasından Tarihe",
+    "timestampInputLabel": "Unix zaman damgası (saniye veya milisaniye)",
+    "timestampPlaceholder": "örn. 1735689600",
+    "invalidInteger": "Lütfen geçerli bir tamsayı girin.",
+    "outOfRange": "Zaman damgası desteklenen aralığın dışında (1970–9999).",
+    "localTime": "Yerel Saat",
+    "utcTime": "UTC Saati",
+    "iso8601": "ISO 8601",
+    "relative": "Göreceli",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı!",
+    "dateToTimestamp": "Tarihten Zaman Damgasına",
+    "selectDateTime": "Bir tarih ve saat seçin (yerel saat dilimi)",
+    "unixTimestampLabel": "Unix Zaman Damgası",
+    "referenceTimestamps": "Yaygın Referans Zaman Damgaları",
+    "referenceHint": "Yukarıdaki çeviriciye yüklemek için herhangi bir girişe tıklayın.",
+    "convert": "Çevir",
+    "refEpoch": "Unix Epoch (1 Oca 1970)",
+    "refY2K": "Y2K (1 Oca 2000)",
+    "refY2K38": "Y2K38 (19 Oca 2038)",
+    "refStartOf2025": "2025 Başlangıcı",
+    "refStartOf2026": "2026 Başlangıcı",
+    "relativeSeconds": "{count} saniye önce",
+    "relativeSecondsIn": "{count} saniye sonra",
+    "relativeMinutes": "{count} dakika önce",
+    "relativeMinutesPlural": "{count} dakika önce",
+    "relativeMinutesIn": "{count} dakika sonra",
+    "relativeMinutesPluralIn": "{count} dakika sonra",
+    "relativeHours": "{count} saat önce",
+    "relativeHoursPlural": "{count} saat önce",
+    "relativeHoursIn": "{count} saat sonra",
+    "relativeHoursPluralIn": "{count} saat sonra",
+    "relativeDays": "{count} gün önce",
+    "relativeDaysPlural": "{count} gün önce",
+    "relativeDaysIn": "{count} gün sonra",
+    "relativeDaysPluralIn": "{count} gün sonra",
+    "relativeMonths": "{count} ay önce",
+    "relativeMonthsPlural": "{count} ay önce",
+    "relativeMonthsIn": "{count} ay sonra",
+    "relativeMonthsPluralIn": "{count} ay sonra",
+    "relativeYears": "{count} yıl önce",
+    "relativeYearsPlural": "{count} yıl önce",
+    "relativeYearsIn": "{count} yıl sonra",
+    "relativeYearsPluralIn": "{count} yıl sonra"
+  },
+  "timeDifference": {
+    "pageTitle": "Şehirler Arası Saat Farkı",
+    "subtitle": "Güncel saat dilimlerini karşılaştırın ve dünya genelinde şehirler arası en uygun toplantı saatlerini bulun.",
+    "sameTime": "Aynı saat",
+    "hourDifference": "{count} saat fark",
+    "hoursDifference": "{count} saat fark",
+    "hourMinDifference": "{hours} sa {minutes} dk fark",
+    "sameTimezone": "Aynı saat dilimi",
+    "hour": "{count} saat",
+    "hours": "{count} saat",
+    "hourMin": "{hours} sa {minutes} dk",
+    "timeDifferenceBreadcrumb": "Saat Farkı",
+    "timeDifferenceLabel": "Saat farkı:",
+    "apart": "fark",
+    "summaryTitle": "Saat Farkı Özeti",
+    "isAhead": "{city} ileride",
+    "sameOffset": "Aynı ofset",
+    "bestMeetingTimes": "En Uygun Toplantı Saatleri",
+    "businessHoursDesc": "Her iki şehirde örtüşen çalışma saatleri (09:00–18:00)",
+    "noOverlap": "{cityA} ile {cityB} arasında örtüşen çalışma saati yok. Sabah erken veya akşam geç saatlerde toplantı planlamayı değerlendirin.",
+    "overlappingHours": "Günde {count} örtüşen saat",
+    "overlappingHoursPlural": "Günde {count} örtüşen saat",
+    "inCity": "{city} saatiyle",
+    "timelineTitle": "24 Saatlik Zaman Çizelgesi",
+    "timelineDesc": "Çalışma saatleri (09:00–18:00) renkli gösterilir. Mevcut saat bir noktayla işaretlenir.",
+    "localTimeNote": "Saatler her şehrin yerel saatinde gösterilir.",
+    "viewAllComparisons": "Tüm şehir karşılaştırmalarını görüntüle"
   }
 }

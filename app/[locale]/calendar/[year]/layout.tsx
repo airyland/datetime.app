@@ -3,20 +3,24 @@ import { getTranslations } from 'next-intl/server'
 import { locales } from '@/i18n/request'
 
 interface LayoutProps {
-  params: { year: string; locale: string }
+  params: Promise<{ year: string; locale: string }>
   children: React.ReactNode
 }
 
-export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>): Promise<Metadata> {
+export async function generateMetadata({ params: paramsPromise }: Omit<LayoutProps, 'children'>): Promise<Metadata> {
+  const params = await paramsPromise
   const year = parseInt(params.year)
   const locale = params.locale;
   const t = await getTranslations({ locale, namespace: 'calendar' });
 
-  // Handle invalid year
-  if (isNaN(year) || year < 1970 || year > 2100) {
+  // Handle invalid year (must match page.tsx ±15 year range)
+  const currentYear = new Date().getFullYear();
+  const minYear = currentYear - 15;
+  const maxYear = currentYear + 15;
+  if (isNaN(year) || year < minYear || year > maxYear) {
     return {
       title: "Invalid Year | Calendar | Datetime.app",
-      description: "The requested year is invalid. Please select a valid year between 1970 and 2100.",
+      description: `The requested year is invalid. Please select a valid year between ${minYear} and ${maxYear}.`,
     }
   }
 
@@ -30,7 +34,6 @@ export async function generateMetadata({ params }: Omit<LayoutProps, 'children'>
     return acc;
   }, {} as Record<string, string>);
 
-  const currentYear = new Date().getFullYear();
   const isCurrentYear = year === currentYear;
   const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
 

@@ -4,34 +4,31 @@ import { useEffect, useState, use } from "react"
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
-import { Globe, Clock, AlertCircle, Copy, Check, Maximize2, Github, Sun, Briefcase, ArrowLeftRight, Calendar as CalendarIcon } from 'lucide-react'
+import { Copy, Check, Maximize2 } from 'lucide-react'
 import { locales } from '@/i18n/request'
+import { countdownSlugFor } from '@/lib/countdown'
 import { getLocalePath } from '@/lib/locale-utils'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { JetBrains_Mono } from "next/font/google"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { LanguageSwitcher } from "@/components/language-switcher"
+import { Eyebrow, PageIntro, Section, SectionHeading, Faq, cardClass, monoLabel, h2Class } from "@/components/ds"
+import { cn } from "@/lib/utils"
 import { citiesData } from './metadata'
 import { FullscreenTime } from '@/components/fullscreen-time'
-
-// Load JetBrains Mono for numbers
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-})
 
 interface SunTimesState {
   sunrise: string | null;
   sunset: string | null;
   dayLength: string | null;
+  riseMin: number | null;
+  setMin: number | null;
   isLoading: boolean;
   error: string | null;
 }
 
 interface SimplifiedHoliday {
   name: string;
-  dateLabel: string;
+  day: string;
+  month: string;
+  rel: string;
+  slug: string | null;
 }
 
 const countryCodeMap: Record<string, string> = {
@@ -113,7 +110,6 @@ export default function CityPage({ params }: CityPageProps) {
   const city = resolvedParams.city;
   const locale = resolvedParams.locale;
   const t = useTranslations('cities')
-  const tCommon = useTranslations('common')
   const tHome = useTranslations('home')
   const cityInfo = citiesData[city as keyof typeof citiesData];
   
@@ -144,6 +140,8 @@ export default function CityPage({ params }: CityPageProps) {
     sunrise: null,
     sunset: null,
     dayLength: null,
+    riseMin: null,
+    setMin: null,
     isLoading: false,
     error: null,
   })
@@ -252,7 +250,6 @@ export default function CityPage({ params }: CityPageProps) {
 
   const formattedDate = currentTime.toLocaleDateString(getLocaleCode(locale), {
     timeZone: cityInfo.timezone,
-    weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -276,6 +273,8 @@ export default function CityPage({ params }: CityPageProps) {
         sunrise: null,
         sunset: null,
         dayLength: null,
+        riseMin: null,
+        setMin: null,
         isLoading: true,
         error: null,
       })
@@ -316,6 +315,8 @@ export default function CityPage({ params }: CityPageProps) {
           sunrise,
           sunset,
           dayLength,
+          riseMin: sunriseDate.getHours() * 60 + sunriseDate.getMinutes(),
+          setMin: sunsetDate.getHours() * 60 + sunsetDate.getMinutes(),
           isLoading: false,
           error: null,
         })
@@ -364,7 +365,9 @@ export default function CityPage({ params }: CityPageProps) {
 
         const upcoming = holidays
           .map((holiday: any) => {
-            const start = new Date(holiday.start)
+            // `date` is the holiday's local calendar day; `start` is a UTC instant that shifts it by timezone
+            const [y, m, d] = String(holiday.date ?? holiday.start).slice(0, 10).split("-").map(Number)
+            const start = new Date(y, m - 1, d)
             return {
               name: holiday.name as string,
               start,
@@ -372,15 +375,21 @@ export default function CityPage({ params }: CityPageProps) {
           })
           .filter((holiday) => holiday.start >= nowDate)
           .sort((a, b) => a.start.getTime() - b.start.getTime())
-          .slice(0, 3)
-          .map(({ name, start }) => ({
-            name,
-            dateLabel: start.toLocaleDateString(getLocaleCode(locale), {
-              month: "short",
-              day: "numeric",
-              weekday: "short",
-            }),
-          }))
+          .slice(0, 4)
+          .map(({ name, start }) => {
+            const code = getLocaleCode(locale)
+            const startDay = new Date(start.getFullYear(), start.getMonth(), start.getDate()).getTime()
+            const today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate()).getTime()
+            return {
+              name,
+              day: String(start.getDate()),
+              month: start.toLocaleDateString(code, { month: "short" }),
+              rel: new Intl.RelativeTimeFormat(code, { numeric: "auto" }).format(Math.round((startDay - today) / 864e5), "day"),
+              slug: countdownSlugFor(name, start)
+                ? `/countdown/${countdownSlugFor(name, start)}`
+                : `/countdown/h?c=${holidayCountryCode}&n=${encodeURIComponent(name)}&d=${start.getFullYear()}-${String(start.getMonth() + 1).padStart(2, "0")}-${String(start.getDate()).padStart(2, "0")}`,
+            }
+          })
 
         setUpcomingHolidays(upcoming)
       } catch (error) {
@@ -543,6 +552,7 @@ export default function CityPage({ params }: CityPageProps) {
       ...item,
       timeLabel,
       diffLabel,
+      night: compareDate.getHours() < 6 || compareDate.getHours() >= 22,
     }
   })
 
@@ -576,390 +586,309 @@ export default function CityPage({ params }: CityPageProps) {
     }).catch(console.error)
   }
   
-  return (
-    <main className="min-h-screen bg-white dark:bg-black flex flex-col">
-      <header className="container mx-auto px-4 py-6 flex justify-between items-center">
-        <Link href={getLocalePath('/', locale)} className="text-2xl font-bold hover:opacity-80 transition-opacity" title={tCommon('links.titleHome')}>
-          Datetime.app
-        </Link>
-        <div className="flex items-center gap-4">
-          <LanguageSwitcher />
-          <div className="flex items-center gap-2">
-            <span className="text-sm hidden md:inline">{t('toggleTheme')}:</span>
-            <ThemeToggle />
-          </div>
-        </div>
-      </header>
+  const splitIdx = formattedTime.lastIndexOf(':')
+  const hm = formattedTime.slice(0, splitIdx)
+  const ss = formattedTime.slice(splitIdx)
+  const cardTitle = "m-0 text-lg font-semibold tracking-[-0.02em]"
+  const copyBtn = "inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-line text-subtle transition-colors hover:border-ink hover:text-ink"
+  const snippet = [
+    "const date = new Date();",
+    `const options = { timeZone: "${cityInfo.timezone}", hour: "2-digit", minute: "2-digit" };`,
+    "const formatter = new Intl.DateTimeFormat('en-US', options);",
+    "console.log(formatter.format(date));",
+  ].join('\n')
 
-      <div className="container mx-auto px-4 flex-grow">
-        <div className="text-center">
-          <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">
-              {t('pageTitle', { cityName: localizedCityName, countryName: localizedCountryName })}
-            </h1>
-            <h2 className="text-xl md:text-2xl font-medium mb-2 text-muted-foreground">
-              {t('timezoneLabel', { timezone: cityInfo.timezone })}
-            </h2>
-            <div className="relative group">
-              <div 
-                className={`text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight leading-none ${jetbrainsMono.className} cursor-pointer`}
+  const readouts = [
+    { key: 'timestamp', label: t('unixTimestamp'), value: timestamp.toString() },
+    { key: 'utc', label: t('utcTime'), value: utcTime },
+    { key: 'iso', label: t('isoFormat'), value: isoTime },
+  ]
+
+  const copyIcon = (k: string) =>
+    copiedStates[k] ? <Check className="size-4 text-ok" /> : <Copy className="size-4" />
+
+  return (
+    <main>
+      <PageIntro
+        wide
+        crumbs={[{ label: "Home", href: getLocalePath('/', locale) }, { label: localizedCityName }]}
+        eyebrow={`${localizedCountryName} · ${cityInfo.timezone}`}
+        title={t('pageTitle', { cityName: localizedCityName, countryName: localizedCountryName })}
+        description={t('timezoneLabel', { timezone: cityInfo.timezone })}
+      />
+
+      {/* Live clock */}
+      <Section top="clamp(8px,2vw,24px)">
+        <div className={cn(cardClass, "overflow-hidden")}>
+          <div className="p-[clamp(24px,3.4vw,44px)]">
+            <div className={cn(monoLabel, "flex flex-wrap items-center gap-x-3 gap-y-1")}>
+              <span className="tnum text-ink">{offsetString}</span>
+              <span aria-hidden="true" className="opacity-45">/</span>
+              <span>{cityInfo.timezone}</span>
+              <span className="inline-flex items-center gap-2 normal-case tracking-normal">
+                <span aria-hidden="true" className="size-1.5 rounded-full bg-ok" />
+                {accuracy.offset > 1000 ? (
+                  <span>{t('clockOffset', { seconds: Math.round(accuracy.offset / 1000) })}</span>
+                ) : (
+                  <span>{t('clockSynchronized', { offset: Math.round(accuracy.offset) })}</span>
+                )}
+              </span>
+              <span className="flex-1" />
+              <button
+                type="button"
                 onClick={() => setIsFullscreen(true)}
-              >
-                {formattedTime}
-              </div>
-              <button 
-                onClick={() => setIsFullscreen(true)}
-                className="absolute top-0 right-0 p-2 opacity-0 group-hover:opacity-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-all"
+                className={copyBtn}
                 title={t('enterFullscreen')}
+                aria-label={t('enterFullscreen')}
               >
-                <Maximize2 className="w-6 h-6" />
+                <Maximize2 className="size-4" />
               </button>
             </div>
-            <div className="text-xl md:text-2xl font-medium mt-2">{formattedDate}</div>
-
-            {/* Time accuracy indicator */}
-            <div className="flex items-center justify-center mt-4 text-sm text-gray-500 dark:text-gray-400">
-              <AlertCircle className="h-4 w-4 mr-1" />
-              {accuracy.offset > 1000 ? (
-                <span>
-                  {t('clockOffset', { seconds: Math.round(accuracy.offset / 1000) })}
-                </span>
-              ) : (
-                <span>{t('clockSynchronized', { offset: Math.round(accuracy.offset) })}</span>
-              )}
+            <div
+              className="tnum mt-4 cursor-pointer whitespace-nowrap font-mono text-[clamp(56px,13vw,176px)] font-light leading-none tracking-[-0.055em]"
+              onClick={() => setIsFullscreen(true)}
+              title={t('enterFullscreen')}
+              suppressHydrationWarning
+            >
+              {hm}<span className="text-brand">{ss}</span>
+            </div>
+            <div className="mt-[22px] flex h-[30px] items-end justify-between" aria-hidden="true">
+              {Array.from({ length: 60 }, (_, i) => {
+                const sec = currentTime.getSeconds()
+                return (
+                  <span
+                    key={i}
+                    className={cn("block w-0.5 rounded-[1px]", i === sec ? "bg-brand" : i < sec ? "bg-ink" : "bg-tick")}
+                    style={{ height: i === sec ? 30 : i % 15 === 0 ? 22 : i % 5 === 0 ? 16 : 10 }}
+                  />
+                )
+              })}
+            </div>
+            <div className="mt-[30px]" suppressHydrationWarning>
+              <Eyebrow>{currentTime.toLocaleDateString(getLocaleCode(locale), { timeZone: cityInfo.timezone, weekday: "long" })}</Eyebrow>
+              <div className="mt-2 text-[clamp(28px,4vw,48px)] font-medium leading-[1.05] tracking-[-0.035em]">{formattedDate}</div>
             </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-3xl mx-auto">
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">{t('timezoneInfo')}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className={jetbrainsMono.className}>{cityInfo.timezone} ({offsetString})</p>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">{t('unixTimestamp')}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <div className="inline-flex items-center gap-2">
-                  <p className={jetbrainsMono.className}>{timestamp}</p>
-                  <button
-                    onClick={() => copyToClipboard(timestamp.toString(), 'timestamp')}
-                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title={t('copyToClipboard')}
-                  >
-                    {copiedStates['timestamp'] ? (
-                      <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    ) : (
-                      <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    )}
-                  </button>
+          <div className="px-[clamp(24px,3.4vw,44px)] pb-[clamp(24px,3.4vw,44px)]">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,300px),1fr))" }}>
+            {readouts.map((r) => (
+              <div key={r.key} className="flex min-w-0 items-center justify-between gap-3 bg-surface px-[22px] py-[18px]">
+                <div className="min-w-0">
+                  <div className={monoLabel}>{r.label}</div>
+                  <p className="tnum m-0 mt-1.5 break-words font-mono text-[15px]" suppressHydrationWarning>{r.value}</p>
                 </div>
-              </CardContent>
-            </Card>
+                <button type="button" onClick={() => copyToClipboard(r.value, r.key)} className={copyBtn} title={t('copyToClipboard')} aria-label={t('copyToClipboard')}>
+                  {copyIcon(r.key)}
+                </button>
+              </div>
+            ))}
+          </div>
+          </div>
+        </div>
+      </Section>
 
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">{t('utcTime')}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <div className="inline-flex items-center gap-2">
-                  <p className={jetbrainsMono.className}>{utcTime}</p>
-                  <button
-                    onClick={() => copyToClipboard(utcTime, 'utc')}
-                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title={t('copyToClipboard')}
-                  >
-                    {copiedStates['utc'] ? (
-                      <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    ) : (
-                      <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    )}
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">{t('isoFormat')}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <div className="inline-flex items-center gap-2">
-                  <p className={jetbrainsMono.className}>{isoTime}</p>
-                  <button
-                    onClick={() => copyToClipboard(isoTime, 'iso')}
-                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title={t('copyToClipboard')}
-                  >
-                    {copiedStates['iso'] ? (
-                      <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    ) : (
-                      <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    )}
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Sun className="w-4 h-4" />
-                  {tHome('sections.sunriseSunset')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                {sunTimes.isLoading ? (
-                  <p className="text-sm text-muted-foreground">Loading sun times…</p>
-                ) : sunTimes.error ? (
-                  <p className="text-sm text-red-500">{sunTimes.error}</p>
-                ) : (
+      {/* Sun + working hours */}
+      <Section top="14px">
+        <div className="grid gap-3.5" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,460px),1fr))" }}>
+          <div className={cn(cardClass, "min-w-0 rounded-[18px] px-[26px] pb-[26px] pt-6")}>
+            <div className="flex items-baseline justify-between gap-3">
+              <h3 className={cardTitle}>{tHome('sections.sunriseSunset')}</h3>
+              <span className={monoLabel}>{new Intl.RelativeTimeFormat(getLocaleCode(locale), { numeric: "auto" }).format(0, "day")}</span>
+            </div>
+            {sunTimes.isLoading ? (
+              <p className="m-0 mt-5 text-sm text-subtle">Loading sun times…</p>
+            ) : sunTimes.error ? (
+              <p className="m-0 mt-5 text-sm text-subtle">{sunTimes.error}</p>
+            ) : (
+              <>
+                {sunTimes.riseMin != null && sunTimes.setMin != null && (
                   <>
-                    <div className="flex justify-between">
-                      <span className="text-sm text-muted-foreground">
-                        {tHome('labels.sunrise')}
-                      </span>
-                      <span className={jetbrainsMono.className}>
-                        {sunTimes.sunrise ?? '—'}
-                      </span>
+                    <div className="relative mt-6 h-2.5 rounded-full bg-night" aria-hidden="true">
+                      <div
+                        className="absolute top-0 h-full rounded-full bg-day"
+                        style={{ left: `${(sunTimes.riseMin / 1440) * 100}%`, width: `${Math.max(0, (sunTimes.setMin - sunTimes.riseMin) / 14.4)}%` }}
+                      />
+                      <div
+                        className="absolute -top-1 h-[18px] w-0.5 rounded-sm bg-brand"
+                        style={{ left: `${((cityHour * 60 + cityLocalNow.getMinutes()) / 1440) * 100}%` }}
+                      />
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm text-muted-foreground">
-                        {tHome('labels.sunset')}
-                      </span>
-                      <span className={jetbrainsMono.className}>
-                        {sunTimes.sunset ?? '—'}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm text-muted-foreground">
-                        {t('sun.dayLength')}
-                      </span>
-                      <span className={jetbrainsMono.className}>
-                        {sunTimes.dayLength ?? '—'}
-                      </span>
+                    <div className="tnum mt-2 flex justify-between font-mono text-[10.5px] text-subtle" aria-hidden="true">
+                      <span>00</span><span>06</span><span>12</span><span>18</span><span>24</span>
                     </div>
                   </>
                 )}
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Briefcase className="w-4 h-4" />
-                  {t('workingHours.title')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-muted-foreground">
-                      {t('workingHours.approximate')}
-                    </p>
-                    <p className={jetbrainsMono.className}>
-                      {businessHoursLabel} ({cityInfo.timezone})
-                    </p>
-                  </div>
-                  <span
-                    className={`text-xs px-2 py-1 rounded-full ${
-                      isWithinBusinessHours
-                        ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-200'
-                        : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300'
-                    }`}
-                  >
-                    {isWithinBusinessHours
-                      ? t('workingHours.inBusiness')
-                      : t('workingHours.outOfBusiness')}
-                  </span>
+                <div className="mt-5 grid grid-cols-3 overflow-hidden rounded-2xl border border-line">
+                  {[
+                    [tHome('labels.sunrise'), sunTimes.sunrise],
+                    [tHome('labels.sunset'), sunTimes.sunset],
+                    [t('sun.dayLength'), sunTimes.dayLength],
+                  ].map(([label, value]) => (
+                    <div key={label} className="min-w-0 border-l border-line px-4 py-4 first:border-l-0">
+                      <div className={monoLabel}>{label}</div>
+                      <div className="tnum mt-2 font-mono text-[clamp(22px,2.6vw,32px)] font-light tracking-[-0.03em]">{value ?? '—'}</div>
+                    </div>
+                  ))}
                 </div>
-              </CardContent>
-            </Card>
+              </>
+            )}
+          </div>
 
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <ArrowLeftRight className="w-4 h-4" />
-                  {t('timeComparisonSection.title')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {timeComparisons.length === 0 ? (
-                  <p className="text-sm text-muted-foreground">
-                    {t('timeComparisonSection.unavailable')}
-                  </p>
-                ) : (
-                  <div className="space-y-3">
-                    {timeComparisons.map((item) => (
-                      <div
-                        key={item.key}
-                        className="flex items-center justify-between"
-                      >
-                        <div>
-                          <div className="text-sm font-medium">{item.label}</div>
-                          <div className="text-xs text-muted-foreground">
-                            {item.timeLabel}
-                          </div>
-                        </div>
-                        <div className="text-sm font-mono text-gray-700 dark:text-gray-200">
-                          {item.diffLabel}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <CalendarIcon className="w-4 h-4" />
-                  {t('upcomingHolidays.title')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {!holidayCountryCode ? (
-                  <p className="text-sm text-muted-foreground">
-                    {t('upcomingHolidays.noDataForCountry', {
-                      country: localizedCountryName,
-                    })}
-                  </p>
-                ) : holidaysLoading ? (
-                  <p className="text-sm text-muted-foreground">
-                    {t('upcomingHolidays.loading')}
-                  </p>
-                ) : holidaysError ? (
-                  <p className="text-sm text-red-500">{holidaysError}</p>
-                ) : upcomingHolidays.length === 0 ? (
-                  <p className="text-sm text-muted-foreground">
-                    {t('upcomingHolidays.none')}
-                  </p>
-                ) : (
-                  <ul className="space-y-2 text-sm">
-                    {upcomingHolidays.map((holiday, index) => (
-                      <li
-                        key={`${holiday.name}-${holiday.dateLabel}-${index}`}
-                        className="flex items-center justify-between"
-                      >
-                        <span>{holiday.name}</span>
-                        <span className="text-muted-foreground">
-                          {holiday.dateLabel}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-none rounded-none border">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Github className="w-4 h-4" />
-                  {t('developerSnippet.title')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between mb-2">
-                  <p className="text-sm text-muted-foreground">
-                    {t('developerSnippet.description')}
-                  </p>
-                  <button
-                    onClick={() => {
-                      const snippetLines = [
-                        "const date = new Date();",
-                        `const options = { timeZone: "${cityInfo.timezone}", hour: "2-digit", minute: "2-digit" };`,
-                        "const formatter = new Intl.DateTimeFormat('en-US', options);",
-                        "console.log(formatter.format(date));",
-                      ]
-                      const snippet = snippetLines.join('\n')
-                      copyToClipboard(snippet, 'dev-snippet')
-                    }}
-                    className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors group"
-                    title={t('copyToClipboard')}
-                  >
-                    {copiedStates['dev-snippet'] ? (
-                      <Check className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    ) : (
-                      <Copy className="h-4 w-4 text-gray-400 group-hover:text-gray-900 dark:text-gray-500 dark:group-hover:text-gray-100 transition-colors" />
-                    )}
-                  </button>
-                </div>
-                <pre className="bg-muted text-xs p-3 rounded-md overflow-x-auto text-left">
-                  <code>
-{`const date = new Date();
-const options = { timeZone: "${cityInfo.timezone}", hour: "2-digit", minute: "2-digit" };
-const formatter = new Intl.DateTimeFormat('en-US', options);
-console.log(formatter.format(date));`}
-                  </code>
-                </pre>
-              </CardContent>
-            </Card>
+          <div className={cn(cardClass, "min-w-0 p-[22px]")}>
+            <div className="flex items-baseline justify-between gap-3">
+              <h3 className={cardTitle}>{t('workingHours.title')}</h3>
+              <span className={cn("rounded-full border px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-[.08em]", isWithinBusinessHours ? "border-ok text-ok" : "border-line2 text-subtle")}>
+                {isWithinBusinessHours ? t('workingHours.inBusiness') : t('workingHours.outOfBusiness')}
+              </span>
+            </div>
+            <div className="relative mt-6" aria-hidden="true">
+              <div className="flex h-7 gap-0.5">
+                {Array.from({ length: 24 }, (_, h) => (
+                  <div key={h} className={cn("flex-1 rounded-[3px]", h >= businessStartHour && h < businessEndHour ? "bg-ink" : "bg-line")} />
+                ))}
+              </div>
+              <div
+                className="absolute -top-1 h-9 w-0.5 rounded-sm bg-brand"
+                style={{ left: `${((cityHour * 60 + cityLocalNow.getMinutes()) / 1440) * 100}%` }}
+              />
+            </div>
+            <div className="tnum mt-2 flex justify-between font-mono text-[10.5px] text-subtle" aria-hidden="true">
+              <span>00</span><span>06</span><span>12</span><span>18</span><span>24</span>
+            </div>
+            <p className="m-0 mt-5 text-sm text-subtle">{t('workingHours.approximate')}</p>
           </div>
         </div>
+      </Section>
 
-        {/* City Information and FAQ Section */}
-        <div className="mt-16 max-w-3xl mx-auto">
-          <Card className="shadow-none rounded-none border mb-8">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Globe className="w-5 h-5" />
-                {t('cityInfo')}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2">
-              <div>
-                <p className="text-sm text-muted-foreground">{t('country')}</p>
-                <p>{localizedCountryName}</p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">{t('timezone')}</p>
-                <p>{cityInfo.timezone}</p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">{t('coordinates')}</p>
-                <p>{cityInfo.coordinates}</p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">{t('population')}</p>
-                <p>{cityInfo.population}</p>
-              </div>
-            </CardContent>
-          </Card>
+      {/* Time comparison */}
+      <Section>
+        <SectionHeading title={t('timeComparisonSection.title')} />
+        {timeComparisons.length === 0 ? (
+          <p className="m-0 text-sm text-subtle">{t('timeComparisonSection.unavailable')}</p>
+        ) : (
+          <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,200px),1fr))" }}>
+            {timeComparisons.map((item) => {
+              const inner = (
+                <>
+                  <div className="flex items-baseline justify-between gap-3">
+                    <span className="min-w-0 truncate text-sm font-medium">{item.label}</span>
+                    <span className={cn("shrink-0 font-mono text-[11.5px]", item.night ? "text-[rgba(236,236,232,.55)]" : "text-subtle")}>{item.diffLabel}</span>
+                  </div>
+                  <div className="tnum font-mono text-[30px] font-light leading-none tracking-[-0.05em]" suppressHydrationWarning>{item.timeLabel}</div>
+                </>
+              )
+              const cls = cn("flex min-w-0 flex-col gap-3 rounded-xl border px-4 py-3.5", item.night ? "border-night bg-night text-[#ECECE8]" : "border-line bg-surface text-ink")
+              return item.key === "local" ? (
+                <div key={item.key} className={cls}>{inner}</div>
+              ) : (
+                <Link key={item.key} href={getLocalePath(`/cities/${item.key}`, locale)} className={cn(cls, "transition-opacity hover:opacity-80")}>{inner}</Link>
+              )
+            })}
+          </div>
+        )}
+      </Section>
 
-          <Card className="shadow-none rounded-none border">
-            <CardHeader>
-              <CardTitle>{t('faq')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Accordion type="multiple" defaultValue={cityFaqs.map((_, index) => `item-${index}`)} collapsible>
-                {cityFaqs.map((faq, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger>{faq.question}</AccordionTrigger>
-                    <AccordionContent>{faq.answer}</AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </CardContent>
-          </Card>
+      {/* Holidays + developer snippet */}
+      <Section>
+        <div className="grid items-stretch gap-3.5" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,460px),1fr))" }}>
+          <div className={cn(cardClass, "min-w-0 overflow-hidden rounded-[18px]")}>
+            <div className="flex items-baseline justify-between gap-3 px-6 pb-3.5 pt-[22px]">
+              <h3 className={cardTitle}>{t('upcomingHolidays.title')}</h3>
+              {holidayCountryCode && (
+                <Link href={getLocalePath(`/holidays/${holidayCountryCode.toLowerCase()}`, locale)} className="text-[13px] text-subtle transition-colors hover:text-ink" title={`${t('upcomingHolidays.title')} - ${localizedCountryName}`}>
+                  {t('upcomingHolidays.all')} →
+                </Link>
+              )}
+            </div>
+            {!holidayCountryCode ? (
+              <p className="m-0 border-t border-line px-[22px] py-4 text-sm text-subtle">
+                {t('upcomingHolidays.noDataForCountry', { country: localizedCountryName })}
+              </p>
+            ) : holidaysLoading ? (
+              <p className="m-0 border-t border-line px-[22px] py-4 text-sm text-subtle">{t('upcomingHolidays.loading')}</p>
+            ) : holidaysError ? (
+              <p className="m-0 border-t border-line px-[22px] py-4 text-sm text-subtle">{holidaysError}</p>
+            ) : upcomingHolidays.length === 0 ? (
+              <p className="m-0 border-t border-line px-[22px] py-4 text-sm text-subtle">{t('upcomingHolidays.none')}</p>
+            ) : (
+              <ul className="m-0 list-none p-0">
+                {upcomingHolidays.map((holiday, index) => {
+                  const body = (
+                    <>
+                      <div className="w-12 shrink-0 text-center">
+                        <div className="tnum font-mono text-2xl font-light leading-none tracking-[-0.04em]">{holiday.day}</div>
+                        <div className="mt-1 font-mono text-[10.5px] uppercase tracking-[.08em] text-subtle">{holiday.month}</div>
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[15px] font-medium">{holiday.name}</div>
+                        <div className="mt-0.5 text-[13px] text-subtle first-letter:uppercase">{holiday.rel}</div>
+                      </div>
+                      {holiday.slug && <span aria-hidden="true" className="text-subtle">→</span>}
+                    </>
+                  )
+                  const cls = "flex items-center gap-4 border-t border-line px-6 py-3.5"
+                  return (
+                    <li key={`${holiday.name}-${holiday.day}-${holiday.month}-${index}`}>
+                      {holiday.slug ? (
+                        <Link href={holiday.slug} className={cn(cls, "transition-colors hover:bg-paper")} title={`${holiday.name} countdown`}>{body}</Link>
+                      ) : (
+                        <div className={cls}>{body}</div>
+                      )}
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
+          </div>
+
+          <div className={cn(cardClass, "flex min-w-0 flex-col rounded-[18px] px-6 pb-6 pt-[22px]")}>
+            <div className="flex items-center justify-between gap-3">
+              <h3 className={cardTitle}>{t('developerSnippet.title')}</h3>
+              <button type="button" onClick={() => copyToClipboard(snippet, 'dev-snippet')} className="inline-flex size-[34px] items-center justify-center rounded-lg text-subtle transition-colors hover:bg-paper hover:text-ink" title={t('copyToClipboard')} aria-label={t('copyToClipboard')}>
+                {copyIcon("dev-snippet")}
+              </button>
+            </div>
+            <p className="m-0 mb-4 mt-1.5 text-sm text-subtle">{t('developerSnippet.description')}</p>
+            <pre className="m-0 flex-1 overflow-auto whitespace-pre rounded-xl bg-foot px-5 py-[18px] text-left font-mono text-[13px] leading-[1.7] text-foot-ink">
+              <code>{snippet}</code>
+            </pre>
+          </div>
         </div>
-      </div>
+      </Section>
 
-      {/* Language Links Footer */}
-      <footer className="mt-16 border-t border-gray-200 dark:border-gray-800 py-8">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h3 className="text-lg font-semibold mb-4 text-gray-700 dark:text-gray-300">
-              {t('pageTitle', { cityName: localizedCityName, countryName: localizedCountryName })} in Other Languages
-            </h3>
-            <div className="flex flex-wrap justify-center gap-2">
-              {locales.map((loc) => {
+      {/* City Information */}
+      <Section>
+        <SectionHeading title={t('cityInfo')} description={t('timezoneInfo')} />
+        <div className={cn(cardClass, "rounded-[18px] px-[26px] pb-3 pt-2.5")}>
+         <div className="cl">
+          {[
+            [t('country'), localizedCountryName],
+            [t('timezone'), cityInfo.timezone],
+            [t('coordinates'), cityInfo.coordinates],
+            [t('population'), cityInfo.population],
+          ].map(([label, value]) => (
+            <div key={label} className="flex items-baseline justify-between gap-6 border-t border-line py-3.5">
+              <span className="text-sm text-subtle">{label}</span>
+              <span className="min-w-0 break-words text-right font-mono text-sm">{value}</span>
+            </div>
+          ))}
+         </div>
+        </div>
+      </Section>
+
+      {/* FAQ */}
+      <Faq
+        title={t('faq')}
+        items={cityFaqs.map((f) => ({ q: f.question, a: <p className="m-0">{f.answer}</p> }))}
+      />
+
+      {/* Language Links */}
+      <Section className="pb-[clamp(56px,8vw,96px)]">
+        <h3 className={cn(monoLabel, "mb-4")}>
+          {t('pageTitle', { cityName: localizedCityName, countryName: localizedCountryName })} in Other Languages
+        </h3>
+        <div className="flex flex-wrap gap-2">
+          {locales.map((loc) => {
                 const url = loc === 'en' 
                   ? `/cities/${city}` 
                   : `/${loc}/cities/${city}`;
@@ -1067,28 +996,23 @@ console.log(formatter.format(date));`}
                   <Link
                     key={loc}
                     href={url}
-                    className={`inline-block px-3 py-1 text-sm rounded transition-colors hover:bg-gray-100 dark:hover:bg-gray-800 ${
-                      locale === loc 
-                        ? 'bg-gray-200 dark:bg-gray-700 font-medium' 
-                        : 'text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200'
-                    }`}
+                    className={cn(
+                      "inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm transition-colors",
+                      locale === loc ? "border-ink bg-ink text-paper" : "border-line bg-surface text-ink hover:border-ink",
+                    )}
                     title={translations[loc]}
                     hrefLang={loc}
                   >
                     {translations[loc]}
-                    <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">
-                      ({languageNames[loc]})
-                    </span>
+                    <span className="text-xs opacity-60">({languageNames[loc]})</span>
                   </Link>
                 );
               })}
-            </div>
-          </div>
         </div>
-      </footer>
+      </Section>
 
       {isFullscreen && (
-        <FullscreenTime 
+        <FullscreenTime
           time={formattedTime}
           isFullscreen={isFullscreen}
           onClose={() => setIsFullscreen(false)}

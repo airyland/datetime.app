@@ -12,7 +12,8 @@
       "ageCalculator": "年齢計算機",
       "yearProgress": "年間進捗",
       "glossary": "用語集",
-      "timezones": "タイムゾーン"
+      "timezones": "タイムゾーン",
+      "blog": "ブログ"
     },
     "links": {
       "titleHome": "ホームページに戻る",
@@ -419,7 +420,8 @@
       "title": "今後の祝日",
       "noDataForCountry": "{country} の祝日データを取得できませんでした。",
       "loading": "今後の祝日を読み込み中…",
-      "none": "近い将来に予定されている祝日はありません。"
+      "none": "近い将来に予定されている祝日はありません。",
+      "all": "すべての祝日"
     },
     "developerSnippet": {
       "title": "開発者向けコードスニペット",
@@ -963,5 +965,422 @@
         "content": "{timezone}は{country}{city}および周辺地域で使用されている標準時刻です。このタイムゾーンはUTCオフセットが{offset}で、この地理的エリアでのスケジューリングと時刻調整に広く使用されています。このタイムゾーンは数百万人にサービスを提供し、ビジネス、旅行、国際通信の重要な参考となっています。"
       }
     }
+  },
+  "homeSeo": {
+    "introTitle": "ぴったり正確な時刻",
+    "intro1": "datetime.app は、現在地と世界各地の都市の現在時刻を表示する無料の世界時計です。時計は秒単位で動き、信頼できる時刻源で補正され、IANA タイムゾーンデータベースに準拠しているため、すべてのオフセットと夏時間ルールが最新です。",
+    "intro2": "タイムゾーンを並べて比較したり、都市間で時刻を変換したり、UTC を確認したり、そのまま使えるタイムスタンプをコピーしたりできます。登録もインストールも不要です。",
+    "basicsTitle": "タイムゾーンの基本",
+    "basicsDesc": "タイムゾーンをまたぐ仕事で最もよく出会う 6 つの用語。",
+    "facts": {
+      "utc": {
+        "name": "協定世界時",
+        "desc": "すべてのタイムゾーンの基準となる世界共通の時刻。夏時間はなく、変わることもありません。"
+      },
+      "gmt": {
+        "name": "グリニッジ標準時",
+        "desc": "英国が冬に使う UTC+0 のゾーン。日常的には UTC と同じ扱いです。"
+      },
+      "iana": {
+        "name": "タイムゾーンデータベース",
+        "desc": "America/New_York や Asia/Tokyo などの名前が、その地域のオフセットと DST ルールの全履歴を表します。"
+      },
+      "dst": {
+        "name": "夏時間",
+        "desc": "多くの国で春に時計を進め、秋に戻すため、オフセットは年に 2 回変わります。"
+      },
+      "iso": {
+        "name": "日付と時刻の形式",
+        "desc": "2026-03-08T14:30:00Z は曖昧さがなく、並べ替えができ、どのプログラミング言語でも理解できます。"
+      },
+      "unix": {
+        "name": "1970 年からの秒数",
+        "desc": "タイムゾーンに依存せず、ある正確な瞬間を 1 つの整数で表します。"
+      }
+    },
+    "glossaryLink": "用語集をすべて見る",
+    "zonesTitle": "人気のタイムゾーン",
+    "zonesDesc": "よく検索されるゾーンの現在時刻とオフセット。",
+    "zoneTitle": "{name}の現在時刻",
+    "zoneMeta": {
+      "pst": "太平洋 · UTC−8 / −7",
+      "est": "東部 · UTC−5 / −4",
+      "cst": "中部 · UTC−6 / −5",
+      "gmt": "グリニッジ · UTC+0",
+      "cet": "中央ヨーロッパ · UTC+1 / +2",
+      "ist": "インド · UTC+5:30",
+      "jst": "日本 · UTC+9",
+      "aest": "オーストラリア東部 · UTC+10 / +11"
+    },
+    "allIana": "すべての IANA タイムゾーン",
+    "utcNow": "現在の UTC",
+    "dstTitle": "{year} 年の夏時間",
+    "dstDesc": "今年、主な地域で時計が切り替わる日。",
+    "dstCols": {
+      "region": "地域",
+      "forward": "時計を進める",
+      "back": "時計を戻す",
+      "rule": "ルール"
+    },
+    "dstRegions": {
+      "us": {
+        "name": "アメリカ・カナダ",
+        "rule": "3 月の第 2 日曜日から 11 月の第 1 日曜日まで"
+      },
+      "eu": {
+        "name": "欧州連合・英国",
+        "rule": "3 月の最終日曜日から 10 月の最終日曜日まで"
+      },
+      "au": {
+        "name": "オーストラリア（NSW、VIC）",
+        "rule": "10 月の第 1 日曜日から翌年 4 月の第 1 日曜日まで"
+      }
+    },
+    "dstNote": "南半球の日付は年をまたぎます。アジアやアフリカの大半を含む多くの地域では、夏時間を採用していません。",
+    "usesTitle": "datetime.app の使いどころ",
+    "uses": {
+      "remote": {
+        "title": "リモートチーム",
+        "desc": "メンバー全員の都市を 1 本のタイムラインに並べ、会議を設定する前に重なる時間帯を確認できます。"
+      },
+      "dev": {
+        "title": "開発者",
+        "desc": "表示中のゾーンの現在の Unix タイムスタンプ、ISO 8601 と RFC 2822 の文字列、Intl のスニペットをコピーできます。"
+      },
+      "travel": {
+        "title": "旅行者",
+        "desc": "目的地の現地時刻、自宅との時差、今電話しても大丈夫かどうかを確認できます。"
+      },
+      "trade": {
+        "title": "トレーダーとゲーマー",
+        "desc": "市場の開場やサーバーのリセットがいつか、自分の時間と UTC で把握できます。"
+      }
+    },
+    "faqTitle": "よくある質問",
+    "faq": {
+      "q1": "datetime.app はどうやって正確な時刻を表示しているのですか？",
+      "a1": "お使いのデバイスの時計を読み取り、信頼できる時刻源で補正して、毎秒更新します。タイムゾーンのオフセットは IANA データベース由来なので、夏時間の変更も自動で反映されます。",
+      "q2": "UTC とローカルのタイムゾーンは何が違いますか？",
+      "a2": "UTC は固定された世界標準です。ローカルのタイムゾーンは UTC にオフセットを加えたもので（東京なら UTC+9）、夏時間の開始や終了で 1 時間ずれることがあります。",
+      "q3": "タイムゾーンをまたぐ会議に最適な時間はどう探せばいいですか？",
+      "a3": "各都市を世界時計のタイムラインに追加してください。日中、早朝・深夜、夜間が色分けされたバーで表示されるので、全員の勤務時間に収まる枠を選べます。",
+      "q4": "どの都市でも使えますか？",
+      "a4": "はい。ホームの「タイムゾーンを追加」メニューを使うか、下にリンクされている都市やタイムゾーンのページを開いてください。"
+    }
+  },
+  "legal": {
+    "home": "ホーム",
+    "privacy": "プライバシー",
+    "terms": "利用規約",
+    "lastUpdated": "最終更新 · {date}",
+    "contents": "目次",
+    "privacyMetaTitle": "プライバシーポリシー | Datetime.app",
+    "privacyMetaDesc": "datetime.app がデータをどのように扱うか。収集するもの、しないもの、そしてあなたの選択肢。",
+    "privacyTitle": "プライバシーポリシー",
+    "privacyIntro": "要点：サイトの運営に必要なデータだけを保持し、それ以上は 1 バイトも持ちません。",
+    "summary": {
+      "stored": {
+        "k": "保存",
+        "v": "時計リストと設定はお使いのブラウザ内に残ります。"
+      },
+      "collected": {
+        "k": "収集",
+        "v": "Plausible による匿名の利用統計。"
+      },
+      "sold": {
+        "k": "販売",
+        "v": "一切ありません。個人データを販売することはありません。"
+      }
+    },
+    "privacySections": {
+      "overview": {
+        "title": "概要",
+        "p1": "datetime.app は時刻とタイムゾーンのツールです。アカウントなしで使え、個人情報の入力も求めません。"
+      },
+      "collect": {
+        "title": "収集する情報",
+        "p1": "登録は必要ありません。選択したタイムゾーンと表示設定はブラウザ内（localStorage）にのみ保存され、当社のサーバーには送信されません。",
+        "p2": "セキュリティとデバッグのため、標準的なサーバーログ（IP アドレス、ユーザーエージェント、リクエストされたページ）を短期間保持することがあります。"
+      },
+      "analytics": {
+        "title": "アクセス解析",
+        "p1": "どのページが使われているかを把握するため、Plausible を利用しています。データは集計されたもので、個人の特定には使用しません。"
+      },
+      "cookies": {
+        "title": "Cookie",
+        "p1": "トラッキング用の Cookie は使用しません。テーマや言語などの設定はブラウザのローカルストレージに保存されます。"
+      },
+      "thirdParties": {
+        "title": "第三者",
+        "p1": "Plausible Analytics（利用統計）と WorldTimeAPI（IP アドレスからタイムゾーンを判定するために使用）。"
+      },
+      "rights": {
+        "title": "あなたの選択",
+        "p1": "ローカルデータはブラウザの設定からいつでも削除できます。ブラウザのプライバシー機能でアクセス解析をブロックすることもできます。"
+      },
+      "changes": {
+        "title": "本ポリシーの変更",
+        "p1": "本ポリシーが変更された場合は、上記の日付を更新します。"
+      },
+      "contact": {
+        "title": "お問い合わせ",
+        "p1": "ご質問は hi@datetime.app までご連絡ください。"
+      }
+    },
+    "termsMetaTitle": "利用規約 | Datetime.app",
+    "termsMetaDesc": "datetime.app のご利用時に適用される規約です。",
+    "termsTitle": "利用規約",
+    "termsIntro": "シンプルなツールのための、わかりやすい規約です。datetime.app を利用することで、これらに同意したものとみなされます。",
+    "termsSummary": {
+      "free": {
+        "k": "無料",
+        "v": "サイトは無料で利用でき、アカウントは不要です。"
+      },
+      "asis": {
+        "k": "現状のまま",
+        "v": "保証なしで提供されます。安全に関わる計時には使用しないでください。"
+      },
+      "yours": {
+        "k": "あなたの内容",
+        "v": "入力された内容は保存しません。結果の利用についてはご自身の責任となります。"
+      }
+    },
+    "termsSections": {
+      "acceptance": {
+        "title": "規約への同意",
+        "p1": "datetime.app にアクセスまたは利用することで、これらの規約に同意したものとみなされます。同意しない場合は、サイトを利用しないでください。"
+      },
+      "use": {
+        "title": "サービスの利用",
+        "p1": "datetime.app は個人利用・商用利用のいずれにも使えます。サービスの妨害、不正アクセスの試み、自動化された手段による不当な負荷をかける行為は行わないものとします。"
+      },
+      "accuracy": {
+        "title": "時刻データの正確性",
+        "p1": "時刻、オフセット、夏時間ルールを正しく保つよう努めていますが、これらはお使いのデバイスの時計、ネットワーク状況、各国政府によるルール変更に左右されます。安全、法務、金融に関わる計時には datetime.app を頼らないでください。"
+      },
+      "ip": {
+        "title": "知的財産権",
+        "p1": "オープンソースと明記されたものを除き、サイトのデザイン、文章、コードは datetime.app またはそのライセンサーに帰属します。サイトへのリンクは自由に行えます。"
+      },
+      "links": {
+        "title": "第三者へのリンク",
+        "p1": "サイトには外部サービスへのリンクが含まれる場合があります。これらは当社の管理下になく、その内容や運営について責任を負いません。"
+      },
+      "liability": {
+        "title": "責任の制限",
+        "p1": "本サービスは現状有姿かつ提供可能な範囲で、いかなる保証もなく提供されます。法律で認められる範囲において、サイトの利用または利用不能から生じた損失について、当社は責任を負いません。"
+      },
+      "changes": {
+        "title": "規約の変更",
+        "p1": "これらの規約は随時更新されることがあります。変更後もサイトを使い続けた場合、新しい規約に同意したものとみなされます。"
+      },
+      "contact": {
+        "title": "お問い合わせ",
+        "p1": "ご質問は hi@datetime.app までご連絡ください。"
+      }
+    }
+  },
+  "embed": {
+    "crumb": "埋め込み",
+    "metaTitle": "Datetime を埋め込む — 今年をサービスとして | Datetime.app",
+    "metaDesc": "iframe 1 つで、サイトに今年を表示。リモートで、丁寧に計算します。",
+    "eyebrow": "Datetime を埋め込む",
+    "title": "今年を、iframe でお届け。",
+    "desc": "あなたのサイトは、今が何年かすでに知っています。それでも私たちはお伝えしたいのです。1 行貼り付けるだけで、リモートサーバーが代わりに割り出します。",
+    "theme": "テーマ",
+    "light": "ライト",
+    "dark": "ダーク",
+    "size": "サイズ",
+    "iframeTitle": "今年",
+    "copy": "スニペットをコピー",
+    "specsTitle": "仕様",
+    "specsDesc": "自信を持って保証できる数字たち。",
+    "latency": {
+      "label": "レイテンシ",
+      "sub": "デバイスがもともと知っていることを知るために"
+    },
+    "uptime": {
+      "label": "稼働率",
+      "sub": "年はとても信頼できます"
+    },
+    "requests": {
+      "label": "リクエスト",
+      "value": "1 / ロード",
+      "sub": "訪問者ごと、年ごと"
+    },
+    "payload": {
+      "label": "ペイロード",
+      "sub": "比喩的な意味で"
+    },
+    "comparedTitle": "比較",
+    "without": "Datetime を埋め込まない場合",
+    "withoutText": "即時、オフライン、無料。",
+    "with": "Datetime を埋め込む場合",
+    "withText": "iframe、ネットワークの往復、そして依存関係。答えは同じ。",
+    "faqTitle": "質問",
+    "faq": {
+      "q1": "なぜこれが必要なのですか？",
+      "a1": "必要ありません。それが魅力です。",
+      "q2": "正確ですか？",
+      "a2": "はい。何しろ年ですから。",
+      "q3": "大晦日はどうなりますか？",
+      "a3": "UTC の午前 0 時に切り替えます。訪問者にはカレンダーがお知らせします。",
+      "q4": "スタイルは変えられますか？",
+      "a4": "クエリパラメータで、ライトかダーク、そして 3 つのサイズから選べます。",
+      "q5": "オフラインでも動きますか？",
+      "a5": "いいえ。残念ながら、ブラウザが年を覚えています。"
+    }
+  },
+  "homeUpcoming": {
+    "title": "もうすぐの祝日",
+    "description": "次の祝日までのライブカウントダウン（お使いのタイムゾーン基準）。",
+    "all": "すべてのカウントダウン",
+    "today": "今日",
+    "day": "日",
+    "days": "日"
+  },
+  "blog": {
+    "title": "ブログ - 時間管理と生産性の洞察",
+    "description": "グローバルチームとデジタルノマドのためのタイムゾーン、生産性、時間管理に関する専門記事",
+    "readMore": "続きを読む",
+    "publishedOn": "公開日",
+    "author": "著者",
+    "tags": "タグ",
+    "share": "シェア",
+    "relatedPosts": "関連記事",
+    "searchPlaceholder": "記事を検索...",
+    "allTags": "すべて",
+    "noResults": "条件に一致する記事が見つかりません。"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しません。以下の便利なツールをお試しください。",
+    "worldClock": "世界時計",
+    "worldClockDesc": "世界各地の都市の現在時刻を確認できます。",
+    "ageCalculator": "年齢計算機",
+    "ageCalculatorDesc": "生年月日から正確な年齢を計算します。",
+    "calendar": "カレンダー",
+    "calendarDesc": "任意の年や月のカレンダーを閲覧できます。",
+    "holidays": "祝日",
+    "holidaysDesc": "国別・年別の祝日を検索できます。",
+    "yearProgress": "年間進捗",
+    "yearProgressDesc": "今年がどれだけ経過したかを確認できます。",
+    "utcTime": "UTC時間",
+    "utcTimeDesc": "現在の協定世界時（UTC）を表示します。"
+  },
+  "unixTimestamp": {
+    "pageTitle": "Unixタイムスタンプ変換ツール",
+    "subtitle": "Unix / エポックタイムスタンプを人間が読める日付に変換、またはその逆も可能です。",
+    "aboutTitle": "Unixタイムスタンプについて",
+    "epochTimeTitle": "エポック時間とは？",
+    "epochTimeDesc": "Unixタイムスタンプは1970年1月1日 00:00:00 UTCからの経過秒数を数えたものです。タイムゾーンや言語に依存しない方法で時刻を保存・比較でき、ソフトウェアエンジニアリングの基盤となっています。",
+    "secondsVsMillisecondsTitle": "秒とミリ秒",
+    "secondsVsMillisecondsDesc": "従来のUnix時間は秒単位です。JavaScriptや多くの最新APIではミリ秒が使われます。目安として、10桁の数値は秒、13桁の数値はミリ秒です。この変換ツールはどちらも自動的に処理します。",
+    "whereUsedTitle": "タイムスタンプの用途",
+    "whereUsedDesc": "Unixタイムスタンプはデータベース、ログファイル、JWTトークン、HTTPヘッダー（Last-Modified）、バージョン管理システム、そしてほぼすべてのプログラミング言語で使用されています。夏時間やタイムゾーンの違いによる曖昧さを排除します。",
+    "iso8601Title": "ISO 8601形式",
+    "iso8601Desc": "ISO 8601（例：2026-01-01T00:00:00.000Z）は日付・時刻文字列の国際標準です。人間が読みやすく、ソート可能で、常に曖昧さがありません。Unixタイムスタンプのテキスト表現が必要な場合に使用します。",
+    "faqTitle": "よくある質問",
+    "faqs": {
+      "whatIs": {
+        "question": "Unixタイムスタンプとは何ですか？",
+        "answer": "Unixタイムスタンプ（エポック時間とも呼ばれます）は、1970年1月1日 00:00:00 UTCから経過した秒数（うるう秒を除く）です。時間上のある一点を単一の整数で表す標準的な方法で、プログラミング、データベース、APIで広く使用されています。"
+      },
+      "howToConvert": {
+        "question": "Unixタイムスタンプを人間が読める日付に変換するには？",
+        "answer": "上の「タイムスタンプから日付へ」フィールドにUnixタイムスタンプを貼り付けると、ローカル時間、UTC、ISO 8601形式、および相対的な表現（例：「3日前」）で即座に表示されます。"
+      },
+      "howToConvertDate": {
+        "question": "日付をUnixタイムスタンプに変換するには？",
+        "answer": "「日付からタイムスタンプへ」セクションを使用してください。日付ピッカーで日付と時刻を選択すると（ローカルタイムゾーンが使用されます）、対応するUnixタイムスタンプが即座に表示されます。"
+      },
+      "secondsOrMilliseconds": {
+        "question": "Unixタイムスタンプはミリ秒ですか、秒ですか？",
+        "answer": "元々のUnixタイムスタンプは秒単位です。多くの最新プログラミング環境（JavaScriptのDate.now()を含む）ではミリ秒を返します。この変換ツールはどちらも受け付けます。値が9,999,999,999より大きい場合はミリ秒として扱い、自動的に変換します。"
+      },
+      "y2038": {
+        "question": "Y2K38問題とは何ですか？",
+        "answer": "多くのレガシー32ビットシステムはUnix時間を符号付き32ビット整数で格納しており、2038年1月19日 03:14:07 UTC（タイムスタンプ2147483647）でオーバーフローします。最新の64ビットシステムは影響を受けず、数十億年先の日付まで表現できます。"
+      },
+      "epoch": {
+        "question": "Unixエポックとは何ですか？",
+        "answer": "UnixエポックはすべてのUnixタイムスタンプの基準点で、1970年1月1日 00:00:00 UTC、値は0です。正のタイムスタンプはその瞬間からの経過秒数を表し、負のタイムスタンプは1970年以前の日付を表します。"
+      }
+    },
+    "currentTimestamp": "現在のUnixタイムスタンプ",
+    "copyTimestamp": "タイムスタンプをコピー",
+    "secondsElapsed": "1970年1月1日 00:00:00 UTCからの経過秒数 — 毎秒更新されます。",
+    "timestampToDate": "タイムスタンプから日付へ",
+    "timestampInputLabel": "Unixタイムスタンプ（秒またはミリ秒）",
+    "timestampPlaceholder": "例：1735689600",
+    "invalidInteger": "有効な整数を入力してください。",
+    "outOfRange": "タイムスタンプがサポート範囲外です（1970〜9999年）。",
+    "localTime": "ローカル時間",
+    "utcTime": "UTC時間",
+    "iso8601": "ISO 8601",
+    "relative": "相対",
+    "copy": "コピー",
+    "copied": "コピーしました！",
+    "dateToTimestamp": "日付からタイムスタンプへ",
+    "selectDateTime": "日付と時刻を選択（ローカルタイムゾーン）",
+    "unixTimestampLabel": "Unixタイムスタンプ",
+    "referenceTimestamps": "主な参考タイムスタンプ",
+    "referenceHint": "クリックすると上の変換ツールに読み込まれます。",
+    "convert": "変換",
+    "refEpoch": "Unixエポック（1970年1月1日）",
+    "refY2K": "Y2K（2000年1月1日）",
+    "refY2K38": "Y2K38（2038年1月19日）",
+    "refStartOf2025": "2025年の始まり",
+    "refStartOf2026": "2026年の始まり",
+    "relativeSeconds": "{count}秒前",
+    "relativeSecondsIn": "{count}秒後",
+    "relativeMinutes": "{count}分前",
+    "relativeMinutesPlural": "{count}分前",
+    "relativeMinutesIn": "{count}分後",
+    "relativeMinutesPluralIn": "{count}分後",
+    "relativeHours": "{count}時間前",
+    "relativeHoursPlural": "{count}時間前",
+    "relativeHoursIn": "{count}時間後",
+    "relativeHoursPluralIn": "{count}時間後",
+    "relativeDays": "{count}日前",
+    "relativeDaysPlural": "{count}日前",
+    "relativeDaysIn": "{count}日後",
+    "relativeDaysPluralIn": "{count}日後",
+    "relativeMonths": "{count}ヶ月前",
+    "relativeMonthsPlural": "{count}ヶ月前",
+    "relativeMonthsIn": "{count}ヶ月後",
+    "relativeMonthsPluralIn": "{count}ヶ月後",
+    "relativeYears": "{count}年前",
+    "relativeYearsPlural": "{count}年前",
+    "relativeYearsIn": "{count}年後",
+    "relativeYearsPluralIn": "{count}年後"
+  },
+  "timeDifference": {
+    "pageTitle": "都市間の時差",
+    "subtitle": "世界の都市間の現在のタイムゾーンを比較し、最適な会議時間を見つけましょう。",
+    "sameTime": "同じ時刻",
+    "hourDifference": "{count}時間の時差",
+    "hoursDifference": "{count}時間の時差",
+    "hourMinDifference": "{hours}時間{minutes}分の時差",
+    "sameTimezone": "同じタイムゾーン",
+    "hour": "{count}時間",
+    "hours": "{count}時間",
+    "hourMin": "{hours}時間{minutes}分",
+    "timeDifferenceBreadcrumb": "時差",
+    "timeDifferenceLabel": "時差：",
+    "apart": "",
+    "summaryTitle": "時差の概要",
+    "isAhead": "{city}が先行",
+    "sameOffset": "同じオフセット",
+    "bestMeetingTimes": "最適な会議時間",
+    "businessHoursDesc": "両都市の営業時間（午前9時〜午後6時）が重なる時間帯",
+    "noOverlap": "{cityA}と{cityB}の間に重なる営業時間がありません。早朝または夜遅くの会議を検討してください。",
+    "overlappingHours": "1日あたり{count}時間の重複",
+    "overlappingHoursPlural": "1日あたり{count}時間の重複",
+    "inCity": "{city}の時刻",
+    "timelineTitle": "24時間タイムライン",
+    "timelineDesc": "営業時間（午前9時〜午後6時）がカラーで表示されます。現在の時間はドットで示されます。",
+    "localTimeNote": "各都市の現地時間で表示されています。",
+    "viewAllComparisons": "すべての都市比較を見る"
   }
 }

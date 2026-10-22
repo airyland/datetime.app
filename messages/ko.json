@@ -389,7 +389,8 @@
       "title": "다가오는 공휴일",
       "noDataForCountry": "{country}에 대한 공휴일 데이터를 가져올 수 없습니다.",
       "loading": "다가오는 공휴일을 불러오는 중…",
-      "none": "가까운 시일 내 예정된 공휴일이 없습니다."
+      "none": "가까운 시일 내 예정된 공휴일이 없습니다.",
+      "all": "모든 휴일"
     },
     "developerSnippet": {
       "title": "개발자 코드 스니펫",
@@ -419,7 +420,8 @@
       "home": "홈",
       "utc": "UTC 시간",
       "yearProgress": "연도 진행률",
-      "timezones": "시간대"
+      "timezones": "시간대",
+      "blog": "블로그"
     },
     "links": {
       "titleHome": "홈페이지로 이동",
@@ -974,5 +976,422 @@
         "content": "{timezone}는 {country} {city} 및 주변 지역에서 사용되는 표준 시간입니다. 이 시간대는 UTC 오프셋이 {offset}이며 이 지리적 지역에서 일정 계획 및 시간 조정에 널리 사용됩니다. 이 시간대는 수백만 명의 사람들에게 서비스를 제공하며 비즈니스, 여행 및 국제 통신의 중요한 참조점입니다."
       }
     }
+  },
+  "homeSeo": {
+    "introTitle": "정확한 지금 이 시각",
+    "intro1": "datetime.app은 현재 위치와 전 세계 도시의 현재 시각을 보여 주는 무료 세계 시계입니다. 시계는 초 단위로 움직이고 신뢰할 수 있는 시간 소스로 보정되며 IANA 시간대 데이터베이스를 따르므로, 모든 오프셋과 일광 절약 시간 규칙이 최신 상태입니다.",
+    "intro2": "시간대를 나란히 비교하고, 도시 간 시각을 변환하고, UTC를 확인하거나, 바로 쓸 수 있는 타임스탬프를 복사해 보세요. 가입도 설치도 필요 없습니다.",
+    "basicsTitle": "시간대 기본 상식",
+    "basicsDesc": "시간대를 넘나들며 일할 때 가장 자주 만나는 여섯 가지 용어.",
+    "facts": {
+      "utc": {
+        "name": "협정 세계시",
+        "desc": "모든 시간대를 정의하는 전 세계 기준. 일광 절약 시간이 없으며 바뀌지 않습니다."
+      },
+      "gmt": {
+        "name": "그리니치 표준시",
+        "desc": "영국이 겨울에 쓰는 UTC+0 시간대. 일상적으로는 UTC와 같습니다."
+      },
+      "iana": {
+        "name": "시간대 데이터베이스",
+        "desc": "America/New_York, Asia/Tokyo 같은 이름은 해당 지역의 오프셋과 DST 규칙의 전체 이력을 가리킵니다."
+      },
+      "dst": {
+        "name": "일광 절약 시간",
+        "desc": "많은 나라에서 봄에는 시계를 앞으로, 가을에는 뒤로 돌리기 때문에 오프셋이 1년에 두 번 바뀝니다."
+      },
+      "iso": {
+        "name": "날짜 및 시간 형식",
+        "desc": "2026-03-08T14:30:00Z는 모호하지 않고, 정렬할 수 있으며, 모든 프로그래밍 언어가 이해합니다."
+      },
+      "unix": {
+        "name": "1970년 이후 경과 초",
+        "desc": "시간대와 무관하게 정확한 한순간을 나타내는 정수 하나."
+      }
+    },
+    "glossaryLink": "전체 용어집 보기",
+    "zonesTitle": "인기 시간대",
+    "zonesDesc": "가장 많이 찾는 시간대의 현재 시각과 오프셋.",
+    "zoneTitle": "{name} 현재 시각",
+    "zoneMeta": {
+      "pst": "태평양 · UTC−8 / −7",
+      "est": "동부 · UTC−5 / −4",
+      "cst": "중부 · UTC−6 / −5",
+      "gmt": "그리니치 · UTC+0",
+      "cet": "중앙유럽 · UTC+1 / +2",
+      "ist": "인도 · UTC+5:30",
+      "jst": "일본 · UTC+9",
+      "aest": "호주 동부 · UTC+10 / +11"
+    },
+    "allIana": "모든 IANA 시간대",
+    "utcNow": "현재 UTC",
+    "dstTitle": "{year}년 일광 절약 시간",
+    "dstDesc": "올해 주요 지역에서 시계가 바뀌는 시점.",
+    "dstCols": {
+      "region": "지역",
+      "forward": "시계 앞으로",
+      "back": "시계 뒤로",
+      "rule": "규칙"
+    },
+    "dstRegions": {
+      "us": {
+        "name": "미국 및 캐나다",
+        "rule": "3월 둘째 일요일부터 11월 첫째 일요일까지"
+      },
+      "eu": {
+        "name": "유럽 연합 및 영국",
+        "rule": "3월 마지막 일요일부터 10월 마지막 일요일까지"
+      },
+      "au": {
+        "name": "호주(NSW, VIC)",
+        "rule": "10월 첫째 일요일부터 이듬해 4월 첫째 일요일까지"
+      }
+    },
+    "dstNote": "남반구의 날짜는 새해를 가로지릅니다. 아시아와 아프리카 대부분을 포함한 많은 지역은 일광 절약 시간을 시행하지 않습니다.",
+    "usesTitle": "datetime.app을 쓰는 사람들",
+    "uses": {
+      "remote": {
+        "title": "원격 팀",
+        "desc": "팀원들의 도시를 하나의 타임라인에 놓고, 회의를 잡기 전에 겹치는 시간대를 확인하세요."
+      },
+      "dev": {
+        "title": "개발자",
+        "desc": "보고 있는 시간대의 현재 Unix 타임스탬프, ISO 8601 및 RFC 2822 문자열, 또는 Intl 스니펫을 복사하세요."
+      },
+      "travel": {
+        "title": "여행자",
+        "desc": "목적지의 현지 시각, 집과의 시차, 지금 전화해도 괜찮은 때인지 확인하세요."
+      },
+      "trade": {
+        "title": "트레이더와 게이머",
+        "desc": "시장이 열리거나 서버가 초기화되는 시점을 내 시간과 UTC로 알아 두세요."
+      }
+    },
+    "faqTitle": "자주 묻는 질문",
+    "faq": {
+      "q1": "datetime.app은 어떻게 정확한 시각을 보여 주나요?",
+      "a1": "기기의 시계를 읽어 신뢰할 수 있는 시간 소스로 보정한 뒤 매초 업데이트합니다. 시간대 오프셋은 IANA 데이터베이스에서 가져오므로 일광 절약 시간 변경도 자동으로 적용됩니다.",
+      "q2": "UTC와 현지 시간대는 무엇이 다른가요?",
+      "a2": "UTC는 고정된 전 세계 표준입니다. 현지 시간대는 UTC에 오프셋을 더한 것으로(예: 도쿄는 UTC+9), 일광 절약 시간이 시작되거나 끝날 때 한 시간 바뀔 수 있습니다.",
+      "q3": "시간대가 다른 사람들과 회의하기 가장 좋은 시간은 어떻게 찾나요?",
+      "a3": "각 도시를 세계 시계 타임라인에 추가하세요. 음영 막대가 낮, 이른 아침·늦은 밤, 밤을 구분해 보여 주므로 모두의 근무 시간 안에 드는 시간대를 고를 수 있습니다.",
+      "q4": "어떤 도시에서든 사용할 수 있나요?",
+      "a4": "네. 홈 화면의 '시간대 추가' 메뉴를 사용하거나, 아래에 링크된 도시 및 시간대 페이지를 열어 보세요."
+    }
+  },
+  "legal": {
+    "home": "홈",
+    "privacy": "개인정보",
+    "terms": "약관",
+    "lastUpdated": "최종 업데이트 · {date}",
+    "contents": "목차",
+    "privacyMetaTitle": "개인정보 처리방침 | Datetime.app",
+    "privacyMetaDesc": "datetime.app이 데이터를 다루는 방식: 수집하는 것, 수집하지 않는 것, 그리고 선택할 수 있는 사항.",
+    "privacyTitle": "개인정보 처리방침",
+    "privacyIntro": "요약: 사이트 운영에 필요한 데이터만 보관하며, 1바이트도 더 가져가지 않습니다.",
+    "summary": {
+      "stored": {
+        "k": "저장",
+        "v": "시계 목록과 환경설정은 브라우저에 보관됩니다."
+      },
+      "collected": {
+        "k": "수집",
+        "v": "Plausible를 통한 익명 이용 통계."
+      },
+      "sold": {
+        "k": "판매",
+        "v": "없음. 개인 데이터를 판매하지 않습니다."
+      }
+    },
+    "privacySections": {
+      "overview": {
+        "title": "개요",
+        "p1": "datetime.app은 시간 및 시간대 도구입니다. 계정 없이 작동하며 개인정보를 요구하지 않습니다."
+      },
+      "collect": {
+        "title": "수집하는 정보",
+        "p1": "가입은 필요하지 않습니다. 선택한 시간대와 표시 환경설정은 브라우저(localStorage)에만 저장되며 당사 서버로 전송되지 않습니다.",
+        "p2": "보안 및 디버깅을 위해 표준 서버 로그(IP 주소, 사용자 에이전트, 요청한 페이지)를 단기간 보관할 수 있습니다."
+      },
+      "analytics": {
+        "title": "분석",
+        "p1": "어떤 페이지가 사용되는지 파악하기 위해 Plausible를 사용합니다. 데이터는 집계된 형태이며 사용자를 식별하는 데 쓰이지 않습니다."
+      },
+      "cookies": {
+        "title": "쿠키",
+        "p1": "추적용 쿠키는 사용하지 않습니다. 테마, 언어 등 환경설정은 브라우저의 로컬 저장소에만 보관됩니다."
+      },
+      "thirdParties": {
+        "title": "제3자",
+        "p1": "Plausible Analytics(사용 통계)와 WorldTimeAPI(IP 주소로 시간대를 확인하는 데 사용)."
+      },
+      "rights": {
+        "title": "사용자의 선택",
+        "p1": "브라우저 설정에서 언제든 로컬 데이터를 삭제할 수 있습니다. 브라우저의 개인정보 보호 기능으로 분석을 차단할 수도 있습니다."
+      },
+      "changes": {
+        "title": "방침의 변경",
+        "p1": "이 방침이 변경되면 위의 날짜가 갱신됩니다."
+      },
+      "contact": {
+        "title": "문의",
+        "p1": "궁금한 점이 있으신가요? hi@datetime.app로 보내 주세요."
+      }
+    },
+    "termsMetaTitle": "서비스 약관 | Datetime.app",
+    "termsMetaDesc": "datetime.app을 이용할 때 적용되는 약관입니다.",
+    "termsTitle": "서비스 약관",
+    "termsIntro": "간단한 도구를 위한 쉬운 약관입니다. datetime.app을 이용하면 이에 동의하는 것으로 간주됩니다.",
+    "termsSummary": {
+      "free": {
+        "k": "무료",
+        "v": "사이트는 무료로 이용할 수 있으며 계정이 필요 없습니다."
+      },
+      "asis": {
+        "k": "있는 그대로",
+        "v": "보증 없이 제공됩니다. 안전과 직결된 시간 측정에는 의존하지 마세요."
+      },
+      "yours": {
+        "k": "사용자 콘텐츠",
+        "v": "입력한 내용은 저장하지 않습니다. 결과를 어떻게 사용하는지는 사용자 책임입니다."
+      }
+    },
+    "termsSections": {
+      "acceptance": {
+        "title": "약관의 수락",
+        "p1": "datetime.app에 접속하거나 이용하면 이 약관에 동의하는 것으로 간주됩니다. 동의하지 않으면 사이트를 이용하지 마세요."
+      },
+      "use": {
+        "title": "서비스 이용",
+        "p1": "datetime.app은 개인 및 상업적 목적으로 사용할 수 있습니다. 서비스를 방해하거나, 무단 접근을 시도하거나, 자동화된 수단으로 과도한 부하를 주지 않을 것에 동의합니다."
+      },
+      "accuracy": {
+        "title": "시간 데이터의 정확성",
+        "p1": "시각, 오프셋, 일광 절약 시간 규칙을 정확하게 유지하려 노력하지만, 이는 기기의 시계, 네트워크 상태, 정부의 규칙 변경에 좌우됩니다. 안전, 법률, 금융과 관련된 시간 측정에는 datetime.app에 의존하지 마세요."
+      },
+      "ip": {
+        "title": "지식재산권",
+        "p1": "오픈 소스로 표시된 부분을 제외하고, 사이트의 디자인, 텍스트, 코드는 datetime.app 또는 그 라이선스 제공자의 소유입니다. 사이트로의 링크는 자유롭게 걸 수 있습니다."
+      },
+      "links": {
+        "title": "제3자 링크",
+        "p1": "사이트에는 외부 서비스로 연결되는 링크가 있을 수 있습니다. 당사는 이를 통제하지 않으며 그 내용이나 운영 방식에 책임지지 않습니다."
+      },
+      "liability": {
+        "title": "책임의 제한",
+        "p1": "서비스는 있는 그대로, 제공 가능한 범위에서 어떠한 보증도 없이 제공됩니다. 법이 허용하는 범위 내에서, 사이트의 이용 또는 이용 불능으로 발생한 어떠한 손실에 대해서도 책임지지 않습니다."
+      },
+      "changes": {
+        "title": "약관의 변경",
+        "p1": "이 약관은 수시로 업데이트될 수 있습니다. 변경 후에도 사이트를 계속 이용하면 새 약관을 수락한 것으로 간주됩니다."
+      },
+      "contact": {
+        "title": "문의",
+        "p1": "궁금한 점이 있으신가요? hi@datetime.app로 보내 주세요."
+      }
+    }
+  },
+  "embed": {
+    "crumb": "임베드",
+    "metaTitle": "Datetime 임베드 — 올해라는 연도를 서비스로 | Datetime.app",
+    "metaDesc": "iframe 하나로 사이트에 올해를 표시하세요. 원격에서, 정성껏 계산합니다.",
+    "eyebrow": "Datetime 임베드",
+    "title": "올해, iframe으로 배달해 드립니다.",
+    "desc": "당신의 사이트는 이미 올해가 몇 년인지 알고 있습니다. 그래도 저희가 알려 주고 싶습니다. 한 줄만 붙여 넣으면 원격 서버가 대신 알아내 드립니다.",
+    "theme": "테마",
+    "light": "라이트",
+    "dark": "다크",
+    "size": "크기",
+    "iframeTitle": "올해",
+    "copy": "스니펫 복사",
+    "specsTitle": "사양",
+    "specsDesc": "자신 있게 보증할 수 있는 숫자들.",
+    "latency": {
+      "label": "지연 시간",
+      "sub": "기기가 이미 알던 걸 알아내는 데 드는 시간"
+    },
+    "uptime": {
+      "label": "가동률",
+      "sub": "연도는 매우 믿을 만합니다"
+    },
+    "requests": {
+      "label": "요청",
+      "value": "1 / 로드",
+      "sub": "방문자당, 연도당"
+    },
+    "payload": {
+      "label": "페이로드",
+      "sub": "비유적으로"
+    },
+    "comparedTitle": "비교",
+    "without": "Datetime 임베드 없이",
+    "withoutText": "즉시, 오프라인, 무료.",
+    "with": "Datetime 임베드 사용 시",
+    "withText": "iframe 하나, 네트워크 왕복 한 번, 의존성 하나. 답은 같습니다.",
+    "faqTitle": "질문",
+    "faq": {
+      "q1": "이게 왜 필요한가요?",
+      "a1": "필요 없습니다. 그게 매력입니다.",
+      "q2": "정확한가요?",
+      "a2": "네. 연도니까요.",
+      "q3": "12월 31일 밤에는 어떻게 되나요?",
+      "a3": "UTC 자정에 바꿉니다. 방문자에게는 달력이 알려 줄 겁니다.",
+      "q4": "스타일을 바꿀 수 있나요?",
+      "a4": "쿼리 매개변수로 라이트 또는 다크, 그리고 세 가지 크기 중 하나를 고를 수 있습니다.",
+      "q5": "오프라인에서도 작동하나요?",
+      "a5": "아니요. 안타깝게도 브라우저가 연도를 기억하고 있습니다."
+    }
+  },
+  "homeUpcoming": {
+    "title": "다가오는 휴일",
+    "description": "내 시간대 기준으로 다음 휴일까지 실시간 카운트다운.",
+    "all": "모든 카운트다운",
+    "today": "오늘",
+    "day": "일",
+    "days": "일"
+  },
+  "blog": {
+    "title": "블로그 - 시간 관리 및 생산성 인사이트",
+    "description": "글로벌 팀과 디지털 노마드를 위한 시간대, 생산성, 시간 관리에 대한 전문가 아티클",
+    "readMore": "더 보기",
+    "publishedOn": "발행일",
+    "author": "저자",
+    "tags": "태그",
+    "share": "공유",
+    "relatedPosts": "관련 글",
+    "searchPlaceholder": "아티클 검색...",
+    "allTags": "전체",
+    "noResults": "기준에 맞는 아티클을 찾을 수 없습니다."
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없습니다",
+    "description": "찾으시는 페이지가 존재하지 않습니다. 다음의 인기 도구들을 이용해 보세요.",
+    "worldClock": "세계 시계",
+    "worldClockDesc": "전 세계 도시의 현재 시간을 확인하세요.",
+    "ageCalculator": "나이 계산기",
+    "ageCalculatorDesc": "생년월일로 정확한 나이를 계산하세요.",
+    "calendar": "달력",
+    "calendarDesc": "원하는 연도나 월의 달력을 탐색하세요.",
+    "holidays": "공휴일",
+    "holidaysDesc": "국가와 연도별 공휴일을 찾아보세요.",
+    "yearProgress": "연도 진행률",
+    "yearProgressDesc": "올해가 얼마나 지났는지 확인하세요.",
+    "utcTime": "UTC 시간",
+    "utcTimeDesc": "현재 협정 세계시(UTC)를 확인하세요."
+  },
+  "unixTimestamp": {
+    "pageTitle": "Unix 타임스탬프 변환기",
+    "subtitle": "Unix / 에포크 타임스탬프를 읽기 쉬운 날짜로 변환하거나 그 반대로 변환하세요.",
+    "aboutTitle": "Unix 타임스탬프에 대하여",
+    "epochTimeTitle": "에포크 시간이란?",
+    "epochTimeDesc": "Unix 타임스탬프는 1970년 1월 1일 00:00:00 UTC 이후 경과한 초를 셉니다. 시간대와 언어에 구애받지 않는 방식으로 시간을 저장하고 비교할 수 있으며, 소프트웨어 엔지니어링의 핵심 요소입니다.",
+    "secondsVsMillisecondsTitle": "초 vs. 밀리초",
+    "secondsVsMillisecondsDesc": "기존 Unix 시간은 초 단위입니다. JavaScript와 많은 최신 API는 밀리초를 사용합니다. 일반적으로 10자리 숫자는 초이고, 13자리 숫자는 밀리초입니다. 이 변환기는 둘 다 자동으로 처리합니다.",
+    "whereUsedTitle": "타임스탬프는 어디에 사용되나요?",
+    "whereUsedDesc": "Unix 타임스탬프는 데이터베이스, 로그 파일, JWT 토큰, HTTP 헤더(Last-Modified), 버전 관리 시스템 및 거의 모든 프로그래밍 언어에서 사용됩니다. 일광 절약 시간과 시간대 차이로 인한 모호성을 제거합니다.",
+    "iso8601Title": "ISO 8601 형식",
+    "iso8601Desc": "ISO 8601(예: 2026-01-01T00:00:00.000Z)은 날짜/시간 문자열의 국제 표준입니다. 사람이 읽을 수 있고, 정렬 가능하며, 항상 명확합니다. Unix 타임스탬프의 텍스트 표현이 필요할 때 사용하세요.",
+    "faqTitle": "자주 묻는 질문",
+    "faqs": {
+      "whatIs": {
+        "question": "Unix 타임스탬프란 무엇인가요?",
+        "answer": "Unix 타임스탬프(에포크 시간이라고도 함)는 1970년 1월 1일 00:00:00 UTC 이후 윤초를 제외하고 경과한 초의 수입니다. 하나의 정수로 시점을 나타내는 표준 방법으로, 프로그래밍, 데이터베이스, API에서 널리 사용됩니다."
+      },
+      "howToConvert": {
+        "question": "Unix 타임스탬프를 읽기 쉬운 날짜로 변환하려면 어떻게 하나요?",
+        "answer": "위의 '타임스탬프를 날짜로' 필드에 Unix 타임스탬프를 붙여넣으면 변환기가 즉시 현지 시간, UTC, ISO 8601 형식 및 상대적 설명(예: '3일 전')으로 동일한 날짜를 표시합니다."
+      },
+      "howToConvertDate": {
+        "question": "날짜를 Unix 타임스탬프로 변환하려면 어떻게 하나요?",
+        "answer": "'날짜를 타임스탬프로' 섹션을 사용하세요. 날짜 선택기로 날짜와 시간을 선택하면(현지 시간대 사용) 해당하는 Unix 타임스탬프가 즉시 나타납니다."
+      },
+      "secondsOrMilliseconds": {
+        "question": "Unix 타임스탬프는 밀리초인가요, 초인가요?",
+        "answer": "원래 Unix 타임스탬프는 초 단위로 측정됩니다. JavaScript의 Date.now()를 포함한 많은 최신 프로그래밍 환경에서는 밀리초를 반환합니다. 이 변환기는 두 가지 모두 처리하며, 값이 9,999,999,999보다 크면 밀리초로 간주하여 자동으로 변환합니다."
+      },
+      "y2038": {
+        "question": "Y2K38 문제란 무엇인가요?",
+        "answer": "많은 레거시 32비트 시스템은 Unix 시간을 부호 있는 32비트 정수로 저장하며, 이는 2038년 1월 19일 03:14:07 UTC(타임스탬프 2147483647)에 오버플로됩니다. 최신 64비트 시스템은 영향을 받지 않으며 수십억 년 후의 날짜까지 표현할 수 있습니다."
+      },
+      "epoch": {
+        "question": "Unix 에포크란 무엇인가요?",
+        "answer": "Unix 에포크는 모든 Unix 타임스탬프의 기준점입니다: 1970년 1월 1일 00:00:00 UTC이며, 값 0으로 표현됩니다. 모든 양수 타임스탬프는 그 시점 이후의 초 수이고, 음수 타임스탬프는 1970년 이전의 날짜를 나타냅니다."
+      }
+    },
+    "currentTimestamp": "현재 Unix 타임스탬프",
+    "copyTimestamp": "타임스탬프 복사",
+    "secondsElapsed": "1970년 1월 1일 00:00:00 UTC 이후 경과한 초 — 매초 업데이트됩니다.",
+    "timestampToDate": "타임스탬프를 날짜로",
+    "timestampInputLabel": "Unix 타임스탬프 (초 또는 밀리초)",
+    "timestampPlaceholder": "예: 1735689600",
+    "invalidInteger": "유효한 정수를 입력해 주세요.",
+    "outOfRange": "타임스탬프가 지원 범위(1970–9999)를 벗어났습니다.",
+    "localTime": "현지 시간",
+    "utcTime": "UTC 시간",
+    "iso8601": "ISO 8601",
+    "relative": "상대적",
+    "copy": "복사",
+    "copied": "복사됨!",
+    "dateToTimestamp": "날짜를 타임스탬프로",
+    "selectDateTime": "날짜와 시간을 선택하세요 (현지 시간대)",
+    "unixTimestampLabel": "Unix 타임스탬프",
+    "referenceTimestamps": "주요 참조 타임스탬프",
+    "referenceHint": "항목을 클릭하면 위의 변환기에 로드됩니다.",
+    "convert": "변환",
+    "refEpoch": "Unix 에포크 (1970년 1월 1일)",
+    "refY2K": "Y2K (2000년 1월 1일)",
+    "refY2K38": "Y2K38 (2038년 1월 19일)",
+    "refStartOf2025": "2025년 시작",
+    "refStartOf2026": "2026년 시작",
+    "relativeSeconds": "{count}초 전",
+    "relativeSecondsIn": "{count}초 후",
+    "relativeMinutes": "{count}분 전",
+    "relativeMinutesPlural": "{count}분 전",
+    "relativeMinutesIn": "{count}분 후",
+    "relativeMinutesPluralIn": "{count}분 후",
+    "relativeHours": "{count}시간 전",
+    "relativeHoursPlural": "{count}시간 전",
+    "relativeHoursIn": "{count}시간 후",
+    "relativeHoursPluralIn": "{count}시간 후",
+    "relativeDays": "{count}일 전",
+    "relativeDaysPlural": "{count}일 전",
+    "relativeDaysIn": "{count}일 후",
+    "relativeDaysPluralIn": "{count}일 후",
+    "relativeMonths": "{count}개월 전",
+    "relativeMonthsPlural": "{count}개월 전",
+    "relativeMonthsIn": "{count}개월 후",
+    "relativeMonthsPluralIn": "{count}개월 후",
+    "relativeYears": "{count}년 전",
+    "relativeYearsPlural": "{count}년 전",
+    "relativeYearsIn": "{count}년 후",
+    "relativeYearsPluralIn": "{count}년 후"
+  },
+  "timeDifference": {
+    "pageTitle": "도시 간 시차",
+    "subtitle": "현재 시간대를 비교하고 전 세계 도시 간 최적의 회의 시간을 찾아보세요.",
+    "sameTime": "동일한 시간",
+    "hourDifference": "{count}시간 차이",
+    "hoursDifference": "{count}시간 차이",
+    "hourMinDifference": "{hours}시간 {minutes}분 차이",
+    "sameTimezone": "동일한 시간대",
+    "hour": "{count}시간",
+    "hours": "{count}시간",
+    "hourMin": "{hours}시간 {minutes}분",
+    "timeDifferenceBreadcrumb": "시차",
+    "timeDifferenceLabel": "시차:",
+    "apart": "차이",
+    "summaryTitle": "시차 요약",
+    "isAhead": "{city}이(가) 앞서 있습니다",
+    "sameOffset": "동일한 오프셋",
+    "bestMeetingTimes": "최적의 회의 시간",
+    "businessHoursDesc": "두 도시의 겹치는 업무 시간 (오전 9시~오후 6시)",
+    "noOverlap": "{cityA}과(와) {cityB} 사이에 겹치는 업무 시간이 없습니다. 이른 아침이나 늦은 저녁 회의를 고려해 보세요.",
+    "overlappingHours": "하루 {count}시간 겹침",
+    "overlappingHoursPlural": "하루 {count}시간 겹침",
+    "inCity": "{city} 기준",
+    "timelineTitle": "24시간 타임라인",
+    "timelineDesc": "업무 시간(오전 9시~오후 6시)이 색상으로 표시됩니다. 현재 시간은 점으로 표시됩니다.",
+    "localTimeNote": "시간은 각 도시의 현지 시간으로 표시됩니다.",
+    "viewAllComparisons": "모든 도시 비교 보기"
   }
 }

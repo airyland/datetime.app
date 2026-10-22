@@ -1,7 +1,5 @@
-import Link from "next/link"
 import { notFound } from "next/navigation"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowLeft, Calendar, Globe } from "lucide-react"
+import { Section, Card, PageIntro, ArrowLink, h2Class } from "@/components/ds"
 import {
   COUNTRIES,
   REGIONS,
@@ -9,15 +7,15 @@ import {
 } from "@/lib/holidays"
 import RegionHolidaysClientPage from "./client-page"
 import { Metadata } from "next"
-import Header from "@/components/header"
 
 interface RegionHolidaysProps {
-  params: { country: string; region: string }
-  searchParams: { lang?: string; year?: string }
+  params: Promise<{ country: string; region: string }>
+  searchParams: Promise<{ lang?: string; year?: string }>
 }
 
-export async function generateMetadata({ params, searchParams }: RegionHolidaysProps): Promise<Metadata> {
-  const { country, region } = params
+export async function generateMetadata({ params, searchParams: searchParamsPromise }: RegionHolidaysProps): Promise<Metadata> {
+  const { country, region } = await params
+  const searchParams = await searchParamsPromise
   const countryInfo = COUNTRIES.find(c => c.code.toLowerCase() === country.toLowerCase())
   
   if (!countryInfo) {
@@ -55,10 +53,11 @@ export async function generateMetadata({ params, searchParams }: RegionHolidaysP
   }
 }
 
-export default function RegionHolidaysPage({ params, searchParams }: RegionHolidaysProps) {
-  const { country, region } = params
-  const langParam = searchParams.lang || 'en'
-  const yearParam = searchParams.year ? parseInt(searchParams.year) : new Date().getFullYear()
+export default async function RegionHolidaysPage({ params, searchParams }: RegionHolidaysProps) {
+  const { country, region } = await params
+  const searchParams_ = await searchParams
+  const langParam = searchParams_.lang || 'en'
+  const yearParam = searchParams_.year ? parseInt(searchParams_.year) : new Date().getFullYear()
   
   // Find country info
   const countryInfo = COUNTRIES.find(c => c.code.toLowerCase() === country.toLowerCase())
@@ -88,64 +87,51 @@ export default function RegionHolidaysPage({ params, searchParams }: RegionHolid
   )
   
   return (
-    <main className="min-h-screen bg-white dark:bg-black flex flex-col">
-      <Header />
+    <main>
+      <PageIntro
+        crumbs={[
+          { label: "Home", href: "/" },
+          { label: "Holidays", href: "/holidays" },
+          { label: countryInfo.name, href: `/holidays/${country}?lang=${langParam}` },
+          { label: regionInfo.name },
+        ]}
+        eyebrow={regionInfo.code}
+        title={`Holidays in ${regionInfo.name}, ${countryInfo.name}`}
+        description={`${yearParam} holiday calendar for ${regionInfo.name}`}
+        right={<ArrowLink href={`/holidays/${country}?lang=${langParam}`} title={`Back to ${countryInfo.name} holidays`}>Back to {countryInfo.name}</ArrowLink>}
+      />
 
-      <div className="flex-grow">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-4">
-              <Link href={`/holidays/${country}?lang=${langParam}`} className="inline-flex items-center text-primary hover:underline" title={`Back to ${countryInfo.name} holidays`}>
-                <ArrowLeft className="mr-1 h-4 w-4" />
-                Back to {countryInfo.name}
-              </Link>
-            </div>
+      {/* Client-side interactive components */}
+      <Section top="clamp(24px,3vw,40px)">
+        <RegionHolidaysClientPage
+          countryCode={countryInfo.code}
+          countryName={countryInfo.name}
+          regionCode={regionInfo.code}
+          regionName={regionInfo.name}
+          initialYear={yearParam}
+          initialLanguage={langParam}
+          initialHolidays={holidays}
+        />
+      </Section>
 
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center flex items-center justify-center gap-2">
-              <Globe className="h-8 w-8" />
-              <span>Holidays in {regionInfo.name}, {countryInfo.name}</span>
-            </h1>
-            <p className="text-xl text-center text-muted-foreground mb-8">
-              {yearParam} holiday calendar for {regionInfo.name}
-            </p>
-
-            {/* Client-side interactive components */}
-            <RegionHolidaysClientPage 
-              countryCode={countryInfo.code}
-              countryName={countryInfo.name}
-              regionCode={regionInfo.code}
-              regionName={regionInfo.name}
-              initialYear={yearParam}
-              initialLanguage={langParam}
-              initialHolidays={holidays}
-            />
-
-            {/* SEO content */}
-            <Card className="mt-8">
-              <CardHeader>
-                <CardTitle className="text-center flex items-center justify-center gap-2">
-                  <Calendar className="h-5 w-5" />
-                  <span>About {regionInfo.name} Holidays</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="mb-4">
-                  This page provides a comprehensive list of holidays in {regionInfo.name}, {countryInfo.name} for {yearParam}. 
-                  The list includes public holidays, bank holidays, school holidays, and observances specific to this region.
-                </p>
-                <p className="mb-4">
-                  In {regionInfo.name}, regional holidays are an important part of the local cultural and social calendar. 
-                  These may include holidays that are specific to this region and not celebrated in other parts of {countryInfo.name}.
-                </p>
-                <p>
-                  You can use the controls above to change the year or language of the holiday names. 
-                  To see holidays for all of {countryInfo.name}, use the back link at the top of the page.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
+      {/* SEO content */}
+      <Section>
+        <Card className="p-[clamp(22px,3vw,36px)]">
+          <h2 className={h2Class}>About {regionInfo.name} Holidays</h2>
+          <p className="mb-0 mt-4 max-w-[70ch] leading-relaxed text-subtle">
+            This page provides a comprehensive list of holidays in {regionInfo.name}, {countryInfo.name} for {yearParam}.
+            The list includes public holidays, bank holidays, school holidays, and observances specific to this region.
+          </p>
+          <p className="mb-0 mt-3 max-w-[70ch] leading-relaxed text-subtle">
+            In {regionInfo.name}, regional holidays are an important part of the local cultural and social calendar.
+            These may include holidays that are specific to this region and not celebrated in other parts of {countryInfo.name}.
+          </p>
+          <p className="mb-0 mt-3 max-w-[70ch] leading-relaxed text-subtle">
+            You can use the controls above to change the year or language of the holiday names.
+            To see holidays for all of {countryInfo.name}, use the back link at the top of the page.
+          </p>
+        </Card>
+      </Section>
     </main>
   )
 }

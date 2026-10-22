@@ -25,3 +25,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+.DS_Store
+*.log
+
+# markdown files (except README)
+*.md
+!README.md

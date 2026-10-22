@@ -7,7 +7,7 @@ WORKDIR /app
 FROM base AS deps
 # Because of docker layer caching dependencies should only be re-installed if package.json or pnpm-lock.yaml change.
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
 RUN pnpm install --frozen-lockfile
 
@@ -31,7 +31,7 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 
-COPY --chown=nextjs:nodejs package.json pnpm-lock.yaml ./
+COPY --chown=nextjs:nodejs package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
 # Install only prod dependencies
 RUN pnpm install --prod --frozen-lockfile

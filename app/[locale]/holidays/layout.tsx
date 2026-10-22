@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import { redirect } from 'next/navigation'
 
 interface LayoutProps {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
   children: React.ReactNode;
 }
 
@@ -20,7 +20,8 @@ export const metadata: Metadata = {
   }
 }
 
-export default function HolidaysLayout({ params, children }: LayoutProps) {
+export default async function HolidaysLayout({ params: paramsPromise, children }: LayoutProps) {
+  const params = await paramsPromise
   // Redirect non-English locales to English version since holidays is English-only
   if (params.locale !== 'en') {
     redirect('/holidays');
