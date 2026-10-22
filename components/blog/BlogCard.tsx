@@ -1,11 +1,8 @@
-'use client'
-
 import Link from 'next/link'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { CalendarIcon, Clock, User } from 'lucide-react'
-import { format } from 'date-fns'
+import { getLocalePath } from '@/lib/locale-utils'
+import { monoLabel } from '@/components/ds'
 
-interface BlogPost {
+export interface BlogPostMeta {
   slug: string
   title: string
   description: string
@@ -13,47 +10,28 @@ interface BlogPost {
   author: string
   tags: string[]
   readTime: string
-  image: string
+  image?: string
 }
 
-interface BlogCardProps {
-  post: BlogPost
-  locale: string
-}
+export const formatDate = (iso: string, long = false) =>
+  new Date(iso).toLocaleDateString('en-US', { month: long ? 'long' : 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })
 
-export default function BlogCard({ post, locale }: BlogCardProps) {
+export default function BlogCard({ post, locale }: { post: BlogPostMeta; locale: string }) {
   return (
-    <Link href={`/${locale}/blog/${post.slug}`}>
-      <Card className="h-full hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-        <CardHeader>
-          <h2 className="text-xl font-semibold line-clamp-2 mb-2">{post.title}</h2>
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span className="flex items-center gap-1">
-              <CalendarIcon className="h-3 w-3" />
-              {format(new Date(post.date), 'MMM d, yyyy')}
-            </span>
-            <span className="flex items-center gap-1">
-              <Clock className="h-3 w-3" />
-              {post.readTime}
-            </span>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground line-clamp-3 mb-4">{post.description}</p>
-
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2">
-            {post.tags.slice(0, 3).map(tag => (
-              <span
-                key={tag}
-                className="px-2 py-1 text-xs bg-secondary text-secondary-foreground rounded"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+    <Link
+      href={getLocalePath(`/blog/${post.slug}`, locale)}
+      className="flex min-h-[220px] flex-col justify-between gap-6 rounded-[18px] border border-line bg-surface p-[22px] text-ink transition-colors hover:border-ink"
+    >
+      <div>
+        <div className={monoLabel}>{post.tags[0] ?? 'Article'}</div>
+        <h2 className="m-0 mt-3 line-clamp-3 text-xl font-semibold leading-[1.25] tracking-[-0.02em]">{post.title}</h2>
+        <p className="m-0 mt-2.5 line-clamp-3 text-[14.5px] leading-[1.6] text-subtle">{post.description}</p>
+      </div>
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[12px] text-subtle">
+        <span>{formatDate(post.date)}</span>
+        <span aria-hidden="true">·</span>
+        <span>{post.readTime}</span>
+      </div>
     </Link>
   )
 }

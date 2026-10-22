@@ -1,161 +1,34 @@
 @reference "../../globals.css";
-/* Blog Typography Styles */
 
-.blog-content {
-  @apply text-ink;
-}
+/* Article prose */
+.blog-content { @apply text-ink text-[17px] leading-[1.75]; }
+.blog-content > * + * { @apply mt-5; }
 
-/* Headings */
-.blog-content h2 {
-  @apply text-3xl font-bold mt-8 mb-4 text-ink;
-  @apply border-b border-line pb-2;
-}
+.blog-content h2 { @apply mt-12 text-[clamp(24px,2.6vw,30px)] font-semibold leading-[1.2] tracking-[-0.025em] text-ink; }
+.blog-content h3 { @apply mt-9 text-[22px] font-semibold leading-[1.25] tracking-[-0.02em] text-ink; }
+.blog-content h4 { @apply mt-7 text-lg font-semibold text-ink; }
+.blog-content h2 + *, .blog-content h3 + *, .blog-content h4 + * { @apply mt-3; }
 
-.blog-content h3 {
-  @apply text-2xl font-semibold mt-6 mb-3 text-ink;
-}
+.blog-content p, .blog-content li { @apply text-ink/90; }
+.blog-content > p:first-of-type { @apply text-[19px] leading-[1.65] text-subtle; }
 
-.blog-content h4 {
-  @apply text-xl font-semibold mt-5 mb-2 text-ink;
-}
+.blog-content ul { @apply list-disc pl-6; }
+.blog-content ol { @apply list-decimal pl-6; }
+.blog-content li + li { @apply mt-2; }
+.blog-content li > ul, .blog-content li > ol { @apply mt-2; }
+.blog-content li::marker { @apply text-subtle; }
 
-.blog-content h5 {
-  @apply text-lg font-medium mt-4 mb-2 text-ink;
-}
+.blog-content a { @apply text-ink underline underline-offset-[3px] decoration-line2 transition-colors hover:decoration-ink; }
+.blog-content strong { @apply font-semibold text-ink; }
 
-.blog-content h6 {
-  @apply text-base font-medium mt-3 mb-2 text-ink;
-}
+.blog-content code { @apply rounded-md border border-line bg-surface px-1.5 py-0.5 font-mono text-[0.88em] text-ink; }
+.blog-content pre { @apply overflow-x-auto rounded-[14px] border border-line bg-surface p-4; }
+.blog-content pre code { @apply border-0 bg-transparent p-0 text-sm leading-6; }
 
-/* Paragraphs */
-.blog-content p {
-  @apply mb-4 leading-7 text-ink/90;
-  @apply text-base md:text-lg;
-}
+.blog-content blockquote { @apply border-l-2 border-ink pl-5 text-subtle; }
+.blog-content img { @apply my-8 h-auto max-w-full rounded-[14px] border border-line; }
+.blog-content hr { @apply my-10 border-t border-line; }
 
-/* Lists */
-.blog-content ul {
-  @apply list-disc list-inside mb-4 space-y-2;
-  @apply ml-4 md:ml-6;
-}
-
-.blog-content ol {
-  @apply list-decimal list-inside mb-4 space-y-2;
-  @apply ml-4 md:ml-6;
-}
-
-.blog-content li {
-  @apply text-ink/90 leading-7;
-  @apply text-base md:text-lg;
-}
-
-.blog-content li > ul,
-.blog-content li > ol {
-  @apply mt-2 ml-4;
-}
-
-/* Links */
-.blog-content a {
-  @apply text-blue-600 dark:text-blue-500 underline underline-offset-2;
-  @apply hover:text-blue-700 dark:hover:text-blue-400 transition-colors;
-  @apply decoration-blue-600/30 dark:decoration-blue-500/30;
-  @apply hover:decoration-blue-700/50 dark:hover:decoration-blue-400/50;
-}
-
-/* Code */
-.blog-content code {
-  @apply bg-surface px-1.5 py-0.5 rounded text-sm;
-  @apply font-mono text-ink;
-}
-
-.blog-content pre {
-  @apply bg-surface p-4 rounded-lg overflow-x-auto mb-4;
-  @apply border border-line;
-}
-
-.blog-content pre code {
-  @apply bg-transparent p-0;
-  @apply text-sm leading-6;
-}
-
-/* Blockquotes */
-.blog-content blockquote {
-  @apply border-l-4 border-line2 pl-4 italic mb-4;
-  @apply text-subtle;
-}
-
-/* Images */
-.blog-content img {
-  @apply rounded-lg max-w-full h-auto my-6;
-  @apply shadow-lg;
-}
-
-/* Tables */
-.blog-content table {
-  @apply w-full mb-4 border-collapse;
-}
-
-.blog-content th {
-  @apply bg-surface p-3 text-left font-semibold;
-  @apply border border-line;
-}
-
-.blog-content td {
-  @apply p-3 border border-line;
-}
-
-.blog-content tbody tr:hover {
-  @apply bg-surface/50;
-}
-
-/* Horizontal Rules */
-.blog-content hr {
-  @apply border-t border-line my-8;
-}
-
-/* Strong and Emphasis */
-.blog-content strong {
-  @apply font-semibold text-ink;
-}
-
-.blog-content em {
-  @apply italic;
-}
-
-/* First paragraph (lead) */
-.blog-content > p:first-of-type {
-  @apply text-lg md:text-xl leading-8 text-subtle mb-6;
-}
-
-/* Spacing between sections */
-.blog-content > * + h2 {
-  @apply mt-12;
-}
-
-.blog-content > * + h3 {
-  @apply mt-8;
-}
-
-/* Better list styling */
-.blog-content ul li::marker {
-  @apply text-subtle;
-}
-
-.blog-content ol li::marker {
-  @apply text-subtle font-semibold;
-}
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  .blog-content h2 {
-    @apply text-2xl;
-  }
-
-  .blog-content h3 {
-    @apply text-xl;
-  }
-
-  .blog-content h4 {
-    @apply text-lg;
-  }
-}
+.blog-content table { @apply block w-full overflow-x-auto border-collapse text-[15px]; }
+.blog-content th { @apply border border-line bg-surface p-3 text-left font-semibold; }
+.blog-content td { @apply border border-line p-3; }

@@ -2,9 +2,9 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import BlogPost from '@/components/blog/BlogPost'
-import Header from '@/components/header'
 import { promises as fs } from 'fs'
 import path from 'path'
+import { getLocalePath } from '@/lib/locale-utils'
 
 interface BlogPostData {
   slug: string
@@ -54,7 +54,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params: paramsPromise }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
+  const params = await paramsPromise
   const post = await getPost(params.slug)
 
   if (!post) {
@@ -76,7 +77,7 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
       publishedTime: post.date,
       authors: [post.author],
       images: [post.image],
-      url: `https://datetime.app/${params.locale}/blog/${post.slug}`,
+      url: `https://datetime.app${getLocalePath(`/blog/${post.slug}`, params.locale)}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -85,12 +86,13 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
       images: [post.image],
     },
     alternates: {
-      canonical: `https://datetime.app/${params.locale}/blog/${post.slug}`,
+      canonical: `https://datetime.app${getLocalePath(`/blog/${post.slug}`, params.locale)}`,
     },
   }
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string; locale: string } }) {
+export default async function BlogPostPage({ params: paramsPromise }: { params: Promise<{ slug: string; locale: string }> }) {
+  const params = await paramsPromise
   const post = await getPost(params.slug)
   const t = await getTranslations({ locale: params.locale, namespace: 'blog' })
 
@@ -107,10 +109,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string;
 
   return (
     <>
-      <Header />
-      <article className="container mx-auto px-4 py-8 max-w-4xl">
-        <BlogPost post={post} relatedPosts={relatedPosts} locale={params.locale} />
-      </article>
+      <BlogPost post={post} relatedPosts={relatedPosts} locale={params.locale} />
     </>
   )
 }

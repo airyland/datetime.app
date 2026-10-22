@@ -1,11 +1,13 @@
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import BlogList from '@/components/blog/BlogList'
-import Header from '@/components/header'
+import { PageIntro, Section } from '@/components/ds'
 import { promises as fs } from 'fs'
 import path from 'path'
+import { getLocalePath } from '@/lib/locale-utils'
 
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'blog' })
 
   return {
@@ -15,7 +17,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       title: t('title'),
       description: t('description'),
       type: 'website',
-      url: `https://datetime.app/${locale}/blog`,
+      url: `https://datetime.app${getLocalePath("/blog", locale)}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -23,7 +25,7 @@ export async function generateMetadata({ params: { locale } }: { params: { local
       description: t('description'),
     },
     alternates: {
-      canonical: `https://datetime.app/${locale}/blog`,
+      canonical: `https://datetime.app${getLocalePath("/blog", locale)}`,
     },
   }
 }
@@ -42,21 +44,23 @@ async function getBlogPosts() {
   }
 }
 
-export default async function BlogPage({ params: { locale } }: { params: { locale: string } }) {
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'blog' })
   const posts = await getBlogPosts()
 
   return (
     <>
-      <Header />
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">{t('title')}</h1>
-          <p className="text-lg text-muted-foreground">{t('description')}</p>
-        </div>
-
+      <PageIntro
+        crumbs={[{ label: 'Home', href: getLocalePath('/', locale) }, { label: 'Blog' }]}
+        eyebrow="Blog"
+        title={t('title')}
+        description={t('description')}
+      />
+      <Section top="clamp(28px,4vw,48px)">
         <BlogList posts={posts} locale={locale} />
-      </div>
+      </Section>
+      <div className="pb-[clamp(56px,8vw,96px)]" />
     </>
   )
 }

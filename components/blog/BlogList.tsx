@@ -1,143 +1,65 @@
 'use client'
 
 import { useState } from 'react'
-import BlogCard from './BlogCard'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { Search } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { inputClass } from '@/components/ds'
+import BlogCard, { type BlogPostMeta } from './BlogCard'
 
-interface BlogPost {
-  slug: string
-  title: string
-  description: string
-  date: string
-  author: string
-  tags: string[]
-  readTime: string
-  image: string
-}
+const PER_PAGE = 9
+const btn = 'h-9 rounded-full border px-4 text-sm font-medium transition-colors disabled:opacity-40'
 
-interface BlogListProps {
-  posts: BlogPost[]
-  locale: string
-}
+export default function BlogList({ posts, locale }: { posts: BlogPostMeta[]; locale: string }) {
+  const [q, setQ] = useState('')
+  const [tag, setTag] = useState<string | null>(null)
+  const [page, setPage] = useState(1)
 
-export default function BlogList({ posts, locale }: BlogListProps) {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedTag, setSelectedTag] = useState<string | null>(null)
-  const [currentPage, setCurrentPage] = useState(1)
-  const postsPerPage = 9
-
-  // Get all unique tags
-  const allTags = Array.from(new Set(posts.flatMap(post => post.tags)))
-
-  // Filter posts based on search and selected tag
-  const filteredPosts = posts.filter(post => {
-    const matchesSearch = searchTerm === '' ||
-      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchTerm.toLowerCase())
-
-    const matchesTag = !selectedTag || post.tags.includes(selectedTag)
-
-    return matchesSearch && matchesTag
-  })
-
-  // Pagination
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage)
-  const startIndex = (currentPage - 1) * postsPerPage
-  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + postsPerPage)
+  const counts = new Map<string, number>()
+  for (const p of posts) for (const x of p.tags) counts.set(x, (counts.get(x) ?? 0) + 1)
+  const tags = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([x]) => x)
+  const term = q.trim().toLowerCase()
+  const filtered = posts.filter(
+    (p) => (!term || p.title.toLowerCase().includes(term) || p.description.toLowerCase().includes(term)) && (!tag || p.tags.includes(tag)),
+  )
+  const pages = Math.max(1, Math.ceil(filtered.length / PER_PAGE))
+  const shown = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE)
 
   return (
     <div>
-      {/* Search and Filter */}
-      <div className="mb-8 space-y-4">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-          <Input
-            type="text"
-            placeholder="Search articles..."
-            value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value)
-              setCurrentPage(1)
-            }}
-            className="pl-10"
-          />
-        </div>
-
-        {/* Tag Filter */}
-        <div className="flex flex-wrap gap-2">
-          <Button
-            variant={selectedTag === null ? "default" : "outline"}
-            size="sm"
-            onClick={() => {
-              setSelectedTag(null)
-              setCurrentPage(1)
-            }}
-          >
-            All
-          </Button>
-          {allTags.map(tag => (
-            <Button
-              key={tag}
-              variant={selectedTag === tag ? "default" : "outline"}
-              size="sm"
-              onClick={() => {
-                setSelectedTag(tag)
-                setCurrentPage(1)
-              }}
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
+        <div role="group" aria-label="Filter by topic" className="flex flex-wrap gap-2">
+          {[null, ...tags].map((t) => (
+            <button
+              key={t ?? 'all'}
+              type="button"
+              aria-pressed={tag === t}
+              onClick={() => { setTag(t); setPage(1) }}
+              className={cn(btn, tag === t ? 'border-ink bg-ink text-paper' : 'border-line bg-surface text-subtle hover:text-ink')}
             >
-              {tag}
-            </Button>
+              {t ?? 'All'}
+            </button>
           ))}
         </div>
+        <input
+          type="search"
+          aria-label="Search articles"
+          placeholder="Search articles"
+          value={q}
+          onChange={(e) => { setQ(e.target.value); setPage(1) }}
+          className={cn(inputClass, 'w-full sm:w-[280px]')}
+        />
       </div>
 
-      {/* Blog Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {paginatedPosts.map(post => (
-          <BlogCard key={post.slug} post={post} locale={locale} />
-        ))}
+      <div className="grid gap-3.5" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(min(100%,300px),1fr))' }}>
+        {shown.map((p) => <BlogCard key={p.slug} post={p} locale={locale} />)}
       </div>
 
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="flex justify-center gap-2">
-          <Button
-            variant="outline"
-            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-            disabled={currentPage === 1}
-          >
-            Previous
-          </Button>
+      {filtered.length === 0 && <p className="py-12 text-center text-sm text-subtle">No articles match your search.</p>}
 
-          <div className="flex items-center gap-2">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-              <Button
-                key={page}
-                variant={currentPage === page ? "default" : "outline"}
-                size="sm"
-                onClick={() => setCurrentPage(page)}
-              >
-                {page}
-              </Button>
-            ))}
-          </div>
-
-          <Button
-            variant="outline"
-            onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </Button>
-        </div>
-      )}
-
-      {/* No results message */}
-      {filteredPosts.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">No articles found matching your criteria.</p>
+      {pages > 1 && (
+        <div className="mt-8 flex items-center justify-center gap-3">
+          <button type="button" className={cn(btn, 'border-line bg-surface')} disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
+          <span className="font-mono text-[13px] text-subtle">{page} / {pages}</span>
+          <button type="button" className={cn(btn, 'border-line bg-surface')} disabled={page === pages} onClick={() => setPage(page + 1)}>Next</button>
         </div>
       )}
     </div>
