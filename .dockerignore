@@ -1,0 +1,9 @@
+.git
+node_modules
+.next
+.open-next
+.wrangler
+.env*
+*.log
+.DS_Store
+deployments
