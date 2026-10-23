@@ -5,6 +5,7 @@ import { PageIntro, Section, cardClass } from '@/components/ds'
 import { getLocalePath } from '@/lib/locale-utils'
 import { citiesData } from '../cities/[city]/metadata'
 import { getTranslations } from 'next-intl/server'
+import { pageAlternates } from '@/lib/seo'
 
 export async function generateMetadata({
   params,
@@ -14,6 +15,7 @@ export async function generateMetadata({
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'timeDifference' })
   return {
+    alternates: pageAlternates('time-difference', locale),
     title: 'Time Difference Calculator | Compare Time Zones | Datetime.app',
     description:
       'Compare time differences between major cities worldwide. Find out the hours between New York and London, Tokyo and Los Angeles, and more.',

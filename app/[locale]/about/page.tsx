@@ -3,6 +3,12 @@ import Link from "next/link"
 import { getLocale } from "next-intl/server"
 import { getLocalePath } from "@/lib/locale-utils"
 import UtcClock from "./utc-clock"
+import { pageAlternates } from "@/lib/seo"
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return { alternates: pageAlternates("about", locale) }
+}
 
 const features = [
   ["Clean and intuitive interface", "Nothing between you and the time. Large type, calm colour, no clutter."],
