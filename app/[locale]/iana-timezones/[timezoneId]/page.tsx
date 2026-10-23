@@ -27,7 +27,6 @@ export default function TimezoneDetailPage({ params }: TimezoneDetailPageProps) 
   const t = useTranslations('timezoneDetail')
   const tCommon = useTranslations('common')
   
-  const [currentTime, setCurrentTime] = useState(() => getCurrentTimeForTimezone(timezoneId))
   const [copiedStates, setCopiedStates] = useState<Record<string, boolean>>({})
 
   // Get timezone data
@@ -36,6 +35,8 @@ export default function TimezoneDetailPage({ params }: TimezoneDetailPageProps) 
   if (!timezone) {
     notFound()
   }
+
+  const [currentTime, setCurrentTime] = useState(() => getCurrentTimeForTimezone(timezoneId))
 
   // Update time every second
   useEffect(() => {
