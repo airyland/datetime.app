@@ -1,16 +1,9 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { JetBrains_Mono } from "next/font/google"
 import { Clock, Copy, Check, ArrowRightLeft, Calendar } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { cardClass, inputClass } from "@/components/ds"
 import { useTranslations, useLocale } from "next-intl"
-
-// Load JetBrains Mono for timestamp numbers
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-})
 
 function useClipboard(resetDelay = 2000) {
   const [copied, setCopied] = useState(false)
@@ -40,10 +33,10 @@ function CopyButton({
     <button
       onClick={() => copy(text)}
       aria-label={copied ? copiedLabel : label}
-      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium bg-secondary hover:bg-secondary/80 transition-colors"
+      className="inline-flex h-8 items-center gap-1.5 rounded-full border border-line2 px-3 text-[13px] font-medium transition-colors hover:border-ink"
     >
       {copied ? (
-        <Check className="h-3.5 w-3.5 text-green-500" aria-hidden="true" />
+        <Check className="h-3.5 w-3.5 text-brand" aria-hidden="true" />
       ) : (
         <Copy className="h-3.5 w-3.5" aria-hidden="true" />
       )}
@@ -202,17 +195,15 @@ export default function UnixTimestampClient() {
     <div className="space-y-6">
 
       {/* ── Current Unix Timestamp ── */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-lg">
-            <Clock className="h-5 w-5" aria-hidden="true" />
-            {t("currentTimestamp")}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+      <div className={`${cardClass} p-[clamp(20px,3vw,32px)]`}>
+        <h2 className="m-0 mb-5 flex items-center gap-2.5 text-lg font-semibold tracking-[-0.015em]">
+          <Clock className="size-[18px] text-brand" aria-hidden="true" />
+          {t("currentTimestamp")}
+        </h2>
+        <div>
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <p
-              className={`text-4xl md:text-5xl font-bold tabular-nums tracking-tight ${jetbrainsMono.className}`}
+              className={`text-[clamp(32px,6vw,56px)] font-light tabular-nums tracking-[-0.04em] font-mono break-all`}
               aria-live="polite"
               aria-label={`${t("currentTimestamp")}: ${currentTs}`}
             >
@@ -224,23 +215,21 @@ export default function UnixTimestampClient() {
               copiedLabel={t("copied")}
             />
           </div>
-          <p className="mt-2 text-sm text-muted-foreground">
+          <p className="mt-2 text-sm text-subtle">
             {t("secondsElapsed")}
           </p>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* ── Timestamp to Date ── */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-lg">
-            <ArrowRightLeft className="h-5 w-5" aria-hidden="true" />
-            {t("timestampToDate")}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
+      <div className={`${cardClass} p-[clamp(20px,3vw,32px)]`}>
+        <h2 className="m-0 mb-5 flex items-center gap-2.5 text-lg font-semibold tracking-[-0.015em]">
+          <ArrowRightLeft className="size-[18px] text-brand" aria-hidden="true" />
+          {t("timestampToDate")}
+        </h2>
+        <div className="space-y-4">
           <div>
-            <label htmlFor="ts-input" className="block text-sm font-medium mb-1">
+            <label htmlFor="ts-input" className="mb-2 block text-[13px] font-medium">
               {t("timestampInputLabel")}
             </label>
             <input
@@ -250,23 +239,23 @@ export default function UnixTimestampClient() {
               placeholder={t("timestampPlaceholder")}
               value={tsInput}
               onChange={(e) => handleTsInput(e.target.value)}
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 font-mono"
+              className={`${inputClass} font-mono`}
               aria-describedby={tsError ? "ts-input-error" : undefined}
             />
             {tsError && (
-              <p id="ts-input-error" className="mt-1 text-sm text-red-500" role="alert">
+              <p id="ts-input-error" className="mt-1 text-sm text-brand" role="alert">
                 {tsError}
               </p>
             )}
           </div>
 
           {tsResult && (
-            <div className="space-y-2 border rounded-lg p-4 bg-secondary/30">
+            <div className="space-y-2 rounded-xl border border-line bg-paper p-4">
               {resultRows.map(({ label, value }) => (
                 <div key={label} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                  <span className="text-sm font-medium text-muted-foreground w-24 shrink-0">{label}</span>
+                  <span className="text-sm font-medium text-subtle w-24 shrink-0">{label}</span>
                   <div className="flex items-center gap-2 min-w-0 flex-1">
-                    <span className={`text-sm break-all ${label === t("iso8601") ? jetbrainsMono.className : ""}`}>
+                    <span className={`text-sm break-all ${label === t("iso8601") ? "font-mono" : ""}`}>
                       {value}
                     </span>
                     <CopyButton
@@ -279,20 +268,18 @@ export default function UnixTimestampClient() {
               ))}
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* ── Date to Timestamp ── */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-lg">
-            <Calendar className="h-5 w-5" aria-hidden="true" />
-            {t("dateToTimestamp")}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
+      <div className={`${cardClass} p-[clamp(20px,3vw,32px)]`}>
+        <h2 className="m-0 mb-5 flex items-center gap-2.5 text-lg font-semibold tracking-[-0.015em]">
+          <Calendar className="size-[18px] text-brand" aria-hidden="true" />
+          {t("dateToTimestamp")}
+        </h2>
+        <div className="space-y-4">
           <div>
-            <label htmlFor="date-input" className="block text-sm font-medium mb-1">
+            <label htmlFor="date-input" className="mb-2 block text-[13px] font-medium">
               {t("selectDateTime")}
             </label>
             <input
@@ -300,15 +287,15 @@ export default function UnixTimestampClient() {
               type="datetime-local"
               value={dateInput}
               onChange={(e) => setDateInput(e.target.value)}
-              className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className={inputClass}
             />
           </div>
 
           {dateResult !== null && (
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 border rounded-lg p-4 bg-secondary/30">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 rounded-xl border border-line bg-paper p-4">
               <div className="flex-1">
-                <p className="text-sm text-muted-foreground mb-1">{t("unixTimestampLabel")}</p>
-                <p className={`text-3xl font-bold tabular-nums ${jetbrainsMono.className}`}>
+                <p className="text-sm text-subtle mb-1">{t("unixTimestampLabel")}</p>
+                <p className={`text-3xl font-bold tabular-nums font-mono`}>
                   {dateResult}
                 </p>
               </div>
@@ -319,37 +306,35 @@ export default function UnixTimestampClient() {
               />
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* ── Common Reference Timestamps ── */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-lg">
-            <Clock className="h-5 w-5" aria-hidden="true" />
-            {t("referenceTimestamps")}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground mb-4">
+      <div className={`${cardClass} p-[clamp(20px,3vw,32px)]`}>
+        <h2 className="m-0 mb-5 flex items-center gap-2.5 text-lg font-semibold tracking-[-0.015em]">
+          <Clock className="size-[18px] text-brand" aria-hidden="true" />
+          {t("referenceTimestamps")}
+        </h2>
+        <div>
+          <p className="text-sm text-subtle mb-4">
             {t("referenceHint")}
           </p>
-          <div className="divide-y divide-border rounded-lg border overflow-hidden">
+          <div className="divide-y divide-line overflow-hidden rounded-xl border border-line">
             {REFERENCE_TIMESTAMPS.map(({ label, ts }) => (
               <div
                 key={ts}
-                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 hover:bg-secondary/40 transition-colors"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 hover:bg-paper transition-colors"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                   <span className="text-sm font-medium">{label}</span>
-                  <span className={`text-sm text-muted-foreground tabular-nums ${jetbrainsMono.className}`}>
+                  <span className={`text-sm text-subtle tabular-nums font-mono`}>
                     {ts}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => loadReference(ts)}
-                    className="text-xs px-2.5 py-1 rounded bg-secondary hover:bg-secondary/80 transition-colors"
+                    className="inline-flex h-8 items-center rounded-full bg-ink px-3 text-[13px] font-medium text-paper transition-opacity hover:opacity-85"
                     aria-label={`${t("convert")} ${label}`}
                   >
                     {t("convert")}
@@ -363,8 +348,8 @@ export default function UnixTimestampClient() {
               </div>
             ))}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
     </div>
   )

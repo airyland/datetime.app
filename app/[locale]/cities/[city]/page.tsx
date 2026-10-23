@@ -8,6 +8,7 @@ import { Copy, Check, Maximize2 } from 'lucide-react'
 import { locales } from '@/i18n/request'
 import { countdownSlugFor } from '@/lib/countdown'
 import { getLocalePath } from '@/lib/locale-utils'
+import { AdSlot } from "@/components/ad-slot"
 import { Eyebrow, PageIntro, Section, SectionHeading, Faq, cardClass, monoLabel, h2Class } from "@/components/ds"
 import { cn } from "@/lib/utils"
 import { citiesData } from './metadata'
@@ -1009,6 +1010,11 @@ export default function CityPage({ params }: CityPageProps) {
                 );
               })}
         </div>
+      </Section>
+
+      {/* Google AdSense Advertisement */}
+      <Section top="clamp(24px,3vw,40px)">
+        <AdSlot />
       </Section>
 
       {isFullscreen && (

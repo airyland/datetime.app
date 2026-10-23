@@ -3,15 +3,12 @@
 import { use, useEffect, useState } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { Globe, ArrowLeftRight, Clock } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { JetBrains_Mono } from 'next/font/google'
+import { PageIntro, Section, SectionHeading, cardClass, monoLabel } from '@/components/ds'
+import { getLocalePath } from '@/lib/locale-utils'
 import { citiesData } from '@/app/[locale]/cities/[city]/metadata'
 import { useTranslations } from 'next-intl'
 import { useLocale } from 'next-intl'
 
-
-const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], display: 'swap' })
 
 // Work hour range considered "business hours"
 const WORK_START = 9
@@ -136,234 +133,163 @@ export default function TimeDifferencePage({ params }: TimeDiffPageProps) {
   const currentHourA = getCurrentHour(now, cityA.timezone)
   const currentHourB = getCurrentHour(now, cityB.timezone)
 
+  const fmt12 = (h: number) => {
+    const ampm = h >= 12 ? 'PM' : 'AM'
+    const h12 = h % 12 === 0 ? 12 : h % 12
+    return `${h12}:00 ${ampm}`
+  }
+  const listHref = getLocalePath('/time-difference', locale)
+  const sides = [
+    { city: cityA, offset: offsetA, currentHour: currentHourA },
+    { city: cityB, offset: offsetB, currentHour: currentHourB },
+  ]
+
   return (
-    <div className="flex flex-col">
+    <>
+      <PageIntro
+        crumbs={[
+          { label: 'Home', href: getLocalePath('/', locale) },
+          { label: t('timeDifferenceBreadcrumb'), href: listHref },
+          { label: `${cityA.name} vs ${cityB.name}` },
+        ]}
+        eyebrow={t('timeDifferenceLabel')}
+        eyebrowAs="p"
+        title={`${cityA.name} vs ${cityB.name}`}
+        description={hourDiff === t('sameTimezone') ? hourDiff : `${hourDiff} ${t('apart')}`}
+      />
 
-      <div className="flex-grow">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-3xl mx-auto">
-
-            {/* Breadcrumb */}
-            <p className="text-sm text-muted-foreground mb-4">
-              <Link
-                href={`/${locale}/time-difference`}
-                className="hover:underline"
-              >
-                {t('timeDifferenceBreadcrumb')}
-              </Link>{' '}
-              &rsaquo; {cityA.name} vs {cityB.name}
-            </p>
-
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center">
-              {cityA.name} vs {cityB.name}
-            </h1>
-            <p className="text-center text-muted-foreground mb-8">
-              {t('timeDifferenceLabel')}{' '}
-              <strong>
-                {hourDiff === t('sameTimezone')
-                  ? hourDiff
-                  : `${hourDiff} ${t('apart')}`}
-              </strong>
-            </p>
-
-            {/* Live clocks */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-              {[
-                { city: cityA, offset: offsetA },
-                { city: cityB, offset: offsetB },
-              ].map(({ city, offset }) => (
-                <Card key={city.timezone}>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <Globe className="h-4 w-4 text-muted-foreground" />
-                      {city.name}
-                    </CardTitle>
-                    <p className="text-xs text-muted-foreground">
-                      {city.timezone} &middot; {formatOffsetLabel(offset)}
-                    </p>
-                  </CardHeader>
-                  <CardContent>
-                    <p
-                      className={`text-3xl font-bold tabular-nums ${jetbrainsMono.className}`}
-                    >
-                      {formatTime(now, city.timezone, currentLocale)}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {formatDate(now, city.timezone, currentLocale)}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
+      {/* Live clocks */}
+      <Section top="clamp(24px,3vw,40px)">
+        <div className="grid gap-3.5" style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,320px),1fr))' }}>
+          {sides.map(({ city, offset }) => (
+            <div key={city.timezone} className={`${cardClass} p-[clamp(20px,3vw,32px)]`}>
+              <h2 className="m-0 text-lg font-semibold tracking-[-0.015em]">{city.name}</h2>
+              <p className={`m-0 mt-1 ${monoLabel} normal-case tracking-normal`}>
+                {city.timezone} &middot; {formatOffsetLabel(offset)}
+              </p>
+              <p className="tnum m-0 mt-5 font-mono text-[clamp(28px,4.4vw,44px)] font-light leading-none tracking-[-0.04em]">
+                {formatTime(now, city.timezone, currentLocale)}
+              </p>
+              <p className="m-0 mt-3 text-[15px] text-subtle">{formatDate(now, city.timezone, currentLocale)}</p>
             </div>
+          ))}
+        </div>
+      </Section>
 
-            {/* Difference summary */}
-            <Card className="mb-6">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center gap-2">
-                  <ArrowLeftRight className="h-4 w-4" />
-                  {t('summaryTitle')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-center gap-4 py-2">
-                  <div className="text-center">
-                    <p className="text-sm text-muted-foreground">{cityA.name}</p>
-                    <p className={`text-2xl font-bold ${jetbrainsMono.className}`}>
-                      {formatOffsetLabel(offsetA)}
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <p
-                      className={`text-3xl font-bold text-primary ${jetbrainsMono.className}`}
-                    >
-                      {hourDiff}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {rawDiff > 0
-                        ? t('isAhead', { city: cityA.name })
-                        : rawDiff < 0
-                        ? t('isAhead', { city: cityB.name })
-                        : t('sameOffset')}
-                    </p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-sm text-muted-foreground">{cityB.name}</p>
-                    <p className={`text-2xl font-bold ${jetbrainsMono.className}`}>
-                      {formatOffsetLabel(offsetB)}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Best meeting times */}
-            <Card className="mb-6">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  {t('bestMeetingTimes')}
-                </CardTitle>
-                <p className="text-sm text-muted-foreground">
-                  {t('businessHoursDesc')}
-                </p>
-              </CardHeader>
-              <CardContent>
-                {overlapCount === 0 ? (
-                  <p className="text-sm text-muted-foreground py-2">
-                    {t('noOverlap', { cityA: cityA.name, cityB: cityB.name })}
-                  </p>
-                ) : (
-                  <div className="space-y-2">
-                    <p className="text-sm font-medium mb-3">
-                      {overlapCount === 1
-                        ? t('overlappingHours', { count: overlapCount })
-                        : t('overlappingHoursPlural', { count: overlapCount })}
-                    </p>
-                    {overlapHours.map((slot, utcH) => {
-                      if (!slot.overlap) return null
-                      const hA = ((utcH + offsetA) % 24 + 24) % 24
-                      const hB = ((utcH + offsetB) % 24 + 24) % 24
-                      const fmt = (h: number) => {
-                        const ampm = h >= 12 ? 'PM' : 'AM'
-                        const h12 = h % 12 === 0 ? 12 : h % 12
-                        return `${h12}:00 ${ampm}`
-                      }
-                      return (
-                        <div
-                          key={utcH}
-                          className="flex items-center justify-between text-sm bg-green-50 dark:bg-green-950/30 rounded px-3 py-1.5"
-                        >
-                          <span className="text-muted-foreground w-20">
-                            {fmt(utcH)} UTC
-                          </span>
-                          <span className="font-medium">{fmt(hA)}</span>
-                          <span className="text-muted-foreground text-xs">
-                            {t('inCity', { city: cityA.name })}
-                          </span>
-                          <span className="font-medium">{fmt(hB)}</span>
-                          <span className="text-muted-foreground text-xs">
-                            {t('inCity', { city: cityB.name })}
-                          </span>
-                        </div>
-                      )
-                    })}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-
-            {/* Timeline visualization */}
-            <Card className="mb-6">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  {t('timelineTitle')}
-                </CardTitle>
-                <p className="text-sm text-muted-foreground">
-                  {t('timelineDesc')}
-                </p>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    { city: cityA, offset: offsetA, currentHour: currentHourA },
-                    { city: cityB, offset: offsetB, currentHour: currentHourB },
-                  ].map(({ city, offset, currentHour }) => (
-                    <div key={city.timezone}>
-                      <p className="text-sm font-medium mb-1">{city.name}</p>
-                      <div className="flex gap-px">
-                        {Array.from({ length: 24 }, (_, utcH) => {
-                          const localH = ((utcH + offset) % 24 + 24) % 24
-                          const isWork = isWorkHour(localH)
-                          const isCurrent = localH === currentHour
-                          return (
-                            <div
-                              key={utcH}
-                              title={`${String(localH).padStart(2, '0')}:00`}
-                              className={[
-                                'flex-1 h-6 rounded-sm relative',
-                                isWork
-                                  ? 'bg-primary/70'
-                                  : 'bg-secondary',
-                              ].join(' ')}
-                            >
-                              {isCurrent && (
-                                <span className="absolute inset-0 flex items-center justify-center">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-white dark:bg-black" />
-                                </span>
-                              )}
-                            </div>
-                          )
-                        })}
-                      </div>
-                      <div className="flex justify-between text-xs text-muted-foreground mt-0.5">
-                        <span>12 AM</span>
-                        <span>6 AM</span>
-                        <span>12 PM</span>
-                        <span>6 PM</span>
-                        <span>11 PM</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-xs text-muted-foreground mt-3">
-                  {t('localTimeNote')}
-                </p>
-              </CardContent>
-            </Card>
-
-            {/* Back link */}
-            <div className="text-center">
-              <Link
-                href={`/${locale}/time-difference`}
-                className="text-sm text-muted-foreground hover:underline"
-              >
-                &larr; {t('viewAllComparisons')}
-              </Link>
+      {/* Difference summary */}
+      <Section top="14px">
+        <div className={`${cardClass} p-[clamp(20px,3vw,32px)]`}>
+          <h2 className={`m-0 mb-5 ${monoLabel}`}>{t('summaryTitle')}</h2>
+          <div className="flex flex-wrap items-center justify-around gap-x-8 gap-y-5 text-center">
+            <div>
+              <p className="m-0 text-sm text-subtle">{cityA.name}</p>
+              <p className="m-0 mt-1 font-mono text-2xl font-light">{formatOffsetLabel(offsetA)}</p>
+            </div>
+            <div>
+              <p className="m-0 font-mono text-[clamp(28px,4vw,40px)] font-light tracking-[-0.03em] text-brand">{hourDiff}</p>
+              <p className="m-0 mt-1 text-[13px] text-subtle">
+                {rawDiff > 0
+                  ? t('isAhead', { city: cityA.name })
+                  : rawDiff < 0
+                  ? t('isAhead', { city: cityB.name })
+                  : t('sameOffset')}
+              </p>
+            </div>
+            <div>
+              <p className="m-0 text-sm text-subtle">{cityB.name}</p>
+              <p className="m-0 mt-1 font-mono text-2xl font-light">{formatOffsetLabel(offsetB)}</p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Section>
+
+      {/* Best meeting times */}
+      <Section top="clamp(40px,5vw,64px)">
+        <SectionHeading title={t('bestMeetingTimes')} description={t('businessHoursDesc')} />
+        <div className={`${cardClass} p-[clamp(16px,3vw,28px)]`}>
+          {overlapCount === 0 ? (
+            <p className="m-0 text-[15px] text-subtle">{t('noOverlap', { cityA: cityA.name, cityB: cityB.name })}</p>
+          ) : (
+            <>
+              <p className="m-0 mb-4 text-[15px] font-medium">
+                {overlapCount === 1
+                  ? t('overlappingHours', { count: overlapCount })
+                  : t('overlappingHoursPlural', { count: overlapCount })}
+              </p>
+              <div className="grid gap-2">
+                {overlapHours.map((slot, utcH) => {
+                  if (!slot.overlap) return null
+                  const hA = (((utcH + offsetA) % 24) + 24) % 24
+                  const hB = (((utcH + offsetB) % 24) + 24) % 24
+                  return (
+                    <div
+                      key={utcH}
+                      className="grid grid-cols-1 gap-x-4 gap-y-1 rounded-xl border border-line bg-paper px-4 py-3 text-sm sm:grid-cols-[110px_1fr_1fr] sm:items-center"
+                    >
+                      <span className="font-mono text-subtle">{fmt12(utcH)} UTC</span>
+                      <span>
+                        <span className="font-mono font-medium">{fmt12(hA)}</span>{' '}
+                        <span className="text-[13px] text-subtle">{t('inCity', { city: cityA.name })}</span>
+                      </span>
+                      <span>
+                        <span className="font-mono font-medium">{fmt12(hB)}</span>{' '}
+                        <span className="text-[13px] text-subtle">{t('inCity', { city: cityB.name })}</span>
+                      </span>
+                    </div>
+                  )
+                })}
+              </div>
+            </>
+          )}
+        </div>
+      </Section>
+
+      {/* Timeline */}
+      <Section top="clamp(40px,5vw,64px)" className="pb-[clamp(56px,8vw,96px)]">
+        <SectionHeading title={t('timelineTitle')} description={t('timelineDesc')} />
+        <div className={`${cardClass} p-[clamp(16px,3vw,28px)]`}>
+          <div className="grid gap-6">
+            {sides.map(({ city, offset, currentHour }) => (
+              <div key={city.timezone}>
+                <p className="m-0 mb-2 text-sm font-medium">{city.name}</p>
+                <div className="flex gap-px">
+                  {Array.from({ length: 24 }, (_, utcH) => {
+                    const localH = (((utcH + offset) % 24) + 24) % 24
+                    const isWork = isWorkHour(localH)
+                    const isCurrent = localH === currentHour
+                    return (
+                      <div
+                        key={utcH}
+                        title={`${String(localH).padStart(2, '0')}:00`}
+                        className={`relative h-7 flex-1 rounded-[3px] ${isWork ? 'bg-brand' : 'bg-line'}`}
+                      >
+                        {isCurrent && (
+                          <span className="absolute inset-0 flex items-center justify-center">
+                            <span className="size-1.5 rounded-full bg-paper" />
+                          </span>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+                <div className={`mt-1.5 flex justify-between ${monoLabel} normal-case tracking-normal`}>
+                  <span>12 AM</span>
+                  <span>6 AM</span>
+                  <span>12 PM</span>
+                  <span>6 PM</span>
+                  <span>11 PM</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="m-0 mt-5 text-[13px] text-subtle">{t('localTimeNote')}</p>
+        </div>
+        <div className="mt-6">
+          <Link href={listHref} className="text-sm text-subtle transition-colors hover:text-ink">
+            &larr; {t('viewAllComparisons')}
+          </Link>
+        </div>
+      </Section>
+    </>
   )
 }

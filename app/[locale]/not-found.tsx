@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Globe, Calculator, Calendar, PartyPopper, TrendingUp, Clock } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Section, cardClass } from "@/components/ds"
 import { useLocale, useTranslations } from "next-intl"
 import { getLocalePath } from "@/lib/locale-utils"
 
@@ -50,49 +50,31 @@ export default function NotFound() {
   ]
 
   return (
-    <div className="flex flex-col">
-
-      <div className="flex-grow">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <p className="text-8xl font-bold text-muted-foreground/30 select-none leading-none mb-4">
-                404
-              </p>
-              <h1 className="text-3xl md:text-4xl font-bold mb-3">
-                {t("title")}
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                {t("description")}
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {tools.map(({ title, description, path, icon: Icon }) => (
-                <Link
-                  key={path}
-                  href={getLocalePath(path, locale)}
-                  className="group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg"
-                >
-                  <Card className="h-full transition-shadow hover:shadow-md group-hover:border-foreground/20">
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-base flex items-center gap-2">
-                        <Icon className="h-4 w-4 shrink-0" />
-                        {title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground leading-snug">
-                        {description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
+    <main>
+      <Section top="clamp(40px,7vw,96px)">
+        <div className="max-w-[760px]">
+          <p className="m-0 font-mono text-[clamp(64px,12vw,140px)] font-light leading-none tracking-[-0.05em] text-line2 select-none">404</p>
+          <h1 className="m-0 mt-5 text-[clamp(32px,4.6vw,60px)] font-medium leading-[1.04] tracking-[-0.04em]">{t("title")}</h1>
+          <p className="m-0 mt-4 max-w-[60ch] text-[clamp(15px,1.4vw,17px)] leading-relaxed text-subtle">{t("description")}</p>
         </div>
-      </div>
-    </div>
+      </Section>
+      <Section top="clamp(32px,4vw,56px)" className="pb-[clamp(56px,8vw,96px)]">
+        <div className="grid gap-3.5" style={{ gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,300px),1fr))" }}>
+          {tools.map(({ title, description, path, icon: Icon }) => (
+            <Link
+              key={path}
+              href={getLocalePath(path, locale)}
+              className={`${cardClass} block p-[22px] transition-colors hover:border-ink`}
+            >
+              <span aria-hidden="true" className="inline-flex size-9 items-center justify-center rounded-full border border-line2 text-brand">
+                <Icon className="size-4" strokeWidth={1.75} />
+              </span>
+              <h2 className="m-0 mt-3.5 text-lg font-semibold tracking-[-0.015em]">{title}</h2>
+              <p className="m-0 mt-1.5 text-[15px] leading-[1.6] text-subtle">{description}</p>
+            </Link>
+          ))}
+        </div>
+      </Section>
+    </main>
   )
 }

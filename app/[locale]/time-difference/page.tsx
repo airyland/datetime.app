@@ -1,16 +1,17 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Globe, ArrowLeftRight } from 'lucide-react'
-import { Card, CardContent } from '@/components/ui/card'
+import { ArrowLeftRight } from 'lucide-react'
+import { PageIntro, Section, cardClass } from '@/components/ds'
+import { getLocalePath } from '@/lib/locale-utils'
 import { citiesData } from '../cities/[city]/metadata'
 import { getTranslations } from 'next-intl/server'
 
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }): Promise<Metadata> {
-  const { locale } = params
+  const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'timeDifference' })
   return {
     title: 'Time Difference Calculator | Compare Time Zones | Datetime.app',
@@ -56,9 +57,9 @@ const getTimezoneOffset = (timezone: string): number => {
 export default async function TimeDifferencePage({
   params,
 }: {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }) {
-  const { locale } = params
+  const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'timeDifference' })
 
   function formatHourDiff(diff: number): string {
@@ -81,63 +82,41 @@ export default async function TimeDifferencePage({
   }
 
   return (
-    <div className="flex flex-col">
+    <>
+      <PageIntro
+        crumbs={[{ label: 'Home', href: getLocalePath('/', locale) }, { label: t('pageTitle') }]}
+        eyebrow={t('pageTitle')}
+        eyebrowAs="p"
+        title={t('pageTitle')}
+        description={t('subtitle')}
+      />
+      <Section top="clamp(24px,3vw,40px)" className="pb-[clamp(56px,8vw,96px)]">
+        <div className="grid gap-3.5" style={{ gridTemplateColumns: 'repeat(auto-fill,minmax(min(100%,340px),1fr))' }}>
+          {POPULAR_PAIRS.map(([cityAKey, cityBKey]) => {
+            const cityA = citiesData[cityAKey as keyof typeof citiesData]
+            const cityB = citiesData[cityBKey as keyof typeof citiesData]
+            if (!cityA || !cityB) return null
 
-      <div className="flex-grow">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-3xl mx-auto">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-center">
-              {t('pageTitle')}
-            </h1>
-            <p className="text-center text-muted-foreground mb-8">
-              {t('subtitle')}
-            </p>
+            const diff = Math.abs(getTimezoneOffset(cityA.timezone) - getTimezoneOffset(cityB.timezone))
+            const slug = `${cityAKey}-vs-${cityBKey}`
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {POPULAR_PAIRS.map(([cityAKey, cityBKey]) => {
-                const cityA = citiesData[cityAKey as keyof typeof citiesData]
-                const cityB = citiesData[cityBKey as keyof typeof citiesData]
-                if (!cityA || !cityB) return null
-
-                const offsetA = getTimezoneOffset(cityA.timezone)
-                const offsetB = getTimezoneOffset(cityB.timezone)
-                const diff = Math.abs(offsetA - offsetB)
-                const slug = `${cityAKey}-vs-${cityBKey}`
-
-                return (
-                  <Link
-                    key={slug}
-                    href={`/${locale}/time-difference/${slug}`}
-                  >
-                    <Card className="h-full hover:shadow-md transition-shadow cursor-pointer">
-                      <CardContent className="pt-5 pb-4 px-5">
-                        <div className="flex items-center justify-between gap-2">
-                          <div className="flex items-center gap-1.5 min-w-0">
-                            <Globe className="h-4 w-4 shrink-0 text-muted-foreground" />
-                            <span className="font-medium truncate">
-                              {cityA.name}
-                            </span>
-                          </div>
-                          <ArrowLeftRight className="h-4 w-4 shrink-0 text-muted-foreground" />
-                          <div className="flex items-center gap-1.5 min-w-0">
-                            <Globe className="h-4 w-4 shrink-0 text-muted-foreground" />
-                            <span className="font-medium truncate">
-                              {cityB.name}
-                            </span>
-                          </div>
-                        </div>
-                        <p className="text-sm text-muted-foreground mt-2 text-center">
-                          {formatHourDiff(diff)}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
+            return (
+              <Link
+                key={slug}
+                href={getLocalePath(`/time-difference/${slug}`, locale)}
+                className={`${cardClass} block p-[22px] transition-colors hover:border-ink`}
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <span className="min-w-0 truncate text-lg font-semibold tracking-[-0.015em]">{cityA.name}</span>
+                  <ArrowLeftRight aria-hidden="true" className="size-4 shrink-0 text-subtle" />
+                  <span className="min-w-0 truncate text-right text-lg font-semibold tracking-[-0.015em]">{cityB.name}</span>
+                </div>
+                <p className="m-0 mt-3 font-mono text-[13px] text-brand">{formatHourDiff(diff)}</p>
+              </Link>
+            )
+          })}
         </div>
-      </div>
-    </div>
+      </Section>
+    </>
   )
 }
