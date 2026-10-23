@@ -82,3 +82,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+## Production deployment
+
+Zeabur builds the `deploy` branch using the repository Dockerfile on port 3000.
+Set `NEXT_PUBLIC_GOOGLE_ADSENSE_ID`, `NEXT_PUBLIC_ANALYTICS_DOMAIN` and
+`NEXT_PUBLIC_ANALYTICS_SCRIPT` before building; Next.js embeds these values at build time.
+The container runs `pnpm start` as an unprivileged user and uses the local Next.js cache;
+Cloudflare Workers bindings and R2 are not required. Keep one replica unless shared
+caching is introduced. Synchronize Zeabur's Dockerfile override with this file when
+changing the Dockerfile. The previous `codex/datetime-zeabur` deployment can be used
+for rollback. Publishing a GHCR image alone does not update this source deployment.
+
+### Changelog
+
+- 2026-10-22: Use `deploy` as the production source, preserve public build variables,
+  exclude local files from the Docker context, and align the Zeabur build override.
