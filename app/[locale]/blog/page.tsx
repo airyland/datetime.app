@@ -5,6 +5,7 @@ import { PageIntro, Section } from '@/components/ds'
 import { promises as fs } from 'fs'
 import path from 'path'
 import { getLocalePath } from '@/lib/locale-utils'
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
@@ -14,12 +15,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t('title'),
     description: t('description'),
     openGraph: {
+    images: OG_IMAGES,
       title: t('title'),
       description: t('description'),
       type: 'website',
       url: `https://datetime.app${getLocalePath("/blog", locale)}`,
     },
     twitter: {
+    images: TWITTER_IMAGES,
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),

@@ -6,6 +6,7 @@ import { getLocalePath } from '@/lib/locale-utils'
 import { citiesData } from '../cities/[city]/metadata'
 import { getTranslations } from 'next-intl/server'
 import { pageAlternates } from '@/lib/seo'
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 export async function generateMetadata({
   params,
@@ -27,6 +28,7 @@ export async function generateMetadata({
       'world clock',
     ],
     openGraph: {
+    images: OG_IMAGES,
       title: 'Time Difference Calculator | Compare Time Zones | Datetime.app',
       description:
         'Compare time differences between major cities worldwide.',

@@ -1,12 +1,14 @@
 import { Section, Card, PageIntro, h2Class } from "@/components/ds"
 import HolidaysClientPage from "./client-page"
 import { Metadata } from "next"
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "World Holidays Calendar | Browse Holidays by Country | Datetime.app",
   description: "Browse holidays from countries and regions around the world. Find public holidays, observances, and special days for over 200 countries with accurate dates.",
   keywords: ["world holidays", "international holidays", "public holidays", "holiday calendar", "national holidays", "global holidays", "country holidays"],
   openGraph: {
+    images: OG_IMAGES,
     title: "World Holidays Calendar | Browse Holidays by Country | Datetime.app",
     description: "Browse holidays from countries and regions around the world. Find public holidays, observances, and special days for over 200 countries with accurate dates.",
     type: "website",

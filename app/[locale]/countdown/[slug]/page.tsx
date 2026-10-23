@@ -7,6 +7,7 @@ import { COUNTDOWN_YEARS, MONTHS, allSlugs, dateLabel, getHoliday, holidaysOf, l
 import { CONTENT } from "@/lib/countdown-content"
 import { pageAlternates } from "@/lib/seo"
 import { cn } from "@/lib/utils"
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 type Props = { params: Promise<{ slug: string; locale: string }> }
 
@@ -27,7 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: { canonical: pageAlternates(`countdown/${slug}`, "en").canonical },
-    openGraph: { title, description, type: "website", url: `https://datetime.app/countdown/${slug}` },
+    openGraph: {
+    images: OG_IMAGES, title, description, type: "website", url: `https://datetime.app/countdown/${slug}` },
   }
 }
 

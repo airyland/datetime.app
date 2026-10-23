@@ -7,6 +7,7 @@ import {
 } from "@/lib/holidays"
 import RegionHolidaysClientPage from "./client-page"
 import { Metadata } from "next"
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 interface RegionHolidaysProps {
   params: Promise<{ country: string; region: string }>
@@ -42,6 +43,7 @@ export async function generateMetadata({ params, searchParams: searchParamsPromi
     description: `Complete list of public holidays and observances in ${regionInfo.name}, ${countryInfo.name} for ${year}. Regional holidays, bank holidays, and special observances with dates.`,
     keywords: [`${regionInfo.name} holidays`, `${countryInfo.name} regional holidays`, `${regionInfo.name} holiday calendar`, `${year} holidays`, `regional holidays ${countryInfo.name}`],
     openGraph: {
+    images: OG_IMAGES,
       title: `${regionInfo.name}, ${countryInfo.name} Holidays ${year} | Regional Holiday Calendar | Datetime.app`,
       description: `Complete list of public holidays and observances in ${regionInfo.name}, ${countryInfo.name} for ${year}. Regional holidays, bank holidays, and special observances with dates.`,
       type: "website",

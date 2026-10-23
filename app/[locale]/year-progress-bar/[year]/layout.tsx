@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { calculateYearProgress, calculateTimeLeft, getYearStatus } from "@/lib/year-progress"
 import { getTranslations } from 'next-intl/server'
 import { locales } from '@/i18n/request'
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 interface LayoutProps {
   params: Promise<{ year: string; locale: string }>
@@ -51,6 +52,7 @@ export async function generateMetadata({ params: paramsPromise }: Omit<LayoutPro
       languages
     },
     openGraph: {
+    images: OG_IMAGES,
       title: t('yearMetaTitle', { year, progress: progress.toFixed(2) }),
       description: t('yearMetaDescription', { year, progress: progress.toFixed(2), timeLeft, isCurrentYear, isCompleted, isFuture }),
       type: "website",

@@ -11,6 +11,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@/lib/locales'
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 const geistSans = Geist({
   subsets: ["latin", "latin-ext"],
@@ -41,12 +42,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: t('title'),
     description: t('description'),
     openGraph: {
+    images: OG_IMAGES,
       title: t('title'),
       description: t('description'),
       type: "website",
       url: canonicalUrl,
     },
     twitter: {
+    images: TWITTER_IMAGES,
       card: "summary_large_image",
       title: t('title'),
       description: t('description'),

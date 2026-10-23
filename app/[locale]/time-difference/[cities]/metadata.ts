@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { citiesData } from '@/app/[locale]/cities/[city]/metadata'
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 const getTimezoneOffset = (timezone: string): number => {
   const now = new Date()
@@ -54,6 +55,7 @@ export async function generateMetadata({
       'time zone converter',
     ],
     openGraph: {
+    images: OG_IMAGES,
       title,
       description,
       type: 'website',

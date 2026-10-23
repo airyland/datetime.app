@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import { PageIntro, Section, Card } from "@/components/ds"
 import ChangelogList from "./changelog-list"
 import { getLocalePath } from '@/lib/locale-utils'
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 interface ChangelogPageProps {
   params: Promise<{ locale: string }>
@@ -26,12 +27,14 @@ export async function generateMetadata({ params: paramsPromise }: ChangelogPageP
         : `https://datetime.app/${params.locale}/changelog`
     },
     openGraph: {
+    images: OG_IMAGES,
       title: 'Changelog - Datetime.app',
       description: 'Stay up to date with the latest features, improvements, and bug fixes to Datetime.app.',
       type: 'website',
       siteName: 'Datetime.app'
     },
     twitter: {
+    images: TWITTER_IMAGES,
       card: 'summary_large_image',
       title: 'Changelog - Datetime.app',
       description: 'Stay up to date with the latest features, improvements, and bug fixes to Datetime.app.'

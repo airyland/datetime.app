@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import GlossaryClient from "./glossary-client"
 import { PageIntro } from "@/components/ds"
 import { getLocalePath } from "@/lib/locale-utils"
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 // Generate metadata
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('subtitle'),
     keywords: ["datetime glossary", "time terminology", "UTC", "GMT", "timezone", "ISO 8601", "Unix timestamp", "atomic time", "leap second", "time concepts"],
     openGraph: {
+    images: OG_IMAGES,
       title: `${t('title')} | Datetime.app`,
       description: t('subtitle'),
       type: "website",

@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 interface LayoutProps {
   children: React.ReactNode
@@ -46,12 +47,14 @@ export async function generateMetadata({ params: paramsPromise }: { params: Prom
       }
     },
     openGraph: {
+    images: OG_IMAGES,
       title: t('title'),
       description: t('description'),
       type: 'website',
       siteName: 'Datetime.app'
     },
     twitter: {
+    images: TWITTER_IMAGES,
       card: 'summary_large_image',
       title: t('title'),
       description: t('description')

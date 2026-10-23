@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import { redirect } from 'next/navigation'
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 interface LayoutProps {
   params: Promise<{ locale: string }>;
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   description: "Browse holidays from around the world. Find public holidays, observances, and special days for countries and regions worldwide.",
   keywords: ["holidays", "world holidays", "public holidays", "international holidays", "holiday calendar", "national holidays", "regional holidays"],
   openGraph: {
+    images: OG_IMAGES,
     title: "World Holidays Calendar | Datetime.app",
     description: "Browse holidays from around the world. Find public holidays, observances, and special days for countries and regions worldwide.",
     type: "website",

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 // Predefined list of supported cities with their metadata
 export const citiesData = {
@@ -491,6 +492,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       description: `${localizedCityName}, ${localizedCountryName}的当前本地时间。查看${localizedCityName}的准确时间、时区和夏令时信息。`,
       keywords: [`${localizedCityName}时间`, `${localizedCountryName}时间`, `${localizedCityName}当前时间`, `${localizedCityName}本地时间`, `${localizedCityName}时区`],
       openGraph: {
+    images: OG_IMAGES,
         title: `${localizedCityName}时间 | 当前时间`,
         description: `查看${localizedCityName}, ${localizedCountryName}的当前本地时间`,
         type: 'website',
@@ -504,6 +506,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       description: `${localizedCityName}, ${localizedCountryName}的當前本地時間。查看${localizedCityName}的準確時間、時區和夏令時資訊。`,
       keywords: [`${localizedCityName}時間`, `${localizedCountryName}時間`, `${localizedCityName}當前時間`, `${localizedCityName}本地時間`, `${localizedCityName}時區`],
       openGraph: {
+    images: OG_IMAGES,
         title: `${localizedCityName}時間 | 當前時間`,
         description: `查看${localizedCityName}, ${localizedCountryName}的當前本地時間`,
         type: 'website',
@@ -517,6 +520,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
     description: `Current local time in ${cityInfo.name}, ${cityInfo.country}. Check the exact time, timezone, and daylight saving information for ${cityInfo.name}.`,
     keywords: [`${cityInfo.name} time`, `${cityInfo.country} time`, `current time in ${cityInfo.name}`, `local time ${cityInfo.name}`, `${cityInfo.name} timezone`],
     openGraph: {
+    images: OG_IMAGES,
       title: `${cityInfo.name} Time | Current Local Time`,
       description: `Check the current local time in ${cityInfo.name}, ${cityInfo.country}`,
       type: 'website',

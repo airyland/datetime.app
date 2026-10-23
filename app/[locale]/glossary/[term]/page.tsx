@@ -4,6 +4,7 @@ import Link from "next/link"
 import { getTranslations } from 'next-intl/server'
 import { PageIntro, Section, cardClass, monoLabel } from "@/components/ds"
 import { getLocalePath } from "@/lib/locale-utils"
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 interface TermPageProps {
   params: Promise<{ term: string; locale: string }>
@@ -38,6 +39,7 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
       description: description,
       keywords: [term, "datetime", "time", "terminology", title.toLowerCase()],
       openGraph: {
+    images: OG_IMAGES,
         title: `${title} | ${t('title')} | Datetime.app`,
         description: description,
         type: "article",

@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server"
 import { getLocalePath } from "@/lib/locale-utils"
-import { pageAlternates } from "@/lib/seo"
+import { OG_IMAGES, TWITTER_IMAGES, pageAlternates } from "@/lib/seo"
 import { PageIntro, Section, Pill, monoLabel, h2Class } from "@/components/ds"
 
 const sectionKeys = {
@@ -17,7 +17,7 @@ export async function legalMetadata(kind: "privacy" | "terms", locale: string) {
   const t = await getTranslations({ locale, namespace: "legal" })
   const title = t(`${kind}MetaTitle`)
   const description = t(`${kind}MetaDesc`)
-  return { title, description, alternates: pageAlternates(kind, locale), openGraph: { title, description, type: "website" } }
+  return { title, description, alternates: pageAlternates(kind, locale), openGraph: { title, description, type: "website", images: OG_IMAGES }, twitter: { card: "summary_large_image", title, description, images: TWITTER_IMAGES } }
 }
 
 export async function LegalPage({ kind, locale }: { kind: "privacy" | "terms"; locale: string }) {

@@ -4,11 +4,13 @@ import { getLocalePath } from "@/lib/locale-utils"
 import { pageAlternates } from "@/lib/seo"
 import { PageIntro, Section, SectionHeading, Stat, StatGrid, Faq, monoLabel } from "@/components/ds"
 import EmbedDemo from "./embed-demo"
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: "embed" })
-  return { title: t("metaTitle"), description: t("metaDesc"), alternates: pageAlternates("embed", locale), openGraph: { title: t("metaTitle"), description: t("metaDesc"), type: "website" } }
+  return { title: t("metaTitle"), description: t("metaDesc"), alternates: pageAlternates("embed", locale), openGraph: {
+    images: OG_IMAGES, title: t("metaTitle"), description: t("metaDesc"), type: "website" } }
 }
 
 export default async function EmbedPage({ params }: { params: Promise<{ locale: string }> }) {

@@ -4,6 +4,7 @@ import { PageIntro, Section } from "@/components/ds"
 import { CountdownHub } from "@/components/countdown/hub"
 import { COUNTDOWN_YEARS, dateLabel, getHoliday, holidaysOf, longName, slugOf, weekdayOf } from "@/lib/countdown"
 import { pageAlternates } from "@/lib/seo"
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 const title = "Holiday Countdowns | Days Until Christmas, New Year & More | Datetime.app"
 const description = "Live countdowns to Christmas, New Year, Thanksgiving, Easter, Halloween and more. See exactly how many days, hours and minutes are left, in your time zone."
@@ -13,7 +14,8 @@ export function generateMetadata(): Metadata {
     title,
     description,
     alternates: { canonical: pageAlternates("countdown", "en").canonical },
-    openGraph: { title, description, type: "website", url: "https://datetime.app/countdown" },
+    openGraph: {
+    images: OG_IMAGES, title, description, type: "website", url: "https://datetime.app/countdown" },
   }
 }
 

@@ -5,6 +5,7 @@ import { getLocalePath } from "@/lib/locale-utils"
 import UnixTimestampClient from "./unix-timestamp-client"
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-jsonld"
 import { getTranslations } from "next-intl/server"
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 export async function generateMetadata({
   params,
@@ -33,6 +34,7 @@ export async function generateMetadata({
       canonical: "https://datetime.app/unix-timestamp",
     },
     openGraph: {
+    images: OG_IMAGES,
       title: "Unix Timestamp Converter | Datetime.app",
       description:
         "Convert Unix timestamps to human-readable dates and back. See local time, UTC, ISO 8601, and relative time for any epoch value.",

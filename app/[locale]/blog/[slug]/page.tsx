@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server'
 import BlogPost from '@/components/blog/BlogPost'
 import { promises as fs } from 'fs'
 import path from 'path'
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 import { getLocalePath } from '@/lib/locale-utils'
 
 interface BlogPostData {
@@ -76,14 +77,14 @@ export async function generateMetadata({ params: paramsPromise }: { params: Prom
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
-      images: [post.image],
+      images: OG_IMAGES,
       url: `https://datetime.app${getLocalePath(`/blog/${post.slug}`, params.locale)}`,
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      images: [post.image],
+      images: TWITTER_IMAGES,
     },
     alternates: {
       canonical: `https://datetime.app${getLocalePath(`/blog/${post.slug}`, params.locale)}`,

@@ -5,6 +5,7 @@ import { CardList, Faq, Pill, PageIntro, RowLink, Section, SectionHeading, Stat,
 import { getLocalePath } from "@/lib/locale-utils"
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld'
 import { getTranslations } from 'next-intl/server'
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 // Generate metadata with current progress
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: `Track ${currentYear} year progress in real-time. ${t('subtitle', { year: currentYear, progress: progress.toFixed(2) })} with ${timeLeft}. Monitor ${currentYear} completion percentage, track time remaining in ${currentYear}, and plan your goals for the current year.`,
     keywords: ["year progress", "year progress bar", `${currentYear} progress`, `${currentYear} year progress`, `${currentYear} completion`, `${progress.toFixed(0)}% complete`, "time left in year", `time left in ${currentYear}`, "days left in year", `days left in ${currentYear}`, "year completion", `${currentYear} tracker`, "current year progress", "time tracking", `${currentYear} statistics`],
     openGraph: {
+    images: OG_IMAGES,
       title: `${t('pageTitle', { year: currentYear })} - ${progress.toFixed(2)}% ${t('completeTitle')} | Datetime.app`,
       description: `Track ${currentYear} year progress in real-time. ${t('subtitle', { year: currentYear, progress: progress.toFixed(2) })} with ${timeLeft}. Monitor ${currentYear} completion and plan your goals.`,
       type: "website",

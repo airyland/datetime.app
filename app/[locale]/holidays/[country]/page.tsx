@@ -8,6 +8,7 @@ import {
 } from "@/lib/holidays"
 import CountryHolidaysClientPage from "./client-page"
 import { Metadata } from "next"
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/seo"
 
 interface CountryHolidaysProps {
   params: Promise<{ country: string }>
@@ -33,6 +34,7 @@ export async function generateMetadata({ params, searchParams: searchParamsPromi
     description: `Complete list of public holidays and observances in ${countryInfo.name} for ${year}. National holidays, bank holidays, and special observances with dates.`,
     keywords: [`${countryInfo.name} holidays`, `${countryInfo.name} public holidays`, `${countryInfo.name} holiday calendar`, `${year} holidays`, `national holidays ${countryInfo.name}`],
     openGraph: {
+    images: OG_IMAGES,
       title: `${countryInfo.name} Holidays ${year} | Public Holiday Calendar | Datetime.app`,
       description: `Complete list of public holidays and observances in ${countryInfo.name} for ${year}. National holidays, bank holidays, and special observances with dates.`,
       type: "website",
