@@ -129,6 +129,7 @@ export function Footer() {
               <li><Link className={link} href={getLocalizedPath("/privacy")} title="Privacy policy">Privacy</Link></li>
               <li><Link className={link} href={getLocalizedPath("/terms")} title="Terms of service">Terms</Link></li>
               <li><Link className={link} href={getLocalizedPath("/embed")} title="Embed Datetime">Embed</Link></li>
+              <li><a className={link} href="https://status.datetime.app" target="_blank" rel="noopener noreferrer" title="Service status">Status ↗</a></li>
               <li><a className={link} href="https://a.coffee/becool" target="_blank" rel="noopener noreferrer" title="More Products">More products ↗</a></li>
             </ul>
           </div>
