@@ -103,45 +103,64 @@ const globalCitiesByRegion = {
     title: 'globalCities.northAmerica',
     cities: [
       'new-york', 'los-angeles', 'chicago', 'toronto', 'vancouver', 'mexico-city',
-      'houston', 'miami', 'atlanta', 'boston', 'seattle', 'san-francisco'
+      'houston', 'miami', 'atlanta', 'boston', 'seattle', 'san-francisco',
+      'washington-dc', 'philadelphia', 'dallas', 'denver', 'phoenix', 'las-vegas',
+      'san-diego', 'honolulu', 'anchorage', 'montreal', 'calgary', 'ottawa',
+      'edmonton', 'guadalajara', 'monterrey', 'havana', 'panama-city', 'kingston',
+      'guatemala-city'
     ]
   },
   europe: {
     title: 'globalCities.europe',
     cities: [
       'london', 'paris', 'berlin', 'rome', 'madrid', 'amsterdam',
-      'moscow', 'vienna', 'prague', 'brussels', 'zurich', 'stockholm'
+      'moscow', 'vienna', 'prague', 'brussels', 'zurich', 'stockholm',
+      'dublin', 'lisbon', 'athens', 'warsaw', 'budapest', 'copenhagen',
+      'oslo', 'helsinki', 'kyiv', 'bucharest', 'sofia', 'belgrade',
+      'zagreb', 'reykjavik', 'edinburgh', 'manchester', 'barcelona', 'milan',
+      'munich', 'frankfurt', 'saint-petersburg', 'vilnius', 'riga', 'tallinn'
     ]
   },
   asia: {
     title: 'globalCities.asia',
     cities: [
       'tokyo', 'beijing', 'shanghai', 'hong-kong', 'singapore', 'seoul',
-      'bangkok', 'mumbai', 'delhi', 'dubai', 'taipei', 'kuala-lumpur'
+      'bangkok', 'mumbai', 'delhi', 'dubai', 'taipei', 'kuala-lumpur',
+      'jakarta', 'manila', 'hanoi', 'ho-chi-minh-city', 'karachi', 'lahore',
+      'islamabad', 'dhaka', 'colombo', 'kathmandu', 'tashkent', 'almaty',
+      'osaka', 'shenzhen', 'guangzhou', 'chengdu', 'macau', 'ulaanbaatar',
+      'yangon', 'phnom-penh', 'bangalore', 'chennai', 'hyderabad', 'baku',
+      'tbilisi', 'yerevan'
     ]
   },
   oceania: {
     title: 'globalCities.oceania',
     cities: [
-      'sydney', 'melbourne', 'auckland', 'brisbane', 'perth', 'wellington'
+      'sydney', 'melbourne', 'auckland', 'brisbane', 'perth', 'wellington',
+      'adelaide', 'darwin', 'hobart', 'canberra', 'christchurch', 'port-moresby'
     ]
   },
   southAmerica: {
     title: 'globalCities.southAmerica',
     cities: [
-      'sao-paulo', 'rio-de-janeiro', 'buenos-aires', 'lima', 'bogota', 'santiago'
+      'sao-paulo', 'rio-de-janeiro', 'buenos-aires', 'lima', 'bogota', 'santiago',
+      'caracas', 'quito', 'la-paz', 'montevideo', 'asuncion', 'brasilia',
+      'medellin'
     ]
   },
   africa: {
     title: 'globalCities.africa',
     cities: [
-      'cairo', 'johannesburg', 'cape-town', 'lagos', 'nairobi', 'casablanca'
+      'cairo', 'johannesburg', 'cape-town', 'lagos', 'nairobi', 'casablanca',
+      'addis-ababa', 'accra', 'algiers', 'tunis', 'dar-es-salaam', 'kinshasa',
+      'luanda', 'dakar', 'kampala', 'harare', 'abidjan'
     ]
   },
   middleEast: {
     title: 'globalCities.middleEast',
     cities: [
-      'istanbul', 'tel-aviv', 'jerusalem', 'riyadh', 'doha', 'kuwait-city'
+      'istanbul', 'tel-aviv', 'jerusalem', 'riyadh', 'doha', 'kuwait-city',
+      'tehran', 'baghdad', 'beirut', 'amman', 'abu-dhabi'
     ]
   }
 }
