@@ -8,6 +8,8 @@ export interface TimezonePickerOption {
   label: string
   /** Right-aligned secondary text, e.g. "GMT+8" */
   meta?: string
+  /** Extra lower-cased text to match against (country, abbreviation, airport code...) */
+  keywords?: string
 }
 
 interface TimezonePickerProps {
@@ -43,7 +45,7 @@ export function TimezonePicker({ options, onSelect, label, searchPlaceholder = '
 
   const shown = useMemo(() => {
     const s = q.trim().toLowerCase()
-    return s ? options.filter((o) => (o.label + ' ' + o.value + ' ' + (o.meta ?? '')).toLowerCase().includes(s)) : options
+    return s ? options.filter((o) => (o.label + ' ' + o.value + ' ' + (o.meta ?? '') + ' ' + (o.keywords ?? '')).toLowerCase().includes(s)) : options
   }, [options, q])
 
   return (

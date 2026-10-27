@@ -1,9 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { TimezonePicker } from "@/components/timezone-picker"
+import { getTimezoneSearchOptions } from "@/lib/timezone-options"
 import TimezoneTimeline from '@/components/timezone-timeline'
 import { HomeSeoSections } from '@/components/home-seo'
 import { HomeUpcoming } from '@/components/home-upcoming'
@@ -235,6 +236,19 @@ export default function Home() {
   }, [use24Hour])
 
   const [isInitialized, setIsInitialized] = useState(false)
+
+  // Offsets only change at DST boundaries, so recompute the (large) option list every 10 minutes at most
+  const pickerBucket = Math.floor(currentTime.getTime() / 600_000)
+  const pickerOptions = useMemo(() => {
+    const at = new Date(pickerBucket * 600_000)
+    return getTimezoneSearchOptions()
+      .filter((o) => !customTimezones.some((ct) => ct.value === o.tz && ct.label === o.label))
+      .map((o) => {
+        const off = spacetime(at, o.tz).timezone().current.offset
+        return { value: o.key, label: o.label, meta: `GMT${off >= 0 ? `+${off}` : off}`, keywords: o.keywords }
+      })
+  }, [pickerBucket, customTimezones])
+
 
   // Load custom timezones from localStorage
   useEffect(() => {
@@ -682,18 +696,13 @@ export default function Home() {
           right={
             <TimezonePicker
               label={t('labels.addTimezone')}
-              onSelect={(value) => {
-                const tz = availableTimezones.find((x) => x.value === value)
-                if (tz && !customTimezones.some((ct) => ct.value === tz.value)) {
-                  setCustomTimezones((prev) => [...prev, tz])
+              onSelect={(key) => {
+                const opt = getTimezoneSearchOptions().find((x) => x.key === key)
+                if (opt && !customTimezones.some((ct) => ct.value === opt.tz && ct.label === opt.label)) {
+                  setCustomTimezones((prev) => [...prev, { value: opt.tz, label: opt.label }])
                 }
               }}
-              options={availableTimezones
-                .filter((tz) => !customTimezones.some((ct) => ct.value === tz.value))
-                .map((tz) => {
-                  const o = spacetime(currentTime, tz.value).timezone().current.offset
-                  return { value: tz.value, label: tz.label, meta: `GMT${o >= 0 ? `+${o}` : o}` }
-                })}
+              options={pickerOptions}
             />
           }
         />
