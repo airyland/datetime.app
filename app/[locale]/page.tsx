@@ -241,12 +241,17 @@ export default function Home() {
   const pickerBucket = Math.floor(currentTime.getTime() / 600_000)
   const pickerOptions = useMemo(() => {
     const at = new Date(pickerBucket * 600_000)
-    return getTimezoneSearchOptions()
-      .filter((o) => !customTimezones.some((ct) => ct.value === o.tz && ct.label === o.label))
-      .map((o) => {
+    const out: { value: string; label: string; meta: string; keywords: string }[] = []
+    for (const o of getTimezoneSearchOptions()) {
+      if (customTimezones.some((ct) => ct.value === o.tz && ct.label === o.label)) continue
+      try {
         const off = spacetime(at, o.tz).timezone().current.offset
-        return { value: o.key, label: o.label, meta: `GMT${off >= 0 ? `+${off}` : off}`, keywords: o.keywords }
-      })
+        out.push({ value: o.key, label: o.label, meta: `GMT${off >= 0 ? `+${off}` : off}`, keywords: o.keywords })
+      } catch {
+        // zone newer than spacetime's bundled tz data (e.g. America/Coyhaique): the timeline couldn't render it, so don't offer it
+      }
+    }
+    return out
   }, [pickerBucket, customTimezones])
 
 
