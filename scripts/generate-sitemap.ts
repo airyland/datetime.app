@@ -26,7 +26,8 @@ const staticPages = [
 // English-only pages
 const englishOnlyPages = [
   'holidays',
-  'countdown'
+  'countdown',
+  'alarm'
 ];
 
 interface SitemapURL {

@@ -1,9 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { useTranslations } from 'next-intl'
 import { usePathname } from 'next/navigation'
 import { TimezonePicker } from "@/components/timezone-picker"
+import { getTimezoneSearchOptions } from "@/lib/timezone-options"
 import TimezoneTimeline from '@/components/timezone-timeline'
 import { HomeSeoSections } from '@/components/home-seo'
 import { HomeUpcoming } from '@/components/home-upcoming'
@@ -103,45 +104,64 @@ const globalCitiesByRegion = {
     title: 'globalCities.northAmerica',
     cities: [
       'new-york', 'los-angeles', 'chicago', 'toronto', 'vancouver', 'mexico-city',
-      'houston', 'miami', 'atlanta', 'boston', 'seattle', 'san-francisco'
+      'houston', 'miami', 'atlanta', 'boston', 'seattle', 'san-francisco',
+      'washington-dc', 'philadelphia', 'dallas', 'denver', 'phoenix', 'las-vegas',
+      'san-diego', 'honolulu', 'anchorage', 'montreal', 'calgary', 'ottawa',
+      'edmonton', 'guadalajara', 'monterrey', 'havana', 'panama-city', 'kingston',
+      'guatemala-city'
     ]
   },
   europe: {
     title: 'globalCities.europe',
     cities: [
       'london', 'paris', 'berlin', 'rome', 'madrid', 'amsterdam',
-      'moscow', 'vienna', 'prague', 'brussels', 'zurich', 'stockholm'
+      'moscow', 'vienna', 'prague', 'brussels', 'zurich', 'stockholm',
+      'dublin', 'lisbon', 'athens', 'warsaw', 'budapest', 'copenhagen',
+      'oslo', 'helsinki', 'kyiv', 'bucharest', 'sofia', 'belgrade',
+      'zagreb', 'reykjavik', 'edinburgh', 'manchester', 'barcelona', 'milan',
+      'munich', 'frankfurt', 'saint-petersburg', 'vilnius', 'riga', 'tallinn'
     ]
   },
   asia: {
     title: 'globalCities.asia',
     cities: [
       'tokyo', 'beijing', 'shanghai', 'hong-kong', 'singapore', 'seoul',
-      'bangkok', 'mumbai', 'delhi', 'dubai', 'taipei', 'kuala-lumpur'
+      'bangkok', 'mumbai', 'delhi', 'dubai', 'taipei', 'kuala-lumpur',
+      'jakarta', 'manila', 'hanoi', 'ho-chi-minh-city', 'karachi', 'lahore',
+      'islamabad', 'dhaka', 'colombo', 'kathmandu', 'tashkent', 'almaty',
+      'osaka', 'shenzhen', 'guangzhou', 'chengdu', 'macau', 'ulaanbaatar',
+      'yangon', 'phnom-penh', 'bangalore', 'chennai', 'hyderabad', 'baku',
+      'tbilisi', 'yerevan'
     ]
   },
   oceania: {
     title: 'globalCities.oceania',
     cities: [
-      'sydney', 'melbourne', 'auckland', 'brisbane', 'perth', 'wellington'
+      'sydney', 'melbourne', 'auckland', 'brisbane', 'perth', 'wellington',
+      'adelaide', 'darwin', 'hobart', 'canberra', 'christchurch', 'port-moresby'
     ]
   },
   southAmerica: {
     title: 'globalCities.southAmerica',
     cities: [
-      'sao-paulo', 'rio-de-janeiro', 'buenos-aires', 'lima', 'bogota', 'santiago'
+      'sao-paulo', 'rio-de-janeiro', 'buenos-aires', 'lima', 'bogota', 'santiago',
+      'caracas', 'quito', 'la-paz', 'montevideo', 'asuncion', 'brasilia',
+      'medellin'
     ]
   },
   africa: {
     title: 'globalCities.africa',
     cities: [
-      'cairo', 'johannesburg', 'cape-town', 'lagos', 'nairobi', 'casablanca'
+      'cairo', 'johannesburg', 'cape-town', 'lagos', 'nairobi', 'casablanca',
+      'addis-ababa', 'accra', 'algiers', 'tunis', 'dar-es-salaam', 'kinshasa',
+      'luanda', 'dakar', 'kampala', 'harare', 'abidjan'
     ]
   },
   middleEast: {
     title: 'globalCities.middleEast',
     cities: [
-      'istanbul', 'tel-aviv', 'jerusalem', 'riyadh', 'doha', 'kuwait-city'
+      'istanbul', 'tel-aviv', 'jerusalem', 'riyadh', 'doha', 'kuwait-city',
+      'tehran', 'baghdad', 'beirut', 'amman', 'abu-dhabi'
     ]
   }
 }
@@ -216,6 +236,19 @@ export default function Home() {
   }, [use24Hour])
 
   const [isInitialized, setIsInitialized] = useState(false)
+
+  // Offsets only change at DST boundaries, so recompute the (large) option list every 10 minutes at most
+  const pickerBucket = Math.floor(currentTime.getTime() / 600_000)
+  const pickerOptions = useMemo(() => {
+    const at = new Date(pickerBucket * 600_000)
+    return getTimezoneSearchOptions()
+      .filter((o) => !customTimezones.some((ct) => ct.value === o.tz && ct.label === o.label))
+      .map((o) => {
+        const off = spacetime(at, o.tz).timezone().current.offset
+        return { value: o.key, label: o.label, meta: `GMT${off >= 0 ? `+${off}` : off}`, keywords: o.keywords }
+      })
+  }, [pickerBucket, customTimezones])
+
 
   // Load custom timezones from localStorage
   useEffect(() => {
@@ -663,18 +696,13 @@ export default function Home() {
           right={
             <TimezonePicker
               label={t('labels.addTimezone')}
-              onSelect={(value) => {
-                const tz = availableTimezones.find((x) => x.value === value)
-                if (tz && !customTimezones.some((ct) => ct.value === tz.value)) {
-                  setCustomTimezones((prev) => [...prev, tz])
+              onSelect={(key) => {
+                const opt = getTimezoneSearchOptions().find((x) => x.key === key)
+                if (opt && !customTimezones.some((ct) => ct.value === opt.tz && ct.label === opt.label)) {
+                  setCustomTimezones((prev) => [...prev, { value: opt.tz, label: opt.label }])
                 }
               }}
-              options={availableTimezones
-                .filter((tz) => !customTimezones.some((ct) => ct.value === tz.value))
-                .map((tz) => {
-                  const o = spacetime(currentTime, tz.value).timezone().current.offset
-                  return { value: tz.value, label: tz.label, meta: `GMT${o >= 0 ? `+${o}` : o}` }
-                })}
+              options={pickerOptions}
             />
           }
         />
