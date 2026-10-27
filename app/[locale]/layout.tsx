@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import "../globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Footer } from "@/components/footer"
+import { LiveFavicon } from "@/components/live-favicon"
 import Header from "@/components/header"
 import { Analytics } from "@/components/analytics"
 import { LanguageSuggestionModal } from "@/components/language-suggestion-modal"
@@ -124,6 +125,7 @@ export default async function LocaleLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <LiveFavicon />
             <Header />
             <main>
               {children}
