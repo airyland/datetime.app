@@ -118,6 +118,7 @@ export function Footer() {
             <ul className="flex flex-col gap-[9px]">
               <li><Link className={link} href={getLocalizedPath("/year-progress-bar")} title={t('links.titleYearProgress')}>{t('nav.yearProgress')}</Link></li>
               <li><Link className={link} href={getLocalizedPath("/age-calculator")} title={t('links.titleAgeCalculator')}>{t('nav.ageCalculator')}</Link></li>
+              <li><Link className={link} href="/alarm" title="Online alarm clock">Alarm</Link></li>
               <li><Link className={link} href={getLocalizedPath("/glossary")} title={t('links.titleGlossary')}>{t('nav.glossary')}</Link></li>
             </ul>
           </div>
