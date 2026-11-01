@@ -153,8 +153,8 @@ importers:
         specifier: ^1.7.1
         version: 1.7.1(react-dom@19.0.1(react@19.0.1))(react@19.0.1)
       spacetime:
-        specifier: ^7.10.0
-        version: 7.10.0
+        specifier: ^7.17.0
+        version: 7.17.0
       tailwind-merge:
         specifier: ^2.5.5
         version: 2.5.5
@@ -3031,8 +3031,8 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
-  spacetime@7.10.0:
-    resolution: {integrity: sha512-tanJSLq0/+Qvq1bmK0Nh2Ppk0lFOkGwpes29/64E6hyK4kn5d6LPt65Eidm2Xaf3gLvmG8KaXh8LmeymPlw0Aw==}
+  spacetime@7.17.0:
+    resolution: {integrity: sha512-DIM3Kr6xyk84O2163pKQPc0WsworRDOc+ztbUr2DZY7bVixvq6Ppwt2av2YaYXhSKha+gMIDPgLektwQaISLgw==}
 
   stable-hash@0.0.5:
     resolution: {integrity: sha512-+L3ccpzibovGXFK+Ap/f8LOS0ahMrHTf3xu7mMLSpEGU0EO9ucaysSylKo9eRDFNhWve/y275iPmIZ4z39a9iA==}
@@ -6264,7 +6264,7 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  spacetime@7.10.0: {}
+  spacetime@7.17.0: {}
 
   stable-hash@0.0.5: {}
 
