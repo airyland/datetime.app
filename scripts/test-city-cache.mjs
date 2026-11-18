@@ -63,7 +63,6 @@ test('AdSense cannot run from a raw script tag in the prerendered head', async (
     assert.equal(response.status, 200)
     const html = await response.text()
     assert.doesNotMatch(html, /<script\b[^>]*\bsrc="[^"]*adsbygoogle\.js/i, path)
-    assert.match(html, /adsbygoogle\.js/, path)
-    assert.ok(html.includes("lazyOnload"), path)
+    assert.ok(!html.includes("adsbygoogle.js"), path)
   }
 })

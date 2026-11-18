@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
+import { ADSENSE_PUBLISHER_ID } from "@/lib/adsense-script"
 
 declare global {
   interface Window {
@@ -22,7 +23,7 @@ export function AdSlot() {
         className="adsbygoogle"
         style={{ display: "block" }}
         data-ad-format="autorelaxed"
-        data-ad-client="ca-pub-8443907573529681"
+        data-ad-client={ADSENSE_PUBLISHER_ID}
         data-ad-slot="8712987437"
       />
     </div>
