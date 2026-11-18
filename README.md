@@ -152,3 +152,7 @@ table is checked against all supported locales, including Turkish.
 Hydration follow-up: AdSense loads through Next Script during browser idle,
 after initial hydration. The homepage uses a prerendered time snapshot for
 its initial render, then switches to device time and mounts the local timeline.
+
+AdSense loader follow-up: inject Google's standard async script once per document
+after hydration and window load. This avoids the extra `data-nscript` attribute
+added by Next Script while keeping AdSense out of the prerendered HTML.

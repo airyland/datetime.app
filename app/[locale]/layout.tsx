@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import Script from "next/script"
+import { AdSenseScript } from "@/components/adsense-script"
 import { Geist, Geist_Mono } from "next/font/google"
 import "../globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -119,13 +119,7 @@ export default async function LocaleLayout({
         <Analytics />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
-        {/* AdSense inserts head nodes. Load it after the initial document has hydrated. */}
-        <Script
-          id="adsense"
-          strategy="lazyOnload"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8443907573529681"
-          crossOrigin="anonymous"
-        />
+        <AdSenseScript />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <LiveFavicon />
