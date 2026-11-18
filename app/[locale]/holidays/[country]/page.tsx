@@ -1,10 +1,11 @@
+import { holidayQuerySchema } from '@/lib/holiday-query'
+import { getHolidays } from '@/lib/server/holidays'
 import { notFound } from "next/navigation"
 import { Section, Card, PageIntro, SectionHeading, Pill, h2Class } from "@/components/ds"
 import {
   COUNTRIES,
   REGIONS,
-  RegionInfo,
-  getHolidays
+  RegionInfo
 } from "@/lib/holidays"
 import CountryHolidaysClientPage from "./client-page"
 import { Metadata } from "next"
@@ -50,7 +51,7 @@ export default async function CountryHolidaysPage({ params, searchParams }: Coun
   const { country } = await params
   const searchParams_ = await searchParams
   const langParam = searchParams_.lang || 'en'
-  const yearParam = searchParams_.year ? parseInt(searchParams_.year) : new Date().getFullYear()
+
 
   // Find country info
   const countryInfo = COUNTRIES.find(c => c.code.toLowerCase() === country.toLowerCase())
@@ -64,11 +65,12 @@ export default async function CountryHolidaysPage({ params, searchParams }: Coun
   const countryRegions = REGIONS[countryInfo.code] || []
 
   // Get holidays for server-side rendering
-  const holidays = getHolidays(
-    countryInfo.code,
-    yearParam,
-    langParam
-  )
+  const query = holidayQuerySchema.safeParse({
+    country: countryInfo.code, year: searchParams_.year, language: langParam,
+  })
+  if (!query.success) notFound()
+  const yearParam = query.data.year
+  const holidays = await getHolidays(query.data)
 
   return (
     <main>
