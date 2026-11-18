@@ -1,6 +1,6 @@
 import { citiesData } from './metadata'
 import { getTranslations } from 'next-intl/server'
-import { locales } from '@/i18n/request'
+import { SUPPORTED_LOCALES as locales } from '@/lib/locales'
 
 interface LayoutProps {
   params: Promise<{ city: string; locale: string }>;
@@ -11,9 +11,8 @@ export async function generateMetadata({ params: paramsPromise }: LayoutProps) {
   const params = await paramsPromise
   const city = params.city;
   const locale = params.locale;
+  if (!Object.hasOwn(citiesData, city)) return {};
   const cityInfo = citiesData[city as keyof typeof citiesData];
-
-  if (!cityInfo) return {};
 
   const t = await getTranslations({ locale, namespace: 'cities' });
 
