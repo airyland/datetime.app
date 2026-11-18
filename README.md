@@ -99,3 +99,15 @@ for rollback. Publishing a GHCR image alone does not update this source deployme
 
 - 2026-10-22: Use `deploy` as the production source, preserve public build variables,
   exclude local files from the Docker context, and align the Zeabur build override.
+
+## CPU profiling
+
+`VIBEPLOY_NODE_CPU_PROFILING=1` explicitly enables the `node-v8-v1` diagnostic adapter. It listens only inside the container on `127.0.0.1:4717`; no public Inspector port is opened. Use Vibeploy's authenticated `POST /api/applications/:id/cpu-profile` to capture one owned Ready replica for five seconds. The caller needs application write and cluster admin access.
+
+Sampling runs in a separate Worker and continues when the main event loop is blocked. Only bounded call frames and sample timings are returned, with query/hash/data/remote source URLs removed. There is no heap, source text, environment, request content, arbitrary script, PID or duration input. One capture is allowed per 30 seconds, with an 8 MiB output limit. Errors disable diagnostics without restarting the business process. Turn the flag off and roll out after profiling.
+
+The adapter test (`node --test lib/server/cpu-profile.test.mjs`, Node 22+) deliberately blocks the main thread for six seconds and verifies that profiling still stops after five seconds, identifies the blocking function, and leaves the Inspector URL unopened.
+
+### Changelog
+
+- 2026-11-18: Added explicitly enabled, bounded CPU profiling for request-stall diagnosis; declared the root workspace package so pnpm can read its existing workspace configuration.
