@@ -1291,7 +1291,7 @@
       },
       "thirdParties": {
         "title": "Terceros",
-        "p1": "Plausible Analytics (estadísticas de uso) y WorldTimeAPI (se usa para detectar tu zona horaria a partir de tu dirección IP)."
+        "p1": "Plausible Analytics (estadísticas de uso)."
       },
       "rights": {
         "title": "Tus opciones",

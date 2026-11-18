@@ -19,7 +19,6 @@ export default function UTCPage() {
   const currentLocale = getCurrentLocale(pathname)
 
   const [currentTime, setCurrentTime] = useState(new Date())
-  const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
   const [isFullscreen, setIsFullscreen] = useState(false)
 
@@ -29,30 +28,6 @@ export default function UTCPage() {
       const now = new Date()
       setCurrentTime(now)
     }, 1000)
-
-    return () => clearInterval(timer)
-  }, [])
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      // Calculate time accuracy
-      const start = performance.now()
-      fetch("https://worldtimeapi.org/api/ip")
-        .then((response) => response.json())
-        .then((data) => {
-          const end = performance.now()
-          const serverTime = new Date(data.datetime)
-          const clientTime = new Date()
-          const offset = Math.abs(serverTime.getTime() - clientTime.getTime())
-          setAccuracy({
-            offset: offset,
-            latency: end - start,
-          })
-        })
-        .catch(() => {
-          // If API fails, don't update accuracy
-        })
-    }, 10000)
 
     return () => clearInterval(timer)
   }, [])
@@ -172,13 +147,6 @@ export default function UTCPage() {
 
         <div className="mt-[30px] flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
           <p suppressHydrationWarning className="m-0 text-[clamp(24px,3.6vw,44px)] font-medium leading-[1.1] tracking-[-0.03em]">{formattedDate}</p>
-          <div className="inline-flex items-center gap-2.5 text-[13px] text-subtle">
-            <span className="relative inline-block size-2">
-              <span className="animate-ping-soft absolute inset-0 rounded-full bg-ok" />
-              <span className="absolute inset-0 rounded-full bg-ok" />
-            </span>
-            <span suppressHydrationWarning>{Math.round(accuracy.offset)} ms</span>
-          </div>
         </div>
 
         <div className="mt-10 grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-px overflow-hidden rounded-2xl border border-line bg-line">

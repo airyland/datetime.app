@@ -1399,7 +1399,7 @@
       },
       "thirdParties": {
         "title": "Tiers",
-        "p1": "Plausible Analytics (statistiques d'usage) et WorldTimeAPI (utilisé pour déterminer votre fuseau horaire à partir de votre adresse IP)."
+        "p1": "Plausible Analytics (statistiques d'usage)."
       },
       "rights": {
         "title": "Vos choix",

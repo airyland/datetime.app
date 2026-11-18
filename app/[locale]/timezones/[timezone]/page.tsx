@@ -46,7 +46,6 @@ export default function TimezonePage({ params }: TimezonePageProps) {
   const currentLocale = getCurrentLocale()
   
   const [currentTime, setCurrentTime] = useState(new Date())
-  const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
   const [isFullscreen, setIsFullscreen] = useState(false)
 
@@ -56,30 +55,6 @@ export default function TimezonePage({ params }: TimezonePageProps) {
       const now = new Date()
       setCurrentTime(now)
     }, 1000)
-
-    return () => clearInterval(timer)
-  }, [])
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      // Calculate time accuracy
-      const start = performance.now()
-      fetch("https://worldtimeapi.org/api/ip")
-        .then((response) => response.json())
-        .then((data) => {
-          const end = performance.now()
-          const serverTime = new Date(data.datetime)
-          const clientTime = new Date()
-          const offset = Math.abs(serverTime.getTime() - clientTime.getTime())
-          setAccuracy({
-            offset: offset,
-            latency: end - start,
-          })
-        })
-        .catch(() => {
-          // If API fails, don't update accuracy
-        })
-    }, 10000)
 
     return () => clearInterval(timer)
   }, [])

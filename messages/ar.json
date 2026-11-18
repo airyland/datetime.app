@@ -1369,7 +1369,7 @@
       },
       "thirdParties": {
         "title": "أطراف ثالثة",
-        "p1": "Plausible Analytics (إحصاءات الاستخدام) وWorldTimeAPI (يُستخدم لتحديد منطقتك الزمنية من عنوان IP الخاص بك)."
+        "p1": "Plausible Analytics (إحصاءات الاستخدام)."
       },
       "rights": {
         "title": "خياراتك",

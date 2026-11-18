@@ -1268,7 +1268,7 @@
       },
       "thirdParties": {
         "title": "第三者",
-        "p1": "Plausible Analytics（利用統計）と WorldTimeAPI（IP アドレスからタイムゾーンを判定するために使用）。"
+        "p1": "Plausible Analytics（利用統計）。"
       },
       "rights": {
         "title": "あなたの選択",

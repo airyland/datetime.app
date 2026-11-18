@@ -1356,7 +1356,7 @@
       },
       "thirdParties": {
         "title": "第三方",
-        "p1": "Plausible Analytics（使用統計）與 WorldTimeAPI（依 IP 位址判斷你所在的時區）。"
+        "p1": "Plausible Analytics（使用統計）。"
       },
       "rights": {
         "title": "你的選擇",

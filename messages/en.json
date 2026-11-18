@@ -1268,7 +1268,7 @@
       },
       "thirdParties": {
         "title": "Third parties",
-        "p1": "Plausible Analytics (usage statistics) and WorldTimeAPI (used to detect your time zone from your IP address)."
+        "p1": "Plausible Analytics (usage statistics)."
       },
       "rights": {
         "title": "Your choices",
