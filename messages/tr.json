@@ -1268,7 +1268,7 @@
       },
       "thirdParties": {
         "title": "Üçüncü taraflar",
-        "p1": "Plausible Analytics (kullanım istatistikleri) ve WorldTimeAPI (IP adresinizden saat diliminizi belirlemek için kullanılır)."
+        "p1": "Plausible Analytics (kullanım istatistikleri)."
       },
       "rights": {
         "title": "Seçimleriniz",

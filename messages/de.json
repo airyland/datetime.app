@@ -1269,7 +1269,7 @@
       },
       "thirdParties": {
         "title": "Dritte",
-        "p1": "Plausible Analytics (Nutzungsstatistik) und WorldTimeAPI (zur Ermittlung deiner Zeitzone anhand deiner IP-Adresse)."
+        "p1": "Plausible Analytics (Nutzungsstatistik)."
       },
       "rights": {
         "title": "Deine Wahlmöglichkeiten",

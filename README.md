@@ -153,3 +153,7 @@ build started at `http://localhost:43174`.
 
 Changelog: city pages now reuse rendered HTML for an hour while the browser
 renders the clock, date and time comparisons from the current time.
+
+City-cache follow-up: the live favicon now owns just its own link. Next can
+reconcile route metadata during client navigation without external DOM removal.
+Clocks use the device time and no longer send requests to WorldTimeAPI.

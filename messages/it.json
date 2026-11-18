@@ -1364,7 +1364,7 @@
       },
       "thirdParties": {
         "title": "Terze parti",
-        "p1": "Plausible Analytics (statistiche di utilizzo) e WorldTimeAPI (usato per rilevare il tuo fuso orario dal tuo indirizzo IP)."
+        "p1": "Plausible Analytics (statistiche di utilizzo)."
       },
       "rights": {
         "title": "Le tue scelte",

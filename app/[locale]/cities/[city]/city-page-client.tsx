@@ -200,7 +200,6 @@ export default function CityPageClient({ city, locale }: CityPageProps) {
   const localizedCityName = getLocalizedCityName(city);
   const localizedCountryName = getLocalizedCountryName(cityInfo.country);
   const [currentTime, setCurrentTime] = useState<Date | null>(null)
-  const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
   const [isFullscreen, setIsFullscreen] = useState(false)
   const coords = useMemo(() => parseCoordinates(cityInfo.coordinates), [cityInfo.coordinates])
@@ -247,30 +246,6 @@ export default function CityPageClient({ city, locale }: CityPageProps) {
       document.removeEventListener('visibilitychange', onVisibilityChange)
       window.removeEventListener('pageshow', refresh)
     }
-  }, [])
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      // Calculate time accuracy
-      const start = performance.now()
-      fetch("https://worldtimeapi.org/api/ip")
-        .then((response) => response.json())
-        .then((data) => {
-          const end = performance.now()
-          const serverTime = new Date(data.datetime)
-          const clientTime = new Date()
-          const offset = Math.abs(serverTime.getTime() - clientTime.getTime())
-          setAccuracy({
-            offset: offset,
-            latency: end - start,
-          })
-        })
-        .catch(() => {
-          // If API fails, don't update accuracy
-        })
-    }, 10000)
-
-    return () => clearInterval(timer)
   }, [])
 
   const getHolidayLanguage = (loc: string) => {
@@ -660,14 +635,6 @@ export default function CityPageClient({ city, locale }: CityPageProps) {
               <span className="tnum text-ink">{offsetString}</span>
               <span aria-hidden="true" className="opacity-45">/</span>
               <span>{cityInfo.timezone}</span>
-              {currentTime && <span className="inline-flex items-center gap-2 normal-case tracking-normal">
-                <span aria-hidden="true" className="size-1.5 rounded-full bg-ok" />
-                {accuracy.offset > 1000 ? (
-                  <span>{t('clockOffset', { seconds: Math.round(accuracy.offset / 1000) })}</span>
-                ) : (
-                  <span>{t('clockSynchronized', { offset: Math.round(accuracy.offset) })}</span>
-                )}
-              </span>}
               <span className="flex-1" />
               <button
                 type="button"

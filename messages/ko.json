@@ -1279,7 +1279,7 @@
       },
       "thirdParties": {
         "title": "제3자",
-        "p1": "Plausible Analytics(사용 통계)와 WorldTimeAPI(IP 주소로 시간대를 확인하는 데 사용)."
+        "p1": "Plausible Analytics(사용 통계)."
       },
       "rights": {
         "title": "사용자의 선택",

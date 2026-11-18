@@ -212,7 +212,6 @@ export default function Home() {
   const [sunriseSunset, setSunriseSunset] = useState({ sunrise: "", sunset: "" })
   // const [location, setLocation] = useState("") // Removed location state
   const [isFetchingSunTimes, setIsFetchingSunTimes] = useState(false)
-  const [accuracy, setAccuracy] = useState({ offset: 0, latency: 0 })
   const [activeTab, setActiveTab] = useState("converter")
   const [copiedStates, setCopiedStates] = useState<{[key: string]: boolean}>({})
   const [isFullscreen, setIsFullscreen] = useState(false)
@@ -298,30 +297,6 @@ export default function Home() {
     const timer = setInterval(() => {
       setCurrentTime(new Date())
     }, 1000)
-
-    return () => clearInterval(timer)
-  }, [])
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      // Calculate time accuracy
-      const start = performance.now()
-      fetch("https://worldtimeapi.org/api/ip")
-        .then((response) => response.json())
-        .then((data) => {
-          const end = performance.now()
-          const serverTime = new Date(data.datetime)
-          const clientTime = new Date()
-          const offset = Math.abs(serverTime.getTime() - clientTime.getTime())
-          setAccuracy({
-            offset: offset,
-            latency: end - start,
-          })
-        })
-        .catch(() => {
-          // If API fails, don't update accuracy
-        })
-    }, 10000)
 
     return () => clearInterval(timer)
   }, [])
@@ -655,17 +630,6 @@ export default function Home() {
             <div suppressHydrationWarning className="mt-2 text-[clamp(28px,4.4vw,56px)] font-medium leading-[1.05] tracking-[-0.035em]">
               {currentTime.toLocaleDateString(currentLocale, { year: "numeric", month: "long", day: "numeric" })}
             </div>
-          </div>
-          <div className="inline-flex items-center gap-2.5 text-[13px] text-subtle">
-            <span className="relative inline-block size-2">
-              <span className="animate-ping-soft absolute inset-0 rounded-full bg-ok" />
-              <span className="absolute inset-0 rounded-full bg-ok" />
-            </span>
-            {accuracy.offset > 1000 ? (
-              <span>{t('labels.clockOffset', { seconds: Math.round(accuracy.offset / 1000) })}</span>
-            ) : (
-              <span>{t('labels.clockSynchronized', { offset: Math.round(accuracy.offset) })}</span>
-            )}
           </div>
         </div>
 

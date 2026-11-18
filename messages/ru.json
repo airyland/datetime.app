@@ -1392,7 +1392,7 @@
       },
       "thirdParties": {
         "title": "Третьи стороны",
-        "p1": "Plausible Analytics (статистика использования) и WorldTimeAPI (определение вашего часового пояса по IP-адресу)."
+        "p1": "Plausible Analytics (статистика использования)."
       },
       "rights": {
         "title": "Ваш выбор",

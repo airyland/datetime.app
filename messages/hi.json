@@ -1296,7 +1296,7 @@
       },
       "thirdParties": {
         "title": "तृतीय पक्ष",
-        "p1": "Plausible Analytics (उपयोग के आँकड़े) और WorldTimeAPI (आपके IP पते से टाइम ज़ोन पता करने के लिए)।"
+        "p1": "Plausible Analytics (उपयोग के आँकड़े)."
       },
       "rights": {
         "title": "आपके विकल्प",

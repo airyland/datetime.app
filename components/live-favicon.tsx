@@ -17,18 +17,7 @@ export function LiveFavicon() {
     const link = document.createElement("link")
     link.rel = "icon"
     link.type = "image/svg+xml"
-    // SVG icons are honoured by Chromium and Firefox; drop the raster fallbacks (Next re-inserts them
-    // after hydration) so they can't win over the live one.
-    const sweep = () => {
-      document.head
-        .querySelectorAll<HTMLLinkElement>('link[rel="icon"],link[rel="shortcut icon"]')
-        .forEach((l) => l !== link && l.remove())
-      if (!link.isConnected) document.head.appendChild(link)
-    }
-    sweep()
-    const mo = new MutationObserver(sweep)
-    mo.observe(document.head, { childList: true })
-
+    // Next owns the metadata links. This component only manages its own icon.
     let last = ""
     const tick = () => {
       const d = new Date()
@@ -41,10 +30,10 @@ export function LiveFavicon() {
       }
     }
     tick()
+    document.head.appendChild(link)
     const t = setInterval(tick, 10000)
     return () => {
       clearInterval(t)
-      mo.disconnect()
       link.remove()
     }
   }, [])
