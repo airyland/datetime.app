@@ -1,34 +1,23 @@
-import { NextRequest, NextResponse } from "next/server"
-import { getHolidays } from "@/lib/holidays"
+import { NextRequest, NextResponse } from 'next/server'
+import { holidayQuerySchema } from '@/lib/holiday-query'
+import { IsolatedTaskError } from '@/lib/server/bounded-worker'
+import { getHolidays } from '@/lib/server/holidays'
 
 export async function GET(request: NextRequest) {
-  const searchParams = request.nextUrl.searchParams
-  const country = searchParams.get("country")
-  const yearParam = searchParams.get("year")
-  const language = searchParams.get("language") || "en"
-  const region = searchParams.get("region")
-  
-  // Validate required parameters
-  if (!country) {
-    return NextResponse.json(
-      { error: "Country parameter is required" },
-      { status: 400 }
-    )
+  const params = request.nextUrl.searchParams
+  const parsed = holidayQuerySchema.safeParse(Object.fromEntries(params))
+  if (!parsed.success || [...params.keys()].some(key => params.getAll(key).length !== 1)) {
+    return NextResponse.json({ error: 'Invalid holiday query (years 1900–2100)' }, { status: 400 })
   }
-  
-  // Parse year parameter
-  const year = yearParam ? parseInt(yearParam) : new Date().getFullYear()
-  
   try {
-    // Get holidays data
-    const holidays = getHolidays(country, year, language, region || undefined)
-    
+    const holidays = await getHolidays(parsed.data)
     return NextResponse.json({ holidays })
   } catch (error) {
-    console.error("Error fetching holidays:", error)
-    return NextResponse.json(
-      { error: "Failed to fetch holiday data" },
-      { status: 500 }
-    )
+    if (error instanceof IsolatedTaskError && error.code === 'INVALID_INPUT') {
+      return NextResponse.json({error:'Unsupported country or region'}, {status:400})
+    }
+    return NextResponse.json({ error: 'Holiday calculation unavailable' }, {
+      status: 503, headers: { 'Retry-After': '1', 'Cache-Control': 'no-store' },
+    })
   }
 }

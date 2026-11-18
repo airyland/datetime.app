@@ -121,43 +121,6 @@ export function getRegions(countryCode: string): RegionInfo[] {
 }
 
 /**
- * Get holidays for a specific country and year
- * @param countryCode ISO country code
- * @param year Year to get holidays for
- * @param language Language code for holiday names
- * @returns Array of holiday objects
- */
-export function getHolidays(
-  countryCode: string,
-  year: number = new Date().getFullYear(),
-  language: string = 'en',
-  regionCode?: string
-): Holiday[] {
-  try {
-    // Use the locally installed date-holidays package
-    // We need to use require here because date-holidays is a CommonJS module
-    const Holidays = require('date-holidays');
-
-    const hd = new Holidays();
-
-    if (regionCode) {
-      hd.init(countryCode, regionCode);
-    } else {
-      hd.init(countryCode);
-    }
-
-    // Set language
-    hd.setLanguages(language);
-
-    // Get holidays for the specified year
-    return hd.getHolidays(year);
-  } catch (error) {
-    console.error('Error loading holidays:', error);
-    return getSampleHolidays(countryCode, year);
-  }
-}
-
-/**
  * Fallback function to get sample holidays when the date-holidays library fails
  * @param countryCode ISO country code
  * @param year Year to get holidays for

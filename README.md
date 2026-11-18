@@ -99,3 +99,27 @@ for rollback. Publishing a GHCR image alone does not update this source deployme
 
 - 2026-10-22: Use `deploy` as the production source, preserve public build variables,
   exclude local files from the Docker context, and align the Zeabur build override.
+
+### Holiday calculation isolation
+
+All holiday API and server-rendered country/region pages share strict query validation:
+`year` must contain exactly four digits and be within **1900–2100**. Malformed,
+duplicate and unexpected API parameters return 400 before calendar calculation.
+
+Calendar calculations run outside the HTTP event loop in a bounded Worker runner:
+maximum two concurrent tasks, two-second deadline, explicit termination, 96 MiB
+old-generation limit, and bounded validated results. Identical requests coalesce;
+a 128-entry LRU cache expires after one hour. Worker failure/overload returns 503
+with `Retry-After: 1`, rather than sample holiday data. There are no automatic retries.
+
+Regression checks (Node 22.19+):
+
+```sh
+node --experimental-strip-types --test lib/server/holidays.test.mjs
+# With a local production server on port 43174:
+node --test scripts/test-holiday-api.mjs
+```
+
+Changelog: 2026-11-18 — reject unbounded holiday years and isolate all server-side
+calendar calculations after profiling a non-converging astronomical calculation
+that blocked the entire HTTP event loop.
