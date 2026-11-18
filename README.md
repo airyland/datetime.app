@@ -123,3 +123,7 @@ node --test scripts/test-holiday-api.mjs
 Changelog: 2026-11-18 — reject unbounded holiday years and isolate all server-side
 calendar calculations after profiling a non-converging astronomical calculation
 that blocked the entire HTTP event loop.
+
+Changelog: 2026-11-18 — share the calendar calculator across Next's API/SSR module
+graphs so the two-worker limit, cache and in-flight coalescing apply to the whole
+process; recognize typed failures across those module boundaries.

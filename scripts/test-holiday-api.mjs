@@ -4,6 +4,11 @@ const origin=new URL(process.env.HOLIDAY_TEST_ORIGIN||'http://localhost:43174')
 if(origin.protocol!=='http:'||!['localhost','127.0.0.1','[::1]'].includes(origin.hostname))throw Error('Use a local production server for regression probes')
 const get=path=>fetch(new URL(path,origin),{signal:AbortSignal.timeout(4000)})
 
+test('SSR-first initialization preserves typed API failures across module graphs',async()=>{
+ const page=await get('/holidays/gb?year=2026');assert.equal(page.status,200);await page.text()
+ assert.equal((await get('/api/holidays?country=ZZ&year=2026')).status,400)
+})
+
 test('the profiled input is rejected and ordinary requests keep responding',async()=>{
  const bad=['999999999','-99999999','NaN','Infinity','2026abc','2026.5','02026','1899','2101','']
  const requests=bad.map(year=>get('/api/holidays?country=CN&year='+year))
