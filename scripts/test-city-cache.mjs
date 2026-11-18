@@ -56,3 +56,14 @@ test('each city language link is labeled, including Turkish', async () => {
   assert.equal(turkish?.[3], 'Houston için güncel saat')
   assert.equal(turkish?.[4], 'Türkçe')
 })
+
+test('AdSense cannot run from a raw script tag in the prerendered head', async () => {
+  for (const path of ['/', '/cities/london']) {
+    const response = await get(path)
+    assert.equal(response.status, 200)
+    const html = await response.text()
+    assert.doesNotMatch(html, /<script\b[^>]*\bsrc="[^"]*adsbygoogle\.js/i, path)
+    assert.match(html, /adsbygoogle\.js/, path)
+    assert.ok(html.includes("lazyOnload"), path)
+  }
+})

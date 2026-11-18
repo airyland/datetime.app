@@ -160,3 +160,7 @@ Clocks use the device time and no longer send requests to WorldTimeAPI.
 
 City language links now use the site's shared language names, and their title
 table is checked against all supported locales, including Turkish.
+
+Hydration follow-up: AdSense loads through Next Script during browser idle,
+after initial hydration. The homepage uses a prerendered time snapshot for
+its initial render, then switches to device time and mounts the local timeline.
