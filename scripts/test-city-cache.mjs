@@ -40,3 +40,19 @@ test('unknown and inherited keys return 404', async () => {
     await response.arrayBuffer()
   }
 })
+
+test('each city language link is labeled, including Turkish', async () => {
+  const response = await get('/cities/houston')
+  assert.equal(response.status, 200)
+  const html = (await response.text()).replaceAll('<!-- -->', '')
+  const links = [...html.matchAll(/<a\b([^>]*\bhrefLang="([^"]+)"[^>]*)>([^<]*)<span\b[^>]*>\(([^<]*)\)<\/span><\/a>/gi)]
+  assert.equal(links.length, 14)
+  assert.equal(new Set(links.map(link => link[2])).size, 14)
+  for (const [, , locale, title, name] of links) {
+    assert.ok(title.trim() && name.trim(), locale)
+  }
+  const turkish = links.find(link => link[2] === 'tr')
+  assert.match(turkish?.[1] ?? '', /href="\/tr\/cities\/houston"/)
+  assert.equal(turkish?.[3], 'Houston için güncel saat')
+  assert.equal(turkish?.[4], 'Türkçe')
+})
