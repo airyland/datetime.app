@@ -78,7 +78,13 @@ export function createHolidayCalculator(options: {
   }
 }
 
-export const getHolidays = createHolidayCalculator({run: query => {
+// Next compiles API and SSR into separate module graphs. Share the entire
+// calculator so its cache, coalescing and two-worker budget are process-wide.
+const calculatorKey = Symbol.for('datetime.holiday-calculator.v1')
+const processState = globalThis as typeof globalThis & {
+  [calculatorKey]?: ReturnType<typeof createHolidayCalculator>
+}
+export const getHolidays = processState[calculatorKey] ??= createHolidayCalculator({run: query => {
   const modulePath = createRequire(join(process.cwd(), 'package.json')).resolve('date-holidays')
   return run({modulePath, query})
 }})

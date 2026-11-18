@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { holidayQuerySchema } from '@/lib/holiday-query'
-import { IsolatedTaskError } from '@/lib/server/bounded-worker'
+import { isIsolatedTaskError } from '@/lib/server/bounded-worker'
 import { getHolidays } from '@/lib/server/holidays'
 
 export async function GET(request: NextRequest) {
@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
     const holidays = await getHolidays(parsed.data)
     return NextResponse.json({ holidays })
   } catch (error) {
-    if (error instanceof IsolatedTaskError && error.code === 'INVALID_INPUT') {
+    if (isIsolatedTaskError(error) && error.code === 'INVALID_INPUT') {
       return NextResponse.json({error:'Unsupported country or region'}, {status:400})
     }
     return NextResponse.json({ error: 'Holiday calculation unavailable' }, {

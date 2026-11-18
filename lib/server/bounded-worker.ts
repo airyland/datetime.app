@@ -1,11 +1,17 @@
 import { Worker } from 'node:worker_threads'
 
+const errorBrand = Symbol.for('datetime.isolated-task.error.v1')
 export class IsolatedTaskError extends Error {
+  readonly [errorBrand] = true
   readonly code: 'BUSY' | 'TIMEOUT' | 'FAILED' | 'OUTPUT_LIMIT' | 'INVALID_INPUT'
   constructor(code: 'BUSY' | 'TIMEOUT' | 'FAILED' | 'OUTPUT_LIMIT' | 'INVALID_INPUT') {
     super(`Isolated calculation ${code.toLowerCase()}`)
     this.code = code
   }
+}
+
+export function isIsolatedTaskError(error: unknown): error is IsolatedTaskError {
+  return error instanceof Error && (error as IsolatedTaskError)[errorBrand] === true
 }
 
 // Fixed application-owned worker code only; never expose this interface as an API.
@@ -36,7 +42,7 @@ export function createBoundedWorkerRunner<Input, Output>(options: {
             if (Buffer.byteLength(JSON.stringify(value)) > options.maxOutputBytes) {
               reject(new IsolatedTaskError('OUTPUT_LIMIT'))
             } else resolve(options.parse(value))
-          } catch (error) { reject(error instanceof IsolatedTaskError ? error : new IsolatedTaskError('FAILED')) }
+          } catch (error) { reject(isIsolatedTaskError(error) ? error : new IsolatedTaskError('FAILED')) }
         })
         worker.once('error', () => reject(new IsolatedTaskError('FAILED')))
         worker.once('exit', () => reject(new IsolatedTaskError('FAILED')))
