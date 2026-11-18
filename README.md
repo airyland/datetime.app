@@ -139,3 +139,17 @@ that blocked the entire HTTP event loop.
 Changelog: 2026-11-18 — share the calendar calculator across Next's API/SSR module
 graphs so the two-worker limit, cache and in-flight coalescing apply to the whole
 process; recognize typed failures across those module boundaries.
+
+### City page caching
+
+Public city pages use Next.js ISR with a 3,600-second revalidation period.
+Each city and locale is generated on demand. The response includes city facts
+and metadata, while live time starts as a placeholder. The browser reads its
+clock after hydration and on each tick, and refreshes immediately when the
+tab becomes visible or the browser restores the page.
+
+Run `node --test scripts/test-city-cache.mjs` against a local production
+build started at `http://localhost:43174`.
+
+Changelog: city pages now reuse rendered HTML for an hour while the browser
+renders the clock, date and time comparisons from the current time.
