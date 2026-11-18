@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { Copy, Check, Maximize2 } from 'lucide-react'
-import { SUPPORTED_LOCALES as locales } from '@/lib/locales'
+import { LANGUAGE_OPTIONS, type Locale } from '@/lib/locales'
 import { countdownSlugFor } from '@/lib/countdown'
 import { getLocalePath } from '@/lib/locale-utils'
 import { AdSlot } from "@/components/ad-slot"
@@ -617,6 +617,89 @@ export default function CityPageClient({ city, locale }: CityPageProps) {
   const copyIcon = (k: string) =>
     copiedStates[k] ? <Check className="size-4 text-ok" /> : <Copy className="size-4" />
 
+  // Static city name translations
+  const cityNameTranslations: Record<string, Record<string, string>> = {
+    'london': {
+      'zh-hans': '伦敦',
+      'zh-hant': '倫敦'
+    },
+    'tokyo': {
+      'zh-hans': '东京',
+      'zh-hant': '東京'
+    },
+    'new-york': {
+      'zh-hans': '纽约',
+      'zh-hant': '紐約'
+    },
+    'shanghai': {
+      'zh-hans': '上海',
+      'zh-hant': '上海'
+    },
+    'beijing': {
+      'zh-hans': '北京',
+      'zh-hant': '北京'
+    },
+    'seoul': {
+      'zh-hans': '首尔',
+      'zh-hant': '首爾'
+    },
+    'kolkata': {
+      'zh-hans': '加尔各答',
+      'zh-hant': '加爾各答'
+    },
+    'dubai': {
+      'zh-hans': '迪拜',
+      'zh-hant': '杜拜'
+    },
+    'cairo': {
+      'zh-hans': '开罗',
+      'zh-hant': '開羅'
+    },
+    'moscow': {
+      'zh-hans': '莫斯科',
+      'zh-hant': '莫斯科'
+    },
+    'istanbul': {
+      'zh-hans': '伊斯坦布尔',
+      'zh-hant': '伊斯坦堡'
+    },
+    'paris': {
+      'zh-hans': '巴黎',
+      'zh-hant': '巴黎'
+    },
+    'sydney': {
+      'zh-hans': '悉尼',
+      'zh-hant': '雪梨'
+    }
+  };
+
+  // Get city name for each language
+  const getCityNameForLanguage = (targetLocale: string): string => {
+    const cityTranslation = cityNameTranslations[city];
+    if (cityTranslation && cityTranslation[targetLocale]) {
+      return cityTranslation[targetLocale];
+    }
+    return cityInfo.name;
+  };
+
+  // Translation mapping for "Current Time in {city}"
+  const translations = {
+    'en': `Current Time in ${getCityNameForLanguage('en')}`,
+    'zh-hans': `${getCityNameForLanguage('zh-hans')}当前时间`,
+    'zh-hant': `${getCityNameForLanguage('zh-hant')}當前時間`,
+    'ar': `الوقت الحالي في ${getCityNameForLanguage('ar')}`,
+    'de': `Aktuelle Zeit in ${getCityNameForLanguage('de')}`,
+    'es': `Hora Actual en ${getCityNameForLanguage('es')}`,
+    'fr': `Heure Actuelle à ${getCityNameForLanguage('fr')}`,
+    'hi': `${getCityNameForLanguage('hi')} में वर्तमान समय`,
+    'it': `Ora attuale a ${getCityNameForLanguage('it')}`,
+    'ja': `${getCityNameForLanguage('ja')}の現在時刻`,
+    'ko': `${getCityNameForLanguage('ko')}의 현재 시간`,
+    'pt': `Hora atual em ${getCityNameForLanguage('pt')}`,
+    'ru': `Текущее время в ${getCityNameForLanguage('ru')}`,
+    'tr': `${getCityNameForLanguage('tr')} için güncel saat`
+  } satisfies Record<Locale, string>
+
   return (
     <main>
       <PageIntro
@@ -891,126 +974,23 @@ export default function CityPageClient({ city, locale }: CityPageProps) {
           {t('pageTitle', { cityName: localizedCityName, countryName: localizedCountryName })} in Other Languages
         </h3>
         <div className="flex flex-wrap gap-2">
-          {locales.map((loc) => {
-                const url = loc === 'en'
-                  ? `/cities/${city}`
-                  : `/${loc}/cities/${city}`;
-
-                // Language name mapping
-                const languageNames: Record<string, string> = {
-                  'en': 'English',
-                  'zh-hans': '简体中文',
-                  'zh-hant': '繁體中文',
-                  'ar': 'العربية',
-                  'de': 'Deutsch',
-                  'es': 'Español',
-                  'fr': 'Français',
-                  'hi': 'हिन्दी',
-                  'it': 'Italiano',
-                  'ja': '日本語',
-                  'ko': '한국어',
-                  'pt': 'Português',
-                  'ru': 'Русский'
-                };
-
-                // Static city name translations
-                const cityNameTranslations: Record<string, Record<string, string>> = {
-                  'london': {
-                    'zh-hans': '伦敦',
-                    'zh-hant': '倫敦'
-                  },
-                  'tokyo': {
-                    'zh-hans': '东京',
-                    'zh-hant': '東京'
-                  },
-                  'new-york': {
-                    'zh-hans': '纽约',
-                    'zh-hant': '紐約'
-                  },
-                  'shanghai': {
-                    'zh-hans': '上海',
-                    'zh-hant': '上海'
-                  },
-                  'beijing': {
-                    'zh-hans': '北京',
-                    'zh-hant': '北京'
-                  },
-                  'seoul': {
-                    'zh-hans': '首尔',
-                    'zh-hant': '首爾'
-                  },
-                  'kolkata': {
-                    'zh-hans': '加尔各答',
-                    'zh-hant': '加爾各答'
-                  },
-                  'dubai': {
-                    'zh-hans': '迪拜',
-                    'zh-hant': '杜拜'
-                  },
-                  'cairo': {
-                    'zh-hans': '开罗',
-                    'zh-hant': '開羅'
-                  },
-                  'moscow': {
-                    'zh-hans': '莫斯科',
-                    'zh-hant': '莫斯科'
-                  },
-                  'istanbul': {
-                    'zh-hans': '伊斯坦布尔',
-                    'zh-hant': '伊斯坦堡'
-                  },
-                  'paris': {
-                    'zh-hans': '巴黎',
-                    'zh-hant': '巴黎'
-                  },
-                  'sydney': {
-                    'zh-hans': '悉尼',
-                    'zh-hant': '雪梨'
-                  }
-                };
-
-                // Get city name for each language
-                const getCityNameForLanguage = (targetLocale: string): string => {
-                  const cityTranslation = cityNameTranslations[city];
-                  if (cityTranslation && cityTranslation[targetLocale]) {
-                    return cityTranslation[targetLocale];
-                  }
-                  return cityInfo.name;
-                };
-
-                // Translation mapping for "Current Time in {city}"
-                const translations: Record<string, string> = {
-                  'en': `Current Time in ${getCityNameForLanguage('en')}`,
-                  'zh-hans': `${getCityNameForLanguage('zh-hans')}当前时间`,
-                  'zh-hant': `${getCityNameForLanguage('zh-hant')}當前時間`,
-                  'ar': `الوقت الحالي في ${getCityNameForLanguage('ar')}`,
-                  'de': `Aktuelle Zeit in ${getCityNameForLanguage('de')}`,
-                  'es': `Hora Actual en ${getCityNameForLanguage('es')}`,
-                  'fr': `Heure Actuelle à ${getCityNameForLanguage('fr')}`,
-                  'hi': `${getCityNameForLanguage('hi')} में वर्तमान समय`,
-                  'it': `Ora attuale a ${getCityNameForLanguage('it')}`,
-                  'ja': `${getCityNameForLanguage('ja')}の現在時刻`,
-                  'ko': `${getCityNameForLanguage('ko')}의 현재 시간`,
-                  'pt': `Hora atual em ${getCityNameForLanguage('pt')}`,
-                  'ru': `Текущее время в ${getCityNameForLanguage('ru')}`
-                };
-
-                return (
-                  <Link
-                    key={loc}
-                    href={url}
-                    className={cn(
-                      "inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm transition-colors",
-                      locale === loc ? "border-ink bg-ink text-paper" : "border-line bg-surface text-ink hover:border-ink",
-                    )}
-                    title={translations[loc]}
-                    hrefLang={loc}
-                  >
-                    {translations[loc]}
-                    <span className="text-xs opacity-60">({languageNames[loc]})</span>
-                  </Link>
-                );
-              })}
+          {LANGUAGE_OPTIONS.map(({ code: loc, name }) => {
+            return (
+              <Link
+                key={loc}
+                href={getLocalePath(`/cities/${city}`, loc)}
+                className={cn(
+                  "inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm transition-colors",
+                  locale === loc ? "border-ink bg-ink text-paper" : "border-line bg-surface text-ink hover:border-ink",
+                )}
+                title={translations[loc]}
+                hrefLang={loc}
+              >
+                {translations[loc]}
+                <span className="text-xs opacity-60">({name})</span>
+              </Link>
+            );
+          })}
         </div>
       </Section>
 

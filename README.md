@@ -145,3 +145,6 @@ renders the clock, date and time comparisons from the current time.
 City-cache follow-up: the live favicon now owns just its own link. Next can
 reconcile route metadata during client navigation without external DOM removal.
 Clocks use the device time and no longer send requests to WorldTimeAPI.
+
+City language links now use the site's shared language names, and their title
+table is checked against all supported locales, including Turkish.
