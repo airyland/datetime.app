@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer"
 import { LiveFavicon } from "@/components/live-favicon"
 import Header from "@/components/header"
 import { Analytics } from "@/components/analytics"
+import { TrackerScript } from "@/components/tracker-script"
 import { LanguageSuggestionModal } from "@/components/language-suggestion-modal"
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations } from 'next-intl/server'
@@ -117,6 +118,7 @@ export default async function LocaleLayout({
           }}
         />
         <Analytics />
+        <TrackerScript />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans`}>
         <AdSenseScript />
